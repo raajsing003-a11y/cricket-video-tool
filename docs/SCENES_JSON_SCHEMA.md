@@ -5,7 +5,7 @@ Tool ki `scenes.json` = ek **array** of scenes. Claude chat mein script se ye JS
 Example (8 scenes, sirf format dikhane ke liye, content placeholder hai): `docs/example_scenes_8.json`
 
 ## Scene ke common fields
-- `type` (zaruri): hook | title | stat | retain | watch | rumour | anth | intro | presenter
+- `type` (zaruri): hook | title | stat | retain | watch | rumour | anth | intro | presenter | cta
 - `dur` (zaruri): seconds, 1.5 se 30 (⏱ fit baad mein badal dega)
 - `tr` (optional): cut | fade | grunge | zoom | whip | glitch | flash | slideup | push | iris | blinds | rgb | spin | lightwipe | tiles | blurfade (C31 ke 8 naye: push=dhakka, iris=goal circle, blinds=patti, rgb=lal-neela split, spin=ghoomta, lightwipe=sunehri roshni, tiles=tile pop, blurfade=soft blur). Pehle scene par nahi lagta.
 - `trDur` (optional): seconds, 0 se dur tak (normal 0.5-0.7)
@@ -29,6 +29,8 @@ Scene ka shape: `{"type":"stat","dur":5,"chunk":2,"tr":"slideup","trDur":0.6,"da
 **rumour** (अफवाह, 2 photo split): `head` (zaruri, 50), `sub` (60), `photos` (1-2 slot id), `note`, `flip` (true = 2 photo adli-badli).
 
 **anth** (sawal + cta): `qs` (1-3 sawal, har ek 90 tak, zaruri), `title` (60), `cta` (60), `flip` (true = patti dayen se).
+
+**cta** (like/comment/subscribe icons, photo nahi chahiye): `mode` = like (beech: Like+Subscribe) | end (aakhir: Like+Comment+Subscribe), `title` (40), `line` (60). Har video mein 2 cta scene: beech ke break par mode like, sabse aakhir mein mode end (docs/CHANNEL_CTA.md). Tool ka 📣 button bhi dono jod deta hai.
 
 **intro** (paper + red ball): `line1`, `line2` (kam se kam ek zaruri; 50 / 70 tak), `flip` (true = ball dayen se).
 
@@ -62,5 +64,5 @@ WARNING (load hoga): dur bahut chhota/lamba, bahut lamba text, unknown extra fie
 3. Har voice-over chunk ke scenes par `chunk` number. dur ka andaza do, tool ⏱ fit se theek kar dega.
 4. Photo slot id sirf library/custom wale; pata na ho to "" chhodo (warning aayegi) aur batao kaun si photo chahiye.
 5. Bhejne se pehle ye check mentally chalao; tool bhi load par check karega.
-6. Har video ki shuruaat CHANNEL_INTRO.md se hai (fixed intro ~6 sec, phir "is video mein" preview). JSON mein presenter scene NAHI banao (photo ids pata nahi): pehla scene "is video mein" wala preview (hook ya watch, 4-6 sec) rakho, sab `chunk` 1. Rahul load ke baad tool mein 🎬 Standard intro jodo dabata hai (presenter scene sabse aage lag jaata hai).
+6. Har video ki shuruaat CHANNEL_INTRO.md se hai (pehle "is video mein" teaser, phir fixed intro ~6 sec). JSON mein presenter scene NAHI banao (photo ids pata nahi): pehla scene "is video mein" wala preview (hook ya watch, 4-6 sec) rakho, sab `chunk` 1. Rahul load ke baad tool mein 🎬 Standard intro jodo dabata hai (presenter scene pehle teaser scene ke baad lag jaata hai).
 

@@ -12,7 +12,7 @@ TOOL-CHAT (code wala) ye kaam nahi karta (00_START_HERE.md niyam 9). Script chat
 6. Naye facts nahi. Sirf Fact Pack ke facts. Koi stat/number/quote apni taraf se nahi.
 7. Fantasy, Dream11, betting, odds, giveaway kuch nahi. Kisi par taana/gaali nahi.
 8. Rahul ko chhote simple Hinglish jawab chahiye. Lambe plan se wo confuse hota hai.
-9. HAR script ki shuruaat docs/CHANNEL_INTRO.md ke teen hisson se: (1) fixed intro "नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं 99 क्रिकेट न्यूज़।" (2) "इस वीडियो में हम बात करेंगे ..." (is video ka preview, 1-2 vaakya, sirf Fact Pack se) (3) "तो बिना देर किए, शुरू करते हैं।" Phir baaki script. Fixed shabd mat badalna.
+9. HAR script ki shuruaat docs/CHANNEL_INTRO.md ke teen hisson se: (1) "इस वीडियो में हम बात करेंगे ..." (is video ka teaser, 1-2 vaakya, sirf Fact Pack se) (2) fixed intro "नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं 99 क्रिकेट न्यूज़।" (3) "तो बिना देर किए, शुरू करते हैं।" Phir baaki script. Fixed shabd mat badalna.
 
 ## Kaam ka order (har video)
 1. KHABAR: Rahul news.html se khabar bhejta hai (title + Trade/Rumor label + link).
@@ -22,7 +22,7 @@ TOOL-CHAT (code wala) ye kaam nahi karta (00_START_HERE.md niyam 9). Script chat
 5. Rahul Gemini ka output wapas bhejta hai.
 6. CHECK: neeche ki checklist se line-by-line check. Galtiyan theek karke FINAL script do (ek hi block) + 4-6 line mein "kya badla" batao.
 7. Final script teleprompter.html mein jaata hai. Ek hi chunk, '---' nahi lagana. Rahul ek hi audio record kare ya apni suvidha se tukde kare.
-8. Rahul ke kehne par: scenes.json (docs/SCENES_JSON_SCHEMA.md ke hisaab se), title/description (publish.html), thumbnail line. Scenes mein pehle ~6 sec fixed intro ke liye jagah chhodo (tool ka 🎬 Standard intro jodo button presenter card lagata hai), phir "is video mein" preview scene (CHANNEL_INTRO.md).
+8. Rahul ke kehne par: scenes.json (docs/SCENES_JSON_SCHEMA.md ke hisaab se), title/description (publish.html), thumbnail line. Scenes mein pehle "is video mein" teaser scene, uske baad ~6 sec fixed intro ke liye jagah (tool ka 🎬 Standard intro jodo button teaser ke baad presenter card lagata hai) (CHANNEL_INTRO.md).
 
 ## Check-checklist (Gemini output par)
 - Koi NAYA fact/number/date/record? (jaise "chot se lautta", "10 crore ka dav", team ki position) -> hatao.
@@ -33,8 +33,8 @@ TOOL-CHAT (code wala) ye kaam nahi karta (00_START_HERE.md niyam 9). Script chat
 - Source ka naam? Team ka short form? -> sahi karo.
 - Khiladi ki dishaa ulti? (kaun kahan jaa raha hai) -> Fact Pack se match karo.
 - "Use kiye gaye facts" jaisi meta lines? -> hata do.
-- Script ki shuruaat CHANNEL_INTRO.md ke teen hisson se hai? Fixed intro shabd-ba-shabd wahi? "Is video mein" line mein sirf wahi baatein jo aage aati hain, aur rumor/report ka label wahin bol diya?
-- Hook intro ke turant baad (hissa 2 mein ya uske baad ki pehli 2 line mein) hai? Rumor/sambhavit baat pehle 30 second mein bol di gayi? CTA (like/share/subscribe) sirf ek baar, aakhir mein?
+- Script ki shuruaat CHANNEL_INTRO.md ke teen hisson se hai? Order: teaser -> fixed intro -> shuru karte hain? Fixed intro shabd-ba-shabd wahi? "Is video mein" line mein sirf wahi baatein jo aage aati hain, aur rumor/report ka label wahin bol diya?
+- Hook intro ke turant baad (hissa 2 mein ya uske baad ki pehli 2 line mein) hai? Rumor/sambhavit baat pehle 30 second mein bol di gayi? Docs/CHANNEL_CTA.md ke FIXED CTA (beech mein like+subscribe, aakhir mein comment+like+subscribe, shabd-ba-shabd) dono hain?
 - Aaj ki official list/announcement aa chuki ho to script usi hisaab se badlo (Rumor -> Official ya khabar band).
 
 ## Script ki lambai

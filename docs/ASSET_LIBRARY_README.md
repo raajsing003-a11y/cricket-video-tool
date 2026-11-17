@@ -19,6 +19,15 @@ Offline chalta hai. Kuch install nahi karna (rescan.py ke liye Python + Pillow h
 | `05_player_card_base/` | 10 vertical retain-card bases (team colour, halftone, X pattern, khaali name box) | Ready |
 | `06_icons/` | ball, stumps, bat, trade arrows, rupee coin, generic trophy, question/check/cross, gavel | Ready |
 | `07_photo_slot_placeholders/` | Silhouette placeholders (jab tak real photo na ho) | Ready |
+| `12_city_photos/` | Rahul ke diye asli photos (C47): stadium (bengaluru x2, delhi, chennai x2, kolkata eden, indore, ahmedabad x2, mumbai wankhede), crowd x2, khana cut-out (rasgulla, lassi, vadapav), `bg_green_circle_slot` | Ready (card `bg` mein key do, jaise `12_city_photos/stadium_kolkata_eden_night`) |
+| `13_logos/` | IPL logo, KKR logo, IPL trophy, LIVE badge (C48, Rahul ne diye, transparent) | Ready |
+| `01_backgrounds/` (naye) | `bg_pitch_stumps_floodlights`, `bg_pitch_stumps_smoke`, `bg_yellow_halftone` (chhote 612 px) + `06_icons/icon_youtube_logo_gradient` | Ready |
+| `14_channel_brand/` | Rahul ke diye channel brand assets (C49): templates (frame blue screen+helmet, frame white box+bottom bar, outro host "Visit At", kaun jitega match, split black/red, curve white/black) + text graphics (99, ONLY AT, 99cricketnews.com, GET, Match Prediction) | Ready (key: `14_channel_brand/<naam>`) |
+| `13_logos/` (naye C49) | photo_bcci_logo_glass, logo_99cricketnews_blue_yellow, logo_99_icon, logo_99cricketnews_circle | Ready |
+| `01_backgrounds/` (naye C49) | bg_channel_stadium_blur_bright, bg_channel_stadium_blur_dark, bg_yellow_texture_wall (500 px chhota) | Ready |
+| `12_city_photos/` (naya C49) | stadium_mumbai_wankhede_aerial (650 px chhota) | Ready |
+| C50 naye | `13_logos/`: logo_rcb, srh, csk, mi, dc, bcci, kings_xi_punjab_old (purana logo) + badge_live_red_flat. `06_icons/`: icon_vs_orange(_small), icon_vs_red_gold. `02_overlays/`: ov_lower_third_yellow_white, ov_circle_ring_black. `01_backgrounds/`: bg_studio_cricket_stadium_set, bg_stadium_night_floodlights_smoke. `12_city_photos/`: 5 Wankhede photos (night x2, day x2, panorama) | Ready |
+| C51 naye | `14_channel_brand/`: tpl_phone_mockup_gold, tpl_promo_app_banner_99cricketnews, tpl_square_99_batsman_stadium. `13_logos/`: logo_rr, logo_99_icon_large, logo_bcci_alt_rough. `06_icons/`: telegram_join_button, check_green_flat, cross_red_brush, subscribe_button, idea_bulb. `01_backgrounds/`: yellow_halftone_burst, baseball_stadium_red_sunset, blue_gradient_glow, black_blue_gradient. `12_city_photos/`: wankhede_panorama_small, photo_ipl_trophy_ribbons, crowd_csk_fan_sign. `09_player_photos/chennai/`: player_chennai_csk_jersey_portrait (YELLOW, license verify) | Ready |
 | `08_gemini_generated/` | **Khaali.** Gemini se banakar yahan save karo (backgrounds, city_backdrops, objects, fx) | Prompts ready |
 | `09_player_photos/<team>/` | **Khaali.** 90+ khiladiyon ki real licensed photos | Checklist ready |
 | `10_gemini_prompts/` | `GEMINI_PROMPTS.md` (copy-paste) + `prompts.csv` | Ready |

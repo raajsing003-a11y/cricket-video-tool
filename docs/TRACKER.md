@@ -189,3 +189,140 @@ Next: Rahul jo bole (naya script is intro ke saath, caption styles, thumbnail pr
 
 
 - C44 (17 Nov 2026): Photo Finder Chrome extension (zip ke bahar, photo_finder_extension/ folder, repo mein nahi jaata). Photos panel mein 🔍 Google button + khaali sab auto queue. Tool code nahi badla. Install: photo_finder_extension/README.txt. Test: buttons + slot set OK (headless); asli Google pick/Auto Rahul ke Chrome mein check baaki.
+
+## C38 (17 Nov 2026) — Intro order badla
+Naya order: 'is video mein' teaser -> fixed intro (presenter) -> 'shuru karte hain' -> video. js/looks.js: 🎬 Standard intro jodo ab presenter scene pehle scene ke BAAD lagata hai (fade dono taraf); pehle se presenter ho to dobara nahi jodta. Docs badle: CHANNEL_INTRO, SCRIPT_WORKFLOW, SCENES_JSON_SCHEMA, GEMINI_SCRIPT_PROMPT_TEMPLATE.
+
+## C46 (17 Nov 2026) — Like/Comment/Subscribe CTA (script + slides)
+Naya docs/CHANNEL_CTA.md: har script mein 2 FIXED CTA (beech: like+subscribe, aakhir: comment+like+subscribe). Naya wide card `cta` (js/card_cta.js, mode like|end, Path2D icons, no assets); scene_editor + scenes_check mein jura; looks.js mein '📣 Like/Comment/Subscribe slides jodo' button (beech + aakhir, dobara nahi jodta). Script docs: GEMINI template, SCRIPT_WORKFLOW checklist, SCENES_JSON_SCHEMA. Test: node --check sab, headless: button 10 scenes banata (cta beech + aakhir), SCHK errors 0, dono mode render check (screenshot dekha), console errors 0. NOT tested: asli audio par timing, MP4 export mein cta.
+
+## C47 (17 Nov 2026) — Rahul ke diye photos assets mein
+assets/12_city_photos/ (10 stadium, 2 crowd, 3 khana cut-out transparent, bg_green_circle_slot) + 06_icons/icon_youtube_logo.png; js/manifest.js + MASTER_INDEX.csv + ASSET_LIBRARY_README update. CTA card ka subscribe icon ab asli YouTube logo. Test: scenes check errors 0 (bg key accept), Eden bg wala hook aur cta end render dekha, console errors 0. Note: kuch photos chhoti (600-900 px) -> 1080p par thodi soft; khana cut-out ke kinaare (vadapav) par halka halo; license/credit track nahi (postponed). bg_green_circle_slot ka kaam Rahul batayega (abhi sirf asset).
+
+## C48 (17 Nov 2026) — Rahul ke 2nd batch photos/logos assets mein
+Naye: 13_logos (logo_ipl, logo_kkr, ipl_trophy, badge_live), 01_backgrounds (bg_pitch_stumps_floodlights, bg_pitch_stumps_smoke, bg_yellow_halftone), 06_icons/icon_youtube_logo_gradient, food_vadapav naya (purana replace). Flat YouTube logo pehle se tha (duplicate skip). manifest.js + MASTER_INDEX.csv + README update; alpha check (preview) OK. Note: 3 bg sirf 612 px (1080p par soft), IPL logo gehra neela (dark bg par nahi dikhega), brand logo/license check baaki.
+
+## C49 (17 Nov 2026) — Rahul ke 3rd batch (19 images) assets mein
+Naya folder assets/14_channel_brand/ (11: tpl_frame_blue_screen_helmet, tpl_frame_white_box_bottom_bar [box transparent], tpl_outro_host_visit_at, tpl_kaun_jitega_match, tpl_split_black_red, tpl_curve_white_black, text_99_black, text_only_at, text_99cricketnews_com, text_get, text_match_prediction). 13_logos: photo_bcci_logo_glass, logo_99cricketnews_blue_yellow, logo_99_icon, logo_99cricketnews_circle. 01_backgrounds: bg_channel_stadium_blur_bright/dark, bg_yellow_texture_wall. 12_city_photos: stadium_mumbai_wankhede_aerial. Sab webp (max 1920). js/manifest.js (161 keys, sab files maujood), MASTER_INDEX.csv, ASSET_LIBRARY_README update. Duplicate check: koi pehle wala nahi mila. Tool code nahi badla (sirf assets).
+Notes: text_only_at mein N/I/A/T par glitch (toote tukde) — dobara banwana behtar. bg_yellow_texture_wall (500 px) aur wankhede aerial (650 px) 1080p par soft. Ye graphics ab sirf asset hain; kisi card/scene mein kaise lagane hain (outro, thumbnail template, prediction post) Rahul batayega.
+
+## C50 (17 Nov 2026) — Rahul ke 4th batch (20 images) assets mein
+13_logos: logo_rcb, logo_srh, logo_csk, logo_mi, logo_dc, logo_bcci, logo_kings_xi_punjab_old, badge_live_red_flat. 06_icons: icon_vs_orange_small, icon_vs_orange, icon_vs_red_gold (pngtree.com watermark alpha se hataya, check kiya). 02_overlays: ov_lower_third_yellow_white (kaala bg transparent kiya), ov_circle_ring_black. 01_backgrounds: bg_studio_cricket_stadium_set, bg_stadium_night_floodlights_smoke. 12_city_photos: wankhede night_floodlights (left neeli patti kaati), day_empty, night_crowd, day_match, panorama. webp, max 1920. manifest 181 keys (sab files maujood), MASTER_INDEX + README update. Duplicate nahi mila. Code nahi badla.
+Notes: logo_kings_xi_punjab_old purana hai (ab Punjab Kings) — naya logo chahiye. Team logos/BCCI ka brand-license check baaki (README rule: pehle sirf chips). ov_lower_third (468 px) aur kuch Wankhede/night bg (612-794 px) 1080p par soft. ov_circle_ring andar se safed bhara hai, transparent nahi. day_match photo mein scoreboard/sponsor dikhte hain.
+
+## C51 (17 Nov 2026) — Rahul ke 5th batch (20 images) assets mein
+19 naye assets (list: README C51 row). Duplicate skip: 158914 (= logo_99cricketnews_circle, 512 px version). 158912 = logo_99_icon ka bada version -> logo_99_icon_large. bg_black_blue_gradient: original par 'amply.com' watermark tha -> gradient dobara banaya (watermark nahi). icon_subscribe_button ke khaali kinare kaate. Phone mockup ki screen transparent (check kiya). manifest 200 keys, sab files maujood. Code nahi badla.
+Status YELLOW (license/source verify karo): bg_baseball_stadium_red_sunset (BASEBALL stadium, board par text/ads), photo_ipl_trophy_ribbons (ribbon par DREAM11 — channel niyam fantasy/Dream11 nahi, isse bachna), crowd_csk_fan_sign (asli logon ke chehre + Jio/Gulf), player_chennai_csk_jersey_portrait (web ki photo; khiladi ka naam nahi diya), wankhede_panorama_small. Niyam 5 'photos web se download nahi' — in photos ko video/thumbnail mein daalne se pehle source/license check.
+Chhote: bg_blue_gradient_glow (225 px, smooth hai), telegram button (300 px), yellow_halftone_burst (626 px), wankhede_panorama_small (540 px). logo_bcci_alt_rough ke kinare khurdure hain, logo_bcci use karo.
+
+
+## C52 (17 Nov 2026) — Filmora-style layout (Phase F, chunk F1)
+Rahul ne kaha: tool Filmora jaisa banao, chunks mein. Plan (Filmora Phase): F1 layout+timeline (DONE), F2 timeline drag-reorder + split (S) + scene ke beech transition chunna (timeline se), F3 right panel = chune hue scene ki Properties (dur/tr/trDur/photo slider), F4 media bin (assets/photos grid, drag-to-timeline), F5 audio lane drag (AT.segs move) + captions lane drag, F6 keyboard shortcuts (S split, Del, J/K/L, +/- zoom) + polish.
+Kya bana: js/filmora_shell.js (naya, ~190 line). index.html mein sabse aakhir mein load. js/scene_editor.js mein sirf 1 line: SE.render export.
+- Top bar (brand, nav, info, Classic layout button, hara Export button). Left: Filmora jaisa icon rail (Scenes/Photos/Audio/Captions/Export) + panel. Beech: preview (canvas auto-fit, Short 9:16 mein bhi) + timecode MM:SS:FF + play + seek. Right: Look & Effects (purane quick buttons). Neeche: TIMELINE.
+- Timeline: ruler, Video track (scene clips type ke rang mein, naam, dur, transition ka tag/stripe), Audio track (waveform EXPORT.audio + AT.segs ke dabbe), Text track (CAP.lines), laal playhead. Ruler/track par click-drag = scrub. Clip click = scene chuna (left Scenes panel khulta hai). Clip ka daayan kinara drag = scene ki dur (min 0.5s, Undo chalta hai). Toolbar: Duplicate, Peeche, Aage, Delete, zoom slider + Fit, Ctrl+scroll zoom.
+- Purane IDs/modules same: ui_shell, main, scene_editor, photos, audio, captions, export sab waise hi. Classic layout: ?layout=classic (ya top button); wapas: ?layout=filmora (classic mein nav mein '🧩 Filmora layout' link). Choice localStorage 'cvt_layout' mein.
+- Test (headless chromium, 1600x900, 22-scene Shami JSON + synthetic audio + captions): node --check OK; console errors 0; clip click, trim drag, ruler scrub, zoom, Delete (22->21), classic mode (fm class nahi) sab OK. Screenshots dekhe: layout theek.
+- Known/baaki: sirf desktop (>=900px) ke liye; timeline clips drag-reorder abhi nahi (F2); Properties panel abhi purane quick buttons hain (F3); clip trim ke baad captions/audio auto-fit nahi hota (⏱ fit dabao); Rahul ke real Chrome par dekhna baaki.
+
+
+## C53 (17 Nov 2026) — Filmora F2: timeline editing (js/filmora_shell.js)
+Kya naya: (1) Clip ko drag karke order badlo (hara insertion line dikhti hai; pehla scene hamesha trDur 0; purana pehla scene beech mein jaye to grunge 0.7 mil jata hai). Simple click = scene chuno. (2) ✂ Split / S key: playhead jis scene par ho use do hisson mein todta hai (dusra 'cut', kinare se min 0.5s). (3) Snapping: clip ka kinara drag karte waqt playhead, doosre clips ke kinare, captions, audio segments par chipakta hai (peeli line, 8px). (4) Har clip (pehle ko chhod) mein ◆ button: click = Transition menu (16 transitions + lambai slider; turant preview). (5) Delete/Backspace = chuna scene hatao (Undo chalta hai). Toolbar mein msg line (kya hua dikhata hai).
+Test (headless, 22-scene JSON): reorder (hook:10 -> teesri jagah, first trDur 0), click select, split (14 -> 7+7, dusra cut), edge split refuse + msg, transition menu glitch (trDur 0.5), menu bahar click par band, snap trim (end == playhead 24.53), Delete 23->22, Undo 22->23. Console errors 0.
+Baaki: F3 right panel = chune scene ki Properties (dur/tr/trDur/photo slot/text fields); F4 media bin; F5 audio+captions lane drag; F6 baaki shortcuts/polish. Split card ko dobara animate karta hai (dono hisse apni shuruaat se chalte hain) — Properties mein baad mein 'start offset' soch sakte hain. Real Chrome par check baaki.
+
+
+## C54 (17 Nov 2026) — Filmora F3: Properties panel (js/filmora_shell.js)
+Right panel ke upar 'PROPERTIES — N. type' (chune hue scene ka). Timing: Duration, Audio chunk #, Transition + Transition sec (pehle scene mein nahi). Content: scene.data ke fields apne aap form ban jate hain — text (chhota=input, lamba/head/sub/note=textarea), number, checkbox, string-list (ek line = ek item, jaise photos/names), 'photo'/'bg' par photo-slot suggestions (PHOTO_SLOTS + custom_). Complex (object) fields skip + note: Scenes panel ke JSON box mein edit karo.
+Kaise kaam karta: har badlav 350ms baad SE.apply(true) se lagta hai (preview + timeline + Undo/Redo sab chalte hain). Panel tab rebuild hota jab scene chuna/badla ya Undo/left-panel se badlav aaye; type karte waqt focus nahi jata.
+Test (headless): clip click -> panel title badla; Duration 9 -> scene+clip 9s; head textarea badla -> data update; transition select flash (trDur 0.5); Undo -> panel select wapas whip; stat scene par photo input (datalist) dikha. Console errors 0.
+Baaki: F4 media bin (assets/photos grid, click/drag se scene jodna), F5 audio+captions lane drag, F6 shortcuts+polish. Photo upload button Properties mein nahi (Photos tab/Scenes panel mein hai). Real Chrome par check baaki.
+
+
+## C55 (17 Nov 2026) — Filmora F4: Media bin (js/filmora_shell.js)
+Left rail mein sabse upar naya '🗂 Media' tab (baaki tabs/views neeche jaise ke taise; Media overlay hai, dusra tab dabane par band).
+- Assets: MANIFEST ke saare ~200 assets thumbnail grid mein (lazy), category chips (Backgrounds, Overlays, Icons, City/Stadium, Logos, Channel brand…), search. Click = chuno; double-click ya '🖼 Chune hue scene ka background' = scene.data.bg set (agar us card type mein bg badalta hai; warna message + badlav wapas — check C.CARDS[type].assets). '➕ Naya hook scene is background ke saath'.
+- Photos: PHOTO_SLOTS (97) + custom_ slots + scenes mein use hue ids (jaise custom_shami, jo abhi upload nahi hue 'photo chahiye' badge ke saath), chips city-wise + '✓ Uploaded', search. Click chuno -> '📷 Chune hue scene mein lagao' (stat/retain/short_stat = data.photo; watch/rumour/presenter = data.photos mein pehli khaali jagah ya push). '⬆ Is slot ke liye photo upload' (PHOTOS.set + SE.apply).
+- Drag & drop: tile ko timeline ke Video track par chhodo: clip par = us scene ka bg/photo; khaali jagah (assets) = naya hook scene aakhir mein.
+Test (headless, 22-scene JSON): 200 tiles, Backgrounds chip 30, bg set hook, drag-drop clip 4 par, naya scene 22->23, Photos mode 99 tiles, search shami=1, stat scene par kohli photo lagi, Media band hone par Scenes view theek. Console errors 0. Bug mila+theek: grid tiles collapse (grid-auto-rows:max-content).
+Baaki: F5 audio+captions lane drag (segments/caption start ko timeline par kheencho), F6 shortcuts (J/K/L, +/- zoom, Home/End) + polish. Photo thumbnails tabhi dikhte jab photos upload hon. Real Chrome par check baaki.
+
+
+## C56 (17 Nov 2026) — Filmora F5: audio + caption lanes drag (js/filmora_shell.js)
+- Audio lane: har voice-over segment (AT.segs) ab dabba hai — drag karke time badlo (start/end dono playhead, scene kinaron, captions, doosre segments par snap, peeli line). Chhodne par AT.nudge se mix dobara banta (waveform + export audio update, Audio panel bhi refresh). Click = segment chuna (safed kinara), Delete/Backspace = chuna segment hatao (AT.del); segment na chuna ho to Delete scene hatata hai. Khaali audio jagah click = scrub.
+- Text lane: caption block drag karke uska start time (CAP.lines[i].t0) badlo — pichle/agle caption ke beech clamp (min 0.1s), snap; CAP.nudge se save hota. Pichle caption ka end apne aap badal jata (ends() logic).
+- snapPts(skipScene, skipSeg, skipCap) ab teeno ke liye.
+Test (headless): 3 synthetic segments + 5 captions: seg2 60s -> 74 (snap), mixed audio update, seg3 select+Delete (3->2, scenes 22 ke 22), caption 3 t0 62 -> 68.74, msg dikha, console errors 0.
+Baaki: F6 shortcuts (J/K/L, +/- zoom, Home/End, Ctrl+D duplicate, ←/→ frame step, I/O?) + polish (timeline resize handle, clip right-click menu). Segment trim/split abhi nahi (sirf move/delete). Captions panel ki list drag ke baad refresh nahi hoti (data sahi hai; panel dobara kholo). Real Chrome par check baaki.
+
+
+## C57 (17 Nov 2026) — Filmora F6: shortcuts + polish (js/filmora_shell.js)
+- Keyboard: K = play/pause, J / L = 5s peeche / aage, , / . = 1 frame, Home / End = shuru / aakhir, ↑ / ↓ = pichle / agle scene par (pick), + / − = timeline zoom, 0 = Fit, Ctrl+D = scene duplicate (browser bookmark roka), [ / ] = chuna scene ek jagah peeche / aage. Pehle ke S (split), Del, Space, ←/→ (1s) jaise ke taise. Input/textarea/select mein shortcuts band.
+- Timeline resize handle: timeline ke upar ki patli patti kheench kar height badlo (170px se 65% screen tak), double-click = default (284px). Height localStorage (cvt_tlh) mein yaad rehti. Preview canvas apne aap refit hota.
+- Clip right-click menu: Split (playhead par), Duplicate, Peeche/Aage, Transition badlo…, Delete. Esc se menu band.
+- Right panel ka Shortcuts help naya (kbd box).
+- FM API: FM.dup, FM.zoom, FM.moveSel jude.
+Test (headless chromium, docs/example_scenes_8.json, 8 scenes): End 34.97s, Home 0, . . = 2 frame, , = 1 frame, L +5s, J -5s (0 par clamp), Down/Up scene 0->1->2->1, + zoom 39->49, K play->pause, Ctrl+D 8->9, [ ] move, right-click menu 6 items, ctx Duplicate 9->10, ctx Delete 10->9, resize 284->374px, kbd help dikha. node --check sab js OK. Console errors: sirf assets ke 404 (test mein assets/ nikaale the) — code error 0.
+Baaki (Filmora phase ke baad ke chhote idea): audio segment trim/split, captions panel list drag ke baad refresh, J/K/L ko asli shuttle speed banana, Real Chrome (Rahul ke PC) par check. Filmora Phase F1-F6 poora.
+
+
+## C58 (17 Nov 2026) — Audio Editor: Audacity jaisa + News-anchor voice (js/audio_editor.js)
+Khulta: Audio panel ka '🎛 Audio Editor' button, timeline toolbar ka button, ya timeline par audio segment par double-click. Upar dropdown se segment badlo. Apply = tool mein lagta (AT.segs[i].buf + mix rebuild), Cancel/Esc = kuch nahi badalta.
+- Waveform: drag = select, click = cursor, zoom slider, Space play (select ho to wahi hissa), ▶ Original sune = A/B.
+- Edit: Cut/Delete, Copy, Paste (cursor par), Trim, Silence, Sab select, Split @cursor (AT mein 2 segment). Undo/Redo (10 step), ⟲ Original.
+- Level: Fade in/out (sec), Amplify (dB), Normalize -1dB (select ya poora).
+- Noise reduce: spectral gating (FFT 2048). Noise profile = select kiya shor wala hissa, ya auto (sabse shaant 0.4s). Reduction dB.
+- Auto silence remove: threshold dB + min pause + kitni pause rakhni; threshold noise floor ke hisaab se khud upar adjust hota. 6ms crossfade.
+- 🎙 Anchor voice: HPF 80Hz, low-shelf +2.5dB@150, mud -1.5dB@280, presence +3dB@3.5k, de-ess -3dB@7k, air +1.5dB@10k, compressor (3.5:1), loudness target (default -17 dBFS RMS ~ -16 LUFS), soft limiter. Strength slider (wet/dry).
+- ⭐ Best = Noise reduce -> Silence remove -> Anchor chain ek click. '⭐ Sab segments par Best' sab segments par.
+Test (headless, synthetic 8s noisy voice): open, anchor, NR, silence 8.0->3.85s, best, select+cut, split (2 segs), fade, normalize, Space play, Apply (mix update, editor band), Best-all; console errors 0. Asli awaaz par kaan se check baaki (Rahul ka kaam): NR dB aur Anchor strength apne mic ke hisaab se set karo.
+Dhyan: silence remove / cut se audio chhota hota -> scenes ka ⏱ fit (audio chunk) dobara chalao. Segments audio-time par hi rehte (baaki segments ko shift nahi karta).
+Baaki: spectrum/EQ sliders, reverb-free, real shuttle J/K/L, Real Chrome check.
+
+
+## C59 (17 Nov 2026) — Audio Editor: EQ sliders + ripple (js/audio_editor.js)
+- 🎚 EQ: 4 slider (Bass 150Hz shelf, Mid 1kHz, Presence 3.5kHz, Air 10kHz shelf, ±12 dB) + Apply EQ (select ya poora) + Reset. Output par soft limiter.
+- Ripple (checkbox, default ON): Apply par segment chhota/lamba hua to uske baad ke saare segments utna khisak jaate (cut/silence remove ke baad gap nahi). 'Sab segments par Best' mein bhi.
+Test (headless): EQ Bass+6/Presence+4 laga, ripple segments chale, errors 0. Pehle wala C58 flow jaisa ka taisa.
+Baaki: asli awaaz par kaan se check (Rahul), real shuttle J/K/L, Real Chrome check, ripple ke baad scenes ka ⏱ fit.
+
+
+## C60 (17 Nov 2026) — Audio Editor: Apply ke baad auto ⏱ fit (js/audio_editor.js)
+- Naya checkbox 'Apply ke baad scenes ko audio se ⏱ fit karo' (FIT.run + SE.apply). Default ON tabhi jab kisi scene mein chunk number set ho, warna OFF (scenes ki dur bina chunk ke na badle).
+- 'Sab segments par Best' ke baad bhi chalta. Fit na ho paaye to msg mein wajah.
+Test (headless, 8 scenes chunk=1, 2 audio segs): Apply par video 35s -> 8s (audio ke hisaab se), errors 0.
+Baaki: asli awaaz par kaan se check (Rahul), real shuttle J/K/L, Real Chrome export check.
+
+
+## C61 (17 Nov 2026) — Asli J/K/L shuttle (js/filmora_shell.js)
+- L = aage play 1x, baar-baar dabao = 2x, 4x, 8x. J = peeche 1x, 2x, 4x, 8x (preview seek se; player reverse nahi chalata). K = roko (ruka ho to 1x play). Space/play button shuttle band karke normal play-pause karte. Kinare par khud ruk jaata. Msg timeline toolbar mein dikhta.
+- C57 ka 'J/L = +-5s' hata diya; 1s ke liye ←/→ pehle jaise.
+Test (headless): L 1x chala, L 2x = 2.0s/s, 4x = 4.0s/s, K ruka, J -1x = -1.0, J -2x = -2.03, Space se normal play, errors 0. Shuttle mein audio nahi bajta (sirf 1x par), 2x+ aur peeche sirf video dekhne ke liye.
+Baaki: asli awaaz par kaan se check (Rahul), Real Chrome export check.
+
+
+## C62 (17 Nov 2026) — Background music + voice ducking (js/music_bed.js)
+- Button '🎵 Music' (Audio panel bar2 + timeline toolbar). Popup: + Music file, Music volume (-40..0dB, default -18), Voice par duck (-30..0dB, default -12; 0 = duck band), Fade out (sec), loop, Start offset. Music hatao button.
+- Kaam: AT.rebuild ke baad mix = voice (AT.voiceOnly) + music. Voice bolte waqt music duck: 20ms envelope, lead 0.12s (bolne se pehle dabta), attack ~80ms, release ~0.5s, bolne ke beech <0.35s ruk mein music nahi uthta. Mix ki lambai = voice ki lambai (captions/⏱ fit ka timing nahi badalta); voice na ho to video ki lambai. Preview aur MP4 export dono mein jaata (EXPORT.audio). Music 0.3s fade-in.
+- API: AT.music, AT.setMusic(name,buf), AT.clearMusic(), MUSIC.open/mix/envelope.
+Test (headless): 8s voice (2 bursts) + 3s music loop: chup mein music rms 0.044 (=-18dB), bolte waqt mix rms 0.2124 ~ voice 0.2121 (music dab gaya), duck=0 par 0.2168, aakhri fade ~0, clear par lambai 8s, panel khula, errors 0.
+Dhyan: music Rahul khud laaye (copyright: royalty-free / YouTube Audio Library). Music project mein save nahi hota (JSON mein nahi) — har baar dobara lagao. Voice editing (Audio Editor) ke baad mix khud update hota.
+Baaki: asli music+awaaz par kaan se check (Rahul), music JSON/backup mein save, Real Chrome export check.
+
+
+## C63 (17 Nov 2026) — Music browser mein save (js/music_bed.js)
+- Music file + settings (volume, duck, fade, loop, offset) IndexedDB 'cvt_music' mein save hote (original file bytes). Page reload / tool dobara kholne par khud wapas lag jaata (MUSIC.restore). 'Music hatao' par IndexedDB se bhi hat jaata.
+- Photos/scenes ki tarah ye browser mein hai, GitHub repo ya JSON mein nahi: dusre PC/browser par music dobara lagana padega.
+Test (headless): wav upload -> volume -10 -> reload: music + vol -10 wapas; hatao -> reload: koi music nahi; errors 0.
+Baaki: music ka Backup/Restore (photos backup jaisa) agar chahiye, asli music+awaaz par kaan se check (Rahul), Real Chrome export check.
+
+
+
+## C64 (17 Nov 2026) — 🎬 Naya Style: caption styles + ek-click recipe (mass-production se bachne ke liye har video alag dikhe)
+js/captions.js: 5 caption styles (Box purana, Outline bina box, Poori patti, Box + rang ki line, Pop uchhal) + 6 accent rang (gold/cyan/orange/green/pink/white). 💬 Captions panel mein Style + Rang dropdown. Choice localStorage 'cvt_capstyle'. Default = purana Box (kuch nahi badla jab tak choose na karo).
+js/looks.js: naya button '🎬 Naya Style (ek click)' = random Look + caption style + rang + 🎲 Auto-vary ek saath; pichli baar wala look/style/rang nahi aata (localStorage 'cvt_recipe_hist'). Message mein batata hai kya laga. Pasand na aaye to ↶ Undo / dobara dabao.
+Test (headless chromium, example_scenes_8.json): 5 baar button, har baar alag look/style/rang, frames dekhe (box+line, patti, pop, box), console errors 0, node --check OK.
+Dhyan: caption (wide mein y=900) kuch cards ki neeche wali text line par chadh jaati hai (ye purana hai, C64 se nahi aaya). Agar Rahul ko dikhe to caption ki jagah ya card text upar karna agla chhota chunk.
+NOT tested: real Chrome export mein naye caption styles; asli video par Rahul ko kaun sa style pasand aata hai.
+Note: YouTube 'repetitious/mass-produced content' ka asli bachav alag script, apni awaaz aur apni analysis hai; ye tool sirf look ki variety deta hai.
+Next: Rahul jo bole (caption overlap fix, intro/outro variety, accent colour cards mein, real Chrome check).

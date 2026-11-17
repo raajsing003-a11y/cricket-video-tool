@@ -4,7 +4,7 @@
 const C=window.CORE;
 const KEYS={wide:'cvt_scenes',short:'cvt_scenes_short'};
 const keyOf=()=>KEYS[C.format]||KEYS.wide;
-const TYPES_W=['hook','title','stat','retain','watch','rumour','anth','intro','presenter'],TYPES_S=['short_hook','short_stat','short_cta'];
+const TYPES_W=['hook','title','stat','retain','watch','rumour','anth','intro','presenter','cta'],TYPES_S=['short_hook','short_stat','short_cta'];
 const types=()=>C.format==='short'?TYPES_S:TYPES_W;
 const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup','push','iris','blinds','rgb','spin','lightwipe','tiles','blurfade'];
 const DEF={
@@ -16,6 +16,7 @@ const DEF={
  rumour:{dur:5,data:{head:'हेडलाइन',sub:'अभी ऑफिशियल नहीं',photos:[]}},
  anth:{dur:5,data:{title:'',qs:['सवाल 1','सवाल 2','सवाल 3'],cta:''}},
  intro:{dur:4,data:{line1:'लाइन 1',line2:'लाइन 2'}},
+ cta:{dur:4,data:{mode:'like',title:'',line:''}},
  presenter:{dur:5,data:{channel:'99cricketnews',name:'Yuvraj Sisodiya',sub:'क्रिकेट की हर खबर',photos:[''],key:'auto',swap:1.4}},
  short_hook:{dur:3.5,data:{pre:'ऊपर की लाइन',to:10,dec:0,unit:'करोड़',post:''}},
  short_stat:{dur:4,data:{photo:'',pre:'छोटी लाइन',prefix:'₹',to:10,dec:0,unit:'करोड़',head:'हेडलाइन',sub:'',lt:'red',tag:true}},
@@ -23,6 +24,7 @@ const DEF={
 };
 const SE=window.SE={scenes:[],sel:0,msg:''};
 SE.apply=(k)=>apply(k);
+SE.render=()=>render(); // C52: timeline se scene chunne par panel refresh
 const clone=o=>JSON.parse(JSON.stringify(o));
 function save(){try{localStorage.setItem(keyOf(),JSON.stringify(SE.scenes));}catch(e){}}
 

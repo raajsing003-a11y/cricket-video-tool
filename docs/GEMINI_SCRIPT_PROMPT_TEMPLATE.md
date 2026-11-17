@@ -19,8 +19,8 @@ LABEL NIYAM:
 SOURCE: kisi website, agency ya channel ka naam script mein MAT bolo (Cricbuzz, ESPNcricinfo, IANS, PTI jaise koi bhi).
 TEAM: sheher ka naam likho (Lucknow, Rajasthan, Chennai, Mumbai...). LSG/RR/CSK/MI jaise short form mat likho.
 STYLE: beech-beech mein sawaal ("Aapko kya lagta hai?"). Har 45-60 second mein ek mod ya "lekin yahan twist hai" line. Mazaak sirf khabar ya sthiti par; kisi desh, dharm, jaati, parivar ya insaan par taana nahi. Hype bina data ke nahi.
-CTA: like/share/subscribe sirf aakhir mein, ek baar.
-SHURUAAT (FIXED, har video mein): Script ke sabse pehle ye teen cheezein, isi order mein. (1) Ye vaakya shabd-ba-shabd, ek akshar bhi badle bina: "नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं 99 क्रिकेट न्यूज़।" (2) Phir "इस वीडियो में हम बात करेंगे" se shuru hokar 1-2 chhote vaakya jo batayein ki is video mein kya hai (sirf diye gaye facts ke andar; rumor/report ho to yahin "अभी सिर्फ रूमर है" / "खबरों के मुताबिक" bolo). (3) Phir ye vaakya shabd-ba-shabd: "तो बिना देर किए, शुरू करते हैं।" Uske baad poora script. Ye teen hisse naye fact nahi maane jaayenge.
+CTA (FIXED, har video mein, shabd-ba-shabd): (a) script ke lagbhag beech mein, kisi hisse ke natural break par: "अगर अब तक का वीडियो पसंद आ रहा है, तो लाइक का बटन दबाइए और चैनल को सब्सक्राइब कीजिए।" (b) script ke bilkul aakhir mein, sawalon ke baad: "आपकी इस बारे में क्या राय है? कमेंट में ज़रूर बताइए। और ऐसी हर खबर सबसे पहले पाने के लिए लाइक करें और चैनल को सब्सक्राइब करना न भूलें। धन्यवाद!" Ye dono lines naye fact nahi maani jaayengi.
+SHURUAAT (FIXED, har video mein): Script ke sabse pehle ye teen cheezein, isi order mein. (1) Sabse pehle "इस वीडियो में हम बात करेंगे" se shuru hokar 1-2 chhote vaakya jo batayein ki is video mein kya hai (sirf diye gaye facts ke andar; rumor/report ho to yahin "अभी सिर्फ रूमर है" / "खबरों के मुताबिक" bolo). (2) Phir ye vaakya shabd-ba-shabd, ek akshar bhi badle bina: "नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं 99 क्रिकेट न्यूज़।" (3) Phir ye vaakya shabd-ba-shabd: "तो बिना देर किए, शुरू करते हैं।" Uske baad poora script. Ye teen hisse naye fact nahi maane jaayenge.
 PAKKE NIYAM:
  a. Diye gaye saare facts script mein aane chahiye. Koi F-number chhodna nahi.
  b. Koi NAYA fact, number, date, record, quote, stat ya tark apni taraf se mat jodo.
@@ -39,7 +39,7 @@ AAJ KI DATE: {{date}}
 F2 (LABEL): ...}}
 
 === DHANCHA ===
-{{FIXED shuruaat (intro -> is video mein -> shuru karte hain) -> hook -> kya khabar -> kya pech/twist -> paisa/pichhli baat -> dono taraf ka fayda -> twist -> sawal -> CTA}}
+{{FIXED shuruaat (intro -> is video mein -> shuru karte hain) -> hook -> kya khabar -> kya pech/twist -> paisa/pichhli baat -> dono taraf ka fayda -> twist -> sawal -> aakhir ka FIXED CTA; beech mein FIXED like/subscribe line}}
 
 === AAKHIR MEIN YAAD DILANA ===
 Upar ke saare niyam dobara dhyan se: koi source ka naam nahi, team ka short form nahi, koi naya fact nahi, rumor ko pakka nahi, kisi khiladi ki disha ulti nahi, koi khali marker nahi.

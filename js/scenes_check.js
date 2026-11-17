@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const S=window.SCHK={};
-const WIDE=['hook','title','stat','retain','watch','rumour','anth','intro','presenter'];
+const WIDE=['hook','title','stat','retain','watch','rumour','anth','intro','presenter','cta'];
 const SHORT=['short_hook','short_stat','short_cta'];
 const TYPES=WIDE.concat(SHORT);
 const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup','push','iris','blinds','rgb','spin','lightwipe','tiles','blurfade'];
@@ -19,6 +19,7 @@ const KEYS={
  rumour:['head','sub','photos','note','flip'],
  anth:['title','qs','cta','flip'],
  intro:['line1','line2','flip'],
+ cta:['mode','title','line'],
  presenter:['channel','name','sub','photos','key','swap'],
  short_hook:['pre','big','to','dec','unit','post'],
  short_stat:['photo','pre','prefix','to','dec','unit','big','head','sub','lt','tag'],
@@ -26,7 +27,7 @@ const KEYS={
 // max chars (is se zyada ho to text chhota/kat sakta hai)
 const MAXC={title:{headline:70,sub:60,ticker:140},hook:{pre:40,unit:20,post:80},stat:{pre:40,head:50,sub:60,unit:20},
  retain:{name:30,amount:20,note:80},watch:{title:30,note:80},rumour:{head:50,sub:60},anth:{title:60,cta:60},
- intro:{line1:50,line2:70},presenter:{channel:30,name:30,sub:50},
+ intro:{line1:50,line2:70},cta:{title:40,line:60},presenter:{channel:30,name:30,sub:50},
  short_hook:{pre:40,unit:20,post:80},short_stat:{pre:30,head:40,sub:50,unit:16},short_cta:{line1:60,line2:40,cta:30}};
 const BAD_WORDS=/dream\s*11|dream11|fantasy|betting|\bbet\b|सट्टा|फैंटेसी|ड्रीम\s*11/i;
 const SHORTS=/\b(MI|CSK|RCB|KKR|SRH|DC|PBKS|RR|GT|LSG)\b/;
@@ -141,6 +142,7 @@ S.check=function(scenes,env){
         d.qs.forEach((q,j)=>{if(!isStr(q)||!q.trim())err(i,L+'qs['+j+'] khali/galat.');else if(q.length>90)warn(i,L+'qs['+j+'] lamba hai ('+q.length+' akshar, 90 tak).');});}
     }
     if(t==='intro'){if(!(isStr(d.line1)&&d.line1.trim())&&!(isStr(d.line2)&&d.line2.trim()))err(i,L+'"line1" ya "line2" chahiye.');}
+    if(t==='cta'){if(d.mode!=null&&d.mode!=='like'&&d.mode!=='end')err(i,L+'"mode" "like" ya "end" hona chahiye.');}
     if(t==='presenter'){
       if(!Array.isArray(d.photos)||!d.photos.filter(Boolean).length)err(i,L+'"photos" mein kam se kam 1 photo slot chahiye.');
       else d.photos.forEach((p,j)=>photo(p,'photos['+j+']'));

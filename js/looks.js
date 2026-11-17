@@ -87,15 +87,45 @@ function boot(){
     try{localStorage.setItem(SK,JSON.stringify({dur:sc.dur,data:sc.data}));st.textContent='Standard intro save ho gaya. Ab har video mein 🎬 dabao.';}catch(e){st.textContent='Save error: '+e.message;}};
   bA.onclick=async()=>{const SE=window.SE;
     if(C.format!=='wide'){st.textContent='Standard intro sirf wide mode mein.';return;}
-    if(SE.scenes.length&&SE.scenes[0].type==='presenter'){st.textContent='Pehla scene pehle se presenter hai.';return;}
+    if(SE.scenes.some(s=>s.type==='presenter')){st.textContent='Presenter intro pehle se hai.';return;}
     let sv=null;try{sv=JSON.parse(localStorage.getItem(SK)||'null');}catch(e){}
     const data=sv?sv.data:{channel:'99cricketnews',name:'Yuvraj Sisodiya',sub:'क्रिकेट की हर खबर',photos:[''],key:'auto',swap:1.4};
     const sc={type:'presenter',dur:sv?sv.dur:6,trDur:0,data:JSON.parse(JSON.stringify(data))};
     if(SE.scenes.length&&SE.scenes[0].chunk)sc.chunk=SE.scenes[0].chunk;
-    SE.scenes.unshift(sc);if(SE.scenes[1]&&SE.scenes[1].trDur===0&&!SE.scenes[1].tr)SE.scenes[1].tr='fade';
-    SE.scenes[1]&&(SE.scenes[1].trDur=SE.scenes[1].trDur||.6);SE.sel=0;await SE.apply(false);
-    st.textContent=sv?'Standard intro pehle scene par jud gaya.':'Presenter scene jud gaya (photos lagao, phir ⭐ save dabao).';};
-  q.appendChild(sel);q.appendChild(b);q.appendChild(bA);q.appendChild(bS);q.appendChild(st);
+    // C38: pehle scene = "is video mein" teaser, uske BAAD standard intro, phir baaki video
+    const pos=SE.scenes.length?1:0;
+    SE.scenes.splice(pos,0,sc);const nx=SE.scenes[pos+1];
+    if(nx&&nx.trDur===0&&!nx.tr)nx.tr='fade';
+    if(nx)nx.trDur=nx.trDur||.6;
+    if(pos&&!SE.scenes[pos].tr)SE.scenes[pos].tr='fade';SE.scenes[pos].trDur=SE.scenes[pos].trDur||.6;
+    SE.sel=pos;await SE.apply(false);
+    st.textContent=sv?'Standard intro teaser scene ke baad jud gaya.':'Presenter scene jud gaya (photos lagao, phir ⭐ save dabao).';};
+  // C46: Like/Subscribe (video ke beech) + Comment/Like/Subscribe (aakhir) slides, ek click
+  const bC=document.createElement('button');bC.id='lk_ctaadd';bC.textContent='📣 Like/Comment/Subscribe slides jodo';bC.style.background='#c0392b';
+  bC.onclick=async()=>{const SE=window.SE;
+    if(C.format!=='wide'){st.textContent='CTA slides sirf wide mode mein.';return;}
+    if(SE.scenes.some(s=>s.type==='cta')){st.textContent='CTA slides pehle se hain.';return;}
+    if(SE.scenes.length<3){st.textContent='Pehle video ke scenes banao/load karo, phir ye button.';return;}
+    const mk=(mode,prev)=>{const sc={type:'cta',dur:mode==='end'?5:4,tr:'fade',trDur:.6,data:{mode}};if(prev&&prev.chunk)sc.chunk=prev.chunk;return sc;};
+    const mid=Math.ceil(SE.scenes.length/2);                       // beech ke aas-paas
+    SE.scenes.splice(mid,0,mk('like',SE.scenes[mid-1]));
+    SE.scenes.push(mk('end',SE.scenes[SE.scenes.length-1]));
+    SE.sel=mid;await SE.apply(false);
+    st.textContent='2 CTA slides jude: beech mein (Like+Subscribe) aur aakhir mein (Like+Comment+Subscribe). Script ki CTA line ke saamne khiskao.';};
+  // C64: 🎬 Naya Style — ek click mein look + caption style/rang + auto-vary; pichli baar wala nahi aata
+  const bR=document.createElement('button');bR.id='lk_recipe';bR.textContent='🎬 Naya Style (ek click)';bR.style.background='#d0397a';
+  bR.onclick=async()=>{bR.disabled=true;try{
+    let h={};try{h=JSON.parse(localStorage.getItem('cvt_recipe_hist')||'{}');}catch(e){}
+    const pk=(arr,last)=>{const c=arr.filter(x=>x!==last);const l=c.length?c:arr;return l[Math.floor(Math.random()*l.length)];};
+    const lk=pk(Object.keys(LOOKS),h.look),cs=window.CAP?pk(Object.keys(CAP.STYLES),h.cs):'',cc=window.CAP?pk(Object.keys(CAP.COLORS).filter(x=>x!=='white'),h.cc):'';
+    L.apply(lk);sel.value=lk;
+    if(window.CAP){CAP.setStyle(cs,cc);CAP.syncSel&&CAP.syncSel();}
+    try{localStorage.setItem('cvt_recipe_hist',JSON.stringify({look:lk,cs:cs,cc:cc}));}catch(e){}
+    const m=await L.vary();
+    st.textContent='Naya style: '+LOOKS[lk].n+(cs?' | caption: '+CAP.STYLES[cs]+' ('+cc+')':'')+' | '+m;
+    window.PLAYER&&PLAYER.draw();
+  }catch(e){st.textContent='Style error: '+e.message;}bR.disabled=false;};
+  q.appendChild(sel);q.appendChild(bR);q.appendChild(b);q.appendChild(bA);q.appendChild(bC);q.appendChild(bS);q.appendChild(st);
   if(LOOKS[saved])L.apply(saved); // reload par wahi look
   return true;
 }
