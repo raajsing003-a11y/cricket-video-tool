@@ -1,18 +1,54 @@
 <!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cricket Video Tool</title>
 <style>
-body{margin:0;background:#111;color:#eee;font-family:system-ui,sans-serif}
-#wrap{max-width:1100px;margin:0 auto;padding:8px}
-canvas{width:100%;aspect-ratio:16/9;background:#000;display:block;border-radius:6px}
-#bar{display:flex;gap:8px;align-items:center;margin-top:8px}
-button{background:#e11;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-size:16px}
-#seek{flex:1}#info{font-size:13px;opacity:.8;margin-top:6px}
+:root{--bg:#0e1116;--card:#171b22;--card2:#1e232c;--line:#2a313c;--txt:#e9edf3;--mut:#8b95a5;--red:#e5262d;--blue:#2a6fdb;--green:#22a06b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.35}
+#wrap{max-width:1100px;margin:0 auto;padding:10px 12px 40px}
+#top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 10px}
+#top h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.2px}
+#top h1 span{color:var(--red)}
+#nav{display:flex;gap:6px;flex-wrap:wrap}
+#nav a{color:var(--txt);text-decoration:none;background:var(--card);border:1px solid var(--line);padding:6px 11px;border-radius:999px;font-size:13px}
+#nav a:hover{border-color:var(--blue)}
+canvas{width:100%;aspect-ratio:16/9;background:#000;display:block;border-radius:10px;border:1px solid var(--line)}
+button{background:var(--red);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit}
+button:hover{filter:brightness(1.12)}button:disabled{opacity:.45;cursor:not-allowed}
+input,textarea,select{background:#10141a;color:var(--txt);border:1px solid var(--line);border-radius:6px;font-family:inherit}
+input:focus,textarea:focus{outline:2px solid var(--blue);border-color:transparent}
+#bar{display:flex;gap:10px;align-items:center;margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+#play{width:46px;height:42px;padding:0;font-size:18px}
+#seek{flex:1;accent-color:var(--red)}#tm{font-size:13px;color:var(--mut);min-width:72px;text-align:right;font-variant-numeric:tabular-nums}
+#quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#quick button{padding:7px 12px;font-size:13px}
+#empty{display:none;margin-top:10px;background:linear-gradient(135deg,#1a2030,#171b22);border:1px dashed #3a4558;border-radius:12px;padding:16px;text-align:center}
+#empty b{font-size:16px}#empty p{margin:6px 0 12px;color:var(--mut);font-size:14px}
+#empty .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#steps{display:flex;gap:6px;margin-top:14px;overflow-x:auto;padding-bottom:2px}
+#steps button{flex:1;min-width:104px;background:var(--card);border:1px solid var(--line);color:var(--mut);padding:11px 8px;font-size:14px;border-radius:10px;white-space:nowrap}
+#steps button.on{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+#steps button .n{display:inline-block;width:20px;height:20px;line-height:20px;border-radius:50%;background:#ffffff22;font-size:12px;margin-right:6px}
+.view{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.view>div,.view>details{margin-top:0!important}
+.view details>summary{display:none}
+.hint{font-size:13px;color:var(--mut);margin:0 0 10px}
+.exp-main{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.exp-main #expf{background:var(--green);font-size:17px;padding:14px 22px;font-weight:600}
+.exp-main #exp{background:#3a4250}
+#expst{display:block;margin-top:10px;font-size:14px;color:#cfe3ff;min-height:18px}
+#info{font-size:13px;color:var(--mut);margin-top:12px;white-space:pre-wrap}
+#kbd{font-size:12px;color:var(--mut);margin-top:6px}
+kbd{background:var(--card2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:11px}
+@media(max-width:600px){#steps button{min-width:92px;font-size:13px}#top h1{font-size:16px}}
 </style></head><body><div id="wrap">
+<div id="top"><h1>🏏 Cricket <span>Video Tool</span></h1><div id="nav"><a href="news.html">📰 News</a><a href="teleprompter.html">🎤 Teleprompter</a><a href="thumbnail.html">🖼 Thumbnail</a><a href="publish.html">📦 Publish pack</a></div></div>
 <canvas id="cv" width="1920" height="1080"></canvas>
 <div id="bar"><button id="play">▶</button><input id="seek" type="range" min="0" max="1000" value="0"><span id="tm">0.0/0.0</span></div>
-<div id="bar2" style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap"><label style="font-size:14px">🎙 Audio: <input type="file" id="aud" accept="audio/*"></label><button id="expf">⚡ Fast export (MP4)</button><button id="exp" style="background:#555">⏺ Real-time export</button><button id="pol" style="background:#2a6fdb">✨ Polish: ON</button><button id="fmt" style="background:#555">📱 Short 9:16: OFF</button><span id="expst" style="font-size:13px"></span></div>
+<div id="quick"></div>
+<div id="empty"><b>Abhi koi scene nahi hai</b><p>Scenes JSON load karo (script chat se mila) ya khud scene banao.</p><div class="row"><button id="em_load" style="background:var(--blue)">📂 Scenes JSON load karo</button><button id="em_new" style="background:#3a4250">➕ Scene khud banao</button></div></div>
+<div id="bar2" style="display:none"><label style="font-size:14px">🎙 Audio: <input type="file" id="aud" accept="audio/*"></label><button id="expf">⚡ Fast export (MP4)</button><button id="exp">⏺ Real-time export</button><button id="pol">✨ Polish: ON</button><button id="fmt">📱 Short 9:16: OFF</button><span id="expst"></span></div>
 <div id="info">Loading…</div>
-<div style="margin-top:8px;font-size:14px"><a href="news.html" style="color:#7cc4ff">📰 News tracker</a> &nbsp; <a href="teleprompter.html" style="color:#7cc4ff">🎤 Teleprompter</a> &nbsp; <a href="thumbnail.html" style="color:#7cc4ff">🖼 Thumbnail maker</a> &nbsp; <a href="publish.html" style="color:#7cc4ff">📦 Publish pack</a></div></div>
+<div id="kbd"><kbd>Space</kbd> play/pause &nbsp; <kbd>←</kbd> <kbd>→</kbd> 1 sec aage-peeche</div></div>
 <script src="js/manifest.js"></script>
 <script src="js/core.js"></script>
 <script src="js/card_hook.js"></script>
@@ -30,12 +66,12 @@ button{background:#e11;color:#fff;border:0;border-radius:6px;padding:10px 16px;f
 <script src="js/export_fast.js"></script>
 <script src="js/audio_tracks.js"></script>
 <script src="js/audio_fit.js"></script>
+<script src="js/audio_preview.js"></script>
 <script src="js/photo_slots.js"></script>
 <script src="js/photos.js"></script>
 <script src="js/captions.js"></script>
-<script src="js/demo_portraits.js"></script>
-<script src="js/demo_scenes.js"></script>
 <script src="js/scenes_check.js"></script>
 <script src="js/scene_editor.js"></script>
 <script src="js/main.js"></script>
+<script src="js/ui_shell.js"></script>
 </body></html>
