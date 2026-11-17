@@ -1,0 +1,41 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cricket Video Tool</title>
+<style>
+body{margin:0;background:#111;color:#eee;font-family:system-ui,sans-serif}
+#wrap{max-width:1100px;margin:0 auto;padding:8px}
+canvas{width:100%;aspect-ratio:16/9;background:#000;display:block;border-radius:6px}
+#bar{display:flex;gap:8px;align-items:center;margin-top:8px}
+button{background:#e11;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-size:16px}
+#seek{flex:1}#info{font-size:13px;opacity:.8;margin-top:6px}
+</style></head><body><div id="wrap">
+<canvas id="cv" width="1920" height="1080"></canvas>
+<div id="bar"><button id="play">▶</button><input id="seek" type="range" min="0" max="1000" value="0"><span id="tm">0.0/0.0</span></div>
+<div id="bar2" style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap"><label style="font-size:14px">🎙 Audio: <input type="file" id="aud" accept="audio/*"></label><button id="expf">⚡ Fast export (MP4)</button><button id="exp" style="background:#555">⏺ Real-time export</button><button id="pol" style="background:#2a6fdb">✨ Polish: ON</button><button id="fmt" style="background:#555">📱 Short 9:16: OFF</button><span id="expst" style="font-size:13px"></span></div>
+<div id="info">Loading…</div>
+<div style="margin-top:8px;font-size:14px"><a href="news.html" style="color:#7cc4ff">📰 News tracker</a> &nbsp; <a href="teleprompter.html" style="color:#7cc4ff">🎤 Teleprompter</a> &nbsp; <a href="thumbnail.html" style="color:#7cc4ff">🖼 Thumbnail maker</a> &nbsp; <a href="publish.html" style="color:#7cc4ff">📦 Publish pack</a></div></div>
+<script src="js/manifest.js"></script>
+<script src="js/core.js"></script>
+<script src="js/card_hook.js"></script>
+<script src="js/card_title.js"></script>
+<script src="js/card_stat.js"></script>
+<script src="js/card_retain.js"></script>
+<script src="js/card_watch.js"></script>
+<script src="js/card_anth.js"></script>
+<script src="js/card_presenter.js"></script>
+<script src="js/card_short.js"></script>
+<script src="js/transitions.js"></script>
+<script src="js/polish.js"></script>
+<script src="js/export.js"></script>
+<script src="js/vendor/mp4-muxer.js"></script>
+<script src="js/export_fast.js"></script>
+<script src="js/audio_tracks.js"></script>
+<script src="js/audio_fit.js"></script>
+<script src="js/photo_slots.js"></script>
+<script src="js/photos.js"></script>
+<script src="js/captions.js"></script>
+<script src="js/demo_portraits.js"></script>
+<script src="js/demo_scenes.js"></script>
+<script src="js/scenes_check.js"></script>
+<script src="js/scene_editor.js"></script>
+<script src="js/main.js"></script>
+</body></html>
