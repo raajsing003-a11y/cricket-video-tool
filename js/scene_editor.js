@@ -25,7 +25,7 @@ const SE=window.SE={scenes:[],sel:0,msg:''};
 SE.apply=(k)=>apply(k);
 const clone=o=>JSON.parse(JSON.stringify(o));
 function save(){try{localStorage.setItem(keyOf(),JSON.stringify(SE.scenes));}catch(e){}}
-const demoFor=()=>clone(C.format==='short'?window.DEMO_SHORT:window.DEMO_SCENES);
+
 async function apply(keepT){
   const t=SE.P.t;C.setScenes(SE.scenes);
   await C.preload(SE.scenes);
@@ -92,7 +92,6 @@ function render(){
   const fi=el('input');fi.type='file';fi.accept='.json';fi.id='se_json';fi.style.display='none';
   fi.onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw new Error('array chahiye');const rp=window.SCHK?SCHK.report(j):null;if(rp&&!rp.ok){SE.msg='⬇ Load nahi hua (error hain):\n'+rp.text;render();return;}SE.scenes=j;SE.sel=0;await apply(false);if(rp){SE.msg=rp.text;render();}}catch(err){alert('JSON error: '+err.message);}};
   add.appendChild(btn('⬇ JSON load',()=>fi.click()));add.appendChild(fi);
-  add.appendChild(btn('Demo',()=>{SE.scenes=demoFor();SE.sel=0;apply(false);}));
   add.appendChild(btn('Sab hatao',()=>{if(confirm('Sab scenes hata dun?')){SE.scenes=[];SE.sel=0;C.setScenes([]);save();render();SE.P.draw();}}));
   add.appendChild(btn('🎙 Chunk baanto',async()=>{const r=FIT.autoAssign();SE.msg=r.msg;await apply(true);SE.msg=r.msg;render();},'#2a6'));
   add.appendChild(btn('⏱ Audio ke hisaab se fit',async()=>{const r=FIT.run();SE.msg=r.msg;if(r.ok){await apply(true);SE.msg=r.msg+'\nVideo '+C.total.toFixed(1)+'s ↔ audio '+r.audioEnd.toFixed(1)+'s';}render();},'#2a6'));
@@ -138,7 +137,7 @@ function move(i,d){const j=i+d;if(j<0||j>=SE.scenes.length)return;const t=SE.sce
 // C19: format badalna. Har format ke scenes alag save hote hain (cvt_scenes / cvt_scenes_short) — kuch lost nahi hota.
 SE.loadFormat=(initial)=>{
   let s=null;try{s=JSON.parse(localStorage.getItem(keyOf())||'null');}catch(e){}
-  SE.scenes=(Array.isArray(s)&&s.length)?s:(initial?clone(initial):demoFor());SE.sel=0;SE.msg='';
+  SE.scenes=Array.isArray(s)?s:(initial?clone(initial):[]);SE.sel=0;SE.msg='';
 };
 SE.setFormat=async(name)=>{
   if(name===C.format)return;

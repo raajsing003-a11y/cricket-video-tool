@@ -91,10 +91,4 @@ C.CARDS.short_cta={
   const s=t-1.0;if(s>0&&s<1.2){ctx.globalCompositeOperation='screen';ctx.globalAlpha=(1-s/1.2)*.8;const fx=C.img(FX);if(fx)C.cover(ctx,fx,0,0,W,H,1+s*.4);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';}
  }};
 
-// demo (Short mode)
-window.DEMO_SHORT=[
- {type:'short_hook',dur:3.2,data:{pre:'सबसे बड़ा सवाल',to:18,dec:0,unit:'करोड़ में कौन?',post:'Short mode का डेमो'}},
- {type:'short_stat',dur:3.8,tr:'slideup',trDur:.6,data:{photo:'demo_a',pre:'संभावित रकम',prefix:'₹',to:18,dec:0,unit:'करोड़',head:'खिलाड़ी का नाम',sub:'फोटो आप खुद अपलोड करें',lt:'red',tag:true}},
- {type:'short_cta',dur:3.4,tr:'glitch',trDur:.5,data:{line1:'आपकी राय क्या है?',line2:'कमेंट में बताओ',cta:'चैनल सब्सक्राइब करो'}}
-];
 })();
