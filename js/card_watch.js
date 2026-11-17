@@ -1,6 +1,6 @@
 // C10a: watch + rumour cards.
-// watch : data:{title,names:[..<=6],photos:[slot,slot],note,bg,city}  (नज़र रहेगी list, stamp watch)
-// rumour: data:{head,sub,photos:[slot,slot],note,bg}                (अफवाह, stamp rumour, split photos)
+// watch : data:{title,names:[..<=6],photos:[slot,slot],note,bg,city,flip}  (C35: flip:true = photos dayen, list bayen)  (नज़र रहेगी list, stamp watch)
+// rumour: data:{head,sub,photos:[slot,slot],note,bg,flip}  (C35: flip:true = 2 photo ki jagah adli-badli)                (अफवाह, stamp rumour, split photos)
 // label "संभावित: ऑफिशियल लिस्ट नहीं" dono par dikhta hai.
 (function(){const C=window.CORE,E=C.ease;
 const VG='02_overlays/ov_vignette_dark',HT='02_overlays/ov_halftone_dots_white',RB='02_overlays/ov_ribbon_subscribe_now',
@@ -22,14 +22,15 @@ function ribbon(ctx,t,at,d){if(d.ribbon===false)return;const p=E.back(C.prog(t,a
 C.CARDS.watch={
  assets:d=>[d.bg||'01_backgrounds/bg_floodlight_blue',VG,HT,SW,LB,RB,C.PH],
  draw(ctx,t,d,sc){
-  const W=C.W,H=C.H,dur=sc.dur,at=1.4,[sx,sy]=shake(t,at),names=(d.names||[]).slice(0,6),ph=(d.photos||[]).slice(0,2);
+  const W=C.W,H=C.H,dur=sc.dur,at=1.4,[sx,sy]=shake(t,at),names=(d.names||[]).slice(0,6),ph=(d.photos||[]).slice(0,2),fl=!!d.flip;
   ctx.save();ctx.translate(sx,sy);
   C.cover(ctx,C.img(d.bg||'01_backgrounds/bg_floodlight_blue'),-30,-30,W+60,H+60,1+0.05*t/dur);
   ctx.save();ctx.globalAlpha=.18;C.drawImg(ctx,HT,0,0,W,H);ctx.restore();C.drawImg(ctx,VG,0,0,W,H);
   // photos left (1 big or 2 stacked)
-  if(ph.length===1)photoBox(ctx,t,ph[0],150,150,520,760,.15,1);
-  else if(ph.length===2){photoBox(ctx,t,ph[0],150,130,420,380,.15,1);photoBox(ctx,t,ph[1],150,560,420,380,.35,1);}
-  const lx=ph.length?800:300;
+  const dr=fl?-1:1;
+  if(ph.length===1)photoBox(ctx,t,ph[0],fl?W-150-520:150,150,520,760,.15,dr);
+  else if(ph.length===2){photoBox(ctx,t,ph[0],fl?W-150-420:150,130,420,380,.15,dr);photoBox(ctx,t,ph[1],fl?W-150-420:150,560,420,380,.35,dr);}
+  const lx=ph.length?(fl?180:800):300;
   // title
   const tp=E.out(C.prog(t,.2,.7));ctx.save();ctx.globalAlpha=tp;
   C.text(ctx,d.title||'नज़र रहेगी',lx,200+30*(1-tp),{px:110,stroke:14,shadow:16,color:'#ffc400'});ctx.restore();
@@ -42,7 +43,7 @@ C.CARDS.watch={
    const f=C.fitText(ctx,n,820,1,70,36,800);C.text(ctx,f.lines[0],lx+10,260+i*rowH+(rowH-24)/2-8,{px:f.px,base:'middle'});ctx.restore();});
   if(d.note){const np=E.out(C.prog(t,1.8,2.2));ctx.save();ctx.globalAlpha=np;const f=C.fitText(ctx,d.note,900,2,48,32,700);
    f.lines.forEach((l,i)=>C.text(ctx,l,lx,260+names.length*rowH+60+i*(f.px+8),{px:f.px,stroke:8}));ctx.restore();}
-  stamp(ctx,t,at,SW,W-330,125,.14,.9);
+  stamp(ctx,t,at,SW,fl&&ph.length?1170:W-330,125,.14,.9);
   ctx.restore();label(ctx,t,1.9);ribbon(ctx,t,2.3,d);
  }};
 
@@ -50,6 +51,7 @@ C.CARDS.rumour={
  assets:d=>[d.bg||'01_backgrounds/bg_news_control_room',VG,HT,SR,LB,RB,LT,DV,C.PH],
  draw(ctx,t,d,sc){
   const W=C.W,H=C.H,dur=sc.dur,at=1.2,[sx,sy]=shake(t,at),ph=(d.photos||[]).slice(0,2);
+  if(d.flip&&ph.length===2)ph.reverse();
   ctx.save();ctx.translate(sx,sy);
   C.cover(ctx,C.img(d.bg||'01_backgrounds/bg_news_control_room'),-30,-30,W+60,H+60,1+0.05*t/dur);
   C.drawImg(ctx,VG,0,0,W,H);

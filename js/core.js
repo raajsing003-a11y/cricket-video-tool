@@ -47,21 +47,48 @@ C.cover=function(ctx,im,x,y,w,h,z,px,py){
   ctx.drawImage(im,x+(w-dw)/2+(px||0),y+(h-dh)/2+(py||0),dw,dh);ctx.restore();
 };
 C.drawImg=function(ctx,k,x,y,w,h){const im=C.img(k);if(im)ctx.drawImage(im,x,y,w||im.width,h||im.height);};
-// word wrap -> lines
+// word wrap -> lines (C30: bahut lambe shabd ko akshar par tod deta hai taaki line kabhi maxW se bahar na jaye)
 C.wrap=function(ctx,text,maxW){
-  const words=String(text).split(/\s+/),lines=[];let cur='';
+  const words=String(text).split(/\s+/).filter(Boolean),lines=[];let cur='';
+  const mw=t=>ctx.measureText(t).width;
+  const push=w=>{ // w akela maxW se bada ho to chunks mein todo
+    if(mw(w)<=maxW){cur=w;return;}
+    let chunk='';for(const ch of Array.from(w)){if(mw(chunk+ch)>maxW&&chunk){lines.push(chunk);chunk=ch;}else chunk+=ch;}cur=chunk;};
   for(const w of words){const t=cur?cur+' '+w:w;
-    if(ctx.measureText(t).width>maxW&&cur){lines.push(cur);cur=w;}else cur=t;}
-  if(cur)lines.push(cur);return lines;
+    if(mw(t)<=maxW){cur=t;continue;}
+    if(cur){lines.push(cur);cur='';}
+    push(w);}
+  if(cur)lines.push(cur);return lines.length?lines:[''];
 };
-// text box: shrinks font until fits maxLines; returns {lines,px}
+// text box: font chhota karta hai jab tak maxLines mein na aa jaye (minPx se bhi neeche, aadhe tak). Text kabhi kata nahi jata;
+// bilkul na aaye to hi aakhri line par "…" lagta hai. Returns {lines,px} (px = asli use hua size).
 C.fitText=function(ctx,text,maxW,maxLines,startPx,minPx,weight){
-  let px=startPx,lines;
-  for(;px>=minPx;px-=4){ctx.font=C.font(px,weight);lines=C.wrap(ctx,text,maxW);if(lines.length<=maxLines)break;}
+  text=String(text==null?'':text);
+  const floor=Math.max(14,Math.round(minPx*0.5));let lines=[],px=startPx,ok=false;
+  const tryPx=p=>{ctx.font=C.font(p,weight);lines=C.wrap(ctx,text,maxW);return lines.length<=maxLines;};
+  for(px=startPx;px>=floor;px-=2){if(tryPx(px)){ok=true;break;}}
+  if(!ok){px=floor;tryPx(px);lines=lines.slice(0,maxLines);
+    let l=lines[lines.length-1]||'';while(l.length>1&&ctx.measureText(l+'…').width>maxW)l=l.slice(0,-1);lines[lines.length-1]=l+'…';}
+  ctx.font=C.font(px,weight);
   return {lines,px};
 };
+// text: ek line. C30: frame ke andar rehne ke liye font khud chhota ho jaata hai (SAFE margin), o.maxW se aur tight kar sakte ho.
+C.SAFE=40;
 C.text=function(ctx,s,x,y,o){
-  o=o||{};ctx.save();ctx.font=C.font(o.px||60,o.w);ctx.textAlign=o.align||'left';ctx.textBaseline=o.base||'alphabetic';
+  o=o||{};s=String(s==null?'':s);ctx.save();let px=o.px||60;const al=o.align||'left';
+  ctx.font=C.font(px,o.w);ctx.textAlign=al;ctx.textBaseline=o.base||'alphabetic';
+  let avail=Infinity;
+  try{const m=ctx.getTransform(),cw=ctx.canvas.width,sc=Math.hypot(m.a,m.b);
+    if(sc>0.01&&Math.abs(m.b)<0.35*sc&&Math.abs(m.c)<0.35*sc){ // halka tilt (handheld/pop) chalega, bada ghumav (stamp) nahi
+      const dx=m.a*x+m.c*(o.y0!=null?o.y0:y)+m.e,lo=C.SAFE,hi=cw-C.SAFE;
+      const da=al==='center'?2*Math.min(dx-lo,hi-dx):(al==='right'||al==='end')?dx-lo:hi-dx;
+      avail=da/sc;}}catch(e){}
+  if(o.maxW)avail=Math.min(avail,o.maxW);
+  avail-=(o.stroke||0);
+  if(avail>20&&isFinite(avail)){const w=ctx.measureText(s).width;
+    if(w>avail){const p0=px;px=Math.max(Math.floor(p0*0.4),Math.floor(p0*avail/w*0.985));ctx.font=C.font(px,o.w);
+      if(ctx.measureText(s).width>avail){ // font aur chhota padhne layak nahi — aakhir mein '…' se kaato, par frame se bahar nahi
+        let t=Array.from(s);while(t.length>1&&ctx.measureText(t.join('')+'…').width>avail)t.pop();s=t.join('')+'…';}}}
   if(o.shadow){ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=o.shadow;ctx.shadowOffsetY=4;}
   if(o.stroke){ctx.lineWidth=o.stroke;ctx.strokeStyle=o.strokeColor||'#000';ctx.lineJoin='round';ctx.strokeText(s,x,y);}
   ctx.fillStyle=o.color||'#fff';ctx.fillText(s,x,y);ctx.restore();

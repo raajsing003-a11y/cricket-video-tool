@@ -6,19 +6,19 @@ const S=window.SCHK={};
 const WIDE=['hook','title','stat','retain','watch','rumour','anth','intro','presenter'];
 const SHORT=['short_hook','short_stat','short_cta'];
 const TYPES=WIDE.concat(SHORT);
-const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup'];
+const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup','push','iris','blinds','rgb','spin','lightwipe','tiles','blurfade'];
 const CITIES=['bengaluru','chennai','delhi','gujarat','hyderabad','kolkata','lucknow','mumbai','punjab','rajasthan'];
 const STAMPS=['retain','watch','rumour','official'],LTS=['red','blue','purple'];
 const COMMON=['bg','ribbon'];
 const KEYS={
- hook:['pre','big','to','dec','unit','post','shake'],
- title:['city','headline','sub','ticker'],
- stat:['photo','pre','prefix','to','dec','unit','big','head','sub','lt','tag'],
- retain:['city','photo','name','amount','stamp','note','forceLabel'],
- watch:['title','names','photos','note','city'],
- rumour:['head','sub','photos','note'],
- anth:['title','qs','cta'],
- intro:['line1','line2'],
+ hook:['pre','big','to','dec','unit','post','shake','left'],
+ title:['city','headline','sub','ticker','left'],
+ stat:['photo','pre','prefix','to','dec','unit','big','head','sub','lt','tag','flip'],
+ retain:['city','photo','name','amount','stamp','note','forceLabel','flip'],
+ watch:['title','names','photos','note','city','flip'],
+ rumour:['head','sub','photos','note','flip'],
+ anth:['title','qs','cta','flip'],
+ intro:['line1','line2','flip'],
  presenter:['channel','name','sub','photos','key','swap'],
  short_hook:['pre','big','to','dec','unit','post'],
  short_stat:['photo','pre','prefix','to','dec','unit','big','head','sub','lt','tag'],

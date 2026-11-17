@@ -127,3 +127,65 @@ Tool ab khaali (0 scenes) se shuru hota hai. Hataya: demo scenes (DEMO_SCENES, D
 
 ## C29 (17 Nov 2026) — UI facelift (aasan + achha look)
 Naya js/ui_shell.js + index.html CSS/markup. Dark theme, upar nav (News/Teleprompter/Thumbnail/Publish), player ke neeche Short/Polish toggle, 5 step tabs (1 Scenes, 2 Photos, 3 Audio, 4 Captions, 5 Export) - ek waqt ek hi panel, har tab par ek line ki hint. Khaali tool par guide box (JSON load / scene banao). Keyboard: Space play/pause, <- -> 1s seek. Purane modules ka logic nahi badla (panels sirf tabs mein rakhe). Test: headless chromium, 0 console errors, tabs + Space OK. Real Chrome par look check baaki (Rahul).
+
+
+## C30 (17 Nov 2026) — Text bahar nahi jaata + editing behtar
+Bug: text frame se bahar nikal kar kat raha tha (C.text ek line bina limit ke; fitText min size par ruk kar text chhod deta; wrap lambe shabd nahi todta; captions .slice se text kaat deta).
+Fix (js/core.js): C.wrap lambe shabd ko todta hai; C.fitText font aadhe tak chhota karta hai, bilkul na aaye to hi aakhir mein "…"; C.text ab frame ke SAFE margin (40px) ke andar font khud chhota karta hai (tilt/scale mein bhi), zarurat par "…". js/captions.js: font chhota hota hai, text kata nahi.
+Naya (js/ui_shell.js): ↶ Undo / ↷ Redo (scenes ka history, Ctrl+Z / Ctrl+Y), ▦ Safe zone guide (sirf preview; Short mein YouTube UI zone; real-time export mein band).
+Test: 6 cards par 5x lambe text stress-test, sab frame ke andar; undo/redo + safe zone headless OK, 0 console errors.
+
+
+## C31 (17 Nov 2026) — Advanced transitions + FX
+Naya js/transitions_pro.js: 8 transitions (push, iris, blinds, rgb, spin, lightwipe, tiles, blurfade) - wide + Short dono. Naya js/fx_pro.js: Colour Look (Warm, Golden hour, Cool, Night stadium, Teal-Orange, Vivid, B&W), Cinema bars, Progress bar (sab export mein aate hain, captions ke neeche). Player ke neeche dropdown + toggles (ui_shell.js). scenes_check.js + scene_editor.js ki TRS list update, SCENES_JSON_SCHEMA update. Test: headless chromium, sab 8 transitions + looks render OK, 0 console errors. Real Chrome export par speed (tiles/rgb/blur) check baaki.
+
+
+## C32 (17 Nov 2026) — Look preset + Auto-vary (har video ek jaisa na lage)
+Naya js/looks.js (index.html mein ui_shell.js ke baad), ui_shell.js mein chhota patch (UI.syncFX: Colour Look dropdown + Cinema/Progress toggles preset ke saath sync).
+- 🎨 Look preset dropdown (player ke neeche): Night, Gold, Clean, Grunge, Studio. Har look = polish values (vignette/grain/sweep/leak/smoke/shake/dust) + Colour Look + bars/progress + apne bg aur transition ka pool. 'koi nahi' = purane default wapas. Choice localStorage 'cvt_look' mein, reload par wahi.
+- 🎲 Auto-vary button: scenes ke data.bg aur tr ghumata hai (look ke pool se; look na ho to sab pool). Niyam: lagatar do scene par same bg/tr nahi; pichli baar (cvt_vary_hist, format ke hisaab se) jo lage the unse bachta hai jab vikalp ho; is baar kam use hue ko pehle. Title/retain (team colour) aur intro (paper) ka bg nahi badalta; text/facts/dur/chunk nahi chhute. trDur galat/0 ho to 0.3-0.6 set. Pasand na aaye to ↶ Undo ya dobara 🎲.
+- Bg sirf dark/mid wale (brightness < ~105) taaki safed text padhne mein aaye.
+Test (headless chromium, example_scenes_8.json): look apply (polish + FX + dropdown sync), 3 baar vary (har baar alag bg/tr, koi lagatar repeat nahi, title/retain/intro bg khaali), ✔ JSON check OK (sirf photo warnings), Undo, reload par look rehta, 'koi nahi' par defaults wapas (vignette .55, grain .07), Night/Gold frames dekhe (text saaf), console errors 0. node --check sab js OK.
+NOT tested: real Chrome par export, asli video par ye looks Rahul ko pasand aate hain ya nahi (pools badalna ho to js/looks.js ke LOOKS object mein).
+Next: Rahul jo bole (naye card layout variants, real Chrome export check, Short phone check, ya postponed kaam).
+
+
+## C33 (17 Nov 2026) — Stat card layout flip
+js/card_stat.js: naya optional `flip:true` = layout aaina (photo dayen, number bayen, lower-third bayen + mirrored image, tag/ribbon bayen side; unme text hai isliye mirror nahi, sirf side badla; lower-third ka text flip mein +50px). scenes_check.js mein stat ke known fields mein 'flip'. js/looks.js: 🎲 Auto-vary ab stat cards par flip baari-baari lagata hai (pehla random) aur message mein batata hai.
+Test (headless chromium): stat normal vs flip frames (final + animation beech), lower-third text saaf, Auto-vary se flip True/False, console errors 0. node --check sab js OK.
+NOT tested: asli photo ke saath flip (photo frame ke andar hi rehti hai, isliye risk kam). Short stat/hook mein flip nahi (abhi sirf wide stat).
+Next: Rahul jo bole (hook/retain ke layout variants, real Chrome export check, Short phone check, postponed kaam).
+
+
+## C34 (17 Nov 2026) — Hook + Retain layout variants
+js/card_retain.js: optional `flip:true` = card dayen, naam/amount/note bayen, label bayen, ribbon bayen (card image mirror nahi hoti, sirf jagah; slide-in dayen se). js/card_hook.js: optional `left:true` = pura text x~36% par (dayen taraf bg/sparks khuli); post line ki width 1000 (2 line mein wrap). scenes_check.js known fields: hook 'left', retain 'flip'. js/looks.js: 🎲 Auto-vary ab stat+retain par flip baari-baari, hook par left random lagata hai (message mein 'N card ka layout badla').
+Test (headless chromium): hook normal/left, retain normal/flip frames dekhe (text/stamp/label saaf, kuch kata nahi), Auto-vary ke baad ✔ JSON check OK (sirf photo warning), console errors 0. node --check sab js OK.
+NOT tested: asli photo ke saath retain flip; hook left mein bahut lamba pre/unit. Short cards mein variants nahi.
+Next: Rahul jo bole (title/watch/rumour variants, real Chrome export check, Short phone check, postponed kaam).
+
+
+## C35 (17 Nov 2026) — Title / Watch / Rumour layout variants
+js/card_title.js: optional `left:true` = team chip bayen (chhota 0.95x), headline/sub dayen (3 line tak, width 900). js/card_watch.js: watch `flip:true` = photos dayen, list bayen, WATCH stamp beech mein; rumour `flip:true` = 2 photo ki jagah adli-badli. scenes_check.js known fields: title 'left', watch/rumour 'flip'. js/looks.js: 🎲 Auto-vary ab title/hook par left random, stat/retain/watch par flip baari-baari, rumour par flip random lagata hai.
+Test (headless chromium): title normal/left (pehle chip frame se bahar kat raha tha: scale 1.6 -> 0.95 kiya), watch normal/flip (2 photo), rumour normal/flip, Auto-vary chala, console errors 0. node --check sab js OK. (Test mein nakli photo slot 'a','b' se checker ne error diya — wo test ki galti thi, tool ki nahi.)
+NOT tested: asli photos ke saath rumour flip (placeholder mein dono photo ek jaisi, farak dikhta nahi); title left mein bahut lamba headline (3 line limit).
+Next: Rahul jo bole (anth/intro/presenter variants, real Chrome export check, Short phone check, postponed kaam).
+
+
+## C36 (17 Nov 2026) — Anth + Intro layout flip
+js/card_anth.js: anth `flip:true` = sawal ki patti dayen se aati hai, ? badge dayen, gold line dayen, text bayen se (290). intro `flip:true` = red ball dayen se (ulta ghoomta), torn strip bayen se. scenes_check.js known fields: anth/intro 'flip'. js/looks.js: Auto-vary anth/intro par flip random.
+Presenter card jaan-boojhkar nahi (speed lines, channel text, lower-third sab ek taraf bane hain; mirror karna bada kaam, aur ye card roz nahi aata) — chahiye to alag chunk.
+Test (headless chromium): anth normal/flip, intro normal/flip + flip animation beech ka frame, Auto-vary, ✔ JSON check OK, console errors 0. node --check sab js OK.
+NOT tested: anth flip mein 3 lambe sawal (2 line wrap, width 1240 hi hai, pehle jaisi).
+Next: Rahul jo bole (presenter flip, real Chrome export check, Short phone check, postponed kaam).
+
+
+## C37 (17 Nov 2026) — Fixed channel intro (script + tool)
+Rahul ka niyam: har video ki shuruaat "नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं 99 क्रिकेट न्यूज़।" -> "इस वीडियो में हम बात करेंगे ..." (preview) -> "तो बिना देर किए, शुरू करते हैं।" -> phir main video.
+Naya docs/CHANNEL_INTRO.md (teeno hisse, niyam, tool ka tareeka). Script side: SCRIPT_WORKFLOW.md (niyam 9, checklist, lambai ~40 shabd zyada, scenes mein jagah), GEMINI_SCRIPT_PROMPT_TEMPLATE.md (SHURUAAT (FIXED) block + dhancha + aakhir ki yaad), PROMPT_SCRIPT_CHAT.md, 00_START_HERE.md niyam 13, SCENES_JSON_SCHEMA.md Claude-niyam 6 (JSON mein presenter scene nahi; pehla scene preview).
+Tool (js/looks.js): player ke neeche '🎬 Standard intro jodo' (presenter scene sabse aage, dusre scene par fade transition, chunk pehle scene wala) aur '⭐ Standard intro save' (chuna hua presenter scene localStorage 'cvt_std_intro' mein; agli baar ek click mein wahi photos/naam/dur). Sirf wide mode. Pehla scene pehle se presenter ho to dobara nahi jodta.
+Test (headless chromium): add (9 scenes, presenter first, hook par fade), dobara add roka, bina presenter chune save roka, save + reload + add (naam/dur/photos wahi aaye), console errors 0. node --check sab js OK.
+NOT tested: asli presenter photos ke saath; asli audio par ~6 sec ki intro line ka timing (⏱ fit se baithna chahiye). Purana Shami script is intro ke bina hai (record ho chuka, badla nahi).
+Next: Rahul jo bole (naya script is intro ke saath, caption styles, thumbnail preset, real Chrome export check).
+
+
+- C44 (17 Nov 2026): Photo Finder Chrome extension (zip ke bahar, photo_finder_extension/ folder, repo mein nahi jaata). Photos panel mein 🔍 Google button + khaali sab auto queue. Tool code nahi badla. Install: photo_finder_extension/README.txt. Test: buttons + slot set OK (headless); asli Google pick/Auto Rahul ke Chrome mein check baaki.

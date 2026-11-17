@@ -1,6 +1,6 @@
 // C10b: anth + intro cards.
-// anth : data:{title,qs:[3 sawal],cta,bg}  3 sawal stagger (question badge), phir cta (कमेंट...) + ribbon
-// intro: data:{line1,line2,bg}             paper bg, torn strip slide-in, red ball roll, gold sparks
+// anth : data:{title,qs:[3 sawal],cta,bg,flip}  (C36: flip:true = sawal ki patti dayen se aati hai, badge dayen)  3 sawal stagger (question badge), phir cta (कमेंट...) + ribbon
+// intro: data:{line1,line2,bg,flip}  (C36: flip:true = ball dayen se, strip bayen se)             paper bg, torn strip slide-in, red ball roll, gold sparks
 (function(){const C=window.CORE,E=C.ease;
 const VG='02_overlays/ov_vignette_dark',HT='02_overlays/ov_halftone_dots_white',RB='02_overlays/ov_ribbon_subscribe_now',
  QB='06_icons/icon_question_badge',CK='06_icons/icon_check_green',FX='08_gemini_generated/fx/fx_gold_sparks_black',
@@ -8,17 +8,17 @@ const VG='02_overlays/ov_vignette_dark',HT='02_overlays/ov_halftone_dots_white',
 C.CARDS.anth={
  assets:d=>[d.bg||BR,VG,HT,QB,CK,RB],
  draw(ctx,t,d,sc){
-  const W=C.W,H=C.H,dur=sc.dur,qs=(d.qs||[]).slice(0,3);
+  const W=C.W,H=C.H,dur=sc.dur,qs=(d.qs||[]).slice(0,3),fl=!!d.flip;
   C.cover(ctx,C.img(d.bg||BR),-30,-30,W+60,H+60,1+0.05*t/dur);
   ctx.save();ctx.globalAlpha=.15;C.drawImg(ctx,HT,0,0,W,H);ctx.restore();C.drawImg(ctx,VG,0,0,W,H);
   const tp=E.out(C.prog(t,.1,.6));ctx.save();ctx.globalAlpha=tp;
   C.text(ctx,d.title||'कल के 3 बड़े सवाल',W/2,160+30*(1-tp),{align:'center',px:92,stroke:12,shadow:14,color:'#ffd23f'});ctx.restore();
   qs.forEach((q,i)=>{const p=E.out(C.prog(t,.7+i*.55,1.2+i*.55));if(p<=0)return;
-   const y=250+i*190;ctx.save();ctx.globalAlpha=p;ctx.translate((1-p)*-500,0);
-   ctx.fillStyle='rgba(10,10,30,.72)';ctx.fillRect(230,y,1460,160);ctx.fillStyle='#ffd23f';ctx.fillRect(230,y,14,160);
-   const bs=E.back(C.prog(t,.9+i*.55,1.4+i*.55));ctx.save();ctx.translate(330,y+80);ctx.scale(bs,bs);const im=C.img(QB);if(im)ctx.drawImage(im,-60,-60,120,120);ctx.restore();
+   const y=250+i*190;ctx.save();ctx.globalAlpha=p;ctx.translate((fl?1:-1)*(1-p)*500,0);
+   ctx.fillStyle='rgba(10,10,30,.72)';ctx.fillRect(230,y,1460,160);ctx.fillStyle='#ffd23f';ctx.fillRect(fl?1676:230,y,14,160);
+   const bs=E.back(C.prog(t,.9+i*.55,1.4+i*.55));ctx.save();ctx.translate(fl?1590:330,y+80);ctx.scale(bs,bs);const im=C.img(QB);if(im)ctx.drawImage(im,-60,-60,120,120);ctx.restore();
    const f=C.fitText(ctx,q,1240,2,60,34,800);const lh=f.px+6,y0=y+80-(f.lines.length-1)*lh/2;
-   f.lines.forEach((l,k)=>C.text(ctx,l,420,y0+k*lh,{px:f.px,base:'middle'}));ctx.restore();});
+   f.lines.forEach((l,k)=>C.text(ctx,l,fl?290:420,y0+k*lh,{px:f.px,base:'middle'}));ctx.restore();});
   const cp=E.out(C.prog(t,2.6,3.1));if(cp>0){ctx.save();ctx.globalAlpha=cp;const pulse=1+0.02*Math.sin(t*6);ctx.translate(W/2,860);ctx.scale(pulse,pulse);
    const f=C.fitText(ctx,d.cta||'आपकी राय? कमेंट में ज़रूर बताइए',1500,1,70,40,800);C.text(ctx,f.lines[0],0,0,{align:'center',px:f.px,stroke:10,shadow:12,base:'middle'});ctx.restore();}
   const rp=E.back(C.prog(t,3.2,3.7));C.drawImg(ctx,RB,W-460-30+(1-rp)*520,H-96-30);
@@ -34,13 +34,13 @@ function keyGreen(k){const im=C.img(k);if(!im)return null;if(KEYED[k])return KEY
 C.CARDS.intro={
  assets:d=>[d.bg||BP,TP,BALL,FX,RB],
  draw(ctx,t,d,sc){
-  const W=C.W,H=C.H,dur=sc.dur;
+  const W=C.W,H=C.H,dur=sc.dur,fl=!!d.flip;
   C.cover(ctx,C.img(d.bg||BP),0,0,W,H,1+0.04*t/dur);
   // ball rolls in from left, spins
-  const bp=E.out(C.prog(t,0,1.2)),bx=C.lerp(-300,420,bp),r=C.lerp(0,Math.PI*3,bp),bi=keyGreen(BALL);
+  const bp=E.out(C.prog(t,0,1.2)),bx=fl?C.lerp(W+300,W-420,bp):C.lerp(-300,420,bp),r=C.lerp(0,Math.PI*3,bp)*(fl?-1:1),bi=keyGreen(BALL);
   if(bi){ctx.save();ctx.translate(bx,760);ctx.rotate(r);ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=30;ctx.drawImage(bi,-170,-170,340,340);ctx.restore();}
   // torn strip slides from right
-  const sp=E.out(C.prog(t,.5,1.2)),sx=(W-1560)/2+(1-sp)*1900,sy=250;
+  const sp=E.out(C.prog(t,.5,1.2)),sx=(W-1560)/2+(fl?-1:1)*(1-sp)*1900,sy=250;
   ctx.save();ctx.shadowColor='rgba(0,0,0,.35)';ctx.shadowBlur=24;C.drawImg(ctx,TP,sx,sy);ctx.shadowColor='transparent';
   if(d.line1){const f=C.fitText(ctx,d.line1,1400,1,96,48,900);C.text(ctx,f.lines[0],sx+780,sy+130,{align:'center',px:f.px,color:'#b0121b',base:'middle'});}
   if(d.line2){const f=C.fitText(ctx,d.line2,1400,1,64,36,700);C.text(ctx,f.lines[0],sx+780,sy+230,{align:'center',px:f.px,color:'#14213d',base:'middle'});}

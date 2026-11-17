@@ -6,7 +6,7 @@ const KEYS={wide:'cvt_scenes',short:'cvt_scenes_short'};
 const keyOf=()=>KEYS[C.format]||KEYS.wide;
 const TYPES_W=['hook','title','stat','retain','watch','rumour','anth','intro','presenter'],TYPES_S=['short_hook','short_stat','short_cta'];
 const types=()=>C.format==='short'?TYPES_S:TYPES_W;
-const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup'];
+const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup','push','iris','blinds','rgb','spin','lightwipe','tiles','blurfade'];
 const DEF={
  hook:{dur:4,data:{pre:'ऊपर की लाइन',to:10,dec:0,unit:'करोड़'}},
  title:{dur:4,data:{city:'mumbai',headline:'हेडलाइन यहाँ',sub:'सब-हेडिंग',ticker:'टिकर टेक्स्ट यहाँ'}},

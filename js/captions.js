@@ -13,9 +13,11 @@ function load(){try{const j=JSON.parse(localStorage.getItem(K)||'null');if(!j)re
  CAP.lines=CAP.script.split('\n').map(x=>x.trim()).filter(Boolean).map((t,i)=>({text:t,t0:(j.t&&j.t[i])||0,t1:0}));ends();}catch(e){}}
 CAP.at=t=>{const L=CAP.lines;for(let i=L.length-1;i>=0;i--)if(t>=L[i].t0)return t<L[i].t1?L[i]:null;return null;};
 CAP.draw=(ctx,t)=>{if(!CAP.on)return;const l=CAP.at(t);if(!l)return;
- const sh=C.format==='short',cx=C.W/2,fp=sh?68:52,mw=sh?900:1560,lh=sh?88:68,cy=sh?1240:900,ml=sh?3:2;
- ctx.save();ctx.font=C.font(fp,'bold');const lines=C.wrap(ctx,l.text,mw).slice(0,ml),h=lines.length*lh+30,y0=cy-h/2;
- const a=C.ease.clamp((t-l.t0)/.15);ctx.globalAlpha=a;
+ const sh=C.format==='short',cx=C.W/2,mw=sh?900:1560,cy=sh?1240:900,ml=sh?3:2;
+  let fp=sh?68:52,lh,lines;ctx.save();
+  for(;;){ctx.font=C.font(fp,'bold');lines=C.wrap(ctx,l.text,mw);if(lines.length<=ml||fp<=(sh?38:30))break;fp-=2;} // C30: text kate nahi, font chhota
+  lh=Math.round(fp*1.3);const h=lines.length*lh+30,y0=cy-h/2;
+  const a=C.ease.clamp((t-l.t0)/.15);ctx.globalAlpha=a;
  ctx.fillStyle='rgba(0,0,0,.62)';const w=Math.max(...lines.map(s=>ctx.measureText(s).width))+70;
  ctx.beginPath();ctx.roundRect(cx-w/2,y0,w,h,16);ctx.fill();
  ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.shadowColor='#000';ctx.shadowBlur=6;
