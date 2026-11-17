@@ -1,0 +1,20 @@
+FORMAT: C
+VIDEO TITLE: IPL 2027 Retention: Kal Kya Hoga? 10 Teams, Sabse Bade Sawal
+CHUNK: 1 / 5   (target ~280 shabd)
+PICHLE CHUNK KI AAKHRI LINE: (pehla chunk, koi nahi)
+STRUCTURE: Teen sabse bade sawal (Pooran ke Rs 21 crore ka kya, Pathirana ke Rs 18 crore ka kya, Cummins khelenge ya nahi) hook mein, phir KKR (F4-F10), phir LSG (F11-F14). Shuruaat mein deadline (F1) aur auction (F2) bhi batao.
+FACTS:
+F1 (OFFICIAL): Retention aur release list jama karne ki deadline **17 November (kal, Mangalwar)** hai. BCCI ne date aage badhayi thi kyunki pehli date India ke 5th ODI (NZ, 15 Nov) se takra rahi thi. [HT; IANS; Business Today]
+F2 (OFFICIAL): Mini-auction **16 December ko Goa** mein hoga. [Tribune; Express Tribune]
+F3 (REPORT-HT): IPL 2027 league ka **20th season** hoga.
+F4 (REPORT-HT): KKR 2026 mein **7th** rahi: 6 jeet, 7 haar, 1 no-result.
+F5 (REPORT-HT): Batting mein unka scoring rate **9.26** tha, jo bada kamzor pehlu raha.
+F6 (REPORT-HT): **Ajinkya Rahane ke retirement** ke baad captaincy ki jagah khaali hai. List se pehle ye tay karna hoga.
+F7 (REPORT-HT): Cameron Green aur Matheesha Pathirana par KKR ne **kul ₹43.20 crore** lagaye hain. Pathirana ka hissa **₹18 crore**.
+F8 (REPORT-HT): Pathirana ne pichle season **sirf 8 gend** dali, phir injury se bahar ho gaye.
+F9 (ANALYSIS-HT): Team management Green ko **Andre Russell ka replacement** maanti hai. Wo regularly bowling nahi kar rahe the, phir bhi retain hone ke kareeb lagte hain.
+F10 (ANALYSIS-HT): KKR ke likely retentions: Narine, Varun Chakaravarthy, Rinku Singh, Angkrish Raghuvanshi, Finn Allen, Harshit Rana. Dekhne wale: Green, Pathirana, fringe overseas players.
+F11 (REPORT-HT): LSG IPL 2026 mein **aakhri (last)** sthaan par rahi.
+F12 (OFFICIAL): Rishabh Pant, jo kabhi IPL ke sabse mehnge player the, **₹15 crore mein DC trade** hue. Kuldeep Yadav DC se **LSG aaye**. LSG ne captain aur poster boy khoya, spin mazboot hua.
+F13 (REPORT-HT): Nicholas Pooran ne 2026 mein 14 match mein **234 run**, strike rate lagbhag **128**, ₹21 crore mein. Returns umeed se kam. LSG unhe captaincy ke option mein bhi dekh sakti hai.
+F14 (ANALYSIS-HT): LSG ke likely retentions: Mitchell Marsh, Aiden Markram, Ayush Badoni, Kuldeep Yadav, Mayank Yadav. Dekhne wale: Pooran, Avesh Khan, Anrich Nortje, Wanindu Hasaranga, Mohsin Khan.

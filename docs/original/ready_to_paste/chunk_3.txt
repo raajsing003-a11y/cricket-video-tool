@@ -1,0 +1,13 @@
+FORMAT: C
+VIDEO TITLE: IPL 2027 Retention: Kal Kya Hoga? 10 Teams, Sabse Bade Sawal
+CHUNK: 3 / 5   (target ~250 shabd)
+PICHLE CHUNK KI AAKHRI LINE: [chunk 2 ke Gemini output ki aakhri line yahan paste karo]
+STRUCTURE: SRH (F23-F26), phir PBKS (F27-F29). Chaho to Hardik aur Chahal ke Rs 18 crore par [APNI RAAY] ek line.
+FACTS:
+F23 (REPORT-HT): SRH ne 2026 achha kiya aur unki batting sabse mazboot mein se thi. Bowling ke gaps bharne ke liye Khaleel Ahmed, T Natarajan aur Nathan Ellis ko trade kiya.
+F24 (REPORT-HT): Harshal Patel se umeed jitni nahi mili, aur trades ke baad bowlers bahut hain.
+F25 (REPORT-HT): Captain Pat Cummins ne **IPL 2027 skip karne ka ishara** diya hai. Team ne unpar bahut paisa lagaya hai.
+F26 (ANALYSIS-HT): SRH ke likely retentions: Abhishek Sharma, Travis Head, Heinrich Klaasen, Ishan Kishan, Nitish Kumar Reddy, Eshan Malinga. Dekhne wale: Cummins, Harshal.
+F27 (OFFICIAL): Window ki **sabse badi trade**: Hardik Pandya PBKS aaye, Arshdeep MI gaye. Hardik ka contract **₹18 crore**. Sawal: squad balance kaise bacha rahega. [HT; Tribune]
+F28 (REPORT-HT): Yuzvendra Chahal bhi **₹18 crore** par hain. Unhone **12 wicket** liye, control kabhi-kabhi gaayab dikha. Hardik ke aane se unki jagah par sawal.
+F29 (ANALYSIS-HT): PBKS ke likely retentions: Shreyas Iyer, Hardik Pandya, Prabhsimran Singh, Priyansh Arya, Shashank Singh, Nehal Wadhera, Marco Jansen. Dekhne wale: Chahal, Marcus Stoinis, Mitchell Owen, Lockie Ferguson.

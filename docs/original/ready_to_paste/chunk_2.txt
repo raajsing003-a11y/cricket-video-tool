@@ -1,0 +1,14 @@
+FORMAT: C
+VIDEO TITLE: IPL 2027 Retention: Kal Kya Hoga? 10 Teams, Sabse Bade Sawal
+CHUNK: 2 / 5   (target ~250 shabd)
+PICHLE CHUNK KI AAKHRI LINE: [chunk 1 ke Gemini output ki aakhri line yahan paste karo]
+STRUCTURE: CSK (F15-F19), phir MI (F20-F22).
+FACTS:
+F15 (REPORT-HT): CSK ke **5 titles** hain (MI ke saath sabse zyada), lekin pichle **3 season** league stage se aage nahi gayi. [CHECK: bolne se pehle verify]
+F16 (OFFICIAL): Trade mein **Liam Livingstone aur Jack Edwards CSK aaye**, **Khaleel Ahmed aur Nathan Ellis SRH gaye**. Isse CSK ko pace ke liye jagah banani hogi. [HT; Siasat]
+F17 (REPORT-HT): CSK ke sabse mehnge do khiladi **Prashant Veer aur Kartik Sharma, dono ₹14.20 crore**. Veer (20 saal, all-rounder) ne bat se do achhi pariyan kheli, gend se kuch nahi. Kartik Sharma ki shuruaat kamzor rahi, baad mein behtar.
+F18 (REPORT-HT): MS Dhoni ka 2027 khelna abhi **tay nahi** hai.
+F19 (ANALYSIS-HT): CSK ke likely retentions: Ruturaj Gaikwad, Sanju Samson, Shivam Dube, Ayush Mhatre, Dewald Brevis, Noor Ahmad, Jamie Overton, Anshul Kamboj. Dekhne wale: Veer, Kartik Sharma, Matthew Short, Zak Foulkes.
+F20 (OFFICIAL): Hardik Pandya **MI se gaye**, Arshdeep Singh **MI aaye**. [HT; Tribune; Express Tribune/Fanatik: organizers ne announce kiya]
+F21 (ANALYSIS-HT): Arshdeep ke aane ke baad MI Trent Boult aur Shardul Thakur ki jagah dobara tolegi.
+F22 (ANALYSIS-HT): MI ke likely retentions: Bumrah, Arshdeep, Suryakumar Yadav, Rohit Sharma, Tilak Varma, Naman Dhir, Ryan Rickelton, Deepak Chahar. Dekhne wale: Boult, Shardul, Quinton de Kock.

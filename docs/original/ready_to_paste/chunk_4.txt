@@ -1,0 +1,13 @@
+FORMAT: C
+VIDEO TITLE: IPL 2027 Retention: Kal Kya Hoga? 10 Teams, Sabse Bade Sawal
+CHUNK: 4 / 5   (target ~250 shabd)
+PICHLE CHUNK KI AAKHRI LINE: [chunk 3 ke Gemini output ki aakhri line yahan paste karo]
+STRUCTURE: DC (F30-F32), phir GT (F33-F36).
+FACTS:
+F30 (OFFICIAL): **Rishabh Pant DC lautey**, Kuldeep Yadav LSG gaye. T Natarajan out, **Zeeshan Ansari** in.
+F31 (RUMOR): **Axar Patel aur Ashutosh Sharma** ke trade ki charcha thi, lekin DC dono ko **rakhna** chahti hai (HT ke mutabik).
+F32 (ANALYSIS-HT): DC ke likely retentions: Pant, KL Rahul, Axar Patel, Tristan Stubbs, Sameer Rizvi, Ashutosh Sharma. Dekhne wale: Mukesh Kumar, Dushmantha Chameera, pace attack ki banawat.
+F33 (REPORT-HT): GT 2026 ki **runner-up** thi, core lagbhag tay.
+F34 (RUMOR): **Harshal Patel** GT se jude bataye ja rahe hain. Trade ho ya na ho, GT death bowling ke liye pacers ko jagah de sakti hai.
+F35 (REPORT-HT): Shahrukh Khan aur Rahul Tewatia umeed par khare nahi utre. Glenn Phillips par nazar.
+F36 (ANALYSIS-HT): GT ke likely retentions: Shubman Gill, Sai Sudharsan, Jos Buttler, Rashid Khan, Mohammed Siraj, Kagiso Rabada, Washington Sundar. Dekhne wale: Shahrukh, Tewatia, Phillips, fringe overseas batting.

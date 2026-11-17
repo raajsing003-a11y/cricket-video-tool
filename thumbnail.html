@@ -1,0 +1,154 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thumbnail Maker</title>
+<style>
+body{margin:0;background:#111;color:#eee;font-family:system-ui,sans-serif}
+#wrap{max-width:1200px;margin:0 auto;padding:8px}
+canvas{width:100%;aspect-ratio:16/9;background:#000;display:block;border-radius:6px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:14px}
+button{background:#e11;color:#fff;border:0;border-radius:6px;padding:9px 14px;font-size:15px}
+button.g{background:#555}button.on{background:#2a6fdb}
+input[type=text]{background:#000;color:#fff;border:1px solid #555;border-radius:5px;padding:7px;font-size:15px;width:260px}
+select{font-size:14px;padding:5px}
+fieldset{border:1px solid #444;border-radius:6px;margin-top:8px;padding:6px 10px}legend{font-size:13px;opacity:.8}
+#msg{font-size:13px;margin-top:6px;white-space:pre-wrap}
+</style></head><body><div id="wrap">
+<canvas id="cv" width="1280" height="720"></canvas>
+<div class="row" id="presets"></div>
+<fieldset><legend>Photos (khud upload karo — web se download nahi)</legend>
+<div class="row">
+<label>🖼 Background (Gemini): <input type="file" id="f_bg" accept="image/*"></label>
+<button class="g" id="bg0">Default bg</button></div>
+<div class="row">
+<label>🙂 Chehra (photo 1): <input type="file" id="f_p1" accept="image/*"></label>
+<label><input type="checkbox" id="key" checked> Green-screen hatao</label></div>
+<div class="row">
+<label>Photo 2: <input type="file" id="f_p2" accept="image/*"></label>
+<label>Photo 3: <input type="file" id="f_p3" accept="image/*"></label>
+<button class="g" id="clr">Photos hatao</button></div>
+<div class="row">
+<label>Chehra size <input type="range" id="sc" min="60" max="160" value="100"></label>
+<label>Left-Right <input type="range" id="px" min="-300" max="300" value="0"></label>
+<label>Up-Down <input type="range" id="py" min="-200" max="200" value="0"></label></div>
+</fieldset>
+<fieldset><legend>Text (chhota rakho: 3-5 shabd)</legend>
+<div class="row"><input type="text" id="t_tag" placeholder="Tag (jaise: ब्रेकिंग / संभावित)"><input type="text" id="t_l1" placeholder="Upar ki chhoti line"></div>
+<div class="row"><input type="text" id="t_l2" placeholder="Badi line (jaise: कौन होगा रिटेन?)"><input type="text" id="t_num" placeholder="Number (jaise: ₹18)" style="width:130px"><input type="text" id="t_unit" placeholder="unit (करोड़)" style="width:110px"></div>
+<div class="row"><label>Rang: <select id="col"></select></label><label><input type="checkbox" id="sam" checked> "संभावित: ऑफिशियल नहीं" label</label></div>
+</fieldset>
+<div class="row"><button id="dpng">⬇ PNG</button><button id="djpg">⬇ JPG (2MB se chhota)</button><span id="sz" style="font-size:13px"></span></div>
+<div id="msg"></div>
+<div style="margin-top:8px;font-size:14px"><a href="index.html" style="color:#7cc4ff">🎬 Video tool</a></div>
+</div>
+<script>
+(function(){
+'use strict';
+const W=1280,H=720,$=id=>document.getElementById(id),cv=$('cv'),ctx=cv.getContext('2d');
+const BGDEF='assets/08_gemini_generated/backgrounds/bg_stadium_night_floodlights.webp',PHDEF='assets/07_photo_slot_placeholders/ph_silhouette_dark.png';
+const COLS={'सोना + लाल':['#ffd23f','#d7263d'],'सोना + नीला':['#ffd23f','#1d4fa3'],'सफ़ेद + बैंगनी':['#ffffff','#6a2c91'],'हरा + सोना':['#7CFC9A','#0b6e3a']};
+const PRESETS={face:'1) चेहरा बाएँ + टेक्स्ट दाएँ',collage:'2) 3 फोटो कोलाज + टेक्स्ट नीचे',number:'3) बड़ा नंबर बीच में'};
+const BAD=/dream\s*11|dream11|fantasy|betting|\bbet\b|सट्टा|फैंटेसी|ड्रीम\s*11/i;
+const S={preset:'face',img:{bg:null,p1:null,p2:null,p3:null},keyed:null,ph:null,defbg:null};
+const KEY='cvt_thumb';
+const FIELDS=['t_tag','t_l1','t_l2','t_num','t_unit'];
+function load(src){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=src;});}
+const fileImg=f=>new Promise(r=>{const u=URL.createObjectURL(f),i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=u;});
+const font=(px,w)=>`${w||800} ${px}px NotoDev, "Noto Sans Devanagari", sans-serif`;
+function wrap(t,mw){const ws=String(t).split(/\s+/),L=[];let c='';for(const w of ws){const x=c?c+' '+w:w;if(ctx.measureText(x).width>mw&&c){L.push(c);c=w;}else c=x;}if(c)L.push(c);return L;}
+function fit(t,mw,ml,start,min,w){let px=start,L;for(;px>=min;px-=4){ctx.font=font(px,w);L=wrap(t,mw);if(L.length<=ml)break;}return{L,px};}
+function txt(s,x,y,o){o=o||{};ctx.save();ctx.font=font(o.px||60,o.w);ctx.textAlign=o.align||'left';ctx.textBaseline=o.base||'alphabetic';
+ if(o.shadow){ctx.shadowColor='rgba(0,0,0,.7)';ctx.shadowBlur=o.shadow;ctx.shadowOffsetY=4;}
+ if(o.stroke){ctx.lineWidth=o.stroke;ctx.strokeStyle='#000';ctx.lineJoin='round';ctx.strokeText(s,x,y);}
+ ctx.fillStyle=o.color||'#fff';ctx.fillText(s,x,y);ctx.restore();}
+function cover(im,x,y,w,h,z,ox,oy,anchorBottom){if(!im)return;z=z||1;const s=Math.max(w/im.width,h/im.height)*z,dw=im.width*s,dh=im.height*s;
+ ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(im,x+(w-dw)/2+(ox||0),anchorBottom?y+h-dh+(oy||0):y+(h-dh)/2+(oy||0),dw,dh);ctx.restore();}
+// green-screen key (auto): hara hatao + despill
+function keyGreen(im){const c=document.createElement('canvas');const m=Math.min(1,1100/Math.max(im.width,im.height));c.width=Math.round(im.width*m);c.height=Math.round(im.height*m);
+ const g=c.getContext('2d');g.drawImage(im,0,0,c.width,c.height);const d=g.getImageData(0,0,c.width,c.height),a=d.data;
+ for(let i=0;i<a.length;i+=4){const r=a[i],gg=a[i+1],b=a[i+2],dom=gg-Math.max(r,b);
+  if(dom>40&&gg>90)a[i+3]=0;else if(dom>14&&gg>70){a[i+3]=Math.round(a[i+3]*(1-(dom-14)/26));a[i+1]=Math.min(gg,Math.max(r,b));}
+  else if(dom>0){a[i+1]=Math.min(gg,Math.max(r,b)+2);}}
+ g.putImageData(d,0,0);return c;}
+// C26: photo 2/3 ke corners hare hon to unka bhi hara hatao (key checkbox on ho tab); hare na hon to jaisa hai waisa
+function cornerGreen(im){const c=document.createElement('canvas');c.width=40;c.height=40;const g=c.getContext('2d');let n=0,gr=0;
+ [[0,0],[im.width-8,0],[0,im.height-8],[im.width-8,im.height-8]].forEach(p=>{g.clearRect(0,0,40,40);g.drawImage(im,p[0],p[1],8,8,0,0,8,8);const a=g.getImageData(0,0,8,8).data;let r=0,gg=0,b=0;for(let i=0;i<a.length;i+=4){r+=a[i];gg+=a[i+1];b+=a[i+2];}r/=64;gg/=64;b/=64;n++;if(gg>r+30&&gg>b+30)gr++;});return gr>=3;}
+function autoKeyed(im){if(!im||!$('key').checked)return im;if(im._ak===undefined)im._ak=cornerGreen(im)?keyGreen(im):null;return im._ak||im;}
+function face(){const im=S.img.p1||S.ph;return(S.img.p1&&$('key').checked)?(S.keyed||(S.keyed=keyGreen(S.img.p1))):im;}
+function T(){const v=id=>$(id).value.trim();return{tag:v('t_tag'),l1:v('t_l1'),l2:v('t_l2'),num:v('t_num'),unit:v('t_unit')};}
+function accent(){const c=COLS[$('col').value]||COLS['सोना + लाल'];return{hi:c[0],bg:c[1]};}
+function tagChip(s,x,y,col){if(!s)return;ctx.save();ctx.font=font(38,900);const w=ctx.measureText(s).width+50;
+ ctx.fillStyle=col;ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=14;ctx.beginPath();ctx.roundRect(x,y,w,64,10);ctx.fill();ctx.shadowColor='transparent';
+ ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.fillText(s,x+25,y+34);ctx.restore();}
+function sambhavit(x,y){if(!$('sam').checked)return;ctx.save();ctx.font=font(28,800);const s='संभावित: ऑफिशियल लिस्ट नहीं',w=ctx.measureText(s).width+34;
+ ctx.fillStyle='rgba(0,0,0,.65)';ctx.beginPath();ctx.roundRect(x,y,w,48,8);ctx.fill();ctx.fillStyle='#ffd23f';ctx.textBaseline='middle';ctx.fillText(s,x+17,y+26);ctx.restore();}
+function bg(){const im=S.img.bg||S.defbg;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);cover(im,0,0,W,H,1.04);}
+function vign(){const g=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*1.0);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.7)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);}
+function bigNum(t,cx,cy,maxW,maxPx,a){if(!t.num)return;const f=fit(t.num,maxW,1,maxPx,80,900);txt(t.num,cx,cy,{align:'center',px:f.px,color:a.hi,stroke:f.px*.1,shadow:24,base:'middle'});
+ if(t.unit)txt(t.unit,cx,cy+f.px*.62,{align:'center',px:Math.round(f.px*.4),stroke:10,shadow:10,base:'middle',w:900});return f.px;}
+const DRAW={
+ face(t,a){bg();
+  const g=ctx.createLinearGradient(0,0,W,0);g.addColorStop(0,'rgba(0,0,0,.15)');g.addColorStop(.45,'rgba(0,0,0,.35)');g.addColorStop(1,'rgba(0,0,0,.75)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  // glow behind chehra
+  const gl=ctx.createRadialGradient(300,420,20,300,420,420);gl.addColorStop(0,a.hi+'cc');gl.addColorStop(.45,a.bg+'88');gl.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=gl;ctx.fillRect(0,0,720,H);
+  const im=face(),z=$('sc').value/100;ctx.save();ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=30;
+  const bw=640*z,s=Math.min(bw/im.width,(H*1.0*z)/im.height),dw=im.width*s,dh=im.height*s;
+  ctx.drawImage(im,300-dw/2+(+$('px').value),H-dh+(+$('py').value)+20,dw,dh);ctx.restore();
+  const x=660,mw=560;tagChip(t.tag,x,40,a.bg);
+  let y=150;if(t.l1){const f=fit(t.l1,mw,2,54,34,800);f.L.forEach((l,i)=>txt(l,x,y+i*(f.px+8),{px:f.px,stroke:9,shadow:10}));y+=f.L.length*(f.px+8)+10;}
+  if(t.num){const f=fit(t.num,mw,1,200,90,900);y+=f.px*.85;txt(t.num,x,y,{px:f.px,color:a.hi,stroke:f.px*.1,shadow:24});
+   if(t.unit){y+=64;txt(t.unit,x,y,{px:64,stroke:10,shadow:10,w:900});}y+=30;}
+  if(t.l2){const f=fit(t.l2,mw,3,t.num?80:120,44,900);y+=f.px+(t.num?10:30);f.L.forEach((l,i)=>txt(l,x,y+i*(f.px+10),{px:f.px,color:t.num?'#fff':a.hi,stroke:f.px*.1,shadow:14}));}
+  sambhavit(x,H-80);vign();},
+ collage(t,a){bg();ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(0,0,W,H);
+  const ims=[S.img.p1?face():S.ph,autoKeyed(S.img.p2)||S.ph,autoKeyed(S.img.p3)||S.ph],pw=310,ph=360,xs=[90,485,880],rot=[-.05,.02,-.03],ys=[40,25,50];
+  ims.forEach((im,i)=>{ctx.save();ctx.translate(xs[i]+pw/2,ys[i]+ph/2);ctx.rotate(rot[i]);ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=30;
+   ctx.fillStyle='#fff';ctx.fillRect(-pw/2-10,-ph/2-10,pw+20,ph+20);ctx.shadowColor='transparent';
+   ctx.fillStyle=a.bg;ctx.fillRect(-pw/2,-ph/2,pw,ph);
+   ctx.save();ctx.beginPath();ctx.rect(-pw/2,-ph/2,pw,ph);ctx.clip();const s=Math.max(pw/im.width,ph/im.height)*(i===0?$('sc').value/100:1),dw=im.width*s,dh=im.height*s;
+   ctx.drawImage(im,-dw/2+(i===0?+$('px').value:0),-ph/2+ph-dh+(i===0?+$('py').value:0),dw,dh);ctx.restore();ctx.restore();});
+  const g=ctx.createLinearGradient(0,H-300,0,H);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.85)');ctx.fillStyle=g;ctx.fillRect(0,H-300,W,300);
+  tagChip(t.tag,40,452,a.bg);
+  const nm=t.num?t.num+(t.unit?' '+t.unit:''):'';let x=W/2;
+  if(t.l2||nm){const full=[t.l2,nm].filter(Boolean).join('  ');const f=fit(full,1180,2,96,48,900);
+   f.L.forEach((l,i)=>txt(l,x,H-150+i*(f.px+8)-(f.L.length-1)*(f.px+8)*.5+30,{align:'center',px:f.px,color:a.hi,stroke:f.px*.1,shadow:14}));}
+  if(t.l1)txt(t.l1,x,H-34,{align:'center',px:40,stroke:8,shadow:8});
+  sambhavit(W-480,460);vign();},
+ number(t,a){bg();ctx.fillStyle='rgba(0,0,0,.45)';ctx.fillRect(0,0,W,H);
+  const gl=ctx.createRadialGradient(W/2,H/2,20,W/2,H/2,520);gl.addColorStop(0,a.bg+'cc');gl.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=gl;ctx.fillRect(0,0,W,H);
+  if(S.img.p1){const im=face(),z=$('sc').value/100,s=Math.min(460*z/im.width,560*z/im.height),dw=im.width*s,dh=im.height*s;
+   ctx.save();ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=30;ctx.drawImage(im,W-dw+40+(+$('px').value),H-dh+(+$('py').value)+10,dw,dh);ctx.restore();}
+  tagChip(t.tag,40,36,a.bg);
+  if(t.l1){const f=fit(t.l1,900,2,60,36,800);f.L.forEach((l,i)=>txt(l,60,172+i*(f.px+8),{px:f.px,stroke:9,shadow:10}));}
+  bigNum(t,S.img.p1?460:W/2,365,S.img.p1?760:1100,220,a);
+  if(t.l2){const f=fit(t.l2,S.img.p1?800:1150,2,84,44,900);f.L.forEach((l,i)=>txt(l,S.img.p1?60:W/2,H-130+i*(f.px+8)-(f.L.length-1)*(f.px+8)+30,{align:S.img.p1?'left':'center',px:f.px,color:'#fff',stroke:f.px*.1,shadow:12}));}
+  sambhavit(60,H-64);vign();}
+};
+function draw(){const t=T(),a=accent();DRAW[S.preset](t,a);check(t);save();}
+function check(t){const all=[t.tag,t.l1,t.l2,t.num,t.unit].join(' '),m=[];
+ if(BAD.test(all))m.push('✘ Fantasy/Dream11/betting jaisa shabd hai — hata do.');
+ if(/\b(MI|CSK|RCB|KKR|SRH|DC|PBKS|RR|GT|LSG)\b/.test(all))m.push('⚠ Team ka short form hai — sheher ka naam likho.');
+ if(t.l2&&t.l2.length>40)m.push('⚠ Badi line lambi hai (40 akshar tak) — thumbnail mein chhota text behtar.');
+ if(!S.img.p1)m.push('ℹ Chehra/photo 1 upload nahi hui (placeholder dikh raha hai).');
+ $('msg').textContent=m.join('\n');}
+function save(){try{const o={preset:S.preset,col:$('col').value,sam:$('sam').checked,key:$('key').checked,sc:$('sc').value,px:$('px').value,py:$('py').value};FIELDS.forEach(f=>o[f]=$(f).value);localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}}
+function restore(){try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(!o)return;if(PRESETS[o.preset])S.preset=o.preset;if(COLS[o.col])$('col').value=o.col;$('sam').checked=o.sam!==false;$('key').checked=!!o.key;
+ ['sc','px','py'].forEach(k=>{if(o[k]!=null)$(k).value=o[k];});FIELDS.forEach(f=>{if(o[f]!=null)$(f).value=o[f];});}catch(e){}}
+function presetsUI(){const b=$('presets');b.textContent='';Object.keys(PRESETS).forEach(k=>{const x=document.createElement('button');x.textContent=PRESETS[k];x.className=S.preset===k?'on':'g';x.onclick=()=>{S.preset=k;presetsUI();draw();};b.appendChild(x);});}
+function dl(type,q,name){cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},2000);$('sz').textContent=(b.size/1e6).toFixed(2)+' MB '+(b.size>2e6?'(YouTube limit 2MB — JPG lo)':'');},type,q);}
+async function init(){
+ try{const f=new FontFace('NotoDev','url(assets/NotoSansDevanagari.ttf)',{weight:'100 900'});await f.load();document.fonts.add(f);}catch(e){}
+ S.defbg=await load(BGDEF);S.ph=await load(PHDEF);
+ Object.keys(COLS).forEach(k=>{const o=document.createElement('option');o.textContent=k;o.value=k;$('col').appendChild(o);});
+ restore();presetsUI();
+ const pick=(id,slot)=>$(id).onchange=async e=>{const f=e.target.files[0];if(!f)return;S.img[slot]=await fileImg(f);if(slot==='p1')S.keyed=null;draw();};
+ pick('f_bg','bg');pick('f_p1','p1');pick('f_p2','p2');pick('f_p3','p3');
+ $('bg0').onclick=()=>{S.img.bg=null;$('f_bg').value='';draw();};
+ $('clr').onclick=()=>{S.img.p1=S.img.p2=S.img.p3=null;S.keyed=null;['f_p1','f_p2','f_p3'].forEach(i=>$(i).value='');draw();};
+ ['key','sam','col','sc','px','py'].concat(FIELDS).forEach(i=>{$(i).oninput=()=>{if(i==='key')S.keyed=null;draw();};$(i).onchange=$(i).oninput;});
+ $('dpng').onclick=()=>dl('image/png',undefined,'thumbnail.png');
+ $('djpg').onclick=()=>dl('image/jpeg',0.92,'thumbnail.jpg');
+ window.THUMB={S,draw,setImg:(slot,im)=>{S.img[slot]=im;S.keyed=null;draw();}};
+ draw();document.title='Thumbnail Maker';window.THUMB_READY=true;
+}
+init();
+})();
+</script></body></html>

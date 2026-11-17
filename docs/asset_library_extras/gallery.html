@@ -1,0 +1,35 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cricket Asset Library</title>
+<style>
+:root{--bg:#0e111a;--card:#171c2a;--tx:#e8ecf5;--mut:#8b95ad;--g:#28c85a;--y:#f5be1e;--r:#e63232;--t:#5a6786}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,'Noto Sans Devanagari',sans-serif}
+header{position:sticky;top:0;background:#0e111aee;backdrop-filter:blur(6px);padding:12px 16px;border-bottom:1px solid #263049;z-index:5}
+input{width:100%;box-sizing:border-box;padding:10px 12px;border-radius:8px;border:1px solid #2c3754;background:#12172a;color:var(--tx);font-size:16px}
+.bar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+button{background:#1c2338;color:var(--tx);border:1px solid #2c3754;border-radius:999px;padding:5px 12px;cursor:pointer;font-size:13px}
+button.on{background:#2b6cf0;border-color:#2b6cf0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;padding:16px}
+.c{background:var(--card);border-radius:10px;overflow:hidden;border:1px solid #263049;cursor:pointer}
+.th{height:130px;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(#222a40 0 25%,#1a2034 0 50%) 0 0/16px 16px}
+.th img{max-width:100%;max-height:100%}.th span{color:var(--mut);font-size:12px;padding:8px;text-align:center}
+.m{padding:8px 10px;font-size:12px}.m b{display:block;word-break:break-all;font-size:12px}.m i{color:var(--mut);font-style:normal}
+.s{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.GREEN{background:var(--g)}.YELLOW{background:var(--y)}.RED{background:var(--r)}.TODO{background:var(--t)}
+#n{color:var(--mut);font-size:13px;margin-top:6px}
+</style></head><body>
+<header><input id="q" placeholder="Tag likho: kolkata  stamp  stadium  P1 ... (spaces = AND)"><div class="bar" id="f"></div><div id="n"></div></header>
+<div class="grid" id="g"></div>
+<script src="index_data.js"></script>
+<script>
+const A=window.ASSETS||[];let cat='',st='';
+const cats=[...new Set(A.map(a=>a.category))],sts=['GREEN','YELLOW','RED','TODO'];
+const f=document.getElementById('f');
+function mk(l,cb,on){const b=document.createElement('button');b.textContent=l;b.onclick=()=>{cb();draw()};f.appendChild(b);return b}
+mk('All',()=>{cat='';st=''});cats.forEach(c=>mk(c,()=>cat=cat===c?'':c));sts.forEach(s=>mk('● '+s,()=>st=st===s?'':s));
+function draw(){const q=document.getElementById('q').value.toLowerCase().split(/\s+/).filter(Boolean);
+ const r=A.filter(a=>(!cat||a.category===cat)&&(!st||a.status===st)&&q.every(t=>(a.tags+' '+a.file+' '+a.description).toLowerCase().includes(t)));
+ document.getElementById('n').textContent=r.length+' / '+A.length+' assets  |  card par click = path copy';
+ document.getElementById('g').innerHTML=r.map(a=>`<div class="c" data-p="${a.file}"><div class="th"><img loading="lazy" src="${a.file}" onerror="this.parentNode.innerHTML='<span>${a.status==='TODO'?'abhi nahi bana / nahi mila':'missing'}</span>'"></div><div class="m"><b><span class="s ${a.status}"></span>${a.file.split('/').pop()}</b><i>${a.tags}</i></div></div>`).join('')}
+document.getElementById('g').onclick=e=>{const c=e.target.closest('.c');if(c)navigator.clipboard&&navigator.clipboard.writeText(c.dataset.p)};
+document.getElementById('q').oninput=draw;draw();
+</script></body></html>

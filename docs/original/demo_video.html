@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>डेमो वीडियो: IPL 2027 कब से?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@500;800&display=swap">
+<style>
+:root{--bg:#f3f4f8;--tx:#141a26;--mu:#586177;--card:#fff;--ln:#dde1ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b111c;--tx:#eef1f7;--mu:#9aa5bb;--card:#141c2b;--ln:#26324a}}
+:root[data-theme="dark"]{--bg:#0b111c;--tx:#eef1f7;--mu:#9aa5bb;--card:#141c2b;--ln:#26324a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans Devanagari","Nirmala UI",system-ui,sans-serif;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.15rem;margin:4px 0 12px;font-weight:800}
+.stage{container-type:inline-size;position:relative;aspect-ratio:16/9;background:#0e1726;border-radius:12px;overflow:hidden;color:#fff}
+.bar{position:absolute;top:0;left:0;height:1.2cqw;background:#ffb000;width:0;z-index:3}
+.brand{position:absolute;top:3cqw;left:4cqw;font-size:2.6cqw;font-weight:800;color:#ffb000;z-index:2}
+.sc{position:absolute;inset:0;padding:9cqw 5cqw 12cqw;display:flex;flex-direction:column;justify-content:center;gap:2cqw;animation:in .5s ease both}
+@keyframes in{from{opacity:0;transform:translateY(2.5cqw)}to{opacity:1;transform:none}}
+.tag{align-self:flex-start;background:#e63946;color:#fff;font-weight:800;font-size:2.6cqw;padding:.4cqw 2cqw;border-radius:99px}
+.tag.am{background:#ffb000;color:#1a1200}
+.big{font-size:8cqw;font-weight:800;line-height:1.25;margin:0}
+.mid{font-size:5cqw;font-weight:800;margin:0}
+.sub{font-size:3.6cqw;color:#c3cde0;margin:0}
+.row{display:flex;gap:3cqw}
+.box{flex:1;background:#18233a;border:.3cqw solid #2c3b5c;border-radius:2cqw;padding:2.5cqw 3cqw}
+.box.hl{border-color:#ffb000;background:#22304f}
+.box small{display:block;font-size:2.8cqw;color:#9fb0cf}
+.box b{font-size:4.6cqw}
+.chip{display:inline-block;background:#18233a;border:.3cqw solid #ffb000;border-radius:99px;font-size:4.4cqw;font-weight:800;padding:1cqw 3.5cqw;margin-right:2cqw}
+.line{display:flex;align-items:center;gap:2.5cqw;font-size:3.8cqw}
+.dot{width:3cqw;height:3cqw;border-radius:50%;background:#ffb000;flex:none}
+.gap{margin-left:5.5cqw;font-size:3.2cqw;color:#ffb000;font-weight:800}
+.ask{border:.4cqw dashed #ffb000;border-radius:2cqw;padding:3cqw;text-align:center}
+.cap{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.62);font-size:3.3cqw;font-weight:500;padding:1.6cqw 4cqw;text-align:center;z-index:2;min-height:7cqw}
+.ctl{display:flex;gap:10px;align-items:center;margin:12px 0}
+button{font:inherit;font-weight:800;background:#ffb000;color:#1a1200;border:0;border-radius:99px;padding:8px 18px;cursor:pointer}
+button:focus-visible{outline:3px solid var(--tx);outline-offset:2px}
+.note{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 16px;margin-top:12px}
+.note p{margin:6px 0;color:var(--mu);font-size:.92rem}
+.note b{color:var(--tx)}
+@media (prefers-reduced-motion:reduce){.sc{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>डेमो: टूल से अपने-आप बना वीडियो (27 सेकंड)</h1>
+<div class="stage" id="stage" aria-live="polite">
+  <div class="bar" id="bar"></div>
+  <div class="brand">आपका चैनल</div>
+  <div id="scene"></div>
+  <div class="cap" id="cap"></div>
+</div>
+<div class="ctl"><button id="rp" type="button">↻ फिर से चलाओ</button><span id="cnt" style="color:var(--mu);font-size:.9rem"></span></div>
+<div class="note">
+<p><b>इस डेमो में टूल ने क्या किया:</b></p>
+<p>• हर हिस्से के लिए कार्ड, टैग और कैप्शन अपने-आप बने (कोई फोटो या फुटेज नहीं)।</p>
+<p>• “अभी पक्का नहीं” वाला टैग रिपोर्ट के हिसाब से लगा।</p>
+<p>• पाँचवें हिस्से में आपकी अपनी राय की जगह छोड़ी गई है।</p>
+<p><b>असली वीडियो में:</b> आपकी आवाज़ की लंबाई से हर कार्ड का समय खुद तय होगा। इस डेमो में आवाज़ नहीं है।</p>
+<p>तारीखें रिपोर्ट्स पर आधारित हैं और अभी बदल सकती हैं। असली वीडियो से पहले इन्हें खुद जाँच लेना।</p>
+</div>
+</div>
+<script>
+var S=[
+{d:4500,c:"क्या IPL 2027 सच में 10 मार्च से शुरू होने वाला है? चलिए पूरी बात समझते हैं।",
+h:'<span class="tag">ब्रेकिंग</span><p class="big">IPL 2027<br>मार्च में ही शुरू?</p><p class="sub">BCCI का नया प्लान</p>'},
+{d:4800,c:"पिछला सीज़न 28 मार्च से 31 मई तक चला था। इस बार प्लान दो हफ़्ते पहले का है।",
+h:'<span class="tag am">अभी पक्का नहीं · BCCI सचिव का बयान</span><div class="row"><div class="box"><small>IPL 2026</small><b>28 मार्च → 31 मई</b></div><div class="box hl"><small>IPL 2027 (संभावित)</small><b>10 मार्च → 15 मई</b></div></div>'},
+{d:4500,c:"वजह साफ़ है। अप्रैल-मई की गर्मी और सीज़न के आख़िर में बारिश का डर।",
+h:'<p class="mid">वजह क्या है?</p><div><span class="chip">तेज़ गर्मी</span><span class="chip">मानसून की बारिश</span></div><p class="sub">प्लेऑफ़ और फ़ाइनल मौसम से बचें, यही सोच है</p>'},
+{d:4800,c:"दिक़्क़त ये है कि टेस्ट सीरीज़ 3 मार्च को ख़त्म होती है। यानी खिलाड़ियों के पास बस एक हफ़्ता।",
+h:'<p class="mid">बीच में सिर्फ़ 7 दिन</p><div class="line"><span class="dot"></span>3 मार्च · भारत–ऑस्ट्रेलिया टेस्ट सीरीज़ ख़त्म</div><div class="gap">↓ 7 दिन का फ़ासला</div><div class="line"><span class="dot"></span>10 मार्च · IPL शुरू (संभावित)</div>'},
+{d:4500,c:"अब यहाँ आपकी अपनी राय आएगी, आपकी आवाज़ में।",
+h:'<div class="ask"><span class="tag am">आपकी राय</span><p class="mid" style="margin-top:1.5cqw">क्या 10 मार्च बहुत जल्दी है?</p><p class="sub">[ यहाँ आप 1–2 लाइन बोलेंगे ]</p></div>'},
+{d:4000,c:"मिलते हैं अगली ख़बर के साथ। चैनल सब्सक्राइब करना न भूलें।",
+h:'<p class="big">सब्सक्राइब करें</p><p class="sub">कल मिलते हैं अगली ख़बर के साथ</p><span class="tag am">यह सिर्फ़ डेमो है</span>'}
+];
+var i=0,t=null,sc=document.getElementById("scene"),cap=document.getElementById("cap"),bar=document.getElementById("bar"),cnt=document.getElementById("cnt");
+function show(n){
+  var s=S[n];
+  sc.innerHTML='<div class="sc">'+s.h+'</div>';
+  cap.textContent=s.c;
+  cnt.textContent="हिस्सा "+(n+1)+" / "+S.length;
+  bar.style.transition="none";bar.style.width=(n/S.length*100)+"%";
+  void bar.offsetWidth;
+  bar.style.transition="width "+s.d+"ms linear";
+  bar.style.width=((n+1)/S.length*100)+"%";
+  t=setTimeout(function(){ if(n+1<S.length){i=n+1;show(i);} },s.d);
+}
+function start(){clearTimeout(t);i=0;show(0);}
+document.getElementById("rp").addEventListener("click",start);
+start();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+[
+ {
+  "type": "hook",
+  "dur": 4,
+  "chunk": 1,
+  "data": {
+   "pre": "इस वीडियो में",
+   "to": 8,
+   "dec": 0,
+   "unit": "खिलाड़ी",
+   "post": "सबसे बड़ी चर्चा में",
+   "ribbon": true
+  }
+ },
+ {
+  "type": "title",
+  "dur": 5,
+  "chunk": 1,
+  "tr": "glitch",
+  "trDur": 0.6,
+  "data": {
+   "city": "kolkata",
+   "headline": "यहाँ वीडियो की मुख्य हेडलाइन",
+   "sub": "छोटी सब-हेडिंग",
+   "ticker": "टिकर में एक लाइन की खबर यहाँ चलेगी"
+  }
+ },
+ {
+  "type": "stat",
+  "dur": 5,
+  "chunk": 2,
+  "tr": "slideup",
+  "trDur": 0.6,
+  "data": {
+   "photo": "player_mumbai_jasprit_bumrah_headshoulders",
+   "pre": "छोटी लाइन",
+   "prefix": "₹",
+   "to": 10,
+   "dec": 0,
+   "unit": "करोड़",
+   "head": "खिलाड़ी का नाम",
+   "sub": "एक लाइन की जानकारी",
+   "lt": "blue",
+   "tag": true
+  }
+ },
+ {
+  "type": "retain",
+  "dur": 5,
+  "chunk": 2,
+  "tr": "flash",
+  "trDur": 0.5,
+  "data": {
+   "city": "kolkata",
+   "photo": "player_kolkata_sunil_narine_headshoulders",
+   "name": "नरेन",
+   "amount": "₹ 10 CR",
+   "stamp": "retain",
+   "note": "संभावित नोट यहाँ"
+  }
+ },
+ {
+  "type": "watch",
+  "dur": 6,
+  "chunk": 3,
+  "tr": "grunge",
+  "trDur": 0.7,
+  "data": {
+   "title": "नज़र रहेगी",
+   "names": [
+    "रुतुराज गायकवाड़",
+    "ऋषभ पंत",
+    "नाम 3"
+   ],
+   "photos": [
+    "player_chennai_ruturaj_gaikwad_headshoulders",
+    "player_delhi_rishabh_pant_headshoulders"
+   ],
+   "note": "ये नाम चर्चा में हैं"
+  }
+ },
+ {
+  "type": "rumour",
+  "dur": 5,
+  "chunk": 3,
+  "tr": "whip",
+  "trDur": 0.5,
+  "data": {
+   "head": "अफवाह की हेडलाइन",
+   "sub": "अभी ऑफिशियल नहीं",
+   "photos": [
+    "player_mumbai_jasprit_bumrah_headshoulders",
+    "player_chennai_ruturaj_gaikwad_headshoulders"
+   ]
+  }
+ },
+ {
+  "type": "anth",
+  "dur": 5,
+  "chunk": 4,
+  "tr": "zoom",
+  "trDur": 0.5,
+  "data": {
+   "title": "आपकी राय",
+   "qs": [
+    "पहला सवाल यहाँ?",
+    "दूसरा सवाल यहाँ?",
+    "तीसरा सवाल यहाँ?"
+   ],
+   "cta": "कमेंट में ज़रूर बताइए"
+  }
+ },
+ {
+  "type": "intro",
+  "dur": 4,
+  "chunk": 4,
+  "tr": "fade",
+  "trDur": 0.6,
+  "data": {
+   "line1": "चैनल का नाम",
+   "line2": "क्रिकेट की हर खबर",
+   "ribbon": true
+  }
+ }
+]

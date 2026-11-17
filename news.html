@@ -1,0 +1,99 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cricket News Tracker</title>
+<style>
+:root{color-scheme:dark}
+body{margin:0;background:#111;color:#eee;font-family:system-ui,sans-serif;font-size:18px;line-height:1.4}
+#w{max-width:900px;margin:0 auto;padding:10px}
+h1{font-size:22px;margin:6px 0}h2{font-size:20px;margin:16px 0 6px}
+a{color:#7cc4ff}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.sm{font-size:14px;opacity:.75}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+button,.chip{background:#333;color:#fff;border:0;border-radius:18px;padding:8px 14px;font-size:16px}
+.chip.on{background:#e11}.chip.g.on{background:#2a8a3a}.chip.o.on{background:#c7791a}
+input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;border-radius:8px;border:1px solid #444;background:#000;color:#eee}
+.card{background:#1b1b1b;border:1px solid #333;border-radius:10px;padding:10px;margin:8px 0}
+.card.used{opacity:.45}
+.t{font-size:19px;font-weight:600;margin:4px 0}
+.badge{display:inline-block;font-size:14px;padding:2px 9px;border-radius:10px;margin:0 6px 4px 0;background:#444}
+.bC{background:#2a8a3a}.bR{background:#c7791a}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.row button{font-size:15px;padding:6px 12px;border-radius:8px}
+.warn{background:#3a2a10;border-radius:8px;padding:8px;font-size:15px;margin:8px 0}
+.err{background:#3a1515;border-radius:8px;padding:8px;font-size:14px;margin:8px 0}
+</style></head><body><div id="w">
+<div class="top"><h1>📰 Cricket News Tracker</h1><a href="index.html">← Video tool</a></div>
+<div class="sm" id="upd">Loading…</div>
+<div class="warn">⚠ Label sirf andaza hai: <b>Confirmed</b> tabhi jab feed official ho aur "sources/likely" jaisa shabd na ho. Baaki sab <b>Rumor</b>. Video mein daalne se pehle khabar khud verify karo. Yahan sirf headline + link hai.</div>
+<div id="fails"></div>
+<h2>⭐ Aaj ki top 5</h2><div id="top5"></div>
+<h2>Saari khabrein</h2>
+<input type="search" id="q" placeholder="🔎 khoj (naam / shabd)">
+<div class="chips" id="tags"></div>
+<div class="chips" id="lbls"></div>
+<div class="chips"><span class="chip" id="hideUsed">✓ Use ho chuki khabrein chhupao</span>
+<button id="expU">⬆ Used list save</button><button id="impU">⬇ Used list load</button><input type="file" id="fi" accept=".json" style="display:none"></div>
+<div id="list"></div>
+</div>
+<script>
+(function(){
+'use strict';
+const TAGS=['Trade','Retention','Release','Auction','Team News','India Match'];
+const KU='cvt_news_used',KF='cvt_news_ui';
+let items=[],used={},ui={tag:'Sab',lbl:'Sab',hide:false,q:''};
+try{used=JSON.parse(localStorage.getItem(KU)||'{}')||{};}catch(e){}
+try{Object.assign(ui,JSON.parse(localStorage.getItem(KF)||'{}'));ui.q='';}catch(e){}
+const $=id=>document.getElementById(id);
+const saveU=()=>{try{localStorage.setItem(KU,JSON.stringify(used));}catch(e){}};
+const saveUI=()=>{try{localStorage.setItem(KF,JSON.stringify({tag:ui.tag,lbl:ui.lbl,hide:ui.hide}));}catch(e){}};
+function ago(iso){const m=Math.max(0,(Date.now()-new Date(iso))/60000);
+  if(m<60)return Math.round(m)+' min pehle';if(m<1440)return Math.round(m/60)+' ghante pehle';return Math.round(m/1440)+' din pehle';}
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+function card(it){
+  const c=el('div','card'+(used[it.id]?' used':''));
+  const b=el('div');
+  b.appendChild(el('span','badge '+(it.label==='Confirmed'?'bC':'bR'),it.label==='Confirmed'?'✔ Confirmed':'❓ Rumor / अपुष्ट'));
+  it.tags.forEach(t=>b.appendChild(el('span','badge',t)));
+  if(it.sources_n>1)b.appendChild(el('span','badge','📣 '+it.sources_n+' jagah'));
+  c.appendChild(b);
+  c.appendChild(el('div','t',it.title));
+  if(it.summary)c.appendChild(el('div','sm',it.summary));
+  c.appendChild(el('div','sm',(it.source||'')+' · '+ago(it.published)));
+  const r=el('div','row');
+  const a=el('a');a.href=it.link;a.target='_blank';a.rel='noopener';a.textContent='🔗 Kholo';const ab=el('button');ab.appendChild(a);r.appendChild(ab);
+  const u=el('button',null,used[it.id]?'↩ Used hatao':'✓ Use ho gaya');u.onclick=()=>{if(used[it.id])delete used[it.id];else used[it.id]=new Date().toISOString();saveU();draw();};r.appendChild(u);
+  const cp=el('button',null,'📋 Copy');cp.onclick=async()=>{const s='['+it.tags.join('/')+'] ['+it.label+'] '+it.title+' — '+it.link;try{await navigator.clipboard.writeText(s);cp.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',s);}};r.appendChild(cp);
+  c.appendChild(r);return c;}
+function chips(box,list,key){box.innerHTML='';list.forEach(v=>{const c=el('span','chip'+(key==='lbl'&&v==='Confirmed'?' g':'')+(key==='lbl'&&v==='Rumor'?' o':'')+(ui[key]===v?' on':''),v);
+  c.onclick=()=>{ui[key]=v;saveUI();draw();};box.appendChild(c);});}
+function top5(){
+  const day=Date.now()-36*3600e3,seen=new Set(),out=[],uc=new Set(items.filter(i=>used[i.id]).map(i=>i.cluster));
+  items.filter(i=>new Date(i.published)>day&&!used[i.id]&&!uc.has(i.cluster)).sort((a,b)=>b.score-a.score).forEach(i=>{
+    if(out.length>=5||seen.has(i.cluster))return;seen.add(i.cluster);out.push(i);});
+  return out;}
+function draw(){
+  chips($('tags'),['Sab'].concat(TAGS),'tag');chips($('lbls'),['Sab','Confirmed','Rumor'],'lbl');
+  $('hideUsed').className='chip'+(ui.hide?' on':'');$('hideUsed').textContent=(ui.hide?'✔ ':'')+'Use ho chuki khabrein chhupao';
+  const t=top5(),tb=$('top5');tb.innerHTML='';
+  if(!t.length)tb.appendChild(el('div','sm','Pichle 36 ghante ki koi nayi (unused) khabar nahi.'));t.forEach(i=>tb.appendChild(card(i)));
+  const q=ui.q.trim().toLowerCase(),lb=$('list');lb.innerHTML='';let n=0;
+  items.forEach(i=>{
+    if(ui.tag!=='Sab'&&!i.tags.includes(ui.tag))return;
+    if(ui.lbl!=='Sab'&&i.label!==ui.lbl)return;
+    if(ui.hide&&used[i.id])return;
+    if(q&&!(i.title+' '+(i.summary||'')).toLowerCase().includes(q))return;
+    n++;if(n<=150)lb.appendChild(card(i));});
+  if(!n)lb.appendChild(el('div','sm','Is filter mein koi khabar nahi.'));
+  else if(n>150)lb.appendChild(el('div','sm','Pehli 150 dikha rahe hain ('+n+' mili). Filter/khoj se chhota karo.'));}
+$('q').oninput=e=>{ui.q=e.target.value;draw();};
+$('hideUsed').onclick=()=>{ui.hide=!ui.hide;saveUI();draw();};
+$('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(used,null,1)],{type:'application/json'}));a.download='news_used.json';a.click();};
+$('impU').onclick=()=>$('fi').click();
+$('fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!j||typeof j!=='object'||Array.isArray(j))throw new Error('object chahiye');Object.assign(used,j);saveU();draw();alert('Used list load ho gayi.');}catch(x){alert('JSON error: '+x.message);}};
+fetch('news/news.json?'+Date.now()).then(r=>{if(!r.ok)throw new Error('news/news.json nahi mila ('+r.status+')');return r.json();}).then(d=>{
+  items=(d.items||[]).slice().sort((a,b)=>new Date(b.published)-new Date(a.published));
+  $('upd').textContent=d.updated?'Aakhri update: '+new Date(d.updated).toLocaleString('hi-IN')+' · '+items.length+' khabrein':'Abhi data nahi — GitHub Actions mein "news-fetch" ek baar Run karo.';
+  const fl=d.feeds_fail||[];if(fl.length){const b=$('fails');b.className='err';b.textContent='⚠ '+fl.length+' feed fail: '+fl.map(x=>x.name).join(', ')+' (feeds.json check karo)';}
+  draw();}).catch(e=>{$('upd').textContent='';const b=$('fails');b.className='err';b.textContent='Load error: '+e.message+' (file:// se nahi, GitHub Pages / http se kholo)';draw();});
+})();
+</script></body></html>

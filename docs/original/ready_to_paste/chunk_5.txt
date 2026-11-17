@@ -1,0 +1,12 @@
+FORMAT: C
+VIDEO TITLE: IPL 2027 Retention: Kal Kya Hoga? 10 Teams, Sabse Bade Sawal
+CHUNK: 5 / 5   (target ~250 shabd)
+PICHLE CHUNK KI AAKHRI LINE: [chunk 4 ke Gemini output ki aakhri line yahan paste karo]
+STRUCTURE: RR (F37-F39), RCB (F40-F41), phir "kal ke 3 sabse bade sawal" (Pooran, Green/Pathirana, Cummins), phir [APNI RAAY] "mere hisaab se kal sabse bada surprise kaun?", phir comment sawaal aur ek baar like/subscribe. F1 dobara bolo: kal list aayegi.
+FACTS:
+F37 (REPORT-HT): RR ki batting mazboot, lekin 2026 mein bowling batting ke barabar nahi chali.
+F38 (REPORT-HT): Shimron Hetmyer par nazar. Tushar Deshpande ne 7 match mein **sirf 4 wicket** liye, unka **₹6.50 crore** ka contract sawalon mein.
+F39 (ANALYSIS-HT): RR ke likely retentions: Vaibhav Sooryavanshi, Yashasvi Jaiswal, Dhruv Jurel, Riyan Parag, Ravindra Jadeja, Jofra Archer, Donovan Ferreira. Dekhne wale: Hetmyer, Deshpande, Ravi Bishnoi, mehnge bowling contracts.
+F40 (REPORT-HT): RCB ne **lagatar do season (2025, 2026)** title jeete. Squad lagbhag tay. Release sirf fringe players ki ho sakti hai.
+F41 (ANALYSIS-HT): RCB ke likely retentions: Virat Kohli, Rajat Patidar, Phil Salt, Josh Hazlewood, Bhuvneshwar Kumar, Krunal Pandya, Devdutt Padikkal, Tim David.
+F1 (OFFICIAL): Retention aur release list jama karne ki deadline **17 November (kal, Mangalwar)** hai. BCCI ne date aage badhayi thi kyunki pehli date India ke 5th ODI (NZ, 15 Nov) se takra rahi thi. [HT; IANS; Business Today]

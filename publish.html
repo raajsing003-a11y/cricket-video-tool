@@ -1,0 +1,158 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Publish Pack</title>
+<style>
+body{margin:0;background:#111;color:#eee;font-family:system-ui,sans-serif}
+#wrap{max-width:900px;margin:0 auto;padding:10px}
+fieldset{border:1px solid #444;border-radius:6px;margin:10px 0;padding:8px 12px}legend{font-size:14px;opacity:.85}
+label{font-size:14px;display:block;margin-top:6px}
+input[type=text],textarea,select{background:#000;color:#fff;border:1px solid #555;border-radius:5px;padding:7px;font-size:15px;width:100%;box-sizing:border-box}
+textarea{font-family:inherit}button{background:#e11;color:#fff;border:0;border-radius:6px;padding:8px 13px;font-size:14px;margin:4px 4px 0 0}button.g{background:#555}
+.t{display:flex;gap:6px;align-items:center;margin-top:6px}.t input{flex:1}.cnt{font-size:12px;opacity:.7;min-width:60px}
+.warn{color:#fc6;font-size:13px;white-space:pre-wrap}.err{color:#f66;font-size:13px;white-space:pre-wrap}.ok{color:#7d7;font-size:13px}
+.ck{display:flex;gap:8px;align-items:flex-start;font-size:14px;padding:3px 0}.ck input{margin-top:4px}
+a{color:#7cc4ff}
+</style></head><body><div id="wrap">
+<h2 style="margin:4px 0">📦 Publish pack</h2>
+<div style="font-size:13px;opacity:.75">Sirf template hai: jo tum bharoge wahi use hoga, naye facts nahi judte. Upload se pehle checklist poori karo.</div>
+<fieldset><legend>1. Video ki baat</legend>
+<label>Topic / khabar (jaise: कोलकाता का रिटेंशन) <input type="text" id="topic"></label>
+<label>Sawal / hook line (jaise: कौन होगा रिटेन?) <input type="text" id="hook"></label>
+<div style="display:flex;gap:8px"><label style="flex:1">Number (optional) <input type="text" id="num" placeholder="₹18"></label><label style="flex:1">Unit <input type="text" id="unit" placeholder="करोड़"></label></div>
+<label>Keywords (comma se; naam, team ka sheher, event) <input type="text" id="kw" placeholder="IPL 2027, कोलकाता, रिटेंशन"></label>
+<label><input type="checkbox" id="sam" checked style="width:auto"> Ye khabar संभावित/अफवाह hai (titles mein "(संभावित)" + description mein disclaimer)</label>
+</fieldset>
+<fieldset><legend>2. Titles (5 options)</legend><div id="titles"></div></fieldset>
+<fieldset><legend>3. Chapters (scenes ke time se)</legend>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><select id="src" style="width:auto"><option value="cvt_scenes">Wide video scenes</option><option value="cvt_scenes_short">Short scenes</option></select>
+<label style="margin:0">ya scenes.json: <input type="file" id="sj" accept=".json" style="width:auto"></label><button class="g" id="rech">Dobara banao</button></div>
+<div style="font-size:12px;opacity:.7;margin-top:4px">Har chapter kam se kam 10 sec; chhote scenes agle ke saath mil jaate hain. Label badal sakte ho (har line: time label).</div>
+<textarea id="chap" rows="8"></textarea><div id="chmsg"></div></fieldset>
+<fieldset><legend>4. Sources aur photo credit (jo asli mein use kiye)</legend>
+<label>Sources (har line ek: naam - link) <textarea id="srcs" rows="3"></textarea></label>
+<label>Photo credit (agar zaroorat ho; har line ek) <textarea id="cred" rows="2"></textarea></label></fieldset>
+<fieldset><legend>5. Description</legend><textarea id="desc" rows="14"></textarea><div class="t"><span class="cnt" id="dcnt"></span><button id="cd">📋 Copy</button></div><div id="dmsg"></div></fieldset>
+<fieldset><legend>6. Tags</legend><textarea id="tags" rows="3"></textarea><div class="t"><span class="cnt" id="tcnt"></span><button id="ct">📋 Copy tags</button></div><div id="tmsg"></div></fieldset>
+<fieldset><legend>7. Upload se pehle checklist</legend><div id="ckl"></div><div id="ckst" class="ok"></div><button class="g" id="ckr">Checklist reset</button></fieldset>
+<div style="font-size:14px;margin:10px 0"><a href="index.html">🎬 Video tool</a> &nbsp; <a href="thumbnail.html">🖼 Thumbnail maker</a></div>
+</div>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id),KEY='cvt_publish',CK='cvt_publish_ck';
+const BAD=/dream\s*11|dream11|fantasy|betting|\bbet\b|giveaway|सट्टा|फैंटेसी|ड्रीम\s*11/i;
+const SHORT=/\b(MI|CSK|RCB|KKR|SRH|DC|PBKS|RR|GT|LSG)\b/;
+const FIELDS=['topic','hook','num','unit','kw','srcs','cred'];
+const DISC='ध्यान दें: ये खबर संभावित है, अभी ऑफिशियल लिस्ट नहीं आई है।';
+const CHECK=[
+ 'Script/cards mein source ka naam nahi, team ka short form nahi (sheher ka naam)',
+ 'Retain/rumour wale cards par "संभावित: ऑफिशियल लिस्ट नहीं" label dikha; RELEASE stamp nahi; naye facts nahi',
+ 'Fantasy / Dream11 / betting / odds / giveaway kuch nahi (title, description, tags, video)',
+ 'Photos sirf apni ya licensed (media kit, Wikimedia Commons, Pexels/Unsplash/Pixabay); credit chahiye to description mein daala',
+ 'Edit karne se copyright nahi hatta: kisi ka clip/music/photo bina haq ke nahi',
+ 'Pura MP4 ek baar dekha: awaaz, caption sync, spelling, numbers',
+ 'Thumbnail 1280x720, 2MB se chhota, text phone par padhne layak, title se milta hai',
+ 'Title 100 akshar se kam, misleading nahi; संभावित khabar par "(संभावित)" likha',
+ 'Description mein chapters 0:00 se shuru, kam se kam 3, har ek 10 sec+',
+ 'Sources (jo asli mein use hue) description mein hain',
+ 'Upload mein "altered/synthetic content" sawal par sahi jawab (asli jaisa dikhne wala banawati/AI content ho to batao)',
+ '"Made for kids" sahi chuna; category aur language set',
+ 'Public karne se pehle Private/Unlisted mein ek baar chalakar dekha'];
+const v=id=>$(id).value.trim();
+function cp(text,msgId){const done=()=>{$(msgId).innerHTML='<span class="ok">✓ copy ho gaya</span>';setTimeout(()=>$(msgId).textContent='',2000);};
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(done,()=>fb());else fb();
+ function fb(){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy');done();}catch(e){$(msgId).textContent='copy nahi hua — haath se select karo';}t.remove();}}
+// ---------- titles ----------
+function titles(){const tp=v('topic'),hk=v('hook'),nm=[v('num'),v('unit')].filter(Boolean).join(' '),sf=$('sam').checked?' (संभावित)':'';
+ const L=[];
+ if(tp&&hk)L.push(tp+': '+hk+sf);
+ if(hk&&tp)L.push(hk+' | '+tp+sf);
+ if(nm&&tp)L.push(nm+' में कौन? '+tp+sf);
+ if(tp)L.push(tp+' — जानिए पूरी बात'+sf);
+ if(tp&&hk)L.push(tp+' पर बड़ा सवाल: '+hk+sf);
+ if(!L.length&&tp)L.push(tp+sf);
+ return[...new Set(L)].slice(0,5);}
+function renderTitles(){const box=$('titles');box.textContent='';const L=titles();
+ if(!L.length){box.innerHTML='<div style="opacity:.7;font-size:13px">Topic aur hook bharo.</div>';return;}
+ L.forEach((t,i)=>{const r=document.createElement('div');r.className='t';const inp=document.createElement('input');inp.type='text';inp.value=t;
+  const c=document.createElement('span');c.className='cnt';const upd=()=>{const n=[...inp.value].length;c.textContent=n+' akshar';c.style.color=n>100?'#f66':n>60?'#fc6':'#7d7';};upd();inp.oninput=upd;
+  const b=document.createElement('button');b.textContent='📋';b.onclick=()=>cp(inp.value,'tmsg0');r.append(inp,c,b);box.appendChild(r);});
+ const m=document.createElement('div');m.id='tmsg0';box.appendChild(m);
+ const all=L.join(' ');const w=[];if(BAD.test(all))w.push('✘ Fantasy/betting/giveaway jaisa shabd — hata do.');if(SHORT.test(all))w.push('⚠ Team ka short form hai — sheher ka naam likho.');
+ w.push('ℹ 60 akshar tak title poora dikhta hai (hare count behtar).');const d=document.createElement('div');d.className=BAD.test(all)?'err':'warn';d.textContent=w.join('\n');box.appendChild(d);}
+// ---------- chapters ----------
+function starts(sc){const s=[];let t=0;sc.forEach((x,i)=>{const td=i===0?0:(x.trDur!=null?x.trDur:(x.tr&&x.tr!=='cut'?.5:0));if(i>0)t=s[i-1]+sc[i-1].dur-td;s.push(t);});return s;}
+function label(sc){const d=sc.data||{};const p=(...k)=>{for(const x of k){const y=d[x];if(typeof y==='string'&&y.trim())return y.trim();}return '';};
+ switch(sc.type){
+  case 'title':case 'short_cta':return p('headline','line1','line2');
+  case 'stat':case 'short_stat':return p('head','pre');
+  case 'retain':return p('name');
+  case 'watch':return p('title')||(Array.isArray(d.names)?d.names.slice(0,2).join(', '):'');
+  case 'rumour':return p('head');
+  case 'anth':return p('title')||'आपकी राय';
+  case 'intro':return p('line1','line2');
+  case 'presenter':return p('name','channel');
+  case 'hook':case 'short_hook':return p('pre')||[d.to!=null?d.to:d.big,d.unit].filter(x=>x!=null&&x!=='').join(' ');
+  default:return '';}}
+const mmss=s=>{s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60,p=n=>String(n).padStart(2,'0');return h?h+':'+p(m)+':'+p(r):m+':'+p(r);};
+function chapters(sc){if(!Array.isArray(sc)||!sc.length)return{lines:[],note:'Scenes nahi mile (pehle video tool mein scenes banao ya scenes.json lo).'};
+ const st=starts(sc),total=Math.max(...sc.map((x,i)=>st[i]+x.dur)),out=[];let gi=0;
+ while(gi<sc.length){let gj=gi,lab=label(sc[gi]);
+  const end=()=>gj+1<sc.length?st[gj+1]:total;
+  while(end()-st[gi]<10&&gj+1<sc.length){gj++;if(!lab)lab=label(sc[gj]);}
+  out.push({t:st[gi],lab:lab||('भाग '+(out.length+1))});gi=gj+1;}
+ // aakhri chapter chhota ho to pichle mein mila do
+ if(out.length>1&&total-out[out.length-1].t<10)out.pop();
+ return{lines:out.map(o=>mmss(o.t)+' '+o.lab),note:''};}
+function buildChap(sc){const r=chapters(sc);$('chap').value=r.lines.join('\n');chapMsg(r.note);desc();}
+function chapMsg(extra){const L=$('chap').value.split('\n').map(x=>x.trim()).filter(Boolean),m=[];if(extra)m.push('⚠ '+extra);
+ if(L.length&&!/^0:00\b/.test(L[0]))m.push('✘ Pehla chapter 0:00 se hona chahiye.');
+ if(L.length&&L.length<3)m.push('⚠ YouTube chapters ke liye kam se kam 3 chahiye (abhi '+L.length+').');
+ if(!L.length)m.push('ℹ Chapters khali hain — description bina chapters ke banega.');
+ $('chmsg').innerHTML='';const d=document.createElement('div');d.className=m.some(x=>x[0]==='✘')?'err':'warn';d.textContent=m.join('\n');$('chmsg').appendChild(d);}
+function curScenes(){try{return JSON.parse(localStorage.getItem($('src').value)||'null');}catch(e){return null;}}
+// ---------- description + tags ----------
+function desc(){const tp=v('topic'),hk=v('hook'),nm=[v('num'),v('unit')].filter(Boolean).join(' '),P=[];
+ const head=[tp,hk,nm].filter(Boolean);if(head.length)P.push(head.join(' — '));
+ if($('sam').checked)P.push(DISC);
+ const ch=$('chap').value.split('\n').map(x=>x.trim()).filter(Boolean);if(ch.length)P.push('⏱ चैप्टर:\n'+ch.join('\n'));
+ const sr=v('srcs').split('\n').map(x=>x.trim()).filter(Boolean);if(sr.length)P.push('सूत्र:\n'+sr.join('\n'));
+ const cr=v('cred').split('\n').map(x=>x.trim()).filter(Boolean);if(cr.length)P.push('फोटो क्रेडिट:\n'+cr.join('\n'));
+ const hs=hashtags();if(hs.length)P.push(hs.join(' '));
+ $('desc').value=P.join('\n\n');descMsg();tags();}
+function kws(){return v('kw').split(/[,\n،]/).map(x=>x.trim()).filter(Boolean);}
+function hashtags(){return kws().slice(0,3).map(k=>'#'+k.replace(/[\s#]+/g,''));}
+function tags(){const base=kws().slice();const tp=v('topic');if(tp)base.push(tp);base.push('क्रिकेट न्यूज़','cricket news');
+ const seen=new Set(),out=[];base.forEach(x=>{const k=x.toLowerCase();if(!seen.has(k)){seen.add(k);out.push(x);}});
+ let s='';const keep=[];out.forEach(x=>{const n=(s?s+',':'')+x;if([...n].length<=480){s=n;keep.push(x);}});
+ $('tags').value=keep.join(', ');const n=[...keep.join(',')].length;$('tcnt').textContent=n+'/500';$('tcnt').style.color=n>450?'#fc6':'#7d7';
+ const w=[];if(BAD.test(s))w.push('✘ Tags mein fantasy/betting/giveaway shabd — hata do.');if(SHORT.test(s))w.push('⚠ Team short form tags mein.');
+ $('tmsg').innerHTML='';const d=document.createElement('div');d.className=BAD.test(s)?'err':'warn';d.textContent=w.join('\n');$('tmsg').appendChild(d);}
+function descMsg(){const t=$('desc').value,n=[...t].length,w=[];$('dcnt').textContent=n+'/5000';
+ if(n>5000)w.push('✘ Description 5000 akshar se lamba.');if(BAD.test(t))w.push('✘ Description mein fantasy/betting/giveaway shabd — hata do.');
+ if(SHORT.test(t))w.push('⚠ Team ka short form hai — sheher ka naam likho.');
+ if(!v('srcs'))w.push('ℹ Sources khali hain.');
+ $('dmsg').innerHTML='';const d=document.createElement('div');d.className=w.some(x=>x[0]==='✘')?'err':'warn';d.textContent=w.join('\n');$('dmsg').appendChild(d);}
+// ---------- checklist ----------
+function ckState(){try{return JSON.parse(localStorage.getItem(CK)||'[]');}catch(e){return[];}}
+function ckRender(){const st=ckState(),box=$('ckl');box.textContent='';CHECK.forEach((t,i)=>{const r=document.createElement('label');r.className='ck';const c=document.createElement('input');c.type='checkbox';c.checked=!!st[i];
+  c.onchange=()=>{const s=ckState();s[i]=c.checked;try{localStorage.setItem(CK,JSON.stringify(s));}catch(e){}ckStat();};r.append(c,document.createTextNode(t));box.appendChild(r);});ckStat();}
+function ckStat(){const s=ckState(),n=CHECK.filter((_,i)=>s[i]).length;$('ckst').textContent=n===CHECK.length?'✓ Sab ho gaya — upload kar sakte ho':n+'/'+CHECK.length+' ho chuke';}
+// ---------- save/restore ----------
+function save(){try{const o={src:$('src').value,sam:$('sam').checked,chap:$('chap').value};FIELDS.forEach(f=>o[f]=$(f).value);localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}}
+function restore(){try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(!o)return false;FIELDS.forEach(f=>{if(o[f]!=null)$(f).value=o[f];});$('sam').checked=o.sam!==false;if(o.src)$('src').value=o.src;if(o.chap!=null)$('chap').value=o.chap;return true;}catch(e){return false;}}
+function all(){renderTitles();desc();save();}
+['topic','hook','num','unit','kw','srcs','cred'].forEach(i=>$(i).oninput=all);
+$('sam').onchange=all;
+$('chap').oninput=()=>{chapMsg('');desc();save();};
+$('desc').oninput=()=>{descMsg();save();};
+$('src').onchange=()=>{buildChap(curScenes());save();};
+$('rech').onclick=()=>{buildChap(curScenes());save();};
+$('sj').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw new Error('array chahiye');buildChap(j);save();}catch(err){$('chmsg').innerHTML='<div class="err">JSON error: '+err.message+'</div>';}};
+$('cd').onclick=()=>cp($('desc').value,'dmsg');$('ct').onclick=()=>cp($('tags').value,'tmsg');
+$('ckr').onclick=()=>{try{localStorage.removeItem(CK);}catch(e){}ckRender();};
+const had=restore();ckRender();
+if(!had||!$('chap').value.trim())buildChap(curScenes());else chapMsg('');
+renderTitles();desc();
+window.PUB={buildChap,chapters,titles,label,mmss,starts};window.PUB_READY=true;
+})();
+</script></body></html>

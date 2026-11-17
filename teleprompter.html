@@ -1,0 +1,157 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Script Teleprompter</title>
+<style>
+:root{color-scheme:dark;--fs:44px}
+*{box-sizing:border-box}
+body{margin:0;background:#0b0b0b;color:#eee;font-family:system-ui,sans-serif;font-size:18px;line-height:1.4}
+#setup{max-width:900px;margin:0 auto;padding:12px}
+h1{font-size:22px;margin:6px 0}h2{font-size:19px;margin:16px 0 6px}
+a{color:#7cc4ff}.sm{font-size:14px;opacity:.75}
+textarea{width:100%;height:300px;background:#000;color:#eee;border:1px solid #444;border-radius:8px;padding:10px;font-size:19px;line-height:1.5;font-family:inherit}
+button,.btn{background:#333;color:#fff;border:0;border-radius:10px;padding:10px 14px;font-size:16px;cursor:pointer}
+.red{background:#e11}.grn{background:#2a8a3a}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rec{display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#1b1b1b;border-radius:8px;padding:8px;margin:6px 0;font-size:16px}
+.rec b{min-width:80px}.rec button{padding:6px 11px;font-size:14px}
+#reader{display:none;position:fixed;inset:0;background:#000;z-index:10;flex-direction:column}
+#reader.on{display:flex}
+#top{display:flex;gap:8px;align-items:center;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top));background:#111}
+#top .t{flex:1;text-align:center;font-size:16px}
+#sc{flex:1;overflow-y:scroll;position:relative;-webkit-overflow-scrolling:touch}
+#txt{padding:26vh 22px 60vh;font-size:var(--fs);line-height:1.5;font-weight:600;max-width:1100px;margin:0 auto;color:#f2f2f2}
+#txt.mir{transform:scaleX(-1)}
+#txt p{margin:0 0 .7em}
+#guide{position:absolute;left:0;right:0;top:26%;height:0;border-top:2px dashed #e1133a55;pointer-events:none}
+#bar{background:#111;padding:8px 10px;padding-bottom:max(8px,env(safe-area-inset-bottom));display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
+#bar button{padding:9px 12px;font-size:16px}
+#bar label{font-size:14px;display:flex;align-items:center;gap:4px}
+#bar input[type=range]{width:90px}
+#bar.hide>*:not(#tg){display:none}
+#tm{font-variant-numeric:tabular-nums;min-width:52px;text-align:center}
+.recing{background:#e11;animation:p 1s infinite}@keyframes p{50%{opacity:.6}}
+</style></head><body>
+<div id="setup">
+<div class="row" style="justify-content:space-between"><h1>🎤 Script Teleprompter</h1><a href="index.html">← Video tool</a></div>
+<div class="sm">Script yahan paste karo. Alag voice-over chunks ke beech ek line mein sirf <b>---</b> likho. Phir "Padho" dabao: dark full screen, text bada/chhota, scroll, aur record.</div>
+<textarea id="script" placeholder="Chunk 1 ka script…&#10;&#10;---&#10;&#10;Chunk 2 ka script…"></textarea>
+<div class="row">
+<button class="red" id="go">▶ Padho (full screen)</button>
+<label class="btn">📄 .txt load<input type="file" id="tf" accept=".txt,text/plain" style="display:none"></label>
+<button id="fromcap">📝 Captions wali script lo</button>
+<span class="sm" id="info"></span></div>
+<h2>🎙 Meri recordings</h2>
+<div class="sm">Phone/PC ke browser mein save rehti hain. Video tool mein 🎚 Audio tracks → "🎤 Recordings lo" se seedha chunk 1,2,3 ke order mein lag jaati hain.</div>
+<div id="recs"></div>
+<div class="row"><button id="dlall">⬇ Sab download</button><button id="clrall">🗑 Sab recordings hatao</button></div>
+<div id="err" class="sm" style="color:#f88"></div>
+</div>
+
+<div id="reader">
+<div id="top"><button id="x">✕ Band</button><div class="t" id="ct">Chunk 1/1</div><button id="pv">◀</button><button id="nx">▶</button></div>
+<div id="sc"><div id="guide"></div><div id="txt"></div></div>
+<div id="bar">
+<button id="tg" title="Controls chhupao/dikhao">▾</button>
+<button id="fm">A−</button><span id="fl" class="sm"></span><button id="fp">A+</button>
+<label>🐢<input type="range" id="sp" min="5" max="250" value="40">🐇</label>
+<button id="pl" class="grn">▶ Scroll</button>
+<button id="rc" class="red">⏺ Record</button><span id="tm">0:00</span>
+<label><input type="checkbox" id="rs" checked> record ke saath scroll</label>
+<label><input type="checkbox" id="mr"> mirror</label>
+<button id="fs">⛶</button>
+</div></div>
+
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const KS='cvt_tp_script',KU='cvt_tp_ui';
+let ui={size:44,speed:40,mirror:false,rs:true};
+try{Object.assign(ui,JSON.parse(localStorage.getItem(KU)||'{}'));}catch(e){}
+const saveUI=()=>{try{localStorage.setItem(KU,JSON.stringify(ui));}catch(e){}};
+const err=m=>{$('err').textContent=m||'';};
+// ---------- script / chunks ----------
+const ta=$('script');
+try{ta.value=localStorage.getItem(KS)||'';}catch(e){}
+function chunks(){return ta.value.split(/^\s*(?:---+|===+)\s*$/m).map(s=>s.trim()).filter(Boolean);}
+function info(){const c=chunks(),w=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;$('info').textContent=c.length+' chunk · '+w+' shabd';}
+ta.oninput=()=>{try{localStorage.setItem(KS,ta.value);}catch(e){}info();};
+$('tf').onchange=async e=>{const f=e.target.files[0];if(!f)return;ta.value=await f.text();ta.oninput();e.target.value='';};
+$('fromcap').onclick=()=>{try{const j=JSON.parse(localStorage.getItem('cvt_caps')||'null');if(!j||!j.s){err('Captions mein script nahi mili.');return;}
+  if(ta.value.trim()&&!confirm('Abhi ki script hata kar captions wali daalun?'))return;ta.value=j.s;ta.oninput();err('');}catch(x){err('Captions padh nahi paaye.');}};
+info();
+// ---------- IndexedDB voice store (tool bhi yahi padhta hai) ----------
+function db(){return new Promise((res,rej)=>{const r=indexedDB.open('cvt_voice',1);
+  r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('rec'))r.result.createObjectStore('rec',{keyPath:'chunk'});};
+  r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+async function tx(mode,fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction('rec',mode),s=t.objectStore('rec'),q=fn(s);
+  t.oncomplete=()=>{d.close();res(q&&q.result);};t.onerror=()=>{d.close();rej(t.error);};});}
+const putRec=r=>tx('readwrite',s=>s.put(r)),allRec=()=>tx('readonly',s=>s.getAll()),delRec=n=>tx('readwrite',s=>s.delete(n)),clrRec=()=>tx('readwrite',s=>s.clear());
+const extOf=t=>/mp4|aac/.test(t||'')?'m4a':/ogg/.test(t||'')?'ogg':'webm';
+const fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+function dl(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);}
+let playing=null;
+async function drawRecs(){const box=$('recs');box.textContent='';let L=[];try{L=(await allRec()||[]).sort((a,b)=>a.chunk-b.chunk);}catch(e){err('Recordings padh nahi paaye: '+e.message);}
+  if(!L.length){const d=document.createElement('div');d.className='sm';d.style.margin='6px 0';d.textContent='Abhi koi recording nahi.';box.appendChild(d);return;}
+  L.forEach(r=>{const row=document.createElement('div');row.className='rec';
+    const b=document.createElement('b');b.textContent='Chunk '+r.chunk;const s=document.createElement('span');s.textContent=fmt(r.dur||0)+' · '+Math.round(r.blob.size/1024)+' KB';s.style.flex='1';
+    const mk=(t,fn)=>{const x=document.createElement('button');x.textContent=t;x.onclick=fn;return x;};
+    row.append(b,s,
+      mk('▶ Suno',()=>{if(playing){playing.pause();playing=null;}const a=new Audio(URL.createObjectURL(r.blob));playing=a;a.play();}),
+      mk('⬇',()=>dl(r.blob,'voice_chunk'+r.chunk+'.'+extOf(r.blob.type))),
+      mk('✕',async()=>{if(confirm('Chunk '+r.chunk+' ki recording hatao?')){await delRec(r.chunk);drawRecs();}}));
+    box.appendChild(row);});}
+$('dlall').onclick=async()=>{const L=(await allRec()||[]).sort((a,b)=>a.chunk-b.chunk);if(!L.length){err('Koi recording nahi.');return;}for(const r of L){dl(r.blob,'voice_chunk'+r.chunk+'.'+extOf(r.blob.type));await new Promise(r=>setTimeout(r,400));}};
+$('clrall').onclick=async()=>{if(confirm('Saari recordings hata dun? Wapas nahi aayengi.')){await clrRec();drawRecs();}};
+// ---------- reader ----------
+let cur=0,raf=0,scrolling=false,pos=0,lastSet=0,lastT=0,wl=null,mr=null,rec=null;
+const sc=$('sc'),txt=$('txt');
+function applyUI(){document.documentElement.style.setProperty('--fs',ui.size+'px');$('fl').textContent=ui.size;txt.classList.toggle('mir',!!ui.mirror);$('mr').checked=!!ui.mirror;$('rs').checked=!!ui.rs;$('sp').value=ui.speed;}
+function showChunk(n){const C=chunks();if(!C.length)return;cur=Math.max(0,Math.min(C.length-1,n));
+  txt.textContent='';C[cur].split(/\n+/).forEach(l=>{if(!l.trim())return;const p=document.createElement('p');p.textContent=l.trim();txt.appendChild(p);});
+  $('ct').textContent='Chunk '+(cur+1)+'/'+C.length;sc.scrollTop=0;pos=0;lastSet=0;setScroll(false);
+  const has=rec&&rec.chunk===cur;}
+function setScroll(on){scrolling=on;$('pl').textContent=on?'⏸ Roko':'▶ Scroll';cancelAnimationFrame(raf);if(on){pos=sc.scrollTop;lastSet=pos;lastT=0;raf=requestAnimationFrame(step);}}
+function step(t){if(!scrolling)return;if(!lastT)lastT=t;const dt=Math.min(.1,(t-lastT)/1000);lastT=t;
+  if(Math.abs(sc.scrollTop-lastSet)>2)pos=sc.scrollTop; // user ne haath se hilaya
+  pos+=ui.speed*(ui.size/44)*dt;const max=sc.scrollHeight-sc.clientHeight;
+  if(pos>=max){sc.scrollTop=max;setScroll(false);return;}
+  sc.scrollTop=pos;lastSet=sc.scrollTop;raf=requestAnimationFrame(step);}
+async function keepAwake(on){try{if(on&&navigator.wakeLock&&!wl)wl=await navigator.wakeLock.request('screen');else if(!on&&wl){await wl.release();wl=null;}}catch(e){}}
+async function openReader(){if(!chunks().length){err('Pehle script daalo.');return;}err('');
+  $('reader').classList.add('on');$('setup').style.display='none';applyUI();showChunk(cur);keepAwake(true);
+  try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();}catch(e){}}
+async function closeReader(){if(rec)await stopRec();setScroll(false);keepAwake(false);$('reader').classList.remove('on');$('setup').style.display='';
+  try{if(document.fullscreenElement)await document.exitFullscreen();}catch(e){}drawRecs();}
+$('go').onclick=openReader;$('x').onclick=closeReader;
+$('pv').onclick=async()=>{if(rec)await stopRec();showChunk(cur-1);};$('nx').onclick=async()=>{if(rec)await stopRec();showChunk(cur+1);};
+$('fp').onclick=()=>{ui.size=Math.min(160,ui.size+4);applyUI();saveUI();};$('fm').onclick=()=>{ui.size=Math.max(16,ui.size-4);applyUI();saveUI();};
+$('sp').oninput=e=>{ui.speed=+e.target.value;saveUI();};
+$('pl').onclick=()=>setScroll(!scrolling);
+$('mr').onchange=e=>{ui.mirror=e.target.checked;applyUI();saveUI();};$('rs').onchange=e=>{ui.rs=e.target.checked;saveUI();};
+$('tg').onclick=()=>{const b=$('bar');b.classList.toggle('hide');$('tg').textContent=b.classList.contains('hide')?'▴':'▾';};
+$('fs').onclick=async()=>{try{document.fullscreenElement?await document.exitFullscreen():await document.documentElement.requestFullscreen();}catch(e){}};
+document.addEventListener('keydown',e=>{if(!$('reader').classList.contains('on'))return;
+  if(e.key===' '){e.preventDefault();setScroll(!scrolling);}else if(e.key==='ArrowRight')$('nx').click();else if(e.key==='ArrowLeft')$('pv').click();
+  else if(e.key==='+'||e.key==='=')$('fp').click();else if(e.key==='-')$('fm').click();else if(e.key==='Escape'&&!document.fullscreenElement)closeReader();});
+// ---------- record ----------
+let timer=0;
+async function startRec(){try{
+  const st=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:true,autoGainControl:true}});
+  const types=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];const mt=types.find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t));
+  const m=new MediaRecorder(st,mt?{mimeType:mt}:undefined),parts=[],t0=Date.now();
+  m.ondataavailable=e=>e.data&&e.data.size&&parts.push(e.data);
+  rec={m,st,parts,t0,chunk:cur};
+  m.start(1000);$('rc').textContent='⏹ Stop';$('rc').classList.add('recing');
+  timer=setInterval(()=>{$('tm').textContent=fmt((Date.now()-t0)/1000);},250);$('tm').textContent='0:00';
+  if(ui.rs)setScroll(true);keepAwake(true);
+ }catch(e){err('Mic nahi mila: '+e.message+' (browser mein mic permission do; https/localhost chahiye)');}}
+function stopRec(){return new Promise(res=>{if(!rec){res();return;}const r=rec;rec=null;clearInterval(timer);
+  r.m.onstop=async()=>{r.st.getTracks().forEach(t=>t.stop());const blob=new Blob(r.parts,{type:r.m.mimeType||'audio/webm'});const dur=(Date.now()-r.t0)/1000;
+    try{if(blob.size>0){await putRec({chunk:r.chunk+1,blob,dur,ts:Date.now()});}else err('Recording khaali thi.');}catch(e){err('Save error: '+e.message);}
+    $('rc').textContent='⏺ Record';$('rc').classList.remove('recing');setScroll(false);res();};
+  try{r.m.stop();}catch(e){res();}});}
+$('rc').onclick=async()=>{if(rec){await stopRec();$('tm').textContent='✔ save';}else{
+  const L=(await allRec()||[]).find(x=>x.chunk===cur+1);if(L&&!confirm('Chunk '+(cur+1)+' ki purani recording hai. Nayi se badal dun?'))return;await startRec();}};
+applyUI();drawRecs();
+})();
+</script></body></html>
