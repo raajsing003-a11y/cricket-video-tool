@@ -1,7 +1,7 @@
 name: news-fetch
 on:
   schedule:
-    - cron: "15 */3 * * *"   # har 3 ghante (UTC)
+    - cron: "15 * * * *"   # har 1 ghante (UTC)
   workflow_dispatch: {}        # Actions tab se haath se bhi chala sakte ho
 permissions:
   contents: write

@@ -326,3 +326,513 @@ Dhyan: caption (wide mein y=900) kuch cards ki neeche wali text line par chadh j
 NOT tested: real Chrome export mein naye caption styles; asli video par Rahul ko kaun sa style pasand aata hai.
 Note: YouTube 'repetitious/mass-produced content' ka asli bachav alag script, apni awaaz aur apni analysis hai; ye tool sirf look ki variety deta hai.
 Next: Rahul jo bole (caption overlap fix, intro/outro variety, accent colour cards mein, real Chrome check).
+
+
+## C65 (17 Nov 2026) — Shabd-par-shabd caption highlight
+js/captions.js: 💬 Captions panel mein checkbox 'Shabd-par-shabd highlight' (CAP.wh, localStorage 'cvt_capwh', default OFF). ON hone par line ka jo shabd 'chal raha' hai wo accent rang mein, baaki shabd safed. Shabd ka time = line ke time mein shabd ki lambai (+2) ke hisaab se baanta (line ke 92% tak, taaki aakhri shabd bhi chamke). Sab 5 styles mein chalta (box/line/bar/pop/outline). Whisper jaisi asli word-timing nahi hai; andaza hai, isliye kabhi 1 shabd aage-peeche ho sakta.
+Test: headless chromium, 4 styles x alag time pe frames — active shabd badalta dikha, console errors 0.
+NOT tested: real Chrome export; lambi line (3 lines, short mode 9:16) mein highlight.
+Next: punch-in zoom (keyword/number par 1.15x) ya Brand Kit ya Storyboard review — Rahul se poochho.
+
+
+## C66 (17 Nov 2026) — Punch-in zoom
+Naya js/punch.js (index.html mein captions.js se pehle). PUNCH.set(off|soft|medium|strong) = 0 / 4% / 8% / 15% zoom, localStorage 'cvt_punch', default off. Beats = caption lines + scene shuruaat (.8s se paas wale ek). Har beat par 0.28s mein zoom-in, agle beat par wapas (alternate). Captions zoom nahi hote (C.render wrap CAP se pehle).
+js/looks.js: '🔍 Zoom' dropdown (Look ke baad) + 🎬 Naya Style ab zoom bhi chunta (off/halka/medium, pichla repeat nahi).
+Test: headless chromium — strong par scale 1.15 <-> 1 alternate hota dikha, off par 1, caption zoom nahi hua, console errors 0.
+NOT tested: real Chrome export (C.render hi use hota hai to chalna chahiye), 9:16 short mein dikhne ka tareeka, zoom ke saath transitions.
+Next: Brand Kit ya Storyboard review ya caption overlap fix — Rahul se poochho.
+
+
+## C67 (17 Nov 2026) — Brand Kit (3 slot)
+js/looks.js: '🗂 Kit A/B/C' dropdown + '💾 Kit save' + '📂 Kit lagao'. Ek kit mein: Look preset, caption style + rang + shabd-highlight, zoom level. localStorage 'cvt_kit_A/B/C'. Bg/transition (Auto-vary) kit mein nahi — wo har video mein 🎲 se alag aate (mass-production se bachne ke liye jaanbujhkar).
+Test: headless chromium — look+pop+cyan+highlight+zoom medium save, sab badla, page reload, Kit A lagaya -> sab wapas; khaali Kit B ne sahi message diya; console errors 0.
+NOT tested: real device pe; kit ko JSON file mein export/import (abhi sirf isi browser mein).
+Next: Storyboard review ya caption overlap fix — Rahul se poochho.
+
+
+## C68 (17 Nov 2026) — Caption ki jagah (overlap se bachne ke liye)
+js/captions.js: 💬 Captions panel mein 'Jagah' dropdown — normal / thoda neeche (+58px wide, +90 short) / thoda upar (-95 wide, -110 short). localStorage 'cvt_cappos', default normal. Brand Kit (C67) mein jagah bhi save hoti.
+Test: 8 example scenes par normal vs low screenshot. Nateeja MIXED: 'neeche' hook ("सबसे बड़ी चर्चा में") aur poll ("कमेंट में ज़रूर बताइए") wali text se takrao hataata, lekin kuch scenes ki neeche wali strip ("संभावित: ऑफिशियल सिस्त नहीं") ko dheere dhakta. Koi ek jagah sab scenes ke liye fit nahi — Rahul har video mein dekh ke chune.
+Asli fix agla (agar chahiye): har card type ke liye safe caption y (card ki neeche ki text ke hisaab se) ya card text upar khiskana.
+NOT tested: 9:16 short mein jagah, real Chrome export.
+
+
+## C69 (17 Nov 2026) — Caption AUTO jagah
+js/captions.js: 'Jagah' dropdown mein naya option 'AUTO (scene dekhkar)'. Har scene ke liye ek baar (scene ke ~55% waqt par frame render karke) 4 jagah (wide: y 800/870/930/990; short: 1100/1240/1380/1500) ki 'bheed' pixel gradient se naapi jaati, sabse khaali chuni jaati (normal ke paas wali ko halka fayda). Nateeja scene-index se cache; scenes badalne par reset. Default ab bhi 'normal'.
+Test: 8 example scenes — hook, stat(1), poll, channel-card par takrao kam hua; 'afwah' (scene 5) aur watch(4) card par caption ab bhi text ke upar/paas aati (pehle bhi aati thi). Yaani AUTO madad karta par poora fix nahi. Console errors 0.
+Limit: scene ke beech mein animation se layout badle to ek hi jagah rehti; sirf gradient naapta (text vs texture ka fark nahi jaanta).
+NOT tested: 9:16 short, real Chrome export (export mein bhi C.render chalta, har scene par ek extra render lagta).
+Agla (agar chahiye): card-type-wise haath se tay ki hui safe jagah (afwah/watch cards), ya in cards ka neeche ka text upar khiskana.
+
+
+## C70 (17 Nov 2026) — AUTO jagah behtar (zyada candidates)
+js/captions.js: AUTO ab wide mein 6 jagah (y 780..980, 40px gap), short mein 8 jagah (1060..1480) mein se chunta; normal (900/1240) se door jaane par chhota penalty (door ka matlab = caption bahut idhar-udhar na bhage). Pehle sirf 4 jagah thi.
+Test: 8 example scenes — hook ('सबसे बड़ी चर्चा में'), afwah (caption ab headline bar ke upar photos par), poll, channel — saaf. watch card (scene 4) mein caption ab bhi neeche ke chhote text ke paas; kyunki wo text halka/patla hai aur gradient naap use kam 'busy' maanta. Console errors 0.
+Limit: sirf gradient naapta; patla/halka text miss ho sakta. Asli pakka fix = card type ke hisaab se haath se safe jagah (watch card).
+NOT tested: 9:16 short, real Chrome export.
+
+
+## C71 (17 Nov 2026) — 🗂 Storyboard review
+Naya js/storyboard.js (index.html mein looks.js ke baad). Quick bar mein '🗂 Storyboard' button -> poori screen ka overlay: har scene ki thumbnail (scene ke ~55% waqt ka frame, captions samet), 'N · type · dur', ✅ Theek / ❌ Hatao / 📝 Note. Thumbnail par tap = player wahan seek, overlay band. Upar: '❌ N scene hatao' (confirm ke baad SE.scenes se splice, SE.apply(false); saare scenes nahi hat sakte), '📋 Notes copy' (marks+notes ka text clipboard mein, nahi chale to prompt), '✕ Band karo'. State localStorage 'cvt_sb_wide' / 'cvt_sb_short' (scene index ke hisaab se).
+Test (headless chromium, example_scenes_8.json): 8 cards khule, 2 ❌ mark, 1 note, hatao -> 6 scenes, ↶ Undo -> wapas 8, console errors 0, screenshot dekha.
+Limit: marks scene INDEX se bandhe hain — scenes ke beech mein naya scene jodne par marks khisak sakte (hatao ya notes copy se pehle review dobara kholo). 'Hatao' ke baad sirf wahi scenes hatte, baaki ka transition/timing apne aap theek hota (SE.apply).
+NOT tested: 9:16 short ke thumbnails, 40+ scenes par speed, real phone (prompt() ka note box).
+
+
+## C72 (17 Nov 2026) — Brand Kit file export/import
+js/looks.js: '⬇ Kit file' (saare save kiye kit A/B/C ek brand_kit.json mein download) aur '⬆ Kit file kholo' (file chun ke A/B/C localStorage mein, purane badal jaate). Import mein har field check hoti (look/style/rang/zoom/jagah galat ho to default); galat file par 'ye Brand Kit file nahi hai'. Kit lagane ke liye phir 📂 Kit lagao.
+Test (headless chromium): khaali par sahi message; Kit B save -> download hui, JSON sahi; B hata ke import -> wapas; lagane par line/pink/highlight/low/strong sab aaye; bad.json par error message; console errors 0.
+NOT tested: asli phone/dusre device ke beech transfer; file picker real phone par.
+
+
+## PHASE R (17 Nov 2026) — Explainer-style cards (reference: docs/REFERENCE_EXPLAINER_STYLE.md)
+R-chunks: R1 clip layer, R2 chapter card, R3 kinetic text, R4 bar chart/count-up, R5 quote card, R6 post/screenshot card, R7 icon scene, R8 transitions+sponsor. Abhi sirf plan likha (C73), code nahi. Agla: R1 ya jo Rahul chune.
+- [x] R1  - [x] R2  - [x] R3  - [x] R4  - [x] R5  - [x] R6  - [x] R7  - [x] R8 (sponsor card optional, nahi bana)
+
+## PHASE B (17 Nov 2026) — Video 2 'Dark data investigation' style (docs/REFERENCE_EXPLAINER_STYLE.md, VIDEO 2 section)
+B0 Dark Look, B1 bar compare, B2 calendar, B3 document highlight, B4 dot-map/square grid, B5 count-up, B6 ranked+CLOSED stamp, B7 terminal, B8 cell grid, B9 lower-third+quote, B10 split compare, B11 subscribe pill. Sirf plan (C74). Rahul aur videos dega, phir chunk order tay hoga.
+
+## C75 (17 Nov 2026) — DEEP PASS plan
+Dono reference videos dobara har 8 sec par dekhi + scene-cut. Naye chunks: R9-R19, B12-B23, G1-G4 (docs/REFERENCE_EXPLAINER_STYLE.md 'DEEP PASS'). Code nahi. Final order Rahul sab videos dene ke baad tay karega.
+
+
+## C76 (17 Nov 2026) — Video 3 style plan (sirf plan, code nahi)
+Rahul ne 159067.mp4 (21 min, premium minimal tutorial style) diya. Har 8 sec par 157 frame + scene-cut dekhe (~101 cut, average ~12 sec). Naya: docs/REFERENCE_EXPLAINER_STYLE.md mein 'VIDEO 3' section: V1-V16 scene types, Phase V chunks (V1-V14), helpers G5 (serif-italic accent shabd), G6 (annotation arrows), G7 (split layout presenter+card). Video 4 (159071.mp4, 5 min, 854x480) abhi baaki — agle chat/agle step mein.
+- [x] G5 (C128)  - [x] G6 (C128)  - [x] G7 (C131 `split`) — VIDEO 3 PHASE POORI  - [ ] V-chunks: V3 `bullets` + V4 `phoneann` DONE (C128); V5 `phonewall` + V6 `numgrid` + V7 `compare2` DONE (C129); V8-V14 DONE (C130: `plans` `timelist` `ctapill` `adcard` `uimock` `checklist` `chips`) — V QUEUE POORI; sirf G7 baaki (purana text: plan cards, time-breakdown, CTA pill, product ad, UI-mock, checklist, label chips) + G7
+
+
+## C77 (17 Nov 2026) — Video 4 style plan (sirf plan, code nahi)
+159071.mp4 (5 min, 854x480, Hinglish mobile-tutorial neon icon-card) dekhi: har 4 sec par 77 frame + ~24 cut. docs/REFERENCE_EXPLAINER_STYLE.md 'VIDEO 4': N1-N15 scene types, helpers G8 (spotlight zoom), G9 (pop-in sequencer), G10 (neon glow text). Chaaron videos (R, B, V, N) ka plan ab poora. Agla: Rahul final chunk order tay kare (common G-chunks pehle: G2, G4, G5, G9, R1).
+- [x] G8 (C132)  - [x] G9 (C132)  - [~] G10 (C132: sirf card text helper; caption style mein abhi nahi)  - [x] N1-N8 (C132)  - [x] N9-N12 (C133)  - [x] N13-N15 (C134)
+
+
+## C78 (17 Nov 2026) — Video 5 style plan (sirf plan, code nahi)
+159073.mp4 (22 min, 640x360, purple-glow faceless-channel tutorial) dekhi: har 12 sec par 111 frame + ~150 cut. docs/REFERENCE_EXPLAINER_STYLE.md 'VIDEO 5': P1-P20 scene types, helpers G11 (Purple Glow Look), G12 (typewriter), G13 (connector line), G14 (blur toggle), G15 (falling particles). Paanchon videos (R, B, V, N, P) ka plan poora. Agla: Rahul final chunk order tay kare (suggested: G2, G4, G5, G9, G11, R1 pehle), phir sirf ek chhota chunk.
+- [ ] G11  - [ ] G12  - [ ] G13  - [ ] G14  - [ ] G15  - [ ] P-chunks (P1-P20)
+
+
+## C79 (18 Nov 2026) — Rahul ke 20 green-screen graphics assets mein (code nahi)
+Hara bg + magenta screen alpha se hataye (unmix, kinaare saaf), Gemini sparkle watermark hataya, khaali margin kaata, webp max 1920. 06_icons (7), 08_gemini_generated/objects (2), naya 15_ui_mockups (11). Media bin mein 15_ui_mockups apne aap dikhta hai. manifest 220 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Laptop/TV/phone ki screen TRANSPARENT: peeche clip/photo rakhne par screen mein dikhega.
+Notes: icon_mic_crossed_price_tag aur boom arm wali mic ki arm original image mein frame se kati hai. ui_list_rows_dark ke upar ka blur glow strip hata diya. Ye abhi sirf assets; kaun si scene/card mein lagana hai (G-chunks / P-scenes) Rahul batayega.
+
+
+## C80 (18 Nov 2026) — Rahul ke 20 green-screen graphics (2nd batch) assets mein (code nahi)
+19 naye assets (icon tiles 16 + card backs 3). Duplicate skip: magic wand 2 baar aaya (pixel-identical) -> ek hi rakha. Hara bg alpha se hataya (kinaare unmix), tile ke andar asli rang rakhe (hare neon tile hare hi dikhte hain), Gemini sparkle hataya, margin kaata, webp. manifest 239 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla; scene/card mein kahan lagana hai Rahul batayega.
+Note: tiles ke andar halka hara tint original glass look ka hissa hai; card backs par beech khaali hai (text/photo upar rakhna).
+
+
+## C81 (18 Nov 2026) — Rahul ke 18 assets (3rd batch) mein (code nahi)
+8 green-screen (hara hataya, transparent): bat tile + 7 silhouettes (naya 16_silhouettes) aur 10 backgrounds (3 portrait Short 9:16, 7 wide). Gemini sparkle sab se hataya (paper par texture-clone, baaki inpaint). Backgrounds max 1920 webp, portrait 1080x1936. manifest 257 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: sil_crowd_cheering_yellow bahut patli patti (1920x451) hai, stretch karke lagana. Silhouettes ek rang ki hain (peeli/neeli); rang badalna ho to tool mein tint chahiye (abhi nahi). bg_stadium_topview_night_pitch real-photo jaisa dikhta hai, upload se pehle source/license ek baar dekh lo.
+
+
+## C82 (18 Nov 2026) — Rahul ke 20 green-screen graphics (4th batch) assets mein (code nahi)
+19 add (hara hataya, transparent webp, sparkle hataya): 08_gemini_generated/objects = calendar_blank_perspective, stopwatch_silver, padlock_gold, pie_chart_3d_blue, handshake_blue_icon, ticket_blank_vintage, stadium_seats_row_yellow_blur; 03_stamps/stamp_closed_red_grunge; 15_ui_mockups = 8 pill buttons (blue/yellow glossy glow, red glossy motion, green dark glass, red/green glass tilted, yellow/blue 3d), toggle off grey, toggle on blue, btn_round_yellow_gold_rim. SKIP: glass layers stack (translucent, dhabbe aa rahe the). Note: ticket aur peela glossy pill ke neeche bahut halke dhabbe reh sakte hain; red motion pill mein upar ka blur echo original ka hissa hai. Manifest 276 keys, MASTER_INDEX + index_data.js update.
+
+
+## C83 (18 Nov 2026) — Rahul ke 13 assets (5th batch) mein (code nahi)
+11 add: 06_icons = cross_red_coin_3d, check_green_glass_coin_3d, arrow_white_curved_hand, arrow_white_straight, subscribe_3d_bell, question_marks_3d_blue_glow; 15_ui_mockups/btn_rect_red_3d_tilted; 02_overlays = paper_torn_yellow_strip, chevrons_yellow_triple; 08_gemini_generated/fx = fx_light_leak_orange_black, fx_lens_flare_white_black (kala bg, sparkle hataya, 1920 wide, Screen/Add blend se). SKIP (keying kharab): split yellow panels, blue ink splat. Manifest 287 keys.
+
+
+## C84 (18 Nov 2026) — Rahul ke 16 assets (6th batch) mein (code nahi)
+14 add (hara hataya, transparent, sparkle inpaint): NAYA 17_halftone_portraits (4), NAYA 18_maps (india dots cyan, india states blue, cricket field diagram), NAYA 19_presenter (point_left, point_right, mic_plaid, hands_open_explain, fingers_v_connect, arms_crossed_grey), 15_ui_mockups/ui_polaroid_trio_blank. SKIP: world dots map (dhundhla haze), presenter phone (upar noise). Manifest 301 keys.
+
+
+## C85 (18 Nov 2026) — Rahul ke 20 assets (7th batch, C84 ka dobara) mein (code nahi)
+20 images mein se 14 pehle se C84 mein the (duplicate, skip). 6 naye add (hara hataya, transparent webp, sparkle hataya): 18_maps/map_world_dots_cyan (C84 mein dhundhla tha, ab saaf), 19_presenter/presenter_phone_plaid (phone wala pose, ab upar noise nahi dikha) + presenter_hands_open_explain_2, NAYA 20_cartoon_presenter (cartoon_wave, cartoon_point_left, cartoon_chin_think; kaali t-shirt wala cartoon host). Manifest 307 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: cartoon_point_left aur cartoon_chin_think mein sparkle haath par tha, inpaint kiya; haath ke kinare par bahut chhota dhabba reh sakta hai. Cartoon host ka bottom image se kata hai (kamar tak), neeche screen ke kinare par rakhna.
+
+
+## C86 (18 Nov 2026) — Rahul ke 20 assets (8th batch) mein (code nahi)
+Sab 20 add (koi skip nahi): 3 cartoon host poses (phone, khaali board, thumbs up) -> 20_cartoon_presenter; 4 fx overlays (dust, neela bokeh, dhuan, reshe-jaal; kala bg, Screen/Add blend) -> 08_gemini_generated/fx; 2 bg (neela radial glow wide + portrait 9:16) -> 01_backgrounds; 15_ui_mockups: 4 avatar circles (neela/peela/narangi/teal), settings panel, video player (jamuni screen), profile card, btn_pill_blue_lock; 06_icons: emoji bored + smile, stars 4/5. Hara bg alpha se hataya (kinaare unmix), Gemini sparkle hataya (cartoon par inpaint, baaki corner saaf), webp max 1920. Manifest 327 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: avatars/emoji ke aas-paas halka safed glow alpha mein hai (original ka hissa). Shadow wale panels (settings/profile/video) ke neeche halki parchhai transparent kaali hai. fx_smoke/fibre ke corner mein sparkle ki jagah thoda patch ho sakta hai (screen blend mein dikhega nahi).
+
+## C87 (18 Nov 2026) — Rahul ke 20 assets (9th batch) mein (code nahi)
+Sab 20 add (koi skip nahi): 5 stamps (INJURY UPDATE, NEW CAPTAIN, SQUAD OUT, SOLD gold, UNSOLD) -> 03_stamps; 5 number coins 1-5, shield+tick, gauge meter, idea-bulb glass tile -> 06_icons; 2 red neon grid bg (wide + portrait 9:16) -> 01_backgrounds; blank blue V-neck jersey -> objects; points table, notification card, document+pen -> 15_ui_mockups; India map + 12 pins -> 18_maps. Hara bg alpha se hataya (stamps ke andar ke hare hisse bhi), sparkle hataya, webp max 1920. Manifest 347 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: shield aur coins ke aas-paas halka glow alpha mein hai (original ka hissa; shield ka glow teal-neela). Points table / notification card glass ke neeche halki kaali parchhai hai. Red bg ke bottom-right corner mein sparkle ki jagah halka patch ho sakta hai. Coin 1-5 alag files hain (6+ chahiye to Gemini se aur banwao).
+
+## C88 (18 Nov 2026) — Rahul ke 15 assets (10th batch) mein (code nahi)
+Sab 15 add (koi skip nahi): 6 icons (burst 6/4/W, coin 100 laurel, highlight circle, wave scribble), 5 objects (auction paddle, akhbaar, siren, podium 1-2-3, megaphone), 2 fx (sparkle stars, red glitch scanlines; kala bg, Screen/Add blend), 2 bg (khaali stadium portrait 9:16, gold silk frame). Hara bg alpha se hataya (circle/scribble ke andar ke hare hisse bhi), sparkle hataya, webp max 1920. Manifest 362 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: siren ke chaaron taraf ka glow halka olive/hara dikh sakta hai (original glow hare par tha). Glitch fx ke corner mein sparkle ki jagah halka patch ho sakta hai (Screen blend mein dikhega nahi). bg_portrait_stadium_night_empty_blue real-photo jaisa hai, upload se pehle source/license ek baar dekh lo.
+
+## C89 (18 Nov 2026) — Rahul ke 13 assets (11th batch) mein (code nahi)
+Sab 13 add (koi skip nahi): 5 icons (coin NR/L/W, sun glass tile, chat bubbles), 2 objects (khaali tarazu, khaali sunehra coin tirchha), 5 ui (VS compare panel, 3-circle panel, TV pitch ball path, list 1-11, list 5 row), 1 map (pitch length zones). Hara bg alpha se hataya, glass panels ke andar ka rang rakha, sparkle hataya, webp max 1920. Manifest 375 keys (sab files maujood), MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: ui_list_rank_1to11_glass_dark mein ank 7 ki jagah nahi hai (1-6, 8-11, original Gemini image mein hi aise tha) — text ke upar apna ank lagana ho to numbers chhupane padenge ya naya Gemini image banwao. Sun tile aur W coin ke aas-paas halka glow/olive kinara original ka hissa hai. Compare panel mein 6 row hain (bars neela vs narangi).
+
+## C90 (18 Nov 2026) — Rahul ki 10 asli green-screen photos (12th batch) assets mein (code nahi)
+Sab 10 add (koi skip nahi, koi duplicate nahi): 19_presenter mein presenter_standing_dark_grey, standing_light_grey, thumbs_both_cream, thumb_left_cream, hands_talk_plaid, wave_plaid, thumbs_up_plaid, point_both_plaid, thumbs_up_blue_stripe, thumbs_up_white_shirt. Hara bg chroma-key se hataya (edges despill), transparent webp, max 2250 lambai. Manifest 385 keys, MASTER_INDEX + index_data.js + README update. Code nahi badla.
+Notes: standing_* aur cream/blue/white photos neeche se kati hain (kamar/jeans tak), screen ke neeche kinare par rakho. hands_talk_plaid neeche seedhi kati hai. Haath par nishaan asli photo ka hissa hai. Short 9:16 ke liye presenter wide card nahi chalta, in photos ko bg/photo slot mein lagao.
+
+## C91 (18 Nov 2026) — Panel resize: left width, right width, timeline height (js/filmora_shell.js)
+Rahul ne kaha: sab panel ki width/height drag karke apne hisaab se kar sake. Pehle sirf timeline height handle tha. Ab 3 handle: left panel ke kinare (#rs-l), right panel ke kinare (#rs-r), timeline ke upar (#tl-rs). Pointer events = mouse + touch dono. Handle 12px mota, hover par hara. Min/max limit (left 200-60%, right 180-50%, timeline 120-70%). Size localStorage mein yaad (cvt_lw, cvt_rw, cvt_tlh). Double-click handle = reset. Preview apne aap fit hota hai. Test: node --check OK, headless chromium drag (410->560, 262->382, 284->384), reload par wahi size, dblclick reset, console errors 0.
+
+## C92 (18 Nov 2026) — PLAN: Video 6 (159304.mp4, navy-blue glass-card tutorial) docs mein joda (pehle C79 naam se adhura tha) — sirf plan, code nahi
+Plan file docs mein kabhi merge nahi hui thi. Ab: docs/REFERENCE_EXPLAINER_STYLE.md 'VIDEO 6' (Y1-Y48 scene types, G16-G22 helpers, rhythm rules, cricket mapping), docs/GEMINI_PROMPTS_PHASE_RVN.md section Y (Y-A1..Y-C9), original file docs/VIDEO6_PLAN_C79.md. Gemini assets check: 9 mein se 7 pehle se library mein; sirf Y-C3 (sign-in card) + Y-C4 (before/after thumbnail pair) baaki.
+Phase Y queue (ek chat = ek chunk): 
+- [x] G16 Header-line + peela shabd (C93 DONE)
+- [x] G17 Navy Glow Look preset (C94 DONE)
+- [x] G20 Pill row component (C95 DONE)
+- [x] G21 Curve-draw chart helper (C96 DONE)
+- [x] G18 3D-tilt list/stack card (C97 DONE)
+- [x] Y3 Chapter list (3D, progress tick) (C103, 📚 Chapter flow button)
+- [x] Y10 Chapter title banner (C98 DONE)
+- [ ] Y5 / Y6 Growth curve + two-curve compare
+- [x] Y14 Dot-crowd grid (C99 DONE)
+- [x] Y19 / Y20 Two big words + 3 question cards (C100 DONE)
+- [x] G19 Highlight-box + cursor -> Y23 screen-record (C101, `spot` card)
+- [x] G22 / G1 Carry-over sequencer (C102, `carry` chip — pehla version)
+- [ ] baaki Y chunks (Y1, Y2, Y4, Y8, Y11-Y13, Y15, Y16, Y18, Y22, Y26-Y48) baad mein (Y21 = C104 `compare`; Y9 + Y24 = C105 `tiles` + `levels`; Y7 + Y25 = C106 `chip` + `options`; Y17 = C107 `stat2`; Y16 + Y18 = C108 `bars` + `dash`; Y15 + Y12 = C109 `trio` + `rating`; Y8 + Y13 = C110 `portrait` + `phone`; Y11 + Y2 + Y4 = C111 `market` + `comments` + `timeline`; Y22 + Y30 = C112 `hub` + `search`; Y31 + Y32 = C113 `formula` + `beforeafter`; Y26 + Y27 + Y28 = C114 `setting` + `radio` + `ideas`; Y29 + Y33 = C115 `reel` + `phones`; Y34 + Y35 + Y36 = C116 `gcurve` + `steps` + `expect`; Y37 + Y38 + Y39 = C117 `equals` + `payoff` + `tickgrid`; Y40-Y48 = C118 `variety` + `vsvlog` + `energy` + `bestlast` + `locked` + `longstat` + `offer` + `products` + `endscreen` ho gaye — Y1 = C119 `burst`; Y queue POORI)
+Suggested common order (Rahul tay karega): G2, G4, G5, G9, G11, G16, G17, R1 pehle.
+
+## C93 (18 Nov 2026) — G16: Header line (upar) + *peela shabd*  (js/header_line.js, captions.js, core.js, scenes_check.js, filmora_shell.js, scene_editor.js, index.html)
+Naya: scene mein top-level `"header":"Aaj ki *badi* khabar"` (chunk jaisa field). Upar glass pill mein chhoti line, `*shabd*` peela (#F5C518), baaki safed; 2 line tak (70 akshar ke andar). Fade-swap: scene shuru par 0.1-0.5s fade-in (thoda upar se utarta), aakhir mein fade-out; agle scene ki header bilkul same ho to bina fade chalti rehti hai (ek beat = ek header, kai scenes). Wide: y~70 (2 line ho to canvas se na chipke), Short 9:16: y~250 (YouTube UI safe zone ke neeche).
+Captions mein bhi `*shabd*` = peela (box/bar/line style mein safed text par peela; outline/pop style mein accent text par safed shabd). Caption panel/timeline mein `*` chhupa kar dikhta hai.
+Controls: right panel mein `🔤 Header line: ON/OFF` (yaad rehta hai, cvt_hdr); Properties (Filmora) mein `🔤 Header line (upar)` text box; classic editor mein bhi. Validator: header string hona chahiye, >70 akshar warn, * jodi mein warn. Helper `CORE.starWords(str)` -> [{w,hl}].
+Test: node --check sab OK; headless chromium: wide 1-line + 2-line, same-header 2 scenes, ON/OFF, Short 9:16, captions yellow keyword, console errors 0.
+Notes: header card ke upar ka hissa dhakta hai (hook/stat ke upar wale text/ribbon se takra sakta hai) — jahan jagah na ho wahan scene par header mat do ya OFF karo. Export mein header apne aap aata hai (C.render). Script chat ko `header` field SCENES_JSON_SCHEMA.md se pata chalega.
+
+## C94 (18 Nov 2026) — G17: 🌊 Navy Glow Look preset (js/looks.js, js/fx_pro.js)
+Naya 6th Look `navy` (🌊 Navy Glow): gehra navy + beech mein halka neela radial glow + kinaare dark vignette (purple nahi, blue). Polish halka (vignette .55, grain .03, leak/smoke/dust 0, shake .3). Colour look `navy` (fx_pro.js: neela soft-light tint + screen glow + multiply vignette) FX dropdown mein '🌊 Navy glow' naam se bhi alag se lag sakta hai. Bg pool (Auto-vary ke liye): bg_blue_radial_glow_dark, bg_blue_gradient_glow, bg_dark_gradient_blue_glow_bottom, bg_black_blue_gradient, bg_navy_plain, bg_blue_light_streaks_particles, bg_contour_bokeh_blue_wide. Transitions kam aur soft: fade, push, slideup, blurfade, zoom (video 6 mein hard cut bahut kam). 🎬 Naya Style aur 🎲 Auto-vary mein navy apne aap shamil (LOOKS se). Brand Kit save/load mein bhi chalta hai.
+Header line (G16) ke saath mel: glass pill navy par achha dikhta hai. Glass card/pill ka alag component G20 (pill row) mein aayega.
+Test: node --check OK, headless chromium: LOOKSET.apply('navy') -> FX.look=navy, vary (5 bg + 7 transition), 4 frames dekhe (navy bg, header pill, cards), console errors 0.
+Notes: Auto-vary abhi sirf wide bg pool use karta hai; Short 9:16 ke liye portrait navy bg (bg_portrait_blue_radial_glow_dark, bg_portrait_blue_light_beams_dark) alag se manually lagao. Title/retain/intro cards apna team-colour/paper bg rakhte hain (Look nahi badalta). Zaroorat ho to Look ka glow kam/zyada karna fx_pro.js 'navy' block mein (.16 = glow, .30 = tint).
+
+## C95 (18 Nov 2026) — G20: Pill row component (js/pill_row.js, scenes_check.js, filmora_shell.js, scene_editor.js, index.html)
+Naya: scene mein top-level `"pills":[{"t":"Sahi baat","c":"g"},{"t":"Afwah","c":"r"}]` (ya sirf text = grey). 1-3 glass pill ek line mein (rang ka dot + safed text), ek-ek karke pop-in (0.18s gap), aakhir mein fade-out. Rang: g hara, r laal, y peela, x grey. `pillsPos`: top (default, header ke neeche; wide y190, short y410) / mid / low (caption ke upar). Zyada lambe pill apne aap chhote ho jaate hain (1700px / Short 980px ke andar).
+Controls: right panel mein `💊 Pills: ON/OFF` (yaad rehta hai, cvt_pills); Properties (Filmora) mein `💊 Pill row` text box (`Sahi|g ; Galat|r ; Shayad|y`) + `Pill jagah` dropdown; classic editor mein bhi. Validator: list hona chahiye, >3 warn, text khali err, >24 akshar warn, rang galat warn, pillsPos galat warn.
+Test: node --check sab OK; headless chromium: wide 3 pills + header, Short 9:16, text-only pill, parse/str round-trip, console errors 0.
+Notes: Short 9:16 mein header (y250) kuch cards ke upar wale text se takrata hai (C93 wali baat), pills uske neeche aate hain. Pills card ke upar overlay hain, isliye hook/stat jaise bhare cards par `low` mat lagao (text se takra jaata hai); `top` ya `mid` use karo. Agla: G21 curve-draw chart, G18 3D-tilt list.
+
+## C96 (18 Nov 2026) — G21: Curve-draw chart card `curve` (js/card_curve.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `curve`: 1-2 curve ek-ek karke banti hain (smooth Catmull-Rom, area gradient, glow, pulse wala end-dot), glass panel, x-axis labels, curve ke end par label, `mark` bubble (peak/dip) jab curve wahan pahunche. Data: `title, xl[], y1 ("5,12,40,90" ya list), l1, c1 (g/r/y), mark1 ("3:Peak"), y2, l2, c2, mark2, note, ymin, ymax, bg`. Dono curve ek hi y-scale par. Helper `CORE.curveSpec(data)`.
+Editor: Scenes panel type list mein `curve` (default sample ke saath); Properties mein sab field text box ban jaate hain (y1/y2 string rakhe taaki edit ho sake). Validator: y1 mein 2+ number (err), >12 point warn, xl list, c1/c2 g/r/y, mark `3:Peak` format.
+Test: node --check sab OK; headless chromium: 2 curve (green growth vs red spike) frame 1.6s aur 5.5s dekhe, label/bubble takrao theek kiye, console errors 0.
+Notes: Sirf wide (Short 9:16 ke liye curve card abhi nahi). Background default bg_blue_radial_glow_dark hai par Look/FX ke kaaran test mein kaala-sa dikha; `bg` field se badal sakte ho. Rumour ka graph ho to label/note mein 'Rumour' likho. Agla: G18 3D-tilt list.
+
+## C97 (18 Nov 2026) — G18: 3D-perspective list card `stack` (js/card_stack.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `stack` (Video 6 ka Y2/Y3 chapter list): rows upar chhoti, neeche badi (perspective jaisa), ek-ek karke slide-pop, halka sway. Ek row highlight (peela glow border + zoom), uspar `pill` label; baad mein `done` rows par blue tick pop (stagger), `mark` rows par peela circle. Data: `title, items[2-9], hl (1 se), pill, done "1,2,3", mark "6,7", bg`.
+Editor: type list mein `stack` (sample ke saath), Properties mein items textarea (ek line = ek row). Validator: items 2+ (err), >9 / >40 akshar warn, hl range warn.
+Test: node --check OK; headless chromium 9 rows, highlight+pill+ticks+circles dekha, console errors 0.
+Notes: asli 3D nahi, 2D scale se perspective ka bhram (kaafi). Sirf wide. Video mein 3 baar aane wale chapter list ke liye same items rakho aur `hl/done` badlo (3 scenes). Agla: Y10 chapter title banner ya Y3 jaisa flow.
+
+## C98 (18 Nov 2026) — Y10: Chapter title banner card `chapter` (js/card_chapter.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `chapter`: beech mein peeli patti (glow) left se kheenchti hai, andar number box (`02`) + chapter naam (kaala bold), upar glass lock-pill (chhoti line, peela lock icon canvas se bana). Aakhir mein fade-out. Data: `title (zaruri), num, pill, lock (false = icon nahi), bg`. `num` ya `pill` khali ho to wo hissa nahi dikhta.
+Editor: type list mein `chapter` (sample ke saath), Properties mein sab fields. Validator: title chahiye (err), num >3 akshar warn.
+Test: node --check OK; headless chromium: num+title+pill frame dekha, bina num/pill/lock wala Hindi title bhi render, console errors 0.
+Notes: Sirf wide. Chapter list (stack) -> chapter banner -> content ka flow Y3/Y10 jaisa banta hai. Agla: Y5/Y6 growth curve presets, Y14 dot-crowd grid.
+
+## C99 (18 Nov 2026) — Y14: Dot-crowd grid card `crowd` (js/card_crowd.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `crowd`: `total` (10-200, default 100) chhote avatar (sir+kandhe) dots ki grid wave mein pop-in (20 columns; <=60 ho to 10), phir `hi` dots (default 10, scatter = poori grid mein bikhre, `scatter:false` = shuru ke) peele glow mein ek-ek karke pop, phir neeche glass card (`label` bada + `sub`). Card grid ke neeche aata hai taaki dots na dhake. `c` rang y/g/r, `title`, `bg`. Helper `CORE.crowdPick(total,hi,scatter)`.
+Editor: type list mein `crowd` (sample ke saath). Validator: total range warn, hi > total err, c warn.
+Test: node --check OK; headless chromium 100 dots + 10 highlight + card frame dekha (pehle card dots par aa raha tha, neeche kiya), console errors 0.
+Notes: Sirf wide. Y5/Y6 growth curve ke liye alag preset nahi banaya: C96 ka `curve` card hi (1-2 curve, mark, x-labels) wahi kaam karta hai. Agla: Y19/Y20 two big words + 3 question cards, ya G19 highlight-box + cursor.
+
+## C100 (18 Nov 2026) — Y19 + Y20: `bigwords` aur `qcards` cards (js/card_words.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Do chhote wide card ek file mein.
+`bigwords` (Y19): do bade shabd (`a`, `b`, rang `ca`/`cb` y/g/r/b/w, glow, pop) beech mein `join` (default `+`, 'vs' bhi), neeche 0-3 numbered glass pills (`pills`), optional `title`. Shabd lambe hon to font apne aap chhota.
+`qcards` (Y20): 2-3 numbered glass sawal cards (`qs`, 60 akshar tak, 4 line tak wrap) ek-ek karke aate hain, `hl` (1 se) wale card par peela glow border + halka zoom. `title` optional.
+Editor: type list mein dono (samples ke saath). Validator: a/b dono chahiye (err), qs 2+ (err), >3 / lambe warn, rang/hl range warn.
+Test: node --check OK; headless chromium: 'CTR + Watch time' + 2 pills, 3 sawal cards + hl=2, console errors 0.
+Notes: Sirf wide. Y5/Y6 ke liye curve card (C96) kaafi hai. Agla: G19 highlight-box + cursor -> Y23 screen-record, ya G22/G1 carry-over sequencer.
+
+## C101 (18 Nov 2026) — G19 -> Y23: Highlight-box + cursor card `spot` (js/card_spot.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `spot`: screenshot/screen-record par ek hissa highlight. Screenshot panel pop-in -> baaki hissa dim -> peela rectangle (glow) perimeter ke saath draw -> halka zoom box ki taraf -> cursor neeche se aakar box ke andar click (ripple). Neeche peela `label` + glass `pill`. Data: `title, shot (photo slot naam jaise custom_signin, ya asset path; khali = browser window mock), box "x,y,w,h" (0-1, shot ke hisse mein), cursor (true), click (true), zoom (1-2.2, default 1.35), label, pill, bg`. Helper `CORE.spotBox(str)`.
+Editor: type list mein `spot` (sample ke saath), Properties mein sab fields (shot par photo-slot datalist). Validator: box galat/bahar = err, zoom range warn, lambe title/label/pill warn.
+Test: node --check sab js OK; headless chromium (http.server + playwright): 4 frame + 2nd scene (zoom 1.8, cursor off) dekhe; zoom mein title ke upar chadhta tha -> clip lagaya; spotBox valid/invalid check; console errors 0.
+Notes: Sirf wide. Sensitive cheez (email/naam) screenshot mein pehle blur karke upload karo (tool mein blur nahi). Box screenshot ke kinare ho to zoom par panel ka kinara dikhta hai (theek). Asli screen-record (video) nahi, sirf screenshot (R1 video layer baaki). Agla: G22/G1 carry-over sequencer, Y3 chapter list flow, ya real Chrome / Short phone check — pehle Rahul se poochho.
+
+## C102 (18 Nov 2026) — G22/G1: Carry-over chip `carry` (js/carry.js, index.html, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Scene mein top-level `"carry":{"id":"k1","t":"CTR","c":"y","pos":"0.5,0.5","s":1}`. Agle scene mein SAME `id` (nayi `pos` / `s` / `t` / `c`) likho to chip cut ke bina glide + resize hota hai (0.05-0.75s, ease in-out; text aadhe raste par badalta hai). Pehle scene mein pop-in; agle scene mein id na ho to aakhir mein fade-out. Transition (fade/whip) ke dauran bhi chip ek hi baar draw hota hai. `pos` = canvas ke fraction (center), `s` 0.5-3, `c` y/g/r/b/w. Wide aur Short dono mein chalta hai (fraction hain).
+Controls: right panel `🔗 Carry chip: ON/OFF` (yaad rehta hai, cvt_carry); Properties (Filmora) mein `🔗 Carry chip` text box: `id|text|x,y|rang|size`. Classic editor mein field nahi (JSON se likho). Helper `CARRY.parse/str/pos`.
+Validator: carry object + id + t zaruri (err), pos galat = err, c / s range warn, t >24 akshar warn, agle scene mein bilkul same carry = warn (glide nahi dikhega).
+Test: node --check sab OK; headless chromium: bigwords -> qcards (fade transition) mein chip (0.2,0.82 y) -> (0.8,0.15 g, s1.4) beech raaste ka frame dekha, bina carry wala scene, parse/str round-trip, galat pos validator err, console errors 0.
+Notes: Ye PEHLA, chhota version hai: sirf ek CHIP carry hota hai (card ke asli element morph nahi: jaise stack ki row -> chapter banner). Rang seedha naye scene ka ho jaata hai (glide mein blend nahi). Card ke element morph ke liye alag chunks (G1 poora) baad mein. Agla: Y3 chapter list flow, real Chrome / Short phone check — pehle Rahul se poochho.
+
+## C103 (18 Nov 2026) — Y3: Chapter flow button (js/chapter_flow.js, index.html)
+Right panel mein `📚 Chapter flow` (wide mode). Chapter ke naam `;` se alag (2-9) do -> har chapter ke liye 2 scene: `stack` (poori list, is chapter par highlight `hl`, pichhle chapters par tick `done`) + `chapter` banner (num 01, 02..). Fade transition, stack 4s, banner 3s; scenes list ke aakhir mein jud jaate hain (khaali list ho to pehle scene par transition nahi). Naya card code nahi, C97 `stack` + C98 `chapter` ka flow. Pure function `CF.build(names,{listTitle,pill,stackDur,chapterDur,tr})`.
+Test: node --check OK; headless chromium mein asli button click (prompt: 'Hook ; Retention ; Thumbnail'): 6 scenes (stack,chapter x3), hl/done = 1:'' 2:'1' 3:'1,2', num 01/02/03, validator errors 0, total 18.5s, console errors 0.
+Notes: Sirf wide. Baad mein chapter ka content scene in do ke beech khud daalna hai (ya Scenes panel se). Short mode mein nahi. Agla: real Chrome / Short phone check, ya R1 video clip layer — pehle Rahul se poochho.
+
+## C104 (18 Nov 2026) — Y21: Compare card `compare` (js/card_compare.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `compare`: do glass column (header `la` / `lb` rang-patti ke saath), har row par hara tick ya laal cross, rows ek-ek karke slide-pop (left column pehle, phir right). Data: `title, la, lb, a[1-6], b[1-6], ma (tick|cross, default tick), mb (default cross), ca, cb (y/g/r/b, default g / r), bg`. Dono tick (`mb:'tick'`) ya do rang bhi chalte hain (Facecam vs Faceless). Rows kam hon to panel chhota; 6 tak. Helper `CORE.compareRows(d)`.
+Editor: type list mein `compare` (sample: पक्की खबर vs अफवाह), Properties mein a/b/la/lb sab fields (list = ek line ek row). Validator: a/b dono chahiye (err), 6 se zyada warn, line >40 akshar warn, ma/mb galat warn.
+Test: node --check sab OK; headless chromium: 3 vs 4 rows frame dekha (Hindi text, tick/cross glow theek), 1 vs 2 row + dono tick + blue/yellow, validator (b khali = err, sahi = 0 err), console errors 0.
+Notes: Sirf wide. Rumour label wale video mein 'पक्की खबर vs अफवाह' jaisa comparison naye facts ke bina sirf checklist ki tarah use karo (niyam 7). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y chunks (Y7 brand chip, Y9 3 tile row, Y24 level list...) — pehle Rahul se poochho.
+
+## C105 (18 Nov 2026) — Y9 + Y24: `tiles` aur `levels` cards (js/card_tiles.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Do chhote wide card ek file mein (Rahul ne "next 2" kaha).
+`tiles` (Y9): 2-6 glass tile (4 se zyada ho to 2 line), ek-ek pop. `items` ki har line `label|pill|icon` (pill, icon optional; icon = asset path jaise 06_icons/icon_bat; khali = number circle). Pill ka rang `c` (y/g/r/b, default g), neeche `banner` peela pill, `title` optional.
+`levels` (Y24): 2-6 pill-rows (number circle + naam) left se slide; `done` "1,2" = hara tick pop, `lock` "3" = grey taala + dim text, `hl` = peela glow border, neeche `pill` ("To unlock: ..."). `title` optional.
+Editor: type list mein dono (samples ke saath), Properties mein items textarea (ek line = ek row/tile). Helpers `CORE.tileItems`, `CORE.levelSet`. Validator: items 2+ (err), 6 se zyada / label >34 akshar warn, levels `hl` range warn, tiles `c` warn.
+Test: node --check sab OK; headless chromium: tiles (2 asset icon + 1 number circle + 3 green pill + banner), levels (tick/lock/hl + pill) frame dekhe, 5-tile list validator 0 err, items 1 = err, console errors 0.
+Notes: Sirf wide. Tile pill mein ₹/number sirf asli confirmed ho to (niyam 7). Icon sirf assets/ se (photo slot icon nahi). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y chunks (Y7 brand chip, Y25 3 option cards...) — pehle Rahul se poochho.
+
+## C106 (18 Nov 2026) — Y7 + Y25: `chip` aur `options` cards (js/card_options.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Do chhote wide card ek file mein (Rahul ne "koi bhi" kaha, to dono pending chhote chune).
+`chip` (Y7): beech mein bada rounded chip: icon (ya pehla akshar circle) + `name` bada + `by` chhoti rangeen line; pop-in, halka float. Lamba naam apne aap chhota hota hai. Data: `name` (zaruri, 28 tak), `by`, `icon` (asset path), `c` y/g/r/b, `title`, `bg`. Generic chip, kisi company ka logo nahi.
+`options` (Y25): 2-4 glass option cards (icon/number + `title` + chhoti `line`), ek-ek pop; `items` ki har line `title|line|icon`; `hl` (1 se) peela border; neeche 0-2 pill `text|rang` (y/g/r/b/x grey), do pill ek line mein beech mein. Helpers `CORE.optItems`, `CORE.optPills`.
+Editor: type list mein dono (samples ke saath), Properties mein items/pills textarea (ek line = ek item). Validator: chip name (err), options items 2+ (err), 4 se zyada / pills 2 se zyada / hl range warn.
+Test: node --check sab OK; headless chromium: options (icon + 2 number circle + hl + 2 pill) aur chip (icon wala + lamba naam wala) frame dekhe, galat data par validator err, console errors 0.
+Notes: Sirf wide. Icon sirf assets/ path (photo slot nahi). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y chunks (Y8 presenter-in-card, Y11-Y13, Y15-Y18...) — pehle Rahul se poochho.
+
+## C107 (18 Nov 2026) — Y17: `stat2` card, do bade number card (js/card_stat2.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya wide card type `stat2`: do bade glass card (rangeen glow border), andar bada number count-up (0 se, comma apne aap, decimal jitna likha utna) + label; beech mein optional `mid` chinh (->), neeche peela pill. Data: `n1, l1, n2, l2, p1/p2 (prefix jaise ₹), s1/s2 (suffix jaise %), c1, c2 (y/g/r/b, default g / y), mid, pill, title, bg`. Lamba number apne aap chhota. Helper `CORE.fmtNum(v,dec)`.
+Editor: type list mein `stat2` (sample ke saath), Properties mein sab fields. Validator: n1/n2 number nahi = err, label khali warn, c1/c2 warn.
+Test: node --check sab OK; headless chromium: 1,000 -> 4,000 (title + mid + pill) frame dekha, 7.5% aur ₹1,234,567 wala card, fmtNum('1,234,567' / '7.5' / '0'), galat n1 validator err, console errors 0.
+Notes: Sirf wide. Number sirf asli/confirmed ho (niyam 7: naye facts nahi). Indian comma (12,34,567) nahi, western grouping hai. Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y chunks (Y8, Y11-Y13, Y15, Y16, Y18...) — pehle Rahul se poochho.
+
+## C108 (18 Nov 2026) — Y16 + Y18: `bars` aur `dash` cards (js/card_bars.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Next 2" kaha, to do chhote wide card ek file mein.
+`bars` (Y16): 2-6 glass bar, ek-ek karke badhte hain (count-up value + unit), neeche peela pill mein equation `5 + 4 + 2 = 11 मिनट` (apne aap, lamba ho to chhota). Data: `items` (`naam|number|icon`), `unit`, `c` y/g/r/b, `total` (false = equation band), `title`, `bg`. Helper `CORE.barItems`.
+`dash` (Y18): 2-4 metric tile (label, bada value, ▲ hara / ▼ laal delta; `-` se shuru = laal) + neeche line chart jo left se draw hota hai (end-dot glow) + optional `note` pill. Data: `tiles` (`label|value|+5%`), `pts` (2-12 number strings), `note`, `c`, `title`, `bg`. Helpers `CORE.dashTiles`, `CORE.dashPts`.
+Editor: dono type list mein (samples), Properties mein items/tiles/pts ek-line-ek-item textarea (generic). Validator: bars items 2+ (err) / galat number (err) / 6 se zyada warn; dash tiles 2+ (err) / pts <2 warn / c warn.
+Test: node --check sab OK; headless chromium: bars (5 bar + equation 13 min, aur icon wala bar), dash (4 tile + chart + note) frame dekhe; galat data par validator err/warn; console errors 0.
+Notes: Sirf wide. Number sirf asli/confirmed (niyam 7). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y chunks (Y8, Y11-Y13, Y15...) — pehle Rahul se poochho.
+
+## C109 (18 Nov 2026) — Y15 + Y12: `trio` aur `rating` cards (js/card_trio.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Continue" kaha, to agle do chhote cards ek file mein.
+`trio` (Y15): bada `head` card (optional icon) jo upar chhota hokar 2-4 numbered chhote cards (`शीर्षक|छोटी लाइन`) mein khulta hai. Data: `title, head, icon, items, c, bg`. Helper `CORE.trioItems`.
+`rating` (Y12): glass card mein 5 star ek-ek bharte hain (half star chalta hai), `head` label, `label` + "3.5 / 5", neeche 0-2 tiles (`label|value`). Fan-sawaal card (fantasy/betting nahi). Data: `title, head, stars, label, tiles, c, bg`. Helper `CORE.rateTiles`.
+Editor: dono type list mein (samples), Properties generic. Validator: trio items 2+ (err), rating stars 0-5 (err), tiles list/2 se zyada, c warn.
+Test: node --check sab OK; headless chromium: trio (head + 3 cards), rating (3.5 star + 2 tiles) frame dekhe; galat data par validator err; console errors 0.
+Notes: Sirf wide. Poora zip 67 MB (30 MB upload limit se bada) tha, isliye chat mein sirf badli hui files ka zip diya. Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y8, Y11, Y13, Y1, Y2, Y4...) — pehle Rahul se poochho.
+
+## C110 (18 Nov 2026) — Y8 + Y13: `portrait` aur `phone` cards (js/card_portrait.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Continue" kaha, to agle do chhote cards ek file mein.
+`portrait` (Y8): presenter (transparent asset) glass portrait card mein, ek taraf bada text jisme `*shabd*` peela; `sub` chhoti line; `side` r/l. Default photo 19_presenter/presenter_point_left. Helper `CORE.starWords`.
+`phone` (Y13): phone mock jisme `feed` (0-8 line) scroll hoti hai + counter box (`label`, `n` count-up). `n` na do to sirf phone beech mein.
+Editor: dono type list mein (samples), Properties generic. Validator: portrait text khali err / * jodi warn / side warn; phone feed list, n number err.
+Test: node --check sab OK; headless chromium: portrait (point_left + peela shabd + sub), phone (3 post + 1,200 counter) frame dekhe; galat data par validator; console errors 0.
+Notes: Sirf wide. Phone ka notch kabhi kabhi top post ke text par aa jata hai (chhota, baad mein). Poora zip 30 MB se bada hai, isliye sirf badli files ka zip. Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y11, Y1, Y2, Y4...) — pehle Rahul se poochho.
+
+## C111 (18 Nov 2026) — Y11 + Y2 + Y4: `market`, `comments`, `timeline` cards (js/card_market.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Karo next 3" kaha, to teen chhote cards ek file mein.
+`market` (Y11): browser-window jaisi dark panel mein 2-12 rangeen tile (`लेबल|y/g/r/b/p`) ek-ek pop, neeche 0-2 pills. Generic tiles (koi brand logo nahi).
+`comments` (Y2): 2-4 comment cards (`नाम|कमेंट`) halke tilt mein, `hl` wala seedha + bada + peela border (baaki dim), neeche pill.
+`timeline` (Y4): line par 2-6 label (jaise saal), dot `at` tak slide karta hai, `label` pill dot ke upar.
+Editor: teeno type list mein (samples), Properties generic. Validator: tiles/items/points kam (err), hl/at range warn, pills/items zyada warn.
+Test: node --check sab OK; headless chromium: market (8 tile + 2 pill), comments (hl=2 + pill), timeline (4 saal, dot 2024 tak + label) frame dekhe; galat data par validator; console errors 0.
+Notes: Sirf wide. Comments Rahul ke asli/apne ho (niyam 7). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y22, Y26-Y48) — pehle Rahul se poochho.
+
+## C112 (18 Nov 2026) — Y22 + Y30: `hub` aur `search` cards (js/card_hub.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Next 2" kaha, to do chhote cards ek file mein.
+`hub` (Y22): beech mein bada `center` node, 2-8 `spokes` gol ghere mein; line draw hoti hai phir node pop; optional `note` pill neeche.
+`search` (Y30): rounded search bar (magnifier + peela cursor), `text` typewriter, phir 0-3 `results` rows, optional `pill`.
+Editor: dono type list mein (samples), Properties generic. Validator: hub center/spokes (err), spokes>8 warn; search text khali (err), results list/3 se zyada.
+Test: node --check sab OK; headless chromium: hub (6 spoke + note), search (typed text + 2 result + pill) frame dekhe; galat data par validator; console errors 0.
+Notes: Sirf wide. Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y23, Y26-Y29, Y31-Y48) — pehle Rahul se poochho.
+
+## C113 (18 Nov 2026) — Y31 + Y32: `formula` aur `beforeafter` cards (js/card_formula.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Next kaam" kaha, to agle do chhote cards ek file mein.
+`formula` (Y31): `name = a ÷ b` boxes ek-ek aate hain (lamba ho to apne aap chhota), `la`/`lb` ke neeche peela arrow + label pill.
+`beforeafter` (Y32): laal X "पहले" | hara tick "बाद में" do panel; text ya asset image (`bi`/`ai`); optional neeche laal progress bar (`bar` 0-100 + `barlabel`).
+Editor: dono type list mein (samples), Properties generic. Validator: formula a/b (err); beforeafter before/after text-ya-image (err), bar range warn.
+Test: node --check sab OK; headless chromium: formula (CTR = क्लिक ÷ इम्प्रेशन + 2 label), beforeafter (text + bar 60) frame dekhe; galat data par validator; console errors 0.
+Notes: Sirf wide. Image panel (bi/ai) frame mein alag se test nahi kiya (sirf text + bar). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y26-Y29, Y33-Y48) — pehle Rahul se poochho.
+
+## C114 (18 Nov 2026) — Y26 + Y27 + Y28: `setting`, `radio`, `ideas` cards (js/card_steps.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "next 3 kaam" kaha, to Y queue ke agle teen chhote cards ek file mein.
+`setting` (Y26): upar peela `step` badge + `name` (rounded label), neeche 1-4 `pills` (`text` ya `text|रंग`) ek-ek pop; lambe pills 2 line mein.
+`radio` (Y27): 2-5 radio rows ek-ek aati hain, `hl` (number ya list) wali rows peele border + bhara dot, optional neeche `pill`.
+`ideas` (Y28): 2-3 idea cards (`शीर्षक|छोटी लाइन|आइकन`), neeche `avatar` chip (`av` optional image) + dotted connector lines.
+Editor: teeno type list mein (samples), Properties generic. Validator: setting step/name + pills (err/warn), radio items 2-5 + hl range, ideas items 2-3.
+Test: node --check sab js OK; headless chromium: setting (3 pill + 5 pill), radio (hl [1,2] + pill, 5 rows hl 3), ideas (3 cards + avatar, 2 cards bina avatar) frame dekhe; validator good/bad data par theek; console errors 0.
+Notes: Sirf wide. `ideas` mein av (avatar image) frame mein alag se test nahi kiya (default silhouette dekha). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y29, Y33-Y48) — pehle Rahul se poochho.
+
+## C115 (18 Nov 2026) — Y29 + Y33: `reel` aur `phones` cards (js/card_reel.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Next 2" kaha, to Y queue ke agle do cards ek file mein.
+`reel` (Y29): reel-style phone (play, side icons, progress) + bada number box (`n` count-up + `unit`, ya seedha `big` text, `label`) + optional semi-circle `gauge` (0-100, `glabel`, `gl`).
+`phones` (Y33): do phone side-by-side, screen par text `a`/`b` ya image `ia`/`ib`, neeche labels `la`/`lb`, `hl` (1 ya 2) peela glow, neeche `caption` pill.
+Editor: dono type list mein (samples). Validator: reel n/big (err), gauge range (warn); phones a/b text-ya-image (err), hl 1/2 (warn).
+Test: node --check sab js OK; headless chromium: reel (n+unit+gauge, sirf big text), phones (labels+caption+hl, sirf a/b) frame dekhe, overlap 2 jagah theek kiye; validator good/bad data par theek; console errors 0.
+Notes: Sirf wide. ia/ib image aur reel mein number/gauge ke baare mein: cricket mein sirf Rahul ke apne ya confirmed numbers. Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y34-Y48) — pehle Rahul se poochho.
+
+## C116 (18 Nov 2026) — Y34 + Y35 + Y36: `gcurve`, `steps`, `expect` cards (js/card_flow.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Next 3" kaha, to Y queue ke agle teen cards ek file mein.
+`gcurve` (Y34): baayein gauge card (`gauge`, `glabel`, `gl`), daayein retention curve card (`pts` 2-10 number, line draw hoti hai + end dot, `cl` label).
+`steps` (Y35): 2-4 "STEP N" cards (`items` = `शीर्षक|छोटी लाइन`); `hl` do to sirf wo roshan baaki dim, na do to ek-ek roshan hote hain; optional `caption` pill.
+`expect` (Y36): thumbnail card (`thumb` text ya `ti` image) ---- thought bubble (`thought`) ---- avatar (`user`, `av`) + hara tick, optional `pill`.
+Editor: teeno type list mein (samples). Validator: gcurve gauge/pts, steps items 2-4 + hl range, expect thumb/ti/thought.
+Test: node --check sab js OK; headless chromium: teeno frame dekhe; steps centering + expect overlap 2 jagah theek kiye; validator good/bad data par theek; console errors 0.
+Notes: Sirf wide. ti/av images alag se test nahi (default thumb/silhouette dekhe). Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y37-Y48) — pehle Rahul se poochho.
+
+## C117 (18 Nov 2026) — Y37 + Y38 + Y39: `equals`, `payoff`, `tickgrid` cards (js/card_flow2.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "Continue" kaha, to Y queue ke agle teen cards ek file mein.
+`equals` (Y37): do row "a = av" / "b = bv" (double-line connector), neeche optional `ex` example mini-card dotted lines ke saath.
+`payoff` (Y38): CONTEXT + PAYOFF do card (`a`, `b`), neeche timeline bar (`ta`..`tb`); `q` (1-4) do to baad mein "?" thumbnails + progress line (+ `qt` label).
+`tickgrid` (Y39): hare tick ki grid (`total` 6-60, `cols`) ek-ek pop, `quote` pill, optional `pts` retention line card.
+Editor: teeno type list mein (samples). Validator: equals a+av / b+bv, payoff a+b + q range, tickgrid total range + pts list.
+Test: node --check sab js OK; headless chromium: teeno frame dekhe; equals connector aur payoff overlap/label cut theek kiye; validator good/bad data par theek; console errors 0.
+Notes: Sirf wide. Payoff mein phase 2 (q) ~2.6s ke baad shuru hota hai, chhoti scene (<4s) mein q mat do. Agla: real Chrome / Short phone check, R1 video clip layer, ya baaki Y (Y1, Y40-Y48) — pehle Rahul se poochho.
+
+
+## C118 (18 Nov 2026) — Y40 - Y48: nau cards (js/card_flow3.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "40-48 tak complete karo" kaha, to Y queue ke bache 9 cards ek hi file mein.
+`variety` (Y40): video-box (REC dot + 0:00..0:10 timer) + emoji card + laal bar. `vsvlog` (Y41): laal X | peela smile do card. `energy` (Y42): laal dip-curve (hook...payoff) + peeli sine-wave numbered 01.. nodes. `bestlast` (Y43): hara curve gir ke theher-ti + pulse end-dot + label. `locked` (Y44): bhare card + locked "?" row + pill. `longstat` (Y45): do bade count-up number (hara/laal) + pill. `offer` (Y46): audience dots + avatar + offer card (Accept/Decline) + cursor click. `products` (Y47): product tiles + growth curve + "Then launch" pill. `endscreen` (Y48): bada "Watch next" video card + title/channel/views + subscribe.
+Editor: nau type list mein (samples). Validator: FIELDS + MAXC + vsvlog both-side, energy n, locked items/total, longstat n1/n2, offer dots/pick, products items, bestlast pts, endscreen vt/vi.
+Test: node --check sab js OK; headless chromium: nau cards ke 12 frame dekhe, variety (panel screen se bahar) + endscreen (button/text overlap) theek kiye; validator good data par 0/0, bad data par 5 err + 3 warn; console errors 0.
+Notes: Sirf wide. vi/av (image) frame mein alag se test nahi (default silhouette / gradient dekha). Cricket mein longstat/bestlast ke number sirf Rahul ke apne ya confirmed. Y1 ko chhod kar Y queue poori. Agla: real Chrome / Short phone check, R1 video clip layer, Y1 — pehle Rahul se poochho.
+
+## C119 (18 Nov 2026) — Y1: `burst` card (js/card_flow3.js, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+`burst` (Y1): opening — whip-blur bg (`shot` asset ya default) 1s mein saaf, bada peela number `n` count-up (`dec`, `pre`, `unit` ya `big` text) + grow hoti bar, `label`, `pill`.
+Test: node --check OK; headless chromium 3 frame (0.25s blur/khaali, 1.0s count-up, 3.5s final) dekhe; validator 0/0; console errors 0. `shot` asli screenshot ke saath alag se test nahi.
+Notes: Sirf wide. Number sirf Rahul ka apna/confirmed. Y QUEUE POORI (Y1-Y48). Agla: real Chrome / Short phone check, R1 video clip layer — pehle Rahul se poochho.
+
+## C120 (18 Nov 2026) — R1: Video clip layer (js/card_clip.js, core.js, export_fast.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Naya `clip` card: Rahul ka mp4/webm clip scene mein chalta hai (`clip` naam, `start` sec, `fit` cover|contain) + `src` source tag ("SOURCE: ..." Rahul khud likhe) + `name`/`role` naam-patti + `sub` subtitle + `quote` bada " chinh + `title`.
+🎞 Clips button (bar2 + timeline tools): clip upload/list/hatao; clips browser IndexedDB 'cvt_clips' mein save, reload par wapas (repo mein nahi).
+Sync: preview mein video play/pause/scrub timeline ke saath (C.playing flag core.js player mein); FAST export mein har frame se pehle exact seek (C.beforeFrame + C.exporting, export_fast.js); real-time export mein video chalta rehta hai. Clip ki apni awaaz mute (sirf video) — clip audio mix baad ka kaam.
+Validator: clip naam zaruri (err), clip upload nahi = warning, src khaali = warning (copyright yaad), start/fit range.
+Test: node --check OK; headless chromium: webm clip upload, frame 0.2/1.5/3.5s alag frame aaye (timecode 1.2/2.5/4.5 = start 1 + t), missing clip ka message, reload ke baad clip wapas, fast export 5s -> 7.4 MB mp4, validator theek, console errors 0.
+NOT tested: asli mp4 (H.264) Rahul ke Chrome par, lambe/bade clip (memory), real-time export mein clip sync, clip ki awaaz. Sirf wide.
+Agla: real Chrome / Short phone check, ya R2 (chapter card) — pehle Rahul se poochho.
+
+## C121 (18 Nov 2026) — R2: `diamond` chapter card (js/card_flow3.js, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+`diamond` (R2): glow diamond frame (outline draw + halki bahari frame, halka rotate-in) + andar `icon` (asset) ya number `num`, "CHAPTER" `tag`, bada `title`, optional `pill`. Y10 `chapter` (peeli patti) se alag style.
+Test: node --check OK; headless chromium: number wala aur icon (icon_ball) wala frame dekhe (0.4s draw, 1.0s, 3.0s); title do jagah repeat ho raha tha — theek kiya; validator 0/0; console errors 0.
+Notes: Sirf wide. Agla R chunk: R3 kinetic big-text (B&W photo + bada shabd-wise text). Ya real Chrome / Short phone check — pehle Rahul se poochho.
+
+## C122-C127 (18 Nov 2026) — R3-R8: paanch naye cards + 3 transitions (js/card_r.js, js/transitions_r.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Ek chat mein Rahul ke kehne par 6 chunk ek saath. PHASE R poora (sirf optional sponsor card baaki).
+- C122 R3 `kinetic`: B&W photo (slot ya asset) + neela tint + bade shabd ek-ek karke pop; `*shabd*` peela; `sub` chhoti line.
+- C123 R4 `barcount`: 2-4 bar grow + count-up (`items:['35|देखा गया',...]`, `unit`, `max`, `hl`), `note`, `pill`.
+- C124 R5 `quote`: face photo panel (B&W) + bada “ + quote (`*shabd*` peela) + `name`/`role` + peeli silhouette bheed; `side` l|r, `crowd`.
+- C125 R6 `post`: social post card (avatar, name, handle, `text` with `*highlight*`, `img`, `stats`, `src` tag, `pile` 0-2, `theme` light|dark) + dheere zoom. Text Rahul ka apna/asli ho (niyam 7).
+- C126 R7 `iconscene`: 1-4 icon tile (`asset/path|label` ya `emoji|label`) pop + `btn` peela button + cursor click + silhouette bheed.
+- C127 R8 transitions `split` (peele panel upar/neeche), `chevron` (peele > chevron sweep), `torn` (phata-kagaz peeli patti) — wide + short dono.
+Test: node --check sab js OK; headless chromium: har card ke 3 frame dekhe, photo-slot (C.photos) wala photo, khaali data par crash nahi, transitions 3 frame x 3 x (wide+short), validator galat data par err/warn theek (kinetic adhoora * bug test mein pakda aur theek kiya), console errors 0. Layout mein `C.starWords` ki jagah apna `C.rToks` (starWords header_line.js ne badal diya hai, alag format deta hai).
+NOT tested: asli Rahul ki photos ke saath (sirf presenter webp), fast export mein naye cards/transitions alag se (canvas hain, C120 jaisa chalna chahiye), emoji icon colour (headless mein mono dikha; Chrome mein colour aayega). Sirf wide cards (transitions short mein bhi).
+Agla: real Chrome / Short phone check, sponsor card (optional), ya Rahul koi aur chunk chune.
+
+## C128 (18 Nov 2026) — G5 + G6 + V3 + V4: serif-italic accent, annotation arrows, `bullets`, `phoneann` (js/card_v.js, card_clip.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne Video 3 style (V1-V14 + G5-G7) chuna; plan ke "Suggested" order se pehle chhota hissa: G5 -> G6 -> V3 -> V4.
+G5 `C.vText`: text mein `*shabd*` = BLUE + serif ITALIC (word-sync ke liye `upTo`). Abhi naye V cards (+ arrow labels) mein; purane cards ka `*shabd*` peela hi hai.
+G6 `C.vArrows`: patli curved arrow draw hoti hai + dot + label (`arrows:['label|x|y']`, x,y = frame par %).
+`bullets` (V3): 2-5 lines ek-ek karke, 01-05 numbering, accent shabd blue serif italic, optional `title`.
+`phoneann` (V4): vertical phone-frame; `clip` (🎞 Clips, preview + fast export mein sync, card_clip.js mein phoneann jodha) ya `shot` (photo slot/asset); 0-5 arrows; `title`, `sub`; slow push-in.
+Validator: bullets items 2-5 (err), * jodi (warn); phoneann clip/shot (err), clip upload nahi (warn), arrows format/range/5+ (warn).
+Test: node --check sab js OK; headless chromium: bullets 3 frame, phoneann 4 frame (arrows draw dekhi), asli webm clip ke saath (timecode badla, arrows theek), shot=presenter webp, khaali data par crash nahi, validator good 0/0 aur bad data par err; console errors 0.
+NOT tested: asli H.264 mp4 clip Rahul ke Chrome par, fast export mein phoneann (clip card jaisa chalna chahiye), lambe Devanagari arrow label (2 line tak fit hota hai).
+Sirf wide. Agla (Rahul chune): V5 phone-frame wall/fan, V6 numbered card grid, V7 compare 2 windows, ... G7 split layout; ya Video 4/5 queue; ya real Chrome check.
+
+## C129 (18 Nov 2026) — V5 + V6 + V7: `phonewall`, `numgrid`, `compare2` (js/card_v2.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md; helper C.vBase card_v.js se)
+Rahul ne "Continue" kaha, to Video 3 queue ke agle teen cards ek file mein.
+`phonewall` (V5): 2-10 vertical phone, fan (<=6) ya row; `shots` photo slot/asset (kam ho to khaali numbered tile); `hl` glow + baaki dim + `labels[hl-1]` neeche; slow zoom.
+`numgrid` (V6): 2-8 numbered card ("9|label"), ek-ek pop; `hl` glow baaki dim, hl=0 to ek-ek chamakte hain; label mein *accent*.
+`compare2` (V7): do browser window (chrome dots + url bar text `ua`/`ub`), screenshot `ia`/`ib` ya khaali placeholder, label `la`/`lb`, beech mein VS, `hl` 1/2 se ek dim.
+Validator: phonewall n/mode/hl (warn), numgrid items 2-8 (err) + hl, compare2 dono side (err) + hl.
+Test: node --check sab js OK; headless chromium: fan/row/grid/compare frame dekhe; fan upar-neeche overlap + compare windows chipak rahi thi — theek kiya; khaali data par crash nahi; validator good 0/0, bad par err/warn; console errors 0.
+NOT tested: asli photos/screenshots ke saath (sirf placeholder tile), phonewall mein clip nahi (sirf photo), numgrid 8 item ka lamba Devanagari label.
+Sirf wide. Agla (Rahul chune): V8 plan/price cards, V9 time-breakdown, V10 CTA pill, V11 product ad, V12 UI-mock, V13 checklist, V14 label chips, G7 split layout; ya Video 4/5; ya real Chrome check.
+
+## C130 (18 Nov 2026) — V8-V14: sat cards (js/card_v3.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "V wale" kaha, to Video 3 queue ke bache saare V cards ek file mein. Naam: V8 `plans` (2-3 plan card + hl glow + badge), V9 `timelist` (bar fill + total), V10 `ctapill` (blue pill + serif italic number + "days left"), V11 `adcard` (kata purana daam + bada naya + Buy pill + piche halke `proof` card), V12 `uimock` (browser window + beats + A/B/C option + cursor click), V13 `checklist` (dark window, hare tick ek-ek), V14 `chips` (floating label chips + 2x2 thumbs + neeche pills).
+Validator: har card ka err/warn (plans/timelist/uimock/checklist items, adcard price, chips chips-ya-thumbs, ranges).
+Test: node --check sab js OK; headless chromium: saath card frame dekhe (contact sheet), chips thumbs ke saath kinare se kat rahe the — theek kiya; khaali data par crash nahi; validator good 0/0, bad data par err; console errors 0.
+NOT tested: asli photos/thumbs ke saath, lambe Devanagari text 2 line se zyada, uimock click timing chhoti scene (<4s) mein (pick 2.4-3.1s par), cricket mein price/offer sirf Rahul ke apne.
+V QUEUE POORI. G7 split layout (presenter chhota + card) baaki. Agla (Rahul chune): G7, Video 4 (N1-N15), Video 5 (P1-P20), ya real Chrome check.
+
+## C131 (18 Nov 2026) — G7: `split` layout (js/card_split.js, card_clip.js, index.html, scene_editor.js, scenes_check.js, filmora_shell.js, SCENES_JSON_SCHEMA.md)
+Rahul ne "G7" kaha. `split`: presenter chhota ek side (photo slot/asset ya clip) + koi bhi wide card (`inner:{type,data}`) doosri side rounded frame mein; `side` l|r, `ratio` 0.45-0.75 (default 0.6). Inner card offscreen canvas par chalta hai aur scale hokar lagta hai; presenter poore scene mein rehta hai (halka breathing + slide-in); end par dono saath fade.
+Presenter clip: card_clip.js ke sync mein `split` jodha (preview + fast export frame-exact seek).
+Validator: inner type + inner data ka poora check (inner: ... prefix), split/clip/phoneann/presenter inner = err/warn, pres ya clip zaruri, side/ratio range.
+Test: node --check sab js OK; headless chromium: bullets+presenter(point_left, l), barcount+webm clip (r, ratio .55), plans+presenter(wave, r) frame dekhe; khaali/nested/khaali-inner data par crash nahi; validator theek; console errors 0.
+Limits: inner mein clip-wale card (clip/phoneann) nahi chalte (clip sync), inner ke text chhote dikhte hain (card ~60% size) — bade font wale card/kam text rakho; asli H.264 mp4 presenter clip Rahul ke Chrome par test baaki.
+VIDEO 3 PHASE POORI (G5-G7, V1-V14). Agla (Rahul chune): Video 4 (N1-N15 + G8-G10), Video 5 (P1-P20 + G11-G15), real Chrome check, ya sponsor card.
+
+## C132 (18 Nov 2026) — G9 + G10 + G8 + N1-N8 (Rahul ne bola "n8 tak"), nayi file js/card_n.js
+Helpers: `C.popAt(t,i,a0,gap,dur)` (G9 bounce pop-in), `C.nText(...)` (G10 neon glow / lal outline text, col b/r/g/y), `C.spotZoom` + `C.spotRect` (G8 zoom + baaki dim + neon box). G10 abhi sirf cards mein; caption style mein nahi jodha.
+Naye wide cards (7):
+- `icontiles` (N1): 2-4 glass icon tile + neeche rangeen pill, ek-ek karke pop. items 'icon|label|colour(y/g/r/b)', icon = asset path ya emoji. hl = baaki dim.
+- `stepcards` (N2): bada glow head ("Step no.2") + 2-4 neon playing-card (fan), card pop. items 'icon|label'. c b/r/g/y.
+- `screenclip` (N3 phone / N4 wide, mode 'phone'|'wide'): clip ya shot frame mein; `focus:'x|y|w|h'` (% mein) + `at` sec par zoom + baaki dim + neon box + tap dot (tap:false band) + `label` (glow callout) / `sub`. Clip sync ke liye card_clip.js ke active() mein `screenclip` jodha (preview + fast export frame-exact).
+- `toggle` (N5): 2-3 pill, lal cross / hara tick draw hota. items 'label|x' ya 'label|v'. hl.
+- `askq` (N6): lal outline heading + comment glass card (avatar, @naam, typewriter text) + audio player bar. audio:false = bar nahi.
+- `promo` (N7): logo circle + channel naam + 'subs' white pill (Rahul apna asli number likhe; khali = pill nahi) + 0-3 thumbnail + SUBSCRIBE button (pulse). Koi number khud nahi bharta.
+- `outword` (N8): bada lal outline shabd (space = alag shabd, ek-ek karke pop + shake) + optional img side mein (photo-slot/asset). c r/b.
+Editor: sab 7 type list mein (samples). Validator: FIELDS + MAXC + checks (items count, hl, focus format, toggle |x/|v, promo subs, outword words/c). Timeline colours jode.
+Test: node --check sab js OK; headless chromium: 7 card frames dekhe (contact sheet) — outword text image se chipak rahi thi, promo ka bell asset chhota/patti jaisa tha (emoji 🔔 kiya), icontiles upar the (beech mein kiye) — theek kiya; khaali data par crash nahi; validator good 0/0, bad par err/warn; console errors 0.
+Limits: asli mp4 clip (screenclip) Rahul ke Chrome par check baaki (phoneann jaisa hi code). Fantasy/betting wala koi sample nahi. Agla (Rahul chune): N9 diagram arrow, N13 measure label, N10-N12/N14/N15, G10 caption style, Video 5 (P1-P20 + G11-G15), real Chrome check.
+
+## C133 (18 Nov 2026) — N9-N12 (Rahul ne "N12 tak" bola), js/card_n.js mein jode
+- `flowdiag` (N9): do icon tile + arrow draw + 'result' text + cyan waveform. data {title,a,b,la,lb,result,wave,c}; a/b khali = mic/magic-wand tile.
+- `crossprice` (N10): bada image/icon par lal cross draw + lal price badge + label. data {title,img,price,label,cross}; img khali = mic+price-tag asset. Price Rahul khud likhe.
+- `docfolder` (N11): document image + arrow + lal folder. data {title,doc,folder,label}.
+- `topicend` (N12): beech ka caption text + 'TOPIC ??' lal outline circle (topic:'' = circle nahi). data {text,topic}.
+Editor samples + validator (FIELDS, MAXC, topicend/crossprice warn) + timeline colours jode.
+Test: node --check OK; headless chromium 4 card frames dekhe, khaali data par crash nahi, validator theek, console errors 0.
+Agla: N13 measure label, N14, N15, G10 caption style, real Chrome check (screenclip mp4).
+
+## C134 (18 Nov 2026) — N13-N15, js/card_n.js mein. VIDEO 4 QUEUE POORI (N1-N15, G8-G10; G10 caption style baaki)
+- `measure` (N13): phone frame (photo slot) + lal naap-line + bada lal label + sub. data {title,img,label,sub}; label zaruri.
+- `meme` (N14): dark overlay + chhota hilta reaction photo (peela border) + text. data {img,text,side}.
+- `wavestrip` (N15): avatar circle ('ME' ya photo) + cyan waveform strip + text. data {name,img,text,c}.
+Editor samples + validator + timeline colours. Test: node --check OK; 3 card frames dekhe; khaali data par crash nahi; console errors 0.
+Agla: G10 caption style, Video 5 (P1-P20 + G11-G15), real Chrome check (screenclip mp4).
+
+## C135 (18 Nov 2026) — Video 5 (purple glow): G11 base, G12, G13, G14, G15 + P1, P2, P3, P4, P5, P6, P8, P16 — nayi file js/card_p.js
+Helpers: `C.pBase` (G11 purple halo bg; abhi looks.js ka 'Look' preset nahi, sirf P cards ka base), `C.pType` (G12 typewriter), `C.pLine` (G13 glow connector + dot), blur patch (G14, statcard side cards, `blur:false` band), `C.pRain` (G15 girte sparks, `rain:false` band), `C.pCard`, `C.pGrad`, `C.pWhite`.
+Cards: `ideatitle` (P1), `chipcarousel` (P2), `flowline` (P3, mode chain/fan), `chatmock` (P4, typewriter + chips), `statcard` (P5, count-up + blur side + sparks; paise ke notes nahi, sparks), `thumbwall` (P6), `ladder` (P8), `ring` (P16, orbit). Fields: js/card_p.js ke upar comments + docs/SCENES_JSON_SCHEMA.md.
+Editor samples + validator + timeline colours jode. Test: node --check OK; 8 card frames dekhe; statcard side cards main se chipak rahi thi — chhota kiya; khaali data par crash nahi; console errors 0.
+Baaki: P7, P9-P15, P17-P20, G11 ko Look preset banana (looks.js), G12 caption style, G10 caption style, real Chrome check. statcard ka number Rahul ka asli/confirmed hi ho (naye facts nahi).
+
+## C136 (18 Nov 2026) — Video 5 baaki cards: P7, P9, P10, P11, P13, P14, P15, P17, P18, P19 — nayi file js/card_p2.js
+`vidcard` (P7, clip/shot + title/meta; clip sync card_clip.js mein jodi), `gauge` (P9), `barlist` (P10), `tree` (P11), `cardtiles` (P13 + brace), `fan` (P14), `replies` (P15), `vs2` (P17), `bonus` (P18), `prodnode` (P19). Fields: js/card_p2.js ke upar comments + docs/SCENES_JSON_SCHEMA.md.
+Editor samples + validator + timeline colours jode. Test: node --check OK; 10 card frames dekhe; tree ke neeche ke node overlap kar rahe the — theek kiya; khaali data par crash nahi; console errors 0.
+VIDEO 5 lagbhag poori. Baaki: P12 world dot-map, P20 (= screenclip se ho jata hai), G11 Look preset (looks.js), caption styles G10/G12, real Chrome check.
+
+
+## C137 (18 Nov 2026) — P12 world dot-map: `dotmap`, nayi file js/card_p3.js (index.html mein card_p2 ke baad)
+`dotmap` (wide): {title, map:'india'|'world', items:['Mumbai'] ya ['naam|x|y'] (x,y = map image ke % mein), hl (1-based, baaki dim), sub}. Map asset (18_maps) violet gradient mein tint hota hai (cache), pins pulse + glow, labels glass pill. India: 10 IPL sheher naam se mil jaate (Mumbai, Chennai, Kolkata, Delhi, Bengaluru, Hyderabad, Ahmedabad/Gujarat, Jaipur/Rajasthan, Lucknow, Mohali/Punjab), pills left/right column mein line se joode. World: hamesha 'naam|x|y', pill pin ke upar. Gemini watermark (world asset ka neeche-right kona) saaf kiya.
+Editor sample + validator (FIELDS, MAXC, items/map/hl/jagah warn) + timeline colour + SCENES_JSON_SCHEMA jode.
+Test: node --check sab js OK; headless chromium: india (10 sheher), hl, world, khaali, galat naam frames dekhe — pehle left column ke pills overlap kar rahe the, pins x se do column mein baante + pill height auto kiya, theek; validator good/empty/unknown/badmap/badhl sahi; console errors 0.
+Limits: India pin jagah % se hath se calibrate ki (sheher ke paas, exact nahi). World par x|y Rahul/Claude haath se de.
+Baaki: G11 Look preset (looks.js), caption styles G10/G12, real Chrome check. P20 = screenclip se ho jata hai.
+
+## C138 (18 Nov 2026) — G11 Purple Glow Look preset (7th Look)
+js/looks.js mein `purple` ('🟣 Purple Glow': vignette .6, grain .03, bars/prog off, dark bg pool: black_blue_gradient, dark_gradient_blue_glow_bottom, blue_radial_glow_dark, channel_stadium_blur_dark; tr fade/push/slideup/blurfade/zoom) + js/fx_pro.js mein colour look `purple` (violet soft-light tint + neeche se violet halo + kinaare dark; 'Look' dropdown mein '🟣 Purple glow').
+Test: node --check sab js OK; headless chromium: LOOKSET.apply('purple') -> FX.look/POLISH sahi, dotmap frame look ke saath render, console errors 0. Note: koi asli purple bg asset nahi, isliye dark-blue bgs par violet tint chadhta hai (P cards apna pBase khud banate hain).
+Baaki: caption styles G10/G12 (typewriter/neon), real Chrome check.
+
+## C139 (18 Nov 2026) — Caption styles G10 `neon` + G12 `type` (js/captions.js)
+`neon` = safed text + rang ka glow (accent rang, bina box). `type` = dark glass box + akshar ek-ek karke (Devanagari cluster nahi tootta, Intl.Segmenter) + blinking cursor; line ke ~60% time (max 1.8s) mein poora. `type` mein *shabd* aur shabd-highlight nahi chalta. Dono Style dropdown, Brand Kit, 🎬 Naya Style (random pick) mein apne aap aate hain.
+Test: node --check OK; headless frames: neon, type (beech mein + poora) theek, errors 0.
+REAL CHROME CHECK (Rahul ke PC par, mujhse nahi ho sakta): 1) index.html -> scenes load -> ⚡ fast MP4 export: speed + awaaz (AAC) chalti hai? 2) 🎞 Clips (screenclip/vidcard/clip) asli mp4 sync + export 3) 📱 Short 9:16 caption/Shorts UI overlap 4) naye cards (dotmap, P-cards) export mein frame dikhte hain? 5) 🟣 Purple Look + neon/type caption export. Jo gadbad dikhe uska screenshot/console error naye chat mein do.
+Baaki: sirf real Chrome check (Rahul).
+
+## C140 (18 Nov 2026) — dotmap world map par sheher naam se (js/card_p3.js)
+World map par ~45 cricket sheher naam se milte hain (London, Manchester, Dubai, Karachi, Lahore, Colombo, Dhaka, Singapore, Sydney, Melbourne, Perth, Auckland, Johannesburg, Cape Town, Durban, Harare, Kingston, Bridgetown, Port of Spain, New York + Indian sheher...); list = `WC` in js/card_p3.js (C.WCITY). lon/lat se map % (X = (lon+180)/3.6-2.5, Y piecewise, asset par haath se calibrate). Baaki sheher ke liye 'naam|x|y'. World mode mein pills chhote (300x80) aur ek dusre/pins par nahi aate (auto jagah). Validator world sheher pehchanta hai.
+Test: node --check OK; 16 sheher ke 2 frames dekhe (pins sahi mulkon par); pills pehle overlap karte the -> auto placement; unknown naam par validator warn; errors 0. Limit: line kabhi kisi dusre pill ke upar se guzar sakti hai.
+Baaki: Rahul ka real Chrome check; postponed: match prediction cards, photo license tracking; sponsor card (optional).
+
+## C141 (18 Nov 2026) — News tracker: 10 cricket sites jodi
+feeds.json mein 10 nayi feeds ("Site: Cricbuzz/ESPNcricinfo/TheSportsTak/News18/Times of India/India Today/Hindustan Times/CricTracker/NDTV Sports/Sportskeeda"), Google News site: query (path ke saath, when:2d). Ab 16 feeds. Seedhe RSS URL jaanbujhkar nahi liye (guess/badalte). Test: JSON valid (16 feeds); fetch_news.py chala, sandbox mein internet nahi isliye sab 'feed fail' (script crash nahi hui). NOT tested live — pehli GitHub Run ke baad news.html par 'feed fail' line dekho; Google ki site: query kabhi kam results de to us site ki feed ka `when:2d` -> `when:7d` karo.
+
+## C142 (18 Nov 2026) — News tracker: story-wise grouping (ek story = ek card, saari sites ki headline ek saath)
+Rahul ka kaam: 10 sites ki latest posts mein jo ek jaisi khabar ho wo ek saath dikhe, taaki sabka use karke ek achi video ban sake.
+- `scripts/fetch_news.py`: clustering naya (union-find, 72 ghante ke andar). Tokens: stopwords hataye, retention/retained/retain jaise roop ek kiye, team short form + Hindi naam -> English (feeds.json `aliases`, khud badha sakte ho; khaali value = shabd ignore). Rule: Jaccard >= 0.5, ya 3+ common shabd aur 60% overlap. Alag teams ki khabar kabhi ek nahi (MI list vs CSK list). Cluster id = sabse purani item ka id (naye item aane par nahi badalta).
+- `news.html`: ab ek card = ek story: badges (label, tags, kitni sites), title, **har site ki apni headline + time + 🔗 Kholo** (pehli 4, baaki `▼ saare dikhao`). Buttons: ✓ Use ho gaya (poori story), **📋 Story pack copy** (title + tags + saari headlines/summary/links, Fact Pack ke liye Claude ko paste). Filters: tag, label, **kitni sites (2+/3+/4+)**, **site chips (har site kitni stories)**, kram (naya pehle / zyada sites pehle), khoj, used chhupao. Top 5 ab stories hain. Test ke liye `news.html?data=file.json`.
+- Test: 6 sample RSS feeds (Cricbuzz, CricTracker, TOI, NDTV, Sportskeeda, HT Hindi) + 1 bad feed: 20 posts -> 10 stories; Shami/RR/LSG trade ki 5 sites ki headlines (Hindi samet) ek story; Dhoni CSK mentor 3 sites; CSK vs MI list alag; 2nd run 0 naye; headless chromium (mobile 420px): top5, 2+/3+ filter, site chip, sort, khoj, expand, used + hide + reload persist, pack copy, missing-data error msg, console errors 0.
+- NOT tested: live feeds (sandbox mein internet nahi). Pehli GitHub Run ke baad news.html dekho: story sahi group hui? Galat jod/bichhdi story dikhe to headline do, aliases/rules tune honge. Limit: Hindi aur English headline tabhi judti hain jab team/player naam `aliases` mein ho.
+- Update ka tareeka: repo mein `scripts/fetch_news.py`, `feeds.json`, `news.html` replace karo -> Commit + Push -> Actions > news-fetch > Run workflow (ek baar, taaki naya cluster ban jaye).
+Baaki: Rahul ka real Chrome check; postponed: match prediction cards, photo license tracking; sponsor card (optional).
+
+## C143 (18 Nov 2026) — news.html par 🔄 Abhi fetch karo button
+GitHub API `POST /repos/{owner}/{repo}/actions/workflows/news.yml/dispatches` (ref main), owner/repo github.io URL se, token localStorage `cvt_gh_token` (🔑 Token button). Dispatch ke baad har 10 sec news.json check, `updated` badalte hi redraw; 6 min tak. Errors: token nahi / 401-403-404 ka saaf message.
+Test (headless chromium, GitHub API mock): token nahi -> alert; 401 -> message + button wapas; 204 -> sahi URL/header/body, poll ke baad naya data (12 posts -> 6 stories), errors 0. NOT tested: asli GitHub token (sandbox mein internet nahi) — Rahul pehli baar try kare, error ka text bheje.
+
+## C144 (18 Nov 2026) — news-fetch schedule har 1 ghante
+`.github/workflows/news.yml` cron `15 * * * *` (pehle har 3 ghante). Code nahi badla. Repo mein sirf news.yml replace karo.
+
+## C145 (18 Nov 2026) — News tracker: tez + advance (fetch parallel, 🔥 Trending, 🆕 Naya, ⭐ Baad mein, auto-refresh)
+- `scripts/fetch_news.py`: saari feeds ek saath (8 thread; pehle ek-ek karke, 16 feeds = lamba intezaar), har feed 1 retry, `feed_secs` (kis feed ne kitne sec liye) news.json mein, har item par `seen` (pehli baar kab dikhi) aur `recent_n` (pichle 3 ghante mein us story par kitni alag sites).
+- `news.html`: **🔥 Trending** badge (3 ghante mein 3+ sites) + chip; **🆕 Naya** badge (aapki pichli visit ke baad aayi story; tab title mein `(3)` count) + chip; **☆ Baad mein / ★** (video ke liye side mein rakho, filter `⭐ Baad mein`, save browser mein); **auto-refresh har 3 min** (page khula ho to khud naya data, tab chhupa ho to ruka rehta hai). Filter 'Sirf:' row.
+- Test: 4 local sample feeds + 1 bad XML + 1 dead URL: 4 sites ki Shami/RR trade ek story (4 sites, trending), Dhoni 2 sites, fantasy blocked, bad/dead feed crash nahi, parallel fetch 6 feeds 2.1 sec; headless chromium (420px): trending/new/later filters, reopen par naya 0, later reload par save; console errors 0. NOT tested: live feeds, asli GitHub Run.
+- Update ka tareeka: repo mein `scripts/fetch_news.py` + `news.html` replace -> Commit + Push -> Actions > news-fetch > Run workflow ek baar.
+- Aage ke sujhaav (Rahul chune): (1) Story pack mein ready Fact-Pack prompt (ek click = Claude chat mein paste), (2) story par photo-slot/scene JSON starter (khabar -> scenes_json ka draft), (3) tag keywords/aliases tune (galat group ki headline do), (4) official BCCI/team RSS feeds, (5) phone par notification (Telegram bot) jab 3+ sites ek hi nayi story chhaape.
+
+## C146 (18 Nov 2026) — news.html par 🎬 Fact-Pack prompt button
+Har story card par **🎬 Fact-Pack prompt**: ready instructions (web se verify, naye facts nahi, source naam nahi, sheher ke naam, fantasy nahi, afwah par "संभावित: ऑफिशियल लिस्ट नहीं" label) + poora Story pack ek click mein copy -> seedha Claude chat mein paste. Rumor/Confirmed ke hisaab se line badalti hai.
+Test: node --check OK; headless chromium: copy text sahi (niyam + STORY pack), console errors 0.
+Baaki sujhaav: khabar -> scenes JSON draft, aliases tune (galat group ki headline do), official BCCI/team feeds, Telegram alert.
+

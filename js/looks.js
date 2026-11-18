@@ -17,6 +17,12 @@ const LOOKS={
  grunge:{n:'🔥 Grunge',polish:{vignette:.72,grain:.12,sweep:.05,leak:.3,smoke:.16,shake:1.5,dust:1},fx:{look:'vivid',bars:false,prog:false},
   bg:[BG+'bg_grunge_red_halftone',GB+'bg_rain_covers_pitch',GB+'bg_dressing_room_generic',GB+'bg_gear_flatlay_generic',GB+'bg_crowd_silhouette_blur'],
   tr:['grunge','glitch','whip','rgb','flash','spin']},
+ navy:{n:'🌊 Navy Glow',polish:{vignette:.55,grain:.03,sweep:.03,leak:0,smoke:0,shake:.3,dust:0},fx:{look:'navy',bars:false,prog:false},
+  bg:[BG+'bg_blue_radial_glow_dark',BG+'bg_blue_gradient_glow',BG+'bg_dark_gradient_blue_glow_bottom',BG+'bg_black_blue_gradient',BG+'bg_navy_plain',BG+'bg_blue_light_streaks_particles',BG+'bg_contour_bokeh_blue_wide'],
+  tr:['fade','push','slideup','blurfade','zoom']},
+ purple:{n:'🟣 Purple Glow',polish:{vignette:.6,grain:.03,sweep:.03,leak:0,smoke:0,shake:.3,dust:0},fx:{look:'purple',bars:false,prog:false},
+  bg:[BG+'bg_black_blue_gradient',BG+'bg_dark_gradient_blue_glow_bottom',BG+'bg_blue_radial_glow_dark',BG+'bg_channel_stadium_blur_dark'],
+  tr:['fade','push','slideup','blurfade','zoom']},
  studio:{n:'📺 Studio',polish:{vignette:.4,grain:.04,sweep:.08,leak:.05,smoke:.03,shake:.5,dust:0},fx:{look:'cinema',bars:true,prog:false},
   bg:[BG+'bg_news_control_room',GB+'bg_tv_news_studio_blank',GB+'bg_press_conference_generic',GB+'bg_scoreboard_blank',GB+'bg_auction_hall_generic'],
   tr:['push','blinds','slideup','fade','tiles','lightwipe']}
@@ -112,6 +118,44 @@ function boot(){
     SE.scenes.push(mk('end',SE.scenes[SE.scenes.length-1]));
     SE.sel=mid;await SE.apply(false);
     st.textContent='2 CTA slides jude: beech mein (Like+Subscribe) aur aakhir mein (Like+Comment+Subscribe). Script ki CTA line ke saamne khiskao.';};
+  // C66: punch-in zoom selector
+  const zs=document.createElement('select');zs.id='lk_zoom';zs.style.cssText=sel.style.cssText;
+  [['off','🔍 Zoom: band'],['soft','🔍 Zoom: halka'],['medium','🔍 Zoom: medium'],['strong','🔍 Zoom: tez']].forEach(a=>zs.add(new Option(a[1],a[0])));
+  zs.value=window.PUNCH?PUNCH.level:'off';zs.onchange=()=>{PUNCH.set(zs.value);window.PLAYER&&PLAYER.draw();};
+  // C67: Brand Kit — 3 slot (A/B/C): look + caption style/rang/shabd-highlight + zoom ek saath save/load
+  const bk=document.createElement('select');bk.id='bk_slot';bk.style.cssText=sel.style.cssText;
+  ['A','B','C'].forEach(x=>bk.add(new Option('🗂 Kit '+x,x)));
+  const bkS=document.createElement('button'),bkL=document.createElement('button');bkS.id='bk_save';bkL.id='bk_load';
+  bkS.textContent='💾 Kit save';bkL.textContent='📂 Kit lagao';bkS.style.background=bkL.style.background='#3a4250';
+  const BKK=x=>'cvt_kit_'+x;
+  bkS.onclick=()=>{const k={look:L.cur||'',zoom:window.PUNCH?PUNCH.level:'off'};
+    if(window.CAP){k.cs=CAP.st.k;k.cc=CAP.st.c;k.wh=!!CAP.wh;k.pos=CAP.pos;}
+    try{localStorage.setItem(BKK(bk.value),JSON.stringify(k));st.textContent='Kit '+bk.value+' save: '+(k.look&&LOOKS[k.look]?LOOKS[k.look].n:'koi look nahi')+(k.cs?' | caption '+CAP.STYLES[k.cs]+' ('+k.cc+')'+(k.wh?' + shabd highlight':''):'')+' | zoom '+k.zoom;}catch(e){st.textContent='Kit save error: '+e.message;}};
+  bkL.onclick=()=>{let k=null;try{k=JSON.parse(localStorage.getItem(BKK(bk.value))||'null');}catch(e){}
+    if(!k){st.textContent='Kit '+bk.value+' khaali hai. Pehle style set karke 💾 dabao.';return;}
+    if(LOOKS[k.look]){L.apply(k.look);sel.value=k.look;}else{sel.value='';}
+    if(window.CAP&&k.cs){CAP.setStyle(k.cs,k.cc);CAP.setWH(k.wh);if(k.pos){CAP.setPos(k.pos);CAP.syncPos&&CAP.syncPos();}CAP.syncSel&&CAP.syncSel();const wc=document.getElementById('capwh');if(wc)wc.checked=!!k.wh;}
+    if(window.PUNCH&&k.zoom){PUNCH.set(k.zoom);zs.value=k.zoom;}
+    window.PLAYER&&PLAYER.draw();st.textContent='Kit '+bk.value+' laga diya (look, caption, zoom). Bg/transition ke liye 🎲 Auto-vary alag se.';};
+  // C72: Brand Kit file export/import — teeno kit (A/B/C) ek JSON file mein, dusre phone/laptop par le jaane ke liye
+  const bkX=document.createElement('button'),bkI=document.createElement('button'),bkF=document.createElement('input');
+  bkX.id='bk_export';bkI.id='bk_import';bkX.textContent='⬇ Kit file';bkI.textContent='⬆ Kit file kholo';bkX.style.background=bkI.style.background='#3a4250';
+  bkF.type='file';bkF.accept='.json,application/json';bkF.style.display='none';bkF.id='bk_file';
+  bkX.onclick=()=>{const o={app:'cricket_video_tool',kind:'brand_kit',v:1,kits:{}};
+    ['A','B','C'].forEach(x=>{try{const k=JSON.parse(localStorage.getItem(BKK(x))||'null');if(k)o.kits[x]=k;}catch(e){}});
+    if(!Object.keys(o.kits).length){st.textContent='Koi kit save nahi hai. Pehle 💾 Kit save karo.';return;}
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,1)],{type:'application/json'}));a.download='brand_kit.json';
+    document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);
+    st.textContent='brand_kit.json download hui ('+Object.keys(o.kits).join(', ')+'). Dusre device par ⬆ se kholo.';};
+  bkI.onclick=()=>bkF.click();
+  bkF.onchange=async()=>{const f=bkF.files&&bkF.files[0];bkF.value='';if(!f)return;
+    try{const o=JSON.parse(await f.text());if(!o||o.kind!=='brand_kit'||!o.kits)throw new Error('ye Brand Kit file nahi hai');
+      const done=[];['A','B','C'].forEach(x=>{const k=o.kits[x];if(k&&typeof k==='object'){
+        const c={look:LOOKS[k.look]?k.look:'',zoom:(window.PUNCH&&PUNCH.AMP[k.zoom]!==undefined)?k.zoom:'off'};
+        if(window.CAP&&CAP.STYLES[k.cs]&&CAP.COLORS[k.cc]){c.cs=k.cs;c.cc=k.cc;c.wh=!!k.wh;if(CAP.POS[k.pos])c.pos=k.pos;}
+        localStorage.setItem(BKK(x),JSON.stringify(c));done.push(x);}});
+      st.textContent=done.length?'Kit '+done.join(', ')+' load ho gaye (purane A/B/C badal gaye). Ab 📂 Kit lagao.':'File mein koi kit nahi mili.';
+    }catch(e){st.textContent='Kit file error: '+e.message;}};
   // C64: 🎬 Naya Style — ek click mein look + caption style/rang + auto-vary; pichli baar wala nahi aata
   const bR=document.createElement('button');bR.id='lk_recipe';bR.textContent='🎬 Naya Style (ek click)';bR.style.background='#d0397a';
   bR.onclick=async()=>{bR.disabled=true;try{
@@ -119,13 +163,14 @@ function boot(){
     const pk=(arr,last)=>{const c=arr.filter(x=>x!==last);const l=c.length?c:arr;return l[Math.floor(Math.random()*l.length)];};
     const lk=pk(Object.keys(LOOKS),h.look),cs=window.CAP?pk(Object.keys(CAP.STYLES),h.cs):'',cc=window.CAP?pk(Object.keys(CAP.COLORS).filter(x=>x!=='white'),h.cc):'';
     L.apply(lk);sel.value=lk;
+    if(window.PUNCH){const zl=pk(['off','soft','medium'],h.z);PUNCH.set(zl);zs.value=zl;h.zz=zl;}
     if(window.CAP){CAP.setStyle(cs,cc);CAP.syncSel&&CAP.syncSel();}
-    try{localStorage.setItem('cvt_recipe_hist',JSON.stringify({look:lk,cs:cs,cc:cc}));}catch(e){}
+    try{localStorage.setItem('cvt_recipe_hist',JSON.stringify({look:lk,cs:cs,cc:cc,z:h.zz}));}catch(e){}
     const m=await L.vary();
     st.textContent='Naya style: '+LOOKS[lk].n+(cs?' | caption: '+CAP.STYLES[cs]+' ('+cc+')':'')+' | '+m;
     window.PLAYER&&PLAYER.draw();
   }catch(e){st.textContent='Style error: '+e.message;}bR.disabled=false;};
-  q.appendChild(sel);q.appendChild(bR);q.appendChild(b);q.appendChild(bA);q.appendChild(bC);q.appendChild(bS);q.appendChild(st);
+  q.appendChild(sel);q.appendChild(zs);q.appendChild(bk);q.appendChild(bkS);q.appendChild(bkL);q.appendChild(bkX);q.appendChild(bkI);q.appendChild(bkF);q.appendChild(bR);q.appendChild(b);q.appendChild(bA);q.appendChild(bC);q.appendChild(bS);q.appendChild(st);
   if(LOOKS[saved])L.apply(saved); // reload par wahi look
   return true;
 }

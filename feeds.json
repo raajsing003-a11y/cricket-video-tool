@@ -2,21 +2,233 @@
  "_help": "feeds: url, name (sirf tumhare dekhne ke liye), official (true = board/team ki apni site; tabhi Confirmed label), enabled. tag_rules: keyword (chhote akshar) -> tag. Nayi feed jodni ho to ek object copy karo.",
  "max_age_days": 14,
  "feeds": [
-  {"name":"Google News: retention","url":"https://news.google.com/rss/search?q=IPL+retention+when:2d&hl=en-IN&gl=IN&ceid=IN:en","official":false,"enabled":true},
-  {"name":"Google News: release/trade","url":"https://news.google.com/rss/search?q=IPL+release+OR+trade+OR+traded+when:2d&hl=en-IN&gl=IN&ceid=IN:en","official":false,"enabled":true},
-  {"name":"Google News: auction","url":"https://news.google.com/rss/search?q=IPL+auction+when:2d&hl=en-IN&gl=IN&ceid=IN:en","official":false,"enabled":true},
-  {"name":"Google News: India match","url":"https://news.google.com/rss/search?q=Team+India+cricket+when:1d&hl=en-IN&gl=IN&ceid=IN:en","official":false,"enabled":true},
-  {"name":"Google News: IPL Hindi","url":"https://news.google.com/rss/search?q=IPL+%E0%A4%B0%E0%A4%BF%E0%A4%9F%E0%A5%87%E0%A4%A8%E0%A4%B6%E0%A4%A8+when:2d&hl=hi&gl=IN&ceid=IN:hi","official":false,"enabled":true},
-  {"name":"ESPNcricinfo (all stories)","url":"https://www.espncricinfo.com/rss/content/story/feeds/0.xml","official":false,"enabled":true}
+  {
+   "name": "Google News: retention",
+   "url": "https://news.google.com/rss/search?q=IPL+retention+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: release/trade",
+   "url": "https://news.google.com/rss/search?q=IPL+release+OR+trade+OR+traded+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: auction",
+   "url": "https://news.google.com/rss/search?q=IPL+auction+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: India match",
+   "url": "https://news.google.com/rss/search?q=Team+India+cricket+when:1d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: IPL Hindi",
+   "url": "https://news.google.com/rss/search?q=IPL+%E0%A4%B0%E0%A4%BF%E0%A4%9F%E0%A5%87%E0%A4%A8%E0%A4%B6%E0%A4%A8+when:2d&hl=hi&gl=IN&ceid=IN:hi",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "ESPNcricinfo (all stories)",
+   "url": "https://www.espncricinfo.com/rss/content/story/feeds/0.xml",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: Cricbuzz",
+   "url": "https://news.google.com/rss/search?q=site:cricbuzz.com/cricket-news+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: ESPNcricinfo (site)",
+   "url": "https://news.google.com/rss/search?q=site:espncricinfo.com/cricket-news+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: TheSportsTak",
+   "url": "https://news.google.com/rss/search?q=site:thesportstak.com/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: News18 Cricket",
+   "url": "https://news.google.com/rss/search?q=site:news18.com/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: Times of India Cricket",
+   "url": "https://news.google.com/rss/search?q=site:timesofindia.indiatimes.com/sports/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: India Today Cricket",
+   "url": "https://news.google.com/rss/search?q=site:indiatoday.in/sports/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: Hindustan Times Cricket",
+   "url": "https://news.google.com/rss/search?q=site:hindustantimes.com/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: CricTracker",
+   "url": "https://news.google.com/rss/search?q=site:crictracker.com/cricket-news+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: NDTV Sports Cricket",
+   "url": "https://news.google.com/rss/search?q=site:sports.ndtv.com/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Site: Sportskeeda Cricket",
+   "url": "https://news.google.com/rss/search?q=site:sportskeeda.com/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  }
  ],
  "tag_rules": {
-  "Retention": ["retain","retention","retained","रिटेन","रिटेंशन"],
-  "Release": ["release","released","let go","रिलीज"],
-  "Auction": ["auction","mini-auction","mini auction","purse","नीलामी","ऑक्शन"],
-  "Trade": ["trade","traded","swap","transfer","ट्रेड"],
-  "India Match": ["team india","india vs","ind vs","india tour","भारत बनाम","टीम इंडिया"],
-  "Team News": ["squad","captain","coach","injury","injured","playing xi","signs","appointed","कप्तान","कोच","चोट","टीम"]
+  "Retention": [
+   "retain",
+   "retention",
+   "retained",
+   "रिटेन",
+   "रिटेंशन"
+  ],
+  "Release": [
+   "release",
+   "released",
+   "let go",
+   "रिलीज"
+  ],
+  "Auction": [
+   "auction",
+   "mini-auction",
+   "mini auction",
+   "purse",
+   "नीलामी",
+   "ऑक्शन"
+  ],
+  "Trade": [
+   "trade",
+   "traded",
+   "swap",
+   "transfer",
+   "ट्रेड"
+  ],
+  "India Match": [
+   "team india",
+   "india vs",
+   "ind vs",
+   "india tour",
+   "भारत बनाम",
+   "टीम इंडिया"
+  ],
+  "Team News": [
+   "squad",
+   "captain",
+   "coach",
+   "injury",
+   "injured",
+   "playing xi",
+   "signs",
+   "appointed",
+   "कप्तान",
+   "कोच",
+   "चोट",
+   "टीम"
+  ]
  },
- "rumor_words": ["reportedly","report says","reports","likely","expected to","set to","may ","could ","sources","speculation","rumour","rumor","tipped","eyeing","in talks","अफवाह","सूत्र","संभावित","कथित","चर्चा","खबर है"],
- "blocked_words": ["dream11","dream 11","fantasy","betting","odds","bet365","सट्टा","फैंटेसी","ड्रीम11","ड्रीम 11"]
+ "rumor_words": [
+  "reportedly",
+  "report says",
+  "reports",
+  "likely",
+  "expected to",
+  "set to",
+  "may ",
+  "could ",
+  "sources",
+  "speculation",
+  "rumour",
+  "rumor",
+  "tipped",
+  "eyeing",
+  "in talks",
+  "अफवाह",
+  "सूत्र",
+  "संभावित",
+  "कथित",
+  "चर्चा",
+  "खबर है"
+ ],
+ "blocked_words": [
+  "dream11",
+  "dream 11",
+  "fantasy",
+  "betting",
+  "odds",
+  "bet365",
+  "सट्टा",
+  "फैंटेसी",
+  "ड्रीम11",
+  "ड्रीम 11"
+ ],
+ "aliases": {
+  "rr": "rajasthan",
+  "lsg": "lucknow",
+  "csk": "chennai",
+  "rcb": "bengaluru",
+  "bangalore": "bengaluru",
+  "mi": "mumbai",
+  "kkr": "kolkata",
+  "srh": "hyderabad",
+  "dc": "delhi",
+  "pbks": "punjab",
+  "gt": "gujarat",
+  "राजस्थान": "rajasthan",
+  "लखनऊ": "lucknow",
+  "चेन्नई": "chennai",
+  "मुंबई": "mumbai",
+  "बेंगलुरु": "bengaluru",
+  "कोलकाता": "kolkata",
+  "हैदराबाद": "hyderabad",
+  "दिल्ली": "delhi",
+  "पंजाब": "punjab",
+  "गुजरात": "gujarat",
+  "शमी": "shami",
+  "करन": "curran",
+  "धोनी": "dhoni",
+  "कोहली": "kohli",
+  "रोहित": "rohit",
+  "बुमराह": "bumrah",
+  "गिल": "gill",
+  "पंत": "pant",
+  "हार्दिक": "hardik",
+  "जडेजा": "jadeja",
+  "अश्विन": "ashwin",
+  "आईपीएल": "",
+  "भारत": "india",
+  "न्यूजीलैंड": "zealand",
+  "ऑस्ट्रेलिया": "australia",
+  "पाकिस्तान": "pakistan",
+  "इंग्लैंड": "england",
+  "ट्रेड": "trade",
+  "रिटेंशन": "retain",
+  "रिटेन": "retain",
+  "रिलीज": "release"
+ },
+ "_help_aliases": "aliases: team short form / Hindi naam -> English shabd, taaki alag sites ki milti-julti headline ek story mein judein. Khaali value (\"\") = shabd ignore."
 }

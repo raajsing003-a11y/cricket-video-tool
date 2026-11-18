@@ -1,6 +1,6 @@
 # NEWS TRACKER (C22)
 
-Khabrein apne aap jama karta hai (har 3 ghante, GitHub Actions) aur `news.html` page par dikhata hai. Tool ke video ka hissa nahi hai; roz ka chakra ka step 1 ("khabar chunna") isse aasaan hota hai.
+Khabrein apne aap jama karta hai (har 1 ghante, GitHub Actions) aur `news.html` page par dikhata hai. Tool ke video ka hissa nahi hai; roz ka chakra ka step 1 ("khabar chunna") isse aasaan hota hai.
 
 ## Files (sab cricket_video_tool/ ke andar, yani repo ke root par)
 - `feeds.json` — kaun si feeds, tag keywords, rumor words, blocked words
@@ -37,3 +37,28 @@ Pehli Run mein dekho page par "feed fail" ki lal line to nahi. Fail wali feed ko
 
 ## Aage ke sudhaar (jab bologe)
 Official sites (BCCI/team) ki RSS feeds jodna, Hindi feeds badhana, tag keywords tune karna.
+
+## Site feeds (C141)
+Cricbuzz, ESPNcricinfo, TheSportsTak, News18, Times of India, India Today, Hindustan Times, CricTracker, NDTV Sports, Sportskeeda — in 10 sites ki khabrein ab `feeds.json` mein "Site: ..." naam ki feeds se aati hain (Google News `site:` query, har ek `when:2d`). Wajah: in sites ke seedhe RSS links ya to hain nahi ya badalte rehte hain; Google News ki RSS har site ke liye chalti hai. Link Google ka redirect hota hai jo asli article par khulta hai. Label sab par Rumor rehta hai (official nahi). Koi site na chahiye to uski feed mein `"enabled": false`.
+
+## Story-wise grouping (C142)
+Page ab **ek story = ek card** dikhata hai: 10 sites ki milti-julti khabrein ek saath, har site ki apni headline + link. Video banane ke liye: story par **📋 Story pack copy** -> Claude ke Fact Pack chat mein paste (verify + EK poora script).
+- Filters: tag, label, **2+/3+/4+ sites**, **site chips** (har site ki kitni stories), kram (naya pehle / zyada sites pehle), khoj, used chhupao.
+- Grouping `scripts/fetch_news.py` karta hai (title ke shabd milte-julte, 72 ghante ke andar). Alag teams ki khabar kabhi ek nahi hoti.
+- `feeds.json` ke `aliases` mein team short form (RR, LSG, CSK...) aur Hindi naam (शमी, राजस्थान...) -> English shabd hain, taaki alag site/bhasha ki headline judein. Naya naam jodna ho to ek line badhao; `""` = shabd ignore.
+- Galat jod ya bichhdi hui story dikhe to headline note karke batao; rules tune honge.
+- Update ke baad GitHub mein news-fetch ek baar Run karo.
+
+## 🔄 Abhi fetch karo button (C143)
+news.html par **🔄 Abhi fetch karo**: GitHub ko "news-fetch chalao" bolta hai, phir har 10 sec check karta hai aur naya data aate hi page khud bhar jaata hai (1-3 min; Pages update mein kabhi 5-6 min).
+**Ek baar token banao** (sirf aapke browser mein save hota hai):
+1. GitHub > Settings > Developer settings > Personal access tokens > **Fine-grained tokens** > Generate new token.
+2. Repository access: **Only select repositories** > cricket-video-tool. Permissions > Repository > **Actions: Read and write**. Expiration jo chaho. Generate, token copy karo.
+3. news.html par **🔑 Token** dabao, paste karo. Har device/browser par ek baar.
+Token kisi ko mat do. Kahin leak ho to GitHub mein delete kar do. Token sirf is repo ke Actions chala sakta hai.
+
+## Tez + advance (C145)
+- Fetch ab parallel hai (saari feeds ek saath) + retry, to Run jaldi khatam hota hai. `news.json` mein `feed_secs` dikhata hai kaun si feed dheemi hai.
+- **🔥 Trending**: pichle 3 ghante mein 3+ alag sites ne ek hi story chhaapi (abhi garam khabar). **🆕 Naya**: aapki pichli visit ke baad aayi. **☆ Baad mein**: video ke liye side mein rakho. Teeno ke filter 'Sirf:' row mein.
+- Page khula rahe to har 3 min khud naya data le leta hai.
+

@@ -41,14 +41,15 @@ X.runFast=async function(P,onStatus,opts){
   ve.configure({codec:vc.codec,width:W,height:H,bitrate:opts.bitrate||12e6,framerate:FPS,latencyMode:'quality'});
   const cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');
   const t0=performance.now();
-  for(let i=0;i<N;i++){
+  C.exporting=true;try{for(let i=0;i<N;i++){
     if(err)throw err;
+    if(C.beforeFrame)await C.beforeFrame(i/FPS);
     C.render(ctx,i/FPS);
     const f=new VideoFrame(cv,{timestamp:Math.round(i*1e6/FPS),duration:Math.round(1e6/FPS)});
     ve.encode(f,{keyFrame:i%(FPS*2)===0});f.close();
     while(ve.encodeQueueSize>6){await new Promise(r=>setTimeout(r,2));if(err)throw err;}
     if(i%10===0){onStatus&&onStatus(i/FPS,N/FPS,(performance.now()-t0)/1000);await new Promise(r=>setTimeout(r,0));}
-  }
+  }}finally{C.exporting=false;}
   await ve.flush();ve.close();
   if(aCfg){
     const len=Math.min(Math.round(X.audio.duration*SR),Math.round(N/FPS*SR));

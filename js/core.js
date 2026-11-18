@@ -48,6 +48,8 @@ C.cover=function(ctx,im,x,y,w,h,z,px,py){
 };
 C.drawImg=function(ctx,k,x,y,w,h){const im=C.img(k);if(im)ctx.drawImage(im,x,y,w||im.width,h||im.height);};
 // word wrap -> lines (C30: bahut lambe shabd ko akshar par tod deta hai taaki line kabhi maxW se bahar na jaye)
+// C93 (G16): '*shabd*' marker -> [{w,hl}] (hl = peela shabd). Ek se zyada shabd bhi: '*do shabd*'. Captions + header line dono use karte hain.
+C.starWords=function(str){const out=[];let st=false;String(str==null?'':str).split(/\s+/).forEach(tok=>{let w='',hl=false;for(const ch of tok){if(ch==='*'){st=!st;}else{w+=ch;if(st)hl=true;}}if(w)out.push({w:w,hl:hl});});return out;};
 C.wrap=function(ctx,text,maxW){
   const words=String(text).split(/\s+/).filter(Boolean),lines=[];let cur='';
   const mw=t=>ctx.measureText(t).width;
@@ -163,11 +165,11 @@ C.player=function(canvas,ui){
   const P={t:0,playing:false,last:0};
   P.draw=()=>{C.render(ctx,P.t);ui&&ui.onTime&&ui.onTime(P.t,C.total);};
   P.seek=t=>{P.t=Math.max(0,Math.min(C.total-1/FPS,t));P.draw();};
-  P.toggle=()=>{P.playing=!P.playing;P.last=performance.now();if(P.playing)requestAnimationFrame(loop);ui&&ui.onState&&ui.onState(P.playing);};
+  P.toggle=()=>{P.playing=!P.playing;C.playing=P.playing;P.last=performance.now();if(P.playing)requestAnimationFrame(loop);ui&&ui.onState&&ui.onState(P.playing);};
   function loop(now){
     if(!P.playing)return;
     P.t+=(now-P.last)/1000;P.last=now;
-    if(P.t>=C.total){P.t=C.total-1/FPS;P.playing=false;ui&&ui.onState&&ui.onState(false);}
+    if(P.t>=C.total){P.t=C.total-1/FPS;P.playing=false;C.playing=false;ui&&ui.onState&&ui.onState(false);}
     P.draw();if(P.playing)requestAnimationFrame(loop);
   }
   return P;
