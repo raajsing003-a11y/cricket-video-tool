@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T15:54:59.571017+00:00",
+ "updated": "2026-11-18T00:56:00.140624+00:00",
  "feeds_ok": [
   "Google News: retention",
   "Google News: release/trade",
@@ -11,11 +11,1185 @@
  "feeds_fail": [],
  "items": [
   {
+   "id": "a1dc22c3cd31",
+   "title": "England's Jacob Bethell Ruled Out Of South Africa Test Tour",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQRDEzODhLbXllbFhNZzVKNm9MU1BSRm8tSUtvRXlSSDBNTE1tRHNqR1hGeUE0bUdpeXpmZnFfcjJ3M1dMdGVJOUNiOHdWem1YSDBRWXdZTms1Zm52YkxRUTJydUI0VmMwdEhoUkpMTk5mamZNREkteElpdXUza0I0YXhIS2Z5ekNRMG9uNFFkUFRsVFh6Qkk3S3JRUVFtZW94ZG9wU0RDUkdYMVHSAbABQVVfeXFMUEN0SkJhREdpMjBsZTVqZHlONGNIcndDYmtEYTRmVDlia2l3LXVvNmt4WFhKQ3NndWI4ZWFydmdHRVZ0MnE3b2YtWG5HY1NtUGVpN3JicjhabEdackZrdVNtd3pVN2ZSSjB4a2R4NXNZdTRlUHV2ZDVVMG9XQ21qOEZ1OVJZX2JMMzFPUFBjODlrSjBjejJvcWhCSXVaMTJ4am9qOWQySzdJLVNJQVRvY0k?oc=5",
+   "source": "Cricketnmore",
+   "published": "2026-11-18T00:38:56+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "a1dc22c3cd31",
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "a4e03230fddd",
+   "title": "South Africa Collapse After Bavuma Injury On 3rd Day Of Bangladesh Test",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPWlB2YVFZaFZVTHVPaXdGNjBHU3h4bXh2aTI3S1RTQzFjT1pJZFVQblcxLUh4Ym41UjEwTDQ2WHU4elc2MHB1SmJlNkFnZWpqVTMtUG1ZNXVJR1Y4N2dIdHg0NkVUTVBvdWRVS2NzSmtuWHVOdk5oT3cyQUpoZ1VFMm1ZcmZqcmpIS0FnRWI0YUhZLTU2eHlCY0xpSWdTbFozUzY2ajI2VEZVMmZpVnhnQ1dTTmVyWmFCRUJjb9IBwgFBVV95cUxPM1ZIYzNnRXZKWEJ0OGRrdEQ5RngwQ1NJQ3V0QUY5cHJfQko4ZnNsOGUxeXFOOS1TRHZOcktnV3RpX3hobmNYVXJycWNUMWVrMGpYZFJLR2tzamdwcC01S0tlQWJobktmMmtPeTJJcXB6M2wwUDdCRDhZaF9rOFpoT21oNUw1Mi10bjcxaEFLVTVPTjk0SVphQ2FEZjJwejF4LTN6ZE5RTEZsbnVhaUtRMF9KRzJEaHJIV3FZM0VDSzlpQQ?oc=5",
+   "source": "Cricketnmore",
+   "published": "2026-11-18T00:38:55+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "a4e03230fddd",
+   "sources_n": 1,
+   "score": 4.98
+  },
+  {
+   "id": "aa102602ddf1",
+   "title": "“Fan in me needed this”: Sunil Chhetri congratulates Team India on SAFF Championship triumph",
+   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQM05Zd0c2UXBFVmhhUDZhbWtIczFZb2tPNUNyME45TERFX2VnY2RxTjR5TGlOVEtqbVpHdVNkOFl2WkMxN2FXdGc5cURYUi1JdUI1a0w3RDBlVzdTaG5NWi1icW10cFA5S29fSlRUYXNnSmttdkFHMmpzamR3VS1JSjJPOEdmVGpMaGdBQjZfbF81YTJ4MzJPTHplQmJmNUc3YnNnSXNKNUo2cXJsU25YWTg5R1d4U2VoOVp4RkRjdURZZXpZYnJyQW5FZ9IBzwFBVV95cUxNTkp1RzNYU0VuZTJyWkFzeTR4S1BJbkNzQm9RRnRlWDVVWFktZ1Y1VkVPT29pWkM1NnlDUXNzV2xXVVprYjJYc3lGNEd1N3BPNWExTmZmX2xtOEozelI1WWE5MkViSS1yeV9hN1VGeDkxdkRZWkNSLUh1OUV2NXdrVy1FMWZNVlZfd3NqY2FxNHdHaFB0cmFUcVQ1Tm9Idl96UWNWRHF2RGFQQmJ1UU93R2FtWUtoaFNRZjl6NUNEVXJaNVVNUXEzOV9xWEVuQzQ?oc=5",
+   "source": "The Tribune",
+   "published": "2026-11-18T00:37:27+00:00",
+   "summary": "",
+   "tags": [
+    "India Match"
+   ],
+   "label": "Rumor",
+   "cluster": "aa102602ddf1",
+   "sources_n": 1,
+   "score": 5.97
+  },
+  {
+   "id": "eeed7d3ad791",
+   "title": "IPL 2027: Dhoni takes up CSK mentor role; major releases, retentions and trades across 10 teams",
+   "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPNkNYNkRpcUgwOF9xMTdzMktIdFlSdFlRVE1icmdOR1lqUGJfS2l4WENIYlgtQUdMUy1wamVXdUFydmdSNHl3SDF3NlRKUzY2MGpsMU44U1VUaTB0TF9UYy1ocXpnMnFOTWJTV003Z2lDSWVldWpMcTBwR1VsRVBOMWNZbGh6RVBYa1Y3aHY3RXBOczJUbXdua0dvS0xJbWp5emVEWlpvN1JKaGcxME90OU1XeHpkMnM1aEdwcEN1QldjUmNUbGZ4blQ0blNnczRzSWx0RC1INkttcUw4Y1NjSU9LNA?oc=5",
+   "source": "ANI News",
+   "published": "2026-11-18T00:31:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "eeed7d3ad791",
+   "sources_n": 1,
+   "score": 7.97
+  },
+  {
+   "id": "deeb5b5bd91c",
+   "title": "IPL 2027 Retained Players List And Auction Purse",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5oeEdQN0Mxb09EaFJ4SFhZUUwwMExRNVBXQU0teUVISjZDazlKdTR1VFhjM2ljTExDV09lSnlpcmM3dzN0YlBncFotM3g3aHJ2RFY4b183M3AtUzlKNGNYOHgzNVcxZUJtU0p5QWNTQWdoOHRoNkM0TmVR?oc=5",
+   "source": "INDToday",
+   "published": "2026-11-18T00:30:27+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.96
+  },
+  {
+   "id": "ef48a9cc2d1e",
+   "title": "MS Dhoni's IPL career comes to an end: 12 staggering records that may never be broken",
+   "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQMV9kY0h1TWJvT1FaWG00UWNzWnhRUkM2ZTRqM2ZZSi1Dd3ljZTBKdEhia2o3eGpkVlJhV19zaW01bl9tdkdJSmVWWm16SFdsUm1MWnJWeUphcjE1TjZwZDV3TUNjdndWVW9LVFFRWHlEanI0aXBLdzNxcTMyak5PN0xhb1RJS2FUUktTSVo2a2VaQnJ0ZXdUeDZsc1JYOV9Yc3g3Q25CRTVHcjhEbWlvU2ZucUVrNmlHMlozZjB3T2JITmtCQWFDai1XdjhLQkJFeXFoaTNLWWhtWjV4b0tlVUV1dG1hcU1BVHEtY3FGblRLQmxnZjFtadIB_gFBVV95cUxORmtMbmxqdWtVMGQ4OHdQa29Uc1l2Y2dmMExMejlPMGFxRzdKQ3VYd3BVUnpZeFlHcXNHRVVzdUE5TDllV2RnQjAzWGZCWXhselpVcUJ1eEpGZngzR0lzaWNoaDNCZnhUZVJjVHQwODJjRjZfMTNIWXlqMVFzaUw4V0RncFJ2NDR5bUdyc0FVQ1RacVdBcmlnRjBXcHQ1bFV4YVJ3U2lkelFlaWV1REUydWd6QVY3Rzk3ZUpKeUF4WE5abzRJdlRXMzduNXNVOXNINERwejM5M25IQ1lzMjluVG5yZjBxM3oxR21NQnhZUC1LdnRHX1JzQVp0V3Q2dw?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-18T00:30:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "ef48a9cc2d1e",
+   "sources_n": 1,
+   "score": 2.96
+  },
+  {
+   "id": "6420dd14e013",
+   "title": "CSK Retained & Released Players List Ahead of IPL 2027",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQWEllSlVkcjdPWnlMM2lYaVZaZm9Tdm5FMkVhcjZNOGwzQXNibEx3SW4wRlNER2VzNTh6bUd0a0ZSc3gzdDlDTUw5Y2ZWSVRsTl9ock1mUUxPZkRiTjMtdFpuNE4tT2RZTjh0ZU9Na1dFOUQtUW5MWjBkRHhDT3Q5eFgtNVhES3I4a3QzWlhiTlZDWGFYUWVn?oc=5",
+   "source": "ProBatsman",
+   "published": "2026-11-18T00:30:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 15.96
+  },
+  {
+   "id": "740522049ada",
+   "title": "Aussie Test stars make shock call to sacrifice millions",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNdmVGV2k1cnhXempwc0RoWG9hTm95SUtsSmItYmk3VUM5QWc4SVdGYXg4dTlPTDJhdmt2UUNRNmI1TFlKWGVodE5zb3hOYUtfZnRPa2l4elJsdGt1bFZxQnVjb3BTMjhGVkdfb1FwcC1oUm1PSmloUkJsUkFudXhnWllmZ0lEa2NWYmo4VFNuR19jeGFseDhpX2xZaHowcXU2QnZUV1FCUGRkNXVHaFZvSWhBRk9DclJHSENfeTBCQzg5bzFLRGZF?oc=5",
+   "source": "Nine.com.au",
+   "published": "2026-11-17T22:50:05+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "740522049ada",
+   "sources_n": 1,
+   "score": 2.83
+  },
+  {
+   "id": "f66742d024f2",
+   "title": "NZ vs IND 2026 Tests: Ranking India's top 5 batting performances in Tests in New Zealand",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUDlJUE55VGdQMnFGSDk1VDRTVURwc19hR2Y0WDBKM2ZZS0dZeVZQTU5kRGcwcmFSNjZiZmR2ZFFVZmtlM2oyZExFaEMxbDJzV2JIRkM3bGZJVjhKdFRsMVN0UktXeFk0VXUtQ0U5WERfY2F4TC15TlRrNFJpZzhWMV92UC0xT2QwM3hXNE01ZTZRSG0wT2dKRG1Jb21GdkFRZ3piZnNCaUpmLUM1WU5GUXY0NXRJcGJ2?oc=5",
+   "source": "Sportskeeda",
+   "published": "2026-11-17T22:24:28+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "f66742d024f2",
+   "sources_n": 1,
+   "score": 2.79
+  },
+  {
+   "id": "f19b4b46006d",
+   "title": "Tributes flow for 278-match star as cricket icon announces immediate retirement after sad reveal",
+   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxONHdDTmRkYW83dzYzeGY0OGtIMlBIQTRTRVhSdVd3akw3OUhxS29TRGYwUVhfMnV2RjBPcjNNSVBKSkZObmRMTGdpVVA1ZWEwWXkzWXZNRHNlaHBIOHVoaVAzeFAtNjNMTXNjLWdLbllzM1F1dlA5bTZDTGZJSUpZTEpMUVMwNklaaHc4cHRtT0FMYnh0VXFXYm53WnhyTGZqUWpsZDJWWmZjRm5SU1VWV2JrS1B1eE5yc0JYdXVoUlhIM1V2TklLUEtlZERYeTA2SC00?oc=5",
+   "source": "Yahoo News Australia",
+   "published": "2026-11-17T21:16:27+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "f19b4b46006d",
+   "sources_n": 1,
+   "score": 2.7
+  },
+  {
+   "id": "f2602c4c87f6",
+   "title": "Dunkley's onslaught keeps Sixers top of the table",
+   "link": "https://www.cricinfo.com/ci/content/story/1563011.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-17T21:02:42+00:00",
+   "summary": "The visitors needed just 15 overs to chase the target after Melie Kerr starred with the ball",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "f2602c4c87f6",
+   "sources_n": 1,
+   "score": 2.68
+  },
+  {
+   "id": "d8649fd1f854",
+   "title": "NZ stunned India in unforgettable heist... but 'chance to dominate' is now before Aussie assault",
+   "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOVTlNWU5vb3JqWjNIU09LdnFfRXFlMUVDb2EzcmZSWERfbmJYNmdWNFh5bDVPMVRWMFhWQ2ctUTlxeWpPbHRTT18yWjlZTjJtbzB6YUpQR3BWSDRVNFZCS2pMaDdZcFBKVXVGWmtoUmFsR2ZJenMycUZTNHFLRW1TcUhLalY4UWpKZW5feFg3dk42RGEzeUtldzdpVV95Qi1uaEVfa3BXZUZ5TWRDcmN1eU5xbUZuRmQtSmx3Rl82Z3gyalAwZFd0Wk9rS2Y1enJKYTNhWkY0Vmd4ajc4UU9GOE9MSnBsZTVCcUMtOWhvRkoxX3VGcDhSRXJB?oc=5",
+   "source": "Fox Sports",
+   "published": "2026-11-17T21:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "d8649fd1f854",
+   "sources_n": 1,
+   "score": 2.67
+  },
+  {
+   "id": "3b549a761163",
+   "title": "NZ vs IND 2026: Top 5 Indian bowlers with most Test wickets in New Zealand ft. Zaheer Khan",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPU0gyekU5bXp6VnEyckhockEydEFOcHRtZDRva3ZKdWNrNXU4YUx0V1RTNWhUNUNQdE1INWNWanZXdU9CanZPQWFzY19wTi1tcV9iOVM4ajkxczBncENxVTdGWXB3M3VrczRlbHl5anZlQjJTNW9MVUNHdm9BcDhKcjRROUtMQ0I2QkR5aFI1SzRINkNIdWdwbTc4Y2xLZEhGWkxqLURNNWNObUctQ0hHYg?oc=5",
+   "source": "Sportskeeda",
+   "published": "2026-11-17T20:48:03+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "3b549a761163",
+   "sources_n": 1,
+   "score": 2.66
+  },
+  {
+   "id": "9956c2ee49cd",
+   "title": "IPL 2027: Punjab Kings retention list, released players and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSXlSUVZ6dkphWENmYjdMdDMxd0xialJ0dTVLVEZjNklnV2ZaQUI1N0ptQi1Mb0RSMkpnZTQ3Qlo4dG83NTUxclZxcmFkSENuZmkyN09CUDZlX3JNRHBQMzJTTE1wSVpwY0d3QkdkdWVxMjBpOEh2aHB4LTF3d3RJTUhNcUpFWkE?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T20:47:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.65
+  },
+  {
+   "id": "54de55e271d9",
+   "title": "MS Dhoni, CSK icon ends 18-year IPL career as player, will be team mentor",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQaFMxa01QbFRmUG1qcWo3bGRwZmd0VmZRWENhekgzZ1A3a3NkQmJ3NmVmUXowU0ZEVmNPQUpjRGtCTnRJb1N0VmMwNmV5NFZ2UGl0dmlRZTZKZTliR1otdUV4aERuNXIyNzhaRzRYQVgwcUdwVVA3Q2hBbnc5Vk1Rek93Zk9DLXR6MkR2bldiTnZia3cwbmVpVkVMeWxXbHplUlluemxvNmlFQkpfOFhuelQyTDl4TnlPNlFDckFhQ1B5XzDSAcoBQVVfeXFMUDhfd20wYUtGV013YmFwbk5sOXI5LVF2TDNiWnF5LVd3cGV4WUMtUnpYLTY4TW94MHdsTWdSRmpOZWROX0lPTmVPTmlrNkIxVHVBLVNyLWtkMTFqMEpiMHl4aWN0SWV4VzZ2M3duYmZiTHpBdmRNWW9CamlfYXNOVVBxcXVaNlM0MkV4M1lkeEZ0b1F5blotQnExN1pIcm8xbGxNM3FucUtLSUR2Z1VidkNJWWltS0d1UjJVaU5PVEdDZENWNjdfUURpUQ?oc=5",
+   "source": "The Indian Express",
+   "published": "2026-11-17T20:24:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "54de55e271d9",
+   "sources_n": 5,
+   "score": 10.62
+  },
+  {
+   "id": "6c4c6dd91f86",
+   "title": "IPL 2027: CSK retention list, released players, trades and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOdGFiM2I2bjJWU0NTZzhySmZZd1lxR0I1YVdMc2dJaVJONTBGaUoxc3BHRFc5UmxOUWxnOWl5SXV3bDZBdHZVUFpmT29HcTdJel9VcWpYandXSjlnSGpPREhmU2V1Vm9adHNScDY4RkRuMmhXNEk1dmhmY0tLRDNMTGZR?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T20:16:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.61
+  },
+  {
+   "id": "ce729ae9f2a5",
+   "title": "AUS vs ENG 3rd ODI Prediction, Match Preview And Playing XIs",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPTm14YTFKV1FEZ3hMQmxtbGJ4RUFXdzUydEdQelFRZ2FFVzZaUGlQcjY4SnFEbWtGZXFBT1doMEVnLVFUbVlvNmlHSGNwUDdlNC1LUzY4OGYxQnctdGQyVlZPZTM1LWEyLWJJZk1zeUt5YmkxRUtKREV5dGZacnl6dUNJVDZrQl9IMjUtNjlVOW5zZk9CYm0tVjVIYmpJUkdvYk1BNUpyQUVCSHBz0gGyAUFVX3lxTFBLSHJDWTk1V0ZRdDRwZGJQdnIyV0hrRDVrZVlrbWJGeW45UnI1aFZkUkstT1pSNU5WWDlwVmRBeWh5MTFlZGVNTnBjUlZ4ZTgxRDdxSWhYNjFWZTJkRFhkbjQ2ZVQteGJwaUtuaUlqR0ItSzJCQnJoam5IVi1ZRE1lcEdZQW1hSlpDSHdsNEUtLWpIUkp5Ri1NMHRLbFFLUm0tYk12U3FGX1lPSnNfUWl3bmc?oc=5",
+   "source": "Cricketnmore",
+   "published": "2026-11-17T19:50:41+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "ce729ae9f2a5",
+   "sources_n": 1,
+   "score": 4.58
+  },
+  {
+   "id": "5bcb2629c4fe",
+   "title": "IPL 2027: Full list of players retained, released and remaining purse of teams.",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPcVYzc1NJYXh5XzRXaG9NTWdFVmpqUmYtaExNVnhrZ0JFNk1aSTV6Q21UYlRVLXowVk1NZ2ptOXRyWjN3dGkyZmdSNWVxSm1HS3Y4SXpQcjg1a0lnY1lsR0J2NkZWV3Y0QzhLclM1d01sc1lZY3oxWGFaRnVNTGR4N2xXODJqcFlJSTJ3V0ZqV0RBOXQwN1V6UTVfTmc5eW9yaGZya3QxMzI4eEY0RUZDMExEcFFUYXlFcFhuaw?oc=5",
+   "source": "en.etemaaddaily.com",
+   "published": "2026-11-17T19:37:04+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.56
+  },
+  {
+   "id": "37e5a166f317",
+   "title": "KKR release Mustafizur ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQMHp4LUN3NmZCNTN3RTR6QXpxVU1xeFVyOXlLajhWZjdLZzVmcW9CdWUwQzdYUlNQNV84MThzQVZiMVJBTHVfQzZ0cVVLM25DT3c5WG5HU19EeWZ4UlJWNW5hMnpYbFQ0d3VKaW03dUtFQk4xSUNjVGpJeG40dER4a1ZJYkhxVWdlOTh2WlhaTmIyVUVDZGQ0?oc=5",
+   "source": "The Business Standard",
+   "published": "2026-11-17T19:09:24+00:00",
+   "summary": "",
+   "tags": [
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "37e5a166f317",
+   "sources_n": 2,
+   "score": 9.52
+  },
+  {
+   "id": "69d5829ea466",
+   "title": "MS Dhoni retires from IPL after 18 years: What's next for India's cricket legend?",
+   "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQVHpmRTNfeHUwOXhERDg5WWtGM3dleHdiSGNJblEtbTVCaHp3cVp6c1JmRWFCUkpOX3dGaEhLSTY0RHJlRUdXVUgybWVJajhBS08tTHhHRUwzYnFGZ1NVSFdxZEJLOUxvSm1Waml4WEhJOFN1ZkpEMEdXSnMyZHBqZF9OS2JBZw?oc=5",
+   "source": "India Weekly",
+   "published": "2026-11-17T18:56:51+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "69d5829ea466",
+   "sources_n": 1,
+   "score": 2.5
+  },
+  {
+   "id": "f8e8641cbadf",
+   "title": "NZ vs IND 2026: Top 5 Indian batters with most Test runs in New Zealand ft. Gautam Gambhir",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQeXhLbnVEUWtZNXQxSUpiMVFBVnkyUmxPT2lqZlNvQzhIYlBWOUFGajZtWkxrZWFPVXM3U3hlVFVTalFZcUNyUXFkWTVVLWNxcEpaYVZtcHdDa1Zud0x4Y2M4U3ZNX3BFMUZEYjVGOFZIS3BxZ2NRelhXYVh3M0Jzd0xVeGRqc2VSRVR0NGpuRnhaNWJoZ2FiaGQyODd4WWRma29jb0F5a01sRDQtblBoYQ?oc=5",
+   "source": "Sportskeeda",
+   "published": "2026-11-17T18:51:23+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "3b549a761163",
+   "sources_n": 1,
+   "score": 2.49
+  },
+  {
+   "id": "ee6f85c9bc41",
+   "title": "Garuda Bengaluru crowned Season-1 champions of Vision Cricket India League",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQZUFrSVRDVDJBajEzUmtyek1JRnJzMENULTVMVWFucUJUdnp3YlJ3OWFINEk3MkVzUDFOZndkcFp2SWt0bWxKZjZLczEwektWUVR4RkJlbVNNSWZMc0xfM2s2WTh4NDU5SG1ZN2tRdTk3ZUdMY1I0TndRTFlFdldUTXU5aFBjdjlSbWczUXNYVGJtQ092TS1oalU5d0EtRXN4bThxN1VsNl9JZmc2RTU2S0VLM0Ywc3Y3eFcza2lWeTB4cWw5dUk5cU1naEw3NktObHFjMUNkQVJaekVzMjRScmtB0gHnAUFVX3lxTE5pQlpwV0VUMUNmYTlGdnQycHJ5V2J3TDFLUTJUdzJQNmVDc3VCTjFZRjBveEEyWWk4djlxMlgwOXM3T0xkcGNkSUdLZVp1OFF0bHExa2IyUnhiVXdtYTQySGgxNUtaM3NVY1ZNQkNEVjB0VG1FRTFhWmxET3NuWFF2TllpdkFTU0VjWnJIa3haeTktWDhHMl9TcmpwaEZFS0YzRGR4RmRkRWotMkM5Z1FIOVc0U2JpRFIwYWM1Q3JIT1dVMnlPRDBhanVvOHd3VlNfWlR3ZEJZY01DWUlGYl9NWHZPcWxBSQ?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T18:44:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "ee6f85c9bc41",
+   "sources_n": 1,
+   "score": 2.48
+  },
+  {
+   "id": "eb4b62eebb70",
+   "title": "Sourav Ganguly confident of turning Delhi Capitals' fortunes around as franchise retains 16 players ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNYTNzSHBVWUJKbFVQcVN3UFVXa2huOWcwZ29JQXAwREotUFlVVDhBdEx3eGRxekhtTl9Scmt5UjZwT2VGbXNNV2lvT243V3A4WS1UNVFJYi1FLWlXbDNzU2wzWUIwNmVCMEphMDExcktHTnN1SkxkcTJzWUNNbWdQaHRQWDVTM0szUVdHOExuc1dYNUFzTENUTlZ5SHhEeW1wUzVhZlZJamlReW5jRldCbFB3Uk5MX3g4Ykk1S2Uta2M3N0x6NmhlWUI4Smoxd0FkWGVNUlppR3NUZmJPVTVFdlJJamU0TW1ncngyX09BcXlnSG5UenhReWFmY2hxcWs?oc=5",
+   "source": "Big News Network.com",
+   "published": "2026-11-17T18:39:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "eb4b62eebb70",
+   "sources_n": 3,
+   "score": 11.48
+  },
+  {
+   "id": "4922bebc7581",
+   "title": "\"Confident About Turning Delhi Capitals' Fortunes Around\": Head Coach Sourav Ganguly After IPL Retention",
+   "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOSmhjelhWcnJyNWJnNGlJa0hXTjhKSWJ2UFF6clBYRWJaaFJqUEJRb1d3c2lpelJBYS1jZnowa0s0Ql9LWDhycGdfbEM3UnJaRG5aS0UwWUN1cGlPMTY5bFV0dGlON3FmRGtsUThUdUt4TUl2Q2p6ckJQYU5YOGZ1ZjVZdHBZX2ZsVFhzcmR1YnhTUkhxVWpGaVZuZG9ZZF9fYTR0bkFsOUZRWE85Wjg2TDRmdDdhTElPSnZTMnI2MkVGUk1hTWg0T29KakRHcThsNXZlNDB2aGlyUQ?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T18:33:56+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "4922bebc7581",
+   "sources_n": 1,
+   "score": 7.47
+  },
+  {
+   "id": "12b7138610f7",
+   "title": "Delhi Capitals retain Axar, Rahul and Pant, release Mitchell Starc ahead of IPL 2027 mini-auction",
+   "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPQXdjc2s3amQ0QWdzWl9FWHNIR0hoYXhkMEJVTDQ5SUVodTVMVV9EekdheVpFTm1sVWF3anRhT1VnSTRpMjctM0hvUENucHc3aTFUT1NTenE5enpVdmJMNVQxaDZBbnJUUkVZY3ZlZlF3V25rQzBxUjdZRHg1YXRJQWVFLUNSYjVaWklBRnViUWVMX1ZiV1JoYTY0NWlCLU01QnZpR0hIdlJ2MnpHZlRlUGtkMmlwN1pPekQ5ZWdRRGlrZGU1YjVTcDFkN1BhZUF6aGR2SQ?oc=5",
+   "source": "Indiablooms",
+   "published": "2026-11-17T18:31:50+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "12b7138610f7",
+   "sources_n": 2,
+   "score": 9.47
+  },
+  {
+   "id": "d9081bc02533",
+   "title": "Pakistan Edge India By 1 Wicket In Last-Ball Thriller In Asia Cup Cricket For The Blind",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNSDl0RzUtYklnVk8yZlJHeHNYbG1ma2ZKbXRWT2xHRWNHR0ExZ244a2hfYnlYa3d2V2tDWUJ1Zjl2NTZWTjVPSkRxUzFlVUFTUHJnMkJSWWx1aTh3Z0ptWjkyeC1TWEdoYUI4QTlEVG1aUHpQUHh1YTRIWl9Od080NE1lMEFHQWw5UkR4d3ZjU0kxb09lRzRfdEhRSk5Ea2pIbXNKRWJ0XzZWeklTOHZnekJJeXljakhRRkxvNjc1aEJHRFo3SzJj?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T18:29:09+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "d9081bc02533",
+   "sources_n": 2,
+   "score": 4.46
+  },
+  {
+   "id": "6f5410ba75d7",
+   "title": "Abhishek Sharma pays tribute to Travis Head as Travishek era ends for SRH",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNT25nZWNEb0VJQnZoVUlwcTE3TDl4UmtXUF9iOEdBWFVRY0dXMmQ4N2d2dDNDMXZLNmRFVWFlUW1GdWVPMlBaVm1ORWhfUmEtdGpTbU9oX2NsaXk3ckVSamk4SUNiVnNQbVZRTTJzVTYwZUQ5RFR3Sm1aNVVHMWtuYkRCdkRtZzJzc1dzOGlZWUYwdXNiMTRCMXlTRFc0djFlRmhkNUpEVnlsWGkwMlNfdWJwb1ZQQ3ZJRG5qbXBtZzJIcUnSAcgBQVVfeXFMTWlreFdFUFJ6emo3cWRtcXhtX2RXQ1MxeUNBdE11bVJXVHo5VlVTOWtxVThtSzBHV255ZDAySG40Rkszd3FNbzZCRFBzbW5xWkZabGZTSFc3MTBnRmdzMlEyNmZfeThMcEhfOW5IZXZ2QjJ1X3pzdU05RU1FTkNGUUVHZzRYUTR4bjR0Z0Y3NU92Y3VDWFNaeHBsRUgtbnV0VUtIRW1rSm5MY2JhaUd5MHYtRXd2dTItY194WUdhaUxFVm9QamFVbjA?oc=5",
+   "source": "India Today",
+   "published": "2026-11-17T18:02:54+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "6f5410ba75d7",
+   "sources_n": 1,
+   "score": 2.43
+  },
+  {
+   "id": "48abc2da82d4",
+   "title": "How the 10 IPL teams stack up",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxONW9STUVvLWJPeF9vbXJ2VjhpNzVOWTRKWGlFSVZ1Mks5VmtSb1k1LURENXVNaElpd3AtRUhlVzh3dUhONEQwTVlOZGJWamNRLUVnZGg2TlY4QUlkNGU1a2k0enZGRzd2RzBSeHBVdEZOdkxEVkhvSzhaZ2VCVER4eHlZbno4MERjRnE3OGtxWXNDZE9DVi1OWmlmT0thVTV0WXB1cGtndDBWSDZRRWlndUp5MzMzRGZjcUHSAcABQVVfeXFMUE14YmdWVHVRZXVqRExjZjBjanJxWUcwZng2anpDYnk4U3FkUHFtc0g0bWtDTTBqR2dkWUpDTExmVXVMYWJRMmZZbE1WQklha0ZVaHJORGtMa3ZKbjRFM0NTVm5ZZVRHRWI3UFdyUVFPXzNaMFo0MWVTX2ZUTFlBSnBiVWZoUXJNYzVTT05DRms1MnR5bEYtVjlpVXRUbV8zZS16ejRnd3RoM0ZLRk0xQXRwaHMzTDR1NWp2cDVfVm9f?oc=5",
+   "source": "The Indian Express",
+   "published": "2026-11-17T18:00:12+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "48abc2da82d4",
+   "sources_n": 1,
+   "score": 2.42
+  },
+  {
+   "id": "46d6fab1e6dd",
+   "title": "Yash Dayal retained by RCB for IPL 2027: Pacer set for return after legal case reportedly dropped",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVWFWSVpkM0gtX2EwU2xpdGhrQ2ZCSzhtWGxpcFhlck42QmlwaDloajNnRTc2UGx5aE85eU04WmVNQWpraldma3NzWlZBRFNMMkMybzFNbTJiaTFHOTVNZEtFQk1IWnFqcXRkSXdwbEVrQ01mX3Nkd0hrM1RyNEoxdVBR?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T18:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention"
+   ],
+   "label": "Rumor",
+   "cluster": "46d6fab1e6dd",
+   "sources_n": 1,
+   "score": 7.42
+  },
+  {
+   "id": "cd25aea39cd6",
+   "title": "Travis Head to miss IPL 2027",
+   "link": "https://www.cricinfo.com/ci/content/story/1562856.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-17T17:58:41+00:00",
+   "summary": "The SRH opener has decided to skip the upcoming season to manage his workload during a busy international schedule",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "cd25aea39cd6",
+   "sources_n": 3,
+   "score": 6.42
+  },
+  {
+   "id": "417380dfcd37",
+   "title": "Dhoni's Transition From Captain To Mentor Is Good News For CSK: Panesar",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNdEViazlHNklLb2xnaFpBbzliNFloQTZlaVF3VTBxWmhiZXpzN0l0RXBxbUFhaU5Vek1PT0lpc240S1dtYy1EUmVTYnd6Q3J6UE5Yck1BOXB5QVd5NmNHRXN1RWJIVmE1VWVZYUhLOWRMVlczREZqazRiNmhQNEQzdU5pdTFVY2ZlZ1Zld2RPYmRja1Zjd2R0Y0YyQ3I1NEs0NEJyS1VTaWZYNGhFaXZiOG5fb1VFS1B5ZUHSAb8BQVVfeXFMUFBrNFJvUmlWeUxzQ2ltS2VDU1ZZY1RERGk0UXRjblcxRC1HYklIU25JOHEycEtUdnFEeGh2dnp3bE90SGlHTXlHMWU4dUdra05odDRwcTJGTHBJSVVsYWRDbzJKYXBQS0ZFWWE5YnhkS3FnNjBjcks2QldHZHdCY3lDWlVPWVR6ZDdHc1A2Z1hIQlR5ZXBUdmg4Qml3LTg2V2N4ZW5pc2NKT3hBb0gyTmYxcllETFJTMlE5OTB1LWc?oc=5",
+   "source": "Cricketnmore",
+   "published": "2026-11-17T17:48:45+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "417380dfcd37",
+   "sources_n": 1,
+   "score": 4.41
+  },
+  {
+   "id": "2a196f3aa288",
+   "title": "IPL 2027 Auction: Purse Remaining For Each Team After Retention Announcement",
+   "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNYW1URXVHX3lwejJKNXlIM1JOZ0ZXeFc5d1FGS3o3UWlaMG5IaV9Qa2phb1BFVGpHa1hQUWl0Z05TXzR4bDJrRWlwekRWT1ZkUXphR1RRTE03ZU44YXNONVBpWTRfeUU5aVRaTjNpMnNtS2RqT0NLVlBFdTNPbUdDSFR4SDdkYUd6YkdINlJEYmIxaGt0WVZ0c1FFSUxIZ1FrQnRsSFROdGRHYUpzYThTd1NHRm1URG4tVkp1ZjAzTmFucUZ2aFgtUEE5NlhObnM2WDEza08yVTllaXprWmFyYWRmcktaQWZI?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T17:48:35+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "2a196f3aa288",
+   "sources_n": 1,
+   "score": 7.41
+  },
+  {
+   "id": "c788e0cce801",
+   "title": "SRH retention list 2027: Players retained and released by Sunrisers Hyderabad ahead of IPL auction 2027",
+   "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNUU1renBpTEJIZVExUG9la2M3OEZMdzdsT1BrdldXV1Z0Sk85ek8xamQ1LWFEd0N4QTBDRzFnS2ljYVhocGZfRU5ndzVsLVdMaUhVeWRNX1RjajRpNmRRTXpXRWl6eTRtVXhHZTZiX0c0MUs1THpoWW9mbzBBQjZCZHViMnFzS182X3YzMDlqXzYwMUQ5a1JSalNZZ1NTY2dVazZrbEIyOFh2TmVvR0R5NE5vVG92NDZHalR4SGpuSHBWX3dZdDE3b1NLVlpDUDNiQkxqSTlhWUN1ajlsdUxpLVdtZEF2SUhEaXNvV2VKbHRBWVppS3c0WFg4cDNmT05sY0HSAYcCQVVfeXFMTmhIa3JhZ1c0eHFCSk9IcHZNQTZlcG1XR05pRnhoX2xqcHhUNVNlamRiQXRFT19BazRsTDU5cThxMHNEWUZ1WE05b3ljbFYwVTc1THlnTHgtcUQzS1NGNmU3N0xkTWlGanppdE1WNHMwc3VnTkdXMF9NcG56UXJWUTNibW5GZTFvRS1US3B5dHl4ekhSTGJ4aXZJNjJTVUlrVHZHVy1nZ09VLVRBY0tDczFldW1UR215T3l1Nm9UUUJINFdCVmlyQUpWTy1mUDk2RDdEWXc0bkkxdlRKRHJzZzB3RGROOVdlc015ZFdZa21DaUJMaEktSkt5em9MU0FzcklOSHdpRlU?oc=5",
+   "source": "Moneycontrol.com",
+   "published": "2026-11-17T17:46:22+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.4
+  },
+  {
+   "id": "2c5208dd3345",
+   "title": "Rickelton lays out South Africa's plan: 'Bat long, get a lead, put ball in their court'",
+   "link": "https://www.cricinfo.com/ci/content/story/1563004.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-17T17:37:34+00:00",
+   "summary": "Taskin Ahmed, on the other hand, reckons that Bangladesh are \"still in the game\", particularly if they limit South Africa's lead",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "2c5208dd3345",
+   "sources_n": 1,
+   "score": 2.39
+  },
+  {
+   "id": "b150f9a85007",
+   "title": "Riyan Parag to remain Rajasthan Royals captain for IPL 2027",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOb2ZQNUdTM3V6dklXQUhjdnNpRXJPTXI3TmJoTm1jUW5NeUxUbjhObm5ZbVpqbUsyMjVDQURDSUQ5YnFQNFZvS3dVRW9mSDNERVdWQjV4NnczWlNsYmV4dlJXS3hkM180QVAxam81cUcyWGthTlA3bVUyd2xLRnZZM1h3dE9sQzQ3RUlrX1lBSEIxMmdsVjIxTm50Q1lvT3dPUEpnZ2wtN2F4TmtOTy0xddIBtwFBVV95cUxQVG5IMXFPU2RWUUJER2dPV0VMc0FjeFdRX0x0cmVKZGNtVll5WGpTT1AyODJpTUJhQ19TanBEak5VQzdXTGlzMjJIYUp1MEMxWURuUHljR1Vxc0ZhWE05a2g5eVVDRjMtcWZpQU5RLWp6S0d6eUlSMFZZX2dFdE5VYVlHcl9GODRUNDFZQUNnR2dHdm91THN3djFpYnBVeFl3eEJiMHo4WnFxV0tWR2ZBalNyOUoyZVU?oc=5",
+   "source": "Sportstar",
+   "published": "2026-11-17T17:36:29+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "b150f9a85007",
+   "sources_n": 1,
+   "score": 4.39
+  },
+  {
+   "id": "e97e4070f0f5",
+   "title": "Kartik Sharma Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE44MjVnN2N3Wk9aejZYTGhDWHh6czgtZThJdE00RDFsb1phR1BTaks2ZUI2czZSWlByR2RpV09rNFd6d0FrR0hYSldTS0d1Ymg5VjJHSnJoekNYY0M0elJIR3VWOFI2c0VrM0hRZlFkdkk1cm51RERqeXV3?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:33:29+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 6.39
+  },
+  {
+   "id": "090f44165e63",
+   "title": "Chennai Super Kings Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB2WVpiUFB1Ry11M2tDaFFqMVk2eGNPNVlQQUFRenZIa2VYT1d3dUM5cVJmOWhRdmFrUkZwLUJpRVlvbjNMZkd5d2Rkd1A5QnFDVG1wVV82RjhBc2V2OVhfb0tHZXZjSUVyaWMzNzhpUVl0OEU?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:32:17+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.38
+  },
+  {
+   "id": "721f0b33c104",
+   "title": "Sunrisers Hyderabad Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE10T1RCcHQyLTZ3OWpsT1ZCS25xb2lsTnFFRHVMYXF1Vk5VSlQ4RjNCcmlCXzBFeE05S3ZGRW93NC1VOGk5R0ZxWVViV2xhWHJfT3Vka2NXTkJOSXZVNVBFVlBOeVZaRV90NzNNMTZqaFYxb0NM?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:27:44+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.38
+  },
+  {
+   "id": "007db91a85ba",
+   "title": "Kolkata Knight Riders Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9IbWo3SHFiZzZCcWk5MTlobExMd2VBSENsb2FOWTNQUU9RTDZLeWx6eWJwWmcxQ1NMQlpPTzBtOEpneHBUeGpqNksyeGp2akRrWGszb1E2cmZVQ0E2ME1nbUJraUd4ZnJDeWxWdk1RYzBSVnc?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:27:31+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "007db91a85ba",
+   "sources_n": 1,
+   "score": 6.38
+  },
+  {
+   "id": "1881ff7e9cb5",
+   "title": "Lucknow Super Giants Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5MLWpHS1hpaWtjTTdFdTRIR1F1bFhteEpoZmlMZkhQNlFzbmlmdXZSUW5LcXlqN2NxQ1lKV2R5bkFGWVZNVWt5bEQ3eHRjdVV0Z3pxb2hkVW9wVElWdU41U2lxMnNpQXNWUUt5cTJRQjEtaVFU?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:27:31+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.38
+  },
+  {
+   "id": "e755700e0c98",
+   "title": "“A Perfect Tour Only If We Win the Tests”: Shubman Gill Sets Clear Target After ODI Triumph",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOb1hLVWYyaHdrb2hmVE01LUtqVldWM1ZqYUdLZGJWeTRmeW1kcjN6YVA3MGpjZi1YeTF6QzR6Qlhac0N5alRsQmpjQUlyR3JLeGZmaFlsdTRZYlp2amlUUk9yUEFFMURid0lmaDRiNU5mN2VaT09tVTQtQURQMjB6TUxBVS1PYVduNlhSYzBWbllqa19obDhCYzRsYTdNTGdyOHFTTk5vVDdlNmxhMHFwNTJ5NA?oc=5",
+   "source": "Pragativadi",
+   "published": "2026-11-17T17:20:10+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "e755700e0c98",
+   "sources_n": 1,
+   "score": 2.37
+  },
+  {
+   "id": "98cac13e1494",
+   "title": "Gujarat Titans retain 22 players ahead of TATA IPL 2027, Shubman Gill to lead",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPRU5sV1BxME1reXpzc1l3cHg3NDFzSFY3eGphaU1zMlFfOHNkNnBaS1lDQVlsVzBESUloa3JyZjdCN2NrYUdxTEd5RTFQVm5adDEwOVBGb21kVTFEb0t4M0U5WFRka0NjaGhCV0R6dnFPbk9DSlQtc3g4ZGlTbGZLSG9mTVdQLWJ1TlpV?oc=5",
+   "source": "Home of Gujarat Titans",
+   "published": "2026-11-17T17:17:27+00:00",
+   "summary": "",
+   "tags": [
+    "Retention"
+   ],
+   "label": "Rumor",
+   "cluster": "98cac13e1494",
+   "sources_n": 2,
+   "score": 9.36
+  },
+  {
+   "id": "8f95394482dc",
+   "title": "We Part Ways with Five Players Ahead of TATA IPL 2027",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbUFNdzlHWTBNQTlkbEljNjdoZmswendfSzZRRGVDRnJkeXEtR19uRXNFeUdiTHV5Vkprb2tUOFQ2VUwwVUh4Q3RTN2cyWXIwanBOSlI1X3dOV05JWG5oUUd6czU4UVk2dnZCdE5fYnFvLWlxRVJJcHBlZmVBTnYtc0M1Z0VJT1ZYMzVrcm5SU2pXemd1Vlc0MmVVT0g5TWs?oc=5",
+   "source": "Home of Gujarat Titans",
+   "published": "2026-11-17T17:13:35+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "8f95394482dc",
+   "sources_n": 1,
+   "score": 2.36
+  },
+  {
+   "id": "08ded396da43",
+   "title": "'He was an idol, and I don't mean that figuratively' – Usman Khawaja on MS Dhoni",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOWDVGWlBheFZYMzNEd2VidWwzbWU0SDc1MjZJSkUwQkNqTEpTM3oybm4tVU9kcFBHWDl6MWhOZTNseXRlQ0hDXzdaZjI2M0QwY3ZhNFBVRS1Fd3o0LURzZWNYMG5wYVltRW9PZ0FCY2JwVDl0WHgyNWNyR082WjMxZkdocDlPN0FfUDI1VU1TQU9xY3VSUXgxbWVJeEZlUWJ2X2Q3ZEpEbVQ3cUxGOERUVHVQeHk3UVYxOFpSM0ZB0gHGAUFVX3lxTE8yQ1pTNlQ4TFpuZ1VUc3hfbU83UGZuR0FFS2lObTFseUhSMGRjUzRVeWE5TmhVdzNZVTJTeEFwQVQxQ215eEJzRDJXVVdOSW53WFZGWUxHOE1tMHkxeEJvTl9Pc3RLcDVZNzR5MXZZRFljOHo2eVVqR01KdnEtY0Y2MFA0VEdmR1lmU1prV1JVbV9yRnZLX0xmR01Cbm9SVGVMTU53aVZYZ3ktemJGQWVQZU5iQzJqLVY2YzVWTmNvWHBiQUJBQQ?oc=5",
+   "source": "CricTracker",
+   "published": "2026-11-17T17:06:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "08ded396da43",
+   "sources_n": 1,
+   "score": 2.35
+  },
+  {
+   "id": "2d9864011eed",
+   "title": "Rajasthan Royals Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5NSE5uME9ncU1NUGVqY25ZOGx5ZXhFaUd5ZG9SQkdoWmFYOVM3WFJoWHoxVXRnc3dGZkFzdW5iVnhSdDlhSWdtSnFBMHY1T2NMSFlNSDRLdzFXX0hPWVdfU2ZheGF5MTNZSzR1Nms5STV2akE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:05:23+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.35
+  },
+  {
+   "id": "e77b79ba93bb",
+   "title": "Royal Challengers Bengaluru Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4xUHQ4T0VkX241TkExU1FaaWpudXhUeFBOZk5TU2VjLUozMmcweGZuQ3dmUVlYQWNMRmhrOUxQTXA5R1lDQlp2MWFIMmNOdllsRnNIaDlCWF93SHo0bTVRVlBtekwzMlZyekFseE5aZ0tPLVE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T17:05:22+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "e77b79ba93bb",
+   "sources_n": 1,
+   "score": 6.35
+  },
+  {
+   "id": "3cfea06621c1",
+   "title": "Men's county ins and outs 2026-27",
+   "link": "https://www.cricinfo.com/county-cricket-2017/content/story/1562870.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-17T17:02:01+00:00",
+   "summary": "Keep up to date with all the movements around the counties ahead of the 2027 men's county season",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "3cfea06621c1",
+   "sources_n": 1,
+   "score": 2.34
+  },
+  {
+   "id": "0e058760cd0b",
+   "title": "Ruan de Swardt agrees Leicestershire return for 2027",
+   "link": "https://www.cricinfo.com/ci/content/story/1563003.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-17T16:54:55+00:00",
+   "summary": "South African to feature across formats after arriving on short-term deal last season",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "0e058760cd0b",
+   "sources_n": 1,
+   "score": 2.33
+  },
+  {
+   "id": "b90874cf2587",
+   "title": "Irreplaceable Axar Patel attracted IPL trade interest: DC coach Sourav Ganguly",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPeDJzdi1KSTRyOXZjTVJSd2c1WjdWcGxHYW1lLVRfdFpOOXRKZmpCd09BSDQ1R2pQc3ZSTmotTE9BS25CWlRUaEhqTEdMODJNTnNmTFJNcEZ1R28tdDIyUzZsNkJlak1JTktvTzQ4QktuYW1JTlVlckpLbE5DOWFPRmpiUmQtUVdWcXpRcWhLWWRIVVBlUmtZMkRRUVlhMXo1a3dZOHF5dG9fbVNDLV9KcTJRTTE4V09JTXV4SVo1R29MT0JScWhmSVBGQk5ZRk9xOFHSAdcBQVVfeXFMTWNlVFFMM1Y2QTJFQ2o0TGZJLW9LdGxITWd1dGhqVnNtSmV3WlZsZnNzZ3BhcW1ZVlJnY3U1WWVpWU1aWGlIY0ZZODhEcVUwbzRVVkhfZUZpNFFZR1BhdnpyOF9PQTNzb0p2MTJzNi1CdnNDal8yTGdsX0hTVjVwTVFpVGxscHpVajZkcDMySWJ1d1U5ckw5b0xaa1hDQlpQTWVxU0VNRkx3NktwRHdWQU9GMkVTTy1EODkyQjZ5Z0JSNlg1QUQ3elJNVGlnV29hWmN5UkM5S1k?oc=5",
+   "source": "India Today",
+   "published": "2026-11-17T16:53:01+00:00",
+   "summary": "",
+   "tags": [
+    "Trade",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "b90874cf2587",
+   "sources_n": 1,
+   "score": 6.33
+  },
+  {
+   "id": "c5bcf7d42c12",
+   "title": "Gurnoor Brar reprimanded by ICC ahead of New Zealand Test series. Here’s why",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxObFljWEhNbE1JN2RLMWdTaHRIa1J0OVp6NzVHOG5mMlNQaHd6TWNRb0p1ZTZmSndOQXZybFR1cDVLcFZDb1VYaU5lbW1uR2luc2Q3cXpGZFBqWjJwTG0yMmIxVW5yeVUtdjljSUtqTUR0eFBQV1RYRXl2NUVsandYMkF2V09ZRnlmNy1RMW9UblFXaW9jWG1zbFp6ZjVyOXo0eHEyUnFWT19Lc1owWF9n0gG0AUFVX3lxTE9USW9jVHRQaHhqUlhGc3VYZzNyMjl6Q29TaFZZallnVlp4aGhNanZFa016T3ZjT3NoTTV1SDZhN3IxeUZVZHNnZDFCZmFLNTF4UVRpdGdJeVdRbFlHWWpWNmVmZ2FQUUFMZzB0eEFTTkpRUWEydTBJVzRyb3FTbTRQVk5lU0RuWW5tSVRGMjJRMTc2akFKOXV5YkhPUzNjUGxoTDJVZXlCeVdfS1dFY0k4cGxZWQ?oc=5",
+   "source": "Crictoday",
+   "published": "2026-11-17T16:52:38+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "c5bcf7d42c12",
+   "sources_n": 1,
+   "score": 2.33
+  },
+  {
+   "id": "a97094f4a9de",
+   "title": "Auction Tracker IPL 2026: All Teams & Purse Details",
+   "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBkc1dpeUZ0ODB1elozXzlUVGhncUFlUmFramhvOXVWV2FRSVlrOVBWM0FEUVA2bmdMUFNGbC11MU9OS2RxNklqYXRhOTNRc19DdnVLdGxIbzZTTGFkbHBxbTBNSVQ2eGpuNmY2RVJyWQ?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:47:46+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "a97094f4a9de",
+   "sources_n": 1,
+   "score": 6.32
+  },
+  {
+   "id": "cd8bb5430827",
+   "title": "KKR release Pathirana but retain Cameron Green",
+   "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPOXlFMzJSbVJsbnhneXpvQVpkRVdyOTdDdmgwZWZ4a0lnRndTWUdfak45Z2xJN3RJaDhhYmhqZlEwUldHTkxISjNlaFVRMFpLR01TYVB2TTFnWDZDeGw1YzlmUGVxN1d4SVIxYThqRHV4THJ5VEtzaVBGNzVpQjd6VVVHdk9ZRlRBcV9YTVFIYmFCMmliWVlLczdlTHZxZ0ZGTXZJWk9iR3Bqa1RZT0c0X1pGd0xWN1g2NTNTTW5NdE9zckE4NmdtbFpXQ19QR015bWRIaENJaUI5QQ?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:44:50+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "cd8bb5430827",
+   "sources_n": 1,
+   "score": 7.32
+  },
+  {
+   "id": "42390c19a9ae",
+   "title": "Gujarat Titans Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9uRUlMaGJPaXlNZHFXdUNKc2MxUDIzQUk2N1VyOTBEaTVNNDBCTktWZ3A1TFlFcWt3Z3lWWFQ0MV9zQ1k2U3diNzJPWnZHRm1wZllBQ3Z5UjlKVFpFbk9VOHVrR1lDMXpiX2x0MWMtYlMybHo0?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:42:53+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.32
+  },
+  {
+   "id": "29f5a8dc06e1",
+   "title": "List of all players retained & released by GT ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9EeUZNOEJQYVljU0NmcjRNUVNDdUJCdTVfcllyc3VpYjdkN0U1alVSY3Z4d0VBWllzdUhfa3JqWE5CWjN1TndNS0RXbm9RbzQ3QjhGcHI2QjV5RFdmMFhOa3Jia1BKUEhoeVBFTVQ2VXhPZw?oc=5",
+   "source": "Khel Now",
+   "published": "2026-11-17T16:42:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.31
+  },
+  {
+   "id": "6b8d7add535d",
+   "title": "Mumbai Indians Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE95emdCR0FFZ0JuUU1fNEZHRU1ydFQ2VlJyejlwMmJkUmtxU08tcl9wWXpNem9nbThydGVJNEo3ODNYYWxVM1pLR0NGcWFQekFicmtzckVmMVpsWmZXTVo1WmlwUEM4cWtNdm9MR0dnazNHUUE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:41:45+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "11f80b0edcc6",
+   "title": "IPL 2027 retention: Dhoni retires, Starc and Head released; full list of all 10 teams",
+   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPWkhOQ0FDQXpqRURreGhvak1NdFVhdi1ZWVpVLW12RTZ6Z09TQVdINVlfUGUwME5oWElqTS1wVVU3NXdtV0lnUklqZ1c4R29vbWRnYTktNlQ2Ml9sY09nZk5ZQnJ4d3lLMDIwSWxoZGdsNno0Qm9oNWVkNVY3bk5EQUJCc01IZ2pmYXJvNk1lcElTQUdSNjc1UERxWFZzVGZiT2xQQmVoRkhydkl2UUdpend4VXRWZFI5Y0hvX3FzbnFBdGVMRGRlblFuYUF0djhZ0gHWAUFVX3lxTE83bUw2VmZzNXFUSXJMdnhxTUFPZ2w1V01GYjR0Q3o3UXJtWFNZRS1rOFJjM00ybEx6UWhDMkV5Q3lxV2N3QnBZbTRRVzdfbnA3ajQxTl9ucTVFRmxTTlF6dUczckJ3b3FpYTFvSkNJWEM2WGpjUEg2OV83MUpvdGZjNW5RTG5mckpJT2FKQXJOZ1VKM1l4THJlWUtvV0ptSUliTFNkM19RRmNtTTN4Skt6MWxoNVhsYlVJcXROS0JnYTViWVZVNGtadWNJeEhoWTl4Y0l0RXc?oc=5",
+   "source": "Mathrubhumi English",
+   "published": "2026-11-17T16:38:28+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "11f80b0edcc6",
+   "sources_n": 2,
+   "score": 9.31
+  },
+  {
+   "id": "3fe954251cc8",
+   "title": "Royal Challengers Bengaluru Squad - Auction Tracker IPL 2025",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9Scm5BMVpHeTBuYzJBX3g1SFVHdTEwRmt6UjBkOTlPbDhZUUZYbXpBXzFxTDJmWEc2TENKd2VrV1poeUJ2MHRBM2ZOcUhtcHI2M1RDUGEzaWZLT2w5ZGRxaGI5MEZRZFpIb2RaMHh0OXAzSkE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:37:02+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "e77b79ba93bb",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "566e42cd4871",
+   "title": "Chennai Super Kings Squad - Auction Tracker IPL 2025",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBfWmppNVJubzNzS1hEUDBFQXVkTmE5TDNWTVVtSkkyR1I1QU5oZmI2aldMU2lKaWctVVlWYldIb0E3S1pYdlRtNUpneE5PUURCYXMwTEhEZzltQURrNDhoeEZXUGY2OVkxamNrVTZkbEZ4Tzg?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:37:02+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "4d17d4b17985",
+   "title": "Delhi Capitals Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA2N3hWbUhld0U1NTBFT2ZLRUYyTDFGRUw3V2lXUkFJa1dwSTlxcmVMTzM5S21vemVTY0ZrNEprNUhNN3hLbU9PaEstWkxqb0l5QnpWRDRDREVnWFJrVlZxbS1WR09TemVPRVdNMUdoX3kzQVE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:37:01+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "58d8ee557220",
+   "title": "MS Dhoni Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1HdGo2YkVNVjN3c29GWnVfVENzRlo4UkNBYmduVGNkTjBSTWRzLTB2T0NPMDJFOUI0RzhYcGMtQjR5eG8tZDg2VWpDa3dkOFl5Nk1BdUluaWJtWVQyUGNNZmFHdHJWZ0hXcWI1ZUk3clVlODVmMzZN?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:36:33+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "6cdd2b80fba4",
+   "title": "Sam Curran Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1mT1ZGTXVMSXFBZFNkYkQ5WlM0NGpZR3h2OHV1TUdKNFBhLWJOZUE0Z1ltVDRtZXlfMGNRRjRZTlc3R2NKbGRPdG1odzdoRXdTYXlVQ3o5WDFPZFJnTVdCaHZLRGR5eHJvWDdGUWFlOTVTS29xdUlCNlp3?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:36:22+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "d58e94b7b421",
+   "title": "Punjab Kings Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE85ZWxkdDF5NEdMaGRPYWhYRUhLUzJ0Mi1KZlctcHlJeWZnSjJuNllHc1h2RUdsRVFEdE01UGpBZHFadEZQR25TcHJqajZoZ0VUUzhFN2RLSXBZSUF5VXdJOXFwTGJFWGl3ZnJnTjRJUkNqZnM?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T16:36:09+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "090f44165e63",
+   "sources_n": 1,
+   "score": 6.31
+  },
+  {
+   "id": "b0e637570928",
+   "title": "List of all players retained & released by RR ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1SU3MzLXczMnJOTl9tWWI3RUJ4T3BCdVBVT2hfMGZzbmI0Z29vLW1FRHB0TEZ0Vm9uelJfcVhqbEpjdk92SmgzUzVfZXM1T2xWRzhoSE9ydGhoMjVfSDJtc0Fjb3NjMEZ1Y3FDNDEtUmF5dw?oc=5",
+   "source": "Khel Now",
+   "published": "2026-11-17T16:31:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.3
+  },
+  {
+   "id": "eae63f2d822b",
+   "title": "Now, MS Dhoni, CSK’s eternal love, matters all the more to franchise and fans",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxONlJBT0trWi1IMnl3QU9CbnVLRmV3Zy12V1NCczNRaDZfQTlkdzNTdzEzWUJPYy1rNHM3dTQxVVMzeFZiQ1NPMWJrOXZZRWc1NHFzZlI2TXJfRWVJLWRCLXl3OVM2dWdjbnd0MHNOZ2ROejJuVzdQOFJaVWJueXpQY0VXdVBndGZ5TkduMDlvd0VKaGtNUkhhcUNXUG1iWnNubEJkdDVza1BTVFhMdVM3dTFhazQ4V1dQU1R0X2Fzd9IBxgFBVV95cUxOak5NaHJoRFJqcmwwTzJySGFhVHlBVzloUnFDWjBScWRfWHBQSUszSTlhekgwVDJ5MS02YWNqbXZUSV9TSWdWYXhTazJpVnI0d0NzblhrTENXX29YV3hhdkRTQXJ4TmlmcHFhWmpPSWwtZDlXOWhsY0VsOTFlZF9uXzVVZ1FFQjd2N3YxS1lPcUo2LW1jNUtuQ3RCV3B4SW9pUXVkcXBiQVVsTHhSN19zcHdhbGZ2aW5QcDBxUy14ZTNURFFIQlE?oc=5",
+   "source": "The Indian Express",
+   "published": "2026-11-17T16:26:26+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "eae63f2d822b",
+   "sources_n": 1,
+   "score": 2.29
+  },
+  {
+   "id": "52d9b4bf0922",
+   "title": "India seek a Test high at Basin Reserve | Cricket",
+   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZllSUDQ0UWYwaHRYbDdEdU1ZUW8tWmpiXzRCdHlJUEJlRldtNFhSZlQ3bFY3UjB5T2NnOWw0enNkM3JLTG1DZWhfOUdpVVpkbzRUclRHVWNIQ05DbjZ5M0VTdUZMelBIOFpQaUtvdk1XSVV4aFhjWjkxcDdOeXZQaEdnOVhCMXpvTGVfVU4xSnR3ejFxYnkwaU9CV2l5NVIx0gGmAUFVX3lxTE5FZGtpUTFFdXNZcXFBcVZqcUpodDg2djg3S3JiUk1xQ3dzUWdKREVKb3Noa2N2cE1sSnc4dDhhZjR2c1VFOFdMeUtTdGlBMzVFWk9FcEZvNjlzR0NmUlZWTjc2UHhsZW1Bd19JdE84a0lWSDZ4aGQ3U1lTY3JZUVNpWkpYa3FSYk96Ym44Wl9BejF4YVpqbHNOQWJuRFU1TlFKTm9CUEE?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-17T16:17:19+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "52d9b4bf0922",
+   "sources_n": 1,
+   "score": 2.28
+  },
+  {
+   "id": "473fc999cedd",
+   "title": "India pacer Gurnoor Brar reprimanded! ICC takes action over aggressive celebration against New Zealand",
+   "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNcEFqV2syMXpJTTN4QmF5ZUxqVVF0OTdOYTJmSWM4TndrMlF3aFNXbXZVdzJxUlZsR2hHUlA0cXNVekJ1czlWUWJNdU0zcUFWckZseU1EbWxJRV9pZFZxaGhYdllKWEVHT2lieXAzcV85NnNoSldWMFFqQzhEQzQ2eDhDTUxXeEFieWJmV3dn?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T16:12:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "473fc999cedd",
+   "sources_n": 1,
+   "score": 2.27
+  },
+  {
+   "id": "2064801e2276",
+   "title": "List of all players retained & released by LSG ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBoSGQ3bFZ6dFRwTGRNeGF1bW5Db3k0dXVMOWxDc1dpSXFDZ1k4VmRGY1g5NWhQUndtdU80ZnBwM3dZU0QwemhpVlRhaGpYeS1CVEdlTS1yYzZ0UG4zWnNOUUg1R09oQ2twWWJPbUhVZXROR1U?oc=5",
+   "source": "Khel Now",
+   "published": "2026-11-17T16:09:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.27
+  },
+  {
+   "id": "56d408cb61de",
+   "title": "IPL 2027 retention: MS Dhoni retires, Hardik Pandya traded as teams finalise player lists",
+   "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQdi13cU5zcXJCUlNma3hUeGp1RV9GUWdONE1CT1c3dVRwYjJsbnhtNDN3cno1U3RwcDJ6UzdNMGVSZHhiUzFoMTlkUnNNdV9tVndIeWh6eGhnSWMtZ1RQdThGRVlTblBHLUNLNWJPTExXZmVxQ0JQWnZWOEh1STV2YVJrSWMwLUdNcEJGcFZCeURyU1lxSks5MWlPVUFCaHJtZWF4Y2xySy1aODlvcDMzeFR5cG1QeVdPbHp3eHJiOFQ5eTZtN0xVZkpLZ1g0SzVXcTItUtIB2gFBVV95cUxNNkNLS09Fclk0QnBTbDg1dXJEOEpsZzVqQTBaOFgzWnljSVU1YUlsVzJRVlAtNkltZGo5UzRLRFhsVFZMbmQtNF9VQ1lzcTdzTjNKZ3FhSkpLR200MnR1b1RGRk9DcWFuUjJWUlNFdWk3N0ZrTFFxaU9uYWdVS2RLaWVSeFRHbFJHQU1IREJVRjJYWkxOSC1UQ3NkOWZWNlBlNjN4OG5kUWw4U3F6eHFGUldTSm5odnZvcTR2djl5Smt0b3ZrZ2R2d0pzMkRzM0dCcEw1ZzVYcmlCZw?oc=5",
+   "source": "The Week",
+   "published": "2026-11-17T16:04:51+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "56d408cb61de",
+   "sources_n": 1,
+   "score": 7.26
+  },
+  {
+   "id": "4c46b1fe74a4",
+   "title": "IPL 2027: List of players retained — All squads ahead of auction",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQUW1zSkp6czVIekFuNEIwTURQT1FiMHFGaC1GWm43Q1V3OXYzM0hSUDB4TUV3V1p5VFluTkd2X2dZRVRuMTV5UkhlY3NBcFdZU3VibTNzYU8tZ2JObkNYX3JkQU9maXRhb2tPM1RaaEdJODFNQTJSbWl2VUdlTWdyTHJ0VzBSSWI4Z2w5M2JxWEZEZy1QRFBlZm1wMm1XMHVRc1E4alZoS2wwR1hRMWxFZXd1N29wMEloMXJQedIBwwFBVV95cUxPZHhZX0VINDM2ZzRUaUNMbnh0emItS044QUUxQmZqaUt6RktCS2VjVTUxVk5EdGpOdk8xbVFKQmZROERFOUgtZUMwOUhjcGpwU3lNaTc5eXdvcl9PVVF0d0hwYkV1MGQ4RVJ1TnRoTFNyZXVzSC1VVFdYd3FISUd4R2xGMUxOVmFTVjlSazJaaVJNXzhMbWQ5Q1VqTUJ2RkVhTE5MbEp4R0N0SlI0VnAybXQxZFVPNWZ2Q3ZneEotb1J3VEE?oc=5",
+   "source": "Sportstar",
+   "published": "2026-11-17T16:04:05+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.26
+  },
+  {
+   "id": "bf4542052552",
+   "title": "GENEVIEVE JEER TO CAPTAIN ENGLAND U19s IN INDIA T20 SERIES",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZVp4blp2MmxWeEpCR2ZnbnlZZWl6SmE1RnZMOFB6WFlmb2Y1T2JkMkMwZ3plRWdzM3RJNzIxSjF6VXMzQVFPdnlJN21KRGN1d3lNamplNWI3Nlo2dEp6OG5vV192S21GeGgzc1BSR2EwTi1ac29RQ1MwNFg2R3B4TG5jeFVoZ3ppcjlr?oc=5",
+   "source": "Kent Cricket",
+   "published": "2026-11-17T16:01:48+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "bf4542052552",
+   "sources_n": 1,
+   "score": 4.26
+  },
+  {
+   "id": "8dfe5c13192b",
+   "title": "IPL 2027: Prashant Veer, Akash Madhwal, Matt Henry among players released by CSK as MS Dhoni takes up mentor role",
+   "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNaFlBR3VkV3NMMmVnZGZfT3VJdFp2REJ3LXpaa2ZPc0NSQXBKc3d1Uk5IQWhiR1hNeURvSFVZN21kLTVvZWprRjA4UndpUVA5eVhwS29fUEpxd1lCaDZPZjVNWFBreVgzWUZCamlQcmV3VmQwVVctakRpenVJaU1MZ0hSXzFIVlBzTWNiQTB5MFA5SHF3OUE2ZV9KVTk4czhuN0c2TkU4VXJIelFrSkNtTUxkazFFOWstZS1XVEswRWtOTmFYcXJnS2FhX2V5eXdFVTV1Xy1leDUteW54ckJMRUhLV21Qd21hSlZDbmhZLXMzcnZOa0dleXdhTQ?oc=5",
+   "source": "ANI News",
+   "published": "2026-11-17T16:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "8dfe5c13192b",
+   "sources_n": 1,
+   "score": 7.26
+  },
+  {
+   "id": "adae000a4fc5",
+   "title": "Heartbreak for Naseer and Afghanistan as Zimbabwe snatch late win",
+   "link": "https://www.cricinfo.com/ci/content/story/1562975.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-17T15:59:02+00:00",
+   "summary": "Debutant Naseer scored a century and picked up nine wickets for the Test but Zimbabwe clinched a win with less than four overs left on the final day",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "adae000a4fc5",
+   "sources_n": 1,
+   "score": 2.25
+  },
+  {
+   "id": "e63a1d3f2197",
+   "title": "IPL 2027: Full list of players retained, released and remaining purse of teams",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPYWY3OUN1dmg5TDVHd1lJYjVhX1lNbVJzeVJwUm9MN3UtalFFRkVWSk1IQ1dEa2l2Q0pwckI0VHJFTWN1VDNQUW9kb1AzVDA5WjdlR2d5UVJfcWRXV0xVUHRrS21JdDhOaExfSWxkUmE2NTBfbjFwcDRyVGtXU05vbzVYcEQwa1J6NlA0S3ZJclJUdWF0XzZWbmNGTmtoWUpmTEJ4YUJES3AzeFZfdG5VQWRSb1RiUFd4R1dwZGhBaU1tWHpld3dSWHFVVjZuNXU3Q3fSAdcBQVVfeXFMTWprX1JnVUdJWmRkeWJFQkpwb05FNUNvVDEwV3ZFS21BaDVoeG9JS1F0LURYYktBTWJRamFVMHF6YjhqcmhXSFJCNV80QWdaU0pPVkR1aTBrN0VLWFZ2eURLWnM5cjVHS0NRWXE3U2o1MGg2ZU1URWxVMFJTVE9tMlQ2UnpUX2R4T0pYVTR4YUdIYXZqLWtPb0gxcWU0cUUyVjRLOHVrRzdYSjNlcGZEZFVEQ2F5Umhxci12bUJGNnIwcEFJcWpJZHRpYm1GZk82RVN3dHFpRWc?oc=5",
+   "source": "India Today",
+   "published": "2026-11-17T15:55:56+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.25
+  },
+  {
+   "id": "f4d43ea89258",
+   "title": "Punjab Kings: Full List Of All Released And Retained Players By PBKS For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNdHlwRFpTa3k4bVhjV29uenZHMVl0NEFKQ1JBbk5lcG5nRmFyMjdfTjY5Wlh3a3Y1UE9SOUo5dm1jSk0yU0pheW5BLVFpd2ZIbkR2cGZVN3RYQmRBZDVFTEpsOHFhNDBUQ0x0Y2xKR1R0QVU4NWhROXlZM1BVVk5RY3JScEJ2M3hHQlBPcmtJMkR1ZzI2NkVFS3BNejRvS3NEa2xfNEp3NTVMNTJrbl9BaHV1NThfQzFhY0E?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T15:54:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.25
+  },
+  {
+   "id": "64622dc18aa4",
+   "title": "IPL 2027: Gujarat Titans retention list, released players and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOY1NWVDhjRVlwdWprb254V1hWUV9vRWFYVmZKWkJWaFZsZDlPOTV0clhvSmFvNjlaYzViNU1rYjhBMWNGVnNtUFFKaWU4YWRtS0N3cDMyb3FtT1RieXFDaXgzQlB4WFplN3U1eUIwY1RpWE9oY1hKaHk4OGFUTV9EQ3pyeVJWYkNmVXh6Q185NEZid0VTT29KZ3pST25xaUFQWVhIR2ZSRWRpa0ZoUGJFRk5Cb1owSmFtZzVRR3pqVlJGQ0FRQjJnU05ibXdWWW5NTWN6NXI0U051U0tVaFBRczNuT2F5RkRnbHVoajU2a19kbnRRVVREWE1kT1jSAYICQVVfeXFMTm9OSFBtOGV2dEVjNHJQcFNtMHVWMWpQUVlKSFZ5djhMZTdRTVhUSFY3LVBHUEtrTUZKV2p3bU4wREpOVDV2TFRVakNQT1l5ZHB4eHE1RVQyb2RGa0JJT2V3MjBCSmlCR1dDa01wbHNaY1NORC1WZjExRWpsMWdVTERGXzJncG13Z1lEdHJQa3pZSmNwdzd4b2tDLWVTc3NIanFwMWt6RzlmbEVyaERFc1JJVkNSZzNweUJjcWxfMHJDNW1kQ1VSUkxvakJUMmtUMmZUcDZ2Tzg2SFFZLTZmYXNYRGIxbnNFN2VxU053LXcwaGhjUGJtZ1ROOEE1RkI5S2NB?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T15:54:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.25
+  },
+  {
    "id": "fe1f8c58afd7",
    "title": "Zimbabwe continue to push for space in WTC even as doors appear to close",
    "link": "https://www.cricinfo.com/ci/content/story/1562991.html?ex_cid=OTC-RSS",
    "source": "ESPNcricinfo (all stories)",
-   "published": "2026-11-17T15:48:47+00:00",
+   "published": "2026-11-17T15:53:46+00:00",
    "summary": "Cricinfo understands that the match-ups for the next two WTC cycles were decided by the ICC over the weekend but they have not been made public since negotiations are ongoing",
    "tags": [
     "Other"
@@ -23,7 +1197,24 @@
    "label": "Rumor",
    "cluster": "fe1f8c58afd7",
    "sources_n": 1,
-   "score": 2.99
+   "score": 2.25
+  },
+  {
+   "id": "17e76a46fad9",
+   "title": "List of all players retained & released by DC ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9lTDRWRkhxX0JPTUdQYWFxNlZwZ3c2ZmRTLVFmbnlFR0dOaVRnR1FrWm16TTBlb0JTbUd2VmUyS0VvQnIyRUJOQmx0ckstaWVrNTJmcEZjZ0J3aVdFUE80ZFZON09RRHFpUVZDek9fTExZUmtTQTNGRy1faw?oc=5",
+   "source": "Khel Now",
+   "published": "2026-11-17T15:52:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.24
   },
   {
    "id": "1e16bccfd2ac",
@@ -38,7 +1229,7 @@
    "label": "Rumor",
    "cluster": "1e16bccfd2ac",
    "sources_n": 1,
-   "score": 7.99
+   "score": 7.24
   },
   {
    "id": "9e32ca00c066",
@@ -53,8 +1244,8 @@
    ],
    "label": "Rumor",
    "cluster": "9e32ca00c066",
-   "sources_n": 2,
-   "score": 9.99
+   "sources_n": 1,
+   "score": 7.24
   },
   {
    "id": "76cd9ca03fde",
@@ -71,7 +1262,22 @@
    "label": "Rumor",
    "cluster": "76cd9ca03fde",
    "sources_n": 1,
-   "score": 7.98
+   "score": 7.23
+  },
+  {
+   "id": "e194df046ff9",
+   "title": "IPL 2027: Mohammed Shami, M Siddharth move to Rajasthan Royals; Sam Curran joins Lucknow Super Giants in trade deal",
+   "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAxZDJSX2RXT2oxcWFmRkpNZVFzS0xlN1BWcnZXMmxFQ1FXc3k4WjVJUVhTYUJjaG5Qai1Gb3NjdkMtd3Y1dnBnZ1J1cndyQ2RvVC14MFducDlNaGZPTUJZd0htd1hOczJvREo2NkR5MERqYl95c3UwSDdnRnlNcW8?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T15:40:00+00:00",
+   "summary": "",
+   "tags": [
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 16.23
   },
   {
    "id": "2932cad6fd98",
@@ -87,8 +1293,8 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.98
+   "sources_n": 5,
+   "score": 15.23
   },
   {
    "id": "7ebc3de03416",
@@ -101,9 +1307,9 @@
     "Retention"
    ],
    "label": "Rumor",
-   "cluster": "7ebc3de03416",
-   "sources_n": 1,
-   "score": 7.98
+   "cluster": "98cac13e1494",
+   "sources_n": 2,
+   "score": 9.22
   },
   {
    "id": "ce3f3678eba2",
@@ -118,9 +1324,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.97
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.22
   },
   {
    "id": "0a381e2347ed",
@@ -135,7 +1341,40 @@
    "label": "Rumor",
    "cluster": "0a381e2347ed",
    "sources_n": 1,
-   "score": 4.97
+   "score": 4.22
+  },
+  {
+   "id": "816170c183da",
+   "title": "IPL 2027 - All retentions and releases",
+   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNNnViTjZIRkdmMGRHUVpNTVpNYTVoN09GU0VFTEJXTWZTdDQ0aVRZd3Jsb3lydXByaWJ2RmhPWktsdEdZeFlSMDFwdUxfR1R2SmY0aGZraWdPUm5aX2JubjZfWEd1UUNhZFUtZ0E2N294WWZEUWRxX2hfTHZUeVRSRG8tQm45azJEWHdFMlhnV3dNeXppRnpVLQ?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T15:34:13+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "816170c183da",
+   "sources_n": 1,
+   "score": 7.22
+  },
+  {
+   "id": "5b9b719a1edc",
+   "title": "Royal Challengers Bengaluru: Full List Of Released And Retained Players By RCB For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNc0txaERCa3RYdEpBQ3JTaW1UQzVMNmVWY3Q3aFVGREhhZU55RkdfUjRiQ29oai1zbjJfcVNXUU9QT2F5VGNqcjRzT2JTeURvT3dxWUd2b01pd1BkUkFzbkdrQmV4RUo5X1B2TmJLSGVQZEJQaHZWbnhpRkxoZE1RQ0dZNzIzcXk2LTVibldDaC0wd0VjcTBRdC0xN3d2QWM0VmNtU3ZwWU54MmFfanBsajJDSFFVOEVTRFBmZHVQWTVENGVaS3diLURJUi0?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T15:34:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "2932cad6fd98",
+   "sources_n": 5,
+   "score": 15.22
   },
   {
    "id": "5fe84e63e8e6",
@@ -149,9 +1388,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "5fe84e63e8e6",
+   "cluster": "816170c183da",
    "sources_n": 1,
-   "score": 7.97
+   "score": 7.22
   },
   {
    "id": "d5d449ea92bb",
@@ -167,8 +1406,25 @@
    ],
    "label": "Rumor",
    "cluster": "d5d449ea92bb",
-   "sources_n": 3,
-   "score": 11.97
+   "sources_n": 4,
+   "score": 13.22
+  },
+  {
+   "id": "54fd60eb7149",
+   "title": "Mumbai Indians: Full List Of All Retained And Released Players By MI For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPZ1hPWlp6Rmk1Qm80ME1yQ3I5YS0xZ3p3ZVhoWXVXaFFoVktWWE01SUotdlZ3WkxEbkQzaVdTdHV4N2lnaU1XMUFJdXdBc0hBVV9Td3BoMDF6NThoS2k4b0xGenBKVXNfZ2YwN2dGYmstMFVGTlhnM2plbUxFWjBCb1VMcTEtSVcxN0xPV1VYS0ptS2gxSV9MWU5ja2Z1OUNXQlVYR2dNSWVXbk50d1E?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T15:33:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 9.22
   },
   {
    "id": "8a7bb6d6b09a",
@@ -184,8 +1440,25 @@
    ],
    "label": "Rumor",
    "cluster": "d5d449ea92bb",
-   "sources_n": 3,
-   "score": 11.97
+   "sources_n": 4,
+   "score": 13.22
+  },
+  {
+   "id": "783a3778e36d",
+   "title": "Kolkata Knight Riders: Full List Of All Retained And Released Players By KKR For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQREExaTJtVGVpd0Y0VHZzUUUwcUNJbVV5YzZUR3M5RUhOajJfd3ZVM0J3cEN2ZGFCY2t3MElGbU5qaDJWRl8tLXVZbUQtRC0xdFpWZllYekV0TzJhU1VOZnRqZTZXXzNtNUFaVTl6cFV4aURoNGZDeVhTQzhVSFg2Q3BGajFwWHA1bXpRWnA1SWozM0d1cTVoUndwLTZqNzM0Vmx5ZXBGeTFsRjJSRDJacTh4WVVycWtx?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T15:29:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 9.21
   },
   {
    "id": "6007cb4a9a03",
@@ -201,23 +1474,7 @@
    "label": "Rumor",
    "cluster": "6007cb4a9a03",
    "sources_n": 1,
-   "score": 7.96
-  },
-  {
-   "id": "713d619d3d41",
-   "title": "Sunrisers Hyderabad: Full List Of All Retained And Released Players By SRH For IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdEVhV3VRMW1Ic2M4YTJzUUpvTU9jNlZnSzhaQmVwTkZzdWFlQ0wxMUdmYVBtNERNRzh5SmNYVGYxN2ZIbVFkTjY3TE8tZFg2Sy1GejVReFROQmtOMkZkWmd5c0t5RHlXMzBjUE0wc0I1Rmp6LTJQWHJ4ZjRtRjRiVG9XRWRIV2RfVHVnUWlBVTRNTjVfU1FwNktFNlEyanZZWFZIYUY1TWhlMlRvamZxVGJzS3lPUQ?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T15:27:45+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.96
+   "score": 7.21
   },
   {
    "id": "aad90ab8903e",
@@ -235,7 +1492,7 @@
    "label": "Rumor",
    "cluster": "aad90ab8903e",
    "sources_n": 1,
-   "score": 7.95
+   "score": 7.2
   },
   {
    "id": "d8e02e105b8e",
@@ -251,7 +1508,7 @@
    "label": "Rumor",
    "cluster": "d8e02e105b8e",
    "sources_n": 1,
-   "score": 7.95
+   "score": 7.2
   },
   {
    "id": "6b4f6236e58d",
@@ -265,9 +1522,27 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.95
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.2
+  },
+  {
+   "id": "558039800906",
+   "title": "IPL 2027: SRH retention list, released players, trades and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPa0owZEpXd0w0YlkzcHV6amNJc3RvNVBfYUIwUlVOTmZHQk9Canp3eWs4cW4yb1ZPY3p6MkFQSlNPUFVCbml4RXQtOE0tc3lLQ2JPd21TWTNWOEdLcHJJM1dBWlpSYXQzLXFUeEpBMGVCT1hjcE1lM21jLUFmMTFCWGtWMktHWFlpMXQxWlVkRGNjWVlpRUc1ZW5oa3JYUXFQRFRGTjVVN2NkYWJ1dFk5SDZJMjZBZlFrU3lyejNpMzlCMW5uTXRjc2k3SUpudzIyY2t4Z3BkTDM0cXg5SkFpRi13XzIyRFdw0gHuAUFVX3lxTE9QLU5MOGo0NEJncHQ3eWRIVVNMWm9hX1pmOTF3eGF0MzBkOWxpT0Y1dGtyYWJhR1o4T3VPY2JiUzVvMVY4bFVQejViOHJXNFN2T0p5aHh5bVZJdWxsT1pCTTJ0WVNfUTNTVHU0T25nTkxldUJRMkJPeXNOVC12bGItM256T0RDOHZFQ2hnWmJsbTROMGxwX0FjQWIzSXR0UVEwcTFUVzhhWmxYcGtlR0ZCTjBGY2xEUTI2dW5BUnQwbDY1dU9vMHp4VDVrNGtUckhBWU5CQjMwT1hDWFNUNGhJOV9BXzNuajBHaHRoS1E?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T15:20:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.2
   },
   {
    "id": "c43064bb8e94",
@@ -282,7 +1557,7 @@
    "label": "Rumor",
    "cluster": "c43064bb8e94",
    "sources_n": 1,
-   "score": 2.95
+   "score": 2.2
   },
   {
    "id": "4e8f022ab196",
@@ -298,7 +1573,7 @@
    "label": "Rumor",
    "cluster": "4e8f022ab196",
    "sources_n": 1,
-   "score": 7.94
+   "score": 7.19
   },
   {
    "id": "c8e01299afc4",
@@ -314,9 +1589,27 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.94
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.19
+  },
+  {
+   "id": "c27cf558a3e4",
+   "title": "IPL 2027 Retention: Updated Squads Of All Teams, Retained And Released Players, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQNmVoNEp1aFg0WThpVzFkN0xkbFE5RXFFNHB1TDZpXzkyUkpfX3ZDdFdXWV8zb3lzRTFpSE1Ic3FXSzhSZnBBdG4wVFJ0ZlRYN18zLW05WWFMRWUwdkkwZEZhc3FQamxtRUpldkVlV3NvUkJtSm5rQktpNDRSbTVFd1NJWmJVRWRkYlpyaTRmb01GYUU4c0RiWkpRUTFRVnZxWEwyaUliRFhrSnRvSG5aYTdUZ2N2MWNLWksxVExfbmVZOGRSTjhtcGJrMjM0djZfOFd2Yk1FQUxGQnpiMXc?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T15:13:31+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.19
   },
   {
    "id": "a00fea9f748b",
@@ -332,9 +1625,25 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.94
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.19
+  },
+  {
+   "id": "484982873c59",
+   "title": "SRH release Travis Head, Jaydev Unadkat, Gerald Coetzee ahead of IPL 2027 auction",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNT2JnZzYyS1RDLXQwUWR6RmE4aTdwQVFfQkY0X0xmcEJjd19mNzhKUUdSSkdxd3dtTk93WjJOSjh3M1VkTjI0VUFIblA3R1d3aWNob2ZUX0FuMzRJbXNKUG03RlhPQXhLQ3Z3Z2hETW1aaVQ2VHpDWm5ESVdtOV8wMTVSYU1KblNac1NSdWt4aUQwWndNR0plZ0RMaHRnb1kwTFMweVd3Z0dWbm5IdmRWTDN2bzNKczlEX0hEQU130gHCAUFVX3lxTE5QRmg4Rkw5Y3A1MmxEY2h1RjVtLW04SWdoSGhpaE9KY3Jnc3ZURUFnNi1JX2VSWDc2c0ZGRlVsSDNBSF92WkVlSTlMaDJCZnBuNTZveGRzZ1V0SFZSMmdKazBxYmFPcWR0Vl9xOFJWamgzRTM2TkJIQnR3eWRXVVZUWjNRQXZ2cDRNWXRBUnE5SlJSQzZhYkZVeHNZVWZYZkJpWTlEeGVIVTFDS0ZPRDcybVAwa3FmVnVleTl0OHBjcXBB?oc=5",
+   "source": "The Tribune",
+   "published": "2026-11-17T15:12:56+00:00",
+   "summary": "",
+   "tags": [
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "484982873c59",
+   "sources_n": 2,
+   "score": 9.19
   },
   {
    "id": "f4dbd5c4d482",
@@ -351,11 +1660,11 @@
    "label": "Rumor",
    "cluster": "f4dbd5c4d482",
    "sources_n": 1,
-   "score": 7.94
+   "score": 7.19
   },
   {
    "id": "f4fddd521d4f",
-   "title": "IPL 2027 retention: All players retained and released",
+   "title": "IPL 2027 retention: Players retained and released - full list",
    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNUDFWZ1lIWmg5NjUyZVkyakRsclpBZVE4XzhncnZ0a0IzR0VOU0h6VkItTFVzelZKMGdDdFBiaGZDclRuOFB6elJnM3FEY0NjNTNQcDJiZElkeXNlaHZRR2RXNlR1Wm4wSl8wZVVQWmM1T09JbVZUQ2k4aENCdVZPcmdWMHFmNzl6aFN6dHp6Z3lDZkRxZVJ4VzJkRWY4ZVdhQUhUalN3?oc=5",
    "source": "Olympics",
    "published": "2026-11-17T15:09:00+00:00",
@@ -365,9 +1674,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.94
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.18
   },
   {
    "id": "916657629937",
@@ -381,9 +1690,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "916657629937",
-   "sources_n": 1,
-   "score": 7.94
+   "cluster": "484982873c59",
+   "sources_n": 2,
+   "score": 9.18
   },
   {
    "id": "e15825f6ed5c",
@@ -399,7 +1708,7 @@
    "label": "Rumor",
    "cluster": "e15825f6ed5c",
    "sources_n": 1,
-   "score": 7.93
+   "score": 7.18
   },
   {
    "id": "9687a4092680",
@@ -415,7 +1724,7 @@
    "label": "Rumor",
    "cluster": "9687a4092680",
    "sources_n": 1,
-   "score": 7.93
+   "score": 7.18
   },
   {
    "id": "3c6d5d4cfc83",
@@ -430,22 +1739,25 @@
    "label": "Rumor",
    "cluster": "3c6d5d4cfc83",
    "sources_n": 1,
-   "score": 6.93
+   "score": 6.18
   },
   {
-   "id": "adae000a4fc5",
-   "title": "Heartbreak for Naseer and Afghanistan as Zimbabwe snatch late win",
-   "link": "https://www.cricinfo.com/ci/content/story/1562975.html?ex_cid=OTC-RSS",
-   "source": "ESPNcricinfo (all stories)",
-   "published": "2026-11-17T15:01:55+00:00",
-   "summary": "Debutant Naseer scored a century and picked up nine wickets for the Test but Zimbabwe clinched a win with less than four overs left on the final day",
+   "id": "d3781ff40a97",
+   "title": "IPL 2027: RCB retention list, released players, remaining purse and squad details",
+   "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNZlpvVENLMDJETFAyZmhneHFkZWc3X0J0d3ctUC1LSGxkRmdDRmllWGhBdzlMVmJCYm5PUFdtUlg2TTZUdFZyeVMyUUJKUWIxc0d0amVaS3h6RTd4R0VSYnRpMnNuNmlXR3ktQm1pR3R2eVhVeWtqYm1DTDE5Q2ZGelhnSkVycmxWN3NOOWpqOWd1UzhiWVhDYXpKUnlPZXpHRXhKd2tFeVVLd3hNbkNUdUwxYndoaW5SWDI5OWsxSDRYYlhpcFl4LUNRMHg1bGMwVG9XTU1HNXJkUmdvRDl0U21JNDAtRUJmajA3cmNuWm9UUdIB9wFBVV95cUxPZnd2YTFLcW52ZV95NXlKVFRNQ3ZZbllJX1E5emNVOFFFMjl0cEVZZkxReWtxTG5CS1RVbVJiU1g4Ul8wMDNvdmRDb2duTjU4dVdHWGdWVndjdDlTZk1taTAyeE1ZTF9CdXRPcm1acUJJUFFobmlYQndnZ2xVVlRLSDJnUmJYbDdBaEltQi1fNGhIX1JOc2ZtOXZVdTRJbWFkN3NzdUZmSlpCSEIzTVVHUHZWVURlZzZGNUVCLXVHZm9nd1hoNUdvWWJYM1JjbzBDblhJaFI4NzZQM3VTeEdvbnlXOWdqWUNBd0ExeXJwNG03N2RLSzYw?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T15:04:00+00:00",
+   "summary": "",
    "tags": [
-    "Other"
+    "Retention",
+    "Release",
+    "Auction",
+    "Team News"
    ],
    "label": "Rumor",
-   "cluster": "adae000a4fc5",
-   "sources_n": 1,
-   "score": 2.93
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.18
   },
   {
    "id": "8dffede74105",
@@ -460,23 +1772,7 @@
    "label": "Rumor",
    "cluster": "8dffede74105",
    "sources_n": 1,
-   "score": 7.93
-  },
-  {
-   "id": "d272b0400c30",
-   "title": "Gujarat Titans: Full List Of All Retained And Released Players By GT For IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUVdCR3hnN19Qa3R3djhSWkdrTDdyWEZQQURXTURXLWdwX2pDRE4waXdGUWFuTFFUb2lKY1h6OEJnckRnLV9CalJLU0lBQWJsSGtrcHBPSWZJSVNuMWw1LWtINk15OGVFUkhaY2RDZDlmaHprZG9PRzBVaHFpS1E1T1NGTDJUOWxWM2RSOTluMmlzRmdldFpVTEhTUVZsNzd4VlRpVVRxcEdBVHB0WHc?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T15:00:54+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.92
+   "score": 7.17
   },
   {
    "id": "20267fa9905b",
@@ -491,13 +1787,13 @@
    "label": "Rumor",
    "cluster": "20267fa9905b",
    "sources_n": 1,
-   "score": 4.92
+   "score": 4.17
   },
   {
    "id": "8c1c46bf1a0b",
    "title": "When is the IPL 2027 auction?",
    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPM3psMVBKRzV2WjlqTU1ibFhUcl9MOHNFckhLUENtVFRiT1N2Y19IWDBia0FZT0dOcThQNEc1bHZpZHN0Z0E1dEV0ZnBJRnVPNU5TZUpfeEdlZGgyd2Y3eEtEaWowekFRTFpWT3B0NnowN1liaFNZalRwUFlBZEVvak5SVE1pTXJhY2s5MTNmNmNzbXlGelBQM2tPTkRGdW1hU0c0Q1VHREZ6YlXSAbIBQVVfeXFMTkV2aFA1ZzFoY050cGRkRFpfMXNjbU51Vk5DSGg5OE9NamJ1RkNsU005MVFJczg5UmxDSjZTQmlocGE5X1p4RERlT0tlM3BaR0dhWVJEYkhlampZN3QyU0FIcmY2aWNGQ0h4c1JTeEZVRXFQam1uMFllQ2hjV3VjQXpCM0wyRmNhUEhKa0JzTkpQZWRHbzQzR3JYazkwXzBBZUpMQ19TQlF1a0R0UVJWdVJEZw?oc=5",
-   "source": "The Hindu",
+   "source": "Sportstar",
    "published": "2026-11-17T14:59:47+00:00",
    "summary": "",
    "tags": [
@@ -506,7 +1802,7 @@
    "label": "Rumor",
    "cluster": "8c1c46bf1a0b",
    "sources_n": 1,
-   "score": 6.92
+   "score": 6.17
   },
   {
    "id": "2e29d7a9ef41",
@@ -521,7 +1817,7 @@
    "label": "Rumor",
    "cluster": "2e29d7a9ef41",
    "sources_n": 1,
-   "score": 2.92
+   "score": 2.17
   },
   {
    "id": "5dd6961b277d",
@@ -535,9 +1831,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "5dd6961b277d",
-   "sources_n": 2,
-   "score": 9.92
+   "cluster": "eb4b62eebb70",
+   "sources_n": 3,
+   "score": 11.17
   },
   {
    "id": "752c81d4920c",
@@ -553,7 +1849,7 @@
    "label": "Rumor",
    "cluster": "752c81d4920c",
    "sources_n": 2,
-   "score": 9.92
+   "score": 9.17
   },
   {
    "id": "201e83b8493e",
@@ -568,9 +1864,26 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.92
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.17
+  },
+  {
+   "id": "23d8a29d0272",
+   "title": "IPL 2027: Kolkata Knight Riders retention list, released players and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxNWGltc1pjd1I5bklxeTBPVWNnRVdYTTFHNy1wQkJXQUpQNWNDLVBXbnE5S1J1ejdodFlqSzJZdHFUNkczbWlvSklsYUFUOUFJMTctMHRpRy1zY3J4YUVPdWxOWU5mWFNQYVhfemtnZVFwYUs4Q3UwVlh5X0ktdEc2ejl4U09XUE1yd2RNNVQzQ2NOWlEzR1RWMDNmREhfeUFhVVFXdXg5dWpmdzhFRGMwdjVhZUUtNkRMWmp1MnlpQzFic19tU1dBQWpQOGh3LWVIaGc3NzZNcDloSmdEUTZXeEdMVkE4OVhRZHh5SEloYWRoWFoyZmRQSXgwY0oyVjYxZW9INElR0gGLAkFVX3lxTFBnRmN0MEU0TC0xak51V3ZQbGNWQThESWdpa3h3ZmNJa05XZi1mbHBPam5rSmRDZkQzWFFybWthNGptbXlWLWRUY1BjZEpmYk1jbGQ4RkpQSXpGWV8tV0xaVm1WQ1RsWlo5ZUJuUUZ3c01XUXoxTlZiWHNMZ2lVVWhDdW9kbm1xRDN5MzVXTVpzUGtZQlBReGV3emw5cVZMWngzVlFjU2J4QjFBbk5Ddk1NVllXa05qU2J6bHNMNFlyUXB1VDc2dTdmdURmWllaVUFNQUpkaTlFX3B0NTdyQnVEY3ZaSEhDVG0wUmJaUHRxQUdwY2NsRm84N3l1YjZINmFLc05tTjBsN0dORQ?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T14:55:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.17
   },
   {
    "id": "0dd5ea5aa6a6",
@@ -586,7 +1899,7 @@
    "label": "Rumor",
    "cluster": "0dd5ea5aa6a6",
    "sources_n": 1,
-   "score": 7.91
+   "score": 7.16
   },
   {
    "id": "b607bea63a55",
@@ -601,9 +1914,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.91
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.16
   },
   {
    "id": "8fbb1df741f7",
@@ -619,7 +1932,7 @@
    "label": "Rumor",
    "cluster": "8fbb1df741f7",
    "sources_n": 1,
-   "score": 7.91
+   "score": 7.16
   },
   {
    "id": "c139acc95062",
@@ -635,7 +1948,7 @@
    "label": "Rumor",
    "cluster": "c139acc95062",
    "sources_n": 1,
-   "score": 7.91
+   "score": 7.16
   },
   {
    "id": "10f2f748cf94",
@@ -650,25 +1963,25 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.91
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.16
   },
   {
-   "id": "783a3778e36d",
-   "title": "Kolkata Knight Riders: Full List Of All Retained And Released Players By KKR For IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQREExaTJtVGVpd0Y0VHZzUUUwcUNJbVV5YzZUR3M5RUhOajJfd3ZVM0J3cEN2ZGFCY2t3MElGbU5qaDJWRl8tLXVZbUQtRC0xdFpWZllYekV0TzJhU1VOZnRqZTZXXzNtNUFaVTl6cFV4aURoNGZDeVhTQzhVSFg2Q3BGajFwWHA1bXpRWnA1SWozM0d1cTVoUndwLTZqNzM0Vmx5ZXBGeTFsRjJSRDJacTh4WVVycWtx?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T14:46:26+00:00",
+   "id": "f5a4f008a243",
+   "title": "Starc, Head, Mustafizur released ahead of IPL auction",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQdDdNS0Njb01iODlSSnRnUU9maGxOdjFsOXdWTXhmSWZlbFVuejRkaF8zRmcwMHVVT09pcEppZ2xUeXJhcGNBWFBNLWs4MDhfMkNqdmNJaFdXQUFiQzQ3VVVXeThpMjlsb0s1aXRCV3NvNER0RzZtb1lfa09PZ2hQMjJXSHFHMkhod1RHbWlEWdIBlAFBVV95cUxOTlR5bWNsbmhnSnFRV0ZhUzR3MDRyd0gyN1kwTDZoUW8wcVh0UUhUODBNZUU5SnVDd3hFbmRIMFJCM21QbmpMM3VGTnZuT183ZHJSYUJRX2MwQXBmVHdEd1JtbkhOajRZTUo2WDR6T25CY2M4NmhIU1cyQ19JX2VJVEtmalZNZ1RrTlFTOE9pY3g1bi1K?oc=5",
+   "source": "ThePrint",
+   "published": "2026-11-17T14:47:51+00:00",
    "summary": "",
    "tags": [
-    "Retention",
-    "Release"
+    "Release",
+    "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.9
+   "cluster": "d5d449ea92bb",
+   "sources_n": 4,
+   "score": 13.16
   },
   {
    "id": "0bc065772c55",
@@ -684,9 +1997,27 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.9
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.15
+  },
+  {
+   "id": "1447d25cd560",
+   "title": "IPL 2027: CSK retention list, released players, trades and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQaWFONzl0ektmcjFjZVFLR09vMGc4TVBkcTVMY1QyMEZobXdwOEw0Vmtfall1Z1ZheGpZQjJRZEhCeUxRazNEXzlCemcyaFFfSnNoc0xwVDBRUzlJT2tjVkZ5b0prUHVrR2hvS19GLXNabHZLMExZTS1TWUVwMGt5QzI1OEdZRlBKeGkwOGhKYjlOcnJGUk82SDZtNWYwZXRRQjZGNi1QM1VnX2tPRHo0Ni1SRDE2ZTQ0YnJZWVUwMmZvcEdlNFZHY1dtak9FRHFMbF9sVG0xSGpFNGpNUGZQSVZxLVRDeS0tdkxuNENMb19WMDTSAfgBQVVfeXFMT0E2Q1FGbkhQNm1VMnlvVUJTV2ZRM0VidWJuRE5JX1lkeExDM0U5UjlYNG1JOWRyS1hacGIwb2RjcUZSQUI3eF9XMzZudzRuLVlUS1gwaU95dU0xQW01a0pkT0ZvN1ZhcG5JbHkyNVMwOUtVV3VtNU1pNmNVTnViQ2I5RDZQQVBhaktkZGFRMjQzMFJ4M0gyX1BFMXJfZVhrNlFGZ09RSXZKQ2lSbldsYWpmbFRVeGNzd21yeUJwV1hjcFR1cndVX2syaDg1ZzBWaGlBcGdDV3NzQldnTHZoX3k5U04zN3Nna1lQYWtES0JkSkpEdjY0elc?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T14:46:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.15
   },
   {
    "id": "bd3579a45755",
@@ -701,25 +2032,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "9e32ca00c066",
-   "sources_n": 2,
-   "score": 9.9
-  },
-  {
-   "id": "aef1199ab561",
-   "title": "Delhi Capitals: Full List Of All Released And Retained Players By DC For IPL 2027, Budget Remaining",
-   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNZ3pHWFJ1UnZETWhEVTFTYnN6MEVGdWtDMW4zQUtxRVVDVmRhZ0plOVpkT2NJcTdDT3MwdGc1TTgwaTZfU3lEXy15MEZGRm1RM2FxR1BMMXVUeExYcWV4RVNsM093MndiTzBmbkdYMDc1UXhpb3dtZjFPV3p3TERpSlNfSllPTXgwckNyN2JpMzgzTGF3UlJlY0xaekRBdTlFRktxNjh2SnA?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T14:41:17+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.9
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.15
   },
   {
    "id": "0d3ba501cfa3",
@@ -735,7 +2050,7 @@
    "label": "Rumor",
    "cluster": "752c81d4920c",
    "sources_n": 2,
-   "score": 9.9
+   "score": 9.15
   },
   {
    "id": "849817c148f3",
@@ -751,7 +2066,7 @@
    "label": "Rumor",
    "cluster": "849817c148f3",
    "sources_n": 2,
-   "score": 9.89
+   "score": 9.14
   },
   {
    "id": "b206e14845d5",
@@ -765,24 +2080,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "b206e14845d5",
+   "cluster": "cd8bb5430827",
    "sources_n": 1,
-   "score": 7.89
-  },
-  {
-   "id": "8f95394482dc",
-   "title": "We Part Ways with Five Players Ahead of TATA IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbUFNdzlHWTBNQTlkbEljNjdoZmswendfSzZRRGVDRnJkeXEtR19uRXNFeUdiTHV5Vkprb2tUOFQ2VUwwVUh4Q3RTN2cyWXIwanBOSlI1X3dOV05JWG5oUUd6czU4UVk2dnZCdE5fYnFvLWlxRVJJcHBlZmVBTnYtc0M1Z0VJT1ZYMzVrcm5SU2pXemd1Vlc0MmVVT0g5TWs?oc=5",
-   "source": "Home of Gujarat Titans",
-   "published": "2026-11-17T14:32:59+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "8f95394482dc",
-   "sources_n": 1,
-   "score": 2.89
+   "score": 7.14
   },
   {
    "id": "2a7361480af1",
@@ -798,7 +2098,7 @@
    "label": "Rumor",
    "cluster": "2a7361480af1",
    "sources_n": 1,
-   "score": 7.89
+   "score": 7.13
   },
   {
    "id": "eab34ac465e8",
@@ -813,9 +2113,26 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.88
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.13
+  },
+  {
+   "id": "c87a480dd12c",
+   "title": "IPL 2027: Rajasthan Royals retention list, released players and remaining purse",
+   "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNaURkRVhka3BZN0Q4aHdkbDlTNUVCWk9DMkpQd3hMdFJsN0poNkpreDhuZDI2RWdUOHhZTEdFcjBBTGhWMEJXWWxjcWVEUkVEaUgzVVl2NHdGTTVqQXNFZk1xVWxzSmo4MzFCQ1dnYU9Bam9RaTdIbWdmOU1JR2V6c2NhMGdBS3hpRzYtWTQ1VzB3d1lfTHN1ZlJPV0U2eFJWQksxXzNreUxocnRjY00xRjBaSGpnbWlOOEw5elhpMVE2bDFjTVpCRXpHSHIzZEVwNkRlUTljbEROMm9YTG5GVXNWM2p5akVqVFRNaTZ0dEPSAfYBQVVfeXFMUGhSMm9HeG9Ud2NhV3BXRWdIUTZaczVQLTk4Rld0SGwxbGpvMWs3WmkwUk10TGVsVTNzWS15TERzdWFoZGVobkFrWV9uWGhuQkhjalJGalU0VlpRX2R1N09KVWlTb0FjdXVaYU5YcUtIbENRWnhnbjJmamRqOWpJbzBHcUdUS2hnaFNHVzFYUGZPd1E3UU5mNEhYdHFwcDBpdEZyXzd3RTNHQ2s5dFRBZkVTWG5maUFLeXpLejMtSkZlX0hJMnplNF9LQVMwWlJIbmNQM09YVmhQTEM3WWhVeHNJUGYxbHAtbjZkQWZCZFJic2ZQUGRR?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T14:32:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.13
   },
   {
    "id": "66026aea6e64",
@@ -832,7 +2149,7 @@
    "label": "Rumor",
    "cluster": "66026aea6e64",
    "sources_n": 1,
-   "score": 7.88
+   "score": 7.13
   },
   {
    "id": "705cfefc2ebd",
@@ -847,7 +2164,7 @@
    "label": "Rumor",
    "cluster": "3c6d5d4cfc83",
    "sources_n": 1,
-   "score": 6.88
+   "score": 6.13
   },
   {
    "id": "8891ad21a3bc",
@@ -862,7 +2179,7 @@
    "label": "Rumor",
    "cluster": "3c6d5d4cfc83",
    "sources_n": 1,
-   "score": 6.88
+   "score": 6.13
   },
   {
    "id": "5e6fef816fc9",
@@ -877,7 +2194,23 @@
    "label": "Rumor",
    "cluster": "3c6d5d4cfc83",
    "sources_n": 1,
-   "score": 6.88
+   "score": 6.13
+  },
+  {
+   "id": "912f57513caf",
+   "title": "IPL 2027 trade tracker: Complete list of all player and cash deals before the IPL 2027 mini-auction",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNREpMQmJmMTcyUUlHeW51Zlo2MUhfcTd4MHNqMkRmLXJwSVl1MVM3ekpxN2V5a1Buckw2cFFpTFZYd2NLMTBoUzNScXVYNDRPdmgyeWZ4VElISnotRDZjSUxUSDZoa3ZKS1Z6ek1SSnZXbzNTU3JQQlZZVGF2aUdjMXRrcEhNTmc?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T14:30:00+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "912f57513caf",
+   "sources_n": 2,
+   "score": 8.13
   },
   {
    "id": "7f3fde22993b",
@@ -891,9 +2224,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.88
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.13
   },
   {
    "id": "81d3b7ed6528",
@@ -907,8 +2240,8 @@
    ],
    "label": "Rumor",
    "cluster": "81d3b7ed6528",
-   "sources_n": 1,
-   "score": 2.88
+   "sources_n": 2,
+   "score": 4.13
   },
   {
    "id": "ef84c052c8c9",
@@ -923,8 +2256,8 @@
    ],
    "label": "Rumor",
    "cluster": "ef84c052c8c9",
-   "sources_n": 2,
-   "score": 9.88
+   "sources_n": 1,
+   "score": 7.13
   },
   {
    "id": "33e70c41e809",
@@ -938,15 +2271,15 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "5dd6961b277d",
-   "sources_n": 2,
-   "score": 9.88
+   "cluster": "eb4b62eebb70",
+   "sources_n": 3,
+   "score": 11.12
   },
   {
    "id": "61dd118e9bef",
    "title": "IPL 2027: Royal Challengers Bengaluru Retained and Released Players List",
    "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOZF9wdkNfNEoxNngtcUxPVGFHTEZzeW9VSklVSkQzdjJJb3B2TWJrS3ZEajZTYVFDdjdkVzNJbkVNdFJ2WWdVaDNyUjRqNzYzYTVXSk1XNHlLb1dUbjJOV2FpbzlvZTFqZTNIVXRId0tETklJcGw4Nkt1cC0tVHVoMjZYN0M2VlpzQkNSb3pXOGluaFdzdFhEbXItSl9NalgtWlFBVU92X2c1NG5jNEVPRWZXaGhqd9IBvAFBVV95cUxOMm5VajB6dzY4dHRfMTVmWlUyaWpTS0M0SmxrSkRidzJuU3FCRTdUUlVQT1RvU1BrcHNaZ1lpckhPamsyWU5xSGd4OEN6d0JKVmJQUm1BNlotYjYzakxoSXBrXzRKazR0ZkZjZnYyc180eEQtQXhZWVVHVGEyQmZxYXJOR05hQVJDbGJXeUlqdUU2VHdyb3ZISmo1aW9US1lpVVlRMXYtTnpPOEFFaTJIWTlFTXY3dFhwV2szZA?oc=5",
-   "source": "Sportstar",
+   "source": "The Hindu",
    "published": "2026-11-17T14:24:16+00:00",
    "summary": "",
    "tags": [
@@ -954,9 +2287,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.87
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.12
   },
   {
    "id": "389b1d8b2083",
@@ -971,7 +2304,7 @@
    "label": "Rumor",
    "cluster": "389b1d8b2083",
    "sources_n": 1,
-   "score": 2.87
+   "score": 2.12
   },
   {
    "id": "b49b0ed3112c",
@@ -987,9 +2320,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "b49b0ed3112c",
-   "sources_n": 2,
-   "score": 9.87
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 15.12
   },
   {
    "id": "224563e96da8",
@@ -1004,9 +2337,25 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.87
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.12
+  },
+  {
+   "id": "5bdc80e96b62",
+   "title": "RCB retain 20 players ahead of IPL 2027 Auction",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOWVZJeEVDWGl5a1RoU3BJYVF6T2FBVWVENG5NcjZhZlZCNHU5aGc1RnBydTltR2ZoWjFXOUs2dTgyaFdMemIyVzNDVHNEMkRURlRGR29vNXpFMktzM3pZazZyMndDMzdhZFJCSkZCNDBqajhNQUxaSTBiNzVTQjFNZ0lXQklzVUFHUUpZTE5WS1dKNy1lVHNmQmdZTmJzNU81YXNoSA?oc=5",
+   "source": "Royal Challengers Bengaluru Official Website",
+   "published": "2026-11-17T14:21:43+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "5bdc80e96b62",
+   "sources_n": 1,
+   "score": 7.12
   },
   {
    "id": "b97c7b615d17",
@@ -1020,9 +2369,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.87
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.12
   },
   {
    "id": "630258a7ed93",
@@ -1036,9 +2385,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.87
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.12
   },
   {
    "id": "b25c810c26e8",
@@ -1052,9 +2401,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.87
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.11
   },
   {
    "id": "46d95726095f",
@@ -1069,7 +2418,22 @@
    "label": "Rumor",
    "cluster": "46d95726095f",
    "sources_n": 1,
-   "score": 2.86
+   "score": 2.11
+  },
+  {
+   "id": "167329771dd4",
+   "title": "MS Dhoni calls time on IPL career, takes up CSK mentor role",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNMW4zN1AxSUdic2k0WlhPbXpGVGRwTjVDaGROSTk4bDRNbmxCR2ZsQ2pxMmMtNDVNcUFiV0F3RXhYOERWRFFVbTZxSG85N0dnLVpGOVR2bGZlOEVfNExJdW5EQzlqTU1yZmkyUldoME9yV0F6UjNhMDFFd1AtNUoxMFFyOE13VUhqM2xCWEluOURHWWR6ejhRZWRxM3pwOHVaTUNlemY5Y1JEcWVFVDhTTS1VSGFNZw?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T14:14:56+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "167329771dd4",
+   "sources_n": 1,
+   "score": 2.11
   },
   {
    "id": "b84bf0568a7b",
@@ -1084,7 +2448,7 @@
    "label": "Rumor",
    "cluster": "b84bf0568a7b",
    "sources_n": 1,
-   "score": 2.86
+   "score": 2.11
   },
   {
    "id": "c2cb17c0c580",
@@ -1097,9 +2461,9 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "c2cb17c0c580",
-   "sources_n": 1,
-   "score": 2.86
+   "cluster": "d9081bc02533",
+   "sources_n": 2,
+   "score": 4.11
   },
   {
    "id": "df69864ac0f3",
@@ -1113,9 +2477,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.85
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.1
   },
   {
    "id": "5edd3388ab70",
@@ -1128,9 +2492,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "5edd3388ab70",
-   "sources_n": 1,
-   "score": 7.85
+   "cluster": "11f80b0edcc6",
+   "sources_n": 2,
+   "score": 9.1
   },
   {
    "id": "4afe07c48d0b",
@@ -1146,9 +2510,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.85
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.1
   },
   {
    "id": "27873afc78e4",
@@ -1163,33 +2527,15 @@
    ],
    "label": "Rumor",
    "cluster": "27873afc78e4",
-   "sources_n": 2,
-   "score": 9.85
-  },
-  {
-   "id": "b1873a21d9e2",
-   "title": "PBKS 2027 Retentions: Released, Retained & Trade Players List Ahead of IPL 2027 Auction",
-   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNTThHa0R0X3VhNHJDMWJmbFVXNGktaUNwWkxSdGFrZ3dVWXJELUwzN01FekVQUi1WUTZDNzBla2dwQlcteDJCSndSNURIc0FtZmx3QVAtWkJzVTduV3VqUF9OaGtzSXJzaUVIUWpxWHZEQjhwSnVFYXFNaElpSDVtT0w5RVlIa1NSREMzWGloQjRGWE1hSVlLMHNOV1Y3VmVQTlpvMDZzUUx1QmwxSFgyaWo2dDBKV1ptXzlMRzhEYTg3cHJCazVIRXVB0gHSAUFVX3lxTE43NUJUempLN19tNkFYR3JkY0hmVEwzWkprak82Q0w1T2FuQWN5RzE4ZXZKRVAzY0hyYkZPVUM2Z010dmVsZFBsSFVpZlpVejgtZmJudTN5SWZsMTRoMlhneE52U2hkVk41ZkZQTjBVakRRZ1FZY1ZxLTlKWFc3MVdCTnphaW1pMnZua0xETUVmVkJqbU1GU21QVHBJMl94Q1pFb3RYNU5yelhkZTdzNEQtWm1oeTBfUFlETGdQNEpkaGJPa004dUhUSXlSalphMGlRZw?oc=5",
-   "source": "CricTracker",
-   "published": "2026-11-17T14:04:00+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release",
-    "Auction",
-    "Trade"
-   ],
-   "label": "Rumor",
-   "cluster": "b49b0ed3112c",
-   "sources_n": 2,
-   "score": 9.85
+   "sources_n": 1,
+   "score": 7.1
   },
   {
    "id": "f08a7e6383d8",
    "title": "IPL 2027: Dhoni, Head among big releases ahead of December 16 auction",
    "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQb2VZZmZ0akRselVtbWhKSjlTMWwyTmY1MnZsVU01TmFlN2t2eUtiVW10Z0trLTRPN1ZOM0MwMVM1ZzliZW9xRUh2Q0lhWTdpTUFWR1ZVQVB2ek5PYXFWeUpWWEo1aGxmTDlTeTJNamJYWWEyMmxSSGNRdzJNY1h6a2puS1RvMkxjVjk1bkFpS2tzV1VwczFjc0lfNExoU2l0SFBqbjExLTZUd3NOWEQteVZjVnlzZk9RVlh4TjFtWdIBxAFBVV95cUxOdFRXWEhrR2xtekUzLUNDRmNUTmlNRlJIQ1N1YkNTOVBUTUdFdjlTMGRFRnE4cDl1NXQ1RlBWZ3JWX2YtdFdpZW44WGhfRVdVWjF3cGRYRWMyMW1hdXFOcV85Tm94aVNJODJMZDhzOHhtMUZRcGpIVWFrdFphNi1nOXZxczVSWkFYTmxxZWZaRlBEUjVNNmZWWU9SUHVPUUItQXFOR3Y5NFVvWkVzc0FDd3preTJRc01TbktNNTNfS1VPaTdH?oc=5",
    "source": "Business Standard",
-   "published": "2026-11-17T14:03:44+00:00",
+   "published": "2026-11-17T14:03:51+00:00",
    "summary": "",
    "tags": [
     "Release",
@@ -1198,7 +2544,41 @@
    "label": "Rumor",
    "cluster": "f08a7e6383d8",
    "sources_n": 1,
-   "score": 7.85
+   "score": 7.09
+  },
+  {
+   "id": "d93cd69b3ce0",
+   "title": "RCB retention list for IPL 2027 auction: Full list of retained and released players by Royal Challengers Bengaluru ahead of mini-auction",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONEM2LVkwVlZhQlJCcjRXRUZ4eVV1V29oVHpzTzFPU05tZHFsTUgtYnNXRVNjbzlsNEJMaDRyT2YtaFJRcnduQXJTTThEb1FITzFkMEhMZ1FQeXNFSW1UblV5d1NFZTVSQVd5M2s0ZWtaZkFHdGZUb3VHREM0ZnlmWGZn?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T14:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "2932cad6fd98",
+   "sources_n": 5,
+   "score": 15.09
+  },
+  {
+   "id": "2283c32239a2",
+   "title": "GT retention list for IPL 2027 auction: Full list of retained and released players by Gujarat Titans ahead of mini-auction",
+   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQSFUwbVRpZ0J6RmJCWWRBQmsxcGxyX3B4Rkg5QngxTHVwOUtzQm4yTFpiOUEtX0ZMdFBWalMzMTNuZV9vWmdOa0JkLVprRWhyYldMSUM3SEhhYVdNUl8xRFBVZzBnMjJqdERSd2NVWjRUcHFLLVVHN0RfS2VQY0QtRg?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T14:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "2932cad6fd98",
+   "sources_n": 5,
+   "score": 15.09
   },
   {
    "id": "6ea9516bdb0f",
@@ -1212,9 +2592,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.84
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.09
   },
   {
    "id": "f56728d194cc",
@@ -1231,7 +2611,7 @@
    "label": "Rumor",
    "cluster": "f56728d194cc",
    "sources_n": 1,
-   "score": 7.84
+   "score": 7.09
   },
   {
    "id": "a414bc69562a",
@@ -1246,13 +2626,13 @@
    "label": "Rumor",
    "cluster": "a414bc69562a",
    "sources_n": 1,
-   "score": 2.84
+   "score": 2.08
   },
   {
    "id": "16efb3a17e71",
    "title": "IPL 2027: Purse remaining for all teams after retention list released",
    "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQcTUzWS1fZFFTS1FiWWNFQU5OLVpIVnZmeXVWMVJtRU9LU1kwaXp0Q0t3b0VqQlJZNGN3ZldEVDJIN1VMZzcyaGpGQmJFaUNUV21Ra0t5RFRRc1VTaEMySHRiU2VQRXdzdG1HeHRfMmY5Q0dYcXotRTBXVHZzQUI0TG9aRWRyR2ZORkcyMGNaWHhFWENJdlB1VDFKeVNBR1ZtS0Z6aTBVNE02WnRBZFVaTlkxZ0FvN05xMFBfS2lWLWdaUFBWc2ttb3k1aWtkdlF0OGk3d2FPS2fSAd8BQVVfeXFMTWlJbkZKdzk2VENNb3E3VC0yQ09URWlsYnpRWXFFalRqaDE2Y1gtVmRmMm1yY1dlSTU3ZWRleFdZemVzYmhySmhYZkVaSWxIdkNQem80TTRGRDFYYzFZUGIyNFp6c2I4ZFJ2UFpMLXRGRndCS1l5YnE4N0V5OGNqam9Obm8yTU1wR3dGVHM0M3FRUUk5anYwVDB1ZWVsN25DV2E1cjV4b2FhTnJYQnhGVjI1NnN4TVBLcnJyeXE3V29waXdZRVJkVGJlb1hiS1lJWk0wa2U2U0NINUVJOEdjaw?oc=5",
-   "source": "The Hindu",
+   "source": "Sportstar",
    "published": "2026-11-17T13:56:06+00:00",
    "summary": "",
    "tags": [
@@ -1261,9 +2641,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.83
+   "cluster": "16efb3a17e71",
+   "sources_n": 1,
+   "score": 7.08
   },
   {
    "id": "c09c8249c1c0",
@@ -1278,7 +2658,7 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.83
+   "score": 4.08
   },
   {
    "id": "ee223929ca15",
@@ -1294,13 +2674,13 @@
    "label": "Rumor",
    "cluster": "849817c148f3",
    "sources_n": 2,
-   "score": 9.83
+   "score": 9.08
   },
   {
    "id": "5f719964e005",
    "title": "IPL 2027: Mumbai Indians Retained and Released Players List",
    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxObG53TnZ4WGJSMFBpTlpJd1hWSGZyaGpNbUd6ZUlTSTNBckVQdjA4LS1oMUlKTzdSb0RSV2hLT3RnLUFCblplU3pBbHpxVUVROE03UDhoZG9kMFp6Q25DQVpKbDJfVXcyTU5qVjJPdmRVcFFNUlhYNEZMclVsOFI2TDdDejlaZkkwUGlKTF8tTlhDa2xYcWc3S3NjZTVleEpiRWRMejFaWkc2RWJ6NmVOVzZad2ZWRENzZ0YwOHBLSzhGSFNG0gHLAUFVX3lxTFBuR1kwS3JFLVo1d0xnazNxVXJwQi1pLUUyTWlkQUFxZkxKOXE3R0dWNWRCWVRFWUNSaWFfOHZzMTRCblhtbDFjTnVnQVloQkpCdHU5Ql92dzFDTWR1dlIyMXZZajBmcC1fWjNGR2VQbldvNDJleTRaRHBxWkdHdGlOUUZDU2s0M01fS2FXbmVIUmdQWEtoTVdZempWMy15Yl9zcnkyOFU5a1dhWVp2Z1NnUDZUcDY3UEVnMjFVZld4S0x2a2FBNWVJajJB?oc=5",
-   "source": "The Hindu",
+   "source": "Sportstar",
    "published": "2026-11-17T13:54:22+00:00",
    "summary": "",
    "tags": [
@@ -1308,9 +2688,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "27873afc78e4",
-   "sources_n": 2,
-   "score": 9.83
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.08
   },
   {
    "id": "10c23aaa1e33",
@@ -1324,8 +2704,8 @@
    ],
    "label": "Rumor",
    "cluster": "10c23aaa1e33",
-   "sources_n": 3,
-   "score": 10.83
+   "sources_n": 2,
+   "score": 8.08
   },
   {
    "id": "20446f460099",
@@ -1341,7 +2721,7 @@
    "label": "Rumor",
    "cluster": "20446f460099",
    "sources_n": 1,
-   "score": 7.83
+   "score": 7.08
   },
   {
    "id": "2c995d83aaa4",
@@ -1355,9 +2735,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2c995d83aaa4",
-   "sources_n": 1,
-   "score": 7.83
+   "cluster": "37e5a166f317",
+   "sources_n": 2,
+   "score": 9.08
   },
   {
    "id": "f8a2d0f2bd08",
@@ -1372,7 +2752,7 @@
    "label": "Rumor",
    "cluster": "f8a2d0f2bd08",
    "sources_n": 5,
-   "score": 14.83
+   "score": 14.08
   },
   {
    "id": "e347987918f0",
@@ -1387,7 +2767,24 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.83
+   "score": 4.07
+  },
+  {
+   "id": "3a5268089bd0",
+   "title": "CSK retention list for IPL 2027 auction: Full list of retained and released players by Chennai Super Kings ahead of mini auction",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOTHJnTzlUZzZhUlBJZFZ5MDFqMVZWMVFqSy1nQ0RMcFBVZ1UwWWlVZE1ON0l5VnRDNkxzeTdLeS1KYUdRcjlUVk9JSDI2NUtKcUw0QXN2dWFjdTNlakNpakJCQllVQ3B6RlpHcWw5RVlDa1dzaVdQS1lLQUloNWQ5eEF3?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T13:50:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "3a5268089bd0",
+   "sources_n": 1,
+   "score": 7.07
   },
   {
    "id": "82c0c9163334",
@@ -1402,7 +2799,7 @@
    "label": "Rumor",
    "cluster": "82c0c9163334",
    "sources_n": 1,
-   "score": 6.82
+   "score": 6.07
   },
   {
    "id": "fcf810d8113b",
@@ -1416,9 +2813,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "fcf810d8113b",
-   "sources_n": 1,
-   "score": 7.82
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.07
   },
   {
    "id": "88dd55594eac",
@@ -1434,25 +2831,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.82
-  },
-  {
-   "id": "7d8f923b02fd",
-   "title": "Starc, Head, Bethell released by DC, SRH, RCB ahead of IPL 2027 player auction",
-   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNMzhmMmFTVGRXR09pS041YVRzc2lmS2ZwSy1meWZ5NTlYbVBDVEppd0NzbWFXV3BkSFQ5UlNGSFZhNnJGY3JTV284ckN0MGhYUTVjT21WSzRKQ2pwUFR6UTNZd01xT3A1WXRCT25mT0ljTjN3dHdEMjE2OVNvenphR2Z0T1lBTzNxUzdVSm1PZVhVOGFSbTNsdkFqLWxsWkJCREtBYlhOTkJHb2JQRUpfQVI2b9IBxAFBVV95cUxNME42RW5zbFpNbjBYclJOOWNTN3BWWl9LN3dPUThGVXBKUjRiYlVwcjBVZDdhNHh5UW9JY0QwcGIyM0lWdndMc2Z2RnZfNEJ5TWdhN0pLUDQyYjRTT25fVVB5cWtoV0tMWW90UXNBcFlnYmhPaEdjM3lfMnpPT3BVblNGMFMxTHlOdllWSXlFNi1RTDE3bkFOTVNMXzQwTU1reDZyd2hmQkk0cTE3U2sxMi14RTR4TmZiN0RZcFFBVzdlendR?oc=5",
-   "source": "Cricinfo",
-   "published": "2026-11-17T13:44:17+00:00",
-   "summary": "",
-   "tags": [
-    "Release",
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "d5d449ea92bb",
-   "sources_n": 3,
-   "score": 11.82
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.07
   },
   {
    "id": "45f1762db789",
@@ -1466,9 +2847,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.81
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 15.06
   },
   {
    "id": "4ae11107a477",
@@ -1484,7 +2865,7 @@
    "label": "Rumor",
    "cluster": "4ae11107a477",
    "sources_n": 1,
-   "score": 6.81
+   "score": 6.06
   },
   {
    "id": "eeae6265f1a7",
@@ -1498,9 +2879,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.81
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.06
   },
   {
    "id": "00bf491e420c",
@@ -1517,7 +2898,7 @@
    "label": "Rumor",
    "cluster": "00bf491e420c",
    "sources_n": 1,
-   "score": 7.81
+   "score": 7.05
   },
   {
    "id": "982e1a70b4e2",
@@ -1532,7 +2913,7 @@
    "label": "Rumor",
    "cluster": "982e1a70b4e2",
    "sources_n": 1,
-   "score": 2.8
+   "score": 2.05
   },
   {
    "id": "3c0725457c70",
@@ -1546,9 +2927,25 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.8
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.05
+  },
+  {
+   "id": "7d8f923b02fd",
+   "title": "Starc, Head, Bethell released by DC, SRH, RCB ahead of IPL 2027 player auction",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNMzhmMmFTVGRXR09pS041YVRzc2lmS2ZwSy1meWZ5NTlYbVBDVEppd0NzbWFXV3BkSFQ5UlNGSFZhNnJGY3JTV284ckN0MGhYUTVjT21WSzRKQ2pwUFR6UTNZd01xT3A1WXRCT25mT0ljTjN3dHdEMjE2OVNvenphR2Z0T1lBTzNxUzdVSm1PZVhVOGFSbTNsdkFqLWxsWkJCREtBYlhOTkJHb2JQRUpfQVI2b9IBxAFBVV95cUxNME42RW5zbFpNbjBYclJOOWNTN3BWWl9LN3dPUThGVXBKUjRiYlVwcjBVZDdhNHh5UW9JY0QwcGIyM0lWdndMc2Z2RnZfNEJ5TWdhN0pLUDQyYjRTT25fVVB5cWtoV0tMWW90UXNBcFlnYmhPaEdjM3lfMnpPT3BVblNGMFMxTHlOdllWSXlFNi1RTDE3bkFOTVNMXzQwTU1reDZyd2hmQkk0cTE3U2sxMi14RTR4TmZiN0RZcFFBVzdlendR?oc=5",
+   "source": "Cricinfo",
+   "published": "2026-11-17T13:34:00+00:00",
+   "summary": "",
+   "tags": [
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "d5d449ea92bb",
+   "sources_n": 4,
+   "score": 13.05
   },
   {
    "id": "63c394ce1d3d",
@@ -1562,9 +2959,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.8
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.05
   },
   {
    "id": "6c65e69819e1",
@@ -1578,8 +2975,25 @@
    ],
    "label": "Rumor",
    "cluster": "6c65e69819e1",
-   "sources_n": 3,
-   "score": 8.8
+   "sources_n": 1,
+   "score": 4.05
+  },
+  {
+   "id": "d272b0400c30",
+   "title": "Gujarat Titans: Full List Of All Retained And Released Players By GT For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUVdCR3hnN19Qa3R3djhSWkdrTDdyWEZQQURXTURXLWdwX2pDRE4waXdGUWFuTFFUb2lKY1h6OEJnckRnLV9CalJLU0lBQWJsSGtrcHBPSWZJSVNuMWw1LWtINk15OGVFUkhaY2RDZDlmaHprZG9PRzBVaHFpS1E1T1NGTDJUOWxWM2RSOTluMmlzRmdldFpVTEhTUVZsNzd4VlRpVVRxcEdBVHB0WHc?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T13:32:24+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 9.05
   },
   {
    "id": "de4f1dcf934c",
@@ -1594,7 +3008,7 @@
    "label": "Rumor",
    "cluster": "de4f1dcf934c",
    "sources_n": 1,
-   "score": 6.8
+   "score": 6.05
   },
   {
    "id": "663442008c15",
@@ -1609,12 +3023,12 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.8
+   "score": 4.05
   },
   {
-   "id": "d93cd69b3ce0",
-   "title": "RCB retention list for IPL 2027 auction: Full list of retained and released players by Royal Challengers Bengaluru ahead of mini-auction",
-   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONEM2LVkwVlZhQlJCcjRXRUZ4eVV1V29oVHpzTzFPU05tZHFsTUgtYnNXRVNjbzlsNEJMaDRyT2YtaFJRcnduQXJTTThEb1FITzFkMEhMZ1FQeXNFSW1UblV5d1NFZTVSQVd5M2s0ZWtaZkFHdGZUb3VHREM0ZnlmWGZn?oc=5",
+   "id": "e874102cf91a",
+   "title": "RR retention list for IPL 2027 auction: Full list of retained and released players by Rajasthan Royals ahead of mini-auction",
+   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPdW5Uc2t6b0F3NUl1QXhBUUJPSlE3SFV1YXdhRGJnYmVwVUMydFNicW5DSGlrSWE5dHdlZDJ5U2p5ZWVjaGl1Y3pTVHVIUk1tNmdYWllYMTVNdV9BUDZpZjB5RVhPSVJkUnZUUDgzckpVdWsyc3dDWkdOOXRBaHZuTg?oc=5",
    "source": "Yahoo Sports",
    "published": "2026-11-17T13:30:00+00:00",
    "summary": "",
@@ -1625,8 +3039,25 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.8
+   "sources_n": 5,
+   "score": 15.05
+  },
+  {
+   "id": "7428be916e07",
+   "title": "KKR retention list for IPL 2027 auction: Full list of retained and released players by Kolkata Knight Riders ahead of mini-auction",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPZTVPVlhhbUI4M1Y3cVVKc3dmZGxMV05tYllXOElqS0RVQlJJZU9hN1FuZzV0MTlzU241NEZqM1owRUZ4N1BHb2p3NURHTHBpUFBoSlRmS3p0Zkszem1mQ2Rac3lwQWRwZlRsYV9xeUs2Q2Z0U3o0VjZhcXFKQXp5VTh3?oc=5",
+   "source": "Yahoo Sports",
+   "published": "2026-11-17T13:30:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.05
   },
   {
    "id": "27554e719480",
@@ -1641,7 +3072,7 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.8
+   "score": 4.05
   },
   {
    "id": "ac57225afc37",
@@ -1655,9 +3086,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.8
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.05
   },
   {
    "id": "02379b335f9b",
@@ -1673,7 +3104,7 @@
    "label": "Rumor",
    "cluster": "02379b335f9b",
    "sources_n": 1,
-   "score": 7.8
+   "score": 7.04
   },
   {
    "id": "626b1514af83",
@@ -1688,7 +3119,24 @@
    "label": "Rumor",
    "cluster": "626b1514af83",
    "sources_n": 1,
-   "score": 2.79
+   "score": 2.04
+  },
+  {
+   "id": "aef1199ab561",
+   "title": "Delhi Capitals: Full List Of All Released And Retained Players By DC For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNZ3pHWFJ1UnZETWhEVTFTYnN6MEVGdWtDMW4zQUtxRVVDVmRhZ0plOVpkT2NJcTdDT3MwdGc1TTgwaTZfU3lEXy15MEZGRm1RM2FxR1BMMXVUeExYcWV4RVNsM093MndiTzBmbkdYMDc1UXhpb3dtZjFPV3p3TERpSlNfSllPTXgwckNyN2JpMzgzTGF3UlJlY0xaekRBdTlFRktxNjh2SnA?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T13:25:49+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 9.04
   },
   {
    "id": "e7ab6fafedc3",
@@ -1702,9 +3150,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.79
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.04
   },
   {
    "id": "55f87214b08e",
@@ -1718,25 +3166,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.79
-  },
-  {
-   "id": "5b9b719a1edc",
-   "title": "Royal Challengers Bengaluru: Full List Of Released And Retained Players By RCB For IPL 2027, Budget Remaining",
-   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNc0txaERCa3RYdEpBQ3JTaW1UQzVMNmVWY3Q3aFVGREhhZU55RkdfUjRiQ29oai1zbjJfcVNXUU9QT2F5VGNqcjRzT2JTeURvT3dxWUd2b01pd1BkUkFzbkdrQmV4RUo5X1B2TmJLSGVQZEJQaHZWbnhpRkxoZE1RQ0dZNzIzcXk2LTVibldDaC0wd0VjcTBRdC0xN3d2QWM0VmNtU3ZwWU54MmFfanBsajJDSFFVOEVTRFBmZHVQWTVENGVaS3diLURJUi0?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T13:20:23+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.79
+   "cluster": "9956c2ee49cd",
+   "sources_n": 4,
+   "score": 13.04
   },
   {
    "id": "9434477cd72a",
@@ -1751,9 +3183,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "9e32ca00c066",
-   "sources_n": 2,
-   "score": 9.78
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.03
   },
   {
    "id": "c3abc83fa3de",
@@ -1769,25 +3201,43 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.78
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 27.03
   },
   {
-   "id": "2d9864011eed",
-   "title": "Rajasthan Royals Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5NSE5uME9ncU1NUGVqY25ZOGx5ZXhFaUd5ZG9SQkdoWmFYOVM3WFJoWHoxVXRnc3dGZkFzdW5iVnhSdDlhSWdtSnFBMHY1T2NMSFlNSDRLdzFXX0hPWVdfU2ZheGF5MTNZSzR1Nms5STV2akE?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T13:18:15+00:00",
+   "id": "d36a88562bd6",
+   "title": "KKR 2027 Retentions: Released, Retained & Trade Players List Ahead of IPL 2027 Auction",
+   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPejFOM0RuVlVkcTJnMVhhaEh0LWE1ejFPYkg3eVBsS25tQ09FcmE1WlE2eVNoeWM1WG9abFZMMjlmV0Z3UmM5RkpnV0VFZEd0WXpUS0FxVEhwLV9HQXJjRE9ZbUd6VGh3LXpWQkFQYklWNDgwSHhFSy1VRFpUZVExNVhTLTB5MWRUTUp0MXZ1elZNV3R2WkptRzlHRWlQbmxTWG1iTWc2M2RrRzl5UlFINFM0SjBNMHNwXzAxaTM0NldjZ9IBygFBVV95cUxPVl9UeEFjUy1SdHEwT0J1QkY0MEdJRG03bnpPbGFva1lrMFVfUmJaYm5KM1c1RFBycGQ3RC1EUkNTakNKME5uenVyMEtXWEF3UUJ5ZHNLVjdQbUEyS1ZIM2llMElPWGh5c0RrNmhOemdIOVNteTNQMzhTdk04LWJ2TDE4QlJnczNNb1VTLXFkVUMxOGdKdzhQZHhqRmVFS1h2NWg4bFI3emoxcEN4aDVXMURDVzVUc0d3aWxHb2pyRHNBWmE4OGUtdWZn?oc=5",
+   "source": "CricTracker",
+   "published": "2026-11-17T13:19:00+00:00",
    "summary": "",
    "tags": [
+    "Retention",
+    "Release",
     "Auction",
-    "Team News"
+    "Trade"
    ],
    "label": "Rumor",
-   "cluster": "2d9864011eed",
-   "sources_n": 1,
-   "score": 6.78
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 15.03
+  },
+  {
+   "id": "368abbd2d6d5",
+   "title": "RCB IPL 2027 Players Retention List: Full list of retained and released players of Royal Challengers Bengaluru",
+   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOa1NWcGRPMk9TOWRTMmQ5Mko2Vk9fU0g2ZFBwcDBjR0hsek1DcGVZUmZYZzV3dy1vYl9ZNWRiYzZiMEx3WDJlQ1dLYngtdzhuYlRSTEFDbDhxNFRWV2N2YURxcVJmLUpJN2lfM1p6cTZwd3MtbnllRGlraURkOGFfRERnUy1VYlhpemRrSlFFbFJselFYaWhRSU9nOGctVmJ4eXRVTjB4M1luU1NsRXBmWk51MGxNWC1mM3ZmSVhCOTNpa2Z3ZzN3S24zbUVpa3F00gHXAUFVX3lxTE5VUmJOUGxWOUdqLU0yOEhqaExRQ1JadkNsRGxrSmNGXzg5dWN0MmJBZVVQWVdNYnhBS1luSkc3RkxJTGJzU01Ec0VVb2MxekQ4Z002VHpzTzRfcVdqcm1YMzZTdFJpM21UMmtYckpoMlY4UzNmX21Zal9qS1pXNUh5cFF4T3ZuV2h5TVZpNUVUN2ZSbEZaLVN3N2gzczdjcjVEMXBvVWJUaXBwMGQ5bXJPTmFUWWtQZEItYVB3RHFvU2tIWXI3YVhaZy1TMHgwRFVZUnIwMXlv?oc=5",
+   "source": "The Indian Express",
+   "published": "2026-11-17T13:18:16+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "2932cad6fd98",
+   "sources_n": 5,
+   "score": 15.03
   },
   {
    "id": "34eb1b96954e",
@@ -1803,8 +3253,24 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.78
+   "sources_n": 5,
+   "score": 15.03
+  },
+  {
+   "id": "4be80eeae6f7",
+   "title": "MI IPL 2027 Players Retention List: Full list of retained and released players of Mumbai Indians",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNdmdoSVd0WVBWYjJ5Tmt2WGpOZFlVS0J6RnQwV01LZGwxWk81ZTNtS2NLaDFJM01pM1E1MlFLNmFNbXZabFdSQVltOF9vM21YZ2FUaE0zcXZfX2Jmbkhybjc2WUQwQ2JCNWtXUTUtREY4TjdRWXRlTTNEVVcwSlR1ZzhJMG9jYXdZQ1ZmN3Fka09ZUlBUNEJ0MWxBblZsOU80MXZyRnN2bHpaSm9oUHNlN3htTG1qM29DdFYzb2hn0gHEAUFVX3lxTE5aZkFvT3ZoWFNqUW1Xbl9WbGlSSVRBWUZKSjZaZkV1ZGZFSFNhc3diTk5UMkNZV1hfTmc5UmQxYktZVDYwMXNiUDd3WHF0LU9HaHN0eTdqaEpqdVdxa01xeWdQb3VfQ0lyVVJHT29HWW9waG03bkNTRlN0dmZoNi14NE1yeFpXTXMyTW9lZ2FZTFRkUFJsRTltbkVSYUM4YUVwcTI2bjc5VlE1Q0p2NGYxdFptZ0FPNndpUU00XzBpdG1scGY?oc=5",
+   "source": "The Indian Express",
+   "published": "2026-11-17T13:17:22+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 9.03
   },
   {
    "id": "a523a8f30bfe",
@@ -1817,9 +3283,9 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "6c65e69819e1",
-   "sources_n": 3,
-   "score": 8.78
+   "cluster": "54de55e271d9",
+   "sources_n": 5,
+   "score": 12.03
   },
   {
    "id": "0d0182658505",
@@ -1834,7 +3300,7 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.78
+   "score": 4.03
   },
   {
    "id": "633d67150611",
@@ -1849,7 +3315,7 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.78
+   "score": 4.03
   },
   {
    "id": "8c5db6037591",
@@ -1864,7 +3330,7 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.78
+   "score": 4.03
   },
   {
    "id": "89dff1f3e8ae",
@@ -1879,8 +3345,8 @@
    ],
    "label": "Rumor",
    "cluster": "27873afc78e4",
-   "sources_n": 2,
-   "score": 9.78
+   "sources_n": 1,
+   "score": 7.03
   },
   {
    "id": "45113b15f2a8",
@@ -1895,7 +3361,7 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.78
+   "score": 4.03
   },
   {
    "id": "2f61a7b7a5b2",
@@ -1910,7 +3376,23 @@
    "label": "Rumor",
    "cluster": "c09c8249c1c0",
    "sources_n": 1,
-   "score": 4.78
+   "score": 4.03
+  },
+  {
+   "id": "ee7f1d445997",
+   "title": "IPL Retention Deadline 2027: KKR release Pathirana, Mustafizur but retain Cameron Green",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMGFHTnZDVnBMeWczTVpwcVVTTnRPX0w0TEVsWE0wMGZWYzNtdVJxYkV1dXFnTUwzR0twaHQ5TkxudnhyLTIyUThFSkpndzJlb091UVpxSnRxS0NONVRydWFoX1Vqc08yaDJObG03VEc5MGtYU3ZzeWctU1U5VFF5RUdVWUZqY29ZUUVfdFplcXRqcmQySF9La3liSEdISDFtZFE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T13:15:29+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "cd8bb5430827",
+   "sources_n": 1,
+   "score": 7.03
   },
   {
    "id": "4b8c898cbf4d",
@@ -1926,7 +3408,23 @@
    "label": "Rumor",
    "cluster": "4b8c898cbf4d",
    "sources_n": 1,
-   "score": 7.78
+   "score": 7.03
+  },
+  {
+   "id": "58422a6f4d7b",
+   "title": "Mumbai Indians Confirm Squad Composition Ahead of IPL 2027 Auction",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPVFFYUmtJNUVYbTF5M1JQREtWdEZNOHlaR2Vyb3VURUpLSzUydGEtRmRVcVUyc0FQOTNsREYtSDJMSzVPVHpCWjdobW15STlLbWhXRnU1em9PSVZVX0x6S2pMYTdZU2VCYkQ5cEhudmNoM1VZZW1pQ1JVNzE3RDVkbURVVTduby12MnhoZHZCUnYtVExXRHp0c2hWYThoRURKR3A0?oc=5",
+   "source": "Mumbai Indians | Official website",
+   "published": "2026-11-17T13:14:50+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "58422a6f4d7b",
+   "sources_n": 1,
+   "score": 6.03
   },
   {
    "id": "bb2a781fc182",
@@ -1940,40 +3438,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "b206e14845d5",
+   "cluster": "cd8bb5430827",
    "sources_n": 1,
-   "score": 7.78
-  },
-  {
-   "id": "a97094f4a9de",
-   "title": "Auction Tracker IPL 2026: All Teams & Purse Details",
-   "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBkc1dpeUZ0ODB1elozXzlUVGhncUFlUmFramhvOXVWV2FRSVlrOVBWM0FEUVA2bmdMUFNGbC11MU9OS2RxNklqYXRhOTNRc19DdnVLdGxIbzZTTGFkbHBxbTBNSVQ2eGpuNmY2RVJyWQ?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T13:14:10+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "a97094f4a9de",
-   "sources_n": 1,
-   "score": 6.78
-  },
-  {
-   "id": "ee7f1d445997",
-   "title": "IPL Retention Deadline 2027: KKR release Pathirana, Mustafizur but retain Cameron Green",
-   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMGFHTnZDVnBMeWczTVpwcVVTTnRPX0w0TEVsWE0wMGZWYzNtdVJxYkV1dXFnTUwzR0twaHQ5TkxudnhyLTIyUThFSkpndzJlb091UVpxSnRxS0NONVRydWFoX1Vqc08yaDJObG03VEc5MGtYU3ZzeWctU1U5VFF5RUdVWUZqY29ZUUVfdFplcXRqcmQySF9La3liSEdISDFtZFE?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T13:13:38+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "b206e14845d5",
-   "sources_n": 1,
-   "score": 7.78
+   "score": 7.03
   },
   {
    "id": "f110901a9255",
@@ -1987,9 +3454,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ef84c052c8c9",
+   "cluster": "12b7138610f7",
    "sources_n": 2,
-   "score": 9.77
+   "score": 9.02
   },
   {
    "id": "ad253ff6e2c0",
@@ -2004,72 +3471,39 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ad253ff6e2c0",
-   "sources_n": 2,
-   "score": 9.77
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 15.02
   },
   {
-   "id": "58d8ee557220",
-   "title": "MS Dhoni Auction Price & Team - IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1HdGo2YkVNVjN3c29GWnVfVENzRlo4UkNBYmduVGNkTjBSTWRzLTB2T0NPMDJFOUI0RzhYcGMtQjR5eG8tZDg2VWpDa3dkOFl5Nk1BdUluaWJtWVQyUGNNZmFHdHJWZ0hXcWI1ZUk3clVlODVmMzZN?oc=5",
+   "id": "075d198b8f65",
+   "title": "Shreyas Iyer Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE92S0lGeFVsTzV1cThKNUVFMUgtNVYxQkdMNFluMHl0UEE0MnZkNFlBdmNwZEpHSmVHanpkMjJFVlgyTUJXcXpmcHYtVFNsSTYyYUhKLXcwWS04eHN0QkJxVGY3SXhGX2dNTWVTbWEzVWZDTnhEUEZqUg?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-17T13:11:18+00:00",
+   "published": "2026-11-17T13:11:08+00:00",
    "summary": "",
    "tags": [
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.77
+   "score": 6.02
   },
   {
-   "id": "d58e94b7b421",
-   "title": "Punjab Kings Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE85ZWxkdDF5NEdMaGRPYWhYRUhLUzJ0Mi1KZlctcHlJeWZnSjJuNllHc1h2RUdsRVFEdE01UGpBZHFadEZQR25TcHJqajZoZ0VUUzhFN2RLSXBZSUF5VXdJOXFwTGJFWGl3ZnJnTjRJUkNqZnM?oc=5",
+   "id": "260942202890",
+   "title": "Lockie Ferguson Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBpVkQ0U3R2ZXhQY3VPUDZaMEFxLXpxMDFYcnZMRnhTTDRlbW9rc2RlUFRDbnNUYmJ6MzZUY0NabTBYTnZVdjRZd2o2NzdMM3ZIWHZDaTBmdEtHZmtka1JIQm45MU12MlQyQi1waWJyaWhMb0NBOTdFV2Z3?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-17T13:11:15+00:00",
+   "published": "2026-11-17T13:11:07+00:00",
    "summary": "",
    "tags": [
-    "Auction",
-    "Team News"
+    "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2d9864011eed",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.77
-  },
-  {
-   "id": "6b8d7add535d",
-   "title": "Mumbai Indians Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE95emdCR0FFZ0JuUU1fNEZHRU1ydFQ2VlJyejlwMmJkUmtxU08tcl9wWXpNem9nbThydGVJNEo3ODNYYWxVM1pLR0NGcWFQekFicmtzckVmMVpsWmZXTVo1WmlwUEM4cWtNdm9MR0dnazNHUUE?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T13:11:01+00:00",
-   "summary": "",
-   "tags": [
-    "Auction",
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "2d9864011eed",
-   "sources_n": 1,
-   "score": 6.77
-  },
-  {
-   "id": "54fd60eb7149",
-   "title": "Mumbai Indians: Full List Of All Retained And Released Players By MI For IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPZ1hPWlp6Rmk1Qm80ME1yQ3I5YS0xZ3p3ZVhoWXVXaFFoVktWWE01SUotdlZ3WkxEbkQzaVdTdHV4N2lnaU1XMUFJdXdBc0hBVV9Td3BoMDF6NThoS2k4b0xGenBKVXNfZ2YwN2dGYmstMFVGTlhnM2plbUxFWjBCb1VMcTEtSVcxN0xPV1VYS0ptS2gxSV9MWU5ja2Z1OUNXQlVYR2dNSWVXbk50d1E?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T13:08:50+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.77
+   "score": 6.02
   },
   {
    "id": "31697091816a",
@@ -2083,9 +3517,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "b49b0ed3112c",
-   "sources_n": 2,
-   "score": 9.76
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 15.01
   },
   {
    "id": "416b0ffbde8b",
@@ -2100,23 +3534,22 @@
    "label": "Rumor",
    "cluster": "416b0ffbde8b",
    "sources_n": 1,
-   "score": 2.76
+   "score": 2.01
   },
   {
-   "id": "f4d43ea89258",
-   "title": "Punjab Kings: Full List Of All Released And Retained Players By PBKS For IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNdHlwRFpTa3k4bVhjV29uenZHMVl0NEFKQ1JBbk5lcG5nRmFyMjdfTjY5Wlh3a3Y1UE9SOUo5dm1jSk0yU0pheW5BLVFpd2ZIbkR2cGZVN3RYQmRBZDVFTEpsOHFhNDBUQ0x0Y2xKR1R0QVU4NWhROXlZM1BVVk5RY3JScEJ2M3hHQlBPcmtJMkR1ZzI2NkVFS3BNejRvS3NEa2xfNEp3NTVMNTJrbl9BaHV1NThfQzFhY0E?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-17T13:04:13+00:00",
+   "id": "bfb8cb136ba9",
+   "title": "Ravichandran Ashwin 'shocked' as Cummins discredits Khawaja's ball-tampering revelation",
+   "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPZmZwOUJhU1NHcThHYnRRSVk2S1BaaWVVVWFyN25ZU0VXTVVmekRqaTFKeHRNQ2FNeE80YkVjSkxJcnJHanV1ZEdnZ2w0WVVkMVpaRFNrSF81NHJ5WFhTeVROS01UOGFXV21WUERLOWtncFZkNXJybHlKMHFjQzdPcG80UURUZDdadlBiNlVBXy05S0FLUUlHQUk0MlhMOEpLVHhKT3JvOHFuUDFzbDg5aUtET1ZEN1JGZ3pNcG1aU2dFNHR2V2pENXU1V1Z1RXNXb19aVmtueEY5dktpeWJZeUpqYw?oc=5",
+   "source": "Mid-Day",
+   "published": "2026-11-17T13:03:00+00:00",
    "summary": "",
    "tags": [
-    "Retention",
-    "Release"
+    "Other"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.76
+   "cluster": "bfb8cb136ba9",
+   "sources_n": 1,
+   "score": 2.01
   },
   {
    "id": "72d333703314",
@@ -2131,24 +3564,7 @@
    "label": "Rumor",
    "cluster": "72d333703314",
    "sources_n": 1,
-   "score": 2.76
-  },
-  {
-   "id": "2283c32239a2",
-   "title": "GT retention list for IPL 2027 auction: Full list of retained and released players by Gujarat Titans ahead of mini-auction",
-   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQSFUwbVRpZ0J6RmJCWWRBQmsxcGxyX3B4Rkg5QngxTHVwOUtzQm4yTFpiOUEtX0ZMdFBWalMzMTNuZV9vWmdOa0JkLVprRWhyYldMSUM3SEhhYVdNUl8xRFBVZzBnMjJqdERSd2NVWjRUcHFLLVVHN0RfS2VQY0QtRg?oc=5",
-   "source": "Yahoo Sports",
-   "published": "2026-11-17T13:00:00+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release",
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.76
+   "score": 2.01
   },
   {
    "id": "8d6c2142e36b",
@@ -2164,23 +3580,8 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.76
-  },
-  {
-   "id": "bfb8cb136ba9",
-   "title": "Ravichandran Ashwin 'shocked' as Pat Cummins discredits Usman Khawaja's ball-tampering revelation",
-   "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPZmZwOUJhU1NHcThHYnRRSVk2S1BaaWVVVWFyN25ZU0VXTVVmekRqaTFKeHRNQ2FNeE80YkVjSkxJcnJHanV1ZEdnZ2w0WVVkMVpaRFNrSF81NHJ5WFhTeVROS01UOGFXV21WUERLOWtncFZkNXJybHlKMHFjQzdPcG80UURUZDdadlBiNlVBXy05S0FLUUlHQUk0MlhMOEpLVHhKT3JvOHFuUDFzbDg5aUtET1ZEN1JGZ3pNcG1aU2dFNHR2V2pENXU1V1Z1RXNXb19aVmtueEY5dktpeWJZeUpqYw?oc=5",
-   "source": "Mid-Day",
-   "published": "2026-11-17T12:59:00+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "bfb8cb136ba9",
-   "sources_n": 1,
-   "score": 2.76
+   "sources_n": 5,
+   "score": 15.01
   },
   {
    "id": "348d6fbd12a9",
@@ -2194,9 +3595,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.75
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 9.0
   },
   {
    "id": "0dfa66a32e23",
@@ -2211,9 +3612,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.75
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 15.0
   },
   {
    "id": "482b167f555f",
@@ -2228,7 +3629,7 @@
    "label": "Rumor",
    "cluster": "482b167f555f",
    "sources_n": 1,
-   "score": 2.75
+   "score": 1.99
   },
   {
    "id": "5be47b27137a",
@@ -2244,8 +3645,40 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.74
+   "sources_n": 5,
+   "score": 14.99
+  },
+  {
+   "id": "713d619d3d41",
+   "title": "Sunrisers Hyderabad: Full List Of All Retained And Released Players By SRH For IPL 2027, Purse Remaining",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdEVhV3VRMW1Ic2M4YTJzUUpvTU9jNlZnSzhaQmVwTkZzdWFlQ0wxMUdmYVBtNERNRzh5SmNYVGYxN2ZIbVFkTjY3TE8tZFg2Sy1GejVReFROQmtOMkZkWmd5c0t5RHlXMzBjUE0wc0I1Rmp6LTJQWHJ4ZjRtRjRiVG9XRWRIV2RfVHVnUWlBVTRNTjVfU1FwNktFNlEyanZZWFZIYUY1TWhlMlRvamZxVGJzS3lPUQ?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T12:49:29+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "54fd60eb7149",
+   "sources_n": 2,
+   "score": 8.99
+  },
+  {
+   "id": "7cd2e2f05d40",
+   "title": "Yuzvendra Chahal Auction Price & Team - IPL 2025",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1ycjZ3aEI5UWJSSkdzZG1kWjgyX1pBWTlmV2gyVEU3STYxbnJrajAybVh2R2ZhZldZTmtJT09vamRSSHp6eExudGtjbWRKYjc5MDk4OHEydlRfTTNMa3JubnA5TFVVcW95OU85bWY5VkpQOEJNNHRlUg?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T12:43:45+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "7cd2e2f05d40",
+   "sources_n": 1,
+   "score": 5.98
   },
   {
    "id": "0b995a2b47c7",
@@ -2258,9 +3691,9 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "c09c8249c1c0",
-   "sources_n": 1,
-   "score": 4.73
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 11.98
   },
   {
    "id": "21ea0930f047",
@@ -2275,7 +3708,7 @@
    "label": "Rumor",
    "cluster": "21ea0930f047",
    "sources_n": 1,
-   "score": 2.73
+   "score": 1.98
   },
   {
    "id": "2ca59c438e59",
@@ -2290,7 +3723,7 @@
    "label": "Rumor",
    "cluster": "2ca59c438e59",
    "sources_n": 1,
-   "score": 2.73
+   "score": 1.98
   },
   {
    "id": "6ac5e1ea63bd",
@@ -2306,15 +3739,15 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "b49b0ed3112c",
-   "sources_n": 2,
-   "score": 9.73
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 14.97
   },
   {
    "id": "a2db2482e514",
    "title": "IPL 2027 Retention Show LIVE Streaming: Where to watch on TV and online in India",
    "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOeGNCcFNCVXE1YWt1Z1c0UmJ3dU4zYnRyNzZsTVhIYnJGYmlCaW1ScU1DVUpyVlQxZEFfNktGdHRVM3hLa280RUVUTlNMN0VwX041bUluOUhpSl95X2lEeC1HYXdhaHNnSkhqOFh6a3BPeGVvNWZUSnNMb00wazJiZ0F0eFI2NVRjM2E1UFo4M2xEV3B2Qkh3X2pTeXctcEJBd21fZGs4UEdObEN3M2s5RW1paEY1ajdQaHRZZnFib0NSTVHSAcoBQVVfeXFMTlMyMDBFVzhCODR4TlE0OHdnM1JDVGhNVjZqZFBDMnJ2cmJXQUVCa0dwc1UzZDI0TlRqcF9vZk0xQWRDX0ZGdXY5dUZCSFpia2xxeEdoRWFNb0hOQ0ZnY2ZVR3hWNkZ4TVV2V0dNRGZDNzZFTG5HZ2FIbHNqanpqTDVOWjlpdThXTmJBLUlIZHdDQ1VNQUstZHQ4OFlqRWxKTEpBU2tqc2NBSVlXWHZpOF9Rd200ZF83TVhtTFhYcW11ZFYzN19CejlYZw?oc=5",
-   "source": "Sportstar",
+   "source": "The Hindu",
    "published": "2026-11-17T12:34:39+00:00",
    "summary": "",
    "tags": [
@@ -2323,7 +3756,22 @@
    "label": "Rumor",
    "cluster": "a2db2482e514",
    "sources_n": 2,
-   "score": 9.72
+   "score": 8.97
+  },
+  {
+   "id": "1e89ca9a44d9",
+   "title": "Hardik Pandya Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9ISWJ4dTVQT2N5QlJGSE0yX0hDb3Iwa2t5bjZHbFF6WVFlbWJEQlM2dnZuYW5NTDZCQndnLVVRRm9tSmhpSHVISW9ISTg1c1BhWmNGN3dMSlpyTk1PbEQ4aThrenVhMElzLWNENk0zdU1ISjZyN1ctXw?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T12:32:49+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 5.97
   },
   {
    "id": "4bfa30f4296d",
@@ -2336,9 +3784,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.72
+   "score": 5.96
   },
   {
    "id": "8d06cd91efd6",
@@ -2353,7 +3801,7 @@
    "label": "Rumor",
    "cluster": "8d06cd91efd6",
    "sources_n": 1,
-   "score": 4.71
+   "score": 3.96
   },
   {
    "id": "c8befc0ac33d",
@@ -2368,11 +3816,11 @@
    "label": "Rumor",
    "cluster": "c8befc0ac33d",
    "sources_n": 1,
-   "score": 2.71
+   "score": 1.96
   },
   {
    "id": "0dcc6e0343ee",
-   "title": "RCB Retention List 2027: Will Josh Hazlewood and Jacob Bethell Be Retained or Released?",
+   "title": "RCB Retention List 2027: Jacob Bethell Released, Josh Hazlewood Retained: Check Full List of Players",
    "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQQWxNRDVFam1ReXFfRnRXTks3VUV6MHRYZkhBSHdZel9SMnpqUzJ4OUcyV2JGcUpXRzQ4R2EtUmdJd0ZCS2JCdFpMYlI5TGFUN1dsZ1JPOW9URkdTd3FEQ0FYdjlNQlhZX19acVp3M085WWxRY3BQQThmVWhuWDNFOTBhZU54RTBhaUdDanJTZlc5MHIyVDBpZHBRLTcxRHQ5WVVwUW9JYTRtVy1FMDhqN9IBtwFBVV95cUxPTlR0dk05Z0lYa3BDWC12aUduZnRPaGhxNHZMODFyQmF4UkZ6bENJT182NjBZaEVTVDJBYWdHSWFKN1pKOHNSMDd4ZlBMeVh6WWhVczc5UkNwY3ZRY3BleGs1Y1hsRFgxRFFhRVdSbUFpTV9fRkRQVnI1NkpGOEIybXlJWXJaMk1KZkJsV3FNdlZkZ0JHY2dhZEdyblhZMUNPVkZJRWZ3ZktKa0VjSmFudTZlSG84cHM?oc=5",
    "source": "Jagran Josh",
    "published": "2026-11-17T12:23:47+00:00",
@@ -2384,7 +3832,7 @@
    "label": "Rumor",
    "cluster": "0dcc6e0343ee",
    "sources_n": 1,
-   "score": 7.71
+   "score": 6.96
   },
   {
    "id": "eef29a4886c4",
@@ -2399,7 +3847,7 @@
    "label": "Rumor",
    "cluster": "eef29a4886c4",
    "sources_n": 1,
-   "score": 2.71
+   "score": 1.96
   },
   {
    "id": "cf2a3beb725b",
@@ -2414,7 +3862,7 @@
    "label": "Rumor",
    "cluster": "cf2a3beb725b",
    "sources_n": 1,
-   "score": 2.7
+   "score": 1.95
   },
   {
    "id": "77601aae2ff7",
@@ -2429,7 +3877,25 @@
    "label": "Rumor",
    "cluster": "77601aae2ff7",
    "sources_n": 1,
-   "score": 6.69
+   "score": 5.94
+  },
+  {
+   "id": "b1873a21d9e2",
+   "title": "PBKS 2027 Retentions: Released, Retained & Trade Players List Ahead of IPL 2027 Auction",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNTThHa0R0X3VhNHJDMWJmbFVXNGktaUNwWkxSdGFrZ3dVWXJELUwzN01FekVQUi1WUTZDNzBla2dwQlcteDJCSndSNURIc0FtZmx3QVAtWkJzVTduV3VqUF9OaGtzSXJzaUVIUWpxWHZEQjhwSnVFYXFNaElpSDVtT0w5RVlIa1NSREMzWGloQjRGWE1hSVlLMHNOV1Y3VmVQTlpvMDZzUUx1QmwxSFgyaWo2dDBKV1ptXzlMRzhEYTg3cHJCazVIRXVB0gHSAUFVX3lxTE43NUJUempLN19tNkFYR3JkY0hmVEwzWkprak82Q0w1T2FuQWN5RzE4ZXZKRVAzY0hyYkZPVUM2Z010dmVsZFBsSFVpZlpVejgtZmJudTN5SWZsMTRoMlhneE52U2hkVk41ZkZQTjBVakRRZ1FZY1ZxLTlKWFc3MVdCTnphaW1pMnZua0xETUVmVkJqbU1GU21QVHBJMl94Q1pFb3RYNU5yelhkZTdzNEQtWm1oeTBfUFlETGdQNEpkaGJPa004dUhUSXlSalphMGlRZw?oc=5",
+   "source": "CricTracker",
+   "published": "2026-11-17T12:14:00+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release",
+    "Auction",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "6420dd14e013",
+   "sources_n": 5,
+   "score": 14.94
   },
   {
    "id": "b4ffbfa0b9ee",
@@ -2443,8 +3909,8 @@
    ],
    "label": "Rumor",
    "cluster": "b4ffbfa0b9ee",
-   "sources_n": 2,
-   "score": 4.69
+   "sources_n": 1,
+   "score": 1.94
   },
   {
    "id": "93ffb2f8a771",
@@ -2459,7 +3925,7 @@
    "label": "Rumor",
    "cluster": "93ffb2f8a771",
    "sources_n": 1,
-   "score": 2.68
+   "score": 1.93
   },
   {
    "id": "2a270f8d5831",
@@ -2474,7 +3940,7 @@
    "label": "Rumor",
    "cluster": "2a270f8d5831",
    "sources_n": 1,
-   "score": 2.68
+   "score": 1.93
   },
   {
    "id": "b389692dbab6",
@@ -2489,7 +3955,7 @@
    "label": "Rumor",
    "cluster": "f8a2d0f2bd08",
    "sources_n": 5,
-   "score": 14.68
+   "score": 13.93
   },
   {
    "id": "193992864dbe",
@@ -2505,9 +3971,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.68
+   "cluster": "deeb5b5bd91c",
+   "sources_n": 11,
+   "score": 26.92
   },
   {
    "id": "43557053d271",
@@ -2522,7 +3988,7 @@
    "label": "Rumor",
    "cluster": "43557053d271",
    "sources_n": 2,
-   "score": 4.68
+   "score": 3.92
   },
   {
    "id": "cfa783ac254d",
@@ -2537,7 +4003,7 @@
    "label": "Rumor",
    "cluster": "cfa783ac254d",
    "sources_n": 1,
-   "score": 7.67
+   "score": 6.92
   },
   {
    "id": "a724250c175a",
@@ -2552,54 +4018,37 @@
    "label": "Rumor",
    "cluster": "a724250c175a",
    "sources_n": 1,
-   "score": 2.67
+   "score": 1.92
   },
   {
-   "id": "42390c19a9ae",
-   "title": "Gujarat Titans Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9uRUlMaGJPaXlNZHFXdUNKc2MxUDIzQUk2N1VyOTBEaTVNNDBCTktWZ3A1TFlFcWt3Z3lWWFQ0MV9zQ1k2U3diNzJPWnZHRm1wZllBQ3Z5UjlKVFpFbk9VOHVrR1lDMXpiX2x0MWMtYlMybHo0?oc=5",
+   "id": "72f83b8b759a",
+   "title": "Matt Henry Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1DZDk5UlhwWXZMZEJRUzJUZTRtWTRYSGNfd2pWU1NycGhUQWlXSHZIN1l3bzhHdUxjZUx5eVBsYXJBWDV2blpQWnR2a0xHeWdkVzhNZGwyNVZNX0dlM3VSdl9hNE16Q1FVU0o0MWtWZnlOR3I4dWtOeA?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-17T11:55:30+00:00",
-   "summary": "",
-   "tags": [
-    "Auction",
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "2d9864011eed",
-   "sources_n": 1,
-   "score": 6.67
-  },
-  {
-   "id": "6cdd2b80fba4",
-   "title": "Sam Curran Auction Price & Team - IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1mT1ZGTXVMSXFBZFNkYkQ5WlM0NGpZR3h2OHV1TUdKNFBhLWJOZUE0Z1ltVDRtZXlfMGNRRjRZTlc3R2NKbGRPdG1odzdoRXdTYXlVQ3o5WDFPZFJnTVdCaHZLRGR5eHJvWDdGUWFlOTVTS29xdUlCNlp3?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T11:54:33+00:00",
+   "published": "2026-11-17T11:55:01+00:00",
    "summary": "",
    "tags": [
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.67
+   "score": 5.92
   },
   {
-   "id": "e77b79ba93bb",
-   "title": "Royal Challengers Bengaluru Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4xUHQ4T0VkX241TkExU1FaaWpudXhUeFBOZk5TU2VjLUozMmcweGZuQ3dmUVlYQWNMRmhrOUxQTXA5R1lDQlp2MWFIMmNOdllsRnNIaDlCWF93SHo0bTVRVlBtekwzMlZyekFseE5aZ0tPLVE?oc=5",
+   "id": "92f676abb58e",
+   "title": "Ashok Sharma Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBsZFRTYjVRVzFaVGkwVlVuZnZwX0RTcmJYUjRYRnEyeHNkajBDVEpQdTFzcEtaSDQzWjY2dmlOLXQ5RTljcEFKOUdnOWRhMENUYnBUYWxVS1JlcGhTaEhVNlExRTNQNW5oN19ERG53Z0MyUGRsa2ZmUjV3?oc=5",
    "source": "Cricbuzz",
    "published": "2026-11-17T11:54:30+00:00",
    "summary": "",
    "tags": [
-    "Auction",
-    "Team News"
+    "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2d9864011eed",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.67
+   "score": 5.91
   },
   {
    "id": "2687a3ee0e70",
@@ -2612,41 +4061,55 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.67
+   "score": 5.91
   },
   {
-   "id": "007db91a85ba",
-   "title": "Kolkata Knight Riders Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9IbWo3SHFiZzZCcWk5MTlobExMd2VBSENsb2FOWTNQUU9RTDZLeWx6eWJwWmcxQ1NMQlpPTzBtOEpneHBUeGpqNksyeGp2akRrWGszb1E2cmZVQ0E2ME1nbUJraUd4ZnJDeWxWdk1RYzBSVnc?oc=5",
+   "id": "a2f6950d11df",
+   "title": "Abdul Samad Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE01Zlh4QmRqWE53QnJBcEgyTGJROHBPeHFCOWNFck9GN0xtNTZ4dGZVR2JObnNGMlJ2akI2S29kZFhTZWFJeDg0QmRXM053c1RRWDZVMUNJdjF5eEdXTmR0M2tmVm9DM2JHX1RYWk9vNUtfU0I0TlU3UTh3?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-17T11:54:26+00:00",
+   "published": "2026-11-17T11:54:29+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 5.91
+  },
+  {
+   "id": "5b89d2abaa48",
+   "title": "Rishabh Pant Auction Price & Team - IPL 2025",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE04WkUtTjd4bnZleWhXOVJPWUYtelYwcHhpbEJvUWhnVnNwdG4zMVZBUlV6RkFvdXg3ZkFlVFo1eUQ2bEZPWjNWYk42Z2xxR0xkMk9Kbk44eEVOdEZCV0k5ZEVaamZmaUlPYXplOWVwa3JZWVo0NHlLamd3?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T11:54:23+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "7cd2e2f05d40",
+   "sources_n": 1,
+   "score": 5.91
+  },
+  {
+   "id": "4ee579f53f2c",
+   "title": "Punjab Kings Squad - Auction Tracker IPL 2025",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9wdEkzbUp4MU9pVGhzcWQxLXNmaE80ZHpDcG9xNXNIc0lpR0x5Z3hXRzhFREVra0tNVkpBZHQ0TkZScEdybWpZX2lqM1dQcUFnNElUalBjM1lfdmtsN2lvQWwxM3Y2ZHMwZUYyUmlIVk9OZTg?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T11:54:22+00:00",
    "summary": "",
    "tags": [
     "Auction",
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "2d9864011eed",
+   "cluster": "090f44165e63",
    "sources_n": 1,
-   "score": 6.67
-  },
-  {
-   "id": "1881ff7e9cb5",
-   "title": "Lucknow Super Giants Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5MLWpHS1hpaWtjTTdFdTRIR1F1bFhteEpoZmlMZkhQNlFzbmlmdXZSUW5LcXlqN2NxQ1lKV2R5bkFGWVZNVWt5bEQ3eHRjdVV0Z3pxb2hkVW9wVElWdU41U2lxMnNpQXNWUUt5cTJRQjEtaVFU?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T11:54:26+00:00",
-   "summary": "",
-   "tags": [
-    "Auction",
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "2d9864011eed",
-   "sources_n": 1,
-   "score": 6.67
+   "score": 5.91
   },
   {
    "id": "60bbd4471c88",
@@ -2661,7 +4124,7 @@
    "label": "Rumor",
    "cluster": "60bbd4471c88",
    "sources_n": 1,
-   "score": 4.66
+   "score": 3.91
   },
   {
    "id": "f217c223cc42",
@@ -2676,9 +4139,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ce3f3678eba2",
-   "sources_n": 8,
-   "score": 21.66
+   "cluster": "f217c223cc42",
+   "sources_n": 1,
+   "score": 6.91
   },
   {
    "id": "0d29a0230d4b",
@@ -2693,7 +4156,7 @@
    "label": "Rumor",
    "cluster": "0d29a0230d4b",
    "sources_n": 1,
-   "score": 2.66
+   "score": 1.91
   },
   {
    "id": "155f2af5ebe2",
@@ -2708,7 +4171,23 @@
    "label": "Rumor",
    "cluster": "155f2af5ebe2",
    "sources_n": 1,
-   "score": 7.66
+   "score": 6.91
+  },
+  {
+   "id": "8b04ed013e04",
+   "title": "IPL Release & Retention: RCB drop Bethell & MI release Boult",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxONnZiejZPa0h0RW9wZ2JWbjI1VW5lVURZOEhzRDEyRmloLTJPcS05T0N0dlFQN190RW1HejdubjJEdzFIUmFnVkJCcnJJb1d5UzZMdGpDbURFLUFaczNxWnhXSEFDd1BVOUpRRnhHQmZVeTdNMUR5UEwyMlJiN2s0OC1ycjc1Yms2SUwzQ2tEeFpkWkdENGpxaFN1ZTRzMmlhTnVYRw?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T11:45:22+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "8b04ed013e04",
+   "sources_n": 1,
+   "score": 6.9
   },
   {
    "id": "17bf63b5faf5",
@@ -2723,7 +4202,23 @@
    "label": "Rumor",
    "cluster": "17bf63b5faf5",
    "sources_n": 1,
-   "score": 2.64
+   "score": 1.89
+  },
+  {
+   "id": "73e77f4a6348",
+   "title": "IPL 2027 retention: Mohammed Shami traded to RR for Rs 8 crore, Sam Curran joins LSG",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQNG1TdXdDcjhYSUlCZmowdHhmOVBubUZhTXlxR1drajVkb1c2bzRMY1Y1d25saG1pOUJQa2tIaWl6dFRBQURrVlctS3ZYejJyTThFQ0hoZXgxUG10M1d3bDhxajRDN01zVWtjTV9NQVpTRW5zZ2xYQlo5eUtIZ0dxOUJkZUFGR3pYS2NpMEMwSmktN1ZBb25sdHpZTjNmOEp6YmhaUkNHcDNoTGFyeHVuUUVMYUIzZmdyZkxiTDh4SdIBvwFBVV95cUxQNG1TdXdDcjhYSUlCZmowdHhmOVBubUZhTXlxR1drajVkb1c2bzRMY1Y1d25saG1pOUJQa2tIaWl6dFRBQURrVlctS3ZYejJyTThFQ0hoZXgxUG10M1d3bDhxajRDN01zVWtjTV9NQVpTRW5zZ2xYQlo5eUtIZ0dxOUJkZUFGR3pYS2NpMEMwSmktN1ZBb25sdHpZTjNmOEp6YmhaUkNHcDNoTGFyeHVuUUVMYUIzZmdyZkxiTDh4SQ?oc=5",
+   "source": "NewsDrum",
+   "published": "2026-11-17T11:35:04+00:00",
+   "summary": "",
+   "tags": [
+    "Retention",
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "73e77f4a6348",
+   "sources_n": 2,
+   "score": 8.89
   },
   {
    "id": "267aadc26f2c",
@@ -2738,7 +4233,7 @@
    "label": "Rumor",
    "cluster": "267aadc26f2c",
    "sources_n": 1,
-   "score": 2.64
+   "score": 1.88
   },
   {
    "id": "d20253772c9d",
@@ -2753,7 +4248,7 @@
    "label": "Rumor",
    "cluster": "d20253772c9d",
    "sources_n": 1,
-   "score": 6.63
+   "score": 5.88
   },
   {
    "id": "99b4904f38aa",
@@ -2768,7 +4263,7 @@
    "label": "Rumor",
    "cluster": "99b4904f38aa",
    "sources_n": 1,
-   "score": 2.63
+   "score": 1.87
   },
   {
    "id": "eedbfb53785e",
@@ -2783,7 +4278,7 @@
    "label": "Rumor",
    "cluster": "eedbfb53785e",
    "sources_n": 1,
-   "score": 2.62
+   "score": 1.87
   },
   {
    "id": "9e1b9d969bf3",
@@ -2798,7 +4293,7 @@
    "label": "Rumor",
    "cluster": "9e1b9d969bf3",
    "sources_n": 1,
-   "score": 2.62
+   "score": 1.87
   },
   {
    "id": "d7c7c7af61f7",
@@ -2813,7 +4308,7 @@
    "label": "Rumor",
    "cluster": "d7c7c7af61f7",
    "sources_n": 1,
-   "score": 4.62
+   "score": 3.87
   },
   {
    "id": "5603f1b26eb7",
@@ -2828,7 +4323,7 @@
    "label": "Rumor",
    "cluster": "5603f1b26eb7",
    "sources_n": 1,
-   "score": 6.62
+   "score": 5.87
   },
   {
    "id": "8baa9b4edc52",
@@ -2843,7 +4338,7 @@
    "label": "Rumor",
    "cluster": "8baa9b4edc52",
    "sources_n": 1,
-   "score": 2.61
+   "score": 1.86
   },
   {
    "id": "d22dba66b8d2",
@@ -2858,7 +4353,22 @@
    "label": "Rumor",
    "cluster": "d22dba66b8d2",
    "sources_n": 1,
-   "score": 2.61
+   "score": 1.86
+  },
+  {
+   "id": "5e5acabdb2a5",
+   "title": "Mohammed Shami traded to RR, Sam Curran moves to LSG ahead of IPL 2027",
+   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPeDFtWkg4MWhZRF9tLUZPSmo2QlRTSUp2UE5KWnNGOW1rR2NoUm4xYXAxZGVBTmxySThhZ2lMVUx6bENhdHZCVlh5RDNsc0ROZ2wzUmJ2VGF0MUxJd0doUHRWUDVkZnRBTW1ISm1GajNoRzdtVFVKQlpXMlZwd1k2dm0wbUpTS2xzSjRrWmt1VnBsNDlJVUdjRlZlQzVrelJYMGFOOWFqOUdEZXpVWTR1V3FYZXhIemF4ODh2UkUxeGQ3SWZQ?oc=5",
+   "source": "ANI News",
+   "published": "2026-11-17T11:12:00+00:00",
+   "summary": "",
+   "tags": [
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "73e77f4a6348",
+   "sources_n": 2,
+   "score": 7.86
   },
   {
    "id": "78ab7fa7e6cb",
@@ -2873,7 +4383,22 @@
    "label": "Rumor",
    "cluster": "78ab7fa7e6cb",
    "sources_n": 3,
-   "score": 10.6
+   "score": 9.85
+  },
+  {
+   "id": "9e264969d61b",
+   "title": "IPL trade shake-up: Shami to RR, Curran to LSG",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTktHRWVzZ1ZtVHVUMnYxcmlkcEx0aUItZVVuNy1zVnRuMDAwT1lWOEN2VUx6VGFobC1nckp5SmV4U3NyY1hOakFvMGhmTUVia0ZCUGF5c0F1a2gzUXItTDFINlJnUmhmQ05mOFdqOElfOFBQaFoyM3ZLdUJzWlhLMzRwcXpBa2pVVWVzZ0tnRzBXZTRJSW02Rk5EMmxsUdIBngFBVV95cUxPTktHRWVzZ1ZtVHVUMnYxcmlkcEx0aUItZVVuNy1zVnRuMDAwT1lWOEN2VUx6VGFobC1nckp5SmV4U3NyY1hOakFvMGhmTUVia0ZCUGF5c0F1a2gzUXItTDFINlJnUmhmQ05mOFdqOElfOFBQaFoyM3ZLdUJzWlhLMzRwcXpBa2pVVWVzZ0tnRzBXZTRJSW02Rk5EMmxsUQ?oc=5",
+   "source": "Rediff",
+   "published": "2026-11-17T11:10:28+00:00",
+   "summary": "",
+   "tags": [
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "78ab7fa7e6cb",
+   "sources_n": 3,
+   "score": 9.85
   },
   {
    "id": "10b7483312bc",
@@ -2887,8 +4412,8 @@
    ],
    "label": "Rumor",
    "cluster": "10b7483312bc",
-   "sources_n": 3,
-   "score": 10.6
+   "sources_n": 1,
+   "score": 5.85
   },
   {
    "id": "cb6d7e79131a",
@@ -2903,7 +4428,7 @@
    "label": "Rumor",
    "cluster": "cb6d7e79131a",
    "sources_n": 3,
-   "score": 10.6
+   "score": 9.85
   },
   {
    "id": "002dde09d4be",
@@ -2916,9 +4441,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "10c23aaa1e33",
-   "sources_n": 3,
-   "score": 10.6
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 15.84
   },
   {
    "id": "59506916bac9",
@@ -2931,9 +4456,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "10c23aaa1e33",
-   "sources_n": 3,
-   "score": 10.59
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 15.84
   },
   {
    "id": "71eae2028e70",
@@ -2948,7 +4473,7 @@
    "label": "Rumor",
    "cluster": "71eae2028e70",
    "sources_n": 1,
-   "score": 2.59
+   "score": 1.84
   },
   {
    "id": "aa70a055dfe7",
@@ -2963,7 +4488,7 @@
    "label": "Rumor",
    "cluster": "aa70a055dfe7",
    "sources_n": 1,
-   "score": 2.59
+   "score": 1.84
   },
   {
    "id": "b344da34c53a",
@@ -2978,7 +4503,7 @@
    "label": "Rumor",
    "cluster": "b344da34c53a",
    "sources_n": 1,
-   "score": 5.59
+   "score": 4.83
   },
   {
    "id": "7b6f611b38a8",
@@ -2993,7 +4518,7 @@
    "label": "Rumor",
    "cluster": "78ab7fa7e6cb",
    "sources_n": 3,
-   "score": 10.59
+   "score": 9.83
   },
   {
    "id": "41a0c14e95b7",
@@ -3006,9 +4531,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "10b7483312bc",
-   "sources_n": 3,
-   "score": 10.58
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 15.83
   },
   {
    "id": "5183a680da52",
@@ -3023,7 +4548,7 @@
    "label": "Rumor",
    "cluster": "5183a680da52",
    "sources_n": 1,
-   "score": 2.58
+   "score": 1.83
   },
   {
    "id": "6b0be6b6df5d",
@@ -3038,7 +4563,7 @@
    "label": "Rumor",
    "cluster": "6b0be6b6df5d",
    "sources_n": 1,
-   "score": 2.58
+   "score": 1.83
   },
   {
    "id": "98b0d87bdc83",
@@ -3053,7 +4578,7 @@
    "label": "Rumor",
    "cluster": "98b0d87bdc83",
    "sources_n": 1,
-   "score": 2.58
+   "score": 1.83
   },
   {
    "id": "480c46632926",
@@ -3068,7 +4593,22 @@
    "label": "Rumor",
    "cluster": "480c46632926",
    "sources_n": 1,
-   "score": 6.58
+   "score": 5.82
+  },
+  {
+   "id": "04937b232bd4",
+   "title": "Indian star Dhoni takes up IPL mentor role at Chennai",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOSmlNd1dhanpBNnF2MTJOaFRtMGhPdWpYTzNkWVlLSDBIOFQ3dnlydmF5ZmR6SWpSaHFrOXRYMjJHdkE5RGpoXzUyWlN6cGZkMzljSTVkN1RzMHk4WmYweXpob25TNjFKZ2NlWk9Zd3NWcVBVVUFMb1pMb1FvN2lJaUdXTXZPZlg4bzgxVjBOa0hsUDdJcXZkb3hTNnF3QWExTlE?oc=5",
+   "source": "France 24",
+   "published": "2026-11-17T10:45:21+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "81d3b7ed6528",
+   "sources_n": 2,
+   "score": 3.82
   },
   {
    "id": "96f280159a9f",
@@ -3083,7 +4623,7 @@
    "label": "Rumor",
    "cluster": "96f280159a9f",
    "sources_n": 1,
-   "score": 2.56
+   "score": 1.81
   },
   {
    "id": "ee4eb7f00121",
@@ -3098,7 +4638,7 @@
    "label": "Rumor",
    "cluster": "ee4eb7f00121",
    "sources_n": 1,
-   "score": 2.56
+   "score": 1.81
   },
   {
    "id": "7bc0a3e598b3",
@@ -3113,23 +4653,7 @@
    "label": "Rumor",
    "cluster": "7bc0a3e598b3",
    "sources_n": 1,
-   "score": 2.56
-  },
-  {
-   "id": "090f44165e63",
-   "title": "Chennai Super Kings Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB2WVpiUFB1Ry11M2tDaFFqMVk2eGNPNVlQQUFRenZIa2VYT1d3dUM5cVJmOWhRdmFrUkZwLUJpRVlvbjNMZkd5d2Rkd1A5QnFDVG1wVV82RjhBc2V2OVhfb0tHZXZjSUVyaWMzNzhpUVl0OEU?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T10:38:22+00:00",
-   "summary": "",
-   "tags": [
-    "Auction",
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "2d9864011eed",
-   "sources_n": 1,
-   "score": 6.56
+   "score": 1.81
   },
   {
    "id": "581008a25bc0",
@@ -3144,7 +4668,7 @@
    "label": "Rumor",
    "cluster": "581008a25bc0",
    "sources_n": 1,
-   "score": 2.56
+   "score": 1.81
   },
   {
    "id": "cde14ce5e5c4",
@@ -3159,7 +4683,7 @@
    "label": "Rumor",
    "cluster": "cde14ce5e5c4",
    "sources_n": 1,
-   "score": 6.56
+   "score": 5.81
   },
   {
    "id": "e06ad9db0231",
@@ -3172,9 +4696,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.56
+   "score": 5.81
   },
   {
    "id": "a681dc5be9fa",
@@ -3189,7 +4713,7 @@
    "label": "Rumor",
    "cluster": "a681dc5be9fa",
    "sources_n": 1,
-   "score": 2.55
+   "score": 1.8
   },
   {
    "id": "80bcd89f9866",
@@ -3204,43 +4728,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "ad253ff6e2c0",
-   "sources_n": 2,
-   "score": 9.55
-  },
-  {
-   "id": "e874102cf91a",
-   "title": "RR retention list for IPL 2027 auction: Full list of retained and released players by Rajasthan Royals ahead of mini-auction",
-   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPdW5Uc2t6b0F3NUl1QXhBUUJPSlE3SFV1YXdhRGJnYmVwVUMydFNicW5DSGlrSWE5dHdlZDJ5U2p5ZWVjaGl1Y3pTVHVIUk1tNmdYWllYMTVNdV9BUDZpZjB5RVhPSVJkUnZUUDgzckpVdWsyc3dDWkdOOXRBaHZuTg?oc=5",
-   "source": "Yahoo Sports",
-   "published": "2026-11-17T10:30:00+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release",
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.55
-  },
-  {
-   "id": "7428be916e07",
-   "title": "KKR retention list for IPL 2027 auction: Full list of retained and released players by Kolkata Knight Riders ahead of mini-auction",
-   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPZTVPVlhhbUI4M1Y3cVVKc3dmZGxMV05tYllXOElqS0RVQlJJZU9hN1FuZzV0MTlzU241NEZqM1owRUZ4N1BHb2p3NURHTHBpUFBoSlRmS3p0Zkszem1mQ2Rac3lwQWRwZlRsYV9xeUs2Q2Z0U3o0VjZhcXFKQXp5VTh3?oc=5",
-   "source": "Yahoo Sports",
-   "published": "2026-11-17T10:30:00+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release",
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "ad253ff6e2c0",
-   "sources_n": 2,
-   "score": 9.55
+   "cluster": "3a5268089bd0",
+   "sources_n": 1,
+   "score": 6.8
   },
   {
    "id": "54b1f943c046",
@@ -3256,8 +4746,8 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.55
+   "sources_n": 5,
+   "score": 14.8
   },
   {
    "id": "74b478940579",
@@ -3273,8 +4763,8 @@
    ],
    "label": "Rumor",
    "cluster": "2932cad6fd98",
-   "sources_n": 8,
-   "score": 21.55
+   "sources_n": 5,
+   "score": 14.8
   },
   {
    "id": "2398d9535b97",
@@ -3288,9 +4778,9 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "2398d9535b97",
-   "sources_n": 1,
-   "score": 6.54
+   "cluster": "912f57513caf",
+   "sources_n": 2,
+   "score": 7.79
   },
   {
    "id": "553b7afd33ea",
@@ -3305,7 +4795,7 @@
    "label": "Rumor",
    "cluster": "553b7afd33ea",
    "sources_n": 2,
-   "score": 6.54
+   "score": 5.79
   },
   {
    "id": "f7fbe5523547",
@@ -3320,7 +4810,7 @@
    "label": "Rumor",
    "cluster": "f7fbe5523547",
    "sources_n": 2,
-   "score": 4.54
+   "score": 3.78
   },
   {
    "id": "f7d306869954",
@@ -3335,11 +4825,11 @@
    "label": "Rumor",
    "cluster": "f7d306869954",
    "sources_n": 1,
-   "score": 2.53
+   "score": 1.78
   },
   {
    "id": "be90c519e7ce",
-   "title": "KKR Retention List 2027: Will Rinku Singh, Ajinkya Rahane, Sunil Narine and Cameron Green Stay or Leave? Check Full List of Players Kolkata Knight Riders May Retain and Release",
+   "title": "KKR Retention List 2027: Matheesha Pathirana Released, Cameron Green Retained; Check Full List Of Players Retained And Released By Kolkata Knight Riders",
    "link": "https://news.google.com/rss/articles/CBMizwJBVV95cUxPTkdVN1JWdzVGcFh2X2MyRlRZcUN3VE9ZdnBPRnItUVlDZnA3bVRwZUVTM1owY3VqV0QyZENCaHpJZzdjYjdQcTgyNDN5bGVVS3VsRDNHVWxYb3FudjBnalR3RlJPaW9kXzFmNWtVSzl6VTJwbFpqV2pYZnRmUl9hdWxRaGNBZHlEUGhuUWxrdTVtd2I5bHUzOEFUb2VSTVF0SmhTZzAxc0NmZ3ltd255SHRHdi1HUGlVQ1cwZkFjYV9UbC00dXlxd3NqWkw5WktsOVhsZlRyeWQ3a1VKUW00M0g0LUFfWFV4YVNJb3h1V3MxZGFULTY0SEtTMF9hdUF2Y01YTUtNY1RCX3lwMzZ0d1hxN0h2dkpOZGhiSXk3bnZXUGtDVV9yeDZNT1hCMnFMOEIxRDJSQ3pkN0VVQnczVVJiZkVHcHM0cHlKa3NGTdIB1gJBVV95cUxNTXVoWU82anNkQklJOXRoNzllUjdqbEl6YXFUNDRvclFXRXJjZF9zaVJmczlSZl9qQk5ZcVRwSTltSHlYeVFKYjBaM0NSUFpMYk83T1hIYzBjaFFsN3g0U0xkeWdwaVREOUpKcTM0Wjk3MFdWMHZPWTdiOFBfSHl6MGZta21XcXhOQnkwVVZiY2pBYkRQRWVRbTlUVWR4cGpNb2ZfMDh0WDdKZEtSTWQzb3ZaQ0tJczd4TlZKNEh1XzZPTkNqeDNESjJDWVdiTGRYY1FBWWE4YVRURWJlX25qbE82Uk05V3lOdEV4T1pOLVAtdWdySE5nSmRqb2ZReXQ1N05XcDgzNWQxT1Ntc1h1eDlpQjAzMEVBX3pJMVMzczhmZlp5LXlVbHB3MkZ4dkdLYU1aaDNQMlJ4dE5XMmEtQlZUQ3F4LW5rRWUwWEM4bGxQNlRrbUE?oc=5",
    "source": "Jagran Josh",
    "published": "2026-11-17T10:12:40+00:00",
@@ -3349,9 +4839,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "be90c519e7ce",
-   "sources_n": 1,
-   "score": 7.52
+   "cluster": "6b4f6236e58d",
+   "sources_n": 5,
+   "score": 14.77
   },
   {
    "id": "d6ef78b79109",
@@ -3364,9 +4854,24 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "10b7483312bc",
-   "sources_n": 3,
-   "score": 6.52
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 11.77
+  },
+  {
+   "id": "d97b27980a95",
+   "title": "Vaibhav Sooryavanshi bigger than cricket? Karthik explains why",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOckFnRDBXbDN4TW5NOXNMa0NOYUJycGNiZlFSS3p0OU9QN3pMSnl1Z2pvNXRSc21xaTlSNXEyR2RLWjdKZEN6UzhVRkZ5blpiSjlIbnBuVFlndFhVNDhmQWtRc3Uzdy0zMWZxMmZLWUw1T2lXbTEzQjZtcnp1ZnpBU0hWc2lDVDM5dWpTTDBqd2tTZ0RQNlFNOUkwZUdRblNfYUl0MlR3ajhlNmhQR2Zfd3Jn0gG0AUFVX3lxTE16eExMZTkteVlONzU1Y21SWFl6UEgyYlZyN3h4aUFQeWo1R0hGUDFiRjlDOGxBTFI2YXNIaUVNSTh6OXVJRngtUXhKbVVPSlJtbGVocE9JcU8zZFJBV0EybTlMM0dGN2dwV0NZQXJuWHRhSFVrdzFhTGw2Y2plMDQzWFBKZFdNTHJ2cnpUdGhTX3NDckJhVEllS1pyTE1JNlh0WWw5UHNmcG50MnhSazBrOFVIUA?oc=5",
+   "source": "Rediff",
+   "published": "2026-11-17T10:08:18+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "d97b27980a95",
+   "sources_n": 1,
+   "score": 1.77
   },
   {
    "id": "7dce3278ec16",
@@ -3381,7 +4886,7 @@
    "label": "Rumor",
    "cluster": "7dce3278ec16",
    "sources_n": 1,
-   "score": 6.52
+   "score": 5.77
   },
   {
    "id": "f4aad0227da8",
@@ -3394,9 +4899,9 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "b4ffbfa0b9ee",
-   "sources_n": 2,
-   "score": 4.52
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 11.77
   },
   {
    "id": "be1dd93fc300",
@@ -3409,9 +4914,24 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "b4ffbfa0b9ee",
-   "sources_n": 2,
-   "score": 4.52
+   "cluster": "e194df046ff9",
+   "sources_n": 6,
+   "score": 11.77
+  },
+  {
+   "id": "f47b00c8764c",
+   "title": "List of India's U19 Asia Cup Winning Team Cricketers Playing in SMAT 2026",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOTmdnby16S1hWU1h2b2tNNVdCX1VMODlnc082U0VIcnNCYWtiSmUzQll2cWVLTHZfNzJyeU5Pd1N2ZDE2N0tBcjhFU1ZONjZEM3ZoY1JseDJ5SF9kR3phV3ZReVJnMXlxOURKYkR2dS0ydGNqeWZtOThFNm9fMHVYWGJJZWFSMDRvWDVwWFQzbThLRDdlX1FrT1JUbEhwckhRaHF1MU5VQQ?oc=5",
+   "source": "Sportsdunia",
+   "published": "2026-11-17T10:06:50+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "f47b00c8764c",
+   "sources_n": 1,
+   "score": 1.77
   },
   {
    "id": "1e3716618d68",
@@ -3426,7 +4946,7 @@
    "label": "Rumor",
    "cluster": "1e3716618d68",
    "sources_n": 1,
-   "score": 2.51
+   "score": 1.76
   },
   {
    "id": "574935dc50b8",
@@ -3441,7 +4961,7 @@
    "label": "Rumor",
    "cluster": "574935dc50b8",
    "sources_n": 1,
-   "score": 5.51
+   "score": 4.76
   },
   {
    "id": "23204e98cc69",
@@ -3456,7 +4976,7 @@
    "label": "Rumor",
    "cluster": "23204e98cc69",
    "sources_n": 1,
-   "score": 6.51
+   "score": 5.76
   },
   {
    "id": "bd67ea3b87d8",
@@ -3471,26 +4991,41 @@
    "label": "Rumor",
    "cluster": "f8a2d0f2bd08",
    "sources_n": 5,
-   "score": 14.5
+   "score": 13.75
   },
   {
    "id": "16c4fb89ceb2",
-   "title": "MS Dhoni Retires From IPL, Becomes CSK Mentor for 2027",
+   "title": "MS Dhoni Retires From IPL, Appointed CSK Team Mentor for IPL 2027",
    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNdTFFSDdvbHRYZFo4S2tJQkkxSGdzVnJodVFnYjJrQTdFNC1LdEVUY1BXMU9vMTFaUGlZQUhBT09nNUNDLXZnekx3UjZaal9JMzdiaHZTd0FXMUllbHhva0kwakZ1UllKN3p3VVJsLWpXdVZJYW54YmRtLVNuMTZTSjRNWjFKaHRZTC1xZkhmWngtMzV4UEZoM0dha3JGajZRdG8zQjlPTQ?oc=5",
    "source": "News Arena India",
-   "published": "2026-11-17T09:54:44+00:00",
+   "published": "2026-11-17T09:57:21+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "16c4fb89ceb2",
+   "sources_n": 3,
+   "score": 7.75
+  },
+  {
+   "id": "295005a8c4bf",
+   "title": "MS Dhoni's IPL career ends, named CSK mentor",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNbm1RYlFObEk0SWRMYlRBOUpKUFNUVUs4c2xwcEE2dS05V2lpNzRjVXFQUG90SFB2N29SdU43NGhkQVdYV0g1OUVuVzhZbk1CQ0lHVF9kdFNweEJRbHFXeEMyUzNXMU9XYk1HMGdXRW05cTJDT3I5ZTNFYktsWjFxNnlqeE15TjRrOVU0MnVKQzM?oc=5",
+   "source": "The Federal",
+   "published": "2026-11-17T09:49:08+00:00",
    "summary": "",
    "tags": [
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "16c4fb89ceb2",
-   "sources_n": 3,
-   "score": 6.5
+   "cluster": "54de55e271d9",
+   "sources_n": 5,
+   "score": 9.74
   },
   {
    "id": "56d3e4e011de",
-   "title": "MS Dhoni retires from IPL, marks the end of an era for Indian cricket",
+   "title": "MS Dhoni announces retirement from IPL",
    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1wSnpfOXJKLTdROXpxOVhGdkJZc3JkOE5Iem5ZLS1lR1dyNXNNalp0S0RJM2YyNUhWRDlmYlhwOEdERlkxNXRHRXNuNm5DZVFHZFNOQklKRGFDSDI3SDZoTnh0S1Y2WXNXUDh5UUhEdWZrVWc?oc=5",
    "source": "Olympics",
    "published": "2026-11-17T09:46:00+00:00",
@@ -3501,7 +5036,7 @@
    "label": "Rumor",
    "cluster": "56d3e4e011de",
    "sources_n": 1,
-   "score": 2.49
+   "score": 1.74
   },
   {
    "id": "467712045e14",
@@ -3514,9 +5049,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.48
+   "score": 5.73
   },
   {
    "id": "f01ccd283c57",
@@ -3531,7 +5066,22 @@
    "label": "Rumor",
    "cluster": "f01ccd283c57",
    "sources_n": 1,
-   "score": 7.48
+   "score": 6.73
+  },
+  {
+   "id": "b75d7c84bdd6",
+   "title": "Maybe add me to release list: How MS Dhoni told CSK he was retiring",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOQzRtYVFpVjlIUlR5OVBOVDZUNG1FcGlYZVp6cjdqN0xBR3Uzd0VPWlNPNTk5QlhrVDBHUHU0d3R3NWFBUWxoVExteWJVenN3dk5LR3UyVGlrZmFpb1NRX2lPRHNvVWxBZTlZbDdINkNyTXVscnh3RTFReF9PQ0ZndFVfVFFvbEQ5ZXlqX2x4WTdCSU9CNTVEUWY1RE1PZC1DMkU5MWxEdEpwRzFwR0owVkJ6ckRkcWtYRXfSAb8BQVVfeXFMTXY0cVU0Tm44OGJpcjR3Qjh3bmF3SERXOFNvLWt2TS1kVTVMc2JaYXdjMEJZTTRDcS15OWhNR0JtSUJXbVJLaVhpenc3R0IxOEdPT2FzMG9SMGVzQ25ONXZpelBmdjN0bzF1VG1jSkNOSVh5bk5KdWk0RVlWOHFRcVBxZ1pOUEhnUTV6amEwUFpoQnZEOTNiSlJDOTMyX192RXB3aDczcHZDeXlGUUs3djNGR0NPa1ZFdUpsdUtpTjg?oc=5",
+   "source": "India Today",
+   "published": "2026-11-17T09:41:05+00:00",
+   "summary": "",
+   "tags": [
+    "Release"
+   ],
+   "label": "Rumor",
+   "cluster": "b75d7c84bdd6",
+   "sources_n": 1,
+   "score": 6.73
   },
   {
    "id": "4af81f983ce4",
@@ -3544,9 +5094,24 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "6c65e69819e1",
-   "sources_n": 3,
-   "score": 8.48
+   "cluster": "54de55e271d9",
+   "sources_n": 5,
+   "score": 11.72
+  },
+  {
+   "id": "3936feac7697",
+   "title": "Dhoni ends IPL playing career as CSK appoints him team mentor",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPWXVoU0YzYkphRXpEQmN1UU1LNGdyWWNlVTFQbWc3a3prc0o5Uk1xZy1hOG16eGotdWpVQVZEbVNPV3hIaXcwS3V3OE9sOFJGTXJlYVdGcFhSRmJLQ2lTTkRidDZ5QVV5UWJ5Nko4b0tpVTQwZThieTBoLUpxQ2t6WGdnd21YQU1OaUpVZlFTS3M4SlhXSTh0bzF1TTZBSUFYbVdPalI1dlJaQ0ZNX0RCTS05QTJkX0QwRVHSAcABQVVfeXFMTTloVkNUYjEwRExXWDV1Sm5Jd2xONFFYWlpZd2l1bGlJRmxBOG11TXdzdV9XcnhQWXRoV1Rqc2I3MklZWGtBSUphRlpROHQ0RVF3WWxHMkhpZUxtRkNUMnVWcnRuZkJpc1VKVDN4TktEckVYRE1SbnM4aFRvYU9UdWhKcHNnRnNKSldTaGZPT05IUWdpcXNfTm9ZZkoyQ3BlTS1HQTd4S2RrMl8xQ19rTW9LUEdYN2xJbHJIUmpzZEdP?oc=5",
+   "source": "The Hindu",
+   "published": "2026-11-17T09:36:46+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "54de55e271d9",
+   "sources_n": 5,
+   "score": 9.72
   },
   {
    "id": "28f594954dd8",
@@ -3561,39 +5126,52 @@
    "label": "Rumor",
    "cluster": "28f594954dd8",
    "sources_n": 1,
-   "score": 5.47
+   "score": 4.72
   },
   {
-   "id": "721f0b33c104",
-   "title": "Sunrisers Hyderabad Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE10T1RCcHQyLTZ3OWpsT1ZCS25xb2lsTnFFRHVMYXF1Vk5VSlQ4RjNCcmlCXzBFeE05S3ZGRW93NC1VOGk5R0ZxWVViV2xhWHJfT3Vka2NXTkJOSXZVNVBFVlBOeVZaRV90NzNNMTZqaFYxb0NM?oc=5",
+   "id": "d07a76485f5c",
+   "title": "Jason Holder Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA4ZW5FQ0diZmtXVjUwVHN1X0dlT3puYWRCUC1WSl9MOEdQaUJaUUhORi1PaTVaYjBfSUtwVFZYMEZlQzNabEwtT0pVV055OWZpUnFlak52VTYtbW0xZmc2X3JNdlpkQ1c1SWF4TzhSbUVnel9xdk05Rw?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-17T09:34:10+00:00",
+   "published": "2026-11-17T09:33:45+00:00",
    "summary": "",
    "tags": [
-    "Auction",
-    "Team News"
+    "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2d9864011eed",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.47
+   "score": 5.72
   },
   {
-   "id": "4d17d4b17985",
-   "title": "Delhi Capitals Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA2N3hWbUhld0U1NTBFT2ZLRUYyTDFGRUw3V2lXUkFJa1dwSTlxcmVMTzM5S21vemVTY0ZrNEprNUhNN3hLbU9PaEstWkxqb0l5QnpWRDRDREVnWFJrVlZxbS1WR09TemVPRVdNMUdoX3kzQVE?oc=5",
+   "id": "2a85fc4b7218",
+   "title": "Mayank Yadav Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE4xbTNoYnA1QTZoVm1jQld3M0syLTB0VXNXSlQ3OGZjRmYtNnhJb2pTWUkzbHU4dmtGY3FuMU9zbF9adC1mMDZYcHl3WHlkUm5BMmNMUzVfV2pNVUxZNTl5Vm41c2dObjNFS0V1NjBXamE0akZKV1U5dUx3?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-17T09:33:47+00:00",
+   "published": "2026-11-17T09:33:43+00:00",
    "summary": "",
    "tags": [
-    "Auction",
-    "Team News"
+    "Auction"
    ],
    "label": "Rumor",
-   "cluster": "2d9864011eed",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.47
+   "score": 5.72
+  },
+  {
+   "id": "587afe6ed154",
+   "title": "MS Dhoni retires from IPL, named CSK mentor | 'There is no CSK without MS Dhoni' | Inshorts",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTzViQ3I4dmVtYkc0UFdkZ1psUlZsZXZqd0VjckFES2Z2cVNlMnVKSUhlczZJYVpZRUFmSjQxV0xXMlBOV0t2NV8tOWNwSWtDcnpFY2VNX2pNVUFCUEVBaEdLd3VuU2ZMS0NIMDBKMDNTQzNkcHcxNnA4eEoxR0JEX3BlQVVnZTNCSE50UUxzZ9IBlAFBVV95cUxNbzIwb0JRS3JjS09RMzFOVnJ4ay1PVk9kOHpSTHRUUTV6NDItaVRmNUw4TldYLUx5bXc3b21CLWJkLXE1RlpUS3RWNTNLbXdtcmYzQ2FhdEhycE5IeE52VFJiUDU0NkNQN2FrcU1BVUp6YnpkMjFZQzMtbktYbThjSUNLQkh6OFBXRFc0NW5PLXVPMUNm?oc=5",
+   "source": "Inshorts",
+   "published": "2026-11-17T09:32:40+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "587afe6ed154",
+   "sources_n": 1,
+   "score": 1.72
   },
   {
    "id": "ce9a356a7685",
@@ -3608,7 +5186,7 @@
    "label": "Rumor",
    "cluster": "43557053d271",
    "sources_n": 2,
-   "score": 4.47
+   "score": 3.71
   },
   {
    "id": "d9ebc5c01720",
@@ -3623,7 +5201,7 @@
    "label": "Rumor",
    "cluster": "16c4fb89ceb2",
    "sources_n": 3,
-   "score": 6.47
+   "score": 5.71
   },
   {
    "id": "ba122cd1698c",
@@ -3638,7 +5216,7 @@
    "label": "Rumor",
    "cluster": "ba122cd1698c",
    "sources_n": 1,
-   "score": 6.46
+   "score": 5.71
   },
   {
    "id": "e27d1e2f8f91",
@@ -3651,9 +5229,9 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "e27d1e2f8f91",
-   "sources_n": 1,
-   "score": 4.46
+   "cluster": "16c4fb89ceb2",
+   "sources_n": 3,
+   "score": 7.71
   },
   {
    "id": "038583f25091",
@@ -3669,22 +5247,7 @@
    "label": "Rumor",
    "cluster": "a2db2482e514",
    "sources_n": 2,
-   "score": 9.46
-  },
-  {
-   "id": "54de55e271d9",
-   "title": "MS Dhoni retires from IPL, named CSK mentor for 2027 season",
-   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQaFMxa01QbFRmUG1qcWo3bGRwZmd0VmZRWENhekgzZ1A3a3NkQmJ3NmVmUXowU0ZEVmNPQUpjRGtCTnRJb1N0VmMwNmV5NFZ2UGl0dmlRZTZKZTliR1otdUV4aERuNXIyNzhaRzRYQVgwcUdwVVA3Q2hBbnc5Vk1Rek93Zk9DLXR6MkR2bldiTnZia3cwbmVpVkVMeWxXbHplUlluemxvNmlFQkpfOFhuelQyTDl4TnlPNlFDckFhQ1B5XzDSAcoBQVVfeXFMUDhfd20wYUtGV013YmFwbk5sOXI5LVF2TDNiWnF5LVd3cGV4WUMtUnpYLTY4TW94MHdsTWdSRmpOZWROX0lPTmVPTmlrNkIxVHVBLVNyLWtkMTFqMEpiMHl4aWN0SWV4VzZ2M3duYmZiTHpBdmRNWW9CamlfYXNOVVBxcXVaNlM0MkV4M1lkeEZ0b1F5blotQnExN1pIcm8xbGxNM3FucUtLSUR2Z1VidkNJWWltS0d1UjJVaU5PVEdDZENWNjdfUURpUQ?oc=5",
-   "source": "The Indian Express",
-   "published": "2026-11-17T09:25:24+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "16c4fb89ceb2",
-   "sources_n": 3,
-   "score": 6.46
+   "score": 8.71
   },
   {
    "id": "0115f75095b2",
@@ -3699,7 +5262,7 @@
    "label": "Rumor",
    "cluster": "0115f75095b2",
    "sources_n": 1,
-   "score": 2.44
+   "score": 1.69
   },
   {
    "id": "117d37ecd9e4",
@@ -3714,7 +5277,7 @@
    "label": "Rumor",
    "cluster": "117d37ecd9e4",
    "sources_n": 1,
-   "score": 2.44
+   "score": 1.69
   },
   {
    "id": "0e564e487a55",
@@ -3727,9 +5290,9 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "0e564e487a55",
-   "sources_n": 4,
-   "score": 8.44
+   "cluster": "cd25aea39cd6",
+   "sources_n": 3,
+   "score": 5.68
   },
   {
    "id": "458338915676",
@@ -3744,7 +5307,7 @@
    "label": "Rumor",
    "cluster": "458338915676",
    "sources_n": 1,
-   "score": 2.43
+   "score": 1.68
   },
   {
    "id": "95a71c544fba",
@@ -3759,7 +5322,7 @@
    "label": "Rumor",
    "cluster": "95a71c544fba",
    "sources_n": 1,
-   "score": 2.43
+   "score": 1.68
   },
   {
    "id": "0ee8aba85daf",
@@ -3774,7 +5337,7 @@
    "label": "Rumor",
    "cluster": "0ee8aba85daf",
    "sources_n": 1,
-   "score": 5.42
+   "score": 4.67
   },
   {
    "id": "1b002527930e",
@@ -3789,7 +5352,22 @@
    "label": "Rumor",
    "cluster": "1b002527930e",
    "sources_n": 1,
-   "score": 2.42
+   "score": 1.66
+  },
+  {
+   "id": "d75b25061453",
+   "title": "Ravi Shastri Fires Clear Warning, Opens Big Selection Debate For New Zealand Tests",
+   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPRXh0UC1EY1RXbEs3YzdINVlIYlRzSmUxRnFRc3BsSWgwaEJXMEdrZlY2c3JTeERyVnhTQi1wbGFQdDA2dFgzdk9GdXR3NTF4LWdGeE9hVnc0dkZGUFYxNnQ2WGRGXzlzT01qOU9KUHNCeThuVW9CQXNkMm04RDd2TGFOWDk5TTdSbjlTUW1HaTdjWE8xRWFYUExDRDVxOVo2bGpXQTZESG1sMFdTVDNCaHNXVV9zWk5HUTYwOTJuWFB3TFl5MEdQNjVocHg0WFlNdlNGRS1IOUhkUXc?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T08:54:33+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "1b002527930e",
+   "sources_n": 1,
+   "score": 1.66
   },
   {
    "id": "7726fbeb7a7f",
@@ -3805,7 +5383,7 @@
    "label": "Rumor",
    "cluster": "7726fbeb7a7f",
    "sources_n": 1,
-   "score": 6.41
+   "score": 5.66
   },
   {
    "id": "45ce9fb39a4b",
@@ -3820,7 +5398,7 @@
    "label": "Rumor",
    "cluster": "45ce9fb39a4b",
    "sources_n": 1,
-   "score": 4.41
+   "score": 3.66
   },
   {
    "id": "c31f0f418b78",
@@ -3835,7 +5413,7 @@
    "label": "Rumor",
    "cluster": "c31f0f418b78",
    "sources_n": 1,
-   "score": 4.4
+   "score": 3.65
   },
   {
    "id": "82597009ced8",
@@ -3850,7 +5428,7 @@
    "label": "Rumor",
    "cluster": "82597009ced8",
    "sources_n": 1,
-   "score": 2.4
+   "score": 1.65
   },
   {
    "id": "b72023ae1c1f",
@@ -3866,7 +5444,7 @@
    "label": "Rumor",
    "cluster": "b72023ae1c1f",
    "sources_n": 1,
-   "score": 5.4
+   "score": 4.65
   },
   {
    "id": "2ad00184cd01",
@@ -3881,7 +5459,7 @@
    "label": "Rumor",
    "cluster": "2ad00184cd01",
    "sources_n": 1,
-   "score": 5.4
+   "score": 4.64
   },
   {
    "id": "908987837f38",
@@ -3896,7 +5474,7 @@
    "label": "Rumor",
    "cluster": "908987837f38",
    "sources_n": 1,
-   "score": 2.39
+   "score": 1.64
   },
   {
    "id": "92536b2db8e2",
@@ -3911,7 +5489,7 @@
    "label": "Rumor",
    "cluster": "92536b2db8e2",
    "sources_n": 1,
-   "score": 6.39
+   "score": 5.64
   },
   {
    "id": "40e02c40e240",
@@ -3927,7 +5505,7 @@
    "label": "Rumor",
    "cluster": "40e02c40e240",
    "sources_n": 1,
-   "score": 7.38
+   "score": 6.63
   },
   {
    "id": "bf9a72cfc37d",
@@ -3942,7 +5520,7 @@
    "label": "Rumor",
    "cluster": "f8a2d0f2bd08",
    "sources_n": 5,
-   "score": 14.38
+   "score": 13.63
   },
   {
    "id": "ec43be9e69f6",
@@ -3960,7 +5538,7 @@
    "label": "Rumor",
    "cluster": "ec43be9e69f6",
    "sources_n": 1,
-   "score": 7.38
+   "score": 6.63
   },
   {
    "id": "457d0e6719fc",
@@ -3975,7 +5553,7 @@
    "label": "Rumor",
    "cluster": "457d0e6719fc",
    "sources_n": 1,
-   "score": 6.38
+   "score": 5.63
   },
   {
    "id": "d106a1aedd66",
@@ -3990,7 +5568,7 @@
    "label": "Rumor",
    "cluster": "d106a1aedd66",
    "sources_n": 1,
-   "score": 6.38
+   "score": 5.63
   },
   {
    "id": "645ba96bd31a",
@@ -4005,7 +5583,7 @@
    "label": "Rumor",
    "cluster": "645ba96bd31a",
    "sources_n": 1,
-   "score": 4.37
+   "score": 3.62
   },
   {
    "id": "cf9216a952f8",
@@ -4020,7 +5598,7 @@
    "label": "Rumor",
    "cluster": "cf9216a952f8",
    "sources_n": 1,
-   "score": 6.37
+   "score": 5.62
   },
   {
    "id": "8be3370f7ffd",
@@ -4036,22 +5614,7 @@
    "label": "Rumor",
    "cluster": "8be3370f7ffd",
    "sources_n": 1,
-   "score": 5.36
-  },
-  {
-   "id": "cd25aea39cd6",
-   "title": "Travis Head set to miss IPL 2027",
-   "link": "https://www.cricinfo.com/ci/content/story/1562856.html?ex_cid=OTC-RSS",
-   "source": "ESPNcricinfo (all stories)",
-   "published": "2026-11-17T08:14:11+00:00",
-   "summary": "The SRH opener has decided to skip the upcoming season to manage his workload during a busy international schedule",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "0e564e487a55",
-   "sources_n": 4,
-   "score": 8.36
+   "score": 4.61
   },
   {
    "id": "225f991db4a4",
@@ -4066,7 +5629,7 @@
    "label": "Rumor",
    "cluster": "cb6d7e79131a",
    "sources_n": 3,
-   "score": 10.35
+   "score": 9.6
   },
   {
    "id": "37f7a555dfc4",
@@ -4081,7 +5644,7 @@
    "label": "Rumor",
    "cluster": "37f7a555dfc4",
    "sources_n": 1,
-   "score": 2.35
+   "score": 1.6
   },
   {
    "id": "e35d3eedfd39",
@@ -4096,7 +5659,22 @@
    "label": "Rumor",
    "cluster": "155f2af5ebe2",
    "sources_n": 1,
-   "score": 7.34
+   "score": 6.59
+  },
+  {
+   "id": "8a594b26b8bb",
+   "title": "Akshat Raghuwanshi Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5CMXVLdUpncjJBdFV0QkNpd0pPWFJtWGVLb0VkVVlKRmh3SnFjR2N5dm16R0ktcVJvRlNXN2JWUnFUbk1EM1AtWHpHREY5cUMxZUlwWk9mZkthSk9VdXFpMV9mTzdWcWpvdUVUeUxRMG1JYTNjRkxDX3NB?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T08:00:39+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 5.59
   },
   {
    "id": "3e8729e22689",
@@ -4109,9 +5687,24 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.34
+   "score": 5.59
+  },
+  {
+   "id": "81354eb5aad1",
+   "title": "Ravi Bishnoi Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5UZnBKRjYyaHIwbkZiUGh5Z1lhcnVVZUpVQVRZd29ZNEIxREdDdkFoeWh4OWFUUEQ2czhnb1phZDhwNTJVT2RidjNuZTN4c1RvMUt4QktxeW9FQldIVS1vUmNuelQ1RFVrdmxFRVhLTVJGVEViaXV5MGR3?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T08:00:19+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 5.59
   },
   {
    "id": "f7468831858d",
@@ -4126,7 +5719,7 @@
    "label": "Rumor",
    "cluster": "f7468831858d",
    "sources_n": 1,
-   "score": 6.34
+   "score": 5.59
   },
   {
    "id": "46907ac11824",
@@ -4141,7 +5734,7 @@
    "label": "Rumor",
    "cluster": "46907ac11824",
    "sources_n": 1,
-   "score": 5.33
+   "score": 4.58
   },
   {
    "id": "c40bfb94c894",
@@ -4157,7 +5750,7 @@
    "label": "Rumor",
    "cluster": "cb6d7e79131a",
    "sources_n": 3,
-   "score": 11.33
+   "score": 10.58
   },
   {
    "id": "c4375ed4c2c6",
@@ -4170,9 +5763,9 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "0e564e487a55",
-   "sources_n": 4,
-   "score": 8.33
+   "cluster": "c4375ed4c2c6",
+   "sources_n": 1,
+   "score": 1.58
   },
   {
    "id": "0cc9b39092f9",
@@ -4187,7 +5780,7 @@
    "label": "Rumor",
    "cluster": "0cc9b39092f9",
    "sources_n": 1,
-   "score": 2.33
+   "score": 1.58
   },
   {
    "id": "f0965ba189fe",
@@ -4202,7 +5795,7 @@
    "label": "Rumor",
    "cluster": "f0965ba189fe",
    "sources_n": 2,
-   "score": 9.33
+   "score": 8.58
   },
   {
    "id": "2543299fd9fd",
@@ -4217,7 +5810,7 @@
    "label": "Rumor",
    "cluster": "2543299fd9fd",
    "sources_n": 1,
-   "score": 2.32
+   "score": 1.57
   },
   {
    "id": "e520b7caaddb",
@@ -4232,7 +5825,7 @@
    "label": "Rumor",
    "cluster": "e520b7caaddb",
    "sources_n": 1,
-   "score": 5.31
+   "score": 4.56
   },
   {
    "id": "1908eb813173",
@@ -4247,7 +5840,7 @@
    "label": "Rumor",
    "cluster": "1908eb813173",
    "sources_n": 1,
-   "score": 5.31
+   "score": 4.56
   },
   {
    "id": "ea0c281d2b92",
@@ -4262,7 +5855,7 @@
    "label": "Rumor",
    "cluster": "f8a2d0f2bd08",
    "sources_n": 5,
-   "score": 14.3
+   "score": 13.54
   },
   {
    "id": "c3829d55607d",
@@ -4277,7 +5870,7 @@
    "label": "Rumor",
    "cluster": "c3829d55607d",
    "sources_n": 1,
-   "score": 5.29
+   "score": 4.54
   },
   {
    "id": "caea003f40bd",
@@ -4292,7 +5885,7 @@
    "label": "Rumor",
    "cluster": "caea003f40bd",
    "sources_n": 1,
-   "score": 5.29
+   "score": 4.54
   },
   {
    "id": "dd4d6a326036",
@@ -4307,7 +5900,7 @@
    "label": "Rumor",
    "cluster": "553b7afd33ea",
    "sources_n": 2,
-   "score": 6.29
+   "score": 5.53
   },
   {
    "id": "1a7fb2e318b7",
@@ -4323,7 +5916,7 @@
    "label": "Rumor",
    "cluster": "1a7fb2e318b7",
    "sources_n": 1,
-   "score": 7.27
+   "score": 6.52
   },
   {
    "id": "9d680e7e6ca1",
@@ -4339,7 +5932,7 @@
    "label": "Rumor",
    "cluster": "9d680e7e6ca1",
    "sources_n": 1,
-   "score": 5.26
+   "score": 4.51
   },
   {
    "id": "689371dac06e",
@@ -4354,7 +5947,7 @@
    "label": "Rumor",
    "cluster": "689371dac06e",
    "sources_n": 1,
-   "score": 5.21
+   "score": 4.46
   },
   {
    "id": "1e47172e6950",
@@ -4369,7 +5962,7 @@
    "label": "Rumor",
    "cluster": "1e47172e6950",
    "sources_n": 1,
-   "score": 4.21
+   "score": 3.46
   },
   {
    "id": "78d290d56557",
@@ -4384,7 +5977,7 @@
    "label": "Rumor",
    "cluster": "78d290d56557",
    "sources_n": 1,
-   "score": 2.2
+   "score": 1.45
   },
   {
    "id": "e9e62e4ec66f",
@@ -4399,14 +5992,14 @@
    "label": "Rumor",
    "cluster": "e9e62e4ec66f",
    "sources_n": 1,
-   "score": 5.2
+   "score": 4.45
   },
   {
    "id": "1d60c2ed8734",
    "title": "How to watch IPL 2027 retention day show: Start time, TV channel, live streaming and broadcast details",
    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQdE44T2JHXzMxczU5RmVCcHd6bUI3QVFBMzVaUzNNTnJiQy16OWp6NF9VSEkwcnJoeXVfazVlbXdidER4Sno3TTZ5dUM0X1NOLTZseTRrRGlrTEtvaHpicEdDN25hcTAtZGhES3kyejlaY1pCX005ZTU0MmJabXZ0dkJHZw?oc=5",
    "source": "Yahoo Sports",
-   "published": "2026-11-17T06:15:00+00:00",
+   "published": "2026-11-17T06:15:01+00:00",
    "summary": "",
    "tags": [
     "Retention"
@@ -4414,11 +6007,11 @@
    "label": "Rumor",
    "cluster": "1d60c2ed8734",
    "sources_n": 1,
-   "score": 7.19
+   "score": 6.44
   },
   {
    "id": "301f33c19d09",
-   "title": "Travis Head set to miss IPL 2027",
+   "title": "Travis Head to miss IPL 2027",
    "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE11aDhnWWsxc2dMZlZYWHpZbTBNY1hDbEd5cFpISl92VGdrY0haaUVER0FGaUxPV29XekNhVlFsZmV1cV9jM082OFZxR3BUMW9teC1MLVF0ZXR2Um9IUy03cVBabktBazBHY0JiZ2cxaXpqQVV0MnQzamk4Y9IBjAFBVV95cUxNM1V1OEthODJqMGRzZUlya0ZtRXVDYWRMaDBUN05adEhvb3o2OXpkRnlOTUtSM1AxRjljN213ODRWMXZPVW0xenNGRWRqOVUxOWpfajNLRVB4cDRBUkN2R1poZW5sX3ZaMEtwRjZBRG9aVjcySUUzQUFGbjJiVUtUYVE3cWlIOURoRWRaVA?oc=5",
    "source": "Cricinfo",
    "published": "2026-11-17T06:14:00+00:00",
@@ -4427,9 +6020,9 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "0e564e487a55",
-   "sources_n": 4,
-   "score": 8.19
+   "cluster": "cd25aea39cd6",
+   "sources_n": 3,
+   "score": 5.44
   },
   {
    "id": "be539f852a14",
@@ -4444,7 +6037,7 @@
    "label": "Rumor",
    "cluster": "be539f852a14",
    "sources_n": 1,
-   "score": 2.19
+   "score": 1.44
   },
   {
    "id": "a0d8dd022337",
@@ -4459,7 +6052,7 @@
    "label": "Rumor",
    "cluster": "a0d8dd022337",
    "sources_n": 1,
-   "score": 2.18
+   "score": 1.43
   },
   {
    "id": "a55ab6f323c5",
@@ -4474,7 +6067,7 @@
    "label": "Rumor",
    "cluster": "a55ab6f323c5",
    "sources_n": 1,
-   "score": 2.18
+   "score": 1.43
   },
   {
    "id": "70d1d631c79e",
@@ -4489,7 +6082,7 @@
    "label": "Rumor",
    "cluster": "70d1d631c79e",
    "sources_n": 1,
-   "score": 2.17
+   "score": 1.42
   },
   {
    "id": "cba8cd595dbf",
@@ -4502,9 +6095,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.14
+   "score": 5.39
   },
   {
    "id": "a804aafd2c92",
@@ -4519,7 +6112,7 @@
    "label": "Rumor",
    "cluster": "a804aafd2c92",
    "sources_n": 1,
-   "score": 2.14
+   "score": 1.39
   },
   {
    "id": "af965694619c",
@@ -4532,9 +6125,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.12
+   "score": 5.37
   },
   {
    "id": "1501cbc4e13a",
@@ -4547,9 +6140,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.12
+   "score": 5.37
   },
   {
    "id": "556b8bf9b95b",
@@ -4562,9 +6155,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.12
+   "score": 5.37
   },
   {
    "id": "e4588c4fad9a",
@@ -4579,22 +6172,7 @@
    "label": "Rumor",
    "cluster": "f0965ba189fe",
    "sources_n": 2,
-   "score": 9.12
-  },
-  {
-   "id": "1e89ca9a44d9",
-   "title": "Hardik Pandya Auction Price & Team - IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9ISWJ4dTVQT2N5QlJGSE0yX0hDb3Iwa2t5bjZHbFF6WVFlbWJEQlM2dnZuYW5NTDZCQndnLVVRRm9tSmhpSHVISW9ISTg1c1BhWmNGN3dMSlpyTk1PbEQ4aThrenVhMElzLWNENk0zdU1ISjZyN1ctXw?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T05:13:11+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "58d8ee557220",
-   "sources_n": 1,
-   "score": 6.11
+   "score": 8.36
   },
   {
    "id": "fba74e65a334",
@@ -4607,9 +6185,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.1
+   "score": 5.35
   },
   {
    "id": "e6a1b1f52869",
@@ -4622,9 +6200,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.1
+   "score": 5.34
   },
   {
    "id": "e8f6816c3256",
@@ -4640,7 +6218,22 @@
    "label": "Rumor",
    "cluster": "e8f6816c3256",
    "sources_n": 1,
-   "score": 7.09
+   "score": 6.34
+  },
+  {
+   "id": "605ae9c97116",
+   "title": "Preview: New Zealand vs India, 1st Test",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQQkFzTFlHWTVVUWtFU2JSOTBhTmNkcW9aUm45VVRiNDQ4YW9oTFdTSzJJRWlUTEJSUkZnZ2ZsTXkySlh0blg0WnIxLUNKQzhERkNuUTFmdm95OG9oNHZrS3N3WlBwNmZJeW5wVEM5dmtnMERRN3BDSzM4dnBxN1loZDF2bjRvSXVTcXVV?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T04:59:21+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "605ae9c97116",
+   "sources_n": 1,
+   "score": 1.34
   },
   {
    "id": "7a258ca9fe6e",
@@ -4655,7 +6248,22 @@
    "label": "Rumor",
    "cluster": "7a258ca9fe6e",
    "sources_n": 1,
-   "score": 2.09
+   "score": 1.34
+  },
+  {
+   "id": "4f7c63a5d335",
+   "title": "\"Like Fly Is Removed From Milk\": Ex-India Star's Brutal Verdict On Kuldeep Yadav",
+   "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQaVZYYkZpby1kUGJXLVdGU2o4Tm9Ya3pVNkhHZWQzX2tHM0NNTm52WU5UbFpxemN4YjJEQjRSaUhxXzU5MDY1NTRkZTFXUEJxU2FaTjRhalA0TFNKM0lfR3ZpSFZ4dXFmbEVMQklkdzFmSnNpZG5XRWFJN1Q2NENFUUpmZFIxaFBKYTVSdGR0RHBXT0FyTkJyZEpQV0trLTNWQjZGRU40U2ZmeGpHWEZITDR5TmxmamNZV1FHZGh5ek9WM1FkWU1paGw2Q2hpSU1PcGxMTA?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-17T04:57:51+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "7a258ca9fe6e",
+   "sources_n": 1,
+   "score": 1.34
   },
   {
    "id": "5595525b10e2",
@@ -4668,9 +6276,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.08
+   "score": 5.33
   },
   {
    "id": "f9c7062dfb8f",
@@ -4683,9 +6291,24 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.08
+   "score": 5.33
+  },
+  {
+   "id": "5941e7996a88",
+   "title": "Sanju Samson Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBIeXJFM2JCa29lMWF3SjJOZW9QVm9CaVlFQkZQa1hxb0h2ck4ybVU2Wnl4d2c3NF85RkVIUU8xRVp0VVBkR0hEUU9LdGp6RktDY1hWX3RhMFNKcGI2QWhiTXR1NkF6RFhrWVp3Mjc1N29Ueld3ZElKcQ?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-17T04:53:31+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 5.33
   },
   {
    "id": "5097a25a4b86",
@@ -4698,9 +6321,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.08
+   "score": 5.33
   },
   {
    "id": "f3e37711b9cf",
@@ -4713,9 +6336,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 6.08
+   "score": 5.33
   },
   {
    "id": "9bf35db577c8",
@@ -4730,7 +6353,7 @@
    "label": "Rumor",
    "cluster": "9bf35db577c8",
    "sources_n": 1,
-   "score": 2.08
+   "score": 1.33
   },
   {
    "id": "dc43ccba28c5",
@@ -4745,7 +6368,7 @@
    "label": "Rumor",
    "cluster": "dc43ccba28c5",
    "sources_n": 1,
-   "score": 4.06
+   "score": 3.31
   },
   {
    "id": "d1af518a32df",
@@ -4760,7 +6383,7 @@
    "label": "Rumor",
    "cluster": "d1af518a32df",
    "sources_n": 1,
-   "score": 4.05
+   "score": 3.3
   },
   {
    "id": "2f3b6c732ea8",
@@ -4775,7 +6398,7 @@
    "label": "Rumor",
    "cluster": "2f3b6c732ea8",
    "sources_n": 1,
-   "score": 2.05
+   "score": 1.3
   },
   {
    "id": "d117223767eb",
@@ -4790,7 +6413,7 @@
    "label": "Rumor",
    "cluster": "d117223767eb",
    "sources_n": 1,
-   "score": 2.05
+   "score": 1.29
   },
   {
    "id": "8ee12d2f1610",
@@ -4805,7 +6428,7 @@
    "label": "Rumor",
    "cluster": "8ee12d2f1610",
    "sources_n": 1,
-   "score": 4.04
+   "score": 3.29
   },
   {
    "id": "7a8b1a6af2d4",
@@ -4820,7 +6443,7 @@
    "label": "Rumor",
    "cluster": "7a8b1a6af2d4",
    "sources_n": 1,
-   "score": 2.03
+   "score": 1.28
   },
   {
    "id": "5266e18e6479",
@@ -4835,7 +6458,22 @@
    "label": "Rumor",
    "cluster": "5266e18e6479",
    "sources_n": 1,
-   "score": 5.03
+   "score": 4.28
+  },
+  {
+   "id": "c1026018256f",
+   "title": "India Star Feels Suryakumar Yadav Batting Like 'White-Ball God', Should Make Comeback For Men In Blue",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNUXlJN2MyQnRvRHg0Uzh6Q000anF0dEJra2ZMRk43ckQtbzIzeHhDR2M3NDRNXzhDM3M2UWFUazBtNUNOSFRUUjNOVHRzdlVpTEExYXN5Z2Vqa2QzZ253ZTU5S1dKdlBzdXJhYmpEeVZzaS1UWm4tQnhQaHEzQU1sUFFJMjlSMHU2eHkzeExRYTJnODUzX2M2M0VZdXhhaDJST0g3S1BzWGRKeFE3Q09IMkpHTUZUcl84bW9mbG80bm1uVnRHSXhwUzY5cktVemFCeWNKX0ppQThuR1UtSW1FYW530gHnAUFVX3lxTFBtdDJvUy10TnpCcUdLME9DTTJUYnZBSDVyeGhydVk5X2JXVFZta2UyWmotN3VLcGhxNUlkRUFuLUlCQXMxYUhuMllNdWZVM3dpUV9uVHQwZkU0dmNQSlV0QVI0U2VLazNudm1SZ1pXXzlqSnVZazFFV1d6QmVQQk9kOTBMbEFwLW0xcmRQbGtRYTUzLXViOHdrYVJURk45b0FVNUxrcTFsZVhzb1N6dmdBNGdzR1NxWnRWSzhFcENwNjVPQUpvSjRHV2JpbXNzWXBRX0x2aW5KQ0Jsd3ZGYVRLZE9pMVZqVQ?oc=5",
+   "source": "News18",
+   "published": "2026-11-17T04:11:18+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "c1026018256f",
+   "sources_n": 1,
+   "score": 1.27
   },
   {
    "id": "4a083cd0c20e",
@@ -4850,7 +6488,7 @@
    "label": "Rumor",
    "cluster": "f7fbe5523547",
    "sources_n": 2,
-   "score": 4.0
+   "score": 3.25
   },
   {
    "id": "ce4035c10cbb",
@@ -4865,7 +6503,7 @@
    "label": "Rumor",
    "cluster": "ce4035c10cbb",
    "sources_n": 1,
-   "score": 3.99
+   "score": 3.23
   },
   {
    "id": "ced84f83585c",
@@ -4878,9 +6516,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 5.97
+   "score": 5.22
   },
   {
    "id": "93301c455092",
@@ -4895,7 +6533,7 @@
    "label": "Rumor",
    "cluster": "93301c455092",
    "sources_n": 1,
-   "score": 3.94
+   "score": 3.19
   },
   {
    "id": "1233342cc70f",
@@ -4910,7 +6548,7 @@
    "label": "Rumor",
    "cluster": "1233342cc70f",
    "sources_n": 1,
-   "score": 1.92
+   "score": 1.17
   },
   {
    "id": "74cbb3f081f5",
@@ -4925,23 +6563,7 @@
    "label": "Rumor",
    "cluster": "74cbb3f081f5",
    "sources_n": 1,
-   "score": 1.9
-  },
-  {
-   "id": "3fe954251cc8",
-   "title": "Royal Challengers Bengaluru Squad - Auction Tracker IPL 2025",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9Scm5BMVpHeTBuYzJBX3g1SFVHdTEwRmt6UjBkOTlPbDhZUUZYbXpBXzFxTDJmWEc2TENKd2VrV1poeUJ2MHRBM2ZOcUhtcHI2M1RDUGEzaWZLT2w5ZGRxaGI5MEZRZFpIb2RaMHh0OXAzSkE?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T02:22:30+00:00",
-   "summary": "",
-   "tags": [
-    "Auction",
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "3fe954251cc8",
-   "sources_n": 1,
-   "score": 5.87
+   "score": 1.14
   },
   {
    "id": "5b875bb7176e",
@@ -4956,7 +6578,7 @@
    "label": "Rumor",
    "cluster": "5b875bb7176e",
    "sources_n": 2,
-   "score": 5.87
+   "score": 5.12
   },
   {
    "id": "8500a93b3f63",
@@ -4972,22 +6594,7 @@
    "label": "Rumor",
    "cluster": "8500a93b3f63",
    "sources_n": 1,
-   "score": 6.87
-  },
-  {
-   "id": "075d198b8f65",
-   "title": "Shreyas Iyer Auction Price & Team - IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE92S0lGeFVsTzV1cThKNUVFMUgtNVYxQkdMNFluMHl0UEE0MnZkNFlBdmNwZEpHSmVHanpkMjJFVlgyTUJXcXpmcHYtVFNsSTYyYUhKLXcwWS04eHN0QkJxVGY3SXhGX2dNTWVTbWEzVWZDTnhEUEZqUg?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T02:13:41+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "58d8ee557220",
-   "sources_n": 1,
-   "score": 5.86
+   "score": 6.12
   },
   {
    "id": "a57fa0505f9e",
@@ -5001,9 +6608,9 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "a57fa0505f9e",
+   "cluster": "8b04ed013e04",
    "sources_n": 1,
-   "score": 6.83
+   "score": 6.08
   },
   {
    "id": "c9550eaba9e9",
@@ -5018,22 +6625,22 @@
    "label": "Rumor",
    "cluster": "c9550eaba9e9",
    "sources_n": 1,
-   "score": 1.82
+   "score": 1.06
   },
   {
-   "id": "605ae9c97116",
-   "title": "Preview: New Zealand vs India, 1st Test",
-   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQQkFzTFlHWTVVUWtFU2JSOTBhTmNkcW9aUm45VVRiNDQ4YW9oTFdTSzJJRWlUTEJSUkZnZ2ZsTXkySlh0blg0WnIxLUNKQzhERkNuUTFmdm95OG9oNHZrS3N3WlBwNmZJeW5wVEM5dmtnMERRN3BDSzM4dnBxN1loZDF2bjRvSXVTcXVV?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-17T01:40:27+00:00",
+   "id": "22d861307dd5",
+   "title": "IND vs NZ | 'We will play four fast bowlers': Shubman Gill ahead of first Test vs New Zealand",
+   "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxNZW5ZNUkxSGowazM3VTdjREs3Tk9FcW5BeFFRYTM3NFdXVTF2aWZTdS1RMmZVbjhHM1RGWGZSaHgzNUVzNzcwd2V3RjFOdVphbTFKMld5ZjlZcnh2TENDQ19ZbDUyUTE5NnRsbVZhZ0ZKTlVNRnhPOHJKQUpPeURkaEUtOGljQ0JvMjBfNGxUYXhNbllveEFoYUlvVWt6WG1hQ1gzajRNSjQ3MDNXc2lrdDhwdDRtUmFRTl9pQ0plX2hvNm8zSndYSWs2VFBWcnZXQjlJWE9WdGpqSEFHVVBiNE80ZUZEd3EwbEFvSGZoUzVtaWUwUFczS0ZJTDc5NUFaRWxHSl9pSW1tVjZPMmNVMW9rcDPSAZoCQVVfeXFMT0VRd2tFeGxuNUNSX0xlbzhBcTFub1V4UjJQZC1SSHRnOWNfeUpPZnpjOGp6ak9pQWE4N21Va21VeGFkRXpQQ1E1TEZ6cnRVZm1tVkFxOWNzZkVpb1VRdVpSZllVT2s1d0NHVU5mVlVrY2Y2aUxBdU1ZSVRic0QyMkd1VlFQaUI5bGcxenVMeTBKUzdCakJ2NUpTTU03d1RiS09wMWprYUpfb19uMmFfUWRvMGcySzFkUnNDVXdpNTFwQWJqR3FtcFN3T3lNbWxEUU9aYm50UDluNS12STA0M2lsaU1uUFpJck1tNktzYVlyVHIyUy1SVEd1dkZ2T0FBMFAwY1RCUFdPdDRCUmdFU0hjeGxmQXBId3Rn?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-17T01:42:00+00:00",
    "summary": "",
    "tags": [
-    "Other"
+    "India Match"
    ],
    "label": "Rumor",
-   "cluster": "605ae9c97116",
+   "cluster": "22d861307dd5",
    "sources_n": 1,
-   "score": 1.81
+   "score": 4.06
   },
   {
    "id": "487cfd3e4f29",
@@ -5048,7 +6655,7 @@
    "label": "Rumor",
    "cluster": "487cfd3e4f29",
    "sources_n": 1,
-   "score": 1.8
+   "score": 1.05
   },
   {
    "id": "c725477f843b",
@@ -5063,7 +6670,7 @@
    "label": "Rumor",
    "cluster": "5b875bb7176e",
    "sources_n": 2,
-   "score": 3.74
+   "score": 2.99
   },
   {
    "id": "0069796c6d01",
@@ -5079,7 +6686,22 @@
    "label": "Rumor",
    "cluster": "0069796c6d01",
    "sources_n": 1,
-   "score": 6.63
+   "score": 5.88
+  },
+  {
+   "id": "a979717a6d8b",
+   "title": "Shami joins Rajasthan as Curran moves to Lucknow in IPL trade | Gulf Times",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPZ2RqMWJlb21FTzRBQ2NUOTZiQTJnR3VBcU9HNW5wY1pZS1BkTzBCelBrU2dKcXlpZ2RBcGtZcXlKb2JtWGxrYjBqMGhINmM0QlNKTllOa0lHaHY1a21XSTk0Q1EtMGZlQkI2SER6Z0o4dU9NWHh4RTRidGRTOGZkdWhUb1VmMDAxX2NfSmtQYktjdU92VFM3T3ZSQVJiOWJibHhwb1ZGSW43ZEd0N2FYUElUbjV1YmRT0gG-AUFVX3lxTFBFQkxxWVJpc2ZaZF9IczEyUHRwTFRnMUFna1hIbVUzdDFNdWdqNEpJMWNCV2lOV2lyZWFQN1M0UkFMQUVEYTB4ODVoVlB1cWdoR1Z6U3Y0eFhQTkw0cmxBTG5VNWs0YTZxQUlPSHMwN3h0YXNPTXcyNUhROUVwMUt2T3pQaUVUSXFqTU1JUEkyeWgyMzhhcnY0X1cwMDlreGxSaFBValZRWUJScFFkTkIwZVhNM0U0Ti1sYjBxREE?oc=5",
+   "source": "Gulf Times",
+   "published": "2026-11-16T21:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "10c23aaa1e33",
+   "sources_n": 2,
+   "score": 6.67
   },
   {
    "id": "c44ee15731c0",
@@ -5094,7 +6716,7 @@
    "label": "Rumor",
    "cluster": "c44ee15731c0",
    "sources_n": 1,
-   "score": 1.38
+   "score": 0.62
   },
   {
    "id": "4da6cea9789f",
@@ -5107,9 +6729,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 5.24
+   "score": 4.49
   },
   {
    "id": "98da4e37e323",
@@ -5122,9 +6744,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 5.24
+   "score": 4.48
   },
   {
    "id": "60fc32998212",
@@ -5139,7 +6761,7 @@
    "label": "Rumor",
    "cluster": "60fc32998212",
    "sources_n": 1,
-   "score": 1.22
+   "score": 0.47
   },
   {
    "id": "131b5f7c375a",
@@ -5154,7 +6776,7 @@
    "label": "Rumor",
    "cluster": "131b5f7c375a",
    "sources_n": 1,
-   "score": 1.2
+   "score": 0.45
   },
   {
    "id": "b362c34a16f6",
@@ -5169,23 +6791,7 @@
    "label": "Rumor",
    "cluster": "b362c34a16f6",
    "sources_n": 1,
-   "score": 1.18
-  },
-  {
-   "id": "566e42cd4871",
-   "title": "Chennai Super Kings Squad - Auction Tracker IPL 2025",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBfWmppNVJubzNzS1hEUDBFQXVkTmE5TDNWTVVtSkkyR1I1QU5oZmI2aldMU2lKaWctVVlWYldIb0E3S1pYdlRtNUpneE5PUURCYXMwTEhEZzltQURrNDhoeEZXUGY2OVkxamNrVTZkbEZ4Tzg?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-16T17:58:13+00:00",
-   "summary": "",
-   "tags": [
-    "Auction",
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "566e42cd4871",
-   "sources_n": 1,
-   "score": 5.17
+   "score": 0.43
   },
   {
    "id": "fcc0c9ae0236",
@@ -5198,9 +6804,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 5.17
+   "score": 4.42
   },
   {
    "id": "4902cd330161",
@@ -5215,7 +6821,7 @@
    "label": "Rumor",
    "cluster": "4902cd330161",
    "sources_n": 1,
-   "score": 1.1
+   "score": 0.35
   },
   {
    "id": "7dd456b6167f",
@@ -5230,7 +6836,22 @@
    "label": "Rumor",
    "cluster": "7dd456b6167f",
    "sources_n": 1,
-   "score": 1.02
+   "score": 0.27
+  },
+  {
+   "id": "8d346fc2bb52",
+   "title": "IPL 2027 Trade: LSG Set to Send Mohammed Shami to Rajasthan Royals for Sam Curran",
+   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPUkdCSXhtZmdxSjQ3cFFGMVVIM2owRmc3R1RJOEJsRm9zMGZ1d01KYTBsQS1ySjN3eDVIaE5RT1FDeXhqVFdDUFB1cjJNMzZVeUNmUFlQVWRSLThURkZldEZPVHNnbWI3ZXp3d0lNNjdiTVpSaVVRUHNKZ0h1TDg0S0xoX1J3VEtjRHdXVDdabExtenM4dXBaSlJzU0ZWek85UjVlajF6d2dmQQ?oc=5",
+   "source": "Kashmir Sports Watch",
+   "published": "2026-11-16T16:03:50+00:00",
+   "summary": "",
+   "tags": [
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "8d346fc2bb52",
+   "sources_n": 1,
+   "score": 4.26
   },
   {
    "id": "86b5f95c66ba",
@@ -5245,7 +6866,7 @@
    "label": "Rumor",
    "cluster": "86b5f95c66ba",
    "sources_n": 1,
-   "score": 1.01
+   "score": 0.26
   },
   {
    "id": "665cd9cbc5a9",
@@ -5260,7 +6881,7 @@
    "label": "Rumor",
    "cluster": "665cd9cbc5a9",
    "sources_n": 1,
-   "score": 0.97
+   "score": 0.22
   },
   {
    "id": "50414979256f",
@@ -5275,7 +6896,22 @@
    "label": "Rumor",
    "cluster": "50414979256f",
    "sources_n": 1,
-   "score": 4.95
+   "score": 4.2
+  },
+  {
+   "id": "90cc90dd9b3b",
+   "title": "Jacob Duffy Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBUU0RuRXg4T2Z6MEdqNUd5TEZ5ZnN1MU9zWjZ0Q3FtcXY4WVlhQVdicGI3SFlVR3YwR0dYZ1NnbHUwOHp3RGh1blhkNHZKdEZDREpPS3c5SXgtQmZlZ0RhX3E4Nk5HRTBCOXNiR2llMlRZeVBvSEJuSQ?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-16T14:33:10+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "e97e4070f0f5",
+   "sources_n": 1,
+   "score": 4.13
   },
   {
    "id": "a579d74dcedb",
@@ -5290,7 +6926,7 @@
    "label": "Rumor",
    "cluster": "a579d74dcedb",
    "sources_n": 1,
-   "score": 0.87
+   "score": 0.12
   },
   {
    "id": "bed05b16d5f3",
@@ -5305,7 +6941,7 @@
    "label": "Rumor",
    "cluster": "bed05b16d5f3",
    "sources_n": 1,
-   "score": 0.87
+   "score": 0.12
   },
   {
    "id": "5fc9c8186f08",
@@ -5321,7 +6957,7 @@
    "label": "Rumor",
    "cluster": "5fc9c8186f08",
    "sources_n": 1,
-   "score": 5.82
+   "score": 5.06
   },
   {
    "id": "26f1404ee7b9",
@@ -5336,7 +6972,7 @@
    "label": "Rumor",
    "cluster": "78ab7fa7e6cb",
    "sources_n": 3,
-   "score": 8.76
+   "score": 8.01
   },
   {
    "id": "64a628b0c8ab",
@@ -5351,7 +6987,7 @@
    "label": "Rumor",
    "cluster": "64a628b0c8ab",
    "sources_n": 1,
-   "score": 2.7
+   "score": 2.0
   },
   {
    "id": "296f2258f524",
@@ -5367,7 +7003,7 @@
    "label": "Rumor",
    "cluster": "296f2258f524",
    "sources_n": 1,
-   "score": 5.65
+   "score": 5.0
   },
   {
    "id": "e79225fa2a33",
@@ -5382,7 +7018,7 @@
    "label": "Rumor",
    "cluster": "e79225fa2a33",
    "sources_n": 1,
-   "score": 0.62
+   "score": 0.0
   },
   {
    "id": "0ee9a109e3c5",
@@ -5397,7 +7033,7 @@
    "label": "Rumor",
    "cluster": "0ee9a109e3c5",
    "sources_n": 1,
-   "score": 2.42
+   "score": 2.0
   },
   {
    "id": "c963c7231f8d",
@@ -5412,7 +7048,7 @@
    "label": "Rumor",
    "cluster": "c963c7231f8d",
    "sources_n": 1,
-   "score": 0.32
+   "score": 0.0
   },
   {
    "id": "f0166e56fe92",
@@ -5427,7 +7063,7 @@
    "label": "Rumor",
    "cluster": "f0166e56fe92",
    "sources_n": 1,
-   "score": 0.32
+   "score": 0.0
   },
   {
    "id": "ace828310669",
@@ -5442,7 +7078,7 @@
    "label": "Rumor",
    "cluster": "ace828310669",
    "sources_n": 1,
-   "score": 0.21
+   "score": 0.0
   },
   {
    "id": "ca0d8210d615",
@@ -5455,9 +7091,9 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
-   "score": 4.18
+   "score": 4.0
   },
   {
    "id": "9556d40450f3",
@@ -5472,7 +7108,7 @@
    "label": "Rumor",
    "cluster": "9556d40450f3",
    "sources_n": 1,
-   "score": 0.17
+   "score": 0.0
   },
   {
    "id": "e289a36ce6c0",
@@ -5500,7 +7136,7 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
    "score": 4.0
   },
@@ -5515,7 +7151,7 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "58d8ee557220",
+   "cluster": "e97e4070f0f5",
    "sources_n": 1,
    "score": 4.0
   },
