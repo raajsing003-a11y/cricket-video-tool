@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competitor Title + Thumbnail Grab</title>
+<style>
+:root{--bg:#0e1116;--c1:#171b22;--ln:#2a313c;--tx:#e9edf3;--mu:#8b95a5;--rd:#e5262d;--bl:#2a6fdb;--gr:#22a06b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.4 system-ui,sans-serif}#w{max-width:1150px;margin:0 auto;padding:10px 12px 60px}
+h1{font-size:18px;margin:6px 0}h1 span{color:var(--rd)}.sub{color:var(--mu);font-size:12px}.box{background:var(--c1);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-top:10px}
+textarea,input{width:100%;background:#0b0e13;color:var(--tx);border:1px solid var(--ln);border-radius:8px;padding:8px;font:inherit}
+button{background:var(--bl);color:#fff;border:0;border-radius:8px;padding:9px 13px;font:inherit;font-size:13px;cursor:pointer;margin:6px 6px 0 0}button.g{background:#2f3541}button.ok{background:var(--gr)}button:disabled{opacity:.45}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#232a35;border:1px solid var(--ln);border-radius:20px;padding:5px 6px 5px 12px;margin:3px 6px 3px 0;font-size:13px;cursor:pointer}.chip b{background:#442;border-radius:50%;width:18px;height:18px;text-align:center;line-height:18px;font-size:11px}
+.cd{background:var(--c1);border:1px solid var(--ln);border-radius:10px;overflow:hidden}.cd img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#222}
+.cd .b{padding:8px;font-size:13px}.cd .m{color:var(--mu);font-size:11px;margin:3px 0}.cd button{padding:5px 9px;font-size:12px;margin:2px 4px 0 0}
+</style></head><body><div id="w">
+<h1>🎯 Competitor <span>Title + Thumbnail</span> Grab</h1>
+<div class="sub">Sirf reference/idea ke liye. Unki thumbnail jyon ki tyon apne video mein mat lagao — apni photos + apne text se naya banao (thumbnail.html). Copyright claim se bachne ke liye.</div>
+<div class="box"><b>⭐ Saved competitor channels</b> <span class="sub">(is browser mein save rehte hain)</span><div id="sv" style="margin-top:6px"></div><button id="all" class="ok">⬇ Saved sab channels ka latest lao</button><button id="exp" class="g">📤 List copy (backup)</button><span class="sub"> Backup list kisi bhi dusre browser mein upar wale box mein paste karke "latest lao" dabao — wahan bhi save ho jaayegi.</span></div>
+<div class="box"><b>Channel ya video links (ek line mein ek)</b>
+<textarea id="in" rows="5" placeholder="https://www.youtube.com/@channelname&#10;https://www.youtube.com/channel/UCxxxxxxxx&#10;https://youtu.be/VIDEOID"></textarea>
+<button id="go">⬇ Latest videos lao (channel ke 15 tak)</button><span id="st" class="sub"></span>
+<div class="sub">Channel ke SAARE videos chahiye? scripts/competitor_grab.py chalao (neeche README). Browser mein YouTube sirf latest 15 deta hai.</div></div>
+<div class="box" id="tools" style="display:none">
+<input id="q" placeholder="🔍 title mein khoj (jaise: IPL, retention, prediction)" style="max-width:380px">
+<button id="srt" class="g">Views ke hisaab se: ON</button><button id="sel" class="g">Sab select</button>
+<button id="ct" class="ok">📋 Titles copy</button><button id="dz" class="ok">📦 Thumbnails + titles ZIP</button><button id="pr">✍ Mere liye naye titles ka prompt</button>
+<input id="topic" placeholder="Mera topic (jaise: IPL 2027 retention list)" style="margin-top:8px">
+<textarea id="out" rows="8" style="display:none;margin-top:8px"></textarea></div>
+<div id="grid"></div></div>
+<script>
+const $=id=>document.getElementById(id),V=[];let byViews=true;
+const PX=u=>['https://corsproxy.io/?url='+encodeURIComponent(u),'https://api.allorigins.win/raw?url='+encodeURIComponent(u)];
+async function get(u,type){let e;for(const p of PX(u)){try{const r=await fetch(p);if(!r.ok)throw new Error(r.status);return type==='blob'?await r.blob():await r.text();}catch(x){e=x;}}throw e||new Error('fail');}
+function parseRSS(xml){const d=new DOMParser().parseFromString(xml,'text/xml'),ch=(d.getElementsByTagName('author')[0]||{}).textContent||'';
+ return [...d.getElementsByTagName('entry')].map(en=>{const g=n=>(en.getElementsByTagName(n)[0]||{}),st=en.getElementsByTagName('media:statistics')[0];
+  return{id:g('yt:videoId').textContent,title:g('title').textContent,date:(g('published').textContent||'').slice(0,10),views:st?+st.getAttribute('views'):0,ch:(g('name').textContent||ch).trim()};});}
+async function chanId(s){let m=s.match(/UC[\w-]{22}/);if(m)return m[0];const h=s.match(/@[\w.\-%]+/);if(!h)return null;
+ const t=await get('https://www.youtube.com/'+h[0]);m=t.match(/"channelId":"(UC[\w-]{22})"/)||t.match(/channel\/(UC[\w-]{22})/);return m?m[1]:null;}
+function add(a){a.forEach(v=>{if(!V.find(x=>x.id===v.id))V.push(v);});}
+const SK='cvt_competitors';let SV=[];try{SV=JSON.parse(localStorage.getItem(SK)||'[]')||[];}catch(e){}
+const svSave=()=>{try{localStorage.setItem(SK,JSON.stringify(SV));}catch(e){}drawSv();};
+async function loadChan(id){const a=parseRSS(await get('https://www.youtube.com/feeds/videos.xml?channel_id='+id));add(a);
+ const nm=(a[0]&&a[0].ch)||id,o=SV.find(x=>x.id===id);if(o)o.name=nm;else SV.push({id,name:nm});svSave();return a;}
+function drawSv(){const d=$('sv');d.textContent='';if(!SV.length){d.innerHTML='<span class="sub">Abhi koi channel save nahi. Neeche link daalo — fetch hote hi apne aap save ho jaayega.</span>';return;}
+ SV.forEach(c=>{const e=document.createElement('span');e.className='chip';e.textContent=c.name+' ';e.title='Click = iska latest lao';
+  const x=document.createElement('b');x.textContent='✕';x.title='list se hatao';x.onclick=ev=>{ev.stopPropagation();if(confirm(c.name+' hatao?')){SV=SV.filter(z=>z.id!==c.id);svSave();}};
+  e.onclick=()=>run([c.id]);e.appendChild(x);d.appendChild(e);});}
+$('all').onclick=()=>run(SV.map(c=>c.id));
+$('exp').onclick=()=>{navigator.clipboard.writeText(SV.map(c=>c.id+'  # '+c.name).join('\n'));$('st').textContent=' list copy ho gayi';};
+$('go').onclick=()=>run($('in').value.split('\n').map(s=>s.trim()).filter(Boolean));
+async function run(L){if(!L.length)return;$('go').disabled=true;
+ for(const l of L){$('st').textContent=' '+l+' ...';try{
+  const vm=l.match(/(?:v=|youtu\.be\/|shorts\/)([\w-]{11})/)||(/^[\w-]{11}$/.test(l)?[0,l]:null);
+  if(vm&&!/@|channel\//.test(l)){const o=await (await fetch('https://www.youtube.com/oembed?format=json&url='+encodeURIComponent('https://youtu.be/'+vm[1]))).json();add([{id:vm[1],title:o.title,date:'',views:0,ch:o.author_name}]);}
+  else{const id=await chanId(l);if(!id)throw new Error('channel id nahi mili (UC... wala link try karo)');await loadChan(id);}
+ }catch(e){alert(l+'\n'+e.message);}}
+ $('go').disabled=false;$('st').textContent=' '+V.length+' videos';$('tools').style.display=V.length?'block':'none';draw();}
+drawSv();
+const th=id=>'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';
+const safe=s=>s.replace(/[\\/:*?"<>|#\n]+/g,' ').trim().slice(0,60);
+function shown(){const q=$('q').value.trim().toLowerCase();let a=V.filter(v=>!q||v.title.toLowerCase().includes(q)||v.ch.toLowerCase().includes(q));if(byViews)a=a.slice().sort((x,y)=>y.views-x.views);return a;}
+function draw(){const g=$('grid');g.textContent='';shown().forEach(v=>{const c=document.createElement('div');c.className='cd';
+ c.innerHTML='<img loading="lazy" src="'+th(v.id)+'" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg\'"><div class="b"><label><input type="checkbox" class="ck" data-id="'+v.id+'" style="width:auto"> <span class="t"></span></label><div class="m"></div><button class="g c1">📋 Title</button><button class="g d1">⬇ Thumbnail</button><button class="g o1">▶ Video</button></div>';
+ c.querySelector('.t').textContent=v.title;c.querySelector('.m').textContent=v.ch+(v.views?' · '+v.views.toLocaleString('en-IN')+' views':'')+(v.date?' · '+v.date:'');
+ c.querySelector('.c1').onclick=()=>navigator.clipboard.writeText(v.title);
+ c.querySelector('.d1').onclick=async()=>{try{save(await tb(v),safe(v.title)+'.jpg');}catch(e){window.open(th(v.id),'_blank');}};
+ c.querySelector('.o1').onclick=()=>window.open('https://youtu.be/'+v.id,'_blank');g.appendChild(c);});}
+async function tb(v){try{const b=await get(th(v.id),'blob');if(b.size>2000)return b;}catch(e){}return get('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg','blob');}
+function save(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click();}
+const sel=()=>{const c=[...document.querySelectorAll('.ck:checked')].map(x=>x.dataset.id);return c.length?V.filter(v=>c.includes(v.id)):shown();};
+$('q').oninput=draw;$('srt').onclick=()=>{byViews=!byViews;$('srt').textContent='Views ke hisaab se: '+(byViews?'ON':'OFF');draw();};
+$('sel').onclick=()=>{const k=[...document.querySelectorAll('.ck')],all=k.every(x=>x.checked);k.forEach(x=>x.checked=!all);};
+$('ct').onclick=()=>{navigator.clipboard.writeText(sel().map(v=>v.title).join('\n'));$('st').textContent=' titles copy ho gaye';};
+$('pr').onclick=()=>{const T=sel().slice(0,25).map((v,i)=>(i+1)+'. '+v.title+(v.views?' ('+v.views+' views)':'')).join('\n'),t=$('topic').value.trim()||'[mera topic]';
+ $('out').style.display='block';$('out').value='Ye competitor titles hain (jinke views zyada hain):\n'+T+'\n\nIn titles ke pattern samjho (kitne shabd, kaun se power words, number/sawal/naam ka use, emotion). Phir mere topic "'+t+'" par 10 NAYE Hindi titles banao (99cricketnews channel). Copy mat karo, pattern ke jaise banao. Sirf confirmed facts; jhooth/clickbait nahi. Har title ke saath thumbnail ke liye 3-4 shabd ka text aur kaun sa player/photo lagana hai wo bhi likho.';$('out').select();};
+$('dz').onclick=async()=>{const A=sel();$('dz').disabled=true;const F=[];let n=0;
+ for(let i=0;i<A.length;i+=3){await Promise.all(A.slice(i,i+3).map(async(v,j)=>{try{const b=await tb(v);F.push({n:'thumbs/'+String(i+j+1).padStart(2,'0')+'_'+safe(v.title)+'.jpg',d:new Uint8Array(await b.arrayBuffer())});}catch(e){}n++;$('st').textContent=' '+n+'/'+A.length;}));}
+ const enc=new TextEncoder();F.push({n:'titles.txt',d:enc.encode(A.map(v=>v.title).join('\n'))});
+ F.push({n:'titles.csv',d:enc.encode('\ufefftitle,channel,views,date,link\n'+A.map(v=>[v.title,v.ch,v.views,v.date,'https://youtu.be/'+v.id].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\n'))});
+ save(zip(F),'competitor_pack.zip');$('dz').disabled=false;$('st').textContent=' ZIP ban gayi ('+(F.length-2)+' thumbnails)';};
+const CT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return t;})();
+const crc=d=>{let c=~0;for(let i=0;i<d.length;i++)c=CT[(c^d[i])&255]^(c>>>8);return ~c>>>0;};
+function zip(F){const e=new TextEncoder(),P=[],C=[];let o=0;const u16=v=>[v&255,v>>8&255],u32=v=>[v&255,v>>8&255,v>>16&255,v>>>24&255];
+ F.forEach(f=>{const n=e.encode(f.n),c=crc(f.d),h=new Uint8Array([0x50,0x4b,3,4,20,0,0,8,0,0,0,0,0,0,...u32(c),...u32(f.d.length),...u32(f.d.length),...u16(n.length),0,0]);
+  P.push(h,n,f.d);C.push(new Uint8Array([0x50,0x4b,1,2,20,0,20,0,0,8,0,0,0,0,0,0,...u32(c),...u32(f.d.length),...u32(f.d.length),...u16(n.length),0,0,0,0,0,0,0,0,0,0,0,0,...u32(o)]),n);o+=h.length+n.length+f.d.length;});
+ const cs=C.reduce((a,x)=>a+x.length,0);return new Blob([...P,...C,new Uint8Array([0x50,0x4b,5,6,0,0,0,0,...u16(F.length),...u16(F.length),...u32(cs),...u32(o),0,0])],{type:'application/zip'});}
+window.__t={parseRSS,zip};
+</script></body></html>

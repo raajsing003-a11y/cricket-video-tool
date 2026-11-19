@@ -1,0 +1,17 @@
+GitHub update (C172 -> C176) — sirf ye 7 files
+NAYI files:
+  js/photo_variants.js          (kai photos + auto-rotate + cameo)
+  tools/competitor-grab.html    (competitor title/thumbnail + saved channels)
+  scripts/competitor_grab.py    (channel ke saare videos, yt-dlp)
+  docs/PHOTO_VARIANTS.md
+BADLI (purani ko replace karo):
+  index.html   (2 line: photo_variants.js + Competitor link)
+  js/photos.js (1 line)
+  docs/TRACKER.md
+
+Steps (GitHub website):
+1. Repo kholo -> Add file -> Upload files.
+2. Is zip ko extract karo. GITHUB_UPDATE ke ANDAR ke folders (js, tools, scripts, docs) aur index.html ko drag karke daalo (folder structure same rehta hai).
+3. Commit changes. 1-2 minute baad site par Ctrl+Shift+R.
+
+DHYAN: poora complete zip repo par upload MAT karo. Uske 116 purane assets (icons, city photos, logos, overlays, stamps) tumhari original zip mein corrupt the, isliye wo complete zip mein nahi hain. Repo ka assets/ folder touch mat karo.

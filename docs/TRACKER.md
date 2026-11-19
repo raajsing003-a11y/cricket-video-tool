@@ -963,3 +963,22 @@ Test: nahi kiya (Rahul ne test rokne ko kaha). Studytube ko YouTube API key chah
 ## C167 (19 Nov 2026) - 📊 tools/channel-compare.html (Channel Compare + Title/Description helper)
 Naya standalone tool (YouTube Data API v3, Studytube wali key; localStorage 'uv99:st:key' se badal sakte). Input: @handle / channel link / UC ID / naam (naam = search, 100 quota). 25/50/100 latest videos padhta hai. Comparison table (hara = best): subs, views, avg/median/best views, views/subs %, like/comment %, uploads/mahina, Shorts %, title length/number/?/emoji/Hindi %, description length/link/#/timestamps. Har channel: top 5 videos (title + description copy), title ke top shabd, top tags, channel keywords + description copy. Saved channels (click jodo, double-click hatao), CSV export. Section 2: apna title/description check (length, number, ?, caps, hashtags, links, chapters) + competitors ke tags/shabd jo tumhare text mein nahi (500 char tag limit ke andar copy). index.html nav mein 📊 link.
 Test: sirf node --check (Rahul ne test rokne ko kaha). NOT tested: asli API call/key, referrer restriction, layout. Key ko Google Cloud mein sirf apni GitHub Pages site + YouTube Data API v3 par restrict karna.
+
+## C168 (19 Nov 2026) - Intro/Outro preview + Real-time export mein; Channel Compare mein "Kya chala"
+1) js/bumpers.js: `B.sequence` (intro(s) -> main (player ke through) -> outro(s)). ▶ Poora preview (panel + bar2 ka '▶ Intro/Outro ke saath' button): bumper player canvas par, awaaz speakers par volume slider ke saath (WebAudio gain), main ka audio AP deta hai; ⏹ Roko. Real-time export (EXPORT.run wrap): bumper hone par recorder mein intro + main + outro (bumper audio gain ke saath, main audio X.audio), bumper na ho to purana raasta. Fast export waisa hi (drawFrame ab drawVid use karta hai). main.js: real-time status mein bumper count.
+Limit: timeline/seek bar sirf main video dikhata hai (bumper uske bahar). Real-time export asli speed se chalta hai, tab khula rakho; bumper video har frame draw timer (16ms) se, tab background mein jaye to frames chhoot sakte.
+2) tools/channel-compare.html: 🔥 Kya chala: har channel mein median se 2x+ videos (x multiple, title copy), hit vs baaki (title length, number/?/Hindi %, avg length, hit titles ke zyada shabd); 📅 din aur 🕐 time (Subah/Dopahar/Shaam/Raat) ka relative score (views ÷ channel median), sab channels mila ke combined; checkbox 'sirf long videos (3 min+)'. Kam data (<6 video, ya <20 par warning) par saaf chetavni. Time device ka local time.
+Test: sirf node --check (Rahul ne test rokne ko kaha). NOT tested: asli export mein bumper (real-time audio sync), preview, asli API data par kya-chala numbers.
+
+## C169 (19 Nov 2026) - Channel Compare: 📈 Growth track + ⬇ Backup / ⬆ Restore
+tools/channel-compare.html: har compare par har channel ka snapshot (subs, total views, videos, avg views; din mein ek, max 90) localStorage 'cc:snap' mein. 📈 Growth table: snapshots (pehli -> aakhri date), subs pichle snapshot se / shuru se, subs/din (sabse tez hara), views/din, naye videos, subs trend sparkline. Pehle sirf 1 snapshot ho to saaf message. ⬇ Backup (saved channels + snapshots JSON, API key nahi) aur ⬆ Restore (merge, duplicate din skip).
+Test: sirf node --check (Rahul ne test rokne ko kaha). NOT tested: asli data par numbers, restore file picker. Hidden-subscriber channels mein subs '—'.
+
+## C173 (19 Nov 2026) — Player photos zyada + har baar nayi photo
+js/photo_variants.js (nayi): multi-photo per player, scene-wise auto-rotate, auto Cameo (👤 toggle). docs/PHOTO_VARIANTS.md. Headless test: rotation (red/blue/green/red) + cameo pixel ON/OFF pass. Input zip mein 116 asset files corrupt thi (docs/MISSING_ASSETS_C173.txt) — apne original zip se wo assets folders wapas copy karo.
+
+## C174 — Cameo pro: duo cards, mid-scene photo refresh, glow/shimmer/float. Headless test pass.
+
+## C175 — Competitor title+thumbnail grab: tools/competitor-grab.html (channel/video links -> titles, views, thumbs, ZIP, naye-titles prompt) + scripts/competitor_grab.py (saare videos, yt-dlp). Parser+ZIP headless test pass; live YouTube fetch is not tested here (sandbox mein YouTube band) — asli Chrome mein check baaki.
+
+## C176 — Competitor channels save: tools/competitor-grab.html mein ⭐ Saved channels (localStorage, chip click = latest lao, ✕ hatao, 'sab lao', list copy backup). Reload par persist test pass.

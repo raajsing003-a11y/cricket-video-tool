@@ -91,6 +91,7 @@ function render(){
   if(P.have[s.id]){const x=document.createElement('button');x.textContent='✕';x.title='photo hatao';x.style.cssText='padding:6px 10px;background:#555';x.onclick=async()=>{await P.remove(s.id);render();};r.appendChild(x);}
   if(s.custom){const x=document.createElement('button');x.textContent='🗑';x.title='naam hatao';x.style.cssText='padding:6px 10px;background:#822';x.onclick=async()=>{if(confirm(s.hi+' naam aur photo hata dun?')){await P.removeCustom(s.id);render();}};r.appendChild(x);}
   list.appendChild(r);
+  if(P.rowExtra&&!s.custom_skip&&P.have[s.id])P.rowExtra(s,list);
  }
 }
 P.render=render;
