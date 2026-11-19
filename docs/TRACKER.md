@@ -1026,3 +1026,7 @@ Test: node --check; headless chromium news.html (sample stories) -> 4 title har 
 - docs/GEMINI_SCRIPT_PROMPT_TEMPLATE.md GEM_T jaisa update; docs/THUMBNAIL_PROMPT.md (Rahul ki file) + SCRIPT_WORKFLOW.md C186 section.
 - Test: node --check (news.html inline + news_thumbs.js), headless chromium: fullPrompt single + Top-N mein 6) THUMBNAIL, RETENTION, hook map, NUMBER GRID sab aaye, page errors 0.
 - Baaki: asli Gemini par 3 thumbnail + naye script ka output dekhna (Rahul), phir niyam tune.
+
+## C187 (19 Nov 2026) — Copy ke saath prompt .txt save
+- news.html: 📋 Copy (poora prompt / Sirf ye / Top-N) dabate hi prompt clipboard mein jaata hai AUR prompt_<tarikh_samay>_<story>.txt Downloads mein save hota hai (chat mein file bhej sako). Button par "✔ Copy hua + 💾 .txt". Upar checkbox se band/chalu (localStorage cvt_savetxt).
+- Test: node --check, headless chromium download ok (file naam + content), checkbox off par download nahi, errors 0.

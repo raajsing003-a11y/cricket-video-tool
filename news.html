@@ -49,6 +49,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 <div class="row2"><button id="scrBtn">🧩 Sites padho (extension)</button><span class="sm" id="scrSt"></span></div>
 <div id="fails"></div>
 <div class="warn">🧩 Ab <b>ek story = ek card</b>: 10 sites ki milti-julti khabrein ek saath, har site ki apni headline + link. Video ke liye <b>📋 Copy (poora prompt)</b> karo aur Claude chat mein paste karo (ab isme <b>3 thumbnail prompt</b> + <b>har 30 sec naya hook</b> wala script niyam bhi hai).</div>
+<div class="sm"><label><input type="checkbox" id="saveTxtCb" checked> 💾 Copy karte hi prompt .txt file bhi save ho (Downloads mein)</label></div>
 <h2 id="h2top">⭐ Aaj ki top 5 stories</h2><div id="top5"></div>
 <h2 id="h2all">Saari stories</h2>
 <input type="search" id="q" placeholder="🔎 khoj (naam / shabd)">
@@ -112,7 +113,7 @@ function articleRow(x){
   c.appendChild(el('div','t',i.title));
   c.appendChild(el('div','sm','Taaza: '+ago(i.published)+' · '+new Date(i.published).toLocaleString('hi-IN')));
   const r=el('div','row');const a=el('a','go','🔗 Kholo');a.href=i.link;a.target='_blank';a.rel='noopener';a.style.cssText='background:#333;border-radius:8px;padding:6px 12px;font-size:15px;text-decoration:none;color:#fff';r.appendChild(a);
-  if(st){const ob=el('button',null,'📋 Sirf ye');ob.onclick=async()=>{const t=fullPrompt(st,i);try{await navigator.clipboard.writeText(t);ob.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(ob);}
+  if(st){const ob=el('button',null,'📋 Sirf ye');ob.onclick=async()=>{const t=fullPrompt(st,i);try{await navigator.clipboard.writeText(t);ob.textContent='✔ Copy hua'+saveTxt(t,i.title);}catch(e){prompt('Copy karo:',t);}};r.appendChild(ob);}
   c.appendChild(r);return c;}
 function buildStories(){
   const m=new Map();
@@ -208,6 +209,12 @@ const SCHEMA_T="SCENES JSON SHORT SCHEMA (poora: docs/SCENES_JSON_SCHEMA.md, zip
 function oneStory(st,i){return Object.assign({},st,{items:[i],title:i.title,srcNames:[i.source||'?'],srcKeys:[sk(i.source)],label:i.label==='Confirmed'?'Confirmed':'Rumor',tags:(i.tags&&i.tags.length?i.tags.filter(x=>TAGS.indexOf(x)>=0):[]).length?i.tags.filter(x=>TAGS.indexOf(x)>=0):['Other'],latest:i.published});}
 function titleIdeas(st){try{const tt=st.items.map(i=>i.title),names=guessFromTitles(tt),team=names[0]?guessTag(names[0],tt):'';return window.TITLEGEN?window.TITLEGEN(st,{names:names,team:team}):[];}catch(e){return [];}}
 function titleLine(st){const ti=titleIdeas(st);return '5) TITLE: 4 YouTube title do (ek code block, har title alag style: emotion hook / sawaal / breaking / reaction). '+(window.TITLE_STYLE_TXT||'')+(ti.length?' Draft ideas (behtar banao): '+ti.map(o=>'"'+o.t+'"').join(' || '):'');}
+// C187: Copy ke saath prompt .txt file mein bhi save (Downloads), taaki chat mein file bhej sako. Checkbox se band/chalu.
+function saveTxt(t,title){try{if(localStorage.getItem('cvt_savetxt')==='0')return '';
+  const d=new Date(),p=n=>String(n).padStart(2,'0'),stamp=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes());
+  const nm=String(title||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,40)||'story';
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download='prompt_'+stamp+'_'+nm+'.txt';
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);return ' + 💾 .txt';}catch(e){return '';}}
 function fullPrompt(st,only,multi){
   if(multi)st=mergeSt(multi);else if(only)st=oneStory(st,only);
   const phs=photosOf(multi||[st]);
@@ -293,7 +300,7 @@ function card(st){
     r.appendChild(el('span','sh',(freshIds.has(i.id)?'🆕 ':'')+i.title));
     r.appendChild(el('span','sl',ago(i.published)));
     const a=el('a','go','🔗 Kholo');a.href=i.link;a.target='_blank';a.rel='noopener';r.appendChild(a);
-    const ob=el('button','one','📋 Sirf ye');ob.onclick=async()=>{const x=fullPrompt(st,i);try{await navigator.clipboard.writeText(x);ob.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',x);}};r.appendChild(ob);
+    const ob=el('button','one','📋 Sirf ye');ob.onclick=async()=>{const x=fullPrompt(st,i);try{await navigator.clipboard.writeText(x);ob.textContent='✔ Copy hua'+saveTxt(x,i.title);}catch(e){prompt('Copy karo:',x);}};r.appendChild(ob);
     box.appendChild(r);});
   c.appendChild(box);
   const ms=missingSites(st);
@@ -311,7 +318,7 @@ function card(st){
   const ub=el('button',null,fresh.length?'✓ Update dekh li':(u?'↩ Used hatao':'✓ Use ho gaya'));ub.onclick=()=>{setUsed(st,fresh.length?true:!u);draw();};r.appendChild(ub);
   const lb2=isLater(st);const lt=el('button',null,lb2?'★ Baad mein hatao':'☆ Baad mein');lt.onclick=()=>{setLater(st,!lb2);draw();};r.appendChild(lt);
   const pb=el('button',null,pfOpen[st.id]?'▲ Photo band':'📷 Photo dhundho');pb.onclick=()=>{pfOpen[st.id]=!pfOpen[st.id];draw();};r.appendChild(pb);
-  const fb=el('button',null,'📋 Copy (poora prompt)');fb.onclick=async()=>{const t=fullPrompt(st);try{await navigator.clipboard.writeText(t);fb.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(fb);
+  const fb=el('button',null,'📋 Copy (poora prompt)');fb.onclick=async()=>{const t=fullPrompt(st);try{await navigator.clipboard.writeText(t);fb.textContent='✔ Copy hua'+saveTxt(t,st.title);}catch(e){prompt('Copy karo:',t);}};r.appendChild(fb);
   c.appendChild(r);if(pfOpen[st.id])c.appendChild(pfBox(st));return c;}
 function chips(box,list,key,fmt){box.innerHTML='';list.forEach(v=>{const val=Array.isArray(v)?v[0]:v,txt=Array.isArray(v)?v[1]:v;
   const c=el('span','chip'+(key==='lbl'&&val==='Confirmed'?' g':'')+(key==='lbl'&&val==='Rumor'?' o':'')+(ui[key]===val?' on':''),txt);
@@ -388,7 +395,7 @@ function drawSel(){const L=selList(),b=$('selbar');b.innerHTML='';
   in_.appendChild(el('div','sm','☑ '+L.length+' stories chuni (Top-N video'+(L.length<2?' — kam se kam 2 chuno':L.length<3?' — 3-5 behtar':L.length>5?' — 5 se zyada lamba hoga':'')+')'));
   L.slice(0,8).forEach((s,k)=>in_.appendChild(el('div','sm','#'+(k+1)+' '+(s.title.length>70?s.title.slice(0,70)+'…':s.title))));
   const r=el('div','row');in_.appendChild(r);
-  const cb=el('button',null,'📋 Copy (Top-'+L.length+' prompt)');cb.onclick=async()=>{if(L.length<2){alert('Kam se kam 2 stories chuno.');return;}const t=fullPrompt(null,null,L);try{await navigator.clipboard.writeText(t);cb.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(cb);
+  const cb=el('button',null,'📋 Copy (Top-'+L.length+' prompt)');cb.onclick=async()=>{if(L.length<2){alert('Kam se kam 2 stories chuno.');return;}const t=fullPrompt(null,null,L);try{await navigator.clipboard.writeText(t);cb.textContent='✔ Copy hua'+saveTxt(t,'top'+L.length);}catch(e){prompt('Copy karo:',t);}};r.appendChild(cb);
   STEPS.forEach(x=>{const all=L.every(st=>stepOn(st,x[0]));const sb=el('button',null,(all?'↩ ':'✔ ')+x[1]+' sab par');sb.onclick=()=>{L.forEach(st=>setStep(st,x[0],!all));draw();};r.appendChild(sb);});
   const ub=el('button',null,'✓ Sab Use ho gayin');ub.onclick=()=>{L.forEach(st=>setUsed(st,true));draw();};r.appendChild(ub);
   const xb=el('button',null,'✖ Chuni hatao');xb.onclick=()=>{sel={};saveSel();draw();};r.appendChild(xb);}
@@ -449,6 +456,7 @@ function onScrape(m){if(!scrRun)return;if(m.done){scrDone();return;}
 $('scrBtn').onclick=async()=>{if(scrRun)return;scrSt('Extension dhundh raha hoon…');
   if(!(await pingExt())){scrSt('❌ Extension nahi mila ya purana. chrome://extensions mein Photo Finder v1.1 Reload karo, phir page refresh.');return;}
   const L=SCR_LIST();$('scrBtn').disabled=true;scrRun={n:0,ok:0,total:L.length,timer:setTimeout(scrDone,45000)};scrSt('⏳ 0/'+L.length+' sites padh raha hoon (background mein)…');toExt({cmd:'scrape',sites:L});};
+{const cx=document.getElementById('saveTxtCb');if(cx){cx.checked=localStorage.getItem('cvt_savetxt')!=='0';cx.onchange=()=>localStorage.setItem('cvt_savetxt',cx.checked?'1':'0');}}
 window.__cvtNews={guessFromTitles:guessFromTitles,toks:toks,overlap:overlap};
 // ---- C143: website se hi fetch (GitHub Actions workflow_dispatch) ----
 const KT='cvt_gh_token';
