@@ -217,3 +217,7 @@ WARNING (load hoga): dur bahut chhota/lamba, bahut lamba text, unknown extra fie
 - `tree`: {root, l2 (1-3), l3 (0-6)} | `cardtiles`: {items:['icon|label'] 3-4, brace} | `fan`: {src, outs:['label|sub'] 2-4}
 - `replies`: {src, items:['@naam|comment'] 2-4} | `vs2`: {a, sa, b, sb, pill} | `bonus`: {a, ta, b, tb, icon} | `prodnode`: {a, b, c ('icon|label')} | `dotmap` (P12, js/card_p3.js): {title, map:'india'|'world', items:['Mumbai'] ya ['naam|x|y'] (x,y = map image ke % mein; india par IPL sheher naam se mil jaate), hl (1-based), sub}
 
+
+
+## C172 — script scenes.json ke andar
+Pehle scene par top-level key `"script"` (string) rakho = poori voice-over script (chunks ke beech ek line mein `---`). **⬇ JSON load** par ye apne aap teleprompter ki script ban jaati hai (localStorage `cvt_tp_script`); teleprompter.html kholo (khula ho to refresh). Card `data` mein nahi, scene ke top-level mein. Claude har scenes.json ke pehle scene mein ye zaroor rakhe.
