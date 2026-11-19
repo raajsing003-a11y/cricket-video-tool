@@ -12,7 +12,7 @@ C.CARDS.bigwords={
     cy=pills.length?H/2-70:H/2,ca=COL[d.ca]||COL.y,cb=COL[d.cb]||COL.g,outA=1-E.in(C.prog(t,sc.dur-.3,sc.dur));
   ctx.save();ctx.globalAlpha=outA;ctx.textBaseline='middle';
   let px=230;ctx.font=C.font(px,900);const jw=J?150:60;
-  while(px>90&&ctx.measureText(A).width+ctx.measureText(B).width+jw+200>W-160){px-=10;ctx.font=C.font(px,900);}
+  while(px>70&&ctx.measureText(A).width+ctx.measureText(B).width+jw+(px*.35)>W-300){px-=10;ctx.font=C.font(px,900);}
   const aw=ctx.measureText(A).width,bw=ctx.measureText(B).width,tot=aw+bw+jw,x0=W/2-tot/2;
   [[A,x0,ca,.2],[B,x0+aw+jw,cb,.7]].forEach(([s,x,c,a])=>{const p=E.back(C.prog(t,a,a+.55));if(p<=0)return;ctx.save();ctx.translate(x+ctx.measureText(s).width/2,cy);ctx.scale(Math.max(.01,p),Math.max(.01,p));
     ctx.font=C.font(px,900);ctx.textAlign='center';ctx.fillStyle=c;ctx.shadowColor=c;ctx.shadowBlur=24;ctx.fillText(s,0,0);ctx.shadowBlur=0;ctx.restore();});
