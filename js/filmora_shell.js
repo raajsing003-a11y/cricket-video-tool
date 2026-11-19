@@ -345,7 +345,7 @@ function boot(){
       if(typeof v==='boolean'){const c=inp('checkbox');c.checked=v;c.onchange=()=>edit(()=>{d[k]=c.checked;});const w=mk('div','pf');const l=mk('label');l.appendChild(c);l.appendChild(document.createTextNode(' '+k));w.appendChild(l);pr.appendChild(w);}
       else if(typeof v==='number'){const n=inp('number',v);n.step='any';n.oninput=()=>edit(()=>{const x=parseFloat(n.value);if(!isNaN(x))d[k]=x;});pr.appendChild(fld(k,n));}
       else if(typeof v==='string'){
-        if(/^(photo|bg)$/.test(k)){const t=inp('text',v);t.setAttribute('list','fm-photo-dl');t.onchange=()=>edit(()=>{d[k]=t.value.trim();});pr.appendChild(fld(k+(k==='photo'?' (photo slot naam)':''),t));}
+        if(/^(photo|bg)$/.test(k)){const t=inp('text',v);t.setAttribute('list','fm-photo-dl');t.onchange=()=>edit(()=>{d[k]=t.value.trim();if(k==='photo'&&window.PHOTOS&&PHOTOS.ensureCustom)PHOTOS.ensureCustom(d[k]);});pr.appendChild(fld(k+(k==='photo'?' (photo slot naam)':''),t));}
         else if(v.length>34||LONG.test(k)){const t=mk('textarea');t.value=v;t.rows=Math.min(5,Math.max(2,Math.ceil(v.length/28)));t.oninput=()=>edit(()=>{d[k]=t.value;});pr.appendChild(fld(k,t));}
         else{const t=inp('text',v);t.oninput=()=>edit(()=>{d[k]=t.value;});pr.appendChild(fld(k,t));}}
       else if(Array.isArray(v)&&v.every(x=>typeof x==='string')){const t=mk('textarea');t.value=v.join('\n');t.rows=Math.min(6,Math.max(2,v.length));t.oninput=()=>edit(()=>{d[k]=t.value.split('\n');});pr.appendChild(fld(k+' (ek line = ek item)',t));}

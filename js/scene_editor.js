@@ -13,7 +13,7 @@ const DEF={
  stat:{dur:4.5,data:{photo:'',pre:'छोटी लाइन',prefix:'₹',to:10,dec:0,unit:'करोड़',head:'हेडलाइन',sub:'',lt:'red',tag:true}},
  retain:{dur:4.5,data:{city:'mumbai',photo:'',name:'नाम',amount:'₹ 10 CR',stamp:'retain',note:'नोट'}},
  watch:{dur:5,data:{title:'नज़र रहेगी',names:['नाम 1','नाम 2'],photos:[],note:''}},
- rumour:{dur:5,data:{head:'हेडलाइन',sub:'अभी ऑफिशियल नहीं',photos:[]}},
+ rumour:{dur:5,data:{head:'हेडलाइन',sub:'',photos:[]}},
  anth:{dur:5,data:{title:'',qs:['सवाल 1','सवाल 2','सवाल 3'],cta:''}},
  intro:{dur:4,data:{line1:'लाइन 1',line2:'लाइन 2'}},
  cta:{dur:4,data:{mode:'like',title:'',line:''}},
@@ -107,11 +107,11 @@ const DEF={
  longstat:{dur:8,data:{title:'',head:'लंबे वीडियो',n1:1000,l1:'पहला आँकड़ा',n2:7421,l2:'दूसरा आँकड़ा',pill:'फ़र्क़ बड़ा है',c1:'g',c2:'r'}},
  offer:{dur:9,data:{title:'',dots:50,you:'आप',av:'',oh:'ऑफ़र',ot:'क्या आप यह मौक़ा लेंगे?',yes:'स्वीकार',no:'मना करें',pick:'yes',c:'y'}},
  products:{dur:9,data:{title:'',items:['कोर्स','टेम्पलेट'],gl:'फिर लॉन्च',pts:[10,14,22,40,70],c:'y'}},
- endscreen:{dur:8,data:{title:'अगला वीडियो',vt:'अगले वीडियो का नाम',ch:'99 क्रिकेट न्यूज़',views:'1.2K व्यूज़',vi:'',sub:'सब्सक्राइब',c:'r'}},
+ endscreen:{dur:8,data:{title:'Watch next',vt:'Next video title',ch:'99 Cricket News',views:'1.2K views',vi:'',sub:'Subscribe',c:'r'}},
  setting:{dur:6,data:{title:'',step:'सेटिंग 3',name:'कीवर्ड',pills:['चैनल नाम','गलत स्पेलिंग','आपका niche'],c:'y'}},
  radio:{dur:7,data:{title:'',items:['सबके लिए','सिर्फ बड़ों के लिए','बच्चों के लिए'],hl:[1,2],pill:'बच्चों के लिए नहीं|g',c:'y'}},
  ideas:{dur:7,data:{title:'',items:['पहला आइडिया|छोटी लाइन','दूसरा आइडिया|छोटी लाइन','तीसरा आइडिया|छोटी लाइन'],avatar:'आपकी ऑडियंस',av:'',c:'y'}},
- compare:{dur:7,data:{title:'',la:'पक्की खबर',lb:'अफवाह',a:['ऑफिशियल घोषणा','दो जगह कन्फर्म','नाम और नंबर साफ़'],b:['सिर्फ एक सूत्र','कोई पुष्टि नहीं'],ma:'tick',mb:'cross',ca:'g',cb:'r'}},
+ compare:{dur:7,data:{title:'',la:'Pros',lb:'Cons',a:['Point 1','Point 2','Point 3'],b:['Point 1','Point 2'],ma:'tick',mb:'cross',ca:'g',cb:'r'}},
  spot:{dur:6,data:{title:'',shot:'',box:'0.3,0.35,0.4,0.15',label:'यहाँ क्लिक करो',pill:'',cursor:true,click:true,zoom:1.35}},
  crowd:{dur:7,data:{title:'100 लोगों में से',total:100,hi:10,label:'10% देखते हैं',sub:'',c:'y',scatter:true}},
  chapter:{dur:3,data:{num:'01',title:'चैप्टर का नाम',pill:'',lock:true}},
@@ -120,7 +120,7 @@ const DEF={
  presenter:{dur:5,data:{channel:'99cricketnews',name:'Yuvraj Sisodiya',sub:'क्रिकेट की हर खबर',photos:[''],key:'auto',swap:1.4}},
  short_hook:{dur:3.5,data:{pre:'ऊपर की लाइन',to:10,dec:0,unit:'करोड़',post:''}},
  short_stat:{dur:4,data:{photo:'',pre:'छोटी लाइन',prefix:'₹',to:10,dec:0,unit:'करोड़',head:'हेडलाइन',sub:'',lt:'red',tag:true}},
- short_cta:{dur:3.5,data:{line1:'आपकी राय क्या है?',line2:'कमेंट में बताओ',cta:'चैनल सब्सक्राइब करो'}}
+ short_cta:{dur:3.5,data:{line1:'What do you think?',line2:'Tell us in the comments',cta:'Subscribe to the channel'}}
 };
 const SE=window.SE={scenes:[],sel:0,msg:''};
 SE.apply=(k)=>apply(k);
@@ -192,12 +192,12 @@ function render(){
   add.appendChild(btn('+ Scene jodo',()=>{const d=clone(DEF[sel.value]);SE.scenes.push({type:sel.value,dur:d.dur,tr:SE.scenes.length?'grunge':undefined,trDur:.7,data:d.data});SE.sel=SE.scenes.length-1;apply(false).then(()=>seekTo(SE.sel));},'#e11'));
   add.appendChild(btn('⬆ JSON save',()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(SE.scenes,null,1)],{type:'application/json'}));a.download='scenes.json';a.click();}));
   const fi=el('input');fi.type='file';fi.accept='.json';fi.id='se_json';fi.style.display='none';
-  fi.onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw new Error('array chahiye');const rp=window.SCHK?SCHK.report(j):null;if(rp&&!rp.ok){SE.msg='⬇ Load nahi hua (error hain):\n'+rp.text;render();return;}SE.scenes=j;SE.sel=0;await apply(false);if(rp){SE.msg=rp.text;render();}}catch(err){alert('JSON error: '+err.message);}};
+  fi.onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw new Error('array chahiye');const nw=window.PHOTOS&&PHOTOS.autoFromScenes?PHOTOS.autoFromScenes(j):[];const rp=window.SCHK?SCHK.report(j):null;if(rp&&nw.length)rp.text+='\n🆕 '+nw.length+' naye photo naam apne aap bane: '+nw.join(', ')+' — ab bas 📷 se photo upload karo.';if(rp&&!rp.ok){SE.msg='⬇ Load nahi hua (error hain):\n'+rp.text;render();return;}SE.scenes=j;SE.sel=0;await apply(false);if(rp){SE.msg=rp.text;render();}}catch(err){alert('JSON error: '+err.message);}};
   add.appendChild(btn('⬇ JSON load',()=>fi.click()));add.appendChild(fi);
   add.appendChild(btn('Sab hatao',()=>{if(confirm('Sab scenes hata dun?')){SE.scenes=[];SE.sel=0;C.setScenes([]);save();render();SE.P.draw();}}));
   add.appendChild(btn('🎙 Chunk baanto',async()=>{const r=FIT.autoAssign();SE.msg=r.msg;await apply(true);SE.msg=r.msg;render();},'#2a6'));
   add.appendChild(btn('⏱ Audio ke hisaab se fit',async()=>{const r=FIT.run();SE.msg=r.msg;if(r.ok){await apply(true);SE.msg=r.msg+'\nVideo '+C.total.toFixed(1)+'s ↔ audio '+r.audioEnd.toFixed(1)+'s';}render();},'#2a6'));
-  add.appendChild(btn('✔ JSON check',()=>{const r=window.SCHK?SCHK.report(SE.scenes):{text:'checker load nahi hua'};SE.msg=r.text;render();},'#2a6'));
+  add.appendChild(btn('✔ JSON check',()=>{if(window.PHOTOS&&PHOTOS.autoFromScenes)PHOTOS.autoFromScenes(SE.scenes);const r=window.SCHK?SCHK.report(SE.scenes):{text:'checker load nahi hua'};SE.msg=r.text;render();},'#2a6'));
   box.appendChild(add);
   box.appendChild(el('div','font-size:12px;opacity:.7;margin-bottom:6px','Har scene mein "Chunk" number do = kaun si voice-over file (🎚 Audio tracks ki n-th) us scene ke saath chalegi. Pehle audio lagao, phir ⏱ fit dabao.'));
   if(SE.msg)box.appendChild(el('div','font-size:13px;padding:6px 8px;margin-bottom:6px;background:#1d2b1d;border-radius:5px;white-space:pre-wrap',SE.msg));

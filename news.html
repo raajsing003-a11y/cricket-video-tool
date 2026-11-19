@@ -16,7 +16,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 .card.used{opacity:.45}
 .t{font-size:19px;font-weight:600;margin:4px 0}
 .badge{display:inline-block;font-size:14px;padding:2px 9px;border-radius:10px;margin:0 6px 4px 0;background:#444}
-.bC{background:#2a8a3a}.bR{background:#c7791a}.bN{background:#1f6feb}.bH{background:#d4341c}
+.bC{background:#2a8a3a}.bR{background:#c7791a}.bN{background:#1f6feb}.bU{background:#8957e5}.bH{background:#d4341c}
 .card.later{border-color:#e3b341}.chip.h.on{background:#d4341c}.chip.n.on{background:#1f6feb}.chip.l.on{background:#b8860b}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
 .row button{font-size:15px;padding:6px 12px;border-radius:8px}
@@ -26,18 +26,28 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 .sn{background:#26425f;color:#cfe8ff;border-radius:8px;padding:1px 8px;font-size:13px;white-space:nowrap}
 .sh{flex:1;min-width:200px;font-size:16px}
 .sl{font-size:13px;opacity:.7;white-space:nowrap}
+.sr button.one{background:#333;border-radius:8px;padding:3px 9px;font-size:14px}
+.sgrp{display:inline-flex;gap:2px}.chip.site.q{padding:6px 9px}
+.chip.site{text-decoration:none;color:#cfe8ff;background:#26425f;font-size:14px;padding:6px 11px}
 .sr a.go{background:#333;border-radius:8px;padding:3px 9px;font-size:14px;text-decoration:none;color:#fff}
 .row2{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:2px 0}
 .lab{font-size:14px;opacity:.7;margin-right:2px}
 .warn{background:#3a2a10;border-radius:8px;padding:8px;font-size:15px;margin:8px 0}
 .err{background:#3a1515;border-radius:8px;padding:8px;font-size:14px;margin:8px 0}
+.chip.sel{background:#2d3b2f}.chip.sel.on{background:#2a8a3a}
+.chip.site.ok{background:#1f5f2c;color:#fff;text-decoration:none}.chip.site.no{background:#4a2323;color:#ffd0d0}.chip.site.wa{background:#4a3a10;color:#ffe9a8}
+.bO{background:#8a5a00}.bO a{color:#fff}
+.note{display:flex;gap:6px;align-items:center;margin:4px 0}.note input{flex:1;min-width:150px;box-sizing:border-box;padding:6px 8px;font-size:15px;border-radius:8px;border:1px solid #444;background:#000;color:#eee}
+.pfbox{background:#162033;border-radius:8px;padding:8px;margin:6px 0}.pfbox input{width:100%;box-sizing:border-box;padding:8px;font-size:16px;border-radius:8px;border:1px solid #446;background:#000;color:#eee;margin:4px 0}
+#selbar{position:fixed;left:0;right:0;bottom:0;background:#0d2a14;border-top:2px solid #2a8a3a;padding:8px 10px;z-index:9;display:none}#selbar .in{max-width:900px;margin:0 auto}
 </style></head><body><div id="w">
 <div class="top"><h1>📰 Cricket News Tracker</h1><a href="index.html">← Video tool</a></div>
 <div class="sm" id="upd">Loading…</div>
 <div class="row2"><button id="fetchNow">🔄 Abhi fetch karo</button><button id="tokBtn">🔑 Token</button><span class="sm" id="fst"></span></div>
 <div class="warn">⚠ Label sirf andaza hai: <b>Confirmed</b> tabhi jab feed official ho aur "sources/likely" jaisa shabd na ho. Baaki sab <b>Rumor</b>. Video mein daalne se pehle khabar khud verify karo. Yahan sirf headline + link hai.</div>
+<div class="row2"><button id="scrBtn">🧩 Sites padho (extension)</button><span class="sm" id="scrSt"></span></div>
 <div id="fails"></div>
-<div class="warn">🧩 Ab <b>ek story = ek card</b>: 10 sites ki milti-julti khabrein ek saath, har site ki apni headline + link. Video ke liye <b>📋 Story pack copy</b> karo aur Claude ke Fact Pack chat mein paste karo.</div>
+<div class="warn">🧩 Ab <b>ek story = ek card</b>: 10 sites ki milti-julti khabrein ek saath, har site ki apni headline + link. Video ke liye <b>📋 Copy (poora prompt)</b> karo aur Claude chat mein paste karo.</div>
 <h2>⭐ Aaj ki top 5 stories</h2><div id="top5"></div>
 <h2>Saari stories</h2>
 <input type="search" id="q" placeholder="🔎 khoj (naam / shabd)">
@@ -48,20 +58,30 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 <div class="row2"><span class="lab">Sirf:</span><span id="only" class="chips" style="margin:0"></span></div>
 <div class="row2"><span class="lab">Kram:</span><span id="sorts" class="chips" style="margin:0"></span></div>
 <div class="chips"><span class="chip" id="hideUsed">✓ Use ho chuki khabrein chhupao</span>
-<button id="expU">⬆ Used list save</button><button id="impU">⬇ Used list load</button><input type="file" id="fi" accept=".json" style="display:none"></div>
+<button id="expU">⬆ Backup save</button><button id="impU">⬇ Backup load</button><input type="file" id="fi" accept=".json" style="display:none"></div>
 <div id="list"></div>
 </div>
+<div id="selbar"></div>
 <script>
 (function(){
 'use strict';
 const TAGS=['Trade','Retention','Release','Auction','Team News','India Match'];
-const KU='cvt_news_used',KF='cvt_news_ui',KL='cvt_news_later',KV='cvt_news_visit',MAXS=60,SHOW=4,REFRESH=180000;
+const KP='cvt_news_steps',KS='cvt_news_seen',KU='cvt_news_used',KF='cvt_news_ui',KL='cvt_news_later',KV='cvt_news_visit',KN='cvt_news_notes',KSEL='cvt_news_sel',KSC='cvt_site_scrape',KPH='cvt_news_photos',KPC='cvt_photo_custom',MAXS=60,SHOW=4,REFRESH=180000;
 let items=[],stories=[],used={},ui={tag:'Sab',lbl:'Sab',hide:false,q:'',min:1,site:'Sab',sort:'latest',only:'Sab'},open={},later={},lastVisit=0;
 try{used=JSON.parse(localStorage.getItem(KU)||'{}')||{};}catch(e){}
+let steps={};try{steps=JSON.parse(localStorage.getItem(KP)||'{}')||{};}catch(e){}
+let seenLab={};try{seenLab=JSON.parse(localStorage.getItem(KS)||'{}')||{};}catch(e){}
 try{later=JSON.parse(localStorage.getItem(KL)||'{}')||{};}catch(e){}
 try{lastVisit=+localStorage.getItem(KV)||0;}catch(e){}
 try{Object.assign(ui,JSON.parse(localStorage.getItem(KF)||'{}'));ui.q='';}catch(e){}
+let notes={},sel={},phStore={},scr={at:null,sites:{},err:{}};
+try{notes=JSON.parse(localStorage.getItem(KN)||'{}')||{};}catch(e){}
+try{sel=JSON.parse(localStorage.getItem(KSEL)||'{}')||{};}catch(e){}
+try{phStore=JSON.parse(localStorage.getItem(KPH)||'{}')||{};}catch(e){}
 const $=id=>document.getElementById(id);
+const saveN=()=>{try{localStorage.setItem(KN,JSON.stringify(notes));}catch(e){}};
+const saveSel=()=>{try{localStorage.setItem(KSEL,JSON.stringify(sel));}catch(e){}};
+const savePh=()=>{try{localStorage.setItem(KPH,JSON.stringify(phStore));}catch(e){}};
 const saveU=()=>{try{localStorage.setItem(KU,JSON.stringify(used));}catch(e){}};
 const saveUI=()=>{try{localStorage.setItem(KF,JSON.stringify({tag:ui.tag,lbl:ui.lbl,hide:ui.hide,min:ui.min,site:ui.site,sort:ui.sort,only:ui.only}));}catch(e){}};
 function ago(iso){const m=Math.max(0,(Date.now()-new Date(iso))/60000);
@@ -84,58 +104,188 @@ function buildStories(){
   });
 }
 const isUsed=st=>st.items.some(i=>used[i.id]);
+function saveSeen(){try{const m={};items.forEach(i=>{m[i.id]=i.label==='Confirmed'?'C':'R';});localStorage.setItem(KS,JSON.stringify(m));}catch(e){}}
+const isOff=st=>{if(st.label!=='Confirmed')return false;const prev=st.items.filter(i=>seenLab[i.id]);return prev.length>0&&prev.every(i=>seenLab[i.id]==='R');};
+function usedAt(st){return Math.max.apply(null,st.items.map(i=>used[i.id]?+new Date(used[i.id]):0));}
+function freshItems(st){if(!isUsed(st))return[];const ua=usedAt(st);return st.items.filter(i=>!used[i.id]&&+new Date(i.seen||i.published)>ua);}
+const hasUpd=st=>freshItems(st).length>0;
+const isDone=st=>isUsed(st)&&!hasUpd(st);
+const STEPS=[['s','1 Script'],['g','2 Gemini'],['j','3 JSON']];
+const stepOn=(st,k)=>st.items.some(i=>steps[i.id]&&steps[i.id][k]);
+function setStep(st,k,on){st.items.forEach(i=>{if(on){(steps[i.id]=steps[i.id]||{})[k]=new Date().toISOString();}else if(steps[i.id]){delete steps[i.id][k];if(!Object.keys(steps[i.id]).length)delete steps[i.id];}});try{localStorage.setItem(KP,JSON.stringify(steps));}catch(e){}}
+const stepCount=st=>STEPS.filter(x=>stepOn(st,x[0])).length;
+const isWip=st=>!isUsed(st)&&stepCount(st)>0;
 const isLater=st=>st.items.some(i=>later[i.id]);
 const isNew=st=>lastVisit>0&&st.firstSeen>lastVisit&&!isUsed(st);
 const isHot=st=>st.recent>=3;
 function setLater(st,on){st.items.forEach(i=>{if(on)later[i.id]=new Date().toISOString();else delete later[i.id];});try{localStorage.setItem(KL,JSON.stringify(later));}catch(e){}}
 function setUsed(st,on){st.items.forEach(i=>{if(on)used[i.id]=new Date().toISOString();else delete used[i.id];});saveU();}
+// ---- C157: story note
+function noteOf(st){let b=null;st.items.forEach(i=>{const n=notes[i.id];if(n&&(!b||n.at>b.at))b=n;});return b?b.t:'';}
+function setNote(st,t){t=(t||'').trim().slice(0,200);st.items.forEach(i=>{if(t)notes[i.id]={t:t,at:new Date().toISOString()};else delete notes[i.id];});saveN();}
+// ---- C156: Top-N chunav (kram = chunne ka kram)
+const isSel=st=>!!sel[st.id];
+function selList(){return stories.filter(isSel).sort((a,b)=>sel[a.id]-sel[b.id]);}
+function setSel(st,on){if(on)sel[st.id]=Date.now();else delete sel[st.id];saveSel();}
+function mergeSt(L){const items=[].concat.apply([],L.map(s=>s.items));return {id:'multi',title:'Top '+L.length+' khabrein',items:items,tags:Array.from(new Set([].concat.apply([],L.map(s=>s.tags)))),label:L.every(s=>s.label==='Confirmed')?'Confirmed':'Rumor',srcNames:Array.from(new Set([].concat.apply([],L.map(s=>s.srcNames)))),latest:items.map(i=>i.published).sort().pop()};}
+function packMulti(L){return L.map((s,k)=>'--- STORY '+(k+1)+' / '+L.length+' --- (label: '+s.label+')\n'+pack(s)).join('\n\n');}
+function MULTI_T(L){const n=L.length;return ['','=== TOP-'+n+' VIDEO (FORMAT A: aaj ki top '+n+') ===',
+  '- Neeche '+n+' alag stories hain (STORY PACK mein STORY 1..'+n+'). EK video, EK hi script.',
+  '- Har story ko alag VERIFY karo (har ek ki apni web searches). Fact Pack mein fact par story number likho (S1-F1, S2-F1...).',
+  '- Har story ka apna label STORY PACK mein hai (Rumor/Confirmed): Rumor wali par saaf \"संभावित / अभी ऑफिशियल नहीं\" label.',
+  '- Script ka order: chhota hook (sab '+n+' ka teaser) -> STORY 1..'+n+' (isi kram mein) -> ek line outro. Har story ke beech mein saaf transition line.',
+  '- Lambai '+(n*140)+' shabd ke aas-paas (har story ~120-160 shabd). Gemini message FORMAT A par bharo (docs/GEMINI_SCRIPT_PROMPT_TEMPLATE.md).'];}
+// ---- C158: photo ke naam headline se
+const NAME_X=new Set(('ipl bcci icc t20 t20i odi odis test tests wpl sa20 bbl psl cpl rumor rumour confirmed team india indian england australia pakistan sri lanka south africa new zealand west indies bangladesh afghanistan zimbabwe ireland royals kings super indians knight riders capitals sunrisers challengers giants titans warriors mumbai chennai delhi kolkata bengaluru bangalore hyderabad rajasthan punjab lucknow gujarat retention release released retained auction trade traded squad match series tour world cup champions trophy asia board captain coach head chief selector selectors official report reports sources source update live news latest breaking big why how what who when where will can could would should not after before ahead his her their the this that these those and but for with from into over under out is are was were has have had set likely expected star veteran young former ex day days year years season final semi quarter winner winners players player cricket cricketer sports tak cricbuzz cricinfo fans fan home away debut return returns joins join leaves leave exit exits move moves shift shifts deal deals swap price prices crore lakh mega mini pick picks pace spin spinner bowler batter batsman keeper wicketkeeper allrounder to of in on at by as vs ready eyes eye want wants says say said open opens ban banned out new first second third top best last next one two three four five'
+).split(' '));
+function guessFromTitles(titles){
+  const cnt=new Map(),multi=[];
+  titles.forEach(t=>{const w=String(t).replace(/['\u2019]s\b/g,'').split(/[^A-Za-z'\u2019-]+/).filter(Boolean);let run=[];
+    const flush=()=>{if(run.length){const r=run.slice(0,3).join(' ');if(run.length>1){multi.push(r);}const k=r.toLowerCase();cnt.set(k,{n:(cnt.get(k)?cnt.get(k).n:0)+1,txt:r,m:run.length>1});}run=[];};
+    w.forEach(x=>{if(/^[A-Z][a-z][a-z'\u2019-]*$/.test(x)&&!NAME_X.has(x.toLowerCase()))run.push(x);else flush();});flush();});
+  const all=Array.from(cnt.values()),mw=all.filter(x=>x.m);
+  const out=all.filter(x=>x.m||(x.n>=2&&!mw.some(y=>y.txt.toLowerCase().split(' ').indexOf(x.txt.toLowerCase())>=0)));
+  out.sort((a,b)=>(b.m-a.m)||(b.n-a.n));
+  return out.slice(0,4).map(x=>x.txt);}
+const TEAMS=[['Rajasthan Royals',/rajasthan royals|\bRR\b/i],['Lucknow Super Giants',/lucknow super giants|\bLSG\b/i],['Chennai Super Kings',/chennai super kings|\bCSK\b/i],['Royal Challengers Bengaluru',/royal challengers|\bRCB\b/i],['Mumbai Indians',/mumbai indians|\bMI\b/],['Kolkata Knight Riders',/kolkata knight riders|\bKKR\b/i],['Sunrisers Hyderabad',/sunrisers|\bSRH\b/i],['Delhi Capitals',/delhi capitals|\bDC\b/],['Punjab Kings',/punjab kings|\bPBKS\b/i],['Gujarat Titans',/gujarat titans|\bGT\b/],['India',/\bIndia\b/],['England',/\bEngland\b/],['Australia',/\bAustralia\b/],['Pakistan',/\bPakistan\b/],['South Africa',/\bSouth Africa\b/],['New Zealand',/\bNew Zealand\b/]];
+function guessTag(name,titles){let back='';const nl=name.toLowerCase();
+  for(const t of titles){const i=t.toLowerCase().indexOf(nl);if(i<0)continue;let fw=null,fp=1e9,bk=null,bp=-1;
+    TEAMS.forEach(tm=>{const m=tm[1].exec(t);if(!m)return;if(m.index>i&&m.index<fp){fp=m.index;fw=tm[0];}if(m.index<i&&m.index>bp){bp=m.index;bk=tm[0];}});
+    if(fw)return fw;if(bk&&!back)back=bk;}
+  return back||(titles.some(t=>/\bIPL\b/.test(t))?'IPL':'');}
+// ---- E2/E3/E4: scrape headline match
+const GENW=new Set('ipl cricket cricketer team teams player players news latest update updates today live match video photos report reports says said reportedly set big major after ahead ready star'.split(' '));
+function toks(x){return Array.from(new Set((x||'').toLowerCase().replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(w=>w.length>2&&!STOPW.has(w)&&!GENW.has(w)&&!/^\d+$/.test(w))));}
+function overlap(a,b){if(a.length<2||b.length<2)return 0;const sb=new Set(b);let n=0;a.forEach(w=>{if(sb.has(w))n++;});const r=n/Math.min(a.length,b.length);return((n>=3&&r>=0.45)||(n>=2&&r>=0.7))?n:0;}
+function matchHL(st,list){const T=st.items.map(i=>toks(i.title));let best=null,bs=0;(list||[]).forEach(h=>{const H=h.k||(h.k=toks(h.t));T.forEach(t=>{const n=overlap(t,H);if(n>bs){bs=n;best=h;}});});return best;}
+const OFFICIAL=[['BCCI','https://www.bcci.tv/news','bcci.tv'],['IPL','https://www.iplt20.com/news','iplt20.com'],['ICC','https://www.icc-cricket.com/news','icc-cricket.com']];
+function offFor(st){return OFFICIAL.map(o=>{const m=matchHL(st,scr.sites[o[0]]);return m?{site:o[0],t:m.t,l:m.l}:null;}).filter(Boolean);}
+function extraFor(st){return missingSites(st).map(s=>{const m=matchHL(st,scr.sites[s[0]]);return m?{site:s[0],t:m.t,l:m.l}:null;}).filter(Boolean);}
+function photosOf(L){const o=[];L.forEach(st=>{(phStore[st.id]||[]).forEach(p=>{if(o.indexOf(p.id)<0)o.push(p.id);});});return o;}
 function pack(st){
   const L=['STORY: '+st.title,'Tags: '+st.tags.join('/')+' | Label: '+st.label+' | '+st.srcNames.length+' sites | Latest: '+new Date(st.latest).toLocaleString('hi-IN'),'Headlines (har site ki):'];
+  const nt0=noteOf(st);if(nt0)L.splice(2,0,'RAHUL KA NOTE (angle/timing, dhyan rakho): '+nt0);
   st.items.forEach(i=>{L.push('- ['+(i.source||'?')+', '+ago(i.published)+'] '+i.title+(i.summary?' — '+i.summary:'')+' — '+i.link);});
+  const ex=extraFor(st);if(ex.length){L.push('Extra sites ki headline (extension ne site ka page padha; same story lagti hai, khud verify karo):');ex.forEach(m=>L.push('- ['+m.site+'] '+m.t+' — '+m.l));}
+  const of=offFor(st);if(of.length){L.push('Official site par milti-julti post (extension ne padha; label khud tay karo, apne aap Confirmed mat maano):');of.forEach(m=>L.push('- ['+m.site+'] '+m.t+' — '+m.l));}
   L.push('(Verify web search se karna; naye facts nahi jodna; script mein source ka naam nahi.)');
   return L.join('\n');}
-function factPrompt(st){
-  const rum=st.label!=='Confirmed';
-  return ['Mere cricket YouTube channel ke liye is khabar ka Fact Pack + EK poora script banao (simple Hinglish).',
-  'Niyam: pehle web search se verify karo (kaun si baat pakki, kaun si sirf afwah); naye facts mat jodo; script mein kisi site/source ka naam nahi; team ke short form nahi, sheher ke naam (Mumbai, Chennai...); fantasy/Dream11/betting nahi; photo web se download nahi.',
-  rum?'Ye abhi AFWAH/अपुष्ट hai: script mein "संभावित: ऑफिशियल लिस्ट नहीं" jaisa saaf label rakho; RELEASE/RETAIN ka pakka stamp mat lagao jab tak official list na ho.':'Official feed se hai, phir bhi web par verify karo.',
-  'Output: 1) Pakki baatein 2) Afwah/adhoori baatein 3) Script (hook, 4-6 scene, outro) 4) Scene ke hisaab se card type ka suggestion.',
-  '',pack(st)].join('\n');}
+const CITY_RULES=[['rajasthan',/rajasthan|\bRR\b|राजस्थान/i,/\bRR\b/],['lucknow',/lucknow|\bLSG\b|लखनऊ/i,/\bLSG\b/],['chennai',/chennai|\bCSK\b|चेन्नई/i,/\bCSK\b/],['bengaluru',/bengaluru|bangalore|\bRCB\b|बेंगलुरु|बैंगलोर/i,/\bRCB\b/],['mumbai',/mumbai|मुंबई/i,null],['kolkata',/kolkata|\bKKR\b|कोलकाता/i,/\bKKR\b/],['hyderabad',/hyderabad|\bSRH\b|हैदराबाद/i,/\bSRH\b/],['delhi',/delhi|दिल्ली/i,null],['punjab',/punjab|\bPBKS\b|पंजाब/i,/\bPBKS\b/],['gujarat',/gujarat|\bGT\b|गुजरात/i,/\bGT\b/]];
+function cityHints(st){
+  const txt=st.items.map(i=>i.title).join(' | '),out=[];
+  CITY_RULES.forEach(r=>{if(r[1].test(txt)||(r[2]&&r[2].test(txt)))out.push(r[0]);});
+  if(/\bMI\b/.test(txt)&&out.indexOf('mumbai')<0)out.push('mumbai');
+  if(/\bDC\b/.test(txt)&&out.indexOf('delhi')<0)out.push('delhi');
+  return out;}
+const GEM_T="=== TUM KAUN HO ===\nTum ek top Hindi cricket YouTuber ke news-video script writer ho. Style: tez, mazedaar, thoda filmy, par facts par pakka. Sirf cricket news. Fantasy, Dream11, betting, odds, giveaway, Telegram/WhatsApp ka zikr bilkul nahi.\n\n=== FORMAT AUR NIYAM (poore message mein yaad rakhna) ===\nBHASHA: saral Devanagari Hindi, jaise log bolte hain. Cricket ke shabd (trade, retain, release, purse, auction) waise hi rakho.\nSCRIPT: ek hi poora script, ek hi block mein. Koi heading nahi, koi bhag/chunk ka naam nahi, koi intro ya samjhauna nahi.\nVAAKYA: chhote (10-14 shabd), ek vaakya mein ek baat. Ek saans mein 3 se zyada numbers nahi.\nLABEL NIYAM:\n 1. OFFICIAL fact ko seedha fact bolo (\"pakki jaankari hai\").\n 2. REPORT fact par \"khabron ke mutabik\" / \"reports kehti hain\" bolo. Ise confirm mat kaho.\n 3. RUMOR par hamesha \"abhi sirf rumor hai\" ya \"pakki khabar nahi\" bolo. Nateeja mat banao.\n 4. \"Confirm\", \"pakka\", \"100%\" sirf OFFICIAL ke liye.\nSOURCE: kisi website, agency ya channel ka naam script mein MAT bolo (Cricbuzz, ESPNcricinfo, IANS, PTI jaise koi bhi).\nTEAM: sheher ka naam likho (Lucknow, Rajasthan, Chennai, Mumbai...). LSG/RR/CSK/MI jaise short form mat likho.\nSTYLE: beech-beech mein sawaal (\"Aapko kya lagta hai?\"). Har 45-60 second mein ek mod ya \"lekin yahan twist hai\" line. Mazaak sirf khabar ya sthiti par; kisi desh, dharm, jaati, parivar ya insaan par taana nahi. Hype bina data ke nahi.\nCTA (FIXED, har video mein, shabd-ba-shabd): (a) script ke lagbhag beech mein, kisi hisse ke natural break par: \"अगर अब तक का वीडियो पसंद आ रहा है, तो लाइक का बटन दबाइए और चैनल को सब्सक्राइब कीजिए।\" (b) script ke bilkul aakhir mein, sawalon ke baad: \"आपकी इस बारे में क्या राय है? कमेंट में ज़रूर बताइए। और ऐसी हर खबर सबसे पहले पाने के लिए लाइक करें और चैनल को सब्सक्राइब करना न भूलें। धन्यवाद!\" Ye dono lines naye fact nahi maani jaayengi.\nSHURUAAT (FIXED, har video mein): Script ke sabse pehle ye teen cheezein, isi order mein. (1) Sabse pehle \"इस वीडियो में हम बात करेंगे\" se shuru hokar 1-2 chhote vaakya jo batayein ki is video mein kya hai (sirf diye gaye facts ke andar; rumor/report ho to yahin \"अभी सिर्फ रूमर है\" / \"खबरों के मुताबिक\" bolo). (2) Phir ye vaakya shabd-ba-shabd, ek akshar bhi badle bina: \"नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं 99 क्रिकेट न्यूज़।\" (3) Phir ye vaakya shabd-ba-shabd: \"तो बिना देर किए, शुरू करते हैं।\" Uske baad poora script. Ye teen hisse naye fact nahi maane jaayenge.\nPAKKE NIYAM:\n a. Diye gaye saare facts script mein aane chahiye. Koi F-number chhodna nahi.\n b. Koi NAYA fact, number, date, record, quote, stat ya tark apni taraf se mat jodo.\n c. Naam, number, date, aur kaun kahan jaa raha hai (disha) bilkul wahi rakho jo diya hai.\n d. Koi \"[APNI RAAY]\" ya \"[CHECK]\" marker mat chhodo; koi raay chahiye to Facts ke hisaab se narm line likho.\n e. Kisi doosre creator ke vaakya yaad karke mat likhna. Sab apne shabdon mein.\n\n=== VIDEO ===\nTITLE: {{video ka title}}\nFORMAT: {{B: ek badi khabar / A: aaj ki top 5 / C: release-retention list / D: rumor ya sach}}\nLAMBAI: {{600-750 shabd}}\nAAJ KI DATE: {{date}}\n\n=== FACTS (har ek ka label dekho) ===\n{{F1 (LABEL): ...\nF2 (LABEL): ...}}\n\n=== DHANCHA ===\n{{FIXED shuruaat (intro -> is video mein -> shuru karte hain) -> hook -> kya khabar -> kya pech/twist -> paisa/pichhli baat -> dono taraf ka fayda -> twist -> sawal -> aakhir ka FIXED CTA; beech mein FIXED like/subscribe line}}\n\n=== AAKHIR MEIN YAAD DILANA ===\nUpar ke saare niyam dobara dhyan se: koi source ka naam nahi, team ka short form nahi, koi naya fact nahi, rumor ko pakka nahi, kisi khiladi ki disha ulti nahi, koi khali marker nahi.\nScript ki shuruaat wahi FIXED teen hisson wali ho (intro vaakya aur \"शुरू करते हैं\" vaakya bilkul na badlen). Ab is poore script ko BEST SE BHI BEST banao: hook aisa ki pehle 5 second mein rok le, bolne mein smooth, chhote tez vaakya, beech mein sawal aur twist, aakhir mein mazboot CTA. Par SIRF diye gaye facts ke andar. Ek bhi naya fact nahi.\nLikhne se pehle chupchaap khud check kar lo ki saare F-numbers aa gaye aur koi niyam nahi toota.\nOUTPUT: sirf ek hi poora script, ek hi block. Sabse neeche ek line: \"Use kiye gaye facts: F1, F2, ...\"";
+const SCHEMA_T="SCENES JSON SHORT SCHEMA (poora: docs/SCENES_JSON_SCHEMA.md, zip attach ho to wahi padho):\nScenes = ARRAY. Scene: {\"type\",\"dur\"(1.5-30),\"chunk\":1,\"tr\",\"trDur\",\"header\",\"pills\",\"data\":{...}}. Sab scenes par \"chunk\":1 (ek video = ek voice-over), jab tak Rahul \"chunks mein\" na bole.\ntr: cut|fade|grunge|zoom|whip|glitch|flash|slideup|push|iris|blinds|rgb|spin|lightwipe|tiles|blurfade (pehle scene par nahi).\nheader: upar ki line (<=70, *shabd*=peela), ek beat ke kai scenes par wahi text. pills: [{\"t\":\"संभावित\",\"c\":\"r\"}] c=g/r/y/x, t<=24.\nCards (data): hook(big YA to; pre<=40, unit<=20, post<=80) | title(city, headline<=70, sub<=60, ticker<=140) | stat(photo, head<=50, sub<=60, to YA big, unit, lt=red/blue/purple, tag) | retain(city, name<=30, amount, note<=80, stamp=retain/watch/rumour/official; release BLOCKED) | watch(names 1-6, title, photos 0-2, note) | rumour(head<=50, sub<=60, photos 1-2) | anth(qs 1-3 har ek<=90, title, cta) | cta(mode=like/end, title, line) | bullets(items 2-5, title) | stack(items 2-9 har ek<=40, hl, pill) | timeline(points 2-6, at, label) | timelist(items \"naam|number\", unit, total) | checklist(items 2-6, title) | tiles(items \"label|pill|icon\") | bigwords(a,b,join) | qcards(qs 2-3<=60, hl) | quote(quote, name, role; sirf asli quote) | chapter(title, num) | crowd(total, hi, label) | curve(y1 \"5,12,40\", l1, title) | split(inner, pres/clip) | intro(line1, line2).\ncity: bengaluru, chennai, delhi, gujarat, hyderabad, kolkata, lucknow, mumbai, punjab, rajasthan (10 mein se).\nERROR (load nahi hoga): unknown type/tr/city/stamp, dur galat, data missing, photo slot unknown, release stamp, fantasy/Dream11/betting shabd, names>6, qs>3. WARNING: bahut lamba text, team short form, source ka naam, \"official\" stamp.";
+function oneStory(st,i){return Object.assign({},st,{items:[i],title:i.title,srcNames:[i.source||'?'],srcKeys:[sk(i.source)],label:i.label==='Confirmed'?'Confirmed':'Rumor',tags:(i.tags&&i.tags.length?i.tags.filter(x=>TAGS.indexOf(x)>=0):[]).length?i.tags.filter(x=>TAGS.indexOf(x)>=0):['Other'],latest:i.published});}
+function fullPrompt(st,only,multi){
+  if(multi)st=mergeSt(multi);else if(only)st=oneStory(st,only);
+  const phs=photosOf(multi||[st]);
+  const rum=st.label!=='Confirmed',tg=st.tags,cities=cityHints(st);
+  let body;
+  if(tg.includes('Retention')||tg.includes('Release')) body='retain/watch/rumour cards (player naam + city); release stamp BLOCKED hai, release ki baat rumour/watch se karo';
+  else if(tg.includes('Trade')) body='title (city) + rumour (2 photo) + watch + timeline/stack; trade par pakka stamp nahi';
+  else if(tg.includes('Auction')) body='stat/stack/timelist/bullets (purse, slots jaisi baatein, sirf script ke numbers)';
+  else if(tg.includes('India Match')||tg.includes('Team News')) body='title + stat (photo) + bullets/stack/checklist (playing XI, squad jaisi list)';
+  else body='title + stat/bullets/stack + rumour/watch jo script ke hisaab se thik baithe';
+  if(multi)body='FORMAT A top-'+multi.length+': har story ek chapter (chapter/stack card se number), phir us story ke 2-4 scenes (stat/rumour/watch/bullets); har story ka label apni story par';
+  return ['Mere cricket YouTube channel (99 Cricket News) ki '+(multi?'aaj ki TOP '+multi.length+' khabron ke EK video (FORMAT A) ka':'is khabar ka')+' poora kaam tum karoge, 3 step mein. Jawab simple Hinglish mein, chhote. Tum Claude ho: web search se verify karo.',
+  '',
+  ...(multi?MULTI_T(multi):[]),
+  '=== STEP 1 (abhi) ===',
+  '1) VERIFY: kam se kam 2 alag web searches (khabar ki + official confirmation ki). Aaj ki date dekho. Jo sources aapas mein ladte hon wo [CHECK] likho.',
+  '2) FACT PACK: har fact F1, F2... label OFFICIAL/REPORT/RUMOR, date, ek line, aakhir mein trust meter 1-5 (ek line karan). Source ka naam sirf mere liye yahan likh sakte ho.',
+  '3) CLAUDE SCRIPT: ek hi poora script, ek hi code block mein (600-750 shabd), niyam neeche GEMINI MESSAGE TEMPLATE ke FORMAT AUR NIYAM jaise. Naye facts nahi.',
+  '4) GEMINI MESSAGE: neeche ka template Fact Pack se bharke EK hi code block mein do, taaki main chahun to Gemini se script dobara banwa sakun. Title, format (B/A/C/D), lambai, date aur F-facts bharo; baaki shabd-ba-shabd rakho.',
+  'Phir ruko. Aage kuch mat banao jab tak main na kahun.',
+  '',
+  '=== STEP 2 (jab main Gemini ka output paste karun ya "Claude script final" bolun) ===',
+  'Line-by-line CHECK: naya fact/number/quote? official ko rumor ya rumor ko pakka bana diya? source ka naam, team short form? khiladi ki disha ulti? khali [APNI RAAY]/[CHECK] marker? "Use kiye gaye facts" jaisi meta line? shuruaat teaser -> fixed intro -> "शुरू करते हैं" shabd-ba-shabd? hook intro ke turant baad? beech ka like/subscribe CTA aur aakhir ka comment+like+subscribe CTA shabd-ba-shabd? Galtiyan theek karke FINAL script ek hi block mein do + 4-6 line mein kya badla.',
+  '',
+  '=== STEP 3 (jab main "JSON" bolun) === FINAL script se scenes.json, BEST SE BHI BEST:',
+  'Story ka hint: Tags '+tg.join('/')+' | Label '+(multi?'har story ka apna (STORY PACK dekho)':(rum?'Rumor / अपुष्ट':'Confirmed'))+(cities.length?' | City: '+cities.join(', '):' | City: script se chuno')+' | beech ke cards ke liye: '+body+'.',
+  '- Order: (1) hook = "इस वीडियो में" teaser (4-6 sec); presenter/intro scene MAT banao, tool ka 🎬 Standard intro button khud lagayega; (2) title card; (3) script ke har 1-2 vaakya ka ek scene (3-7 sec), jod script ke bolne ke samay jitna (~shabd/2.3 sec); (4) beech mein cta mode like usi jagah jahan script mein like/subscribe line hai; (5) anth (2-3 sawal); (6) sabse aakhir cta mode end.',
+  '- Variety: ek hi card type lagatar 2 se zyada baar nahi. Facts ke hisaab se card chuno: naam/paisa = stat/retain, list = bullets/stack/checklist, tareekh/silsila = timeline, tulna = timelist/tiles, sawal = qcards/anth, bada shabd = bigwords. "tr" har scene par alag, pehle par nahi. bg/tr khali chhod sakte ho (tool Auto-vary bharta hai).',
+  '- Beat ke scenes par same "header" rakho (jaise "Shami ki *Rajasthan* mein entry?") aur "pills" se label dikhao: sahi baat hara (g), afwah laal (r), adhoora peela (y).',
+  '- '+(multi?'Jo story Rumor hai (STORY PACK mein label) uspar "संभावित / अभी ऑफिशियल नहीं" bani rahe, official stamp nahi; Confirmed wali par bhi web-verified baat hi.':rum?'Ye RUMOR hai: retain/watch/rumour/title par "संभावित / अभी ऑफिशियल नहीं" bani rahe; official stamp ya "pakka/confirm" nahi.':'Official stamp tabhi jab script mein official list ka zikr ho; warna rumour/watch.'),
+  '- Text Devanagari Hindi, chhota (limits). Sirf final script ke facts. Source ka naam nahi, team short form nahi (sheher ka naam). Fantasy/Dream11/betting nahi.',
+  '- Photo: sirf library slot id jo pakka pata ho; warna custom_<naam> likho aur JSON ke baad ek list do: "ye slots pehle Photos mein + नाम जोड़ो se banao (sirf naam likho, custom_ khud lagta hai) aur photo upload karo, PHIR JSON load karo; load se pehle Sab hatao dabao". Photo ki zaroorat na ho to photo-free card lo.',
+  ...(phs.length?['- Library mein ye photo slots extension se ban chuke hain: '+phs.join(', ')+' — JSON mein yahi id likho (naam match ho to naya slot mat banao).']:[]),
+  '- Bhejne se pehle upar ke ERROR list se khud check chalao. Output: sirf JSON ARRAY, ek code block; neeche 3-4 line mein batao kaun si photos/city check karni hain.',
+  '',
+  SCHEMA_T,
+  '',
+  '=== GEMINI MESSAGE TEMPLATE (STEP 1 ke point 4 ke liye; {{...}} bharo) ===',
+  GEM_T,
+  '',
+  '=== STORY PACK ===',
+  (multi?packMulti(multi):pack(st))+(only?'\n(NOTE: ye sirf EK site ki headline hai, cross-check nahi hai. Web se kam se kam 2-3 alag sources se verify karo; jo sirf is ek post mein hai use [CHECK] likho.)':''),
+  '',
+  multi?'Har story ka label upar STORY PACK mein hai; Rumor wali par saaf label rakho, official stamp tabhi jab official list ho.':rum?'Ye abhi AFWAH/अपुष्ट hai: script mein "संभावित: ऑफिशियल लिस्ट नहीं" jaisa saaf label rakho; release/retain ka pakka stamp mat lagao jab tak official list na ho.':'Official feed se hai, phir bhi web se confirm karke hi likho.'
+  ].join('\n');}
+const SITES=[['ESPNcricinfo',/cricinfo/i,'https://www.cricinfo.com/cricket-news','espncricinfo.com'],['Cricbuzz',/cricbuzz/i,'https://www.cricbuzz.com/cricket-news/latest-news','cricbuzz.com'],['TheSportsTak',/sports\s?tak/i,'https://thesportstak.com/cricket','thesportstak.com'],['News18',/news\s?18/i,'https://www.news18.com/cricket/','news18.com/cricket'],['Times of India',/times\s?of\s?india|timesofindia/i,'https://timesofindia.indiatimes.com/sports/cricket','timesofindia.indiatimes.com/sports/cricket'],['India Today',/india\s?today|indiatoday/i,'https://www.indiatoday.in/sports/cricket','indiatoday.in/sports/cricket'],['Hindustan Times',/hindustan\s?times|hindustantimes/i,'https://www.hindustantimes.com/cricket','hindustantimes.com/cricket'],['CricTracker',/crictracker/i,'https://www.crictracker.com/cricket-news/?ref=hm','crictracker.com'],['NDTV Sports',/ndtv/i,'https://sports.ndtv.com/cricket','sports.ndtv.com/cricket'],['Sportskeeda',/sportskeeda/i,'https://www.sportskeeda.com/cricket','sportskeeda.com/cricket']];
+const STOPW=new Set('the a an to in of for vs and or set may might could would will is are be by on at with as from after before says say said report reports reportedly likely expected tipped eyeing news latest update live'.split(' '));
+function searchWords(st){
+  const w=(st.title||'').replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(x=>x.length>2&&!STOPW.has(x.toLowerCase()));
+  return Array.from(new Set(w)).slice(0,6).join(' ');}
+function siteSearchUrl(st,s){return 'https://www.google.com/search?q='+encodeURIComponent('site:'+s[3]+' '+searchWords(st));}
+function missingSites(st){return SITES.filter(s=>!st.items.some(i=>s[1].test((i.source||'')+' '+(i.link||''))));}
 function card(st){
-  const u=isUsed(st);
-  const c=el('div','card'+(u?' used':'')+(isLater(st)?' later':''));
+  const u=isUsed(st),fresh=freshItems(st),freshIds=new Set(fresh.map(i=>i.id));
+  const c=el('div','card'+(isDone(st)?' used':'')+(isLater(st)?' later':''));
   const b=el('div');
   b.appendChild(el('span','badge '+(st.label==='Confirmed'?'bC':'bR'),st.label==='Confirmed'?'✔ Confirmed':'❓ Rumor / अपुष्ट'));
   if(isHot(st))b.appendChild(el('span','badge bH','🔥 Trending: 3 ghante mein '+st.recent+' sites'));
   if(isNew(st))b.appendChild(el('span','badge bN','🆕 Naya'));
+  if(isOff(st))b.appendChild(el('span','badge bC','✅ Ab Official ho gaya (pehle Rumor tha)'));
+  if(fresh.length)b.appendChild(el('span','badge bU','🔄 Nayi update: '+fresh.length+' nayi post (video pehle ban chuka)'));
   st.tags.forEach(t=>b.appendChild(el('span','badge',t)));
   b.appendChild(el('span','badge','📣 '+st.srcNames.length+' site'+(st.srcNames.length>1?'s':'')+' · '+st.items.length+' post'));
+  const of=offFor(st);if(of.length){const ob=el('span','badge bO');ob.appendChild(document.createTextNode('🏛 Official site par mili: '));of.forEach((m,k)=>{if(k)ob.appendChild(document.createTextNode(', '));const a=el('a',null,m.site);a.href=m.l;a.target='_blank';a.rel='noopener';a.title=m.t;ob.appendChild(a);});b.appendChild(ob);}
   c.appendChild(b);
+  const sl=selList(),on=isSel(st),sc=el('span','chip sel'+(on?' on':''),on?'☑ Top-N #'+(sl.indexOf(sl.find(x=>x.id===st.id))+1):'☐ Top-N mein chuno');
+  sc.onclick=()=>{if(!on&&sl.length>=8){alert('Zyada se zyada 8 stories.');return;}setSel(st,!on);draw();};
+  const sw=el('div','row2');sw.appendChild(sc);c.appendChild(sw);
   c.appendChild(el('div','t',st.title));
   c.appendChild(el('div','sm','Taaza: '+ago(st.latest)));
+  const nr=el('div','note');nr.appendChild(el('span','lab','📝'));const ni=el('input');ni.type='text';ni.maxLength=200;ni.placeholder='apna note: kal 6 baje / angle: Shami ki entry';ni.value=noteOf(st);
+  ni.onchange=()=>{setNote(st,ni.value);ni.style.borderColor='#2a8a3a';};ni.onkeydown=e=>{if(e.key==='Enter')ni.blur();};nr.appendChild(ni);c.appendChild(nr);
   const box=el('div','srcs');
   const all=!!open[st.id],list=all?st.items:st.items.slice(0,SHOW);
   list.forEach(i=>{
     const r=el('div','sr');
     r.appendChild(el('span','sn',i.source||'?'));
-    r.appendChild(el('span','sh',i.title));
+    r.appendChild(el('span','sh',(freshIds.has(i.id)?'🆕 ':'')+i.title));
     r.appendChild(el('span','sl',ago(i.published)));
     const a=el('a','go','🔗 Kholo');a.href=i.link;a.target='_blank';a.rel='noopener';r.appendChild(a);
+    const ob=el('button','one','📋 Sirf ye');ob.onclick=async()=>{const x=fullPrompt(st,i);try{await navigator.clipboard.writeText(x);ob.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',x);}};r.appendChild(ob);
     box.appendChild(r);});
   c.appendChild(box);
+  const ms=missingSites(st);
+  if(ms.length){const mr=el('div','row2');mr.appendChild(el('span','lab','🌐 In sites par is story ki post nahi (↗ site kholo, 🔎 is story ki khoj)'+(scr.at?' · 🧩 check: '+ago(scr.at):'')+':'));
+    ms.forEach(s=>{const g=el('span','sgrp');const L=scr.sites[s[0]];
+      if(L&&L.length){const m=matchHL(st,L);if(m){const k=el('a','chip site ok','✔ '+s[0]+': '+(m.t.length>55?m.t.slice(0,55)+'…':m.t));k.href=m.l;k.target='_blank';k.rel='noopener';k.title=m.t;g.appendChild(k);}else g.appendChild(el('span','chip site no','✖ '+s[0]+' nahi mili'));}
+      else if(scr.err[s[0]])g.appendChild(el('span','chip site wa','⚠ '+s[0]+' padh nahi paaya'));
+      const a=el('a','chip site','↗ '+(L&&L.length?'':s[0]));a.href=s[2];a.target='_blank';a.rel='noopener';a.title=s[0]+' ka cricket page';g.appendChild(a);
+      const q=el('a','chip site q','🔎');q.href=siteSearchUrl(st,s);q.target='_blank';q.rel='noopener';q.title=s[0]+' par is story ki khoj';g.appendChild(q);mr.appendChild(g);});c.appendChild(mr);}
+  const sp=el('div','row2');sp.appendChild(el('span','lab','🛠 Kaam:'));
+  STEPS.forEach(x=>{const on=stepOn(st,x[0]);const ch=el('span','chip'+(on?' g on':''),(on?'✔ ':'')+x[1]);ch.onclick=()=>{setStep(st,x[0],!on);draw();};sp.appendChild(ch);});
+  c.appendChild(sp);
   const r=el('div','row');
   if(st.items.length>SHOW){const t=el('button',null,all?'▲ kam dikhao':'▼ saare '+st.items.length+' dikhao');t.onclick=()=>{open[st.id]=!all;draw();};r.appendChild(t);}
-  const ub=el('button',null,u?'↩ Used hatao':'✓ Use ho gaya');ub.onclick=()=>{setUsed(st,!u);draw();};r.appendChild(ub);
+  const ub=el('button',null,fresh.length?'✓ Update dekh li':(u?'↩ Used hatao':'✓ Use ho gaya'));ub.onclick=()=>{setUsed(st,fresh.length?true:!u);draw();};r.appendChild(ub);
   const lb2=isLater(st);const lt=el('button',null,lb2?'★ Baad mein hatao':'☆ Baad mein');lt.onclick=()=>{setLater(st,!lb2);draw();};r.appendChild(lt);
-  const fb=el('button',null,'🎬 Fact-Pack prompt');fb.onclick=async()=>{const t=factPrompt(st);try{await navigator.clipboard.writeText(t);fb.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(fb);
-  const cp=el('button',null,'📋 Story pack copy');cp.onclick=async()=>{const s=pack(st);try{await navigator.clipboard.writeText(s);cp.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',s);}};r.appendChild(cp);
-  c.appendChild(r);return c;}
+  const pb=el('button',null,pfOpen[st.id]?'▲ Photo band':'📷 Photo dhundho');pb.onclick=()=>{pfOpen[st.id]=!pfOpen[st.id];draw();};r.appendChild(pb);
+  const fb=el('button',null,'📋 Copy (poora prompt)');fb.onclick=async()=>{const t=fullPrompt(st);try{await navigator.clipboard.writeText(t);fb.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(fb);
+  c.appendChild(r);if(pfOpen[st.id])c.appendChild(pfBox(st));return c;}
 function chips(box,list,key,fmt){box.innerHTML='';list.forEach(v=>{const val=Array.isArray(v)?v[0]:v,txt=Array.isArray(v)?v[1]:v;
   const c=el('span','chip'+(key==='lbl'&&val==='Confirmed'?' g':'')+(key==='lbl'&&val==='Rumor'?' o':'')+(ui[key]===val?' on':''),txt);
   c.onclick=()=>{ui[key]=val;saveUI();draw();};box.appendChild(c);});}
 function top5(){
   const day=Date.now()-36*3600e3;
-  return stories.filter(s=>new Date(s.latest)>day&&!isUsed(s)).sort((a,b)=>(b.score-a.score)||(new Date(b.latest)-new Date(a.latest))).slice(0,5);}
+  return stories.filter(s=>new Date(s.latest)>day&&!isDone(s)).sort((a,b)=>(b.score-a.score)||(new Date(b.latest)-new Date(a.latest))).slice(0,5);}
 function draw(){
   const siteSet=new Map();stories.forEach(s=>s.srcKeys.forEach((k,j)=>{if(!siteSet.has(k))siteSet.set(k,{n:s.srcNames[j],c:0});siteSet.get(k).c++;}));
   if(ui.site!=='Sab'&&!siteSet.has(ui.site))ui.site='Sab';
@@ -143,8 +293,8 @@ function draw(){
   chips($('mins'),[[1,'Sab'],[2,'2+ sites'],[3,'3+ sites'],[4,'4+ sites']],'min');
   chips($('sites'),[['Sab','Sab']].concat(Array.from(siteSet.entries()).sort((a,b)=>b[1].c-a[1].c).map(e=>[e[0],e[1].n+' ('+e[1].c+')'])),'site');
   chips($('sorts'),[['latest','🕒 Naya pehle'],['sites','📣 Zyada sites pehle']],'sort');
-  const nN=stories.filter(isNew).length,nH=stories.filter(isHot).length,nL=stories.filter(isLater).length;
-  chips($('only'),[['Sab','Sab'],['new','🆕 Sirf naya ('+nN+')'],['hot','🔥 Trending ('+nH+')'],['later','⭐ Baad mein ('+nL+')']],'only');
+  const nN=stories.filter(isNew).length,nH=stories.filter(isHot).length,nL=stories.filter(isLater).length,nU=stories.filter(hasUpd).length,nO=stories.filter(isOff).length,nW=stories.filter(isWip).length;
+  chips($('only'),[['Sab','Sab'],['new','🆕 Sirf naya ('+nN+')'],['hot','🔥 Trending ('+nH+')'],['later','⭐ Baad mein ('+nL+')'],['upd','🔄 Nayi update ('+nU+')'],['off','✅ Ab official ('+nO+')'],['wip','🛠 Adhura kaam ('+nW+')'],['note','📝 Note wali ('+stories.filter(noteOf).length+')']],'only');
   $('only').querySelectorAll('.chip').forEach((c,k)=>{if(k===1)c.classList.add('n');if(k===2)c.classList.add('h');if(k===3)c.classList.add('l');});
   $('hideUsed').className='chip'+(ui.hide?' on':'');$('hideUsed').textContent=(ui.hide?'✔ ':'')+'Use ho chuki stories chhupao';
   const t=top5(),tb=$('top5');tb.innerHTML='';
@@ -155,21 +305,29 @@ function draw(){
     if(ui.lbl!=='Sab'&&s.label!==ui.lbl)return false;
     if(s.srcKeys.length<ui.min)return false;
     if(ui.site!=='Sab'&&!s.srcKeys.includes(ui.site))return false;
-    if(ui.hide&&isUsed(s))return false;
+    if(ui.hide&&isDone(s))return false;
     if(ui.only==='new'&&!isNew(s))return false;
     if(ui.only==='hot'&&!isHot(s))return false;
     if(ui.only==='later'&&!isLater(s))return false;
-    if(q&&!s.items.some(i=>(i.title+' '+(i.summary||'')).toLowerCase().includes(q)))return false;
+    if(ui.only==='upd'&&!hasUpd(s))return false;
+    if(ui.only==='wip'&&!isWip(s))return false;
+    if(ui.only==='note'&&!noteOf(s))return false;
+    if(ui.only==='off'&&!isOff(s))return false;
+    if(q&&!s.items.some(i=>(i.title+' '+(i.summary||'')).toLowerCase().includes(q))&&!noteOf(s).toLowerCase().includes(q))return false;
     return true;});
   res.sort(ui.sort==='sites'?(a,b)=>(b.srcKeys.length-a.srcKeys.length)||(new Date(b.latest)-new Date(a.latest)):(a,b)=>new Date(b.latest)-new Date(a.latest));
   res.slice(0,MAXS).forEach(s=>lb.appendChild(card(s)));
   if(!res.length)lb.appendChild(el('div','sm','Is filter mein koi story nahi.'));
-  else if(res.length>MAXS)lb.appendChild(el('div','sm','Pehli '+MAXS+' stories dikha rahe hain ('+res.length+' mili). Filter/khoj se chhota karo.'));}
+  else if(res.length>MAXS)lb.appendChild(el('div','sm','Pehli '+MAXS+' stories dikha rahe hain ('+res.length+' mili). Filter/khoj se chhota karo.'));
+  drawSel();}
 $('q').oninput=e=>{ui.q=e.target.value;draw();};
 $('hideUsed').onclick=()=>{ui.hide=!ui.hide;saveUI();draw();};
-$('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(used,null,1)],{type:'application/json'}));a.download='news_used.json';a.click();};
+$('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({format:'cvt_news_backup_v3',saved:new Date().toISOString(),used:used,steps:steps,later:later,notes:notes},null,1)],{type:'application/json'}));a.download='news_backup.json';a.click();};
 $('impU').onclick=()=>$('fi').click();
-$('fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!j||typeof j!=='object'||Array.isArray(j))throw new Error('object chahiye');Object.assign(used,j);saveU();draw();alert('Used list load ho gayi.');}catch(x){alert('JSON error: '+x.message);}};
+$('fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!j||typeof j!=='object'||Array.isArray(j))throw new Error('object chahiye');
+    if(j.format==='cvt_news_backup_v2'||j.format==='cvt_news_backup_v3'){Object.assign(used,j.used||{});Object.assign(later,j.later||{});Object.assign(notes,j.notes||{});saveN();Object.keys(j.steps||{}).forEach(id=>{steps[id]=Object.assign(steps[id]||{},j.steps[id]);});
+      saveU();try{localStorage.setItem(KL,JSON.stringify(later));localStorage.setItem(KP,JSON.stringify(steps));}catch(e){}draw();alert('Backup load ho gaya (used + steps + baad mein + notes).');}
+    else{Object.assign(used,j);saveU();draw();alert('Purani Used list load ho gayi.');}}catch(x){alert('JSON error: '+x.message);}};
 let NJ=new URLSearchParams(location.search).get('data')||'news/news.json';if(!/^[\w\/.-]+$/.test(NJ))NJ='news/news.json';
 function load(d){
   window.__upd=d.updated||null;items=(d.items||[]).slice();buildStories();
@@ -178,6 +336,76 @@ function load(d){
   draw();
   const nn=stories.filter(isNew).length;document.title=(nn?'('+nn+') ':'')+'Cricket News Tracker';}
 
+// ---- C156: Top-N bar
+function drawSel(){const L=selList(),b=$('selbar');b.innerHTML='';
+  if(!L.length){b.style.display='none';document.body.style.paddingBottom='';return;}
+  b.style.display='block';document.body.style.paddingBottom='150px';
+  const in_=el('div','in');b.appendChild(in_);
+  in_.appendChild(el('div','sm','☑ '+L.length+' stories chuni (Top-N video'+(L.length<2?' — kam se kam 2 chuno':L.length<3?' — 3-5 behtar':L.length>5?' — 5 se zyada lamba hoga':'')+')'));
+  L.slice(0,8).forEach((s,k)=>in_.appendChild(el('div','sm','#'+(k+1)+' '+(s.title.length>70?s.title.slice(0,70)+'…':s.title))));
+  const r=el('div','row');in_.appendChild(r);
+  const cb=el('button',null,'📋 Copy (Top-'+L.length+' prompt)');cb.onclick=async()=>{if(L.length<2){alert('Kam se kam 2 stories chuno.');return;}const t=fullPrompt(null,null,L);try{await navigator.clipboard.writeText(t);cb.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(cb);
+  STEPS.forEach(x=>{const all=L.every(st=>stepOn(st,x[0]));const sb=el('button',null,(all?'↩ ':'✔ ')+x[1]+' sab par');sb.onclick=()=>{L.forEach(st=>setStep(st,x[0],!all));draw();};r.appendChild(sb);});
+  const ub=el('button',null,'✓ Sab Use ho gayin');ub.onclick=()=>{L.forEach(st=>setUsed(st,true));draw();};r.appendChild(ub);
+  const xb=el('button',null,'✖ Chuni hatao');xb.onclick=()=>{sel={};saveSel();draw();};r.appendChild(xb);}
+// ---- C158: extension se baat (ping / photo / scrape)
+let pfOpen={},pfNames={},pfMsg={},pfBusy=null,pfChain=Promise.resolve(),extWait=null;
+const toExt=msg=>window.postMessage({src:'pf-page',msg:msg},'*');
+function pingExt(){return new Promise(res=>{extWait=res;toExt({cmd:'ping'});setTimeout(()=>{if(extWait===res){extWait=null;res(false);}},900);});}
+window.addEventListener('message',e=>{if(e.source!==window||!e.data||e.data.src!=='pf-ext')return;const m=e.data.msg||{};
+  if(m.cmd==='pong'){if(extWait){const f=extWait;extWait=null;f(true);}}
+  else if(m.cmd==='pf-scrape')onScrape(m);
+  else if(m.cmd==='pf-set')pfChain=pfChain.then(()=>onPhotoSet(m)).catch(()=>{});
+  else if(m.cmd==='pf-result')pfChain=pfChain.then(()=>onPhotoResult(m)).catch(()=>{});});
+const nameId=n=>'custom_'+n.toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu,'_').replace(/^_|_$/g,'');
+function idb(){return new Promise((res,rej)=>{const r=indexedDB.open('cvt_photos',1);r.onupgradeneeded=()=>r.result.createObjectStore('p');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+async function idbHas(id){const d=await idb();return new Promise((res,rej)=>{const q=d.transaction('p','readonly').objectStore('p').count(id);q.onsuccess=()=>res(q.result>0);q.onerror=()=>rej(q.error);});}
+async function idbPut(id,blob){const d=await idb();return new Promise((res,rej)=>{const t=d.transaction('p','readwrite');t.objectStore('p').put(blob,id);t.oncomplete=()=>res();t.onerror=()=>rej(t.error);});}
+function addCustomName(name){const id=nameId(name);let a=[];try{a=JSON.parse(localStorage.getItem(KPC)||'[]')||[];}catch(e){}
+  if(!a.find(c=>c.id===id)){a.push({id:id,name:name});try{localStorage.setItem(KPC,JSON.stringify(a));}catch(e){}}return id;}
+function setPf(st,t){pfMsg[st.id]=t;const e=document.querySelectorAll('[data-pfm="'+st.id+'"]');e.forEach(x=>{x.textContent=t;});}
+function pfBox(st){const bx=el('div','pfbox');
+  if(pfNames[st.id]==null){const tt=st.items.map(i=>i.title);pfNames[st.id]=guessFromTitles(tt).map(n=>{const g=guessTag(n,tt);return g?n+' | '+g:n;}).join(', ');}
+  bx.appendChild(el('div','sm','📷 Kin ki photo? Format: naam | team/series (comma se alag). Team/series se alag-alag photo bante hain (Shami | Rajasthan Royals aur Shami | India alag slot). Andaza headline se hai, edit karo:'));
+  const inp=el('input');inp.type='text';inp.value=pfNames[st.id];inp.placeholder='Mohammed Shami | Rajasthan Royals, Sam Curran | IPL';inp.oninput=()=>{pfNames[st.id]=inp.value;};bx.appendChild(inp);
+  const go=el('button',null,'⚡ Google se photo lao (auto)');go.onclick=()=>pfRun(st);bx.appendChild(go);
+  const m=el('div','sm',pfMsg[st.id]||'Photo seedha tool ki library mein custom slot ban ke jaati hai. Pehle se ho to skip. Baad mein tool ke 🖼 Photos mein thumbnail check karo.');m.dataset.pfm=st.id;m.style.marginTop='6px';bx.appendChild(m);return bx;}
+let pfq=null;
+async function pfRun(st){
+  if(pfBusy){setPf(st,'⏳ Pehle wali queue chal rahi hai.');return;}
+  const names=(pfNames[st.id]||'').split(',').map(x=>{const a=x.split('|');return {n:a[0].trim(),tag:(a[1]||'').trim()};}).filter(x=>x.n).map(x=>Object.assign(x,{label:x.n+(x.tag?' · '+x.tag:'')})).slice(0,8);
+  if(!names.length){setPf(st,'Koi naam nahi — upar naam likho.');return;}
+  setPf(st,'Extension dhundh raha hoon…');
+  if(!(await pingExt())){setPf(st,'❌ Extension nahi mila ya purana hai. chrome://extensions mein Photo Finder (v1.1) Reload karo, phir page refresh.');return;}
+  const todo=[],skip=[];for(const x of names){const id=nameId(x.label);let has=false;try{has=await idbHas(id);}catch(e){}if(has)skip.push(x.label);else todo.push({n:x.label,q:x.n+(x.tag?' '+x.tag:''),id:id});}
+  if(!todo.length){setPf(st,'✔ Sab ki photo pehle se library mein hai ('+skip.join(', ')+').');return;}
+  pfq={st:st,todo:todo,skip:skip,got:[],cur:null,timer:null};pfBusy=st.id;pfNext();}
+function pfNext(){const q=pfq;if(!q)return;clearTimeout(q.timer);
+  if(!q.todo.length){const msg='✅ '+q.got.length+' photo library mein gayi'+(q.got.length?' ('+q.got.join(', ')+')':'')+(q.skip.length?' · pehle se thi: '+q.skip.join(', '):'')+'. Tool tab refresh karke 🖼 Photos mein thumbnail dekho.';pfq=null;pfBusy=null;setPf(q.st,msg);return;}
+  q.cur=q.todo.shift();setPf(q.st,'🔍 '+q.cur.n+' ('+q.todo.length+' baaki) — Google tab khulega');
+  toExt({cmd:'find',slotId:q.cur.id,label:q.cur.n,query:q.cur.q+' cricketer',auto:true,queueLeft:q.todo.length});
+  q.timer=setTimeout(()=>{if(pfq===q){setPf(q.st,'⏱ '+q.cur.n+': der lagi, skip');pfNext();}},120000);}
+async function onPhotoSet(m){const q=pfq;if(!q||!q.cur||m.slotId!==q.cur.id)return;
+  const blob=await (await fetch(m.dataUrl)).blob();await idbPut(q.cur.id,blob);addCustomName(q.cur.n);
+  (phStore[q.st.id]=phStore[q.st.id]||[]).push({id:q.cur.id,name:q.cur.n,at:new Date().toISOString()});phStore[q.st.id]=phStore[q.st.id].filter((p,k,a)=>a.findIndex(y=>y.id===p.id)===k);savePh();q.got.push(q.cur.n);}
+function onPhotoResult(m){const q=pfq;if(!q)return;if(m.cancel){clearTimeout(q.timer);const g=q.got.length;pfq=null;pfBusy=null;setPf(q.st,'⏹ Roka gaya ('+g+' photo ban chuki).');return;}pfNext();}
+// ---- E2/E3/E4: sites padho
+const SCR_LIST=()=>SITES.map(x=>({key:x[0],url:x[2],dom:x[3]})).concat(OFFICIAL.map(o=>({key:o[0],url:o[1],dom:o[2]})));
+const scrSt=t=>{$('scrSt').textContent=t;};
+function tokScr(){Object.keys(scr.sites).forEach(k=>scr.sites[k].forEach(h=>{h.k=toks(h.t);}));}
+function saveScr(){try{const o={at:scr.at,err:scr.err,sites:{}};Object.keys(scr.sites).forEach(k=>{o.sites[k]=scr.sites[k].map(h=>({t:h.t,l:h.l}));});localStorage.setItem(KSC,JSON.stringify(o));}catch(e){}}
+try{const j=JSON.parse(localStorage.getItem(KSC)||'null');if(j&&j.sites){scr={at:j.at||null,sites:j.sites,err:j.err||{}};tokScr();}}catch(e){}
+let scrRun=null;
+function scrDone(){if(!scrRun)return;clearTimeout(scrRun.timer);const n=scrRun.ok,t=scrRun.total;scr.at=new Date().toISOString();saveScr();scrRun=null;$('scrBtn').disabled=false;
+  const bad=Object.keys(scr.err).filter(k=>SCR_LIST().some(x=>x.key===k));scrSt('✔ '+n+'/'+t+' sites padhin'+(bad.length?' · khaali/fail: '+bad.join(', '):'')+'.');draw();}
+function onScrape(m){if(!scrRun)return;if(m.done){scrDone();return;}
+  if(m.ok&&m.items&&m.items.length){scr.sites[m.key]=m.items.map(h=>({t:h.t,l:h.l,k:toks(h.t)}));delete scr.err[m.key];scrRun.ok++;}
+  else{scr.err[m.key]=m.err||'headline nahi mili (site JavaScript se banati hogi)';}
+  scrRun.n++;scrSt('⏳ '+scrRun.n+'/'+scrRun.total+' sites padhin…');}
+$('scrBtn').onclick=async()=>{if(scrRun)return;scrSt('Extension dhundh raha hoon…');
+  if(!(await pingExt())){scrSt('❌ Extension nahi mila ya purana. chrome://extensions mein Photo Finder v1.1 Reload karo, phir page refresh.');return;}
+  const L=SCR_LIST();$('scrBtn').disabled=true;scrRun={n:0,ok:0,total:L.length,timer:setTimeout(scrDone,45000)};scrSt('⏳ 0/'+L.length+' sites padh raha hoon (background mein)…');toExt({cmd:'scrape',sites:L});};
+window.__cvtNews={guessFromTitles:guessFromTitles,toks:toks,overlap:overlap};
 // ---- C143: website se hi fetch (GitHub Actions workflow_dispatch) ----
 const KT='cvt_gh_token';
 function repoInfo(){const m=location.hostname.match(/^([^.]+)\.github\.io$/),seg=location.pathname.split('/').filter(Boolean)[0];
@@ -207,8 +435,8 @@ $('fetchNow').onclick=async()=>{
 };
 // ---- C145: auto-refresh har 3 min (page khula rahe to khud naya data) + 'pichli baar ke baad naya'
 setInterval(async()=>{if(document.hidden)return;try{const d=await (await fetch(NJ+'?'+Date.now())).json();if(d.updated&&d.updated!==window.__upd){load(d);fst('🔄 Auto-refresh: naya data aaya.');}}catch(e){}},REFRESH);
-window.addEventListener('pagehide',()=>{try{localStorage.setItem(KV,String(Date.now()));}catch(e){}});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){try{localStorage.setItem(KV,String(Date.now()));}catch(e){}}});
+window.addEventListener('pagehide',()=>{try{localStorage.setItem(KV,String(Date.now()));}catch(e){}saveSeen();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){try{localStorage.setItem(KV,String(Date.now()));}catch(e){}saveSeen();}});
 fetch(NJ+'?'+Date.now()).then(r=>{if(!r.ok)throw new Error(NJ+' nahi mila ('+r.status+')');return r.json();}).then(load).catch(e=>{$('upd').textContent='';const b=$('fails');b.className='err';b.textContent='Load error: '+e.message+' (file:// se nahi, GitHub Pages / http se kholo)';draw();});
 })();
 </script></body></html>

@@ -62,3 +62,29 @@ Token kisi ko mat do. Kahin leak ho to GitHub mein delete kar do. Token sirf is 
 - **🔥 Trending**: pichle 3 ghante mein 3+ alag sites ne ek hi story chhaapi (abhi garam khabar). **🆕 Naya**: aapki pichli visit ke baad aayi. **☆ Baad mein**: video ke liye side mein rakho. Teeno ke filter 'Sirf:' row mein.
 - Page khula rahe to har 3 min khud naya data le leta hai.
 
+
+## Ek copy button (C147)
+Story pack copy hata; ab sirf **📋 Copy (prompt + story)** (niyam + Story pack). Claude chat mein seedha paste karo.
+
+## Ek button, poora prompt (C148)
+**📋 Copy (poora prompt)** ko Claude chat mein paste karo: Step 1 Fact Pack + script + Gemini message; Step 2 Gemini output ka check; Step 3 'JSON' bolne par scenes.json. Dusra Scenes JSON button hata diya.
+
+## Official alert + Nayi update (C149)
+✅ Ab Official ho gaya: pichli visit par Rumor thi, ab Confirmed. 🔄 Nayi update: 'Use ho gaya' story par naye posts aaye. Chips: 🔄 Nayi update, ✅ Ab official. 'Update dekh li' dabao to badge hatega.
+
+## 🛠 Kaam steps (C150)
+Card par 1 Script / 2 Gemini / 3 JSON chip tap karke tick karo. '🛠 Adhura kaam' chip se adhoori stories dikhti hain. Sirf is browser mein save hota hai.
+
+## Sirf ye + official feeds (C151)
+- Har site ki row mein **📋 Sirf ye**: poora prompt, par pack mein sirf wo ek headline (ek site ka risk NOTE ke saath).
+- feeds.json mein 4 official feeds (BCCI, IPL, ICC, IPL teams). Inse aayi khabar **✔ Confirmed** dikhti hai (rumor jaisa shabd ho to Rumor). Google News ke site: search se aati hain, isliye kisi site ki khabar Google News mein na ho to us feed mein kuch nahi aayega.
+- Pehli Run ke baad check karo: 'feed fail' banner, aur Confirmed badge wali stories. Kisi domain ki khabar kabhi nahi aati to feeds.json mein wo domain sahi karo.
+
+## Baaki sites ke button (C152)
+Har card mein jis site ki is story par post nahi, uska ↗ button aata hai (us site ka cricket news page naye tab mein). 10 sites ki list news.html ke SITES array mein; link badalna ho to wahin.
+
+## Baaki kaam (C153)
+Poori list aur detail: **docs/NEWS_TODO.md** (missing site par khoj, kai stories ka ek video, used+steps backup, story note, Telegram alert, aliases tune).
+
+## 🔎 khoj + Backup (C154)
+Missing site ke ↗ ke saath 🔎: Google site: search story ke shabdon se. ⬆ Backup save / ⬇ Backup load: used + steps + baad mein ek file news_backup.json mein (purani news_used.json bhi load hoti hai).

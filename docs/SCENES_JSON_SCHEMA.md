@@ -56,9 +56,14 @@ Example: js/card_short.js ke neeche DEMO_SHORT.
 ## Look / Auto-vary (C32)
 Scenes JSON ka format nahi badla. Tool mein '🎨 Look preset' (Night/Gold/Clean/Grunge/Studio) + '🎲 Auto-vary' scenes ke `bg` aur `tr` apne aap bhar dete hain. Claude JSON banate waqt `bg`/`tr` khali chhod sakta hai ya alag-alag de; har video mein same bg/tr mat dohrao.
 
+C164: cards mein rumor/official/अफवाह/ऑफिशियल wali cheez nahi likhni (stamp aur label tool ab dikhata hi nahi, aisi pill hat jati hai, checker warning deta hai). `stamp` field bachi hai par ignore hoti hai; "label hatana" ab error nahi.
+
+Bhasha niyam (C163): sirf KHABAR/news wali baat Hindi mein (naam, headline, rumour, facts). Basic cheezein English mein: Like/Comment/Subscribe, Thank you, Watch next, What do you think? — cta/short_cta/endscreen/anth ka text English likho. Tool cta card par Hindi title/line ko khud English se badal deta hai (Hindi chahiye to data.hindi:true).
+
 ## Photo slot id
 - Library slot: jaise `player_kolkata_sunil_narine_headshoulders` (🖼 Photos list mein hai).
 - Apna naam wala: `custom_<naam>` (Photos mein "+ नाम जोड़ो" se banta hai).
+- (C162) `custom_<naam>` library mein na ho to JSON load par slot apne aap ban jata hai (naam id se); Rahul ko sirf photo upload karni hoti hai. Isliye naya naam seedha `custom_<naam>` likho.
 - Unknown id = **error**. Photo upload nahi hui = **warning** (scene editor ka 📷 summary upload karwa dega).
 - Khali photo ("") = warning.
 

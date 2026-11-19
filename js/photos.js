@@ -15,6 +15,15 @@ P.label=id=>{if(!id)return '';const s=P.slots().find(x=>x.id===id);return s?(s.h
 P.addCustom=name=>{name=String(name||'').trim();if(!name)return null;
  const id='custom_'+name.toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu,'_').replace(/^_|_$/g,'');
  if(!P.custom.find(c=>c.id===id)){P.custom.push({id,name});saveCustom();}return id;};
+// C162: scene JSON mein jo custom_<naam> id hai wo library mein na ho to apne aap naam-slot ban jaye (sirf photo upload karni pade)
+P.ensureCustom=(id,name)=>{id=String(id||'').trim();if(id.indexOf('custom_')!==0||id.length<=7)return false;
+ if(P.slots().find(x=>x.id===id))return false;
+ if(!name)name=id.slice(7).replace(/_+/g,' ').trim().replace(/(^|\s)(\p{Ll})/gu,(m,a,b)=>a+b.toUpperCase());
+ P.custom.push({id,name});saveCustom();return true;};
+P.autoFromScenes=scenes=>{const made=[];if(!Array.isArray(scenes))return made;
+ const one=v=>{if(typeof v==='string'&&P.ensureCustom(v))made.push(P.label(v));};
+ scenes.forEach(sc=>{const d=sc&&sc.data;if(!d||typeof d!=='object')return;one(d.photo);if(Array.isArray(d.photos))d.photos.forEach(one);});
+ return made;};
 P.removeCustom=async id=>{P.custom=P.custom.filter(c=>c.id!==id);saveCustom();await P.remove(id);};
 P.set=async(slot,file)=>{await dbPut(slot,file);P.C.setPhoto(slot,await blobImg(file));P.have[slot]=1;P.onChange&&P.onChange(slot);};
 P.remove=async slot=>{await dbDel(slot);delete P.C.photos[slot];delete P.have[slot];P.onChange&&P.onChange(slot);};
@@ -28,6 +37,19 @@ P.exportAll=async()=>{const out={v:1,custom:P.custom,photos:{}};for(const k of a
 P.importAll=async file=>{const j=JSON.parse(await file.text());let n=0;
  (j.custom||[]).forEach(c=>{if(!P.custom.find(x=>x.id===c.id))P.custom.push(c);});saveCustom();
  for(const k of Object.keys(j.photos||{})){const b=await (await fetch(j.photos[k])).blob();await P.set(k,b);n++;}return n;};
+// C160: PC ke folder mein save / folder se load (File System Access API, Chrome desktop). File naam = slot id + .jpg/.png/.webp, naam list _photo_names.json
+const EXT={'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp','image/gif':'.gif'};
+P.saveToFolder=async()=>{if(!window.showDirectoryPicker)throw new Error('Is browser mein folder save nahi (Chrome desktop chahiye)');
+ const dir=await window.showDirectoryPicker({mode:'readwrite',id:'cvt_photos'});let n=0;
+ for(const k of await dbKeys()){const b=await dbGet(k);if(!b)continue;const fh=await dir.getFileHandle(k+(EXT[b.type]||'.jpg'),{create:true});const w=await fh.createWritable();await w.write(b);await w.close();n++;}
+ const nf=await dir.getFileHandle('_photo_names.json',{create:true});const w2=await nf.createWritable();await w2.write(JSON.stringify({v:1,custom:P.custom},null,1));await w2.close();return n;};
+P.loadFromFolder=async()=>{if(!window.showDirectoryPicker)throw new Error('Is browser mein folder load nahi (Chrome desktop chahiye)');
+ const dir=await window.showDirectoryPicker({mode:'read',id:'cvt_photos'});let n=0;const files=[];let names=null;
+ for await(const e of dir.values()){if(e.kind!=='file')continue;if(e.name==='_photo_names.json'){try{names=JSON.parse(await (await e.getFile()).text());}catch(x){}continue;}
+  const m=/^(.+)\.(jpe?g|png|webp|gif)$/i.exec(e.name);if(m)files.push([m[1],e]);}
+ ((names&&names.custom)||[]).forEach(c=>{if(c&&c.id&&!P.custom.find(x=>x.id===c.id))P.custom.push(c);});
+ for(const[id,e]of files){if(id.indexOf('custom_')===0&&!P.custom.find(x=>x.id===id)&&!(window.PHOTO_SLOTS||[]).find(x=>x.id===id))P.custom.push({id,name:id.slice(7).replace(/_/g,' ')});}
+ saveCustom();for(const[id,e]of files){await P.set(id,await e.getFile());n++;}return n;};
 let panel,list;
 const CITY_HI={chennai:'चेन्नई',mumbai:'मुंबई',punjab:'पंजाब',lucknow:'लखनऊ',gujarat:'गुजरात',rajasthan:'राजस्थान',kolkata:'कोलकाता',hyderabad:'हैदराबाद',delhi:'दिल्ली',bengaluru:'बेंगलुरु',custom:'मेरे जोड़े हुए नाम'};
 P.cityHi=c=>CITY_HI[c]||c;
@@ -35,13 +57,15 @@ function buildUI(){
  panel=document.createElement('div');
  panel.style.cssText='display:none;margin-top:8px;background:#1b1b1b;border-radius:6px;padding:8px';
  panel.innerHTML='<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input id="phq" placeholder="खोज: नाम / city / name" style="flex:1;min-width:160px;padding:8px;font-size:15px"><span id="phc" style="font-size:13px"></span></div>'
-  +'<div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><input id="phn" placeholder="नया नाम (player ya photo type: रोहित शर्मा, स्टेडियम भीड़…)" style="flex:1;min-width:200px;padding:8px;font-size:14px"><button id="pha" style="background:#2a6;padding:8px 12px">+ नाम जोड़ो</button><button id="phx" style="background:#555;padding:8px 12px">⬆ Backup</button><button id="phi" style="background:#555;padding:8px 12px">⬇ Restore</button><input type="file" id="phf" accept=".json" style="display:none"></div>'
+  +'<div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><input id="phn" placeholder="नया नाम (player ya photo type: रोहित शर्मा, स्टेडियम भीड़…)" style="flex:1;min-width:200px;padding:8px;font-size:14px"><button id="pha" style="background:#2a6;padding:8px 12px">+ नाम जोड़ो</button><button id="phx" style="background:#555;padding:8px 12px">⬆ Backup</button><button id="phi" style="background:#555;padding:8px 12px">⬇ Restore</button><button id="phd" style="background:#1a6;padding:8px 12px">📁 Folder mein save</button><button id="phr" style="background:#16a;padding:8px 12px">📂 Folder se load</button><input type="file" id="phf" accept=".json" style="display:none"></div>'
   +'<div id="phl" style="max-height:340px;overflow:auto;margin-top:6px"></div>';
  document.getElementById('wrap').insertBefore(panel,document.getElementById('info'));
  list=panel.querySelector('#phl');
  panel.querySelector('#phq').oninput=e=>{P.filter=e.target.value.trim().toLowerCase();render();};
  panel.querySelector('#pha').onclick=()=>{const i=panel.querySelector('#phn');if(P.addCustom(i.value)){i.value='';render();P.onChange&&P.onChange();}};
  panel.querySelector('#phx').onclick=async()=>{try{const n=await P.exportAll();alert(n+' photos ka backup download hua (photo_library_backup.json). Isse kahin safe rakho.');}catch(e){alert('Backup error: '+e.message);}};
+ panel.querySelector('#phd').onclick=async()=>{try{const n=await P.saveToFolder();alert(n+' photos folder mein save ho gayi. Ye folder safe rakho (Drive/pen drive mein bhi copy karo).');}catch(e){if(e.name!=='AbortError')alert('Folder save error: '+e.message);}};
+ panel.querySelector('#phr').onclick=async()=>{try{const n=await P.loadFromFolder();alert(n+' photos folder se load ho gayi.');render();}catch(e){if(e.name!=='AbortError')alert('Folder load error: '+e.message);}};
  panel.querySelector('#phi').onclick=()=>panel.querySelector('#phf').click();
  panel.querySelector('#phf').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const n=await P.importAll(f);alert(n+' photos restore ho gayi.');render();}catch(err){alert('Restore error: '+err.message);}e.target.value='';};
  const b=document.createElement('button');b.id='phb';b.textContent='🖼 Photos';b.onclick=()=>{panel.style.display=panel.style.display==='none'?'block':'none';render();};

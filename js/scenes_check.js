@@ -131,6 +131,7 @@ const MAXC={dotmap:{title:60,sub:80},vidcard:{title:80,meta:60},gauge:{label:30,
  short_hook:{pre:40,unit:20,post:80},short_stat:{pre:30,head:40,sub:50,unit:16},short_cta:{line1:60,line2:40,cta:30}};
 const BAD_WORDS=/dream\s*11|dream11|fantasy|betting|\bbet\b|सट्टा|फैंटेसी|ड्रीम\s*11/i;
 const SHORTS=/\b(MI|CSK|RCB|KKR|SRH|DC|PBKS|RR|GT|LSG)\b/;
+const BANW=/रूमर|रुमर|अफवाह|अफ़वाह|ऑफिशियल|ऑफ़िशियल|आधिकारिक|rumou?r|official/i;
 const SOURCES=/(cricbuzz|espncricinfo|cricinfo|times of india|ndtv|hindustan times|india today|dainik|amar ujala|sportskeeda)/i;
 const isStr=v=>typeof v==='string',isNum=v=>typeof v==='number'&&isFinite(v);
 
@@ -228,8 +229,7 @@ S.check=function(scenes,env){
       if(d.stamp!=null){const s=String(d.stamp).toLowerCase();
         if(s==='release')err(i,L+'RELEASE stamp official list tak allowed nahi.');
         else if(!STAMPS.includes(s))err(i,L+'unknown stamp "'+d.stamp+'". Allowed: '+STAMPS.join(', '));
-        else if(s==='official')warn(i,L+'"official" stamp tabhi lagao jab ye official list se confirm ho.');}
-      if(d.label===false||d.noLabel||d.hideLabel)err(i,L+'"संभावित: ऑफिशियल लिस्ट नहीं" label hatana allowed nahi.');
+        }
     }
     if(t==='watch'){
       if(d.city!=null)city(false);

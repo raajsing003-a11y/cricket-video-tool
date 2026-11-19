@@ -23,8 +23,8 @@ $('exp').onclick=async()=>{$('exp').disabled=true;try{
   window.LAST_EXPORT=r;EXPORT.download(r,'cricket_video'+(C.format==='short'?'_short':''));$('expst').textContent='Done: '+(r.blob.size/1e6).toFixed(1)+' MB .'+r.ext;
  }catch(err){$('expst').textContent='Export error: '+err.message;}$('exp').disabled=false;};
 $('expf').onclick=async()=>{$('expf').disabled=true;$('exp').disabled=true;try{
-  const r=await EXPORT.runFast(P,(t,T,el)=>{$('expst').textContent='Fast export '+t.toFixed(1)+'/'+T.toFixed(1)+'s ('+el.toFixed(0)+'s)';});
-  window.LAST_EXPORT=r;EXPORT.download(r,'cricket_video'+(C.format==='short'?'_short':''));$('expst').textContent='Done: '+(r.blob.size/1e6).toFixed(1)+' MB .mp4 in '+r.secs.toFixed(0)+'s'+(EXPORT.audio&&!r.audio?' (audio encode support nahi — Real-time export use karo)':'')+(r.acodec==='opus'?' (audio Opus — kuch editors mein na chale to Real-time export use karo)':'');
+  const r=await EXPORT.runFast(P,(t,T,el)=>{$('expst').textContent='Fast export '+t.toFixed(1)+'/'+T.toFixed(1)+'s ('+el.toFixed(0)+'s)'+(window.BUMP&&BUMP.secs().pre+BUMP.secs().post>0?' · intro/outro judega':'');});
+  window.LAST_EXPORT=r;EXPORT.download(r,'cricket_video'+(C.format==='short'?'_short':''));$('expst').textContent='Done: '+(r.blob.size/1e6).toFixed(1)+' MB .mp4 in '+r.secs.toFixed(0)+'s'+(r.bumpers?' · '+r.bumpers+' intro/outro video judey (total '+r.total.toFixed(1)+'s)':'')+((EXPORT.audio||r.bumpers)&&!r.audio?' (audio encode support nahi — Real-time export use karo)':'')+(r.acodec==='opus'?' (audio Opus — kuch editors mein na chale to Real-time export use karo)':'');
  }catch(err){$('expst').textContent='Fast export error: '+err.message;}$('expf').disabled=false;$('exp').disabled=false;};
 EXPORT.fastSupported().then(v=>{if(!v){$('expf').disabled=true;$('expf').title='Is browser mein WebCodecs H.264 nahi';}});
 CAP.init(P);AT.init(P);AP.init(P);

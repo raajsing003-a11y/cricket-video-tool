@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Channel Compare + Title/Description Helper</title>
+<style>
+:root{--bg:#0e1116;--c1:#171b22;--c2:#1e232c;--ln:#2a313c;--tx:#e9edf3;--mu:#8b95a5;--rd:#e5262d;--bl:#2a6fdb;--gr:#22a06b;--gd:#f5c518}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+#w{max-width:1150px;margin:0 auto;padding:10px 12px 60px}
+h1{font-size:18px;margin:6px 0 2px}h1 span{color:var(--rd)}h2{font-size:15px;margin:18px 0 8px}
+.sub{color:var(--mu);font-size:12px;margin-bottom:10px}
+.box{background:var(--c1);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-top:10px}
+button{background:var(--bl);color:#fff;border:0;border-radius:8px;padding:9px 14px;font:inherit;font-size:13px;cursor:pointer}
+button.g{background:#2f3541}button.r{background:var(--rd)}button.ok{background:var(--gr)}button:disabled{opacity:.45;cursor:not-allowed}
+input,textarea,select{background:#10141a;color:var(--tx);border:1px solid var(--ln);border-radius:7px;font:inherit;padding:8px;width:100%}
+textarea{min-height:92px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}.row>*{width:auto}
+.chip{display:inline-block;background:var(--c2);border:1px solid var(--ln);border-radius:999px;padding:3px 10px;margin:2px;font-size:12px;cursor:pointer}
+.chip:hover{border-color:var(--bl)}.chip.sel{background:#1d3358;border-color:var(--bl)}
+#st{min-height:18px;color:#9fd5ff;font-size:13px;margin-top:8px;white-space:pre-wrap}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border-bottom:1px solid var(--ln);padding:7px 8px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--c1)}
+th{font-size:12px;color:var(--mu);font-weight:600;vertical-align:bottom}th img{width:34px;height:34px;border-radius:50%;display:block;margin:0 0 3px auto}
+td.best{color:#6ee7a8;font-weight:700}td.worst{color:#ff9b9b}
+.bar{height:6px;background:#2a313c;border-radius:4px;margin-top:3px;min-width:70px}.bar i{display:block;height:100%;background:var(--bl);border-radius:4px}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px}
+.vid{display:flex;gap:8px;align-items:flex-start;border-bottom:1px solid var(--ln);padding:6px 0}.vid img{width:96px;border-radius:6px;flex:none}
+.vid b{font-weight:600;display:block;font-size:13px}.vid small{color:var(--mu)}
+.mu{color:var(--mu)}.k{display:inline-block;min-width:130px;color:var(--mu)}
+.tag{display:inline-block;background:#1b2a1f;border:1px solid #2b5a3a;border-radius:6px;padding:2px 8px;margin:2px;font-size:12px;cursor:pointer}
+.warn{color:var(--gd);font-size:12px}.bad{color:#ff9b9b}.good{color:#6ee7a8}
+.cdesc{white-space:pre-wrap;background:#10141a;border:1px solid var(--ln);border-radius:8px;padding:8px;max-height:130px;overflow:auto;font-size:12px}
+a{color:#7db4ff}
+</style></head><body><div id="w">
+<h1>📊 Channel <span>Compare</span> + Title/Description Helper</h1>
+<div class="sub">YouTube channels ko compare karo, competitors ke title/description/tags ka pattern dekho, apna title check karo. Data YouTube Data API v3 se aata hai.</div>
+
+<div class="box">
+<b>1) Channels</b> <span class="mu">(ek line = ek channel: @handle, channel link, UC… ID, ya sirf naam)</span>
+<textarea id="inp" placeholder="@CricketAakash&#10;https://www.youtube.com/@Cricbuzz&#10;UCxxxxxxxxxxxxxxxxxxxxxx&#10;Cricket naam (search se, 100 quota lagta hai)"></textarea>
+<div class="row">
+<label class="mu">Kitni latest videos padhni:</label>
+<select id="nv"><option value="25">25</option><option value="50" selected>50</option><option value="100">100</option></select>
+<button id="go">🔎 Compare karo</button>
+<button class="g" id="csv" disabled>⬇ CSV</button>
+<button class="g" id="clr">🗑 Saaf</button>
+</div>
+<div class="row" style="margin-top:6px"><span class="mu">Saved:</span><span id="saved"></span></div>
+<div id="st"></div>
+</div>
+
+<div id="out"></div>
+
+<div class="box" id="helper">
+<b>2) Apna Title / Description check karo</b> <span class="mu">(compare ke baad competitors ke average se milata hai; bina compare ke bhi basic check chalta hai)</span>
+<input id="tt" placeholder="Apna title likho…" style="margin-top:8px">
+<textarea id="dd" placeholder="Apna description likho…"></textarea>
+<div class="row"><button id="chk">✅ Check karo</button></div>
+<div id="hres" style="margin-top:8px"></div>
+</div>
+
+<div class="box"><b>⚙ API key</b> <span class="mu">(Studytube wali key hi use hoti hai; yahan badal sakte ho)</span>
+<div class="row"><input id="key" placeholder="AIza…" style="flex:1;min-width:220px"><button class="g" id="ksave">Save</button><button class="g" id="kreset">Default</button></div>
+<div class="sub" style="margin-top:6px">Quota: roz 10,000 unit. Har channel ~3-5 unit (handle/ID se), naam se search karne par +100. Is session mein kharch: <b id="q">0</b> unit.</div>
+</div>
+</div>
+<script>
+(function(){'use strict';
+var DEF_KEY='AIzaSyDRM-yw8kFqRYkZFwOXVgBghp460W2SewY',KS='uv99:st:key',CS='cc:saved',$=function(s){return document.querySelector(s)};
+var quota=0,DATA=[];
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function getKey(){try{return localStorage.getItem(KS)||DEF_KEY}catch(e){return DEF_KEY}}
+function fmt(n){if(n==null||isNaN(n))return '—';n=+n;if(n>=1e7)return (n/1e7).toFixed(2)+' Cr';if(n>=1e5)return (n/1e5).toFixed(2)+' L';if(n>=1e3)return (n/1e3).toFixed(1)+'K';return String(Math.round(n))}
+function pc(n){return n==null||isNaN(n)?'—':(+n).toFixed(2)+'%'}
+function st(t){$('#st').textContent=t}
+function copy(t,btn){try{navigator.clipboard.writeText(t)}catch(e){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}st('📋 Copy ho gaya')}
+// ---------- API ----------
+async function api(path,params,cost){var u='https://www.googleapis.com/youtube/v3/'+path+'?'+params+'&key='+encodeURIComponent(getKey());
+  var r=await fetch(u),j=await r.json();quota+=cost||1;$('#q').textContent=quota;
+  if(j.error){var m=j.error.message||'API error',rs=j.error.errors&&j.error.errors[0]&&j.error.errors[0].reason;
+    if(rs==='quotaExceeded')m='Aaj ki quota khatam (kal dobara chalega, ya doosri key lagao)';
+    else if(/referer|referrer/i.test(m))m='Key is site par allowed nahi (Google Cloud mein HTTP referrer mein ye site daalo)';
+    else if(rs==='keyInvalid'||/API key not valid/i.test(m))m='API key galat hai';
+    throw new Error(m)}
+  return j}
+function parse(s){s=s.trim();if(!s)return null;var m;
+  if((m=/youtube\.com\/channel\/(UC[\w-]{22})/i.exec(s)))return{id:m[1]};
+  if((m=/youtube\.com\/@([^\/?#\s]+)/i.exec(s)))return{handle:decodeURIComponent(m[1])};
+  if(/^UC[\w-]{22}$/.test(s))return{id:s};
+  if(s[0]==='@')return{handle:s.slice(1)};
+  if((m=/youtube\.com\/(?:c|user)\/([^\/?#\s]+)/i.exec(s)))return{name:decodeURIComponent(m[1])};
+  return{name:s}}
+var PART='snippet,statistics,contentDetails,brandingSettings';
+async function resolve(q){var j;
+  if(q.id)j=await api('channels','part='+PART+'&id='+q.id,1);
+  else if(q.handle)j=await api('channels','part='+PART+'&forHandle='+encodeURIComponent('@'+q.handle),1);
+  else{var s=await api('search','part=snippet&type=channel&maxResults=1&q='+encodeURIComponent(q.name),100);
+    if(!s.items||!s.items.length)throw new Error('channel nahi mila: '+q.name);
+    j=await api('channels','part='+PART+'&id='+s.items[0].snippet.channelId,1)}
+  if(!j.items||!j.items.length)throw new Error('channel nahi mila: '+(q.id||q.handle||q.name));
+  return j.items[0]}
+function dur(iso){var m=/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(iso||'');return m?(+m[1]||0)*3600+(+m[2]||0)*60+(+m[3]||0):0}
+async function videosOf(ch,n){var up=ch.contentDetails.relatedPlaylists.uploads,ids=[],tok='';
+  while(ids.length<n){var j=await api('playlistItems','part=contentDetails&maxResults=50&playlistId='+up+(tok?'&pageToken='+tok:''),1);
+    (j.items||[]).forEach(function(i){ids.push(i.contentDetails.videoId)});tok=j.nextPageToken;if(!tok||!(j.items||[]).length)break}
+  ids=ids.slice(0,n);var out=[];
+  for(var i=0;i<ids.length;i+=50){var v=await api('videos','part=snippet,statistics,contentDetails&id='+ids.slice(i,i+50).join(','),1);(v.items||[]).forEach(function(x){out.push(x)})}
+  return out}
+// ---------- analysis ----------
+var STOP='the and for with how what why you your are this that from about into out new best top all not but can will has have was were who when where more most video videos full hd official live ka ki ke ko se me mein hai hain ye yeh wo woh ek aur kya kaise kyun par pe ya bhi to nahi hota hoti hote tha thi the kar karo kare liye wala wali wale sab'.split(' ');
+var ST={};STOP.forEach(function(w){ST[w]=1});
+function words(arr){var c={};arr.forEach(function(t){(t.toLowerCase().match(/[\p{L}\p{N}#]+/gu)||[]).forEach(function(w){if(w.length<3||ST[w]||/^\d+$/.test(w))return;c[w]=(c[w]||0)+1})});return c}
+function topN(c,n){return Object.keys(c).map(function(k){return[k,c[k]]}).sort(function(a,b){return b[1]-a[1]}).slice(0,n)}
+var EMO=/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u,DEV=/[\u0900-\u097F]/;
+function avg(a){return a.length?a.reduce(function(x,y){return x+y},0)/a.length:0}
+function med(a){if(!a.length)return 0;var s=a.slice().sort(function(x,y){return x-y}),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2}
+function analyse(ch,vs){var sn=ch.snippet,stt=ch.statistics||{},subs=stt.hiddenSubscriberCount?null:+stt.subscriberCount;
+  var V=vs.map(function(v){var s=v.statistics||{};return{id:v.id,title:v.snippet.title,desc:v.snippet.description||'',tags:v.snippet.tags||[],at:new Date(v.snippet.publishedAt).getTime(),
+    views:+s.viewCount||0,likes:+s.likeCount||0,com:+s.commentCount||0,d:dur(v.contentDetails.duration),th:(v.snippet.thumbnails.medium||v.snippet.thumbnails.default||{}).url}});
+  var views=V.map(function(v){return v.views}),sh=V.filter(function(v){return v.d<=180}),lg=V.filter(function(v){return v.d>180});
+  var t0=Math.min.apply(null,V.map(function(v){return v.at})),t1=Math.max.apply(null,V.map(function(v){return v.at})),mon=Math.max(.25,(t1-t0)/2.63e9);
+  var titles=V.map(function(v){return v.title}),descs=V.map(function(v){return v.desc}),tg={};
+  V.forEach(function(v){v.tags.forEach(function(t){t=t.toLowerCase().trim();if(t)tg[t]=(tg[t]||0)+1})});
+  var tv=V.reduce(function(a,v){return a+v.views},0);
+  return{ch:ch,id:ch.id,name:sn.title,thumb:(sn.thumbnails.default||{}).url,desc:sn.description||'',country:sn.country||'',created:sn.publishedAt,
+    kw:(ch.brandingSettings&&ch.brandingSettings.channel&&ch.brandingSettings.channel.keywords)||'',
+    subs:subs,totalViews:+stt.viewCount,vcount:+stt.videoCount,n:V.length,V:V,
+    avgViews:avg(views),medViews:med(views),maxViews:V.length?Math.max.apply(null,views):0,
+    vps:subs?avg(views)/subs*100:null,
+    like:tv?V.reduce(function(a,v){return a+v.likes},0)/tv*100:0,com:tv?V.reduce(function(a,v){return a+v.com},0)/tv*100:0,
+    perMonth:V.length>1?(V.length-1)/mon:0,shortPct:V.length?sh.length/V.length*100:0,longMin:lg.length?avg(lg.map(function(v){return v.d}))/60:null,
+    tLen:avg(titles.map(function(t){return t.length})),tNum:titles.filter(function(t){return /\d/.test(t)}).length/Math.max(1,titles.length)*100,
+    tQ:titles.filter(function(t){return /[?？]/.test(t)}).length/Math.max(1,titles.length)*100,tEmo:titles.filter(function(t){return EMO.test(t)}).length/Math.max(1,titles.length)*100,
+    tDev:titles.filter(function(t){return DEV.test(t)}).length/Math.max(1,titles.length)*100,tHash:titles.filter(function(t){return /#/.test(t)}).length/Math.max(1,titles.length)*100,
+    tWords:topN(words(titles),12),tags:topN(tg,20),
+    dLen:avg(descs.map(function(t){return t.length})),dLink:descs.filter(function(t){return /https?:\/\//.test(t)}).length/Math.max(1,descs.length)*100,
+    dHash:avg(descs.map(function(t){return (t.match(/#[\p{L}\p{N}_]+/gu)||[]).length})),dTs:descs.filter(function(t){return /\b\d{1,2}:\d{2}\b/.test(t)}).length/Math.max(1,descs.length)*100,
+    top:V.slice().sort(function(a,b){return b.views-a.views}).slice(0,5)}}
+var ROWS=[['Subscribers',function(a){return a.subs},fmt,'max'],['Total views',function(a){return a.totalViews},fmt,'max'],['Total videos',function(a){return a.vcount},fmt,null],
+ ['Avg views (latest)',function(a){return a.avgViews},fmt,'max'],['Median views',function(a){return a.medViews},fmt,'max'],['Best video views',function(a){return a.maxViews},fmt,'max'],
+ ['Views / Subs %',function(a){return a.vps},pc,'max'],['Like % (views par)',function(a){return a.like},pc,'max'],['Comment % (views par)',function(a){return a.com},pc,'max'],
+ ['Uploads / mahina',function(a){return a.perMonth},function(n){return n.toFixed(1)},'max'],['Shorts (≤3 min) %',function(a){return a.shortPct},function(n){return n.toFixed(0)+'%'},null],
+ ['Long video avg (min)',function(a){return a.longMin},function(n){return n==null?'—':n.toFixed(1)},null],
+ ['Title length (avg)',function(a){return a.tLen},function(n){return n.toFixed(0)},null],['Title mein number %',function(a){return a.tNum},function(n){return n.toFixed(0)+'%'},null],
+ ['Title mein ? %',function(a){return a.tQ},function(n){return n.toFixed(0)+'%'},null],['Title mein emoji %',function(a){return a.tEmo},function(n){return n.toFixed(0)+'%'},null],
+ ['Title Hindi (देवनागरी) %',function(a){return a.tDev},function(n){return n.toFixed(0)+'%'},null],['Title mein # %',function(a){return a.tHash},function(n){return n.toFixed(0)+'%'},null],
+ ['Description length (avg)',function(a){return a.dLen},function(n){return n.toFixed(0)},null],['Description mein link %',function(a){return a.dLink},function(n){return n.toFixed(0)+'%'},null],
+ ['Description # (avg)',function(a){return a.dHash},function(n){return n.toFixed(1)},null],['Description mein timestamps %',function(a){return a.dTs},function(n){return n.toFixed(0)+'%'},null]];
+// ---------- render ----------
+function render(){var o=$('#out');if(!DATA.length){o.innerHTML='';return}
+  var h='<div class="box"><b>📊 Comparison</b> <span class="mu">(hara = sabse achha)</span><div class="sc"><table><thead><tr><th></th>'+DATA.map(function(a){return '<th>'+(a.thumb?'<img src="'+esc(a.thumb)+'">':'')+esc(a.name)+'<br><span class="mu">'+a.n+' videos padhi</span></th>'}).join('')+'</tr></thead><tbody>';
+  ROWS.forEach(function(r){var vals=DATA.map(function(a){var v=r[1](a);return v==null||isNaN(v)?null:v}),ok=vals.filter(function(v){return v!=null}),mx=Math.max.apply(null,ok),mn=Math.min.apply(null,ok);
+    h+='<tr><td>'+r[0]+'</td>'+DATA.map(function(a,i){var v=vals[i],cl='';if(r[3]&&v!=null&&DATA.length>1){if(v===mx)cl='best';else if(v===mn)cl='worst'}
+      return '<td class="'+cl+'">'+(v==null?'—':r[2](v))+(r[3]==='max'&&v!=null&&mx>0?'<div class="bar"><i style="width:'+Math.max(3,v/mx*100)+'%"></i></div>':'')+'</td>'}).join('')+'</tr>'});
+  h+='</tbody></table></div></div>';
+  h+='<h2>🎬 Har channel ka title / description / tags</h2><div class="cg">';
+  DATA.forEach(function(a,ci){h+='<div class="box"><b style="font-size:15px">'+esc(a.name)+'</b> <span class="mu">'+(a.country?esc(a.country)+' · ':'')+'bana '+esc((a.created||'').slice(0,10))+'</span>'
+    +'<div style="margin-top:8px"><b>🏆 Top 5 videos (title copy karo)</b></div>'
+    +a.top.map(function(v,vi){return '<div class="vid">'+(v.th?'<img src="'+esc(v.th)+'">':'')+'<div><b>'+esc(v.title)+'</b><small>'+fmt(v.views)+' views · '+Math.round(v.d/60)+' min</small><br><button class="g" data-t="'+ci+'-'+vi+'" style="padding:3px 8px;font-size:11px;margin-top:3px">📋 Title</button> <button class="g" data-d="'+ci+'-'+vi+'" style="padding:3px 8px;font-size:11px;margin-top:3px">📋 Description</button></div></div>'}).join('')
+    +'<div style="margin-top:8px"><span class="k">Title ke top shabd</span>'+a.tWords.map(function(w){return '<span class="chip" data-w="'+esc(w[0])+'">'+esc(w[0])+' <span class="mu">'+w[1]+'</span></span>'}).join('')+'</div>'
+    +'<div style="margin-top:8px"><span class="k">Top tags</span>'+(a.tags.length?a.tags.map(function(w){return '<span class="tag" data-w="'+esc(w[0])+'">'+esc(w[0])+' <span class="mu">'+w[1]+'</span></span>'}).join(''):'<span class="mu">(videos mein tags public nahi)</span>')+'</div>'
+    +(a.kw?'<div style="margin-top:8px"><span class="k">Channel keywords</span><span class="mu">'+esc(a.kw)+'</span></div>':'')
+    +'<div style="margin-top:8px"><b>📝 Channel description</b> <button class="g" data-cd="'+ci+'" style="padding:2px 8px;font-size:11px">📋 Copy</button><div class="cdesc">'+esc(a.desc||'(khaali)')+'</div></div></div>'});
+  h+='</div>';o.innerHTML=h;$('#csv').disabled=false;
+  o.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){var p=b.dataset.t.split('-');copy(DATA[p[0]].top[p[1]].title)}});
+  o.querySelectorAll('[data-d]').forEach(function(b){b.onclick=function(){var p=b.dataset.d.split('-');copy(DATA[p[0]].top[p[1]].desc||'(description khaali)')}});
+  o.querySelectorAll('[data-cd]').forEach(function(b){b.onclick=function(){copy(DATA[b.dataset.cd].desc)}});
+  o.querySelectorAll('[data-w]').forEach(function(b){b.onclick=function(){copy(b.dataset.w)}})}
+// ---------- run ----------
+async function run(){var lines=$('#inp').value.split('\n').map(parse).filter(Boolean);
+  if(!lines.length){st('Pehle channel likho (ek line = ek channel).');return}
+  if(lines.length>8){st('Ek baar mein 8 channel tak rakho (quota bachane ke liye).');return}
+  $('#go').disabled=true;DATA=[];var n=+$('#nv').value,fail=[];
+  for(var i=0;i<lines.length;i++){var q=lines[i],lab=q.id||q.handle||q.name;
+    try{st('⏳ ('+(i+1)+'/'+lines.length+') '+lab+' — channel dhundh raha…');var ch=await resolve(q);
+      st('⏳ ('+(i+1)+'/'+lines.length+') '+ch.snippet.title+' — '+n+' videos padh raha…');var vs=await videosOf(ch,n);
+      if(!vs.length)throw new Error('is channel mein public video nahi mili');DATA.push(analyse(ch,vs));addSaved(q,ch)}
+    catch(e){fail.push(lab+': '+e.message);if(/quota|key|referrer|referer/i.test(e.message))break}}
+  render();st((DATA.length?'✔ '+DATA.length+' channel compare ho gaye. ':'')+(fail.length?'\n⚠ '+fail.join('\n⚠ '):''));$('#go').disabled=false}
+// ---------- saved ----------
+function rdS(){try{return JSON.parse(localStorage.getItem(CS)||'[]')}catch(e){return[]}}
+function addSaved(q,ch){var L=rdS(),v=q.handle?'@'+q.handle:q.id||('https://www.youtube.com/channel/'+ch.id);
+  v=ch.snippet.customUrl||('https://www.youtube.com/channel/'+ch.id);if(!L.some(function(x){return x.v===v}))L.push({n:ch.snippet.title,v:v});try{localStorage.setItem(CS,JSON.stringify(L.slice(-40)))}catch(e){}drawSaved()}
+function drawSaved(){var L=rdS(),s=$('#saved');s.innerHTML=L.length?L.map(function(x,i){return '<span class="chip" data-i="'+i+'" title="click: list mein jodo · double-click: hatao">'+esc(x.n)+'</span>'}).join(''):'<span class="mu">(abhi koi nahi — compare karoge to apne aap save honge)</span>';
+  s.querySelectorAll('.chip').forEach(function(c){var i=+c.dataset.i;c.onclick=function(){var t=$('#inp'),v=rdS()[i].v;if(t.value.indexOf(v)<0)t.value=(t.value.trim()?t.value.trim()+'\n':'')+v};
+    c.ondblclick=function(){var L2=rdS();L2.splice(i,1);try{localStorage.setItem(CS,JSON.stringify(L2))}catch(e){}drawSaved()}})}
+// ---------- title / description helper ----------
+function check(){var t=$('#tt').value.trim(),d=$('#dd').value,o=[],A=DATA.length?{tLen:avg(DATA.map(function(a){return a.tLen})),tNum:avg(DATA.map(function(a){return a.tNum})),dLen:avg(DATA.map(function(a){return a.dLen}))}:null;
+  function li(c,txt){o.push('<div class="'+c+'">'+(c==='good'?'✔ ':c==='bad'?'✖ ':'• ')+txt+'</div>')}
+  if(!t&&!d){$('#hres').innerHTML='<span class="mu">Title ya description likho.</span>';return}
+  if(t){o.push('<b>Title</b> <span class="mu">('+t.length+' characters)</span>');
+    if(t.length<30)li('bad','Bahut chhota ('+t.length+'). 40-70 characters ke beech achha rehta hai.');else if(t.length<=70)li('good','Length theek hai (40-70 ke aas-paas).');else li('warn','Lamba hai ('+t.length+'). 70 ke baad search/phone par kat sakta hai — zaroori shabd shuru mein rakho.');
+    if(A)li('',"Competitors ka average title: "+A.tLen.toFixed(0)+' characters, '+A.tNum.toFixed(0)+'% titles mein number.');
+    li(/\d/.test(t)?'good':'',/\d/.test(t)?'Number hai (curiosity/clarity badhata hai).':'Number nahi hai — jahan ban sake (score, saal, rank) jodo.');
+    li(/[?？]/.test(t)?'good':'',/[?？]/.test(t)?'Sawaal hai.':'Sawaal wala format bhi try kar sakte ho.');
+    if((t.match(/#/g)||[]).length>2)li('warn','Title mein 2 se zyada # mat rakho.');
+    if(t===t.toUpperCase()&&/[A-Z]/.test(t))li('warn','Poora CAPS hai — thoda mix karo, padhne mein bhaari lagta hai.');
+    if((t.match(/[\p{Extended_Pictographic}]/gu)||[]).length>3)li('warn','Emoji zyada hain (3 tak theek).')}
+  if(d){o.push('<div style="margin-top:8px"><b>Description</b> <span class="mu">('+d.length+' characters)</span></div>');
+    var first=d.slice(0,150);li('','Pehle ~150 characters hi bina "more" dabaye dikhte hain — keyword + hook yahin rakho:<div class="cdesc">'+esc(first)+'</div>');
+    if(d.length<200)li('warn','Chhota hai. 200+ characters (summary, links, chapters) search mein madad karte hain.');else li('good','Length achhi hai.');
+    if(A)li('','Competitors ka average description: '+A.dLen.toFixed(0)+' characters.');
+    var hs=(d.match(/#[\p{L}\p{N}_]+/gu)||[]);li(hs.length&&hs.length<=15?'good':hs.length>15?'bad':'warn',hs.length?hs.length+' hashtag (YouTube pehle 3 title ke upar dikhata hai; 15 se zyada hone par saare ignore hote hain).':'Hashtag nahi hai — 3-5 relevant hashtag neeche jodo.');
+    li(/https?:\/\//.test(d)?'good':'warn',/https?:\/\//.test(d)?'Link hai.':'Koi link nahi (apna channel / agla video / social link jodo).');
+    li(/\b\d{1,2}:\d{2}\b/.test(d)?'good':'',/\b\d{1,2}:\d{2}\b/.test(d)?'Timestamps (chapters) hain.':'Lambe video mein chapters (0:00 ...) jodo.')}
+  if(DATA.length){var text=(t+' '+d).toLowerCase(),tg={};DATA.forEach(function(a){a.tags.forEach(function(x){if(text.indexOf(x[0])<0)tg[x[0]]=(tg[x[0]]||0)+x[1]})});
+    var sug=topN(tg,25).map(function(x){return x[0]}),ww={};DATA.forEach(function(a){a.tWords.forEach(function(x){if(text.indexOf(x[0])<0)ww[x[0]]=(ww[x[0]]||0)+x[1]})});var sw=topN(ww,10).map(function(x){return x[0]});
+    var all=[],len=0;sug.forEach(function(x){if(len+x.length+1<=480){all.push(x);len+=x.length+1}});
+    o.push('<div style="margin-top:10px"><b>💡 Competitors ke tags jo tumhare text mein nahi hain</b> <span class="mu">(sirf wahi lagao jo tumhare video par sach mein fit ho)</span></div>');
+    o.push('<div>'+(sug.length?sug.map(function(x){return '<span class="tag" data-w="'+esc(x)+'">'+esc(x)+'</span>'}).join(''):'<span class="mu">(tags nahi mile)</span>')+'</div>');
+    if(all.length)o.push('<div class="row"><button class="g" id="ctg">📋 Tags copy (comma, 500 char limit ke andar)</button><button class="g" id="chs">📋 Top 3 hashtag</button></div>');
+    if(sw.length)o.push('<div style="margin-top:8px"><span class="k">Title ke popular shabd</span>'+sw.map(function(x){return '<span class="chip" data-w="'+esc(x)+'">'+esc(x)+'</span>'}).join('')+'</div>');
+    $('#hres').innerHTML=o.join('');
+    var b=$('#ctg');if(b)b.onclick=function(){copy(all.join(','))};var c=$('#chs');if(c)c.onclick=function(){copy(sug.slice(0,3).map(function(x){return '#'+x.replace(/[^\p{L}\p{N}_]+/gu,'')}).join(' '))}}
+  else{o.push('<div class="mu" style="margin-top:8px">Upar channels compare karoge to yahan competitors ke tags aur popular shabd bhi aayenge.</div>');$('#hres').innerHTML=o.join('')}
+  $('#hres').querySelectorAll('[data-w]').forEach(function(b){b.onclick=function(){copy(b.dataset.w)}})}
+// ---------- CSV ----------
+function csv(){var q=function(v){v=String(v==null?'':v);return '"'+v.replace(/"/g,'""')+'"'},L=[['Metric'].concat(DATA.map(function(a){return a.name})).map(q).join(',')];
+  ROWS.forEach(function(r){L.push([r[0]].concat(DATA.map(function(a){var v=r[1](a);return v==null||isNaN(v)?'':Math.round(v*100)/100})).map(q).join(','))});
+  L.push('');L.push(['Channel','Top video title','Views','Link'].map(q).join(','));
+  DATA.forEach(function(a){a.top.forEach(function(v){L.push([a.name,v.title,v.views,'https://youtu.be/'+v.id].map(q).join(','))})});
+  var b=new Blob(['\ufeff'+L.join('\n')],{type:'text/csv;charset=utf-8'}),u=document.createElement('a');u.href=URL.createObjectURL(b);u.download='channel_compare.csv';document.body.appendChild(u);u.click();setTimeout(function(){URL.revokeObjectURL(u.href);u.remove()},1500)}
+// ---------- wire ----------
+$('#go').onclick=run;$('#csv').onclick=csv;$('#chk').onclick=check;
+$('#clr').onclick=function(){DATA=[];$('#inp').value='';$('#csv').disabled=true;render();st('')};
+$('#key').value=(function(){try{return localStorage.getItem(KS)||''}catch(e){return''}})();
+$('#ksave').onclick=function(){var v=$('#key').value.trim();try{if(v)localStorage.setItem(KS,v);else localStorage.removeItem(KS)}catch(e){}st(v?'✔ Key save ho gayi (Studytube mein bhi yahi chalegi).':'Khaali — default key use hogi.')};
+$('#kreset').onclick=function(){try{localStorage.removeItem(KS)}catch(e){}$('#key').value='';st('Default key wapas.')};
+drawSaved();
+})();
+</script></body></html>

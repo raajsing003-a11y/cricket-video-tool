@@ -1,5 +1,5 @@
 {
- "_help": "feeds: url, name (sirf tumhare dekhne ke liye), official (true = board/team ki apni site; tabhi Confirmed label), enabled. tag_rules: keyword (chhote akshar) -> tag. Nayi feed jodni ho to ek object copy karo.",
+ "_help": "feeds: url, name (sirf tumhare dekhne ke liye), official (true = board/team ki apni site; tabhi Confirmed label), enabled. tag_rules: keyword (chhote akshar) -> tag. Nayi feed jodni ho to ek object copy karo. Official feeds (C151): Google News ke 'site:' search se, sirf board/team ki apni site; ye 'Confirmed' label deti hain (rumor jaisa shabd ho to phir bhi Rumor). Agar kisi site ki khabar Google News mein aati hi nahi to us feed mein kuch nahi dikhega (fail nahi).",
  "max_age_days": 14,
  "feeds": [
   {
@@ -96,6 +96,30 @@
    "name": "Site: Sportskeeda Cricket",
    "url": "https://news.google.com/rss/search?q=site:sportskeeda.com/cricket+when:2d&hl=en-IN&gl=IN&ceid=IN:en",
    "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Official: BCCI (bcci.tv)",
+   "url": "https://news.google.com/rss/search?q=site:bcci.tv+when:7d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": true,
+   "enabled": true
+  },
+  {
+   "name": "Official: IPL (iplt20.com)",
+   "url": "https://news.google.com/rss/search?q=site:iplt20.com+when:7d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": true,
+   "enabled": true
+  },
+  {
+   "name": "Official: ICC (icc-cricket.com)",
+   "url": "https://news.google.com/rss/search?q=site:icc-cricket.com+when:7d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": true,
+   "enabled": true
+  },
+  {
+   "name": "Official: IPL teams (10 sites)",
+   "url": "https://news.google.com/rss/search?q=%28site:chennaisuperkings.com+OR+site:mumbaiindians.com+OR+site:rajasthanroyals.com+OR+site:rcb.com+OR+site:kkr.in+OR+site:sunrisershyderabad.in+OR+site:delhicapitals.in+OR+site:punjabkingsipl.in+OR+site:gujarattitansipl.com+OR+site:lucknowsupergiants.in%29+when:7d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": true,
    "enabled": true
   }
  ],

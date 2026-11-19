@@ -2,7 +2,7 @@
 // Button: right panel "📚 Chapter flow" (wide mode). Naam ; se alag (2-9). Scenes list ke aakhir mein jud jaate hain. CF.build(names,opt) pure function.
 (function(){const C=window.CORE,CF=window.CF={};
 CF.parse=s=>String(s||'').split(/[;\n]/).map(x=>x.trim()).filter(Boolean).slice(0,9);
-CF.build=(names,o)=>{o=o||{};const n=names.length,out=[],lt=o.listTitle||(n+' चैप्टर'),sd=o.stackDur||4,cd=o.chapterDur||3,tr=o.tr||'fade';
+CF.build=(names,o)=>{o=o||{};const n=names.length,out=[],lt=o.listTitle||(n+' chapters'),sd=o.stackDur||4,cd=o.chapterDur||3,tr=o.tr||'fade';
   names.forEach((nm,i)=>{
     out.push({type:'stack',dur:sd,tr:tr,trDur:.5,data:{title:lt,items:names.slice(),hl:i+1,pill:o.pill||'',done:names.slice(0,i).map((_,k)=>k+1).join(','),mark:''}});
     out.push({type:'chapter',dur:cd,tr:tr,trDur:.5,data:{num:String(i+1).padStart(2,'0'),title:nm,pill:'',lock:true}});});

@@ -5,7 +5,8 @@ const C=window.CORE,K='cvt_pills';
 const PIL=window.PILLS={on:true,COL:{g:'#2ecc71',r:'#ff4d4f',y:'#F5C518',x:'#9aa4b2'},NAME:{green:'g',red:'r',yellow:'y',grey:'x',gray:'x'}};
 try{if(localStorage.getItem(K)==='0')PIL.on=false;}catch(e){}
 PIL.set=v=>{PIL.on=!!v;try{localStorage.setItem(K,PIL.on?'1':'0');}catch(e){}};
-PIL.norm=p=>{if(!Array.isArray(p))return[];return p.slice(0,3).map(o=>{if(typeof o==='string')return{t:o,c:'x'};let c=String(o&&o.c||'x').toLowerCase();c=PIL.COL[c]?c:(PIL.NAME[c]||'x');return{t:String(o&&o.t||''),c};}).filter(o=>o.t);};
+PIL.BAN=/रूमर|रुमर|अफवाह|अफ़वाह|ऑफिशियल|ऑफ़िशियल|आधिकारिक|rumou?r|official/i;  // C164: rumor/official wali pill nahi dikhegi
+PIL.norm=p=>{if(!Array.isArray(p))return[];return p.filter(o=>!PIL.BAN.test(typeof o==='string'?o:String(o&&o.t||''))).slice(0,3).map(o=>{if(typeof o==='string')return{t:o,c:'x'};let c=String(o&&o.c||'x').toLowerCase();c=PIL.COL[c]?c:(PIL.NAME[c]||'x');return{t:String(o&&o.t||''),c};}).filter(o=>o.t);};
 // text box syntax: "Sahi|g ; Galat|r ; Shayad|y"
 PIL.parse=s=>PIL.norm(String(s||'').split(/[;\n]/).map(x=>x.trim()).filter(Boolean).map(x=>{const m=x.match(/^(.*)\|\s*(\w+)$/);return m?{t:m[1].trim(),c:m[2]}:{t:x,c:'x'};}));
 PIL.str=p=>PIL.norm(p).map(o=>o.t+'|'+o.c).join(' ; ');

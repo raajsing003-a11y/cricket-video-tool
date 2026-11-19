@@ -172,7 +172,9 @@ def main():
             iid = hashlib.sha1(link.encode("utf-8")).hexdigest()[:12]
             tags = [t for t, kws in rules.items() if any(k.lower() in low for k in kws)] or ["Other"]
             is_rumor = any(w in low for w in rumor)
-            label = "Confirmed" if (fd.get("official") and not is_rumor) else "Rumor"
+            # C151: official feed se aayi item kisi aur feed mein bhi dikhe (same link) to Confirmed hi rahe
+            was_off = iid in old and old[iid].get("label") == "Confirmed"
+            label = "Confirmed" if ((fd.get("official") or was_off) and not is_rumor) else "Rumor"
             seen = old[iid].get("seen") if iid in old else t_now.isoformat()  # C145: pehli baar kab dikhi
             if iid not in old:
                 new_n += 1

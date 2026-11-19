@@ -20,7 +20,7 @@ function label(ctx,t,at){const lp=E.out(C.prog(t,at,at+.4));ctx.save();ctx.globa
 function ribbon(ctx,t,at,d){if(d.ribbon===false)return;const p=E.back(C.prog(t,at,at+.5));C.drawImg(ctx,RB,C.W-460-30+(1-p)*520,C.H-96-30);}
 
 C.CARDS.watch={
- assets:d=>[d.bg||'01_backgrounds/bg_floodlight_blue',VG,HT,SW,LB,RB,C.PH],
+ assets:d=>[d.bg||'01_backgrounds/bg_floodlight_blue',VG,HT,RB,C.PH],
  draw(ctx,t,d,sc){
   const W=C.W,H=C.H,dur=sc.dur,at=1.4,[sx,sy]=shake(t,at),names=(d.names||[]).slice(0,6),ph=(d.photos||[]).slice(0,2),fl=!!d.flip;
   ctx.save();ctx.translate(sx,sy);
@@ -43,12 +43,11 @@ C.CARDS.watch={
    const f=C.fitText(ctx,n,820,1,70,36,800);C.text(ctx,f.lines[0],lx+10,260+i*rowH+(rowH-24)/2-8,{px:f.px,base:'middle'});ctx.restore();});
   if(d.note){const np=E.out(C.prog(t,1.8,2.2));ctx.save();ctx.globalAlpha=np;const f=C.fitText(ctx,d.note,900,2,48,32,700);
    f.lines.forEach((l,i)=>C.text(ctx,l,lx,260+names.length*rowH+60+i*(f.px+8),{px:f.px,stroke:8}));ctx.restore();}
-  stamp(ctx,t,at,SW,fl&&ph.length?1170:W-330,125,.14,.9);
-  ctx.restore();label(ctx,t,1.9);ribbon(ctx,t,2.3,d);
+  ctx.restore();ribbon(ctx,t,2.3,d);
  }};
 
 C.CARDS.rumour={
- assets:d=>[d.bg||'01_backgrounds/bg_news_control_room',VG,HT,SR,LB,RB,LT,DV,C.PH],
+ assets:d=>[d.bg||'01_backgrounds/bg_news_control_room',VG,HT,RB,LT,DV,C.PH],
  draw(ctx,t,d,sc){
   const W=C.W,H=C.H,dur=sc.dur,at=1.2,[sx,sy]=shake(t,at),ph=(d.photos||[]).slice(0,2);
   if(d.flip&&ph.length===2)ph.reverse();
@@ -59,13 +58,12 @@ C.CARDS.rumour={
   if(ph.length===2){photoBox(ctx,t,ph[0],160,90,700,560,.1,1);photoBox(ctx,t,ph[1],1060,90,700,560,.25,-1);
    const dp=E.out(C.prog(t,.5,.9));ctx.save();ctx.globalAlpha=dp;ctx.beginPath();ctx.rect(0,0,W,680);ctx.clip();C.drawImg(ctx,DV,0,0,W,H);ctx.restore();}
   else if(ph.length===1)photoBox(ctx,t,ph[0],660,90,600,560,.1,1);
-  stamp(ctx,t,at,SR,W/2,640,-.1,1.1);
   // lower-third (blue): head + sub
   const lp=E.out(C.prog(t,.8,1.3)),lx=(W-1560)/2,ly=H-190-150;
   ctx.save();ctx.translate(-(1-lp)*1800,0);C.drawImg(ctx,LT,lx,ly);
   if(d.head){const f=C.fitText(ctx,d.head,1480,1,72,40,800);C.text(ctx,f.lines[0],lx+40,ly+82,{px:f.px});}
   if(d.sub){const f=C.fitText(ctx,d.sub,1480,1,48,30,700);C.text(ctx,f.lines[0],lx+40,ly+164,{px:f.px,color:'#14213d'});}
   ctx.restore();ctx.restore();
-  label(ctx,t,1.7);ribbon(ctx,t,2.2,d);
+  ribbon(ctx,t,2.2,d);
  }};
 })();

@@ -40,7 +40,7 @@ C.CARDS.timeline={assets:d=>[d.bg||BG,VG],
   ctx.save();ctx.globalAlpha=outA;ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=10;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x0+(x1-x0)*lp,y);ctx.stroke();
   const dx=px(0)+(px(at-1)-px(0))*sl;ctx.strokeStyle=col;ctx.shadowColor=col;ctx.shadowBlur=16;ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(dx,y);ctx.stroke();ctx.shadowBlur=0;
   pts.forEach((s,i)=>{const p=E.out(C.prog(t,.3+i*.1,.8+i*.1)),reached=dx>=px(i)-2;ctx.save();ctx.globalAlpha=outA*p;ctx.fillStyle=reached?col:'#33415f';ctx.beginPath();ctx.arc(px(i),y,18,0,Math.PI*2);ctx.fill();
-   const f=C.fitText(ctx,s,(x1-x0)/(n-1)-30,1,64,30,900);ctx.font=C.font(f.px,900);ctx.fillStyle=reached?'#fff':'#8a97b8';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(f.lines[0],px(i),y+80);ctx.restore();});
+   const f=C.fitText(ctx,s,(x1-x0)/(n-1)-70,1,64,30,900);ctx.font=C.font(f.px,900);ctx.fillStyle=reached?'#fff':'#8a97b8';ctx.textAlign='center';ctx.textBaseline='middle';const tw=ctx.measureText(f.lines[0]).width,mg=60,cx=Math.max(mg+tw/2,Math.min(W-mg-tw/2,px(i)));ctx.fillText(f.lines[0],cx,y+80);ctx.restore();});   // C163: kinare wala label screen se kat'ta tha -> andar clamp
   const dp=E.out(C.prog(t,.8,1.2));ctx.save();ctx.globalAlpha=outA*dp;ctx.fillStyle='#fff';ctx.strokeStyle=col;ctx.lineWidth=10;ctx.shadowColor=col;ctx.shadowBlur=26;ctx.beginPath();ctx.arc(dx,y,34,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
   if(d.label){const la=E.out(C.prog(t,2.5,3));if(la>0)pill(ctx,String(d.label),dx,y-130+(1-la)*15,col,outA*la,48);}
   ctx.restore();}};

@@ -1,5 +1,6 @@
 // C12: fast export (WebCodecs VideoEncoder/AudioEncoder + mp4-muxer, offline = real-time se tez)
 // EXPORT.runFast(player,onStatus,opts)->{blob,ext,mime}. Needs js/vendor/mp4-muxer.js (global Mp4Muxer)
+// C165: js/bumpers.js ke intro/outro (BUMP.prepare) main video se pehle/baad mein judte hain, unki awaaz + volume ke saath.
 (function(){const C=window.CORE,X=window.EXPORT;
 const SR=48000;
 X.fastSupported=async function(){
@@ -25,7 +26,9 @@ X.runFast=async function(P,onStatus,opts){
   if(!vc)throw new Error('Fast export is browser mein supported nahi (Chrome desktop use karo) — normal Export use karo');
   if(P.playing)P.toggle();
   const FPS=C.FPS,N=Math.round(C.total*FPS);
-  const hasA=!!X.audio&&typeof AudioEncoder!=='undefined';
+  const BP=window.BUMP?await BUMP.prepare(FPS):{pre:[],post:[],hasAudio:false};
+  const preN=BP.pre.reduce((a,x)=>a+x.frames,0),postN=BP.post.reduce((a,x)=>a+x.frames,0),T=preN+N+postN;
+  const hasA=(!!X.audio||BP.hasAudio)&&typeof AudioEncoder!=='undefined';
   let aCfg=null,aMux=null;
   if(hasA){
     for(const [codec,mc] of [['mp4a.40.2','aac'],['opus','opus']]){ // AAC pehle (sab jagah chalta hai), warna Opus
@@ -41,19 +44,30 @@ X.runFast=async function(P,onStatus,opts){
   ve.configure({codec:vc.codec,width:W,height:H,bitrate:opts.bitrate||12e6,framerate:FPS,latencyMode:'quality'});
   const cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');
   const t0=performance.now();
-  C.exporting=true;try{for(let i=0;i<N;i++){
+  // segments: intro(s) -> main -> outro(s)
+  const segs=[];let off=0;
+  BP.pre.forEach(x=>{segs.push({x,n:x.frames,o:off});off+=x.frames;});
+  segs.push({main:true,n:N,o:off});off+=N;
+  BP.post.forEach(x=>{segs.push({x,n:x.frames,o:off});off+=x.frames;});
+  C.exporting=true;try{let g=0;for(const sg of segs){for(let i=0;i<sg.n;i++,g++){
     if(err)throw err;
-    if(C.beforeFrame)await C.beforeFrame(i/FPS);
-    C.render(ctx,i/FPS);
-    const f=new VideoFrame(cv,{timestamp:Math.round(i*1e6/FPS),duration:Math.round(1e6/FPS)});
-    ve.encode(f,{keyFrame:i%(FPS*2)===0});f.close();
+    if(sg.main){if(C.beforeFrame)await C.beforeFrame(i/FPS);C.render(ctx,i/FPS);}
+    else await BUMP.drawFrame(ctx,sg.x,i,FPS);
+    const f=new VideoFrame(cv,{timestamp:Math.round(g*1e6/FPS),duration:Math.round(1e6/FPS)});
+    ve.encode(f,{keyFrame:g%(FPS*2)===0});f.close();
     while(ve.encodeQueueSize>6){await new Promise(r=>setTimeout(r,2));if(err)throw err;}
-    if(i%10===0){onStatus&&onStatus(i/FPS,N/FPS,(performance.now()-t0)/1000);await new Promise(r=>setTimeout(r,0));}
-  }}finally{C.exporting=false;}
+    if(g%10===0){onStatus&&onStatus(g/FPS,T/FPS,(performance.now()-t0)/1000);await new Promise(r=>setTimeout(r,0));}
+  }}}finally{C.exporting=false;}
   await ve.flush();ve.close();
   if(aCfg){
-    const len=Math.min(Math.round(X.audio.duration*SR),Math.round(N/FPS*SR));
-    const [L,R]=await resample(X.audio,len);
+    // ek hi offline mix: main audio (intro ke baad se) + har bumper ki awaaz (apne volume ke saath)
+    const len=Math.round(T/FPS*SR);
+    const oc=new OfflineAudioContext(2,len,SR);
+    if(X.audio){const s=oc.createBufferSource();s.buffer=X.audio;s.connect(oc.destination);s.start(preN/FPS,0,Math.min(X.audio.duration,N/FPS));}
+    segs.forEach(sg=>{if(sg.main||!sg.x.buf||sg.x.vol<=0)return;const s=oc.createBufferSource(),gn=oc.createGain();s.buffer=sg.x.buf;gn.gain.value=sg.x.vol;s.connect(gn);gn.connect(oc.destination);s.start(sg.o/FPS,0,Math.min(sg.x.buf.duration,sg.x.frames/FPS));});
+    const mix=await oc.startRendering();
+    const L=mix.getChannelData(0),R=mix.getChannelData(1);
+    for(let i=0;i<len;i++){if(L[i]>1)L[i]=1;else if(L[i]<-1)L[i]=-1;if(R[i]>1)R[i]=1;else if(R[i]<-1)R[i]=-1;} // zyada volume par clip
     const ae=new AudioEncoder({output:(c,m)=>muxer.addAudioChunk(c,m),error:e=>{err=e;}});
     ae.configure(aCfg);
     const CH=4800; // 0.1s
@@ -69,8 +83,9 @@ X.runFast=async function(P,onStatus,opts){
   }
   if(err)throw err;
   muxer.finalize();
+  if(window.BUMP)BUMP.cleanup(BP);
   P.seek(0);
   const blob=new Blob([target.buffer],{type:'video/mp4'});
-  return{blob,ext:'mp4',mime:'video/mp4;'+vc.codec,secs:(performance.now()-t0)/1000,vcodec:vc.codec,audio:!!aCfg,acodec:aMux};
+  return{blob,ext:'mp4',mime:'video/mp4;'+vc.codec,secs:(performance.now()-t0)/1000,vcodec:vc.codec,audio:!!aCfg,acodec:aMux,bumpers:BP.pre.length+BP.post.length,total:T/FPS};
 };
 })();

@@ -836,3 +836,130 @@ Har story card par **🎬 Fact-Pack prompt**: ready instructions (web se verify,
 Test: node --check OK; headless chromium: copy text sahi (niyam + STORY pack), console errors 0.
 Baaki sujhaav: khabar -> scenes JSON draft, aliases tune (galat group ki headline do), official BCCI/team feeds, Telegram alert.
 
+
+
+## C147 (18 Nov 2026) — news.html: ek hi copy button
+Rahul ne kaha: Fact-Pack aur Story pack alag kyu, ek hi button chahiye. **📋 Story pack copy** hata diya; **🎬 Fact-Pack prompt** ka naam ab **📋 Copy (prompt + story)** (niyam + poora Story pack ek click mein). Top ki hint line bhi badli.
+Test: node --check news.html script OK; button list = Use ho gaya / Baad mein / Copy (prompt + story).
+Baaki sujhaav: har article par alag 'Sirf ye copy' button (Rahul ne abhi nahi bola), khabar -> scenes JSON draft, aliases tune, official feeds, Telegram alert.
+
+
+## C148 (18 Nov 2026) — news.html: ek hi button, poora prompt (script + Gemini + scenes JSON)
+Rahul ne kaha: sirf ek copy button chahiye; usi se Claude mein script bane, Gemini se dobara banwane ka prompt bhi saath mile, phir scenes JSON 'best se bhi best'. Pehle ka alag 🧩 Scenes JSON button hata diya.
+Ab card par buttons: Use ho gaya / Baad mein / **📋 Copy (poora prompt)**. Prompt (~10 KB) mein 3 step:
+- STEP 1 (abhi): web verify (2 searches) -> Fact Pack (F-number, label, trust) -> Claude ka ek-block script -> **Gemini message** (docs/GEMINI_SCRIPT_PROMPT_TEMPLATE.md ka poora template, Claude bharta hai) -> ruk jao.
+- STEP 2 (Gemini output paste ya 'Claude script final'): SCRIPT_WORKFLOW ki checklist se CHECK -> FINAL script.
+- STEP 3 ('JSON' bolne par): scenes.json — teaser hook (presenter scene nahi, tool ka 🎬 button), har 1-2 vaakya ka scene, card variety, header+pills (sahi/afwah rang), cta like beech mein, anth, cta end, tag ke hisaab se beech ke cards, city hint (RR/LSG jaise short form se bhi), custom photo slots ki list + 'Sab hatao' yaad, ERROR list self-check, chhota schema saath.
+Default ek script = ek chunk (Rahul ka purana niyam). 'chunks mein' bolne par Claude chunk 1,2,3 bana sakta hai.
+Test: node --check OK; headless chromium (sample 3 headlines): prompt ban raha, city hint rajasthan+lucknow, console errors 0. NOT tested: asli news data, Claude ka asli JSON tool ke ✔ JSON check se, Gemini ka output.
+Baaki sujhaav: har article par 'Sirf ye copy', aliases tune, official BCCI/team feeds, Telegram alert.
+
+
+## C149 (19 Nov 2026) — news.html: Rumor->Official alert + Nayi update (used story)
+Suggestions 3 aur 4 (Rahul ne 'Continue' kaha).
+- **✅ Ab Official ho gaya**: pichli baar (page band/hide hone par) jo posts sab Rumor thi, ab story Confirmed -> badge. Snapshot localStorage `cvt_news_seen` (id -> R/C), pagehide/hidden par save; pehli visit par koi badge nahi.
+- **🔄 Nayi update: N nayi post**: story 'Use ho gaya' thi aur uske baad nayi posts aayi (used time ke baad ka `seen`) -> badge + nayi headline par 🆕, card dim nahi, 'Use ho chuki chhupao' mein nahi chhupti, top 5 mein aati hai. Button 'Update dekh li' dabane par badge hat jata.
+- Naye 'Sirf' chips: 🔄 Nayi update (n), ✅ Ab official (n).
+- Top 5 pehle se tha (alag 'top 3 banner' ki zaroorat nahi).
+Test: node --check OK; headless chromium (seeded used+seen, 5 posts): update badge, official badge, dim card, Update dekh li, official filter sab sahi, console errors 0. NOT tested: asli news.json par.
+Baaki sujhaav: har article par 'Sirf ye copy', official BCCI/team feeds, Telegram alert, aliases tune, 'Steps' tick (Script/Gemini/JSON).
+
+
+## C150 (19 Nov 2026) — news.html: 🛠 Kaam steps (Script / Gemini / JSON) tick
+Rahul ne 'Continue' kaha; bache hue mein se Steps tick liya.
+- Har card par 3 chhote chip: **1 Script, 2 Gemini, 3 JSON** — tap karke ✔ lagao/hatao (copy button se alag, haath se; Gemini skip karna ho to chhod do).
+- Naya 'Sirf' chip **🛠 Adhura kaam (n)**: jin stories par kuch step ho chuke par abhi 'Use ho gaya' nahi — wahin se kaam dobara uthao. 'Use ho gaya' dabane par wo list se hat jaati hai.
+- Save: localStorage `cvt_news_steps` (item id -> step -> time), sirf is browser/phone mein; 'Used list save' file mein steps nahi jaate.
+Test: node --check OK; headless chromium (sample 3 posts): tick, untick, filter, reload ke baad tick bana raha, Use ho gaya par wip count 0, console errors 0. NOT tested: asli news.json par.
+Baaki sujhaav: har article par 'Sirf ye copy', official BCCI/team feeds, Telegram alert, aliases tune.
+
+
+## C151 (19 Nov 2026) — news.html '📋 Sirf ye' + official BCCI/team feeds
+Rahul ne dono maange: har article par 'Sirf ye copy' aur official feeds (Confirmed label ke liye).
+1. **📋 Sirf ye** (har site ki row mein, 🔗 Kholo ke saath): wahi poora prompt (3 step + Gemini template + schema) par STORY PACK mein sirf wo ek headline. Prompt mein NOTE jodta hai: ek hi site hai, 2-3 sources se verify karo, sirf ek post wali baat [CHECK].
+2. **Official feeds** (feeds.json, 4 nayi, official:true): BCCI (bcci.tv), IPL (iplt20.com), ICC (icc-cricket.com), IPL teams (10 team sites ek query mein: chennaisuperkings.com, mumbaiindians.com, rajasthanroyals.com, rcb.com, kkr.in, sunrisershyderabad.in, delhicapitals.in, punjabkingsipl.in, gujarattitansipl.com, lucknowsupergiants.in). Sab Google News ke 'site:' search se (jaise baaki Site: feeds), when:7d.
+3. **scripts/fetch_news.py**: same link kisi generic feed mein bhi aaye to Confirmed hi rahe (pehle aakhri feed ka label jeet jaata tha). Rumor jaisa shabd (likely/reports...) ho to official feed ki item bhi Rumor.
+Test: mock RSS se fetch_news.main() chalaya (offline): official item Confirmed, generic Rumor, doosre run mein Confirmed bana raha; page headless chromium mein Sirf ye (multi-site + single story) sahi; console errors 0.
+**NOT tested (internet nahi tha):** asli Google News par in 4 feeds ka result. Google News mein har team/board site indexed ho zaroori nahi, to kuch feeds khaali aa sakti hain (fail nahi dikhega, bas 0 item). Pehli Run ke baad news.json mein source 'BCCI'/'IPL' jaise naam dhundho ya page par ✔ Confirmed badge dekho. Domain galat nikla (jaise sunrisershyderabad.in) to feeds.json mein sirf wahi domain badlo.
+Baaki sujhaav: Telegram alert, aliases tune, asli RSS links mile to Google-site feed ki jagah seedha daalna.
+
+
+## C152 (19 Nov 2026) — news.html: jis site ki post nahi, uska 'kholo' button
+Rahul ne 10 sites ke link diye: jis story par kisi site ki post nahi, wahan us site ko kholne ka button chahiye.
+- Har card mein source list ke neeche row **🌐 In sites par is story ki post nahi (khud dhundho)**: sirf wahi sites jinki is story mein post nahi, har ek ka **↗ button** (naye tab mein site ka cricket news page). Jin sites ki post hai unke liye pehle jaisa 🔗 Kholo.
+- 10 sites aur link (SITES array, news.html): ESPNcricinfo cricinfo.com/cricket-news, Cricbuzz cricbuzz.com/cricket-news/latest-news, TheSportsTak thesportstak.com/cricket, News18 news18.com/cricket/, Times of India timesofindia.indiatimes.com/sports/cricket, India Today indiatoday.in/sports/cricket, Hindustan Times hindustantimes.com/cricket, CricTracker crictracker.com/cricket-news/?ref=hm, NDTV Sports sports.ndtv.com/cricket, Sportskeeda sportskeeda.com/cricket.
+- Pehchan: post ke source naam (aur link) mein site ka naam dhundhta hai (jaise 'Times of India', 'The Sports Tak', 'ESPNcricinfo').
+Test: node --check OK; headless chromium (sample 12 posts, 2 stories): sahi sites par button, sahi href, console errors 0. NOT tested: asli news.json ke source naam. Agar kisi site ki post hone par bhi uska button dikhe to source naam alag likha hai — wo naam batao, regex SITES mein badhaunga.
+Baaki sujhaav: Telegram alert, aliases tune.
+
+
+## C153 (19 Nov 2026) — baaki kaam zip mein
+Rahul ne kaha 'Ye sab kaam zip mein rakho': news page ke 6 baaki kaam **docs/NEWS_TODO.md** mein detail ke saath rakhe (1 missing site par seedha khoj, 2 kai stories ka ek video, 3 used+steps backup, 4 story note, 5 Telegram alert, 6 aliases tune). Koi code nahi badla; sirf docs. Rahul bole tabhi uthao.
+
+
+## C154 (19 Nov 2026) — news.html: site par is story ki 🔎 khoj + ek Backup file (NEWS_TODO 1 aur 3)
+Rahul ne 'Next kaam karo' kaha (saath mein extension ko bhi advance karne ko).
+1. **🔎 khoj**: jis site ki post nahi, uske ↗ ke saath ab 🔎 bhi. 🔎 Google ka `site:<domain> <story ke 6 khaas shabd>` search kholta hai (shabd story ke title se, chhote/stop shabd hata ke). ↗ pehle jaisa site ka cricket page kholta hai. Cricinfo ke liye domain espncricinfo.com.
+3. **Backup**: ⬆ Backup save ab ek file `news_backup.json` (format cvt_news_backup_v2) mein **used + steps + baad mein** save karta hai; ⬇ Backup load wahi load karta hai (merge, purana mita nahi) aur purani sirf-used file (news_used.json) bhi load karta hai.
+Test: node --check OK; headless chromium: 🔎 links sahi query, backup save -> localStorage saaf -> load -> used/steps/later wapas, purana format load, console errors 0. NOT tested: asli news.json; Google search ka asli result.
+**Extension:** photo_finder_extension/ is zip mein NAHI hai (C44 ke hisaab se zip ke bahar, repo mein bhi nahi) — iske bina advance nahi kiya. Rahul se uska folder/zip maango (README.txt + manifest.json + js). Phir plan: news story ke khiladi ka naam extension ko bhejna / photo khoj queue (NEWS_TODO mein jodo).
+Baaki: NEWS_TODO.md ke 2 (kai stories ka ek video), 4 (story note), 5 (Telegram), 6 (aliases).
+
+
+## C155 (19 Nov 2026) — extension wale kaam bhi zip mein
+Rahul ne kaha 'Ye sab kaam bhi zip mein rakhlo' (extension ko use + advance karna). Koi code nahi badla. **docs/NEWS_TODO.md** mein 'Extension' section: E1 story -> photo khoj, E2 site checker (10 sites par story mili/nahi), E3 sites ki headlines seedha padhna, E4 official check, E5 Photo Finder advance (batch queue, license tracking). Pehle Rahul se photo_finder_extension folder maangna zaruri (zip mein nahi).
+NEWS_TODO ke baaki: 2 kai stories ka ek video, 4 story note, 5 Telegram, 6 aliases.
+
+
+## C156 (19 Nov 2026) - news.html: Top-N multi-story video
+Card par chip `☐ Top-N mein chuno` (max 8, kram = chunne ka kram, localStorage cvt_news_sel). Neeche fixed bar: 📋 Copy (Top-N prompt), 1 Script/2 Gemini/3 JSON sab par, ✓ Sab Use ho gayin, ✖ hatao. Prompt: FORMAT A (aaj ki top N), STORY 1..N alag pack + har ka label, S1-F1 fact numbering, lambai ~N*140 shabd, ek hi script.
+
+## C157 (19 Nov 2026) - news.html: story par apna note
+Card par ek line 📝 note (item.id par save, latest dikhta hai, localStorage cvt_news_notes). Prompt mein `RAHUL KA NOTE`, filter `📝 Note wali`, khoj mein note bhi. Backup ab `cvt_news_backup_v3` (+notes); v2 aur purani used file bhi load hoti hain.
+
+## C158 (19 Nov 2026) - E1: 📷 Photo dhundho (extension v1.1)
+Card par button: headline se naam ka andaza (English Title-Case, team/city/generic shabd hata ke), edit ho sakta hai. ⚡ dabane par extension ek-ek Google Images kholta hai; photo news.html seedha IndexedDB `cvt_photos` + `cvt_photo_custom` mein custom slot `custom_<naam>` banake daalta hai (same origin, photos.js jaisa id). Pehle se ho to skip. Bane slot ids prompt STEP 3 mein jaate hain. Tool tab refresh karna padta hai.
+Extension: tool-bridge.js mein ping/pong; tool-main.js mein bug fix (news.html par PHOTOS nahi, pf-set par galat alert aata); manifest v1.1.
+
+## C159 (19 Nov 2026) - E2/E3/E4: 🧩 Sites padho (extension v1.1)
+Extension background.js `scrape` (scrape-lib.js): 10 sites + BCCI/IPL/ICC ke news page ki headline+link (sirf button dabane par). news.html: E2 chip ✔ site: headline / ✖ nahi mili / ⚠ padh nahi paaya; E3 matched headlines prompt STORY PACK mein 'Extra sites ki headline'; E4 official match par badge `🏛 Official site par mili` (label apne aap nahi badalta). Match: shabd overlap (>=3 aur 45% ya >=2 aur 70%).
+Test: node --check sab; scrape-lib local HTML par; headless chromium + NAKLI extension (stub) 32 checks pass, console errors 0. Test mein ping race bug mila aur fix hua.
+NOT tested: asli extension, asli Google Images, asli 13 sites (internet nahi tha). BCCI/IPL/ICC URL yaad se (news.html `OFFICIAL` array). JS se bani site khaali aayegi; 'CSK' jaise short form match nahi hote. Photo se galat player aa sakta hai (thumbnail check).
+Baaki: NEWS_TODO 5 Telegram, 6 aliases, E5 (photo license tracking + batch queue).
+
+## C160 (19 Nov 2026) - 🖼 Photos: 📁 Folder mein save / 📂 Folder se load
+Photos panel mein 2 naye button (js/photos.js, File System Access API, Chrome desktop): 📁 sab photos PC ke chune hue folder mein (file naam = slot id + .jpg/.png/.webp, saath mein _photo_names.json custom naamon ki list); 📂 folder se wapas load (custom naam bhi wapas). Purana ⬆ Backup/⬇ Restore JSON waisa hi hai.
+Test: node --check; headless chromium NAKLI directory handle ke saath save -> library saaf -> load (2/2 photo + custom naam wapas), console errors 0. NOT tested: asli folder picker aur Chrome ki permission prompt (Rahul ke Chrome mein check baaki). Folder load par Chrome ek baar 'view files' permission puchta hai.
+
+## C161 (19 Nov 2026) - 📷 Photo ke saath team/series ka naam
+news.html Photo box ab `naam | team/series` format leta hai (jaise `Mohammed Shami | Rajasthan Royals, Sam Curran | Lucknow Super Giants`). Slot id/naam mein team judta hai (`custom_mohammed_shami_rajasthan_royals`, library mein 'Mohammed Shami · Rajasthan Royals'), isliye ek hi player ki alag team/series ki alag photo (`| India`, `| IPL`) alag slot banti hai, purani overwrite nahi hoti. Google query mein bhi team judti hai (behtar jersey). Team ka andaza headline se: naam ke baad aane wali team, warna pehle wali, warna IPL; edit kar sakte ho. Folder save mein file naam mein bhi team aati hai.
+Test: 34 checks pass (same player, doosri team = naya slot), console errors 0. Purani bina-team wali photos (custom_<naam>) jaisi hain waisi rehti hain.
+
+## C162 (19 Nov 2026) - 🆕 Scene JSON se photo naam apne aap library mein
+Ab scenes.json mein jo `custom_<naam>` photo id ho (stat/retain `photo`, watch/rumour `photos`) aur library mein na ho, to **⬇ JSON load** (aur ✔ JSON check) par wo naam apne aap custom slot ban jata hai (naam id se: `custom_mohammed_shami_rajasthan_royals` -> 'Mohammed Shami Rajasthan Royals', Hindi naam jaisa hai). Pehle ye 'unknown photo slot' error se load hi nahi hota tha. Ab load ke baad message: '🆕 N naye photo naam bane' + 📷 summary mein har naam ke saamne अपलोड button -> Rahul ko sirf photo upload karni hai. Scene Properties panel mein `photo` field mein naya custom_ naam type karne par bhi slot ban jata hai. Pehle se maujood slot (news.html wale nicer naam) overwrite nahi hote; dobara load par duplicate nahi.
+Code: js/photos.js (`PHOTOS.ensureCustom`, `PHOTOS.autoFromScenes`), js/scene_editor.js (load + check), js/filmora_shell.js (photo field).
+Rule: sirf `custom_` se shuru hone wale id auto bante hain; galat/anjaan id (jaise `bogus_x`, typo wali library id) ab bhi ERROR.
+Test: node --check; headless chromium: JSON load -> 2 naye slot (Latin + Devanagari), dobara load par duplicate 0, bogus id par error bana raha, 📷 upload se photo slot mein gayi aur page reload ke baad bhi slot+photo maujood, console errors 0. NOT tested: asli Chrome mein Rahul ka asli scenes.json.
+
+## C163 (19 Nov 2026) - Hindi text kat raha tha + basic text English
+Rahul ne screenshot bheje: timeline card ka kinare wala Hindi label screen se kat raha tha; CTA card pura Hindi tha. Fix: (1) `timeline` card (js/card_market.js) label ab screen ke andar clamp (60px margin) + thoda chhota fit. (2) Bhasha niyam: sirf khabar Hindi, basic text English. cta card labels Like/Comment/Subscribe, default title 'What do you think?'/'Enjoying the video?', line 'Tell us in the comments'/'Don't forget to subscribe'; JSON mein Hindi title/line aaye to cta card use English se badal deta hai (data.hindi:true se Hindi chalega). Defaults English: short_cta, anth cta, endscreen (editor), chapter_flow ('N chapters'). Rule docs/SCENES_JSON_SCHEMA.md + 00_START_HERE niyam 14 mein.
+Test: node --check; headless chromium frames dekhe (timeline 3 Hindi points kinare tak, cta Hindi JSON -> English), console errors 0. NOT tested: baaki cards ka kinare wala text (card_steps, tiles etc.) - Rahul kat'ta dikhe to screenshot bheje. Ye bhi baaki: Hindi-bhari baaki defaults (watch 'नज़र रहेगी', presenter sub) abhi waise hi.
+
+## C164 (19 Nov 2026) - Rumor/official wali cheezein cards se hata di
+Rahul ne kaha: rumor ya official wali cheezein mat likho. Ab: retain card par stamp (retain/rumour/official) aur "संभावित: ऑफिशियल लिस्ट नहीं" label nahi dikhte; watch + rumour card par bhi stamp/label nahi. Pill jisme रूमर/अफवाह/ऑफिशियल/आधिकारिक/rumor/official ho wo apne aap hat jati hai (js/pill_row.js `PIL.BAN`). Checker: label hatane ka error + official stamp warning hata; data mein ye shabd ho to warning. Editor defaults (rumour sub, compare card) se ye shabd hata diye. Purana niyam 7 (label HAMESHA) Rahul ke naye hukm se badal gaya (00_START_HERE niyam 7).
+Test: node --check; headless chromium retain card (stamp:'rumour' + pill 'अभी सिर्फ रूमर') -> stamp/label/rumor pill nahi dikhe, console errors 0.
+NOT done: header_line / captions / card ke text (name, note) mein ye shabd ho to tool nahi hataata (sirf warning) — JSON/script mein na likho. `rumour` card type ka naam waisa hi hai (sirf do-photo layout, stamp nahi).
+
+## C165 (19 Nov 2026) - 🎬 Intro / Outro / extra video (PC se upload, save, volume)
+Naya js/bumpers.js + export_fast.js/main.js/index.html mein jod. Button: 🎬 Intro/Outro (bar2 aur timeline tools mein). Panel: ⬆ PC se video add (library = 🎞 Clips wali IndexedDB, browser mein save), 📦 Default intro+outro (assets/22_bumpers/intro_8s.mp4 + outro_6s.mp4, Rahul ke diye 8s/6s), ➕ Aur video slot. Har slot: on/off, Shuru mein/Aakhir mein, video chuno, volume 0-300% (+100%/Mute), Fit (contain/cover), up/down order, preview (awaaz + volume ke saath), hatao. Naya upload khaali slot mein apne aap lagta hai. Settings localStorage 'cvt_bumpers'.
+Export: Fast export mein intro(s) -> main -> outro(s); bumper ki apni awaaz ek OfflineAudioContext mix mein (main audio intro ke baad se), volume gain, hard clip. Real-time export mein bumpers NAHI judte. Main player preview mein bhi nahi dikhte.
+Test (Rahul ne baaki test rokne ko kaha): node --check; headless chromium mein panel + default load pass (2 video library mein, slots bhare, sum 8.1+6.0). NOT tested: asli export ka final MP4 (frame/audio sync, volume), preview, PC upload picker, Short 9:16 mein fit. Rahul ke Chrome mein check baaki.
+
+## C166 (19 Nov 2026) - toolcric.zip ke 2 tool repo mein (tools/)
+Rahul ke diye 2 standalone HTML tool bina badle jode: tools/photo-studio.html (photo editor: layers, brush, text, shapes, filters, crop, PNG/JPG; thumbnail/photo touch-up ke kaam ka) aur tools/study-tube.html (Studytube: study videos, channels save, notes, history, backup). index.html ke nav mein 🖌 Photo Studio + 📚 Studytube link. Dono apne aap mein poore, cricket tool ke code se judte nahi.
+NOTE: In dono mein channel comparison ya title/description banane wala hissa NAHI hai (Studytube mein sirf channel save/subscriptions + video player hai). Wo kaam alag chunk hoga (Rahul bataye: Channel Compare tool / Title+Description helper).
+Test: nahi kiya (Rahul ne test rokne ko kaha). Studytube ko YouTube API key chahiye browse ke liye.
+
+## C167 (19 Nov 2026) - 📊 tools/channel-compare.html (Channel Compare + Title/Description helper)
+Naya standalone tool (YouTube Data API v3, Studytube wali key; localStorage 'uv99:st:key' se badal sakte). Input: @handle / channel link / UC ID / naam (naam = search, 100 quota). 25/50/100 latest videos padhta hai. Comparison table (hara = best): subs, views, avg/median/best views, views/subs %, like/comment %, uploads/mahina, Shorts %, title length/number/?/emoji/Hindi %, description length/link/#/timestamps. Har channel: top 5 videos (title + description copy), title ke top shabd, top tags, channel keywords + description copy. Saved channels (click jodo, double-click hatao), CSV export. Section 2: apna title/description check (length, number, ?, caps, hashtags, links, chapters) + competitors ke tags/shabd jo tumhare text mein nahi (500 char tag limit ke andar copy). index.html nav mein 📊 link.
+Test: sirf node --check (Rahul ne test rokne ko kaha). NOT tested: asli API call/key, referrer restriction, layout. Key ko Google Cloud mein sirf apni GitHub Pages site + YouTube Data API v3 par restrict karna.

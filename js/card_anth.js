@@ -20,7 +20,7 @@ C.CARDS.anth={
    const f=C.fitText(ctx,q,1240,2,60,34,800);const lh=f.px+6,y0=y+80-(f.lines.length-1)*lh/2;
    f.lines.forEach((l,k)=>C.text(ctx,l,fl?290:420,y0+k*lh,{px:f.px,base:'middle'}));ctx.restore();});
   const cp=E.out(C.prog(t,2.6,3.1));if(cp>0){ctx.save();ctx.globalAlpha=cp;const pulse=1+0.02*Math.sin(t*6);ctx.translate(W/2,860);ctx.scale(pulse,pulse);
-   const f=C.fitText(ctx,d.cta||'आपकी राय? कमेंट में ज़रूर बताइए',1500,1,70,40,800);C.text(ctx,f.lines[0],0,0,{align:'center',px:f.px,stroke:10,shadow:12,base:'middle'});ctx.restore();}
+   const f=C.fitText(ctx,d.cta||'What do you think? Tell us in the comments',1500,1,70,40,800);C.text(ctx,f.lines[0],0,0,{align:'center',px:f.px,stroke:10,shadow:12,base:'middle'});ctx.restore();}
   const rp=E.back(C.prog(t,3.2,3.7));C.drawImg(ctx,RB,W-460-30+(1-rp)*520,H-96-30);
  }};
 // green-screen -> alpha (cached per image key)
