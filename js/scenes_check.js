@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const S=window.SCHK={};
-const WIDE=['hook','title','stat','retain','watch','rumour','anth','intro','presenter','cta','curve','stack','chapter','crowd','bigwords','qcards','spot','compare','tiles','levels','chip','options','stat2','bars','dash','trio','rating','portrait','phone','market','comments','timeline','hub','search','formula','beforeafter','setting','radio','ideas','reel','phones','gcurve','steps','expect','equals','payoff','tickgrid','variety','vsvlog','energy','bestlast','locked','longstat','offer','products','endscreen','burst','clip','diamond','kinetic','barcount','quote','post','iconscene','bullets','phoneann','phonewall','numgrid','compare2','plans','timelist','ctapill','adcard','uimock','checklist','chips','split','icontiles','stepcards','screenclip','toggle','askq','promo','outword','flowdiag','crossprice','docfolder','topicend','measure','meme','wavestrip','ideatitle','chipcarousel','flowline','chatmock','statcard','thumbwall','ladder','ring','vidcard','gauge','barlist','tree','cardtiles','fan','replies','vs2','bonus','prodnode','dotmap'];
+const WIDE=['hook','title','stat','retain','watch','rumour','anth','intro','presenter','cta','curve','stack','chapter','crowd','bigwords','qcards','spot','compare','tiles','levels','chip','options','stat2','bars','dash','trio','rating','portrait','phone','winprob','h2h','pitch','xi','market','comments','timeline','hub','search','formula','beforeafter','setting','radio','ideas','reel','phones','gcurve','steps','expect','equals','payoff','tickgrid','variety','vsvlog','energy','bestlast','locked','longstat','offer','products','endscreen','burst','clip','diamond','kinetic','barcount','quote','post','iconscene','bullets','phoneann','phonewall','numgrid','compare2','plans','timelist','ctapill','adcard','uimock','checklist','chips','split','icontiles','stepcards','screenclip','toggle','askq','promo','outword','flowdiag','crossprice','docfolder','topicend','measure','meme','wavestrip','ideatitle','chipcarousel','flowline','chatmock','statcard','thumbwall','ladder','ring','vidcard','gauge','barlist','tree','cardtiles','fan','replies','vs2','bonus','prodnode','dotmap'];
 const SHORT=['short_hook','short_stat','short_cta'];
 const TYPES=WIDE.concat(SHORT);
 const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup','push','iris','blinds','rgb','spin','lightwipe','tiles','blurfade','split','chevron','torn'];
@@ -24,6 +24,10 @@ const KEYS={
  qcards:['title','qs','hl'],
  bars:['title','items','unit','c','total'],
  dash:['title','tiles','pts','note','c'],
+ winprob:['title','a','b','pa','pb','ca','cb','note'],
+ h2h:['title','a','b','wa','wb','nr','fa','fb','note'],
+ pitch:['title','type','items','toss','note'],
+ xi:['title','team','c','players','note'],
  trio:['title','head','icon','items','c'],
  rating:['title','head','stars','label','tiles','c'],
  portrait:['title','text','sub','photo','side','c'],

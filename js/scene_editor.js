@@ -4,7 +4,7 @@
 const C=window.CORE;
 const KEYS={wide:'cvt_scenes',short:'cvt_scenes_short'};
 const keyOf=()=>KEYS[C.format]||KEYS.wide;
-const TYPES_W=['hook','title','stat','retain','watch','rumour','anth','intro','presenter','cta','curve','stack','chapter','crowd','bigwords','qcards','spot','compare','tiles','levels','chip','options','stat2','bars','dash','trio','rating','portrait','phone','market','comments','timeline','hub','search','formula','beforeafter','setting','radio','ideas','reel','phones','gcurve','steps','expect','equals','payoff','tickgrid','variety','vsvlog','energy','bestlast','locked','longstat','offer','products','endscreen','burst','clip','diamond','kinetic','barcount','quote','post','iconscene','bullets','phoneann','phonewall','numgrid','compare2','plans','timelist','ctapill','adcard','uimock','checklist','chips','split','icontiles','stepcards','screenclip','toggle','askq','promo','outword','flowdiag','crossprice','docfolder','topicend','measure','meme','wavestrip','ideatitle','chipcarousel','flowline','chatmock','statcard','thumbwall','ladder','ring','vidcard','gauge','barlist','tree','cardtiles','fan','replies','vs2','bonus','prodnode','dotmap'],TYPES_S=['short_hook','short_stat','short_cta'];
+const TYPES_W=['hook','title','stat','retain','watch','rumour','anth','intro','presenter','cta','curve','stack','chapter','crowd','bigwords','qcards','spot','compare','tiles','levels','chip','options','stat2','bars','dash','trio','rating','portrait','phone','winprob','h2h','pitch','xi','market','comments','timeline','hub','search','formula','beforeafter','setting','radio','ideas','reel','phones','gcurve','steps','expect','equals','payoff','tickgrid','variety','vsvlog','energy','bestlast','locked','longstat','offer','products','endscreen','burst','clip','diamond','kinetic','barcount','quote','post','iconscene','bullets','phoneann','phonewall','numgrid','compare2','plans','timelist','ctapill','adcard','uimock','checklist','chips','split','icontiles','stepcards','screenclip','toggle','askq','promo','outword','flowdiag','crossprice','docfolder','topicend','measure','meme','wavestrip','ideatitle','chipcarousel','flowline','chatmock','statcard','thumbwall','ladder','ring','vidcard','gauge','barlist','tree','cardtiles','fan','replies','vs2','bonus','prodnode','dotmap'],TYPES_S=['short_hook','short_stat','short_cta'];
 const types=()=>C.format==='short'?TYPES_S:TYPES_W;
 const TRS=['cut','fade','grunge','zoom','whip','glitch','flash','slideup','push','iris','blinds','rgb','spin','lightwipe','tiles','blurfade','split','chevron','torn'];
 const DEF={
@@ -25,6 +25,10 @@ const DEF={
  options:{dur:6,data:{title:'',items:['तेज़ तरीका|छोटी लाइन','धीमा तरीका|छोटी लाइन','अपने आप|छोटी लाइन'],pills:['जल्दी चाहिए?|g','अपने आप खुलता है|x'],hl:0}},
  stat2:{dur:6,data:{title:'',n1:1000,l1:'पहला नंबर',n2:4000,l2:'दूसरा नंबर',p1:'',s1:'',p2:'',s2:'',c1:'g',c2:'y',mid:'→',pill:''}},
  bars:{dur:7,data:{title:'',items:['पहला|5','दूसरा|4','तीसरा|2','चौथा|1'],unit:'मिनट',c:'g',total:true}},
+ winprob:{dur:8,data:{title:'जीत का चांस',a:'टीम A',b:'टीम B',pa:55,note:'पिच देखकर थोड़ा बदल सकता है'}},
+ h2h:{dur:8,data:{title:'आमने-सामने',a:'टीम A',b:'टीम B',wa:12,wb:9,fa:'WWLWL',fb:'LWWLW',note:''}},
+ pitch:{dur:8,data:{title:'पिच रिपोर्ट',type:'बल्लेबाज़ी पिच',items:['पहली पारी औसत|172','चेज़ जीत|58%','पावरप्ले रन|52'],toss:'टॉस जीतो, पहले गेंदबाज़ी',note:''}},
+ xi:{dur:10,data:{title:'प्लेइंग XI',team:'टीम A',c:'y',players:['खिलाड़ी 1 (C)','खिलाड़ी 2','खिलाड़ी 3'],note:''}},
  dash:{dur:7,data:{title:'',tiles:['लेबल 1|1,200|+5%','लेबल 2|340|-2%','लेबल 3|58%','लेबल 4|12'],pts:['3','5','4','8','12','10','15'],note:'',c:'g'}},
  trio:{dur:7,data:{title:'3 चीज़ों पर निर्भर',head:'मुख्य बात',items:['पहली चीज़|छोटी लाइन','दूसरी चीज़|छोटी लाइन','तीसरी चीज़|छोटी लाइन'],c:'y'}},
  rating:{dur:7,data:{title:'',head:'एक फ़ैन',stars:4,label:'रेटिंग',tiles:['कितना देखा|80%','पसंद आया?|हाँ'],c:'y'}},
