@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T09:43:45.923659+00:00",
+ "updated": "2026-11-19T09:59:06.227531+00:00",
  "feeds_ok": [
   "Google News: retention",
   "Google News: release/trade",
@@ -24,20 +24,20 @@
  ],
  "feeds_fail": [],
  "feed_secs": {
-  "Google News: retention": 0.4,
-  "Google News: release/trade": 0.4,
-  "Google News: auction": 0.4,
-  "Google News: India match": 0.4,
-  "Google News: IPL Hindi": 0.2,
-  "ESPNcricinfo (all stories)": 0.5,
-  "Site: Cricbuzz": 0.3,
-  "Site: ESPNcricinfo (site)": 0.2,
-  "Site: TheSportsTak": 0.2,
+  "Google News: retention": 0.6,
+  "Google News: release/trade": 0.5,
+  "Google News: auction": 0.6,
+  "Google News: India match": 0.5,
+  "Google News: IPL Hindi": 0.3,
+  "ESPNcricinfo (all stories)": 0.6,
+  "Site: Cricbuzz": 0.4,
+  "Site: ESPNcricinfo (site)": 0.3,
+  "Site: TheSportsTak": 0.3,
   "Site: News18 Cricket": 0.3,
-  "Site: Times of India Cricket": 0.4,
+  "Site: Times of India Cricket": 0.3,
   "Site: India Today Cricket": 0.3,
   "Site: Hindustan Times Cricket": 0.3,
-  "Site: CricTracker": 0.3,
+  "Site: CricTracker": 0.2,
   "Site: NDTV Sports Cricket": 0.3,
   "Site: Sportskeeda Cricket": 0.3,
   "Official: BCCI (bcci.tv)": 0.3,
@@ -46,6 +46,176 @@
   "Official: IPL teams (10 sites)": 0.4
  },
  "items": [
+  {
+   "id": "c8e72fe581fc",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Ainsworth overcomes illness to continue Hurricanes' miserable season",
+   "link": "https://www.cricinfo.com/ci/content/story/1563216.html?ex_cid=OTC-RSS",
+   "source": "ESPNcricinfo (all stories)",
+   "published": "2026-11-19T09:52:17+00:00",
+   "summary": "Both sides struggled with the bat but Freya Kemp's 40 helped Scorchers to a total they could defend",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "c8e72fe581fc",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.99
+  },
+  {
+   "id": "78c93d9c3e23",
+   "seen": "2026-11-19T06:59:06.536761+00:00",
+   "title": "India Cricket Team News | Latest News Updates India Cricket Team",
+   "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE53cWNmZUJZSmt2RmNqNms3RFZDeTFzNkVUTlE2WTJjMUdUUE15ZXNKWTd4UGM2TWY0MlZKMERnQllkM3lRQmdjN2QzVDFldi1lM29pVm5SQ3hya2p6YU01cGhydzNmT0JOYjExRDNfSQ?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-19T09:50:26+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "78c93d9c3e23",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.99
+  },
+  {
+   "id": "d9773e03bac5",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Travis Head reignites India's 2023 World Cup heartbreak with cheeky Instagram post",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOdkNmckV6WWVPUXhCR1dZT0E4S2Q2RTFheXRkaEw0Y0M0UW1IUjh3dnFGQ3QweW82V2ZDbDZQdy1EN1ZaZ2NEVThWaGVnOUJsZXhmcVRwMW1iaGJjVlB3YkkxcjdGb0Z2Z0plVHFIZWlaVzhrV3lNQ2RRMmtDRldZNnl0SHlud1JVR2FiMXhELUdoLVJIRXRSVmE3X2dfU2NMQVhNc2VlWFN3TlJJV05qR0FfQ0dfNHo5LTM3VVBWSFo5NHNFTmhwLTZ3?oc=5",
+   "source": "Cricket Addictor",
+   "published": "2026-11-19T09:48:01+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "d9773e03bac5",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "f3401a5c3ddf",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Anaya Bangar Starts Cricket Practice With Yograj Singh, Earns Praise - Video",
+   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQUlNZkt4TnlPN2Q1Tmg2RDExeVlTZ0s1ZDFiUnFUV1hxcG5WRFp2VmxkUmRYUHNaeGYwLUU5MjlIQ25obWdVenpUa0xCZWZ3TEZiYnkzUWhNemJuOVJHVGdoMHc1QXhuYzI4ZnJfdndGQjZWbUxxYjB3MWw5cm5WSmx3UERRTUtLUEc2dERJblZ0NlNRYWN0dGtzdTNtc1JkeGpnc0UtekItbkFrT1dnNUdHOXk?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-19T09:44:56+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "f3401a5c3ddf",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "085537eaece8",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "We don’t pick a team only for Day 1: India’s batting coach defends decision to drop Mohammed Siraj",
+   "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOeTNqaXRLVk5xMDNIRXhJWTFuTHEyZmlFTHRqalN3YllmLXc5d2ZDSTgwY3BFMkJ6c0hCYXhWOWh0WTBPMzhSRHJGc1VFUG9yTnRRYUFFWUd2bm9CdkQyd1FPMnoyM1F6QzM2UnNBdl9PSmY3NmFUUW1NTWk2czA4QThUTkloS1Z1NHk2MUFOa1dfQklyYXhuRXRZaWZKMDRPVFZfZEZIcEd4YUVzZHNlTXVMZldCTVoxUi04eW9adzJDME91SHZFZXF6aTJLYXFLbUVyYWVxa3NHVWpjWkhUejdsd9IB6AFBVV95cUxQcmhySktPLUpzYmFRWEpKdWhKZnVTNVBiVUlod1BlRWwyQVhMWEpmZFFuLU1Db3BXaGFaSG15YktEZWZzTGR3MXM2OHNwNzIydl9ZYjd2elN6RFU2NENOaFQyTUgzNUpJRHkwdVZSX1VLcUZiT2ZJS1RMaTZmTWppeldyNm8zNGJvNGN0STlhemExYk9oNURJdmJrdjNxOTBtVTQ4UlZPMVdVa08zTWxwVVduM2lKOEZkbWZUYVpIMWxHRnY4MURRM2Vlb1BjclVrRTZkQVlEYVlNMXlDdTVYSm9sQlFsbjBH?oc=5",
+   "source": "News9live",
+   "published": "2026-11-19T09:44:19+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "0099811cfc19",
+   "recent_n": 1,
+   "sources_n": 2,
+   "score": 6.98
+  },
+  {
+   "id": "4efbcd597438",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "'We want to get as many runs as possible': Nicholls eyes more frustration for India after stunning recove",
+   "link": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxNQzJKdFJqSUlaVnRrWUJkaEdyRlB6Y0FfdE5ReGwyY05McEZOdFRXbnZBM1AwaG9VeWF4dWdFMm5NOXUyNkJRNnVCYnVTR251V3BHVlZ2bmxlM2ZWRHVqWGdpTEp3R2NVQXBHdGRXbGI1OEdxbm9lY185NTFRR0JxeVNkbnMweEhsdmxIS1JRTHU5X0FLVWRHSUFrSXhGOGZsek9tZk5NUXRaWTg4WUxsZ2pDc3VnTURsSUVuNTgycTJCX3J0a3hseUVTbVF4Y09LbG83X2c3NWFEXzZmamdvVVNlYzVMQnBrSHFJYVdHUUZBNlNqTUlROHpJQU1LTFdlbk5sZHpOd1BJMG9MRjNRUTU3aFk1eHFMLVZRVmw1YWJzQ01pVks0eTNR0gGvAkFVX3lxTFBuNnJpNEsyZnIyY043eTdLYmhNcEp2ZVdCdFM2OGd5LVZ4MHViN2plbXFUT1VBcl9TSml0WXFMUlE1TmRDNUxFTFowM3F2bGZ4aE8zVnBQTF9ObEwtaElINnFDNlExLTJwb3ZKU3RBNFh3MEJPcmduV0s1T3I5bWJqMVMwTHA4S0JZbUJ6bGtzMXlBc0RBYTliLVZfTWRTWmRaMXE3SEhRTzFTN2xMek9fdTFBNGRMZXNYaXNURzR1c1BaWmdxVkJoUW1nVjlNQ1NESmwyTmZqdlpvS2hUbDRDeVN5akZiVk9PLXZxSWs5cWl2VU1TVWFPTjRRWDZNNDhINEZZRnNuRXo5QWp5dndIdWVCNlJrOFFXSmhlTEtZUTJHRGVMRFBNNTAxNGZqQQ?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-19T09:43:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "4efbcd597438",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "339723c9c42c",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Venugopal Rao: 'Built a cricket ecosystem from scratch, now ready for the next chapter'",
+   "link": "https://news.google.com/rss/articles/CBMi1wJBVV95cUxPWHV6NHpHTl9LczJ5Wk5QUTZRMV9PMHJ0YXFwSkdzZDBSdFVEdmFPZjZLb3c2UTVUVFNrYkFpd015QTc1clAyOGoza2JZVU8tc3BVVXJZd3IyUlVGQjJ4S1kwc2MyMzF4OXREdFNmcDF5SzdSUXVVcGFPUTRBSWx0dUlGYzVWYVhzb3FydEZ1YnJXeDdMZkUxY2xyNDhydkpZa2VBUmN3bUJrM2xPV09hX1ZtSmxMVU55Sk1XNnhfeXllM0I1NUlWMk4wSWc3TFBzVS00cmU0RmlldGRhWDhjVGJSdmJRdlZEUWowU2gtMmpDQ0xkYk9kNmozVGJQMTIxSzJiN0VoRDVSUGQ3emhBQXZJbVJET29pc0VVNy1lMVB2b0lxSnJhZE9DcHFPbnF0SUxLSFB4YVdwd1dCaE1XalZ6MzJnNUFHcGtSb0pYSVMwRHltc3RF?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-19T09:42:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "339723c9c42c",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "f61f78298228",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Why Mohammed Siraj's absence from Wellington Test is harsh but not a surprise",
+   "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxNQ0NrcDl6VGhZSWUxSTFvdzQxUnlKaTRpemh6Wk9QQ2dRakVlSTZ1TVdHV2VmZ3ZCZF82MHlMZGNLUzhPQnFKMGxQRDYyeEpScHpLZkxJTExfV3hXV0l1VWktX0oxaWVUcy1ORHNDNVI3SlQ1RTVsazZFemtqQ0J1c2ZGdi1SaVl0NUUyalFfSW5LRE90VTZlT0xmb3pwNVBITGRMamRIUUM3Y0doV0FsR25EZU9YWlo1ZUtyVExnelVTUE1IM1F5M2RjNV9oUmdJRXMyS0NRSVJLM3E4VFZRUFpUM3c1bjNBT1h0bU1KdWdfUm9vQVpJalB5SldrVmRkaVdXMNIBigJBVV95cUxOVjRQRkVPcFR2MkNZbGluTS1KZFVWdk5QLXZfeHZXcS1PdzRBa3F4ZXluRVlvRGRuajg5Y3AzRVV5eUo2MEZsRW9ZcWt0YWVwMmEta0pHZlNIQWUyQnJ3RHlabkN3aGctcGJxbllxVU9nS0gxWDhXbTh6Sy1IM2xHanRjS0QwT25pTm1CdzJUMS1ESy00S1pDTzZHcXBNc2xSVkZXbjNQVy01bWRRbHJlaXUtVlpvclEtNzRvM0wyNEJEaFRVS3RnMDdvS2F6UEVsT3dOR2l0eEtFb21BZXlYLTBHbnZ5NlRWSGhrbktRRDRPRm5xSUo3dE1lcEo0WXlDYzNGZ21UOHR2QQ?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-19T09:42:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "f61f78298228",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "9b562f07f6a7",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Venugopal Rao: 'Built a cricket ecosystem from scratch, now ready for the next chapter'",
+   "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxQOTlhVmtLOGJpSjNremdtT2FqRnNsNFM1UElGZkxrV1pHV0hqTzlkZEttT1VnV2tNNGVaY0pwbXhFenA2MVY0VHFQQnRQZnEzX0REaTNJckpRR3NzM2piQzh2STI3bWNZb19KQ0R4UzA2aWdTQnl1YmZMcEctY0s4NGt4cUFtMjZfSzhrZDAxUWxlMkN2NFA3ZDlqUGlaQnhVMkc1NEs0YzZabG1oam9NdWZuQktZMldsVUxvLU5rc2ttdnM4RDI5SVM1amRieFhScXQzNEVtejA0ZF9rQnRjcTA5U293ZHh3X1lDZTdIQ0dXTUxna3ZaVWJQeWhDTnJEd0FsLXlfZ9IBjAJBVV95cUxNdzlobWI5Yk9KZUM5SlVUYnlzYlZzLXJUYl9KR3g4ZEhtaElaWXdHeDhCRjZ3N1NQRjNSbUNRSE9DalJzWkJ5S29fZWxDRmlMa3d0eXI2d2c3dG9jaE9xZ0NUU0Z3SkNwbmlPMUl0d2t5YnV2MkFuXzJPUGx2TV9GUi02N1FoaUwwYkNyYXRQTVdnTXIyN2hPVWlkeTRWd1FtUWRBaEdNYXlfcG9iSzlCY29FaEs0VTBqZnFkTi13bnpVVmVXaTRGMXRLVXd0am01bDluT05MQ1JzZmxWXzNjYkFkaHU1LWRBRlh3YkhpZWZ1UklTQWpDcXJPXzlOLXJEMHFpcEhTdmZyVjJQ?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-19T09:42:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "339723c9c42c",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.98
+  },
+  {
+   "id": "b51b165faf5e",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "1 Mahine Se Mahaul Banaya, Ye Sirf Trailer Hai: R Ashwin Claims Siraj Will Also Be Dropped From 2027 WC Squad",
+   "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPaUNrR0RWSmtjM2lnTHMtdmZkcGw4SGdKUGw1WDJLdnVYT1lUdjJKOWtvS3BObzF0N3NZWXcxYUt5NjduMW5SeEEtczFtOVlldWpJYWJXOXpYb3FqQ0JkdXYzS3FlSFZqLWpWU19mSjA3bEhLczJIOFpjRWNUVGpfN21aQ1dhUG5PaWx2Q29oNG00eE5HQWw1QjhCbDNacXhKMnFYVVBDX2RGN3FEamdtVFA4X1FHY2pnVXhhVjBGUXFPRTV5YmlBRkFxUHdMYVNLNHppdkUxYWQ3UU0tV0l4d3g4eWpRMVFlXzFtd0ppcjRseWo2UmpkOG5ZbWRzYkdZSDNPc1IwQklYQdIBjwJBVV95cUxPcmhjZmEySjlpRlpLUGMzSEY0TG5ORjJycV9rS1BRLUM4TkJQVjFGNEVJR3gyc3B1cm1WYmx4YWxWUU83ZTFjV0RuT2JMbVVnWkNwQVpXMjFBSFBwbVhHNWZvb2YtaUVaSXRnaUhzbU1xU1U2M25Ld0k2MFphOHd4ckFBVEdPNlhCREptWmQ0RDNzeTVIYVh4RHZtOGhoVldBTzg0bmtWaVhjemNvQ1BYNmVqOVRsV1Z3MkpPeGpuSUpFVUZwX2JWRERJZERMZXN4b1NZYXdTcTF0YVJ6blNuS0dXeFZyLXdxMFYyX09FUTlHOUlGMUJKU3BWSkJET1Y2bmJKbjJ4ZWZZbWI1RDJJ?oc=5",
+   "source": "Times Now",
+   "published": "2026-11-19T09:37:38+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "b51b165faf5e",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 4.97
+  },
   {
    "id": "9c8c18056403",
    "seen": "2026-11-19T09:43:45.923659+00:00",
@@ -58,10 +228,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.99
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.97
   },
   {
    "id": "e9fc3b0f8152",
@@ -78,7 +248,7 @@
    "cluster": "e9fc3b0f8152",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 7.99
+   "score": 7.97
   },
   {
    "id": "fcd3cb0d4165",
@@ -95,7 +265,7 @@
    "cluster": "fcd3cb0d4165",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.99
+   "score": 2.97
   },
   {
    "id": "7ab5daf3178d",
@@ -112,7 +282,7 @@
    "cluster": "7ab5daf3178d",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.98
+   "score": 5.96
   },
   {
    "id": "d3366ff6c5bf",
@@ -129,7 +299,7 @@
    "cluster": "d3366ff6c5bf",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.98
+   "score": 2.96
   },
   {
    "id": "1becf7fdabf9",
@@ -146,7 +316,7 @@
    "cluster": "567b670ff60b",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 8.98
+   "score": 8.96
   },
   {
    "id": "64041e42695f",
@@ -163,7 +333,7 @@
    "cluster": "64041e42695f",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.98
+   "score": 2.96
   },
   {
    "id": "4f9a3e98ca65",
@@ -180,7 +350,7 @@
    "cluster": "4f9a3e98ca65",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.96
+   "score": 2.94
   },
   {
    "id": "ba5b85f5b84e",
@@ -197,7 +367,7 @@
    "cluster": "ba5b85f5b84e",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.96
+   "score": 2.94
   },
   {
    "id": "bf44d240576f",
@@ -214,7 +384,7 @@
    "cluster": "bf44d240576f",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.96
+   "score": 2.94
   },
   {
    "id": "0ffa400a627b",
@@ -231,7 +401,7 @@
    "cluster": "0ffa400a627b",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.96
+   "score": 2.94
   },
   {
    "id": "7fceb91c6931",
@@ -248,7 +418,7 @@
    "cluster": "7fceb91c6931",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.96
+   "score": 2.94
   },
   {
    "id": "60ee1d8b343f",
@@ -265,7 +435,7 @@
    "cluster": "60ee1d8b343f",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.95
+   "score": 2.93
   },
   {
    "id": "c4eb30d676e1",
@@ -282,7 +452,7 @@
    "cluster": "c4eb30d676e1",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.95
+   "score": 2.93
   },
   {
    "id": "56c35be8197b",
@@ -299,7 +469,7 @@
    "cluster": "56c35be8197b",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.95
+   "score": 2.93
   },
   {
    "id": "ec38f0932adb",
@@ -316,7 +486,7 @@
    "cluster": "ec38f0932adb",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.95
+   "score": 2.93
   },
   {
    "id": "623beaf4baf4",
@@ -333,7 +503,7 @@
    "cluster": "623beaf4baf4",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.95
+   "score": 2.93
   },
   {
    "id": "8ebc1e15afff",
@@ -350,7 +520,7 @@
    "cluster": "8ebc1e15afff",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.94
+   "score": 2.92
   },
   {
    "id": "63992d5980cb",
@@ -367,7 +537,7 @@
    "cluster": "63992d5980cb",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.94
+   "score": 2.92
   },
   {
    "id": "16b5da732966",
@@ -384,7 +554,7 @@
    "cluster": "16b5da732966",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.94
+   "score": 2.92
   },
   {
    "id": "9cb057009718",
@@ -401,24 +571,7 @@
    "cluster": "9cb057009718",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.93
-  },
-  {
-   "id": "78c93d9c3e23",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "India Cricket Team News | Latest News Updates India Cricket Team",
-   "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE53cWNmZUJZSmt2RmNqNms3RFZDeTFzNkVUTlE2WTJjMUdUUE15ZXNKWTd4UGM2TWY0MlZKMERnQllkM3lRQmdjN2QzVDFldi1lM29pVm5SQ3hya2p6YU01cGhydzNmT0JOYjExRDNfSQ?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-19T08:50:40+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "78c93d9c3e23",
-   "recent_n": 1,
-   "sources_n": 1,
-   "score": 2.93
+   "score": 2.91
   },
   {
    "id": "4fb0f1e6ce9b",
@@ -435,7 +588,7 @@
    "cluster": "8fc6529c9f70",
    "recent_n": 2,
    "sources_n": 2,
-   "score": 7.92
+   "score": 7.9
   },
   {
    "id": "d097e567e362",
@@ -452,7 +605,7 @@
    "cluster": "d097e567e362",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.92
+   "score": 2.9
   },
   {
    "id": "3658ce8f3287",
@@ -469,7 +622,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 10.92
+   "score": 10.9
   },
   {
    "id": "e81cf42ad253",
@@ -486,7 +639,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 13.92
+   "score": 13.9
   },
   {
    "id": "ec7c33e5b023",
@@ -503,7 +656,7 @@
    "cluster": "ec7c33e5b023",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.92
+   "score": 2.89
   },
   {
    "id": "74442a851d9c",
@@ -520,7 +673,24 @@
    "cluster": "eaa9a2894b3f",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.91
+   "score": 4.88
+  },
+  {
+   "id": "c44ee15731c0",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Asian Games: Indian Women’s Cricket Team Wins Country’s First Gold in Aichi-Nagoya, Medal Tally Rises to 7",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPbXc4Z3B2OXhlUVRLVnQwc2VRbnp3MXhxWG1YNy1yTi1mWk1yNG11MWRyNVNPSlVuQjdEQ0FCSXBEdW9vUm02ZENvaUZ6M3ZFT21OYkt4eTNaN3o1ZzRCOVJNMzNwMDFwWHRiRjFJTW5uSGJaUHpZR3VNNFhhTUE1bVF2QTZPVVNvLUJZMXUzajl4STRKMVpCMExsT0s3NkFIMThFeHBnQlhMSkNlY2o3QXlzVDU4VC1UbVItaHpRY1hHU0pqN2p3?oc=5",
+   "source": "News On AIR",
+   "published": "2026-11-19T08:34:49+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "c44ee15731c0",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.88
   },
   {
    "id": "de3e879bf145",
@@ -537,7 +707,7 @@
    "cluster": "de3e879bf145",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.9
+   "score": 2.88
   },
   {
    "id": "d976599ed8c7",
@@ -554,7 +724,7 @@
    "cluster": "d976599ed8c7",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.9
+   "score": 2.88
   },
   {
    "id": "d786260b8390",
@@ -571,7 +741,7 @@
    "cluster": "d786260b8390",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.9
+   "score": 2.87
   },
   {
    "id": "e7cf0e3c7f22",
@@ -588,7 +758,7 @@
    "cluster": "e7cf0e3c7f22",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.9
+   "score": 2.87
   },
   {
    "id": "f9c7062dfb8f",
@@ -605,7 +775,7 @@
    "cluster": "f9c7062dfb8f",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 6.89
+   "score": 6.87
   },
   {
    "id": "502c7ef1e229",
@@ -622,7 +792,7 @@
    "cluster": "a73d627279d9",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.89
+   "score": 4.87
   },
   {
    "id": "33691495724b",
@@ -639,7 +809,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 10.89
+   "score": 10.87
   },
   {
    "id": "d773b18d8a65",
@@ -656,7 +826,25 @@
    "cluster": "d773b18d8a65",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.89
+   "score": 2.87
+  },
+  {
+   "id": "721f0b33c104",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Sunrisers Hyderabad Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE10T1RCcHQyLTZ3OWpsT1ZCS25xb2lsTnFFRHVMYXF1Vk5VSlQ4RjNCcmlCXzBFeE05S3ZGRW93NC1VOGk5R0ZxWVViV2xhWHJfT3Vka2NXTkJOSXZVNVBFVlBOeVZaRV90NzNNMTZqaFYxb0NM?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-19T08:22:15+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "721f0b33c104",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 6.87
   },
   {
    "id": "b8805a7a9022",
@@ -673,7 +861,7 @@
    "cluster": "b8805a7a9022",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.88
+   "score": 2.86
   },
   {
    "id": "8dcf86a5b6e2",
@@ -690,7 +878,7 @@
    "cluster": "e5bc45a5df19",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.87
+   "score": 4.85
   },
   {
    "id": "e761d7037482",
@@ -707,7 +895,24 @@
    "cluster": "44e872b204f0",
    "recent_n": 1,
    "sources_n": 4,
-   "score": 8.86
+   "score": 8.84
+  },
+  {
+   "id": "6e235f7ded76",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Hardik To Punjab, Arshdeep To Mumbai: IPL’s Biggest Trade Decoded | Cricket Unfiltered | EP 13",
+   "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE4wU2JlSHZxYldjeHJ3c1AzUEs5UmVnLVBBY0doaWVkZ2w1WmhCWC1wYmNIenlZeHY0d0RCVTE5cTJLTzZzcWt6bzkxdDBobFVxalNncHltMGJjamJ0VXd5bzNxWnRIVGFKWlNQSVZLTE1NUQ?oc=5",
+   "source": "India Today",
+   "published": "2026-11-19T08:05:47+00:00",
+   "summary": "",
+   "tags": [
+    "Trade"
+   ],
+   "label": "Rumor",
+   "cluster": "6e235f7ded76",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 6.84
   },
   {
    "id": "ef9880ecabc7",
@@ -724,7 +929,7 @@
    "cluster": "ef9880ecabc7",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.86
+   "score": 2.84
   },
   {
    "id": "a2874151fd40",
@@ -741,7 +946,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.86
+   "score": 8.84
   },
   {
    "id": "ce4099853918",
@@ -758,7 +963,7 @@
    "cluster": "ce4099853918",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.86
+   "score": 2.83
   },
   {
    "id": "de12ef0c957f",
@@ -775,7 +980,7 @@
    "cluster": "de12ef0c957f",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.85
+   "score": 2.83
   },
   {
    "id": "46472eee3b26",
@@ -792,7 +997,24 @@
    "cluster": "46472eee3b26",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.85
+   "score": 2.83
+  },
+  {
+   "id": "ef70fc108a1f",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Henry Nicholls, Glenn Phillips fight back: 1st Test: How New Zealand scripted comeback vs India on Day 1",
+   "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOTW4wZDRZWm9KZ3plSHpYZ2x3eEEzNWpNQ3JpUEw3Ti1kRVVuVUtudHM1Z2dJdndDamdCUVFqeFlQSmlRT1dPZ3pxSC1HbVA4VkYwWlk1TE1hRE0zUEY5NmUxTmpEaFJTX2xHWGFqcFg0TUZkbmlIRlFiT0w2ZXNCMkJVcU0xY3BaMzdmNEpSTHRzQmdpM0czQUVNT0pRZERzbjdCV0RYbHVpWlNCaFlKOE1nNmIyNkVXZG5fM2tnbW1KcHJmakZRLUZpdmhtQUhRY0h0VFA4RzRkYWdaNWlRVWpBOEFySUE?oc=5",
+   "source": "Rediff",
+   "published": "2026-11-19T07:58:31+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.83
   },
   {
    "id": "c20524377906",
@@ -806,10 +1028,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.85
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.83
   },
   {
    "id": "ab1c624c3cc8",
@@ -826,7 +1048,7 @@
    "cluster": "ab1c624c3cc8",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 4.85
+   "score": 4.83
   },
   {
    "id": "1490811eefa6",
@@ -843,7 +1065,7 @@
    "cluster": "1490811eefa6",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 4.85
+   "score": 4.83
   },
   {
    "id": "098887f615e4",
@@ -860,7 +1082,7 @@
    "cluster": "1490811eefa6",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 4.85
+   "score": 4.83
   },
   {
    "id": "c94410dd8756",
@@ -877,7 +1099,7 @@
    "cluster": "c94410dd8756",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.85
+   "score": 2.83
   },
   {
    "id": "63100a668a2a",
@@ -894,7 +1116,7 @@
    "cluster": "63100a668a2a",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.84
+   "score": 2.82
   },
   {
    "id": "d31443a30e53",
@@ -911,7 +1133,7 @@
    "cluster": "d31443a30e53",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.84
+   "score": 5.82
   },
   {
    "id": "661fe773b7c5",
@@ -928,7 +1150,7 @@
    "cluster": "661fe773b7c5",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 4.84
+   "score": 4.82
   },
   {
    "id": "c66a0d1be1e9",
@@ -945,7 +1167,7 @@
    "cluster": "c66a0d1be1e9",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 4.82
+   "score": 4.8
   },
   {
    "id": "7a4e1a5a84fd",
@@ -962,7 +1184,7 @@
    "cluster": "3e85a3787638",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 10.82
+   "score": 10.8
   },
   {
    "id": "9838110f7c84",
@@ -979,7 +1201,7 @@
    "cluster": "12df1481f3fd",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.82
+   "score": 5.8
   },
   {
    "id": "356b82d62b2b",
@@ -996,7 +1218,7 @@
    "cluster": "356b82d62b2b",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.82
+   "score": 2.8
   },
   {
    "id": "149375f6007c",
@@ -1013,7 +1235,7 @@
    "cluster": "149375f6007c",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.82
+   "score": 2.79
   },
   {
    "id": "42a198091048",
@@ -1030,7 +1252,7 @@
    "cluster": "12df1481f3fd",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.81
+   "score": 5.79
   },
   {
    "id": "d83cccb2eaed",
@@ -1047,7 +1269,7 @@
    "cluster": "d83cccb2eaed",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.81
+   "score": 2.79
   },
   {
    "id": "d39fabcf8af8",
@@ -1064,7 +1286,7 @@
    "cluster": "d39fabcf8af8",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.81
+   "score": 5.79
   },
   {
    "id": "fb1e1556ef88",
@@ -1081,7 +1303,7 @@
    "cluster": "fb1e1556ef88",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.81
+   "score": 2.79
   },
   {
    "id": "44de3453df8b",
@@ -1095,10 +1317,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "bc28f958f3b5",
-   "recent_n": 1,
-   "sources_n": 4,
-   "score": 8.81
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.79
   },
   {
    "id": "76d3dae1ecf7",
@@ -1115,7 +1337,7 @@
    "cluster": "76d3dae1ecf7",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.8
+   "score": 2.78
   },
   {
    "id": "0158422f0078",
@@ -1132,7 +1354,7 @@
    "cluster": "0158422f0078",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.8
+   "score": 2.78
   },
   {
    "id": "7536a9ca6d5b",
@@ -1149,7 +1371,7 @@
    "cluster": "7536a9ca6d5b",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.79
+   "score": 2.77
   },
   {
    "id": "62b427436b39",
@@ -1166,7 +1388,7 @@
    "cluster": "62b427436b39",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.79
+   "score": 2.77
   },
   {
    "id": "21015245ad33",
@@ -1183,7 +1405,7 @@
    "cluster": "21015245ad33",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 4.79
+   "score": 4.77
   },
   {
    "id": "7b37b7b5adc7",
@@ -1200,7 +1422,7 @@
    "cluster": "7b37b7b5adc7",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.79
+   "score": 2.76
   },
   {
    "id": "550be0a1fb2c",
@@ -1217,7 +1439,7 @@
    "cluster": "550be0a1fb2c",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.78
+   "score": 5.76
   },
   {
    "id": "62f7cfab8f5a",
@@ -1234,7 +1456,7 @@
    "cluster": "62f7cfab8f5a",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.78
+   "score": 2.76
   },
   {
    "id": "b2f6dc31b0c8",
@@ -1251,7 +1473,7 @@
    "cluster": "c90dc77a732a",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.78
+   "score": 4.76
   },
   {
    "id": "91b9445eb905",
@@ -1265,10 +1487,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.78
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.76
   },
   {
    "id": "8fc6529c9f70",
@@ -1285,7 +1507,7 @@
    "cluster": "8fc6529c9f70",
    "recent_n": 2,
    "sources_n": 2,
-   "score": 4.78
+   "score": 4.75
   },
   {
    "id": "cd76255159dc",
@@ -1302,7 +1524,7 @@
    "cluster": "347a7eafbf09",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 6.78
+   "score": 6.75
   },
   {
    "id": "9ffb7edc61fe",
@@ -1318,9 +1540,9 @@
    ],
    "label": "Rumor",
    "cluster": "9ffb7edc61fe",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
-   "score": 5.77
+   "score": 5.75
   },
   {
    "id": "c085c4f22e75",
@@ -1335,9 +1557,9 @@
    ],
    "label": "Rumor",
    "cluster": "c085c4f22e75",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
-   "score": 2.77
+   "score": 2.75
   },
   {
    "id": "a2fd398fe089",
@@ -1352,9 +1574,9 @@
    ],
    "label": "Rumor",
    "cluster": "dc0642f1017f",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
-   "score": 6.77
+   "score": 6.75
   },
   {
    "id": "5f41ce99d031",
@@ -1369,9 +1591,9 @@
    ],
    "label": "Rumor",
    "cluster": "25e622a4fd3d",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 3,
-   "score": 6.77
+   "score": 6.75
   },
   {
    "id": "686feab63b00",
@@ -1386,9 +1608,9 @@
    ],
    "label": "Rumor",
    "cluster": "0d21057f0bc2",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 2,
-   "score": 6.76
+   "score": 6.74
   },
   {
    "id": "c7c9f4a9ae0d",
@@ -1403,9 +1625,9 @@
    ],
    "label": "Rumor",
    "cluster": "809166015a50",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 2,
-   "score": 4.75
+   "score": 4.73
   },
   {
    "id": "31f86a2117d3",
@@ -1420,9 +1642,9 @@
    ],
    "label": "Rumor",
    "cluster": "31f86a2117d3",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
-   "score": 4.75
+   "score": 4.73
   },
   {
    "id": "b04bc4d8b8f1",
@@ -1439,7 +1661,7 @@
    "cluster": "b04bc4d8b8f1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.75
+   "score": 5.73
   },
   {
    "id": "84442a29b914",
@@ -1456,7 +1678,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.74
+   "score": 8.72
   },
   {
    "id": "b3b370b84de6",
@@ -1473,7 +1695,24 @@
    "cluster": "b3b370b84de6",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.74
+   "score": 2.72
+  },
+  {
+   "id": "4b4aaebd0fe7",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Pakistan Coach Fumes Over Journalists Babar Azam Question - NDTV Sports",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNX2VLVmdDOXBiNlNVeEhTVzY0MldTS1p6U2tjM3g4NVNhSEFBRmNQYzFBa0RlejJobVZrOTEweW5WX1l6TnZWWXlXWFlwcW41M1NKTjV3T3FOYlF2NmtZZkR5U1F0TzJseDI5MXAxb3JoUVNPMzVYQ0RtRF93dmV4ZF9wdXotSFd4cDZZaXdDWGRpVE10SGU1WWxSd0QxWGJGQzFmaWl0bVRGemFDdTZwcTNXUUViVnNnRXB1dFNMWnJabVdOZDc1U1p3?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-19T06:36:19+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "fa7d0789704b",
+   "recent_n": 1,
+   "sources_n": 3,
+   "score": 8.72
   },
   {
    "id": "3071d8d17638",
@@ -1490,7 +1729,7 @@
    "cluster": "704c5669dce0",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.74
+   "score": 4.72
   },
   {
    "id": "410cc84717cc",
@@ -1507,7 +1746,7 @@
    "cluster": "704c5669dce0",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.74
+   "score": 4.72
   },
   {
    "id": "028e21cad8eb",
@@ -1524,7 +1763,7 @@
    "cluster": "b392f8f5ccae",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.74
+   "score": 4.72
   },
   {
    "id": "6d3db62ab92e",
@@ -1541,7 +1780,7 @@
    "cluster": "704c5669dce0",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.74
+   "score": 4.72
   },
   {
    "id": "e0ed7be38266",
@@ -1558,7 +1797,7 @@
    "cluster": "e0ed7be38266",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.74
+   "score": 2.71
   },
   {
    "id": "42d8a081a14d",
@@ -1575,7 +1814,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.74
+   "score": 8.71
   },
   {
    "id": "25f31cacd198",
@@ -1589,10 +1828,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.73
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.71
   },
   {
    "id": "8d4b992fed88",
@@ -1609,7 +1848,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 14.73
+   "score": 14.71
   },
   {
    "id": "0099811cfc19",
@@ -1624,9 +1863,9 @@
    ],
    "label": "Rumor",
    "cluster": "0099811cfc19",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 2.73
+   "recent_n": 1,
+   "sources_n": 2,
+   "score": 4.71
   },
   {
    "id": "09894b054c23",
@@ -1641,9 +1880,9 @@
    ],
    "label": "Rumor",
    "cluster": "0099811cfc19",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 2.73
+   "recent_n": 1,
+   "sources_n": 2,
+   "score": 4.71
   },
   {
    "id": "ecb29ddf4e7e",
@@ -1657,10 +1896,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.73
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.71
   },
   {
    "id": "beb4636b65d9",
@@ -1677,7 +1916,7 @@
    "cluster": "b392f8f5ccae",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 7.73
+   "score": 7.71
   },
   {
    "id": "ffa78cbd09b2",
@@ -1694,7 +1933,7 @@
    "cluster": "ffa78cbd09b2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.73
+   "score": 2.71
   },
   {
    "id": "c339ebec480f",
@@ -1708,10 +1947,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "bc28f958f3b5",
-   "recent_n": 1,
-   "sources_n": 4,
-   "score": 8.73
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.71
   },
   {
    "id": "42390c19a9ae",
@@ -1726,10 +1965,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.72
+   "sources_n": 12,
+   "score": 28.7
   },
   {
    "id": "090f44165e63",
@@ -1747,7 +1986,7 @@
    "cluster": "566e42cd4871",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 8.72
+   "score": 8.7
   },
   {
    "id": "d8becbd8bb47",
@@ -1764,7 +2003,7 @@
    "cluster": "d8becbd8bb47",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.72
+   "score": 2.7
   },
   {
    "id": "ccbde9327e75",
@@ -1781,7 +2020,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.72
+   "score": 6.7
   },
   {
    "id": "c54d7d2f3f0b",
@@ -1798,7 +2037,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.72
+   "score": 6.7
   },
   {
    "id": "af2139856552",
@@ -1812,10 +2051,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.72
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.7
   },
   {
    "id": "575f5c275702",
@@ -1829,10 +2068,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.71
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.69
   },
   {
    "id": "4c469ec768fd",
@@ -1846,10 +2085,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.71
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.69
   },
   {
    "id": "ca523305027c",
@@ -1866,7 +2105,7 @@
    "cluster": "ca523305027c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.71
+   "score": 2.69
   },
   {
    "id": "2d15229e6b8e",
@@ -1880,10 +2119,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.71
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.69
   },
   {
    "id": "c90dc77a732a",
@@ -1900,7 +2139,7 @@
    "cluster": "c90dc77a732a",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.71
+   "score": 4.69
   },
   {
    "id": "359482594235",
@@ -1914,10 +2153,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "bc28f958f3b5",
-   "recent_n": 1,
-   "sources_n": 4,
-   "score": 8.71
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.69
   },
   {
    "id": "0d21057f0bc2",
@@ -1932,9 +2171,9 @@
    ],
    "label": "Rumor",
    "cluster": "0d21057f0bc2",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 2,
-   "score": 4.71
+   "score": 4.68
   },
   {
    "id": "bb37843b94db",
@@ -1951,7 +2190,7 @@
    "cluster": "bb37843b94db",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.71
+   "score": 2.68
   },
   {
    "id": "704a7370e539",
@@ -1966,9 +2205,9 @@
    ],
    "label": "Rumor",
    "cluster": "0d21057f0bc2",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 2,
-   "score": 4.71
+   "score": 4.68
   },
   {
    "id": "dcd819f8e27e",
@@ -1985,7 +2224,7 @@
    "cluster": "dcd819f8e27e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.7
+   "score": 2.68
   },
   {
    "id": "3cae15681fc5",
@@ -2002,7 +2241,7 @@
    "cluster": "3cae15681fc5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.7
+   "score": 2.67
   },
   {
    "id": "baa9cde5a92b",
@@ -2019,7 +2258,7 @@
    "cluster": "baa9cde5a92b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.69
+   "score": 2.67
   },
   {
    "id": "ce8e8cad9e7e",
@@ -2036,7 +2275,7 @@
    "cluster": "ce8e8cad9e7e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.69
+   "score": 2.67
   },
   {
    "id": "c78e99870373",
@@ -2053,7 +2292,7 @@
    "cluster": "c78e99870373",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.68
+   "score": 4.66
   },
   {
    "id": "701eefd8ac77",
@@ -2070,7 +2309,7 @@
    "cluster": "701eefd8ac77",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.68
+   "score": 2.66
   },
   {
    "id": "5ada327129fa",
@@ -2084,10 +2323,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.68
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.66
   },
   {
    "id": "80bccd9f13a7",
@@ -2104,7 +2343,7 @@
    "cluster": "80bccd9f13a7",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.68
+   "score": 4.66
   },
   {
    "id": "9393edc4658b",
@@ -2121,7 +2360,7 @@
    "cluster": "e15f5beb932a",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.68
+   "score": 4.66
   },
   {
    "id": "e15f5beb932a",
@@ -2138,7 +2377,7 @@
    "cluster": "e15f5beb932a",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.67
+   "score": 4.65
   },
   {
    "id": "77c10d2e6a14",
@@ -2155,7 +2394,7 @@
    "cluster": "77c10d2e6a14",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.66
+   "score": 2.64
   },
   {
    "id": "1a1733c22f70",
@@ -2169,10 +2408,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.66
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.64
   },
   {
    "id": "d3adeed4c952",
@@ -2189,7 +2428,7 @@
    "cluster": "d3adeed4c952",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.66
+   "score": 2.64
   },
   {
    "id": "f9b95fdba2cc",
@@ -2206,7 +2445,7 @@
    "cluster": "f67cadffabe9",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 9.66
+   "score": 9.64
   },
   {
    "id": "991e9573d6b0",
@@ -2223,7 +2462,7 @@
    "cluster": "991e9573d6b0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.66
+   "score": 5.64
   },
   {
    "id": "c1bba5cb4bd2",
@@ -2238,9 +2477,9 @@
    ],
    "label": "Rumor",
    "cluster": "25e622a4fd3d",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 3,
-   "score": 6.66
+   "score": 6.64
   },
   {
    "id": "5c31424f7ddf",
@@ -2257,7 +2496,7 @@
    "cluster": "5c31424f7ddf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.65
+   "score": 5.63
   },
   {
    "id": "a2e811f4cf85",
@@ -2274,7 +2513,7 @@
    "cluster": "dd58ea642b46",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.65
+   "score": 4.62
   },
   {
    "id": "cc25fb06a7c5",
@@ -2291,7 +2530,7 @@
    "cluster": "cc25fb06a7c5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.64
+   "score": 2.62
   },
   {
    "id": "9aeeac79ce45",
@@ -2308,7 +2547,7 @@
    "cluster": "f67cadffabe9",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.64
+   "score": 6.62
   },
   {
    "id": "a0d5b190a518",
@@ -2325,7 +2564,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 10.63
+   "score": 10.61
   },
   {
    "id": "530f1de5a6a0",
@@ -2342,7 +2581,7 @@
    "cluster": "530f1de5a6a0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.63
+   "score": 2.61
   },
   {
    "id": "a6fd4d0e9ca9",
@@ -2359,7 +2598,7 @@
    "cluster": "1697371c3f63",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.63
+   "score": 8.61
   },
   {
    "id": "ac60cef5cd6b",
@@ -2376,7 +2615,7 @@
    "cluster": "ac60cef5cd6b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.63
+   "score": 5.61
   },
   {
    "id": "dd58ea642b46",
@@ -2393,7 +2632,7 @@
    "cluster": "dd58ea642b46",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.62
+   "score": 4.6
   },
   {
    "id": "9d7e699f3aa2",
@@ -2410,7 +2649,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 16.62
+   "score": 16.6
   },
   {
    "id": "2a308c5bb108",
@@ -2424,10 +2663,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.61
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.59
   },
   {
    "id": "ffa61c11bbf5",
@@ -2444,7 +2683,7 @@
    "cluster": "ffa61c11bbf5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.61
+   "score": 2.59
   },
   {
    "id": "0055083425db",
@@ -2461,7 +2700,7 @@
    "cluster": "0055083425db",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.6
+   "score": 2.58
   },
   {
    "id": "81172e4dc751",
@@ -2478,7 +2717,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 17.6
+   "score": 17.58
   },
   {
    "id": "347a7eafbf09",
@@ -2495,7 +2734,7 @@
    "cluster": "347a7eafbf09",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.59
+   "score": 4.57
   },
   {
    "id": "f3c446d7c0e4",
@@ -2512,7 +2751,7 @@
    "cluster": "f3c446d7c0e4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 7.58
+   "score": 7.56
   },
   {
    "id": "fc1a7f818559",
@@ -2529,7 +2768,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 14.58
+   "score": 14.56
   },
   {
    "id": "16355c20bf6d",
@@ -2546,7 +2785,7 @@
    "cluster": "16355c20bf6d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.58
+   "score": 2.56
   },
   {
    "id": "52c57d18f14d",
@@ -2563,7 +2802,7 @@
    "cluster": "52c57d18f14d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.57
+   "score": 4.55
   },
   {
    "id": "eaa9a2894b3f",
@@ -2580,7 +2819,7 @@
    "cluster": "eaa9a2894b3f",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.57
+   "score": 4.55
   },
   {
    "id": "ca4ece25302b",
@@ -2597,7 +2836,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 10.56
+   "score": 10.54
   },
   {
    "id": "1e461898c8f2",
@@ -2614,7 +2853,7 @@
    "cluster": "1e461898c8f2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.56
+   "score": 2.54
   },
   {
    "id": "37ac94eaec8e",
@@ -2628,10 +2867,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.56
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.54
   },
   {
    "id": "1cbc069a0db9",
@@ -2645,10 +2884,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.56
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.54
   },
   {
    "id": "920c96d71a98",
@@ -2665,7 +2904,7 @@
    "cluster": "0131c20efa3b",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.55
+   "score": 8.52
   },
   {
    "id": "de538ec5c1ec",
@@ -2682,7 +2921,7 @@
    "cluster": "de538ec5c1ec",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.55
+   "score": 2.52
   },
   {
    "id": "c5d0b55c8375",
@@ -2696,10 +2935,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.54
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.52
   },
   {
    "id": "18e4b95e23ac",
@@ -2716,7 +2955,7 @@
    "cluster": "18e4b95e23ac",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.53
+   "score": 2.51
   },
   {
    "id": "39e5ae28a440",
@@ -2733,7 +2972,7 @@
    "cluster": "39e5ae28a440",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.53
+   "score": 5.51
   },
   {
    "id": "262cb84ae2a7",
@@ -2747,10 +2986,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.52
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.5
   },
   {
    "id": "c6ec5da9fe48",
@@ -2765,10 +3004,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 43.52
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 49.5
   },
   {
    "id": "296b25676d6c",
@@ -2785,7 +3024,7 @@
    "cluster": "296b25676d6c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.51
+   "score": 2.49
   },
   {
    "id": "f67cadffabe9",
@@ -2802,7 +3041,7 @@
    "cluster": "f67cadffabe9",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.51
+   "score": 6.49
   },
   {
    "id": "a73d627279d9",
@@ -2819,7 +3058,7 @@
    "cluster": "a73d627279d9",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 4.51
+   "score": 4.49
   },
   {
    "id": "afae17405da3",
@@ -2836,7 +3075,7 @@
    "cluster": "44e872b204f0",
    "recent_n": 1,
    "sources_n": 4,
-   "score": 8.5
+   "score": 8.48
   },
   {
    "id": "1dea56910e1c",
@@ -2853,7 +3092,7 @@
    "cluster": "1dea56910e1c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.49
+   "score": 2.47
   },
   {
    "id": "7eb840b27491",
@@ -2870,7 +3109,7 @@
    "cluster": "20a862cfbc5d",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.49
+   "score": 6.47
   },
   {
    "id": "25e622a4fd3d",
@@ -2885,9 +3124,9 @@
    ],
    "label": "Rumor",
    "cluster": "25e622a4fd3d",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 3,
-   "score": 6.49
+   "score": 6.47
   },
   {
    "id": "428a0796006a",
@@ -2904,7 +3143,7 @@
    "cluster": "1697371c3f63",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.48
+   "score": 8.46
   },
   {
    "id": "d1e83500cd48",
@@ -2921,7 +3160,7 @@
    "cluster": "d1e83500cd48",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.48
+   "score": 2.46
   },
   {
    "id": "751b15d307a4",
@@ -2938,7 +3177,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 16.48
+   "score": 16.46
   },
   {
    "id": "2543299fd9fd",
@@ -2955,7 +3194,7 @@
    "cluster": "2543299fd9fd",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.48
+   "score": 2.46
   },
   {
    "id": "12df1481f3fd",
@@ -2972,7 +3211,7 @@
    "cluster": "12df1481f3fd",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 5.48
+   "score": 5.45
   },
   {
    "id": "06ddc7acb5c5",
@@ -2986,10 +3225,10 @@
     "India Match"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 43.47
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 49.45
   },
   {
    "id": "526039270863",
@@ -3006,7 +3245,7 @@
    "cluster": "526039270863",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.47
+   "score": 5.45
   },
   {
    "id": "025507437948",
@@ -3023,7 +3262,7 @@
    "cluster": "025507437948",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.47
+   "score": 2.44
   },
   {
    "id": "7eea2b3a871d",
@@ -3040,7 +3279,7 @@
    "cluster": "7eea2b3a871d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.45
+   "score": 4.43
   },
   {
    "id": "45d4c89a9096",
@@ -3057,7 +3296,7 @@
    "cluster": "a9e103089a3f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.45
+   "score": 2.43
   },
   {
    "id": "d59157c42a01",
@@ -3074,7 +3313,7 @@
    "cluster": "d59157c42a01",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.45
+   "score": 2.43
   },
   {
    "id": "7892081096dc",
@@ -3091,7 +3330,7 @@
    "cluster": "7892081096dc",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.45
+   "score": 2.42
   },
   {
    "id": "bc28f958f3b5",
@@ -3105,10 +3344,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "bc28f958f3b5",
-   "recent_n": 1,
-   "sources_n": 4,
-   "score": 8.44
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.42
   },
   {
    "id": "1c48be44f894",
@@ -3122,10 +3361,27 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.44
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.42
+  },
+  {
+   "id": "10c9c151c9a5",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "India U-19 cricketers beat Pakistan and celebrated. Stop sermons on aggression & ‘jingoism’",
+   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPY2xfQnVRLV9FdGtKOEVjYjBlanpHTklaU3djZXk5Nzd1MlItQnhnbWdLMFBJRFkxWWozRFhVUWhUeVFvc3hLSGE4Vk9vaUFvSllmLWprLWpsNDZqNEhLLTl0M1dwOGZPOWxfNEkwdlRoZ09aQVZWdjlQQUQzTzZDSXkwV2tveXRrMVNVbWFCcnRucXlfV2RncmN3T0pZQ2ZRREpKdmhoczFMVFNpTEt6RlFWWXVIcGlzMDRFdS1IWmnSAcYBQVVfeXFMT011RDZvanRRTVNaWmswRVZManNwLU95UmpiN0tRQUxLaEdfaTN1Nk5PSkNYd1JOcW4xT1loaVZ4SURTRGw4YXpvTVMtcDNoN0ZHTXl6UEhNdGJ3Tzl4MXZRVmVXdVZ1bHN3TkNCTGh6ZElIemtza0FkZTlpZDBGeWkydVMyRXJYbkszQzRwTF9aMmhhREJ5ZkZEODVwdDl5NmwyeVY3d0RZVVEyZzN3Um9UQ29tc0lfX3lSa2tnb000RC15bkx3?oc=5",
+   "source": "ThePrint",
+   "published": "2026-11-19T03:00:36+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "10c9c151c9a5",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 2.42
   },
   {
    "id": "931e54068834",
@@ -3142,7 +3398,7 @@
    "cluster": "931e54068834",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.44
+   "score": 2.42
   },
   {
    "id": "f1f6a12e2501",
@@ -3159,7 +3415,7 @@
    "cluster": "49fbff0fca61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.43
+   "score": 4.41
   },
   {
    "id": "d16c87177b32",
@@ -3176,7 +3432,7 @@
    "cluster": "d16c87177b32",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.42
+   "score": 4.39
   },
   {
    "id": "336998b22ac2",
@@ -3193,7 +3449,7 @@
    "cluster": "336998b22ac2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.41
+   "score": 2.39
   },
   {
    "id": "5f0d7d007058",
@@ -3210,7 +3466,7 @@
    "cluster": "5f0d7d007058",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.41
+   "score": 2.39
   },
   {
    "id": "3d58e452bf32",
@@ -3227,7 +3483,7 @@
    "cluster": "49fbff0fca61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.4
+   "score": 4.38
   },
   {
    "id": "aa5fdd4b63d8",
@@ -3244,7 +3500,7 @@
    "cluster": "1697371c3f63",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.39
+   "score": 8.37
   },
   {
    "id": "13bff6961979",
@@ -3261,7 +3517,7 @@
    "cluster": "13bff6961979",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.39
+   "score": 2.36
   },
   {
    "id": "5a2ff717e8a3",
@@ -3278,7 +3534,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 18.38
+   "score": 18.36
   },
   {
    "id": "935c99240543",
@@ -3295,7 +3551,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 14.38
+   "score": 14.36
   },
   {
    "id": "27155e4aa7ff",
@@ -3312,7 +3568,7 @@
    "cluster": "49fbff0fca61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.37
+   "score": 4.35
   },
   {
    "id": "8d7c19d24dfe",
@@ -3329,7 +3585,7 @@
    "cluster": "49fbff0fca61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.37
+   "score": 4.35
   },
   {
    "id": "869afcb5364d",
@@ -3346,7 +3602,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 16.37
+   "score": 16.35
   },
   {
    "id": "1c55dd4f147f",
@@ -3360,10 +3616,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.37
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.34
   },
   {
    "id": "49fbff0fca61",
@@ -3380,7 +3636,7 @@
    "cluster": "49fbff0fca61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.37
+   "score": 4.34
   },
   {
    "id": "8513080cd85a",
@@ -3397,7 +3653,7 @@
    "cluster": "aebfa161c038",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.36
+   "score": 4.34
   },
   {
    "id": "abba6f8aeda3",
@@ -3411,10 +3667,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.36
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.34
   },
   {
    "id": "00dbf54d1b43",
@@ -3431,7 +3687,7 @@
    "cluster": "798821f48e75",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.35
+   "score": 4.33
   },
   {
    "id": "0ee34c6815f4",
@@ -3448,7 +3704,7 @@
    "cluster": "0ee34c6815f4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.35
+   "score": 2.33
   },
   {
    "id": "998f0b4a5a61",
@@ -3465,7 +3721,7 @@
    "cluster": "3e85a3787638",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 10.35
+   "score": 10.33
   },
   {
    "id": "e9b5879accd8",
@@ -3482,7 +3738,7 @@
    "cluster": "e9b5879accd8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.35
+   "score": 2.33
   },
   {
    "id": "156e55b2eeca",
@@ -3499,7 +3755,7 @@
    "cluster": "156e55b2eeca",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.35
+   "score": 2.32
   },
   {
    "id": "85f466b1f3a3",
@@ -3513,10 +3769,10 @@
     "Other"
    ],
    "label": "Confirmed",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 43.34
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 49.32
   },
   {
    "id": "108325892fd9",
@@ -3533,7 +3789,7 @@
    "cluster": "108325892fd9",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.33
+   "score": 2.31
   },
   {
    "id": "aebfa161c038",
@@ -3550,7 +3806,7 @@
    "cluster": "aebfa161c038",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.33
+   "score": 4.31
   },
   {
    "id": "c154c7a78edf",
@@ -3567,7 +3823,7 @@
    "cluster": "c154c7a78edf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.32
+   "score": 4.3
   },
   {
    "id": "597f45a74372",
@@ -3584,7 +3840,7 @@
    "cluster": "597f45a74372",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.32
+   "score": 2.3
   },
   {
    "id": "1697371c3f63",
@@ -3601,7 +3857,7 @@
    "cluster": "1697371c3f63",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.31
+   "score": 8.29
   },
   {
    "id": "ed7acc31430d",
@@ -3618,7 +3874,7 @@
    "cluster": "ed7acc31430d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.31
+   "score": 2.29
   },
   {
    "id": "93d1ff122b0b",
@@ -3635,7 +3891,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 14.31
+   "score": 14.29
   },
   {
    "id": "68e6c23a1e51",
@@ -3652,7 +3908,7 @@
    "cluster": "88b6c1f4d3ba",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.29
+   "score": 8.27
   },
   {
    "id": "f81494180279",
@@ -3669,7 +3925,7 @@
    "cluster": "f81494180279",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.29
+   "score": 4.27
   },
   {
    "id": "4e3e0baee58d",
@@ -3686,7 +3942,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.27
+   "score": 8.25
   },
   {
    "id": "3ccf2cb61a82",
@@ -3703,7 +3959,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.27
+   "score": 8.25
   },
   {
    "id": "8b7301d8028e",
@@ -3720,7 +3976,7 @@
    "cluster": "8b7301d8028e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 7.27
+   "score": 7.25
   },
   {
    "id": "8c1a31391c42",
@@ -3737,7 +3993,7 @@
    "cluster": "8c1a31391c42",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.27
+   "score": 5.25
   },
   {
    "id": "7a349663c9b1",
@@ -3754,7 +4010,7 @@
    "cluster": "01b8e4038893",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.27
+   "score": 8.24
   },
   {
    "id": "5f1d088a521a",
@@ -3771,7 +4027,7 @@
    "cluster": "d4064502a89e",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.25
+   "score": 4.23
   },
   {
    "id": "b7711b1ef97d",
@@ -3785,10 +4041,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.24
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.22
   },
   {
    "id": "21d6f84e1ac8",
@@ -3805,7 +4061,7 @@
    "cluster": "21d6f84e1ac8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.24
+   "score": 2.22
   },
   {
    "id": "e7d3bd366043",
@@ -3822,7 +4078,7 @@
    "cluster": "e7d3bd366043",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.24
+   "score": 4.21
   },
   {
    "id": "664ef397c68a",
@@ -3839,7 +4095,7 @@
    "cluster": "664ef397c68a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.23
+   "score": 2.21
   },
   {
    "id": "9241e6edc01e",
@@ -3856,7 +4112,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.23
+   "score": 8.21
   },
   {
    "id": "68c6cfc39aca",
@@ -3873,7 +4129,7 @@
    "cluster": "68c6cfc39aca",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.23
+   "score": 2.21
   },
   {
    "id": "704c5669dce0",
@@ -3890,7 +4146,7 @@
    "cluster": "704c5669dce0",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.23
+   "score": 4.21
   },
   {
    "id": "a9e103089a3f",
@@ -3907,7 +4163,7 @@
    "cluster": "a9e103089a3f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.23
+   "score": 2.21
   },
   {
    "id": "d4064502a89e",
@@ -3924,7 +4180,7 @@
    "cluster": "d4064502a89e",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.22
+   "score": 4.2
   },
   {
    "id": "1edf542ce030",
@@ -3938,10 +4194,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.22
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.19
   },
   {
    "id": "e6e1bf19c8de",
@@ -3958,7 +4214,7 @@
    "cluster": "e6e1bf19c8de",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.21
+   "score": 2.19
   },
   {
    "id": "7d793377fa83",
@@ -3972,10 +4228,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.21
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.19
   },
   {
    "id": "d5688b0a0a80",
@@ -3992,7 +4248,7 @@
    "cluster": "d5688b0a0a80",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.19
+   "score": 2.17
   },
   {
    "id": "8146723f661d",
@@ -4006,10 +4262,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.18
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.16
   },
   {
    "id": "fb0cb4d89e6f",
@@ -4026,7 +4282,7 @@
    "cluster": "0131c20efa3b",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.17
+   "score": 8.15
   },
   {
    "id": "c92d30a3c70b",
@@ -4043,7 +4299,7 @@
    "cluster": "c92d30a3c70b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.16
+   "score": 4.14
   },
   {
    "id": "989527b51fea",
@@ -4060,7 +4316,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 14.15
+   "score": 14.12
   },
   {
    "id": "ea55a22f79c9",
@@ -4077,7 +4333,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 16.13
+   "score": 16.11
   },
   {
    "id": "a97094f4a9de",
@@ -4092,9 +4348,9 @@
    ],
    "label": "Rumor",
    "cluster": "dc0642f1017f",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
-   "score": 6.13
+   "score": 6.11
   },
   {
    "id": "48a3fc3e501a",
@@ -4108,10 +4364,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.12
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.1
   },
   {
    "id": "96d3d6b07c10",
@@ -4128,7 +4384,7 @@
    "cluster": "2a34a4acd5d2",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.11
+   "score": 4.09
   },
   {
    "id": "28639e750b6a",
@@ -4145,7 +4401,7 @@
    "cluster": "28639e750b6a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.11
+   "score": 2.09
   },
   {
    "id": "b0251ddf8e65",
@@ -4162,7 +4418,7 @@
    "cluster": "b0251ddf8e65",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 14.11
+   "score": 14.09
   },
   {
    "id": "cc0737be9853",
@@ -4179,7 +4435,7 @@
    "cluster": "88b6c1f4d3ba",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.1
+   "score": 8.08
   },
   {
    "id": "77c2c6c50566",
@@ -4196,7 +4452,7 @@
    "cluster": "566e42cd4871",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.1
+   "score": 4.08
   },
   {
    "id": "37e9747864bf",
@@ -4213,7 +4469,7 @@
    "cluster": "37e9747864bf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.09
+   "score": 2.06
   },
   {
    "id": "3ad112d78f54",
@@ -4230,7 +4486,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.09
+   "score": 6.06
   },
   {
    "id": "35a810997613",
@@ -4244,10 +4500,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.08
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.05
   },
   {
    "id": "1881ff7e9cb5",
@@ -4265,7 +4521,7 @@
    "cluster": "1881ff7e9cb5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.07
+   "score": 6.05
   },
   {
    "id": "fb13ec90206f",
@@ -4279,10 +4535,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.07
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.05
   },
   {
    "id": "c17fe59d7711",
@@ -4299,7 +4555,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 18.06
+   "score": 18.04
   },
   {
    "id": "5c2dab865f49",
@@ -4316,7 +4572,7 @@
    "cluster": "aeac462bf018",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.06
+   "score": 6.04
   },
   {
    "id": "ca0d8210d615",
@@ -4333,7 +4589,7 @@
    "cluster": "ca0d8210d615",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.06
+   "score": 6.04
   },
   {
    "id": "30da34872e9c",
@@ -4350,7 +4606,7 @@
    "cluster": "aeac462bf018",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.06
+   "score": 6.04
   },
   {
    "id": "aeac462bf018",
@@ -4367,7 +4623,7 @@
    "cluster": "aeac462bf018",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.06
+   "score": 6.04
   },
   {
    "id": "3fe954251cc8",
@@ -4385,7 +4641,7 @@
    "cluster": "e77b79ba93bb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.04
+   "score": 6.02
   },
   {
    "id": "53470b4a1e89",
@@ -4402,7 +4658,7 @@
    "cluster": "53470b4a1e89",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.04
+   "score": 2.02
   },
   {
    "id": "56c24ec77976",
@@ -4419,7 +4675,7 @@
    "cluster": "56c24ec77976",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.04
+   "score": 4.02
   },
   {
    "id": "7b7fd016ab4f",
@@ -4434,10 +4690,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 43.04
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 49.02
   },
   {
    "id": "6e229df7dcc3",
@@ -4451,10 +4707,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.04
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.01
   },
   {
    "id": "e23195884676",
@@ -4468,10 +4724,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.03
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.01
   },
   {
    "id": "49820d14da4e",
@@ -4488,7 +4744,7 @@
    "cluster": "01b8e4038893",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 8.03
+   "score": 8.01
   },
   {
    "id": "a84c61a4c4e8",
@@ -4502,10 +4758,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.03
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.01
   },
   {
    "id": "3d95f990a19a",
@@ -4519,10 +4775,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.03
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.0
   },
   {
    "id": "809166015a50",
@@ -4537,9 +4793,9 @@
    ],
    "label": "Rumor",
    "cluster": "809166015a50",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 2,
-   "score": 4.03
+   "score": 4.0
   },
   {
    "id": "f6e5ac64f9a6",
@@ -4556,7 +4812,7 @@
    "cluster": "f6e5ac64f9a6",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.02
+   "score": 4.0
   },
   {
    "id": "5c9b7c675030",
@@ -4570,10 +4826,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.02
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.0
   },
   {
    "id": "aa412e2033d2",
@@ -4587,10 +4843,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.01
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 45.99
   },
   {
    "id": "2114afb398a7",
@@ -4604,10 +4860,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.01
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 47.99
   },
   {
    "id": "43aae105935b",
@@ -4624,7 +4880,7 @@
    "cluster": "20a862cfbc5d",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 6.01
+   "score": 5.99
   },
   {
    "id": "c3d2aaa2fe03",
@@ -4638,10 +4894,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.01
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 45.98
   },
   {
    "id": "9b2c933b266d",
@@ -4655,10 +4911,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.0
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 45.98
   },
   {
    "id": "b16f3bc31768",
@@ -4672,10 +4928,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.0
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 45.98
   },
   {
    "id": "b5e69c512909",
@@ -4692,7 +4948,7 @@
    "cluster": "b5e69c512909",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.0
+   "score": 1.97
   },
   {
    "id": "35cceff372c0",
@@ -4709,7 +4965,7 @@
    "cluster": "35cceff372c0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.99
+   "score": 3.97
   },
   {
    "id": "80103efae636",
@@ -4726,7 +4982,24 @@
    "cluster": "80103efae636",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.97
+   "score": 1.94
+  },
+  {
+   "id": "8fbc45590154",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "ICC Women’s T20 World Cup Stats: Most Runs, Most Wickets, Highest Score & Player Rankings",
+   "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5haUpGUGRDLUt4VUxZNFo1dml0VUdabXMyQUlueXVPTkNKajYtRDZzbTVsVW5LTGNzY2NEUzNRdGp5TmdlMjUzOGZ5RFV1THJKWEsyMzVMT3RGXzVsNGd4aVJ3UWZYcDVtMFc4?oc=5",
+   "source": "SportsTak",
+   "published": "2026-11-18T21:17:58+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "8fbc45590154",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 1.94
   },
   {
    "id": "83152ab91b36",
@@ -4743,7 +5016,7 @@
    "cluster": "83152ab91b36",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.95
+   "score": 1.92
   },
   {
    "id": "d7dd6ece78ef",
@@ -4760,7 +5033,7 @@
    "cluster": "d7dd6ece78ef",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.94
+   "score": 1.92
   },
   {
    "id": "1d0450b166bb",
@@ -4777,7 +5050,7 @@
    "cluster": "1d0450b166bb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.93
+   "score": 1.91
   },
   {
    "id": "d6f372e8cd31",
@@ -4794,7 +5067,7 @@
    "cluster": "d6f372e8cd31",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.89
+   "score": 1.87
   },
   {
    "id": "0fb7161d4cec",
@@ -4811,7 +5084,7 @@
    "cluster": "0fb7161d4cec",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.88
+   "score": 1.86
   },
   {
    "id": "d8bc5c169eec",
@@ -4825,10 +5098,10 @@
     "India Match"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 42.86
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 48.84
   },
   {
    "id": "e2e05c85dd8e",
@@ -4845,7 +5118,7 @@
    "cluster": "44e872b204f0",
    "recent_n": 1,
    "sources_n": 4,
-   "score": 7.85
+   "score": 7.83
   },
   {
    "id": "a92bd7b648d8",
@@ -4859,10 +5132,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 41.84
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 47.82
   },
   {
    "id": "1e4f938054ed",
@@ -4879,7 +5152,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 5.84
+   "score": 5.82
   },
   {
    "id": "d3c51827bf83",
@@ -4896,7 +5169,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 5.84
+   "score": 5.82
   },
   {
    "id": "618879ec90ff",
@@ -4913,7 +5186,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 5.84
+   "score": 5.81
   },
   {
    "id": "00daafdbafa1",
@@ -4930,7 +5203,7 @@
    "cluster": "00daafdbafa1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.8
+   "score": 1.78
   },
   {
    "id": "6b8d7add535d",
@@ -4945,10 +5218,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.8
+   "sources_n": 12,
+   "score": 27.78
   },
   {
    "id": "e77b79ba93bb",
@@ -4966,7 +5239,7 @@
    "cluster": "e77b79ba93bb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.79
+   "score": 5.77
   },
   {
    "id": "4d17d4b17985",
@@ -4984,7 +5257,7 @@
    "cluster": "42a15535c234",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 7.77
+   "score": 7.75
   },
   {
    "id": "48b3a856b3fa",
@@ -5001,7 +5274,7 @@
    "cluster": "48b3a856b3fa",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.75
+   "score": 1.73
   },
   {
    "id": "de39528164f0",
@@ -5018,7 +5291,7 @@
    "cluster": "de39528164f0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.72
+   "score": 1.7
   },
   {
    "id": "91f526ded910",
@@ -5035,7 +5308,7 @@
    "cluster": "91f526ded910",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.72
+   "score": 4.7
   },
   {
    "id": "7cc4ff72b426",
@@ -5052,7 +5325,7 @@
    "cluster": "7cc4ff72b426",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.72
+   "score": 3.7
   },
   {
    "id": "5595525b10e2",
@@ -5069,7 +5342,7 @@
    "cluster": "5595525b10e2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.72
+   "score": 5.69
   },
   {
    "id": "8b6bf16123b6",
@@ -5086,7 +5359,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 9.71
+   "score": 9.69
   },
   {
    "id": "43a384f8f68c",
@@ -5103,7 +5376,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 5.71
+   "score": 5.69
   },
   {
    "id": "6412d2df3ea5",
@@ -5120,7 +5393,7 @@
    "cluster": "6412d2df3ea5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.67
+   "score": 5.65
   },
   {
    "id": "a58403c90074",
@@ -5134,10 +5407,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 41.67
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 47.64
   },
   {
    "id": "6acd48ac30f0",
@@ -5154,7 +5427,7 @@
    "cluster": "6acd48ac30f0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.64
+   "score": 1.62
   },
   {
    "id": "88bd25a039ba",
@@ -5171,7 +5444,7 @@
    "cluster": "6acd48ac30f0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.64
+   "score": 1.62
   },
   {
    "id": "a68a778abe62",
@@ -5188,7 +5461,7 @@
    "cluster": "a68a778abe62",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.63
+   "score": 1.61
   },
   {
    "id": "473ec52f1dc4",
@@ -5205,7 +5478,7 @@
    "cluster": "ec67ee82f1c1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.62
+   "score": 1.6
   },
   {
    "id": "b98ecfa49090",
@@ -5222,7 +5495,7 @@
    "cluster": "ec67ee82f1c1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.62
+   "score": 1.6
   },
   {
    "id": "060bdcbf8f22",
@@ -5239,7 +5512,7 @@
    "cluster": "199a97241ee7",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 11.61
+   "score": 11.59
   },
   {
    "id": "18d91d4bfd52",
@@ -5256,7 +5529,7 @@
    "cluster": "b8c780b02723",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.61
+   "score": 1.59
   },
   {
    "id": "a655a62eb253",
@@ -5273,7 +5546,7 @@
    "cluster": "a5170d834eed",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.61
+   "score": 3.59
   },
   {
    "id": "d70d49670391",
@@ -5290,7 +5563,7 @@
    "cluster": "d70d49670391",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.61
+   "score": 1.59
   },
   {
    "id": "f3386837aeb7",
@@ -5307,7 +5580,7 @@
    "cluster": "f3386837aeb7",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.61
+   "score": 4.59
   },
   {
    "id": "007db91a85ba",
@@ -5325,7 +5598,7 @@
    "cluster": "007db91a85ba",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.61
+   "score": 5.59
   },
   {
    "id": "03db370c1f0f",
@@ -5342,7 +5615,7 @@
    "cluster": "ec67ee82f1c1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.61
+   "score": 1.59
   },
   {
    "id": "6832a571e95a",
@@ -5356,10 +5629,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 39.6
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 45.58
   },
   {
    "id": "4309b5886cbd",
@@ -5376,7 +5649,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 5.6
+   "score": 5.58
   },
   {
    "id": "afb8e09cb998",
@@ -5393,7 +5666,7 @@
    "cluster": "afb8e09cb998",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.6
+   "score": 1.58
   },
   {
    "id": "448225365d70",
@@ -5410,7 +5683,7 @@
    "cluster": "448225365d70",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.58
+   "score": 4.56
   },
   {
    "id": "7d84cf49f65a",
@@ -5427,7 +5700,7 @@
    "cluster": "c36c3a9148a8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.57
+   "score": 1.55
   },
   {
    "id": "8a4cc8e62384",
@@ -5444,7 +5717,7 @@
    "cluster": "c36c3a9148a8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.57
+   "score": 1.55
   },
   {
    "id": "ec67ee82f1c1",
@@ -5461,7 +5734,7 @@
    "cluster": "ec67ee82f1c1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.57
+   "score": 1.55
   },
   {
    "id": "03b371704360",
@@ -5478,7 +5751,7 @@
    "cluster": "0131c20efa3b",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 10.57
+   "score": 10.55
   },
   {
    "id": "86dbbf3605eb",
@@ -5495,7 +5768,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 16.57
+   "score": 16.54
   },
   {
    "id": "b37df58978bb",
@@ -5512,7 +5785,7 @@
    "cluster": "b37df58978bb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.56
+   "score": 1.54
   },
   {
    "id": "7d6240f0168a",
@@ -5529,7 +5802,7 @@
    "cluster": "7d6240f0168a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.56
+   "score": 4.54
   },
   {
    "id": "bea890efc1cb",
@@ -5546,7 +5819,7 @@
    "cluster": "bea890efc1cb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.55
+   "score": 3.53
   },
   {
    "id": "e5a8818820f6",
@@ -5563,7 +5836,7 @@
    "cluster": "199a97241ee7",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.54
+   "score": 7.52
   },
   {
    "id": "0131c20efa3b",
@@ -5580,7 +5853,7 @@
    "cluster": "0131c20efa3b",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.54
+   "score": 7.52
   },
   {
    "id": "f4b0db1a961e",
@@ -5597,7 +5870,7 @@
    "cluster": "83e40e656ab4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.54
+   "score": 1.52
   },
   {
    "id": "e9a371733d08",
@@ -5614,7 +5887,7 @@
    "cluster": "e9a371733d08",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.54
+   "score": 1.51
   },
   {
    "id": "83e40e656ab4",
@@ -5631,7 +5904,7 @@
    "cluster": "83e40e656ab4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.53
+   "score": 1.51
   },
   {
    "id": "e1aa3d2ee95e",
@@ -5648,7 +5921,7 @@
    "cluster": "1795e67571e5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.53
+   "score": 1.51
   },
   {
    "id": "0fe732996d79",
@@ -5665,7 +5938,7 @@
    "cluster": "c05810b6ec05",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.53
+   "score": 1.51
   },
   {
    "id": "1795e67571e5",
@@ -5682,7 +5955,7 @@
    "cluster": "1795e67571e5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.53
+   "score": 1.51
   },
   {
    "id": "ec711057f831",
@@ -5699,7 +5972,7 @@
    "cluster": "a5170d834eed",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 5.53
+   "score": 5.51
   },
   {
    "id": "c04353366399",
@@ -5716,7 +5989,7 @@
    "cluster": "a5170d834eed",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 5.53
+   "score": 5.51
   },
   {
    "id": "04423a4bc498",
@@ -5733,7 +6006,7 @@
    "cluster": "04423a4bc498",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.53
+   "score": 5.5
   },
   {
    "id": "44626f545398",
@@ -5750,7 +6023,7 @@
    "cluster": "44626f545398",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.52
+   "score": 1.5
   },
   {
    "id": "21393e2b6dd5",
@@ -5767,7 +6040,7 @@
    "cluster": "7f98f53eb0ea",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.52
+   "score": 3.5
   },
   {
    "id": "2803eadeb8bb",
@@ -5784,7 +6057,7 @@
    "cluster": "2803eadeb8bb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.52
+   "score": 1.5
   },
   {
    "id": "c8b2fc3e8a83",
@@ -5801,7 +6074,7 @@
    "cluster": "c8b2fc3e8a83",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.52
+   "score": 1.5
   },
   {
    "id": "2f31ad362291",
@@ -5818,7 +6091,7 @@
    "cluster": "2f31ad362291",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.51
+   "score": 1.49
   },
   {
    "id": "ae7b87eefc37",
@@ -5835,7 +6108,7 @@
    "cluster": "ae7b87eefc37",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.51
+   "score": 4.49
   },
   {
    "id": "acb4ded9f707",
@@ -5852,7 +6125,7 @@
    "cluster": "acb4ded9f707",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.51
+   "score": 1.48
   },
   {
    "id": "3682dcd5b625",
@@ -5869,7 +6142,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 5.5
+   "score": 5.48
   },
   {
    "id": "098726ef1a70",
@@ -5886,7 +6159,7 @@
    "cluster": "098726ef1a70",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.5
+   "score": 1.48
   },
   {
    "id": "1daf2e7d5568",
@@ -5903,7 +6176,7 @@
    "cluster": "1daf2e7d5568",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.5
+   "score": 1.48
   },
   {
    "id": "b8c780b02723",
@@ -5920,7 +6193,7 @@
    "cluster": "b8c780b02723",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.5
+   "score": 1.48
   },
   {
    "id": "2bec8e96d897",
@@ -5938,7 +6211,7 @@
    "cluster": "2bec8e96d897",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.5
+   "score": 6.48
   },
   {
    "id": "963720385d09",
@@ -5955,7 +6228,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 13.5
+   "score": 13.48
   },
   {
    "id": "427c2b414dc3",
@@ -5972,7 +6245,7 @@
    "cluster": "33f8eddba863",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.5
+   "score": 3.48
   },
   {
    "id": "5941e7996a88",
@@ -5989,7 +6262,7 @@
    "cluster": "5941e7996a88",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.5
+   "score": 5.48
   },
   {
    "id": "445eb68df3c3",
@@ -6006,7 +6279,7 @@
    "cluster": "445eb68df3c3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.5
+   "score": 4.47
   },
   {
    "id": "47a0307f8669",
@@ -6023,7 +6296,7 @@
    "cluster": "47a0307f8669",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.49
+   "score": 1.47
   },
   {
    "id": "e3dd1a5d3d7d",
@@ -6040,7 +6313,7 @@
    "cluster": "e3dd1a5d3d7d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.49
+   "score": 1.47
   },
   {
    "id": "1550b1e069db",
@@ -6057,7 +6330,7 @@
    "cluster": "1550b1e069db",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.49
+   "score": 1.47
   },
   {
    "id": "3981f5911381",
@@ -6074,7 +6347,7 @@
    "cluster": "3981f5911381",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.48
+   "score": 1.46
   },
   {
    "id": "c36c3a9148a8",
@@ -6091,7 +6364,7 @@
    "cluster": "c36c3a9148a8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.47
+   "score": 1.45
   },
   {
    "id": "03f5388be993",
@@ -6108,7 +6381,7 @@
    "cluster": "03f5388be993",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.47
+   "score": 1.44
   },
   {
    "id": "8fff8589c3e1",
@@ -6125,7 +6398,7 @@
    "cluster": "03f5388be993",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.47
+   "score": 1.44
   },
   {
    "id": "91aa5191007c",
@@ -6142,7 +6415,7 @@
    "cluster": "b392f8f5ccae",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.47
+   "score": 6.44
   },
   {
    "id": "33cd43c73c03",
@@ -6159,7 +6432,7 @@
    "cluster": "33cd43c73c03",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.47
+   "score": 1.44
   },
   {
    "id": "927e58c916c9",
@@ -6176,7 +6449,7 @@
    "cluster": "927e58c916c9",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.46
+   "score": 1.44
   },
   {
    "id": "600da48e3300",
@@ -6193,7 +6466,7 @@
    "cluster": "600da48e3300",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.46
+   "score": 1.44
   },
   {
    "id": "5fa9c46e1223",
@@ -6210,7 +6483,7 @@
    "cluster": "5fa9c46e1223",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.46
+   "score": 1.44
   },
   {
    "id": "0c54fab5f2a3",
@@ -6227,7 +6500,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 13.44
+   "score": 13.42
   },
   {
    "id": "9542d078abb5",
@@ -6242,10 +6515,10 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.44
+   "sources_n": 12,
+   "score": 28.42
   },
   {
    "id": "5b22dfdd35b8",
@@ -6262,7 +6535,7 @@
    "cluster": "5b22dfdd35b8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.44
+   "score": 4.42
   },
   {
    "id": "f003cb14467c",
@@ -6279,7 +6552,7 @@
    "cluster": "f003cb14467c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.44
+   "score": 1.42
   },
   {
    "id": "33f8eddba863",
@@ -6296,7 +6569,7 @@
    "cluster": "33f8eddba863",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.44
+   "score": 3.41
   },
   {
    "id": "0a7bc0b46308",
@@ -6313,7 +6586,24 @@
    "cluster": "0a7bc0b46308",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.43
+   "score": 1.41
+  },
+  {
+   "id": "df6952ff5f35",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "KUW vs NAM Venue Details",
+   "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPOHR6RDE4S0QwWkxmTWVVQ1B3dXhxcGxobFlQQVhDQWFtVjdoYmlzSGdyS3VWc2tBRWRyek1ZUVZ3THVBck04eDlkalJpelphczY4Qy1nUG5uY0NWc2JGMDdITl9MUERvM3p6bnJhQ015Z1RQeFRSZ0N5cUtnX0dtMExFQ0pQV3prSzFTbXBsWDNMckU5WTJMdFlGOHZRTzVWZ2dUOVRORkVneVFOQWQ2Y3lTZXdwejd4eEU4bFgzSl9ROVhfLTZhMEtLS3gtY1VFUDNCbHVUOERBdHdIVmhxQWlqbll6dkpRRC16Z3lhZw?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-18T14:48:23+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "df6952ff5f35",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 1.4
   },
   {
    "id": "fef85ddbd607",
@@ -6330,7 +6620,7 @@
    "cluster": "fdb0f527a274",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.42
+   "score": 7.4
   },
   {
    "id": "40c1661d2a28",
@@ -6347,7 +6637,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 13.42
+   "score": 13.39
   },
   {
    "id": "7f98f53eb0ea",
@@ -6364,7 +6654,7 @@
    "cluster": "7f98f53eb0ea",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.41
+   "score": 3.38
   },
   {
    "id": "9f7d17e7695e",
@@ -6381,7 +6671,7 @@
    "cluster": "7f98f53eb0ea",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.41
+   "score": 3.38
   },
   {
    "id": "683a02566e09",
@@ -6398,7 +6688,7 @@
    "cluster": "b392f8f5ccae",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.41
+   "score": 6.38
   },
   {
    "id": "9261ebb50712",
@@ -6415,7 +6705,7 @@
    "cluster": "766cc7d6a17a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.4
+   "score": 4.38
   },
   {
    "id": "b6ce595cfa80",
@@ -6432,7 +6722,7 @@
    "cluster": "9d97658d5e3f",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.4
+   "score": 3.38
   },
   {
    "id": "9d97658d5e3f",
@@ -6449,7 +6739,7 @@
    "cluster": "9d97658d5e3f",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.4
+   "score": 3.38
   },
   {
    "id": "d026320feb9c",
@@ -6466,7 +6756,7 @@
    "cluster": "d026320feb9c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.4
+   "score": 1.38
   },
   {
    "id": "fa7d0789704b",
@@ -6483,7 +6773,7 @@
    "cluster": "fa7d0789704b",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 7.39
+   "score": 7.37
   },
   {
    "id": "de57d852658c",
@@ -6500,7 +6790,7 @@
    "cluster": "de57d852658c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.39
+   "score": 1.37
   },
   {
    "id": "d00d433012a4",
@@ -6517,7 +6807,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 16.39
+   "score": 16.37
   },
   {
    "id": "b392f8f5ccae",
@@ -6534,7 +6824,7 @@
    "cluster": "b392f8f5ccae",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.38
+   "score": 6.36
   },
   {
    "id": "4e48f9fae8f9",
@@ -6551,7 +6841,7 @@
    "cluster": "b392f8f5ccae",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.38
+   "score": 6.36
   },
   {
    "id": "44e872b204f0",
@@ -6568,7 +6858,7 @@
    "cluster": "44e872b204f0",
    "recent_n": 1,
    "sources_n": 4,
-   "score": 7.38
+   "score": 7.36
   },
   {
    "id": "e5bc45a5df19",
@@ -6585,7 +6875,7 @@
    "cluster": "e5bc45a5df19",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 5.38
+   "score": 5.36
   },
   {
    "id": "60bfc502622b",
@@ -6602,7 +6892,7 @@
    "cluster": "60bfc502622b",
    "recent_n": 0,
    "sources_n": 7,
-   "score": 16.37
+   "score": 16.35
   },
   {
    "id": "3f3b766774f8",
@@ -6619,7 +6909,7 @@
    "cluster": "3f3b766774f8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.37
+   "score": 1.35
   },
   {
    "id": "798821f48e75",
@@ -6636,7 +6926,7 @@
    "cluster": "798821f48e75",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.36
+   "score": 3.34
   },
   {
    "id": "d69e04080819",
@@ -6653,7 +6943,7 @@
    "cluster": "d69e04080819",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.36
+   "score": 1.34
   },
   {
    "id": "9a4ce1be0b99",
@@ -6670,7 +6960,7 @@
    "cluster": "9a4ce1be0b99",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.36
+   "score": 1.34
   },
   {
    "id": "2a34a4acd5d2",
@@ -6687,7 +6977,7 @@
    "cluster": "2a34a4acd5d2",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.36
+   "score": 6.34
   },
   {
    "id": "7799fbb37731",
@@ -6704,7 +6994,7 @@
    "cluster": "7799fbb37731",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.36
+   "score": 4.33
   },
   {
    "id": "724a23d9cf98",
@@ -6721,7 +7011,7 @@
    "cluster": "724a23d9cf98",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.36
+   "score": 3.33
   },
   {
    "id": "56326b638133",
@@ -6738,7 +7028,7 @@
    "cluster": "56326b638133",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.35
+   "score": 1.33
   },
   {
    "id": "8b2d252dc6a0",
@@ -6755,7 +7045,7 @@
    "cluster": "8b2d252dc6a0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.35
+   "score": 1.33
   },
   {
    "id": "6858747060e8",
@@ -6772,7 +7062,7 @@
    "cluster": "6858747060e8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.35
+   "score": 1.33
   },
   {
    "id": "a476a7c33578",
@@ -6789,7 +7079,7 @@
    "cluster": "a476a7c33578",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.33
+   "score": 5.31
   },
   {
    "id": "d8526394d79b",
@@ -6806,7 +7096,7 @@
    "cluster": "d8526394d79b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.33
+   "score": 3.31
   },
   {
    "id": "99197a983ce0",
@@ -6823,7 +7113,7 @@
    "cluster": "99197a983ce0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.33
+   "score": 6.31
   },
   {
    "id": "9c6b5a9a3599",
@@ -6840,7 +7130,7 @@
    "cluster": "9c6b5a9a3599",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.33
+   "score": 1.31
   },
   {
    "id": "7ad097a57a3d",
@@ -6857,7 +7147,24 @@
    "cluster": "7ad097a57a3d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.31
+   "score": 1.29
+  },
+  {
+   "id": "c9270a99bfb8",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "Upcoming CAN vs ITA cricket match (12/9/2026): CAN vs ITA ball by ball commentary, CAN vs ITA stats | Cricket News",
+   "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPaFRyRnhINTRYZnFBZEprLWRzcHhJNVNNdVhsVkRPTmE1bW5QdkNQWVctVTlRaUU2Q3MyNkF2UFJULVl0TmxrenZTOEk5ZFVtREE4dkZfRnZkLTd2R1E0VGZMUUpnR19HNWxQSUhpc2syUE1ieTd0UlJYNWplbFFkRGVjZzk1Vm8xUEFBZ2owQmg1N3NUNDB3VWVNc3JWdjVnQWpFc1hhdlI5SzZXRFRyRkhHRzFuYTFNOUN1MTVHa3ZGdjZodGVmSTRNbE5aYUI4Rkt2Y3ZiUFVxQ1BSYTBVS1JiRTN3T1NiMHc?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-18T13:28:24+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "73b348b8b73d",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 1.29
   },
   {
    "id": "ea580be400e1",
@@ -6874,7 +7181,7 @@
    "cluster": "ea580be400e1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.31
+   "score": 1.29
   },
   {
    "id": "c8dd5d9c4684",
@@ -6892,7 +7199,7 @@
    "cluster": "c8dd5d9c4684",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.31
+   "score": 6.29
   },
   {
    "id": "b1a181299af6",
@@ -6909,7 +7216,7 @@
    "cluster": "b1a181299af6",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.31
+   "score": 1.29
   },
   {
    "id": "dc0642f1017f",
@@ -6924,9 +7231,9 @@
    ],
    "label": "Rumor",
    "cluster": "dc0642f1017f",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
-   "score": 5.31
+   "score": 5.28
   },
   {
    "id": "2f75593ac205",
@@ -6943,7 +7250,7 @@
    "cluster": "2f75593ac205",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.3
+   "score": 1.28
   },
   {
    "id": "86f483900f9c",
@@ -6960,7 +7267,7 @@
    "cluster": "86f483900f9c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.29
+   "score": 1.27
   },
   {
    "id": "566e42cd4871",
@@ -6978,7 +7285,7 @@
    "cluster": "566e42cd4871",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 7.29
+   "score": 7.27
   },
   {
    "id": "96b143d66e08",
@@ -6995,7 +7302,7 @@
    "cluster": "96b143d66e08",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.29
+   "score": 6.27
   },
   {
    "id": "bd26d4f62958",
@@ -7012,7 +7319,7 @@
    "cluster": "88b6c1f4d3ba",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.28
+   "score": 7.26
   },
   {
    "id": "766cc7d6a17a",
@@ -7029,7 +7336,7 @@
    "cluster": "766cc7d6a17a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.28
+   "score": 4.26
   },
   {
    "id": "835cb8be03fe",
@@ -7046,7 +7353,7 @@
    "cluster": "835cb8be03fe",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.27
+   "score": 4.25
   },
   {
    "id": "238b8a4c11a6",
@@ -7063,7 +7370,7 @@
    "cluster": "238b8a4c11a6",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.27
+   "score": 1.25
   },
   {
    "id": "1cf33ba143cf",
@@ -7080,7 +7387,7 @@
    "cluster": "1cf33ba143cf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.27
+   "score": 1.25
   },
   {
    "id": "d58e94b7b421",
@@ -7098,7 +7405,7 @@
    "cluster": "d58e94b7b421",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.27
+   "score": 5.25
   },
   {
    "id": "698fe17282b3",
@@ -7116,7 +7423,7 @@
    "cluster": "698fe17282b3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.26
+   "score": 6.24
   },
   {
    "id": "73b348b8b73d",
@@ -7133,7 +7440,7 @@
    "cluster": "73b348b8b73d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.26
+   "score": 1.24
   },
   {
    "id": "431bcc036742",
@@ -7150,7 +7457,7 @@
    "cluster": "431bcc036742",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.26
+   "score": 1.24
   },
   {
    "id": "6b85d3910da3",
@@ -7167,7 +7474,7 @@
    "cluster": "6b85d3910da3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.26
+   "score": 1.24
   },
   {
    "id": "2a103c6d95cd",
@@ -7184,7 +7491,7 @@
    "cluster": "2a103c6d95cd",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.25
+   "score": 1.23
   },
   {
    "id": "6666aaf5857e",
@@ -7202,7 +7509,24 @@
    "cluster": "6666aaf5857e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 6.25
+   "score": 6.23
+  },
+  {
+   "id": "945105c88449",
+   "seen": "2026-11-19T09:59:06.227531+00:00",
+   "title": "NED-W vs ZIM-W highlights (11/18/2026) | Cricket News",
+   "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxQN1FWSUFNNjh1aDhMWmJUZzRyYlBxTXNXaWRmZTlqN3ZHMkYteTZiLW8wQ2FPWF9qR053OFAwRUdHNU9GT25kRmZ5SGtNUHFYTjA4S0NqTklHVU45dHVaNHlLdGdOZjMwR05PSEJlOGpSdDVlZDJjWXVseTlkM0pIbExmMnVXaUZoUHdfYW1pbkl2UDBqQkV5REZOMkhBTWpsVlUyX1hwU2hodklhWHpSejNTRFRzS1VYZVpZYTBzV3VobUlfazBqaUhlZmxqS2xuTFpGekJ1a2ZNUzU3c3IwOExJT0U4YWlwRnVwSmRYR0xSMmZMXzRsSnU3TERwakNRR3U5YWxHMA?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-18T12:42:31+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "945105c88449",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 1.23
   },
   {
    "id": "567b670ff60b",
@@ -7219,7 +7543,7 @@
    "cluster": "567b670ff60b",
    "recent_n": 1,
    "sources_n": 2,
-   "score": 7.25
+   "score": 7.22
   },
   {
    "id": "23313c9915a2",
@@ -7236,7 +7560,7 @@
    "cluster": "23313c9915a2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.24
+   "score": 1.22
   },
   {
    "id": "a9d248c57db2",
@@ -7253,7 +7577,7 @@
    "cluster": "a9d248c57db2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.24
+   "score": 1.21
   },
   {
    "id": "bb0af9deb096",
@@ -7271,7 +7595,7 @@
    "cluster": "bb0af9deb096",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.23
+   "score": 5.21
   },
   {
    "id": "f055d8b9f8fd",
@@ -7288,7 +7612,7 @@
    "cluster": "f055d8b9f8fd",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.22
+   "score": 1.2
   },
   {
    "id": "2803327f9601",
@@ -7305,7 +7629,7 @@
    "cluster": "01b8e4038893",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.22
+   "score": 7.2
   },
   {
    "id": "c1e217236f97",
@@ -7322,7 +7646,7 @@
    "cluster": "ffeffc3bd0b3",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.22
+   "score": 3.2
   },
   {
    "id": "14ceb1cd21eb",
@@ -7338,10 +7662,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.21
+   "sources_n": 12,
+   "score": 28.19
   },
   {
    "id": "4a79f71650e7",
@@ -7358,7 +7682,7 @@
    "cluster": "01b8e4038893",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.2
+   "score": 7.18
   },
   {
    "id": "14f38230db98",
@@ -7375,7 +7699,7 @@
    "cluster": "14f38230db98",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.2
+   "score": 1.18
   },
   {
    "id": "4aea2e8edff0",
@@ -7392,7 +7716,7 @@
    "cluster": "fdb0f527a274",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.19
+   "score": 7.17
   },
   {
    "id": "cb6c4778f9f7",
@@ -7409,7 +7733,7 @@
    "cluster": "cb6c4778f9f7",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.19
+   "score": 1.16
   },
   {
    "id": "e7c0ad61534c",
@@ -7426,7 +7750,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 15.18
+   "score": 15.16
   },
   {
    "id": "85275bd9f142",
@@ -7443,7 +7767,7 @@
    "cluster": "85275bd9f142",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.18
+   "score": 1.16
   },
   {
    "id": "f69f10610c58",
@@ -7458,10 +7782,10 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.18
+   "sources_n": 12,
+   "score": 28.16
   },
   {
    "id": "e6e78bbd7bf1",
@@ -7478,7 +7802,7 @@
    "cluster": "199a97241ee7",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 11.17
+   "score": 11.15
   },
   {
    "id": "dc1172fec614",
@@ -7495,7 +7819,7 @@
    "cluster": "199a97241ee7",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 11.17
+   "score": 11.15
   },
   {
    "id": "5e6f783fa3a3",
@@ -7511,10 +7835,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.17
+   "sources_n": 12,
+   "score": 28.15
   },
   {
    "id": "5b1d9e9026ed",
@@ -7531,7 +7855,7 @@
    "cluster": "051997a0646b",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.17
+   "score": 3.15
   },
   {
    "id": "051997a0646b",
@@ -7548,7 +7872,7 @@
    "cluster": "051997a0646b",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 3.17
+   "score": 3.14
   },
   {
    "id": "9ae5f1aba40c",
@@ -7565,7 +7889,7 @@
    "cluster": "88b6c1f4d3ba",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.16
+   "score": 7.14
   },
   {
    "id": "25a0e48efa08",
@@ -7582,7 +7906,7 @@
    "cluster": "fdb0f527a274",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.16
+   "score": 7.14
   },
   {
    "id": "fdb0f527a274",
@@ -7599,7 +7923,7 @@
    "cluster": "fdb0f527a274",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.16
+   "score": 7.13
   },
   {
    "id": "90cc90dd9b3b",
@@ -7616,7 +7940,7 @@
    "cluster": "90cc90dd9b3b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.15
+   "score": 5.13
   },
   {
    "id": "4a477daefcd8",
@@ -7633,7 +7957,7 @@
    "cluster": "4a477daefcd8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.15
+   "score": 1.13
   },
   {
    "id": "328a075d8108",
@@ -7647,10 +7971,10 @@
     "Retention"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.14
+   "sources_n": 12,
+   "score": 28.11
   },
   {
    "id": "7a235ef9d737",
@@ -7667,7 +7991,7 @@
    "cluster": "7a235ef9d737",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.14
+   "score": 1.11
   },
   {
    "id": "06caa4a56159",
@@ -7682,10 +8006,10 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.13
+   "sources_n": 12,
+   "score": 28.11
   },
   {
    "id": "c0edfc17a77c",
@@ -7702,7 +8026,7 @@
    "cluster": "c0edfc17a77c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.13
+   "score": 4.11
   },
   {
    "id": "747709782099",
@@ -7719,7 +8043,7 @@
    "cluster": "747709782099",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.13
+   "score": 1.1
   },
   {
    "id": "57fabf340913",
@@ -7736,7 +8060,7 @@
    "cluster": "57fabf340913",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.12
+   "score": 3.1
   },
   {
    "id": "96fa01f62b5f",
@@ -7753,7 +8077,7 @@
    "cluster": "96fa01f62b5f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.12
+   "score": 3.1
   },
   {
    "id": "6fbce48ab9fc",
@@ -7769,10 +8093,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.12
+   "sources_n": 12,
+   "score": 28.1
   },
   {
    "id": "2d62d3a8e6f0",
@@ -7789,7 +8113,7 @@
    "cluster": "2d62d3a8e6f0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.12
+   "score": 1.1
   },
   {
    "id": "c171dcecad4f",
@@ -7806,7 +8130,7 @@
    "cluster": "c171dcecad4f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.11
+   "score": 1.09
   },
   {
    "id": "88b6c1f4d3ba",
@@ -7823,7 +8147,7 @@
    "cluster": "88b6c1f4d3ba",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 10.11
+   "score": 10.09
   },
   {
    "id": "28d521250075",
@@ -7840,7 +8164,7 @@
    "cluster": "28d521250075",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.11
+   "score": 1.09
   },
   {
    "id": "5f5cc71010f4",
@@ -7857,7 +8181,7 @@
    "cluster": "5f5cc71010f4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.11
+   "score": 5.08
   },
   {
    "id": "0eacf310f654",
@@ -7874,7 +8198,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 15.11
+   "score": 15.08
   },
   {
    "id": "27801dfec97d",
@@ -7891,7 +8215,7 @@
    "cluster": "27801dfec97d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.11
+   "score": 1.08
   },
   {
    "id": "2898c8c454fe",
@@ -7908,7 +8232,7 @@
    "cluster": "d89eda5924eb",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 7.1
+   "score": 7.08
   },
   {
    "id": "9436df32c8d4",
@@ -7925,7 +8249,7 @@
    "cluster": "9436df32c8d4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.1
+   "score": 1.07
   },
   {
    "id": "d23fc7a19159",
@@ -7942,7 +8266,7 @@
    "cluster": "d23fc7a19159",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.1
+   "score": 1.07
   },
   {
    "id": "2d8c08a671f5",
@@ -7959,7 +8283,7 @@
    "cluster": "2d8c08a671f5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.09
+   "score": 1.07
   },
   {
    "id": "8d98043ed776",
@@ -7976,7 +8300,7 @@
    "cluster": "8d98043ed776",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.09
+   "score": 1.07
   },
   {
    "id": "6d13359c61f4",
@@ -7993,7 +8317,7 @@
    "cluster": "6d13359c61f4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.09
+   "score": 1.07
   },
   {
    "id": "5052144513f3",
@@ -8010,7 +8334,7 @@
    "cluster": "5052144513f3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.09
+   "score": 1.07
   },
   {
    "id": "072356387f2c",
@@ -8027,7 +8351,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 15.08
+   "score": 15.06
   },
   {
    "id": "3c142bc1125e",
@@ -8044,7 +8368,7 @@
    "cluster": "3c142bc1125e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.08
+   "score": 1.06
   },
   {
    "id": "dfed437a8133",
@@ -8061,7 +8385,7 @@
    "cluster": "dfed437a8133",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.07
+   "score": 4.05
   },
   {
    "id": "96ab759ce201",
@@ -8078,7 +8402,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 15.07
+   "score": 15.05
   },
   {
    "id": "f901f10d43f0",
@@ -8095,7 +8419,7 @@
    "cluster": "f901f10d43f0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.07
+   "score": 1.05
   },
   {
    "id": "ffeffc3bd0b3",
@@ -8112,7 +8436,7 @@
    "cluster": "ffeffc3bd0b3",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.06
+   "score": 6.04
   },
   {
    "id": "4e5671e20a01",
@@ -8129,7 +8453,7 @@
    "cluster": "4e5671e20a01",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.06
+   "score": 1.04
   },
   {
    "id": "4575c26e9c61",
@@ -8146,7 +8470,7 @@
    "cluster": "4575c26e9c61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.05
+   "score": 1.03
   },
   {
    "id": "606a38dae7a5",
@@ -8163,7 +8487,7 @@
    "cluster": "606a38dae7a5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.04
+   "score": 1.02
   },
   {
    "id": "b50e9e1f6df6",
@@ -8180,7 +8504,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 17.04
+   "score": 17.02
   },
   {
    "id": "470ddcbf0581",
@@ -8197,7 +8521,7 @@
    "cluster": "470ddcbf0581",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.03
+   "score": 1.01
   },
   {
    "id": "baacbde1d936",
@@ -8214,7 +8538,7 @@
    "cluster": "baacbde1d936",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.03
+   "score": 1.01
   },
   {
    "id": "e26948f0e4c6",
@@ -8231,7 +8555,7 @@
    "cluster": "e26948f0e4c6",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.03
+   "score": 1.01
   },
   {
    "id": "7b31e6f2fffe",
@@ -8247,10 +8571,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.02
+   "sources_n": 12,
+   "score": 28.0
   },
   {
    "id": "dad5c6703892",
@@ -8266,10 +8590,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.02
+   "sources_n": 12,
+   "score": 28.0
   },
   {
    "id": "1ad42accf39c",
@@ -8285,10 +8609,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.02
+   "sources_n": 12,
+   "score": 28.0
   },
   {
    "id": "0f384aa22276",
@@ -8305,7 +8629,7 @@
    "cluster": "0f384aa22276",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.01
+   "score": 0.99
   },
   {
    "id": "780af2a24191",
@@ -8322,7 +8646,7 @@
    "cluster": "780af2a24191",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.01
+   "score": 0.99
   },
   {
    "id": "075d198b8f65",
@@ -8339,7 +8663,7 @@
    "cluster": "075d198b8f65",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.01
+   "score": 4.99
   },
   {
    "id": "01b8e4038893",
@@ -8356,7 +8680,7 @@
    "cluster": "01b8e4038893",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.01
+   "score": 6.99
   },
   {
    "id": "54752dfe5798",
@@ -8373,7 +8697,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 17.0
+   "score": 16.98
   },
   {
    "id": "48c0b4158fff",
@@ -8390,7 +8714,7 @@
    "cluster": "48c0b4158fff",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.0
+   "score": 0.98
   },
   {
    "id": "48388acea042",
@@ -8406,10 +8730,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 30.0
+   "sources_n": 12,
+   "score": 27.98
   },
   {
    "id": "68619fe6e7d5",
@@ -8426,7 +8750,7 @@
    "cluster": "68619fe6e7d5",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.0
+   "score": 0.98
   },
   {
    "id": "20a862cfbc5d",
@@ -8443,7 +8767,7 @@
    "cluster": "20a862cfbc5d",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 4.98
+   "score": 4.96
   },
   {
    "id": "6866c8a95055",
@@ -8460,7 +8784,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 14.98
+   "score": 14.96
   },
   {
    "id": "7ed508080694",
@@ -8477,7 +8801,7 @@
    "cluster": "7ed508080694",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.98
+   "score": 2.96
   },
   {
    "id": "b1e7d5882e7b",
@@ -8494,7 +8818,7 @@
    "cluster": "b1e7d5882e7b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.98
+   "score": 2.96
   },
   {
    "id": "58b8e1f7cd4f",
@@ -8509,10 +8833,10 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.97
+   "sources_n": 12,
+   "score": 27.95
   },
   {
    "id": "70595060a927",
@@ -8529,7 +8853,7 @@
    "cluster": "70595060a927",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.97
+   "score": 2.94
   },
   {
    "id": "58d481cda717",
@@ -8546,7 +8870,7 @@
    "cluster": "58d481cda717",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.96
+   "score": 0.94
   },
   {
    "id": "be6371572072",
@@ -8562,10 +8886,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.96
+   "sources_n": 12,
+   "score": 27.94
   },
   {
    "id": "77e5b223e9e4",
@@ -8582,7 +8906,7 @@
    "cluster": "ebd0b005e6b0",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 2.96
+   "score": 2.94
   },
   {
    "id": "e0bbc9ae2a9f",
@@ -8599,7 +8923,7 @@
    "cluster": "e0bbc9ae2a9f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.96
+   "score": 3.94
   },
   {
    "id": "3aeee112b22b",
@@ -8616,7 +8940,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 14.96
+   "score": 14.94
   },
   {
    "id": "fdbdf517dbef",
@@ -8633,7 +8957,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 14.96
+   "score": 14.94
   },
   {
    "id": "2cf7d7884132",
@@ -8650,7 +8974,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 14.96
+   "score": 14.94
   },
   {
    "id": "66b1638d91a8",
@@ -8667,7 +8991,7 @@
    "cluster": "66b1638d91a8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.96
+   "score": 0.94
   },
   {
    "id": "ebd0b005e6b0",
@@ -8684,7 +9008,7 @@
    "cluster": "ebd0b005e6b0",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 2.95
+   "score": 2.93
   },
   {
    "id": "c96a4020cc94",
@@ -8701,7 +9025,7 @@
    "cluster": "c96a4020cc94",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.95
+   "score": 0.92
   },
   {
    "id": "559ae1d60788",
@@ -8718,7 +9042,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 14.94
+   "score": 14.92
   },
   {
    "id": "cf7ccf033476",
@@ -8735,7 +9059,7 @@
    "cluster": "cf7ccf033476",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.93
+   "score": 0.91
   },
   {
    "id": "2eefc1b1e1da",
@@ -8752,7 +9076,7 @@
    "cluster": "2eefc1b1e1da",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.93
+   "score": 0.91
   },
   {
    "id": "d7ea29beaf10",
@@ -8769,7 +9093,7 @@
    "cluster": "d7ea29beaf10",
    "recent_n": 2,
    "sources_n": 5,
-   "score": 11.93
+   "score": 11.91
   },
   {
    "id": "f08116e6b533",
@@ -8786,7 +9110,7 @@
    "cluster": "f08116e6b533",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.92
+   "score": 0.9
   },
   {
    "id": "ef4530a39b2a",
@@ -8803,7 +9127,7 @@
    "cluster": "ef4530a39b2a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.92
+   "score": 3.9
   },
   {
    "id": "8293e08a44a9",
@@ -8821,7 +9145,7 @@
    "cluster": "8293e08a44a9",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.92
+   "score": 3.9
   },
   {
    "id": "42a15535c234",
@@ -8839,7 +9163,7 @@
    "cluster": "42a15535c234",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 7.92
+   "score": 7.9
   },
   {
    "id": "f63ba822dcd7",
@@ -8856,7 +9180,7 @@
    "cluster": "f63ba822dcd7",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.92
+   "score": 0.9
   },
   {
    "id": "c1b06e571659",
@@ -8873,7 +9197,7 @@
    "cluster": "c1b06e571659",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.92
+   "score": 0.9
   },
   {
    "id": "a7f666b40dca",
@@ -8890,7 +9214,7 @@
    "cluster": "a7f666b40dca",
    "recent_n": 0,
    "sources_n": 8,
-   "score": 14.91
+   "score": 14.89
   },
   {
    "id": "01b13c6ebeac",
@@ -8907,7 +9231,7 @@
    "cluster": "01b13c6ebeac",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 4.91
+   "score": 4.89
   },
   {
    "id": "199a97241ee7",
@@ -8924,7 +9248,7 @@
    "cluster": "199a97241ee7",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 10.9
+   "score": 10.88
   },
   {
    "id": "6acc802e45a7",
@@ -8941,7 +9265,7 @@
    "cluster": "6acc802e45a7",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.9
+   "score": 0.88
   },
   {
    "id": "d89eda5924eb",
@@ -8958,7 +9282,7 @@
    "cluster": "d89eda5924eb",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 6.89
+   "score": 6.87
   },
   {
    "id": "50900236aa9b",
@@ -8975,7 +9299,7 @@
    "cluster": "50900236aa9b",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.89
+   "score": 0.87
   },
   {
    "id": "094c71214b45",
@@ -8992,7 +9316,7 @@
    "cluster": "1cc207c1e2aa",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 2.88
+   "score": 2.86
   },
   {
    "id": "f1bec5b02ab1",
@@ -9009,7 +9333,7 @@
    "cluster": "f1bec5b02ab1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.88
+   "score": 0.86
   },
   {
    "id": "467712045e14",
@@ -9026,7 +9350,7 @@
    "cluster": "467712045e14",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.88
+   "score": 4.86
   },
   {
    "id": "b9ff97c1be33",
@@ -9043,7 +9367,7 @@
    "cluster": "d355d85220dd",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 4.87
+   "score": 4.85
   },
   {
    "id": "4d39f57720c4",
@@ -9060,7 +9384,7 @@
    "cluster": "4d39f57720c4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.87
+   "score": 3.85
   },
   {
    "id": "1c41f8fbcf50",
@@ -9077,7 +9401,7 @@
    "cluster": "1c41f8fbcf50",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.87
+   "score": 0.85
   },
   {
    "id": "f7141d7f01bf",
@@ -9094,7 +9418,7 @@
    "cluster": "f7141d7f01bf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.87
+   "score": 5.85
   },
   {
    "id": "c05810b6ec05",
@@ -9111,7 +9435,7 @@
    "cluster": "c05810b6ec05",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.87
+   "score": 0.85
   },
   {
    "id": "a5170d834eed",
@@ -9128,7 +9452,7 @@
    "cluster": "a5170d834eed",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 2.87
+   "score": 2.85
   },
   {
    "id": "d93e65d87548",
@@ -9145,7 +9469,7 @@
    "cluster": "d93e65d87548",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.86
+   "score": 0.84
   },
   {
    "id": "929cd4533058",
@@ -9162,7 +9486,7 @@
    "cluster": "929cd4533058",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.86
+   "score": 0.84
   },
   {
    "id": "342a27749765",
@@ -9179,7 +9503,7 @@
    "cluster": "342a27749765",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.86
+   "score": 0.84
   },
   {
    "id": "65b08284d3c7",
@@ -9196,7 +9520,7 @@
    "cluster": "65b08284d3c7",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.86
+   "score": 4.84
   },
   {
    "id": "050294254187",
@@ -9214,7 +9538,7 @@
    "cluster": "050294254187",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.86
+   "score": 5.84
   },
   {
    "id": "dbdb9595380a",
@@ -9232,7 +9556,7 @@
    "cluster": "dbdb9595380a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.85
+   "score": 4.83
   },
   {
    "id": "6ae41c180d8f",
@@ -9248,10 +9572,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.85
+   "sources_n": 12,
+   "score": 27.83
   },
   {
    "id": "60581331a3dd",
@@ -9268,7 +9592,7 @@
    "cluster": "60581331a3dd",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.85
+   "score": 2.83
   },
   {
    "id": "21d5c7902d61",
@@ -9285,7 +9609,7 @@
    "cluster": "21d5c7902d61",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.83
+   "score": 4.81
   },
   {
    "id": "1cc207c1e2aa",
@@ -9302,7 +9626,7 @@
    "cluster": "1cc207c1e2aa",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 2.83
+   "score": 2.81
   },
   {
    "id": "bcdc106c7616",
@@ -9321,7 +9645,7 @@
    "cluster": "bcdc106c7616",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.83
+   "score": 5.81
   },
   {
    "id": "748dbbe54a37",
@@ -9338,7 +9662,7 @@
    "cluster": "748dbbe54a37",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.83
+   "score": 0.81
   },
   {
    "id": "601ce5ffb423",
@@ -9355,7 +9679,7 @@
    "cluster": "601ce5ffb423",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.82
+   "score": 4.8
   },
   {
    "id": "777d3c429df1",
@@ -9372,7 +9696,7 @@
    "cluster": "777d3c429df1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.82
+   "score": 0.79
   },
   {
    "id": "accc101922a3",
@@ -9387,10 +9711,10 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.81
+   "sources_n": 12,
+   "score": 27.79
   },
   {
    "id": "5be47b27137a",
@@ -9406,10 +9730,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.81
+   "sources_n": 12,
+   "score": 27.79
   },
   {
    "id": "de0e54e7d6f5",
@@ -9425,10 +9749,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.81
+   "sources_n": 12,
+   "score": 27.79
   },
   {
    "id": "79c64d790c41",
@@ -9445,7 +9769,7 @@
    "cluster": "79c64d790c41",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.8
+   "score": 0.77
   },
   {
    "id": "4ac3453df1d3",
@@ -9462,7 +9786,7 @@
    "cluster": "4ac3453df1d3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.79
+   "score": 3.77
   },
   {
    "id": "2a6b4b33c9bf",
@@ -9480,7 +9804,7 @@
    "cluster": "2a6b4b33c9bf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.78
+   "score": 5.76
   },
   {
    "id": "71159d291c94",
@@ -9497,7 +9821,7 @@
    "cluster": "71159d291c94",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.78
+   "score": 0.76
   },
   {
    "id": "9ad622e78bc1",
@@ -9514,7 +9838,7 @@
    "cluster": "9ad622e78bc1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.78
+   "score": 0.76
   },
   {
    "id": "cc4f453ce291",
@@ -9529,10 +9853,10 @@
     "Auction"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.78
+   "sources_n": 12,
+   "score": 27.75
   },
   {
    "id": "e1e014331303",
@@ -9549,7 +9873,7 @@
    "cluster": "d355d85220dd",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 4.78
+   "score": 4.75
   },
   {
    "id": "e229c049fa47",
@@ -9566,7 +9890,7 @@
    "cluster": "e229c049fa47",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.77
+   "score": 0.75
   },
   {
    "id": "1f2b8999f43f",
@@ -9583,7 +9907,7 @@
    "cluster": "1f2b8999f43f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.77
+   "score": 0.75
   },
   {
    "id": "54b95eef54a8",
@@ -9600,7 +9924,7 @@
    "cluster": "54b95eef54a8",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.77
+   "score": 0.75
   },
   {
    "id": "d355d85220dd",
@@ -9617,7 +9941,7 @@
    "cluster": "d355d85220dd",
    "recent_n": 0,
    "sources_n": 3,
-   "score": 4.77
+   "score": 4.74
   },
   {
    "id": "d898e99dbb7e",
@@ -9634,7 +9958,7 @@
    "cluster": "d898e99dbb7e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.76
+   "score": 0.74
   },
   {
    "id": "2d9864011eed",
@@ -9652,7 +9976,7 @@
    "cluster": "2d9864011eed",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.76
+   "score": 4.74
   },
   {
    "id": "5e410c51b676",
@@ -9669,7 +9993,7 @@
    "cluster": "5e410c51b676",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.76
+   "score": 0.74
   },
   {
    "id": "691fbf466d81",
@@ -9686,7 +10010,7 @@
    "cluster": "691fbf466d81",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.75
+   "score": 0.73
   },
   {
    "id": "09c4117f13db",
@@ -9703,7 +10027,7 @@
    "cluster": "09c4117f13db",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.75
+   "score": 0.72
   },
   {
    "id": "ff480229728c",
@@ -9720,7 +10044,7 @@
    "cluster": "ff480229728c",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.74
+   "score": 0.72
   },
   {
    "id": "faa688627438",
@@ -9734,10 +10058,10 @@
     "Release"
    ],
    "label": "Confirmed",
-   "cluster": "762b1ca4319e",
+   "cluster": "2010950d900e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 8.73
+   "score": 8.71
   },
   {
    "id": "7f5eb1ac579f",
@@ -9754,7 +10078,7 @@
    "cluster": "7f5eb1ac579f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.73
+   "score": 4.71
   },
   {
    "id": "1ad64da1d718",
@@ -9771,7 +10095,7 @@
    "cluster": "1ad64da1d718",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.73
+   "score": 0.71
   },
   {
    "id": "2010950d900e",
@@ -9785,10 +10109,10 @@
     "Retention"
    ],
    "label": "Confirmed",
-   "cluster": "762b1ca4319e",
+   "cluster": "2010950d900e",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 8.73
+   "score": 8.71
   },
   {
    "id": "e557c2aed7b1",
@@ -9802,10 +10126,10 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 40.72
+   "cluster": "e557c2aed7b1",
+   "recent_n": 4,
+   "sources_n": 23,
+   "score": 46.7
   },
   {
    "id": "15a8833c0837",
@@ -9822,7 +10146,7 @@
    "cluster": "15a8833c0837",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.72
+   "score": 0.7
   },
   {
    "id": "d5d449ea92bb",
@@ -9841,7 +10165,7 @@
    "cluster": "d5d449ea92bb",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.72
+   "score": 5.7
   },
   {
    "id": "8afd662afc93",
@@ -9856,10 +10180,10 @@
     "Release"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.7
+   "sources_n": 12,
+   "score": 27.68
   },
   {
    "id": "3579ef0a3268",
@@ -9876,10 +10200,10 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "29c68a099a03",
+   "cluster": "3579ef0a3268",
    "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.7
+   "sources_n": 12,
+   "score": 27.68
   },
   {
    "id": "5bdb12ea4b10",
@@ -9897,7 +10221,7 @@
    "cluster": "5bdb12ea4b10",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.69
+   "score": 4.67
   },
   {
    "id": "8194c0d5dc57",
@@ -9914,7 +10238,7 @@
    "cluster": "8194c0d5dc57",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.69
+   "score": 3.67
   },
   {
    "id": "d7b6d41823c2",
@@ -9931,7 +10255,7 @@
    "cluster": "d7b6d41823c2",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 0.69
+   "score": 0.67
   },
   {
    "id": "8262855cf8c1",
@@ -9949,7 +10273,7 @@
    "cluster": "8262855cf8c1",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.69
+   "score": 5.66
   },
   {
    "id": "3e85a3787638",
@@ -9966,7 +10290,7 @@
    "cluster": "3e85a3787638",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 8.69
+   "score": 8.66
   },
   {
    "id": "2b11115e64bf",
@@ -9983,333 +10307,7 @@
    "cluster": "2b11115e64bf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.69
-  },
-  {
-   "id": "d03d6cd729d5",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Cues from Wellington nets: Shubman Gill, Morne Morkel and '20 good balls'",
-   "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQZE1WSl9DTGFFZXFlMmc5NjJIUlRqS0FlWmJTTERFQS15WGc3bjZDOHJGZkFEV1ZPSl9iQWw1bm1sRUx2bHRwSW15UTJTRDIzNGo3dEowQ05ja2kxOVRkVEdScGs1ZUFYNkNEdUg0c1BZUEhvdU9PV3JjQWNaZmR6SFljQ2FIRS0zaGV5SGxRNkloel9Ec09RRVZaSlRlTGVHcXhkaHo2ZzhXQWg5X0VuNHlkWUdoTmJ6dnhWbVRNeEZyUmZCR1EwNDRLSWRDdm1RWEtfbWotMTJzSHdvNFJjUTVuek43dmJNbVpjWkNMNlZGdUlPVEQ2RWFVUdIBgAJBVV95cUxQOG5RSFdOalhscnRoMWNScTcyTVVuQW1DU1lfQVJYWTN0QmVFU2J0elNTNDBkdmJGYWhSVEZDM3duVlN0dW11Q3Iyd1JINXhxbHA5STd6cmxNMEg1VG9wYl82b0libnFJa2taMzMxNFUzT1R0WmcxMDNiZUFEbGlsZGNFNnNqWHhSN19HNVBHcUhGOGVxS3BCZGE5TUo4TjJQNW9ZU1VvRHczRi11cnI3QUtTNkl4c3lQS0VibDNYTWRubEZmZTdSVXRmc1RKUHJLbjAwSXg0M0dCT2R5eW9qQ1FyYXA4NG5oUHVNbVM2cnFybHBWM041YU1jTjhOSGlP?oc=5",
-   "source": "The Times of India",
-   "published": "2026-11-18T05:47:00+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "d03d6cd729d5",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.67
-  },
-  {
-   "id": "35fa821859c8",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "IND vs NZ 1st Test | 'Three pacers, one bowling all-rounder': Tom Latham reveals New Zealand's plan again",
-   "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOeWZuZ211N1h5YXd6MDlkRXlpZWNXaXVZOE1DblNhWnJVc2U0VzVWdnVWb3M0eUROZFNKeG52NTd2TmZWRFlWSC1ieGJTVVZUeHBPb2s1bnJwSWdkQnZYb1pqM3lVbElTVWlaUkRSN2lkTUxBMHlfV2Q4Nm42OVZUNkNfTXFIcUd5OVBwOVhoQXpGSS1sSVBac0JRdnZEZEQ1UjAwOTZDLVpzTXoxb1lnZF84c0hYZm84WXhlSFdmbVpiS1g4SWV6Q3NSOXgzQk44N29vdW0wX3gzaW5mQVA0UHI4azgtRkhxeU5VQjZnNTRyTTJWV1c3SS0xNWNuLXVSZ2xPSW9QZXB0TFFNaTFfNTQxa9IBmAJBVV95cUxPUFIxZ2FqSXVVRU8tS2FvOFRoejF6RDhZVnpqLW5hVkdRSzh4VGJBMDNUeG1xa29JNXR0VkhnMm9Gb2l0NGRBMlBvXzIwUVJrYUk5WFYwZWVIZV9COHRsa09RNkxDUGpJX0NBeEpEbEQ4X1JmWXhaSk93MnlNMHpVemItWUQzQVpKMy16WEthSkIzOWRWQmRLQTU0dW5EaFNWM09PODNLQzZBMTBIOTJDT3lFWnduUUlkRVhqZVlRakNxX0R5YXZsMm13bXVLX3FFeFlNaF91enFmdWV5a214bjkzbnJPelc1QVlKNmlRenlsLXJTSEJXdi0wbUtIbjBVTzR0UHZNdGFwbjRyMlM5a01BTWthSzlQ?oc=5",
-   "source": "The Times of India",
-   "published": "2026-11-18T05:47:00+00:00",
-   "summary": "",
-   "tags": [
-    "India Match"
-   ],
-   "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 41.67
-  },
-  {
-   "id": "37ce539a5a42",
-   "seen": "2026-11-19T09:43:45.923659+00:00",
-   "title": "IND vs NZ 1st Test | 'Three pacers, one bowling all-rounder': Tom Latham reveals New Zealand's plan again",
-   "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxPUFIxZ2FqSXVVRU8tS2FvOFRoejF6RDhZVnpqLW5hVkdRSzh4VGJBMDNUeG1xa29JNXR0VkhnMm9Gb2l0NGRBMlBvXzIwUVJrYUk5WFYwZWVIZV9COHRsa09RNkxDUGpJX0NBeEpEbEQ4X1JmWXhaSk93MnlNMHpVemItWUQzQVpKMy16WEthSkIzOWRWQmRLQTU0dW5EaFNWM09PODNLQzZBMTBIOTJDT3lFWnduUUlkRVhqZVlRakNxX0R5YXZsMm13bXVLX3FFeFlNaF91enFmdWV5a214bjkzbnJPelc1QVlKNmlRenlsLXJTSEJXdi0wbUtIbjBVTzR0UHZNdGFwbjRyMlM5a01BTWthSzlQ0gGYAkFVX3lxTE9QUjFnYWpJdVVFTy1LYW84VGh6MXpEOFlWemotbmFWR1FLOHhUYkEwM1R4bXFrb0k1dHRWSGcyb0ZvaXQ0ZEEyUG9fMjBRUmthSTlYVjBlZUhlX0I4dGxrT1E2TENQaklfQ0F4SkRsRDhfUmZZeFpKT3cyeU0welV6Yi1ZRDNBWkozLXpYS2FKQjM5ZFZCZEtBNTR1bkRoU1YzT084M0tDNkExMEg5MkNPeUVad25RSWRFWGplWVFqQ3FfRHlhdmwybXdtdUtfcUV4WU1oX3V6cWZ1ZXlrbXhuOTNuck96VzVBWUo2aVF6eWwtclNIQld2LTBtS0huMFVPNHRQdk10YXBuNHIyUzlrTUFNa2FLOVA?oc=5",
-   "source": "The Times of India",
-   "published": "2026-11-18T05:47:00+00:00",
-   "summary": "",
-   "tags": [
-    "India Match"
-   ],
-   "label": "Rumor",
-   "cluster": "35fa821859c8",
-   "recent_n": 2,
-   "sources_n": 20,
-   "score": 41.67
-  },
-  {
-   "id": "97f5f98f3282",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "CA sets up 'independent forum' into Sandpapergate but will not re-litigate the incident",
-   "link": "https://www.cricinfo.com/ci/content/story/1563012.html?ex_cid=OTC-RSS",
-   "source": "ESPNcricinfo (all stories)",
-   "published": "2026-11-18T05:38:06+00:00",
-   "summary": "Interim chair David Boon and CEO Todd Greenberg made the announcement on Wednesday",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "97f5f98f3282",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.66
-  },
-  {
-   "id": "e37b7baab942",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Royal Challengers Bengaluru Unveils Retention and Release List for IPL 2027",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNb0k5aUxBNWJDN3dQZnNQeGxxd0JoNU1rTnNEYWh3TlVuSE9tTGlXR08ybGN6SjhvWjB5ZlFHcXdvZUpESGVSajZZUUJEMHBJUkwxTFhGeUw5ZlVTYTNvUHVTTlVtUzd6WjhFWi1aZTdfb0k0dTJib2RvVDYya194NHN6aFBDc0JkWF9wcWhPbUpYa3c5YUw5R2hldjVZZlFOZGhuR2xhcV9UUHFmZ3h0TWlB?oc=5",
-   "source": "India News Network",
-   "published": "2026-11-18T05:32:24+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "e37b7baab942",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 5.65
-  },
-  {
-   "id": "762b1ca4319e",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "TATA IPL 2027 Player Retentions announced",
-   "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPT29peHZGUUZlT1NVVVdzbmM0aUg2cTBkY2RfaGhHb09yZ0xvTDRiTFZKOFNjOU83UEo3a0VTMmgyWGF4ZnJEV05SV1cwd0t3TGV5ZDF0UmhZdFc1enFmWDV3QUJGS0NsMWU5ZWpfMHNCRzdTTDlsLXlGYnZOSWJ2dXdiWQ?oc=5",
-   "source": "IPL",
-   "published": "2026-11-18T05:30:00+00:00",
-   "summary": "",
-   "tags": [
-    "Retention"
-   ],
-   "label": "Confirmed",
-   "cluster": "762b1ca4319e",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 8.65
-  },
-  {
-   "id": "1218fd7c425c",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Dhoni Retirement: धोनी की IPL से विदाई पर रोहित शर्मा ने लिखा भावुक संदेश",
-   "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxOeVZHdFRGdEloZmlRYjQ2bzNBcHpBaXA3QXNpOTFiaWFrQWpMWTAyUVBmcGtRSXR6QUZUeTk1UlhtUlhEQkszVXlEMDBIaktmN09nMDlzaXZydGZucnhabjFiV1EyNGY3dzFpa2NqM0czVWRxVDNTRm56NU9tWHdfRlZxc2R4alhsQTJWSzQzMkYwNmtwTGkzaXI3YTB0cVFfVVVfdFBtOExvd1JsSXkwX0NvaUU5UXR4QllvNUEyWEVBSzFJR1UxTWZnbTk0cEJmeF9VWnBJZlpkX2h2dEpJS3hxLWNfR0xpODVLVEhUNlYyU1RmX2doVVF4aTJTcW56WGtvM25B0gGLAkFVX3lxTE5TYU4tLVpmcXNDYUROWjZzblRXRGpYZ09oMVdtVkxPS1NSMV9za1p2MnM1Uktsckp6V2xWcmJ5cC1na3ZTaXB2TlNLVGZVa0E0QXgzVWM0UlN3T2VDZmR1cmJ2cDRoMHQxV211OFFGSHZmUUgzSUZ1MHktQ2c1QlRGQXVIZEhtcVM0VE05bkNkb3JFaUJxMHBvUFByeWROTUJNSVd6R0cxU0VoS3JoLXE5UWl4bi1pa2JmaW1fQm84bEt1T0dMZmRaNE5NUjdWQURIbXQ2Z0NzdlJSU1Q2VWh2VVlVYVFqNURWSlQ5YU5SZGlKZUhuSGFYZTdiYlRGVmhDaXBLSXVpNlN0VQ?oc=5",
-   "source": "Times Now Navbharat",
-   "published": "2026-11-18T05:28:41+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "1218fd7c425c",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.65
-  },
-  {
-   "id": "86fce4acbda4",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Aakash Chopra picks India's playing XI for NZ vs IND 2026 1st Test; leaves out GT pacer",
-   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPNXRiMmxVeEJKNXhXVERqcmRTeFlCdEpBbk52WnhnWXRETkFvWS1UNXJrQm9tbUZKeERFczZvT2tUSnZHVHlxY044MlZsQTF4QlRQS1BTb0JDY1Z2OXNkYmM4Y2p2VVBnZlQ3VXdNRzEyS1JqNTVaVjNMRUVhdHhaVmhQd0N6cFkwNElOMXVHeE9iOWlDRk5oWF9IOVNjaGlBUkNRR2ZZRnNBdkxsbklNU2VfQ2lhMTlNTFdN?oc=5",
-   "source": "Sportskeeda",
-   "published": "2026-11-18T05:22:51+00:00",
-   "summary": "",
-   "tags": [
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "86fce4acbda4",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 2.64
-  },
-  {
-   "id": "a78fc21c5f89",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "MS Dhoni’s IPL moments: 19 seasons, countless memories – Seven moments that defined the CSK legend",
-   "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxQbEdWZTVTT2RZLUtfYnliQWJZTEY4cGNUc09NNS1pNU0xOFNsaElPLXB6MW43QWE5b2ZWdzA5amxrc25rNXFFVW1Uek55dXlnTDV4dUJNUl9vc29fYjFQaG1fWl9obnB5UVh1eVJkSV9rZGMtbUVianVCZzdNck5tX2JMVGw5ZnNmUTdXTzlPakxRNWxvd0lZRDdrYlZJY3M3TmE4WG80dFctX1BCLWRYYUJQMFRIYkY1S2pJREEya2p6NmdyRURPRkZaQTVxd3ZZY0U5TGNkZlliSHczc3o1TzQtaEVLbV9yOTFkSlZaZmdSRHg3NXdDS3pfNlBreVJaY3hKTHVZMDQyNXNZLWs2RG1pd0fSAZoCQVVfeXFMTWI3ZkxDaTVrWDVqTTZIYndvT2x2U20yY3BtWmlxNzhNb2l5QXRrWUJuYVZLYnc5b0xsbk40V1lQLWFUX3VSamgyOWpHWm1Kdlh1VkE1X3V6by1Mbjc5ekMwbmM2V1JRZS1fUWtCejhWTXFpdGRmTFBtRl9uZVJrTjlQRUlFTHd5akZZajZrRExyc1lZZlVPbWljUEh2RGRTREg1STlsZEs2T3cxRHRWcTRvYVJtZHd0Nk04NnZkM2xmQVZMQmFIRHhEVnJrY0JfR2U2OXhjY0JVQWpYZ3lPNk1zZTRwX1QxN3VTTjFlQ2cwSk9BN21pYTZuV2NYZVpvWmVYSEhoSUtEWXZXQVp3NlZiVFpueTRHMjBn?oc=5",
-   "source": "The Times of India",
-   "published": "2026-11-18T05:21:00+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "a78fc21c5f89",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.64
-  },
-  {
-   "id": "23b8fe155014",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "IPL Auction Sees Release of Star Players Including Starc, Head, Hetmyer, and Boult",
-   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQQWhLNnR1ZzRWUy1YZlhGM2dUUjRCOTZrQUJGbDc5OHZhV3h1c3dWaXFBRUZjb1NNamE5c3lpZHM4WDZuaVQ1aW13ZUhzaFlzTFN3UTl1aTRhYVBFZEpDZzFkb2dPV05fTWM3emxOSUM0MnR1ZUxhTEI2Ni1zSnVfN05yMU5fX1pGSFgwNklDY0xWemwxaEdfVUx0a3ZYd3JlVWRtcXE1em1POXNaanU0WDNCalEzNmd6eXNkRFUtaERGTTB4aU9BSWJXbDlyRFluMEQzN280eWpjNG5SM0ww?oc=5",
-   "source": "Ratopati",
-   "published": "2026-11-18T05:14:40+00:00",
-   "summary": "",
-   "tags": [
-    "Release",
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "23b8fe155014",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 5.63
-  },
-  {
-   "id": "01d9afabe893",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Trip down memory lane: Gautam Gambhir's impact in India's last Test series win in New Zealand | Cricket",
-   "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxObVlQMERGNTNtTlpIcWtKX09INkpCb0tOMkNnTTlZam1VMWtGdDhSQzI5Z1NxZ2lkLUNMSHZyZlpVejFXajJHQzFxLWZscmgyYTF3Y2lJWDhvU1Q5eU9sVzRFemNQLWt3a3N0QXBXZ3oxanZYQnRfWUpDZzMyQW9KNktYNGt0ZTJ0Qm5lMGVIcDdVZklZQjlJMmpCOU5vS2pWSVhhOUxiNVBFaklwWEJVY19RM0F1OHdXajlpalJJRHI0NnFpc0htcDRRV3AyRnpTSEhBOVcySjhwMWhyNk4wQzZSWU7SAeoBQVVfeXFMTTBRd0V6Ym5GanJJZko3TzFKMGJXRGJHMjV2WTJNOVBmZGd0ZG9fbTBPLUJILUJKTlhxNGpoaE9kdFJJa2FQcnNJaE8tek05blhQYnJfOUkxWmpfLTU3X3ROZGJHa1I0VlJjR2RMU3NiSGctTXQzTTg4dDJiSjNJTkw1WkQ0NnJUY24wYXZwNl9reVJIRVZEWi1SR0gzXzZkakdnWThCQ291UUlYdVlIVGVUbWFkYldka3dUNnM1c1BaamxzLTlpeEROZG5Sd0FqTEUyN09zZkVlT3A2R3lHQmZzVXI3dFJuQU1B?oc=5",
-   "source": "Hindustan Times",
-   "published": "2026-11-18T05:08:21+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "01d9afabe893",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.62
-  },
-  {
-   "id": "8be5950e2f66",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Weather plays spoilsport as South Africa, Bangladesh trade blows",
-   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQTDRlMU8yZTFUUHVmM3VKNzV6QS1WM1JMamw2YmlvajhDamVKX0o2RGZ3SmVJclIzSXJjTWdRQmU4bEJId19Pa08zeUJCRGRMdTR6dWdqMGVFV2dUeGhlSDh0SjdKUnl2azZkUUZkS3dWa0E3ZXlpRVVrYUhCZEduRmVFc2VFQWUzRGtIRVFrWF9IZlZXaHJuaFprVTZFLVZ0OS12NWkyam1UQWVXYVlEYUNYM0FjZ3I3MENwYg?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-18T05:03:57+00:00",
-   "summary": "",
-   "tags": [
-    "Trade"
-   ],
-   "label": "Rumor",
-   "cluster": "8be5950e2f66",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 4.61
-  },
-  {
-   "id": "29c68a099a03",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "IPL Retentions: Mitchell Starc, Travis Head lead high-profile IPL releases",
-   "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPMVdhSXV5VEdFY2ZIWUc0ZXdCQ3lneW1oMnVQQmVpMHRtNFVwNHNxUnY5ZEtYQzdOWE9lRGlqaU1ycTlkcl9KNWZteTJrbS1CWlh3dVphSEh0VkFFT2dBY0tyM2cxY1BXS0xRS0NSRTFuZDVYSG15aFVUbzBhb3Q3Yzd3RUJHSkdfRzJRQ0t5c3ZPSGJqdkJrU0E1T3lhbDNtYzU0R0pvTnliXzgyZ29IMVRVYzlTWTZ1Z1ZQUTFIVzE3SHVHeUd5TnNGX1VEdl9SdV9YUmp2QWRTTjJYZk1YUjhlS3d5TjR3MEU2dlZpNGpjMGFaZEhkeQ?oc=5",
-   "source": "The Times of India",
-   "published": "2026-11-18T04:59:00+00:00",
-   "summary": "",
-   "tags": [
-    "Retention",
-    "Release"
-   ],
-   "label": "Rumor",
-   "cluster": "29c68a099a03",
-   "recent_n": 0,
-   "sources_n": 13,
-   "score": 29.6
-  },
-  {
-   "id": "af8a3d52953e",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "IPL 2027 auction: Team-wise remaining purse and available slots",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOc2VCejR1VGx5UHZOSWFsOTUtM2xYcjZUcG5xd1RnMDltZzJDSWY3alhKcWpBTFFfdVRUMC02NUhxdVp1eW54alBsTlpQeVQzQ203MlIwa3pndXJndEFDNUJVdjJzdy1BSFc3d3hvaWF3ZFk4cGVvdmtMSmdzbl9GNEVDSkhzYzRBb0I5WlFlbHFQcHJmT1Rsd2RTODFoN2kwOGpWeU1NNUhNLXJPbVHSAbYBQVVfeXFMTXJlSTdyVHVBX2RzM2VxSFR2cUxDbG4tUm5hSW9ZTTRFUVE0VnZpSFBGdEY0R2NscC15dU5seG9hcjRKenZmVlU2Rlc5Q3l2QXdZZ3VibFpDZFV3WU1McENzVXJlOGFMM3B4MjNJTmtfNExkdUxIM3N4VGpwMEpxbWVlc0VBZm05VnJVRWdLMmZaU1RndHlaUmxFWTNIMVJRMExxeDI3NUlIRlJRTWJrUk9VTGN4RVE?oc=5",
-   "source": "CricTracker",
-   "published": "2026-11-18T04:58:00+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "af8a3d52953e",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 4.6
-  },
-  {
-   "id": "582c6a1868c4",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "'Fans Deserve Clear Answers': Matthew Hayden Reacts To Usman Khawaja's Explosive Claims",
-   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOVk5iWWZMSGtsdEMwVzRDMlFyTGVqb2paT1lTWVRRUEFzaTFHTlBZOEk4NmE1bVFST3hEVjZSS1JHOTRuMUhvZmZVSnpvd0FERUE2US03Z0toa01UdjNjLV80ZXptdk10dDF5OGM3WHZNX01WM3gyUVJtOEdVaVVKZXlSMTFQRkZSdHNzQVFQb0Y3THp0WFVSX3dGQU5tNWFMUU5pSWZVVzd1cWFDMjYxcHJlb1RHVElHcHIzY3VxWQ?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-18T04:56:59+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "582c6a1868c4",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.6
-  },
-  {
-   "id": "5956fb69d0e5",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "\"He is the biggest brand in IPL till now\" - Former CSK teammate's massive remark on MS Dhoni's retirement ahead of 2027 Auction",
-   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOYWhoRk9kU2ZWaEF2aHpfdGJ6dHV3T0NfMWpUN2N6QTFjSlB1XzNhY1dHaHB1LVNUcG5LZWpJQXBxQmJUUERBTjdSN2JOX1ZoNzVEN19zaVJnNlJDS19HQWpONk9LRm5TNFp5aDRyb0d5YTJURHBlWUpUV2hxQlFyR2ROd0xpc0xXVU1SQTdOdE4wZ2RveTVfck5DNjhVcjRpZXVNRVdxcThjVkJDbUZ3YUhaQjRBYmZyZUd4bzhuUno2RE05MVNKVU1TaFJSeU1JSG10bVV0Y1NVc3dOdEJGbW5n?oc=5",
-   "source": "Sportskeeda",
-   "published": "2026-11-18T04:46:10+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "5956fb69d0e5",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 4.59
-  },
-  {
-   "id": "7fc420a0b905",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Shashank Singh Auction Price & Team - IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBMbk9mQmZkR3plV0UzQm5UdlNnbXR5MVg1N3FjSno0cWZVcms2Nko1LVZMdk5oazlBbnc5OFZkR1BMLXc4LXFDUk9zb3ZGNTFJWTU0blJGMnRpQTlqU1o2blg2ajRCQUtNTzk1T1VMWUx3dFNfVlR0QTZ3?oc=5",
-   "source": "Cricbuzz",
-   "published": "2026-11-18T04:44:50+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "7fc420a0b905",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 4.58
-  },
-  {
-   "id": "b13f984972fa",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Andhra Women vs Railways Women at Ahmedabad, Senior Women's T20 Trophy Elite, 18 Nov 2026",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQR1JxeXZndmd1eHBPS0lfZHktMHh3MmxfRkYxUFg1NGg5M2xjQzR0aGNsbTYybC1lQUhUZXZMMDZEcDJtbldyTGJZRUFhekxGRmxsNEdIVGpSaXY1ZGJ6LXc2ZWNKZ3RPcGVLSW9aVDhtTFJ2aWgxVFBnUVczU2VDdGM2RXN1NVJnN3RUeHhXUHBDc1JjTGpJZEU2SW1OVFk1bUhkdUpzNEg1RGlCRWc?oc=5",
-   "source": "BCCI",
-   "published": "2026-11-18T04:38:24+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Confirmed",
-   "cluster": "b13f984972fa",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 3.58
-  },
-  {
-   "id": "6365fa42ca72",
-   "seen": "2026-11-19T06:59:06.536761+00:00",
-   "title": "Cricket Australia Rules Out Reopening Investigation Into Sandpapergate Scandal",
-   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQZGRkeXdia1pvaXNwTHpYUlZ0REF3V3VLMVBjdHk3VVNRbjA3QlBjT2hRd2JqNUNPT1BPWHNvaXYzQ1hKNGk2WldPRGtpVDFUdkpIbkI2OTNhZUV2Y3VoSUFQekFIN0hidndSam10eWlmakFRZWdWU1V6c2M1dEo4aVB2anFrRzVZVER3MHQza3NwN0s2MWtnbTVkc0xhTVJ6cDZmck9MdFBVTHRoQ0RQUEJUQjRfcDhTNjZ4R0RodGxHLVZiM0lj0gHMAUFVX3lxTE8tVlpzWGxJcnVYNGd3dktqUFp3U0lLWm9wWTkyLXVrbTZTZGxTTERfZzJVNGx4Q2hDb0xPOWRpRlpXUjc2WEhuZ3otc0ptSEx2NEhHUW5DdUFSUUxNcHJfVDhudzIzS1F6ZmVaQ0ZuRHZINXpxQ3lpQ0d2QVV5bFpWVnpJN3JaUm5ZMUcyR24wUUxERXRlVmJTWWZhREktci01cVFrbjN5aFZRZks0REc2UHB3ZW8ycllUdzkyRGVGOF80WTBjZ09WamQzbQ?oc=5",
-   "source": "News18",
-   "published": "2026-11-18T04:35:46+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "6365fa42ca72",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 0.57
+   "score": 5.66
   }
  ]
 }
