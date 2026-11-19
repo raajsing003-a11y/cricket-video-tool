@@ -30,7 +30,7 @@ function boot(){
 
   // panel on/off (purane toggle buttons ko hi chalate hain taaki unki list render ho)
   function panel(p,b,on){p.style.display='none';if(on&&b)b.click();else if(on)p.style.display='block';}
-  const defs=[['scenes','🎬','Scenes'],['photos','🖼','Photos'],['audio','🎙','Audio'],['caps','💬','Captions'],['export','⬇','Export']];
+  const defs=[['scenes','🎬','Scenes'],['photos','🖼','Photos'],['audio','🎙','Audio'],['export','⬇','Export']];
   const steps=mk('div');steps.id='steps';wrap.insertBefore(steps,views.scenes);
   let cur=null;const tabs={};
   function open(k){

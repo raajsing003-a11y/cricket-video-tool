@@ -162,6 +162,7 @@ function open(){if(B.box){close();return;}const b=mk('div');B.box=b;b.id='bm_box
 function close(){closePrev();if(B.box){B.box.remove();B.box=null;}}
 B.open=open;
 const addBtn=()=>{const b2=document.getElementById('bar2');if(b2&&!document.getElementById('bm_pvb')){const q=mk('button','','▶ Intro/Outro ke saath');q.id='bm_pvb';q.title='intro + main + outro preview';q.onclick=()=>B.preview();b2.appendChild(q);}if(b2&&!document.getElementById('bm_btn')){const b=mk('button','','🎬 Intro/Outro');b.id='bm_btn';b.onclick=open;b2.appendChild(b);}
+  const qk=document.getElementById('quick');if(qk&&!document.getElementById('bm_btn3')){const b=mk('button','','🎬 Intro / Outro');b.id='bm_btn3';b.style.background='#7c3aed';b.title='Intro / Outro / extra video lagao';b.onclick=open;qk.insertBefore(b,qk.firstChild);const p=mk('button','','▶ Intro/Outro ke saath dekho');p.id='bm_pv3';p.style.background='#3a4250';p.onclick=()=>B.preview();qk.insertBefore(p,b.nextSibling);}
   const tt=document.getElementById('tl-tools');if(tt&&!document.getElementById('bm_btn2')){const b=mk('button','','🎬 Intro/Outro');b.id='bm_btn2';b.title='Intro / Outro / extra video (C165)';b.onclick=open;tt.appendChild(b);}};
 setInterval(addBtn,500);addBtn();
 // library restore ke baad dropdown taazi karo; scenes badalne par total update

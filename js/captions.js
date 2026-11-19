@@ -1,7 +1,7 @@
 // C9a: captions overlay + script spread + nudge editor. API: CAP.init(player), CAP.spread(), CAP.draw(ctx,t)
 (function(){
 const C=window.CORE,K='cvt_caps';
-const CAP=window.CAP={lines:[],on:true,script:'',P:null};
+const CAP=window.CAP={lines:[],on:false,script:'',P:null};
 function dur(){return (window.EXPORT&&EXPORT.audio&&EXPORT.audio.duration)||C.total;}
 function ends(){const L=CAP.lines,D=dur();L.forEach((l,i)=>l.t1=i<L.length-1?L[i+1].t0:D);}
 CAP.setScript=s=>{CAP.script=s;CAP.lines=s.split('\n').map(x=>x.trim()).filter(Boolean).map(t=>({text:t,t0:0,t1:0}));CAP.spread();};
@@ -9,7 +9,7 @@ CAP.spread=()=>{const L=CAP.lines,D=dur();if(!L.length)return;const w=L.map(l=>l
  L.forEach((l,i)=>{l.t0=+t.toFixed(2);t+=w[i]/sum*D;});ends();save();};
 CAP.nudge=(i,d)=>{const L=CAP.lines,lo=i?L[i-1].t0+.1:0,hi=i<L.length-1?L[i+1].t0-.1:dur()-.1;L[i].t0=+Math.max(lo,Math.min(hi,L[i].t0+d)).toFixed(2);ends();save();};
 function save(){try{localStorage.setItem(K,JSON.stringify({s:CAP.script,t:CAP.lines.map(l=>l.t0),on:CAP.on}));}catch(e){}}
-function load(){try{const j=JSON.parse(localStorage.getItem(K)||'null');if(!j)return;CAP.script=j.s||'';CAP.on=j.on!==false;
+function load(){try{const j=JSON.parse(localStorage.getItem(K)||'null');if(!j)return;CAP.script=j.s||'';CAP.on=false;
  CAP.lines=CAP.script.split('\n').map(x=>x.trim()).filter(Boolean).map((t,i)=>({text:t,t0:(j.t&&j.t[i])||0,t1:0}));ends();}catch(e){}}
 CAP.at=t=>{const L=CAP.lines;for(let i=L.length-1;i>=0;i--)if(t>=L[i].t0)return t<L[i].t1?L[i]:null;return null;};
 // C64: caption styles (har video ka caption alag dikhe). CAP.st = {k:style, c:accent colour}; localStorage 'cvt_capstyle'
@@ -97,7 +97,7 @@ CAP.init=P=>{CAP.P=P;load();
  const wc=panel.querySelector('#capwh');wc.checked=CAP.wh;wc.onchange=()=>{CAP.setWH(wc.checked);P.draw();};
  ss.onchange=sc.onchange=()=>{CAP.setStyle(ss.value,sc.value);P.draw();};
  panel.querySelector('#capon').onchange=e=>{CAP.on=e.target.checked;save();P.draw();};
- const b=document.createElement('button');b.textContent='💬 Captions';b.onclick=()=>{panel.style.display=panel.style.display==='none'?'block':'none';render();};
+ const b=document.createElement('button');b.style.display='none';b.textContent='💬 Captions';b.onclick=()=>{panel.style.display=panel.style.display==='none'?'block':'none';render();};
  document.getElementById('bar2').appendChild(b);};
 function render(){if(panel.style.display==='none')return;list.textContent='';
  CAP.lines.forEach((l,i)=>{const r=document.createElement('div');r.style.cssText='display:flex;gap:6px;align-items:center;padding:3px 0;font-size:14px';

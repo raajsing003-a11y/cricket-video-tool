@@ -58,3 +58,9 @@ docs/scripts/<date>_<naam>/ mein har video ka kaam rakho: 01_FACT_PACK.md, 02_GE
 - Audio: Rahul ki audio 522.8s (8:42) nikli jabki script ~4:20 ki thi; scenes ka jod 247s tha. Fix: ⏱ Audio ke hisaab se fit (proportional scale). Ye bhi dekho ki audio file ka naam is video ki hi hai (pehle screenshot mein purani 'Jaiswal Trad...' file dikhi thi).
 - Preview mein awaaz na aaye: bada upar wala ▶ dabao (scene ka chhota ▶ sirf scene), audio loaded ho (reload par audio dobara lagani padti hai), tab mute na ho, ⏱ fit.
 - Rahul photos ke screenshot (phone se) bhejta hai; unse error padh kar madad karo.
+
+## C186: RETENTION (har 30 second naya hook) + 3 thumbnail
+- Script ko 30-30 second (~70 shabd) ke tukdon mein socho: har tukde mein naya hook/mod (sawaal, twist, number, pehle vs ab, agle reveal ka teaser). Tukde ka aakhri vaakya adhoora (open loop). Koi 30 second seedha-saada nahi. Naye facts nahi: hook sirf diye gaye facts ko rochak banata hai. Niyam GEM_T / GEMINI_SCRIPT_PROMPT_TEMPLATE.md mein RETENTION naam se.
+- Claude script ke saath code block ke BAHAR "30-sec hook map" (0:30 = kya naya, 1:00 = ...) deta hai; scenes JSON mein har hook-beat par screen bhi naya (hook/bigwords/qcards/burst/stat2 ya naya header + tr).
+- Check-checklist mein jodo: har 30 sec par naya hook? Koi lamba seedha hissa? Thumbnail text mein rumor/official/afwah/Done/Confirm nahi, text 5 shabd tak, face-rule line, teeno concept alag.
+- Thumbnail: har video ke liye 3 alag concept, Prompt B (khaali face slot) default; photos tool ke thumbnail.html mein lagti hain. Poora tareeka docs/THUMBNAIL_PROMPT.md.

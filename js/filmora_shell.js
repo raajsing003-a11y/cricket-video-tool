@@ -5,8 +5,8 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const LS='cvt_layout';
-let classic=false;try{classic=new URLSearchParams(location.search).get('layout')==='classic'||localStorage.getItem(LS)==='classic';}catch(e){}
-if(new URLSearchParams(location.search).get('layout')==='filmora'){try{localStorage.removeItem(LS);}catch(e){}classic=false;}
+let classic=false;try{classic=new URLSearchParams(location.search).get('layout')!=='filmora';}catch(e){}
+
 const mk=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;};
 const COL={hook:'#c0392b',title:'#2a6fdb',stat:'#8e44ad',retain:'#d35400',watch:'#16a085',rumour:'#b7950b',anth:'#34495e',intro:'#7f8c8d',presenter:'#27ae60',cta:'#e84393',curve:'#0ea5a5',stack:'#6c5ce7',chapter:'#d4a017',crowd:'#00a8a8',bigwords:'#e17055',qcards:'#0984e3',spot:'#e1b12c',compare:'#27ae60',tiles:'#e84118',chip:'#f0932b',stat2:'#8e44ad',bars:'#16a085',trio:'#e58e26',portrait:'#f19066',market:'#10ac84',hub:'#0abde3',formula:'#fd9644',beforeafter:'#eb3b5a',setting:'#4b7bec',radio:'#20bf6b',ideas:'#fa8231',reel:'#a55eea',phones:'#0fb9b1',gcurve:'#3867d6',steps:'#f7b731',expect:'#26de81',equals:'#a29bfe',payoff:'#fd79a8',tickgrid:'#00b894',variety:'#ff6b6b',burst:'#f9ca24',clip:'#2d3436',diamond:'#fdcb6e',kinetic:'#0652dd',barcount:'#009432',quote:'#b53471',post:'#1289a7',iconscene:'#f79f1f',bullets:'#3b9bff',phonewall:'#1e90ff',numgrid:'#54a0ff',compare2:'#2e86de',plans:'#4b7bec',timelist:'#3867d6',ctapill:'#0a84ff',adcard:'#fa8231',uimock:'#45aaf2',checklist:'#20bf6b',chips:'#2d98da',split:'#8e44ad',icontiles:'#ff4d4f',stepcards:'#3b9bff',screenclip:'#0a84ff',toggle:'#2ee67a',askq:'#ff3b4e',promo:'#e8132c',outword:'#ff3b4e',flowdiag:'#35e6ff',crossprice:'#e8132c',docfolder:'#d63031',topicend:'#ff3b4e',measure:'#ff4d4f',meme:'#ffd23b',wavestrip:'#35e6ff',ideatitle:'#a06bff',chipcarousel:'#8c5cff',flowline:'#7a4dff',chatmock:'#b794ff',statcard:'#a06bff',thumbwall:'#6a3cff',ladder:'#9b6bff',ring:'#c9a6ff',vidcard:'#7a4dff',gauge:'#ffd23b',barlist:'#8c5cff',tree:'#a06bff',cardtiles:'#b794ff',fan:'#9b6bff',replies:'#c9a6ff',vs2:'#ff6b9a',bonus:'#ffb347',prodnode:'#6a3cff',dotmap:'#7d4fe0',phoneann:'#0a84ff',vsvlog:'#feca57',energy:'#ff9f43',bestlast:'#1dd1a1',locked:'#8395a7',longstat:'#ee5a24',offer:'#f368e0',products:'#00d2d3',endscreen:'#e55039',search:'#576574',comments:'#ee5253',timeline:'#5f27cd',phone:'#778beb',rating:'#f6b93b',dash:'#2d98da',options:'#4834d4',levels:'#44bd32',short_hook:'#c0392b',short_stat:'#8e44ad',short_cta:'#e84393'};
 const lab=sc=>{const d=sc.data||{};return String(d.headline||d.head||d.title||d.name||d.pre||d.line1||'').replace(/\s+/g,' ');};
@@ -57,7 +57,7 @@ body.fm #wrap{max-width:none;margin:0;padding:0;height:100vh;display:grid;grid-t
 #tl-ruler i{position:absolute;top:14px;bottom:0;width:1px;background:#3a3f4b}
 #tl-ruler span{position:absolute;top:1px;font-size:10px;color:#8b95a5;padding-left:3px;user-select:none}
 .tl-tr{position:relative;border-bottom:1px solid #0d0e12;background:#1d2027}
-#tl-v{height:70px}#tl-a{height:56px}#tl-c{height:36px}
+#tl-v{height:70px}#tl-a{height:56px}#tl-c{display:none;height:0}
 .clip{position:absolute;top:6px;bottom:6px;border-radius:5px;overflow:hidden;cursor:pointer;border:2px solid rgba(255,255,255,.08);color:#fff;font-size:11px;padding:3px 6px;white-space:nowrap;user-select:none;box-shadow:0 1px 3px #0008}
 .clip.sel{border-color:#fff;box-shadow:0 0 0 1px #00e0a0,0 1px 6px #000}
 .clip b{display:block;font-size:11px}.clip small{opacity:.8;font-size:10px}
@@ -134,13 +134,13 @@ function boot(){
   const top=mk('div');top.id='fm-top';
   top.appendChild($('top').querySelector('h1'));top.appendChild($('nav'));top.appendChild(mk('div','sp'));
   top.appendChild($('info'));
-  const cls=mk('button','','Classic layout');cls.id='fm-cls';cls.onclick=()=>{try{localStorage.setItem(LS,'classic');}catch(e){}location.href=location.pathname+'?layout=classic';};
+  const cls=mk('button','','Classic layout');cls.id='fm-cls';cls.onclick=()=>{location.href=location.pathname+'?layout=classic';};
   const ex=mk('button','','⬇ Export');ex.id='fm-exp';ex.onclick=()=>{UI.open('export');setRail('export');};
   top.appendChild(cls);top.appendChild(ex);$('top').remove();
 
   // ---------- left: rail + panels ----------
   const left=mk('div');left.id='fm-left';const rail=mk('div');rail.id='fm-rail';const lp=mk('div');lp.id='fm-lp';
-  const defs=[['scenes','🎬','Scenes'],['photos','🖼','Photos'],['audio','🎙','Audio'],['caps','💬','Captions'],['export','⬇','Export']];
+  const defs=[['scenes','🎬','Scenes'],['photos','🖼','Photos'],['audio','🎙','Audio'],['export','⬇','Export']];
   const rb={};
   const isOn=k=>UI.views[k]&&UI.views[k].style.display!=='none';
   let mediaOn=false;
@@ -167,7 +167,7 @@ function boot(){
 
   // ---------- timeline ----------
   const tl=mk('div');tl.id='fm-tl';
-  tl.innerHTML=`<div id="tl-tools"></div><div id="tl-body"><div id="tl-lab"><div style="height:70px">🎬 Video</div><div style="height:56px">🎙 Audio</div><div style="height:36px">💬 Text</div></div><div id="tl-sc"><div id="tl-in"><div id="tl-ruler"></div><div class="tl-tr" id="tl-v"></div><div class="tl-tr" id="tl-a"><canvas id="tl-wf" height="56"></canvas></div><div class="tl-tr" id="tl-c"></div><div id="tl-empty">Timeline khaali hai — Scenes tab mein JSON load karo ya scene jodo</div><div id="tl-ph"></div></div></div></div>`;
+  tl.innerHTML=`<div id="tl-tools"></div><div id="tl-body"><div id="tl-lab"><div style="height:70px">🎬 Video</div><div style="height:56px">🎙 Audio</div></div><div id="tl-sc"><div id="tl-in"><div id="tl-ruler"></div><div class="tl-tr" id="tl-v"></div><div class="tl-tr" id="tl-a"><canvas id="tl-wf" height="56"></canvas></div><div class="tl-tr" id="tl-c"></div><div id="tl-empty">Timeline khaali hai — Scenes tab mein JSON load karo ya scene jodo</div><div id="tl-ph"></div></div></div></div>`;
   wrap.insertBefore(top,wrap.firstChild);
   wrap.appendChild(left);wrap.appendChild(mid);wrap.appendChild(right);wrap.appendChild(tl);
   setTimeout(fitCv,0);

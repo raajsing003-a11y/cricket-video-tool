@@ -2,6 +2,10 @@
 // Band karna ho: CORE.TEXTFX=false (console mein) ya is file ki script line hata do.
 // - Outline/shadow: sirf halke rang ke text par (gehre rang ka text, jaise peele circle ke andar number, jaisa tha waisa).
 // - Frame se bahar: sirf center-aligned text (title/shabd/headline) apne aap thoda sikud jata hai (SAFE margin). Scrolling ticker (left-aligned) ko nahi chhuta.
+// C180: "न्न" (जैसे चेन्नई) Noto font mein ligature ban kar "न्र" jaisa dikhta tha -> ZWJ se saaf adha-न + न. Sab canvas text/measure par.
+(function(){const P=CanvasRenderingContext2D.prototype,fx=t=>(typeof t==='string'&&t.indexOf('\u0928\u094d\u0928')>=0)?t.split('\u0928\u094d\u0928').join('\u0928\u094d\u200d\u0928'):t;
+['fillText','strokeText'].forEach(k=>{const o=P[k];P[k]=function(t){arguments[0]=fx(t);return o.apply(this,arguments);};});
+const m=P.measureText;P.measureText=function(t){return m.call(this,fx(t));};})();
 (function(){const C=window.CORE;if(!C||!window.CanvasRenderingContext2D)return;
 C.TEXTFX=true;C.TEXTFX_MINPX=38;C.TEXTFX_SAFE=44;
 const proto=CanvasRenderingContext2D.prototype,_fill=proto.fillText;

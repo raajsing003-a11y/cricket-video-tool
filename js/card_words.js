@@ -11,15 +11,24 @@ C.CARDS.bigwords={
   base(ctx,t,d,sc);const W=C.W,H=C.H,A=String(d.a||''),B=String(d.b||''),J=String(d.join==null?'+':d.join),pills=(Array.isArray(d.pills)?d.pills:[]).filter(x=>x!=null&&String(x).trim()).slice(0,3),
     cy=pills.length?H/2-70:H/2,ca=COL[d.ca]||COL.y,cb=COL[d.cb]||COL.g,outA=1-E.in(C.prog(t,sc.dur-.3,sc.dur));
   ctx.save();ctx.globalAlpha=outA;ctx.textBaseline='middle';
-  let px=230;ctx.font=C.font(px,900);const jw=J?150:60;
-  while(px>70&&ctx.measureText(A).width+ctx.measureText(B).width+jw+(px*.35)>W-300){px-=10;ctx.font=C.font(px,900);}
+  // C179: join shabd (jaise "और") ki asli chaudai naapi + shabdon ke beech gap; bahut lamba text ho to do line (A upar, B neeche); peeche halka scrim
+  const jwOf=p=>{if(!J)return Math.max(60,p*.3);ctx.font=C.font(Math.round(p*.55),900);return Math.max(150,ctx.measureText(J).width+p*.34);};
+  const wOf=p=>{ctx.font=C.font(p,900);return ctx.measureText(A).width+ctx.measureText(B).width+jwOf(p)+p*.35;};
+  const maxW=W-300;let px=230;while(px>70&&wOf(px)>maxW)px-=10;
+  let stacked=false;
+  if(px<150&&A&&B){let q=230;const w2=p=>{ctx.font=C.font(p,900);return Math.max(ctx.measureText(A).width,ctx.measureText(B).width)+p*.35;};
+    while(q>70&&w2(q)>maxW)q-=10;if(q>px*1.35){stacked=true;px=q;}}
+  const cy2=(stacked&&pills.length)?cy-px*.5:cy,sy=stacked?px*.62:0;
+  ctx.font=C.font(px,900);const jw=stacked?0:jwOf(px);ctx.font=C.font(px,900);
   const aw=ctx.measureText(A).width,bw=ctx.measureText(B).width,tot=aw+bw+jw,x0=W/2-tot/2;
-  [[A,x0,ca,.2],[B,x0+aw+jw,cb,.7]].forEach(([s,x,c,a])=>{const p=E.back(C.prog(t,a,a+.55));if(p<=0)return;ctx.save();ctx.translate(x+ctx.measureText(s).width/2,cy);ctx.scale(Math.max(.01,p),Math.max(.01,p));
-    ctx.font=C.font(px,900);ctx.textAlign='center';ctx.fillStyle=c;ctx.shadowColor=c;ctx.shadowBlur=24;ctx.fillText(s,0,0);ctx.shadowBlur=0;ctx.restore();});
-  if(J){const jp=E.out(C.prog(t,.55,.95));ctx.save();ctx.globalAlpha=jp*outA;ctx.font=C.font(Math.round(px*.55),900);ctx.textAlign='center';ctx.fillStyle='rgba(255,255,255,.85)';ctx.fillText(J,x0+aw+jw/2,cy);ctx.restore();}
+  {const sa=E.out(C.prog(t,.1,.6))*.5,hh=px*(stacked?2.1:1.15),sg=ctx.createLinearGradient(0,cy2-hh,0,cy2+hh);sg.addColorStop(0,'rgba(0,0,0,0)');sg.addColorStop(.5,'rgba(0,0,0,'+sa+')');sg.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=sg;ctx.fillRect(0,cy2-hh,W,hh*2);}
+  const items=stacked?[[A,W/2-aw/2,ca,.2,cy2-sy],[B,W/2-bw/2,cb,.7,cy2+sy]]:[[A,x0,ca,.2,cy2],[B,x0+aw+jw,cb,.7,cy2]];
+  items.forEach(([s,x,c,a,yy])=>{const p=E.back(C.prog(t,a,a+.55));if(p<=0)return;ctx.save();ctx.font=C.font(px,900);ctx.translate(x+ctx.measureText(s).width/2,yy);ctx.scale(Math.max(.01,p),Math.max(.01,p));
+    ctx.font=C.font(px,900);ctx.textAlign='center';ctx.fillStyle=c;ctx.shadowColor=c;ctx.shadowBlur=16;ctx.fillText(s,0,0);ctx.shadowBlur=0;ctx.shadowColor='transparent';ctx.fillText(s,0,0);ctx.restore();}); // C181: glow halka + upar se saaf (sharp) pass, text dhundhla na lage
+  if(J&&!stacked){const jp=E.out(C.prog(t,.55,.95));ctx.save();ctx.globalAlpha=jp*outA;ctx.font=C.font(Math.round(px*.55),900);ctx.textAlign='center';ctx.fillStyle='rgba(255,255,255,.9)';ctx.fillText(J,x0+aw+jw/2,cy2);ctx.restore();}
   // pills
   const pn=pills.length;if(pn){ctx.font=C.font(46,800);const ws=pills.map(s=>ctx.measureText(String(s)).width+170),gap=36,tw=ws.reduce((a,b)=>a+b,0)+gap*(pn-1),sk=Math.min(1,(W-160)/tw);let x=W/2-tw*sk/2;
-    pills.forEach((s,i)=>{const a=1.3+i*.2,p=E.out(C.prog(t,a,a+.45));const w=ws[i]*sk;if(p>0){ctx.save();ctx.globalAlpha=p*outA;ctx.translate(x+w/2,cy+px*.62+90+(1-p)*18);ctx.scale(sk,sk);const ww=ws[i],ph=100;
+    pills.forEach((s,i)=>{const a=1.3+i*.2,p=E.out(C.prog(t,a,a+.45));const w=ws[i]*sk;if(p>0){ctx.save();ctx.globalAlpha=p*outA;ctx.translate(x+w/2,cy2+(stacked?px*1.3:px*.62)+90+(1-p)*18);ctx.scale(sk,sk);const ww=ws[i],ph=100;
       ctx.fillStyle='rgba(10,19,48,.7)';ctx.strokeStyle='rgba(255,255,255,.28)';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(-ww/2,-ph/2,ww,ph,ph/2);ctx.fill();ctx.stroke();
       ctx.fillStyle='#F5C518';ctx.beginPath();ctx.arc(-ww/2+58,0,30,0,Math.PI*2);ctx.fill();ctx.fillStyle='#10131f';ctx.font=C.font(36,900);ctx.textAlign='center';ctx.fillText(String(i+1),-ww/2+58,2);
       ctx.fillStyle='#fff';ctx.font=C.font(46,800);ctx.textAlign='left';ctx.fillText(String(s),-ww/2+110,3);ctx.restore();}x+=w+gap*sk;});}

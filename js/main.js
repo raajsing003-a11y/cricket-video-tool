@@ -16,7 +16,7 @@ $('play').onclick=()=>{if(P.t>=C.total-.1)P.seek(0);P.toggle();};
 $('seek').oninput=e=>P.seek(e.target.value/1000*C.total);
 window.PLAYER=P;
 $('pol').onclick=()=>{C.POLISH.on=!C.POLISH.on;$('pol').textContent='✨ Polish: '+(C.POLISH.on?'ON':'OFF');$('pol').style.background=C.POLISH.on?'#2a6fdb':'#555';P.draw();};
-$('aud').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=await EXPORT.loadAudio(f);CAP.spread&&CAP.lines.length&&CAP.spread();$('expst').textContent='Audio '+d.toFixed(1)+'s (video '+C.total.toFixed(1)+'s)';}catch(err){$('expst').textContent='Audio error: '+err.message;}};
+$('aud').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await AT.addFile(f);const d=EXPORT.audio?EXPORT.audio.duration:0;$('expst').textContent='Audio judi: '+f.name+' ('+d.toFixed(1)+'s, video '+C.total.toFixed(1)+'s). Edit: timeline par audio par double-click.';e.target.value='';}catch(err){$('expst').textContent='Audio error: '+err.message;}};
 $('exp').onclick=async()=>{$('exp').disabled=true;try{
   $('expst').textContent='Recording… tab khula rakho'+(window.BUMP&&BUMP.secs().pre+BUMP.secs().post>0?' (intro/outro judega)':'');
   const r=await EXPORT.run(P,$('cv'),(t,T)=>{$('expst').textContent='Recording '+t.toFixed(1)+'/'+T.toFixed(1)+'s';});

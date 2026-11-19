@@ -37,6 +37,10 @@ function cameoMap(){if(camFor===C.scenes&&cam._n===epoch)return cam;camFor=C.sce
 function cover(ctx,im,x,y,w,h,zoom){const sw=im.width,sh=im.height,ar=w/h;let cw=sw,ch=sw/ar;if(ch>sh){ch=sh;cw=sh*ar;}
  cw/=zoom;ch/=zoom;ctx.drawImage(im,(sw-cw)/2,0,cw,ch,x,y,w,h);}
 const E=t=>1-Math.pow(1-t,3),BK=t=>{const c=1.7;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2);};
+// C179: cameo card list/wide card ke upar na aaye aur caption ko na dhake.
+// CAM_AVOID[card type] = content ka [left,right] hissa (W ka fraction). Dono taraf jagah kam ho to cameo chhota hota hai, bilkul na ho to is scene mein nahi aata.
+const CAM_AVOID={stack:[.14,.86],qcards:[.05,.95],bigwords:[.08,.92],bullets:[.14,.86],timelist:[.14,.86],checklist:[.14,.86],options:[.14,.86],barlist:[.14,.86],ladder:[.14,.86]};
+function capTopY(t,H,s){try{const K=window.CAP;if(!K||!K.on||!K.at||!K.at(t))return null;const sh=C.format==='short',cy=(K.pos==='auto'&&K._cy)?K._cy:(sh?1240:900)+({normal:0,low:sh?90:58,high:sh?-110:-95}[K.pos]||0);return cy-100*(H/1080);}catch(e){return null;}}
 function drawCameo(ctx,t){if(!ON.v||!C.scenes||!C.starts)return;let b=-1;
  C.scenes.forEach((sc,i)=>{if(t>=C.starts[i]&&t<C.starts[i]+sc.dur)b=i;});if(b<0)return;
  const ids=cameoMap()[b];if(!ids)return;const sc=C.scenes[b],lt=t-C.starts[b];if(sc.dur<2.2)return;
@@ -45,9 +49,15 @@ function drawCameo(ctx,t){if(!ON.v||!C.scenes||!C.starts)return;let b=-1;
   const t0=.35+n*.25,segT=seg?lt-refresh:lt-t0;if(segT<0||lt>sc.dur-.1)return;
   const inT=.45,outT=.4,endAt=refresh&&!seg?refresh-.05:sc.dur-.1,remain=endAt-lt;if(remain<=0)return;
   const p=Math.min(1,segT/inT),q=remain<outT?Math.max(0,remain/outT):1;
-  const W=C.W,H=C.H,s=H/1080,two=ids.length>1,w=(two?270:330)*s,h=w*1.27,right=two?n===1:(b%2===0),m=48*s;
+  const W=C.W,H=C.H,s=H/1080,two=ids.length>1,m=48*s;let w=(two?270:330)*s,right=two?n===1:(b%2===0);
+  const ct=capTopY(t,H,s),bottom=Math.min(H-m-70*s,ct!=null?ct-16*s:1e9),avoid=CAM_AVOID[sc.type];
+  let h=w*1.27;if(bottom-h<140*s){h=Math.max(bottom-140*s,0);w=h/1.27;}
+  if(avoid&&!two){const L=avoid[0]*W-m-36*s,R=(1-avoid[1])*W-m-36*s,pref=right?R:L,oth=right?L:R;
+   if(pref>=oth||pref>=190*s){if(pref<w)w=pref;}else{right=!right;if(oth<w)w=oth;}
+   h=w*1.27;}
+  if(w<170*s)return;
   const x0=right?W-w-m:m,off=(1-Math.min(BK(p),1.08))*(w+m+30)*(right?1:-1),bob=Math.sin(lt*1.6+n)*6*s;
-  const y=H-h-m-70*s+bob,x=x0+off,r=18*s;ctx.save();ctx.globalAlpha=Math.min(1,p*2)*q;
+  const y=bottom-h+bob,x=x0+off,r=18*s;ctx.save();ctx.globalAlpha=Math.min(1,p*2)*q;
   ctx.shadowColor='rgba(255,200,40,.55)';ctx.shadowBlur=42*s;ctx.fillStyle='#fff';rr(ctx,x-7*s,y-7*s,w+14*s,h+14*s,r+4*s);ctx.fill();
   ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=26*s;ctx.shadowOffsetY=10*s;ctx.fill();ctx.shadowColor='transparent';
   ctx.save();rr(ctx,x,y,w,h,r);ctx.clip();cover(ctx,im,x,y,w,h,1+.08*Math.min(1,(segT>0?segT:lt)/Math.max(sc.dur/(refresh?2:1),1)));

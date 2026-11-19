@@ -986,3 +986,43 @@ js/photo_variants.js (nayi): multi-photo per player, scene-wise auto-rotate, aut
 ## C177 — Match prediction: js/card_predict.js (winprob/h2h/pitch/xi) + prediction/index.html (form -> JSON, news se alag folder) + registry (scenes_check, scene_editor, index). Headless render check pass (5 scenes). Asli photos ke saath XI ek baar dekhna baaki.
 
 ## C178 — Prediction news se alag: predict.html -> prediction/index.html (+ prediction/README.md). news.html/daily.html mein prediction ka koi reference nahi.
+
+## C179 (19 Nov 2026) — 3 screenshot problems fix (bigwords + cameo)
+1) js/card_words.js (bigwords): join shabd ("और") ki asli chaudai naapi (pehle fixed 150px tha, 2026/चोट par chadhta tha); bina join ke bhi shabdon ke beech gap; text bahut lamba ho to do line (A upar, B neeche); peeche halka dark scrim.
+2) js/photo_variants.js (cameo): CAM_AVOID table (stack, qcards, bigwords, bullets, timelist, checklist, options, barlist, ladder) — cameo list ke upar nahi aata, kinare mein chhota ho jata hai, jagah na ho to us scene mein nahi aata; cameo caption ke upar rehta hai.
+Test: node --check pass; headless chromium frames theek, console errors 0.
+C180 FIX: "न्न" (चेन्नई) ligature "न्र" jaisa dikhta tha -> js/text_fx.js mein ZWJ (न्‍न) sab canvas fillText/strokeText/measureText par; ab saaf adha-न + न. Headless frame check pass. PENDING: baaki CAM_AVOID cards ki chaudai check; real Chrome mein dekhna.
+
+C181: bigwords text ka glow 24->16 + upar se sharp (bina shadow) pass — video ke andar ka dhundhla look kam (card_words.js). Note: scene badalte waqt transition (blurfade/push/zoom) frame ko jaan-boojhkar blur karte hain (transitions_pro.js); agar blur wahan dikhe to transition badlo.
+
+## C182 (19 Nov 2026) — News card par 4 title ideas
+js/news_titles.js (naya) + news.html: har story card par 🎯 4 title (Emotion hook / Sawaal / Breaking / Reaction, har ek ke saath 📋 copy + akshar count); 📋 Copy prompt mein STEP 1 ke point 5 mein "TITLE" (style + draft ideas) joda. Style docs/TITLE_STYLE.md (3 docx ka analysis). Rule-based, AI nahi: khiladi naam/team/₹ number/event (trade, release, retain...) headline se nikalta hai.
+Test: node --check; headless chromium news.html (sample stories) -> 4 title har card par, console errors 0. news.json wapas khaali. NOT done: asli live news data par quality check; "naya title" button (alag combos); tools/competitor-grab.html se saved titles ko examples banana; India match (win/lose) titles basic hain.
+
+
+## C183 (19 Nov 2026) — Audio box fix + Filmora default + captions hata diye
+- main.js: 🎙 Audio file box ab AT.addFile se segment banata hai (pehle sirf EXPORT.audio mein jaata tha, Audio Editor nahi khulta tha). Timeline par double-click / 🎛 Audio Editor se edit.
+- filmora_shell.js: Filmora layout hamesha default (purana 'classic' localStorage ignore + saaf). Classic sirf ?layout=classic se.
+- Captions hata diye: captions.js CAP.on=false hamesha, Captions tab (Filmora + classic), timeline Text lane aur panel button chhupe. File captions.js rakhi (looks.js/photo_variants.js use karte hain).
+- Test: node --check + headless chromium (wav upload -> AT.segs=1, AUDIOED.open ok, errors 0).
+- Baaki: Filmora se bhi behtar polish (easy mode) — asli Chrome check ke baad naya chunk.
+
+## C184 (19 Nov 2026) — Classic default + preview par element click/drag/hatao + Intro/Outro button
+- Classic layout ab DEFAULT (index.html). Filmora sirf ?layout=filmora ya 🧩 Filmora layout link se.
+- NAYA js/elem_edit.js (core.js ke turant baad): CORE.text/drawImg/panel/cover aur ctx.drawImage wrap -> har draw ka box yaad. Preview par click = select, drag = jagah, ＋/－ (ya +/-) = size, Delete = hatao, arrows = nudge (Shift=20px), Esc = chhodo, ↺ = wapas, '↺ Is scene ke sab badlav hatao', '👁 Hatai cheezein wapas'. Badlav scene.ov (Short mein scene.ovS) {key:{dx,dy,s,hide}} mein; JSON/undo/export mein jaata hai. key = type+text/asset+kitni-vi-baar (text ke ank '#').
+- Limit: line/underline jaise code se bani cheezein (rect/fill) abhi select nahi hoti; text ke ank badalne par key same rehti hai; animated card mein jo cheez baad mein aati hai wo us waqt hi select hogi (seek karke click karo).
+- bumpers.js: classic mein #quick par 🎬 Intro / Outro + ▶ dekho button (pehle sirf hidden bar2 / Filmora mein tha).
+- Test: node --check, headless chromium (drag: ov dx/dy bana, Delete: hide, show: wapas, Intro box khula, errors 0, Filmora ?layout=filmora ok).
+
+## C185 (19 Nov 2026) — ➕ Video yahan jodo (js/clip_insert.js)
+- Classic: player ke neeche '➕ Video yahan jodo' + '🎞 Clips' (pehle hidden bar2 mein the). Filmora: timeline toolbar mein '➕ Video yahan'.
+- Playhead jis scene mein ho, uski seema (aadhe se pehle = pehle, baad = baad) par naya 'clip' scene (dur = clip ki lambai, max 60s, fade, chunk padosi scene ka). Scene ke beech mein todta nahi.
+- Sirf wide mode. Clip ki awaaz abhi mute (card_clip.js) — awaaz ka option baaki.
+- Test: node --check + headless chromium (webm upload: classic + ?layout=filmora dono mein hook ke baad clip scene bana, errors 0).
+
+## C186 (19 Nov 2026) — 3 thumbnail prompt + har 30 sec naya hook (script)
+- NAYA js/news_thumbs.js (news.html mein news_titles.js ke baad): window.THUMB_STEP -> prompt ka "6) THUMBNAIL" step: 7-style bank, clickbait + face niyam, team colours (khabar ki city se), Prompt B + Prompt A template. Top-N video par NUMBER GRID concept bhi.
+- news.html GEM_T (Gemini template): naya RETENTION (30-SECOND NIYAM) block, STYLE line "har 30 second naya mod", DHANCHA + AAKHIR mein yaad dilana. STEP 1 point 3: "30-sec hook map" (code block ke bahar). STEP 2 check mein 30-sec hook + thumbnail checks. STEP 3 JSON mein 30-SEC RETENTION scene line.
+- docs/GEMINI_SCRIPT_PROMPT_TEMPLATE.md GEM_T jaisa update; docs/THUMBNAIL_PROMPT.md (Rahul ki file) + SCRIPT_WORKFLOW.md C186 section.
+- Test: node --check (news.html inline + news_thumbs.js), headless chromium: fullPrompt single + Top-N mein 6) THUMBNAIL, RETENTION, hook map, NUMBER GRID sab aaye, page errors 0.
+- Baaki: asli Gemini par 3 thumbnail + naye script ka output dekhna (Rahul), phir niyam tune.
