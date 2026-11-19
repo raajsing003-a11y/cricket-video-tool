@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "YT Thumbnail Bulk ZIP",
+  "version": "1.1",
+  "description": "YouTube video thumbnails bulk download karke ek ZIP mein save karo.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://i.ytimg.com/*", "https://img.youtube.com/*", "https://www.youtube.com/*"],
+  "action": { "default_popup": "popup.html", "default_title": "Thumbnail ZIP" }
+}

@@ -28,13 +28,25 @@ button{background:var(--bl);color:#fff;border:0;border-radius:8px;padding:9px 13
 <div id="grid"></div></div>
 <script>
 const $=id=>document.getElementById(id),V=[];let byViews=true;
-const PX=u=>['https://corsproxy.io/?url='+encodeURIComponent(u),'https://api.allorigins.win/raw?url='+encodeURIComponent(u)];
-async function get(u,type){let e;for(const p of PX(u)){try{const r=await fetch(p);if(!r.ok)throw new Error(r.status);return type==='blob'?await r.blob():await r.text();}catch(x){e=x;}}throw e||new Error('fail');}
+const PX=u=>['https://corsproxy.io/?url='+encodeURIComponent(u),'https://api.allorigins.win/raw?url='+encodeURIComponent(u),'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)];
+async function get(u,type){let e;for(const p of PX(u)){try{const c=new AbortController(),t=setTimeout(()=>c.abort(),15000);const r=await fetch(p,{signal:c.signal});clearTimeout(t);if(!r.ok)throw new Error(r.status);const x=type==='blob'?await r.blob():await r.text();if(type!=='blob'&&x.length<200)throw new Error('khaali jawab');return x;}catch(x){e=x;}}throw e||new Error('fail');}
 function parseRSS(xml){const d=new DOMParser().parseFromString(xml,'text/xml'),ch=(d.getElementsByTagName('author')[0]||{}).textContent||'';
  return [...d.getElementsByTagName('entry')].map(en=>{const g=n=>(en.getElementsByTagName(n)[0]||{}),st=en.getElementsByTagName('media:statistics')[0];
   return{id:g('yt:videoId').textContent,title:g('title').textContent,date:(g('published').textContent||'').slice(0,10),views:st?+st.getAttribute('views'):0,ch:(g('name').textContent||ch).trim()};});}
-async function chanId(s){let m=s.match(/UC[\w-]{22}/);if(m)return m[0];const h=s.match(/@[\w.\-%]+/);if(!h)return null;
- const t=await get('https://www.youtube.com/'+h[0]);m=t.match(/"channelId":"(UC[\w-]{22})"/)||t.match(/channel\/(UC[\w-]{22})/);return m?m[1]:null;}
+async function chanId(s){let m=s.match(/UC[\w-]{22}/);if(m)return m[0];
+ s=s.trim().replace(/[?#].*$/,'');
+ let path=s.replace(/^https?:\/\/(www\.|m\.)?youtube\.com\/?/i,'').replace(/^\/+/,'').replace(/\/(videos|shorts|streams|featured|playlists|about|community|live)\/?$/i,'').replace(/\/+$/,'');
+ if(!path)return null;
+ const cand=[];
+ if(path[0]==='@')cand.push(path);
+ else if(/^(c|user)\/[^\/]+$/i.test(path))cand.push(path);
+ else if(path.indexOf('/')<0)cand.push('@'+path,path,'c/'+path,'user/'+path);
+ else return null;
+ let lastErr;
+ for(const p of cand){try{const t=await get('https://www.youtube.com/'+p);
+   const r=t.match(/"channelId":"(UC[\w-]{22})"/)||t.match(/"externalId":"(UC[\w-]{22})"/)||t.match(/"browseId":"(UC[\w-]{22})"/)||t.match(/channel\/(UC[\w-]{22})/);if(r)return r[1];}catch(e){lastErr=e;}}
+ if(lastErr)throw new Error('YouTube page proxy se nahi khula ('+lastErr.message+'). Dobara try karo, ya channel page par jaakar uska UC... wala link daalo.');
+ return null;}
 function add(a){a.forEach(v=>{if(!V.find(x=>x.id===v.id))V.push(v);});}
 const SK='cvt_competitors';let SV=[];try{SV=JSON.parse(localStorage.getItem(SK)||'[]')||[];}catch(e){}
 const svSave=()=>{try{localStorage.setItem(SK,JSON.stringify(SV));}catch(e){}drawSv();};
@@ -51,7 +63,7 @@ async function run(L){if(!L.length)return;$('go').disabled=true;
  for(const l of L){$('st').textContent=' '+l+' ...';try{
   const vm=l.match(/(?:v=|youtu\.be\/|shorts\/)([\w-]{11})/)||(/^[\w-]{11}$/.test(l)?[0,l]:null);
   if(vm&&!/@|channel\//.test(l)){const o=await (await fetch('https://www.youtube.com/oembed?format=json&url='+encodeURIComponent('https://youtu.be/'+vm[1]))).json();add([{id:vm[1],title:o.title,date:'',views:0,ch:o.author_name}]);}
-  else{const id=await chanId(l);if(!id)throw new Error('channel id nahi mili (UC... wala link try karo)');await loadChan(id);}
+  else{const id=await chanId(l);if(!id)throw new Error('channel id nahi mili. Channel page par jaakar uska UC... wala link (youtube.com/channel/UC...) daalo.');await loadChan(id);}
  }catch(e){alert(l+'\n'+e.message);}}
  $('go').disabled=false;$('st').textContent=' '+V.length+' videos';$('tools').style.display=V.length?'block':'none';draw();}
 drawSv();

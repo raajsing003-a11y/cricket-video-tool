@@ -1,7 +1,7 @@
 // C165: 🎬 Intro / Outro (aur koi bhi extra video). PC se upload, browser mein save (library = 🎞 Clips wali IndexedDB 'cvt_clips'),
 // har video ki apni awaaz + volume slider (0-300%), shuru mein ya aakhir mein, Fast export mein final MP4 ke andar judta hai.
 // API: BUMP.items [{id,clip,where:'start'|'end',vol:100,fit:'contain'|'cover',on:true}], BUMP.prepare(FPS) (export_fast.js use karta hai), BUMP.cleanup(list)
-// Settings localStorage 'cvt_bumpers' mein. Video khud C.clips (IndexedDB) mein. Real-time export mein bumpers NAHI judte (sirf Fast export).
+// Settings localStorage 'cvt_bumpers' mein. Video khud C.clips (IndexedDB) mein. C168: ▶ Poora preview (intro+main+outro player canvas par, awaaz ke saath) aur Real-time export mein bhi judte hain (B.sequence).
 (function(){const C=window.CORE,X=window.EXPORT;
 const KEY='cvt_bumpers',mk=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
 const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
@@ -29,10 +29,58 @@ B.prepare=async function(fps){const a=B.active(),out={pre:[],post:[],hasAudio:fa
 B.cleanup=function(list){[].concat(list.pre||[],list.post||[]).forEach(x=>{try{URL.revokeObjectURL(x.video.src);}catch(e){}x.video.removeAttribute('src');try{x.video.load();}catch(e){}});};
 const seekTo=(v,t)=>new Promise(res=>{if(Math.abs(v.currentTime-t)<.0005&&v.readyState>=2){res();return;}let d=false;const f=()=>{if(d)return;d=true;v.removeEventListener('seeked',f);res();};v.addEventListener('seeked',f);v.currentTime=t;setTimeout(f,1500);});
 // export frame: bumper ka frame canvas par (fit: contain = kaali patti, cover = poori screen)
-B.drawFrame=async function(ctx,x,i,fps){const W=C.W,H=C.H;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
-  await seekTo(x.video,Math.max(0,Math.min(x.dur-.001,i/fps)));
+function drawVid(ctx,x){const W=C.W,H=C.H;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
   const k=x.fit==='cover'?Math.max(W/x.w,H/x.h):Math.min(W/x.w,H/x.h),w=x.w*k,h=x.h*k;
-  try{ctx.drawImage(x.video,(W-w)/2,(H-h)/2,w,h);}catch(e){}};
+  try{ctx.drawImage(x.video,(W-w)/2,(H-h)/2,w,h);}catch(e){}}
+B.drawFrame=async function(ctx,x,i,fps){await seekTo(x.video,Math.max(0,Math.min(x.dur-.001,i/fps)));drawVid(ctx,x);};
+// ---------- C168: live sequence (preview + real-time export) ----------
+// intro(s) -> main (player ke through) -> outro(s). opt:{record:bool,dest:MediaStreamDestination|null,BP,onStatus}
+// preview mein bumper ki awaaz speakers par (volume ke saath); record mein sirf recorder (dest) mein. Main audio preview mein AP deta hai.
+B.abort=false;B.running=false;
+B.sequence=async function(P,opt){opt=opt||{};B.abort=false;B.running=true;
+  const ac=X.actx=X.actx||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended'){try{await ac.resume();}catch(e){}}
+  const BP=opt.BP||await B.prepare(C.FPS),cv=document.getElementById('cv'),ctx=cv.getContext('2d'),out=opt.dest||ac.destination,srcs=[];
+  const s0=B.secs(),total=s0.pre+C.total+s0.post,t0=performance.now(),prog=()=>opt.onStatus&&opt.onStatus((performance.now()-t0)/1000,total);
+  const stopSrc=()=>{srcs.forEach(z=>{try{z.stop();}catch(e){}});srcs.length=0;};
+  const bump=async x=>{if(B.abort)return;x.video.muted=true;try{x.video.currentTime=0;}catch(e){}await new Promise(r=>{const f=()=>{x.video.removeEventListener('seeked',f);r();};x.video.addEventListener('seeked',f);setTimeout(f,800);});
+    if(x.buf&&x.vol>0){const z=ac.createBufferSource(),g=ac.createGain();z.buffer=x.buf;g.gain.value=x.vol;z.connect(g);g.connect(out);z.start();srcs.push(z);}
+    try{await x.video.play();}catch(e){}
+    const ts=performance.now();
+    await new Promise(res=>{const iv=setInterval(()=>{drawVid(ctx,x);prog();if(B.abort||x.video.ended||(performance.now()-ts)/1000>=x.dur+.05){clearInterval(iv);res();}},16);});
+    x.video.pause();stopSrc();};
+  const main=async()=>{if(B.abort)return;if(P.playing)P.toggle();P.seek(0);
+    if(opt.record&&X.audio){const z=ac.createBufferSource();z.buffer=X.audio;z.connect(out);z.start();srcs.push(z);}
+    P.toggle();
+    await new Promise(res=>{const iv=setInterval(()=>{prog();if(B.abort||!P.playing||P.t>=C.total-1/C.FPS-.01){clearInterval(iv);res();}},50);});
+    if(P.playing)P.toggle();stopSrc();};
+  try{for(const x of BP.pre)await bump(x);await main();for(const x of BP.post)await bump(x);}
+  finally{stopSrc();if(!opt.BP)B.cleanup(BP);B.running=false;if(!opt.record){try{P.seek(0);}catch(e){}}}
+  return{n:BP.pre.length+BP.post.length,total};};
+// Real-time export mein bhi bumpers: X.run ko wrap (bumper na ho to purana raasta)
+const run0=X.run;
+X.run=function(P,canvas,onStatus){const a=B.active();if(!a.pre.length&&!a.post.length)return run0.apply(this,arguments);
+  return new Promise(async(resolve,reject)=>{let BP=null;try{
+    const mime=X.pickMime();if(!mime)throw new Error('MediaRecorder support nahi (Chrome use karo)');
+    const ac=X.actx=X.actx||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')await ac.resume();
+    BP=await B.prepare(C.FPS);
+    const stream=canvas.captureStream(C.FPS),dest=ac.createMediaStreamDestination();
+    if(X.audio||BP.hasAudio)dest.stream.getAudioTracks().forEach(t=>stream.addTrack(t));
+    const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:12e6,audioBitsPerSecond:192e3}),chunks=[];
+    rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
+    let info={n:0,total:0};
+    rec.onstop=()=>{if(BP)B.cleanup(BP);const ext=mime.startsWith('video/mp4')?'mp4':'webm';resolve({blob:new Blob(chunks,{type:mime.split(';')[0]}),ext,mime,bumpers:info.n,total:info.total});};
+    rec.onerror=e=>reject(e.error||e);
+    if(P.playing)P.toggle();P.seek(0);rec.start(500);
+    info=await B.sequence(P,{record:true,dest,BP,onStatus:onStatus?(t,T)=>onStatus(t,T):null});
+    setTimeout(()=>{try{rec.stop();}catch(e){}},400);
+  }catch(e){if(BP)B.cleanup(BP);reject(e);}});};
+B.preview=async function(P){if(B.running){B.abort=true;return;}
+  const a=B.active();if(!a.pre.length&&!a.post.length){st('⚠ Pehle intro/outro video chuno');return;}
+  const P0=window.PLAYER;if(!P0){st('Player ready nahi');return;}
+  const b=document.getElementById('bm_pv');if(b)b.textContent='⏹ Roko';
+  try{await B.sequence(P0,{record:false,onStatus:(t,T)=>st('▶ Preview '+t.toFixed(1)+'/'+T.toFixed(1)+'s')});st('✔ Preview khatam');}
+  catch(e){st('✖ Preview error: '+e.message);}
+  const b2=document.getElementById('bm_pv');if(b2)b2.textContent='▶ Poora preview';try{P0.draw();}catch(e){}};
 // ---------- UI ----------
 const fmt=s=>s.toFixed(1)+'s';
 const mb=n=>(n/1048576).toFixed(1)+' MB';
@@ -98,20 +146,22 @@ function open(){if(B.box){close();return;}const b=mk('div');B.box=b;b.id='bm_box
     +'#bm_box .bm_it{background:#22262f;border:1px solid #2f3541;border-radius:8px;padding:8px;margin:8px 0}#bm_box .bm_h{display:flex;align-items:center;gap:6px;margin-bottom:6px}#bm_box .bm_v{display:flex;align-items:center;gap:6px;margin-top:6px}#bm_box .bm_v>span{width:62px;color:#aab4c4}#bm_box .bm_v input[type=range]{flex:1;accent-color:#00c389}#bm_box select{background:#10141a;color:#e9edf3;border:1px solid #2f3541;border-radius:5px;padding:4px;max-width:100%}#bm_box .cl{width:100%}#bm_box .bm_lr{display:flex;align-items:center;gap:6px;margin:5px 0;border-bottom:1px solid #2b2f38;padding-bottom:5px}</style>'
     +'<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px">🎬 Intro / Outro / Extra video</b><button id="bm_x">✕</button></div>'
     +'<div style="color:#8b95a5;font-size:12px;margin:4px 0 8px">Video ki apni awaaz saath judti hai. Volume 0-300%. Library browser mein save rehti hai.</div>'
-    +'<div style="display:flex;gap:6px;flex-wrap:wrap"><label class="g">⬆ PC se video add<input type="file" id="bm_f" accept="video/*" multiple style="display:none"></label><button id="bm_d">📦 Default intro+outro</button><button id="bm_a">➕ Aur video slot</button></div>'
+    +'<div style="display:flex;gap:6px;flex-wrap:wrap"><label class="g">⬆ PC se video add<input type="file" id="bm_f" accept="video/*" multiple style="display:none"></label><button id="bm_d">📦 Default intro+outro</button><button id="bm_a">➕ Aur video slot</button><button id="bm_pv" class="ok" style="background:#2a6fdb">▶ Poora preview</button></div>'
     +'<div id="bm_list"></div><div id="bm_sum" style="margin:8px 0;color:#cfe3ff"></div>'
-    +'<div style="color:#f5c518;font-size:12px;margin-bottom:6px">⚠ Sirf ⚡ Fast export mein judte hain (Real-time export mein nahi). Main player preview mein bhi nahi dikhte: 👁 se alag dekho.</div>'
+    +'<div style="color:#9aa4b2;font-size:12px;margin-bottom:6px">▶ Poora preview: intro → main video → outro, awaaz ke saath. ⚡ Fast aur ⏺ Real-time dono export mein ye judte hain (Real-time mein poora video real speed se chalta hai, tab khula rakho).</div>'
     +'<div id="bm_st" style="min-height:16px;color:#9fd5ff;font-size:12px"></div>'
     +'<details style="margin-top:8px"><summary style="cursor:pointer;color:#aab4c4">📚 Saved video library</summary><div id="bm_lib"></div></details>';
   document.body.appendChild(b);
   b.querySelector('#bm_x').onclick=close;
   b.querySelector('#bm_f').onchange=async e=>{const fs=[...e.target.files];e.target.value='';await addFiles(fs);};
   b.querySelector('#bm_d').onclick=loadDefaults;
+  b.querySelector('#bm_pv').onclick=()=>B.preview();
+  if(B.running)b.querySelector('#bm_pv').textContent='⏹ Roko';
   b.querySelector('#bm_a').onclick=()=>{B.items.push({id:uid++,clip:'',where:'end',vol:100,fit:'contain',on:true});B.save();render();};
   render();}
 function close(){closePrev();if(B.box){B.box.remove();B.box=null;}}
 B.open=open;
-const addBtn=()=>{const b2=document.getElementById('bar2');if(b2&&!document.getElementById('bm_btn')){const b=mk('button','','🎬 Intro/Outro');b.id='bm_btn';b.onclick=open;b2.appendChild(b);}
+const addBtn=()=>{const b2=document.getElementById('bar2');if(b2&&!document.getElementById('bm_pvb')){const q=mk('button','','▶ Intro/Outro ke saath');q.id='bm_pvb';q.title='intro + main + outro preview';q.onclick=()=>B.preview();b2.appendChild(q);}if(b2&&!document.getElementById('bm_btn')){const b=mk('button','','🎬 Intro/Outro');b.id='bm_btn';b.onclick=open;b2.appendChild(b);}
   const tt=document.getElementById('tl-tools');if(tt&&!document.getElementById('bm_btn2')){const b=mk('button','','🎬 Intro/Outro');b.id='bm_btn2';b.title='Intro / Outro / extra video (C165)';b.onclick=open;tt.appendChild(b);}};
 setInterval(addBtn,500);addBtn();
 // library restore ke baad dropdown taazi karo; scenes badalne par total update

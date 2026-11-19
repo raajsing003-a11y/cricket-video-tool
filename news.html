@@ -43,13 +43,13 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 </style></head><body><div id="w">
 <div class="top"><h1>📰 Cricket News Tracker</h1><a href="index.html">← Video tool</a></div>
 <div class="sm" id="upd">Loading…</div>
-<div class="row2"><button id="fetchNow">🔄 Abhi fetch karo</button><button id="tokBtn">🔑 Token</button><span class="sm" id="fst"></span></div>
+<div class="row2"><button id="fetchNow">🔄 Abhi fetch karo</button><button id="tokBtn">🔑 Token</button><button id="latestBtn">🕒 Latest articles</button><span class="sm" id="fst"></span></div>
 <div class="warn">⚠ Label sirf andaza hai: <b>Confirmed</b> tabhi jab feed official ho aur "sources/likely" jaisa shabd na ho. Baaki sab <b>Rumor</b>. Video mein daalne se pehle khabar khud verify karo. Yahan sirf headline + link hai.</div>
 <div class="row2"><button id="scrBtn">🧩 Sites padho (extension)</button><span class="sm" id="scrSt"></span></div>
 <div id="fails"></div>
 <div class="warn">🧩 Ab <b>ek story = ek card</b>: 10 sites ki milti-julti khabrein ek saath, har site ki apni headline + link. Video ke liye <b>📋 Copy (poora prompt)</b> karo aur Claude chat mein paste karo.</div>
-<h2>⭐ Aaj ki top 5 stories</h2><div id="top5"></div>
-<h2>Saari stories</h2>
+<h2 id="h2top">⭐ Aaj ki top 5 stories</h2><div id="top5"></div>
+<h2 id="h2all">Saari stories</h2>
 <input type="search" id="q" placeholder="🔎 khoj (naam / shabd)">
 <div class="chips" id="tags"></div>
 <div class="chips" id="lbls"></div>
@@ -66,8 +66,8 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 (function(){
 'use strict';
 const TAGS=['Trade','Retention','Release','Auction','Team News','India Match'];
-const KP='cvt_news_steps',KS='cvt_news_seen',KU='cvt_news_used',KF='cvt_news_ui',KL='cvt_news_later',KV='cvt_news_visit',KN='cvt_news_notes',KSEL='cvt_news_sel',KSC='cvt_site_scrape',KPH='cvt_news_photos',KPC='cvt_photo_custom',MAXS=60,SHOW=4,REFRESH=180000;
-let items=[],stories=[],used={},ui={tag:'Sab',lbl:'Sab',hide:false,q:'',min:1,site:'Sab',sort:'latest',only:'Sab'},open={},later={},lastVisit=0;
+const KP='cvt_news_steps',KS='cvt_news_seen',KU='cvt_news_used',KF='cvt_news_ui',KL='cvt_news_later',KV='cvt_news_visit',KN='cvt_news_notes',KSEL='cvt_news_sel',KSC='cvt_site_scrape',KPH='cvt_news_photos',KPC='cvt_photo_custom',MAXS=60,MAXA=150,MAXH=72,SHOW=4,REFRESH=180000;
+let items=[],stories=[],used={},ui={tag:'Sab',lbl:'Sab',hide:false,q:'',min:1,site:'Sab',sort:'latest',only:'Sab',view:'story'},open={},later={},lastVisit=0;
 try{used=JSON.parse(localStorage.getItem(KU)||'{}')||{};}catch(e){}
 let steps={};try{steps=JSON.parse(localStorage.getItem(KP)||'{}')||{};}catch(e){}
 let seenLab={};try{seenLab=JSON.parse(localStorage.getItem(KS)||'{}')||{};}catch(e){}
@@ -83,11 +83,34 @@ const saveN=()=>{try{localStorage.setItem(KN,JSON.stringify(notes));}catch(e){}}
 const saveSel=()=>{try{localStorage.setItem(KSEL,JSON.stringify(sel));}catch(e){}};
 const savePh=()=>{try{localStorage.setItem(KPH,JSON.stringify(phStore));}catch(e){}};
 const saveU=()=>{try{localStorage.setItem(KU,JSON.stringify(used));}catch(e){}};
-const saveUI=()=>{try{localStorage.setItem(KF,JSON.stringify({tag:ui.tag,lbl:ui.lbl,hide:ui.hide,min:ui.min,site:ui.site,sort:ui.sort,only:ui.only}));}catch(e){}};
+const saveUI=()=>{try{localStorage.setItem(KF,JSON.stringify({tag:ui.tag,lbl:ui.lbl,hide:ui.hide,min:ui.min,site:ui.site,sort:ui.sort,only:ui.only,view:ui.view}));}catch(e){}};
 function ago(iso){const m=Math.max(0,(Date.now()-new Date(iso))/60000);
   if(m<60)return Math.round(m)+' min pehle';if(m<1440)return Math.round(m/60)+' ghante pehle';return Math.round(m/1440)+' din pehle';}
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
 const sk=n=>(n||'').trim().toLowerCase();
+let rawItems=[];
+function inWin(i){const t=+new Date(i.published);return t>0&&(Date.now()-t)<=MAXH*3600e3;}
+function applyWin(){items=rawItems.filter(inWin);buildStories();}
+function latestList(){
+  const q=ui.q.trim().toLowerCase(),byId=new Map();stories.forEach(st=>st.items.forEach(i=>byId.set(i.id,st)));
+  return items.filter(i=>{
+    const tg=(i.tags||[]).filter(x=>TAGS.indexOf(x)>=0);
+    if(ui.tag!=='Sab'&&!tg.includes(ui.tag))return false;
+    if(ui.lbl!=='Sab'&&(i.label==='Confirmed'?'Confirmed':'Rumor')!==ui.lbl)return false;
+    if(ui.site!=='Sab'&&sk(i.source)!==ui.site)return false;
+    if(ui.hide&&used[i.id])return false;
+    if(q&&!(i.title+' '+(i.summary||'')).toLowerCase().includes(q))return false;
+    return true;}).sort((a,b)=>new Date(b.published)-new Date(a.published)).map(i=>({i:i,st:byId.get(i.id)}));}
+function articleRow(x){
+  const i=x.i,st=x.st,c=el('div','card'+(used[i.id]?' used':''));
+  const b=el('div');b.appendChild(el('span','badge '+(i.label==='Confirmed'?'bC':'bR'),i.label==='Confirmed'?'✔ Confirmed':'❓ Rumor / अपुष्ट'));
+  (i.tags||[]).filter(t=>TAGS.indexOf(t)>=0).forEach(t=>b.appendChild(el('span','badge',t)));
+  b.appendChild(el('span','badge bN',i.source||'?'));c.appendChild(b);
+  c.appendChild(el('div','t',i.title));
+  c.appendChild(el('div','sm','Taaza: '+ago(i.published)+' · '+new Date(i.published).toLocaleString('hi-IN')));
+  const r=el('div','row');const a=el('a','go','🔗 Kholo');a.href=i.link;a.target='_blank';a.rel='noopener';a.style.cssText='background:#333;border-radius:8px;padding:6px 12px;font-size:15px;text-decoration:none;color:#fff';r.appendChild(a);
+  if(st){const ob=el('button',null,'📋 Sirf ye');ob.onclick=async()=>{const t=fullPrompt(st,i);try{await navigator.clipboard.writeText(t);ob.textContent='✔ Copy hua';}catch(e){prompt('Copy karo:',t);}};r.appendChild(ob);}
+  c.appendChild(r);return c;}
 function buildStories(){
   const m=new Map();
   items.forEach(i=>{const k=i.cluster||i.id;if(!m.has(k))m.set(k,[]);m.get(k).push(i);});
@@ -297,6 +320,16 @@ function draw(){
   chips($('only'),[['Sab','Sab'],['new','🆕 Sirf naya ('+nN+')'],['hot','🔥 Trending ('+nH+')'],['later','⭐ Baad mein ('+nL+')'],['upd','🔄 Nayi update ('+nU+')'],['off','✅ Ab official ('+nO+')'],['wip','🛠 Adhura kaam ('+nW+')'],['note','📝 Note wali ('+stories.filter(noteOf).length+')']],'only');
   $('only').querySelectorAll('.chip').forEach((c,k)=>{if(k===1)c.classList.add('n');if(k===2)c.classList.add('h');if(k===3)c.classList.add('l');});
   $('hideUsed').className='chip'+(ui.hide?' on':'');$('hideUsed').textContent=(ui.hide?'✔ ':'')+'Use ho chuki stories chhupao';
+  const LV=ui.view==='latest';
+  $('latestBtn').style.background=LV?'#e11':'';$('latestBtn').textContent=LV?'🕒 Latest articles ✔ (wapas stories: dabao)':'🕒 Latest articles';
+  ['mins','only','sorts'].forEach(id=>{$(id).parentElement.style.display=LV?'none':'';});
+  $('h2top').style.display=LV?'none':'';$('top5').style.display=LV?'none':'';
+  $('h2all').textContent=LV?'🕒 Latest articles (pichhle '+MAXH+' ghante, naya pehle)':'Saari stories';
+  if(LV){const lb=$('list');lb.innerHTML='';const L=latestList();
+    L.slice(0,MAXA).forEach(x=>lb.appendChild(articleRow(x)));
+    if(!L.length)lb.appendChild(el('div','sm','Pichle '+MAXH+' ghante mein koi article nahi mila.'));
+    else if(L.length>MAXA)lb.appendChild(el('div','sm','Pehle '+MAXA+' articles dikha rahe hain ('+L.length+' mile). Filter/khoj se chhota karo.'));
+    drawSel();return;}
   const t=top5(),tb=$('top5');tb.innerHTML='';
   if(!t.length)tb.appendChild(el('div','sm','Pichle 36 ghante ki koi nayi (unused) story nahi.'));t.forEach(s=>tb.appendChild(card(s)));
   const q=ui.q.trim().toLowerCase(),lb=$('list');lb.innerHTML='';
@@ -320,6 +353,7 @@ function draw(){
   if(!res.length)lb.appendChild(el('div','sm','Is filter mein koi story nahi.'));
   else if(res.length>MAXS)lb.appendChild(el('div','sm','Pehli '+MAXS+' stories dikha rahe hain ('+res.length+' mili). Filter/khoj se chhota karo.'));
   drawSel();}
+$('latestBtn').onclick=()=>{ui.view=ui.view==='latest'?'story':'latest';saveUI();draw();};
 $('q').oninput=e=>{ui.q=e.target.value;draw();};
 $('hideUsed').onclick=()=>{ui.hide=!ui.hide;saveUI();draw();};
 $('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({format:'cvt_news_backup_v3',saved:new Date().toISOString(),used:used,steps:steps,later:later,notes:notes},null,1)],{type:'application/json'}));a.download='news_backup.json';a.click();};
@@ -330,8 +364,8 @@ $('fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JS
     else{Object.assign(used,j);saveU();draw();alert('Purani Used list load ho gayi.');}}catch(x){alert('JSON error: '+x.message);}};
 let NJ=new URLSearchParams(location.search).get('data')||'news/news.json';if(!/^[\w\/.-]+$/.test(NJ))NJ='news/news.json';
 function load(d){
-  window.__upd=d.updated||null;items=(d.items||[]).slice();buildStories();
-  $('upd').textContent=d.updated?'Aakhri update: '+new Date(d.updated).toLocaleString('hi-IN')+' · '+items.length+' posts → '+stories.length+' stories':'Abhi data nahi — GitHub Actions mein "news-fetch" ek baar Run karo.';
+  window.__upd=d.updated||null;rawItems=(d.items||[]).slice();applyWin();
+  $('upd').textContent=d.updated?'Aakhri update: '+new Date(d.updated).toLocaleString('hi-IN')+' · '+items.length+' posts (pichhle '+MAXH+' ghante) → '+stories.length+' stories':'Abhi data nahi — GitHub Actions mein "news-fetch" ek baar Run karo.';
   const fl=d.feeds_fail||[],fb=$('fails');if(fl.length){fb.className='err';fb.textContent='⚠ '+fl.length+' feed fail: '+fl.map(x=>x.name).join(', ')+' (feeds.json check karo)';}else{fb.className='';fb.textContent='';}
   draw();
   const nn=stories.filter(isNew).length;document.title=(nn?'('+nn+') ':'')+'Cricket News Tracker';}
@@ -434,6 +468,7 @@ $('fetchNow').onclick=async()=>{
   }catch(e){btn.disabled=false;fst('❌ '+e.message);}
 };
 // ---- C145: auto-refresh har 3 min (page khula rahe to khud naya data) + 'pichli baar ke baad naya'
+setInterval(()=>{if(document.hidden||!rawItems.length)return;const n=items.length;applyWin();if(items.length!==n)draw();},600000);
 setInterval(async()=>{if(document.hidden)return;try{const d=await (await fetch(NJ+'?'+Date.now())).json();if(d.updated&&d.updated!==window.__upd){load(d);fst('🔄 Auto-refresh: naya data aaya.');}}catch(e){}},REFRESH);
 window.addEventListener('pagehide',()=>{try{localStorage.setItem(KV,String(Date.now()));}catch(e){}saveSeen();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){try{localStorage.setItem(KV,String(Date.now()));}catch(e){}saveSeen();}});

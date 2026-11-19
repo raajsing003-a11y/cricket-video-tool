@@ -38,8 +38,7 @@ C.CARDS.watch={
   const rowH=names.length>4?110:128;
   names.forEach((n,i)=>{const p=E.out(C.prog(t,.6+i*.18,1.0+i*.18));if(p<=0)return;
    ctx.save();ctx.globalAlpha=p;ctx.translate((1-p)*-300,0);
-   ctx.fillStyle='rgba(10,20,50,.72)';ctx.fillRect(lx-30,260+i*rowH-8,900,rowH-24);
-   ctx.fillStyle='#ffc400';ctx.fillRect(lx-30,260+i*rowH-8,12,rowH-24);
+   C.panel(ctx,lx-30,260+i*rowH-8,900,rowH-24,{accent:'#ffc400',aw:12,r:14,c1:'rgba(8,18,52,.88)',c2:'rgba(20,40,96,.72)'});
    const f=C.fitText(ctx,n,820,1,70,36,800);C.text(ctx,f.lines[0],lx+10,260+i*rowH+(rowH-24)/2-8,{px:f.px,base:'middle'});ctx.restore();});
   if(d.note){const np=E.out(C.prog(t,1.8,2.2));ctx.save();ctx.globalAlpha=np;const f=C.fitText(ctx,d.note,900,2,48,32,700);
    f.lines.forEach((l,i)=>C.text(ctx,l,lx,260+names.length*rowH+60+i*(f.px+8),{px:f.px,stroke:8}));ctx.restore();}
@@ -60,7 +59,7 @@ C.CARDS.rumour={
   else if(ph.length===1)photoBox(ctx,t,ph[0],660,90,600,560,.1,1);
   // lower-third (blue): head + sub
   const lp=E.out(C.prog(t,.8,1.3)),lx=(W-1560)/2,ly=H-190-150;
-  ctx.save();ctx.translate(-(1-lp)*1800,0);C.drawImg(ctx,LT,lx,ly);
+  ctx.save();ctx.translate(-(1-lp)*1800,0);if(C.img(LT))C.drawImg(ctx,LT,lx,ly);else C.fbLower(ctx,lx,ly,'#1f5fd0');
   if(d.head){const f=C.fitText(ctx,d.head,1480,1,72,40,800);C.text(ctx,f.lines[0],lx+40,ly+82,{px:f.px});}
   if(d.sub){const f=C.fitText(ctx,d.sub,1480,1,48,30,700);C.text(ctx,f.lines[0],lx+40,ly+164,{px:f.px,color:'#14213d'});}
   ctx.restore();ctx.restore();

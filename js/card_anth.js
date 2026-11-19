@@ -15,8 +15,8 @@ C.CARDS.anth={
   C.text(ctx,d.title||'कल के 3 बड़े सवाल',W/2,160+30*(1-tp),{align:'center',px:92,stroke:12,shadow:14,color:'#ffd23f'});ctx.restore();
   qs.forEach((q,i)=>{const p=E.out(C.prog(t,.7+i*.55,1.2+i*.55));if(p<=0)return;
    const y=250+i*190;ctx.save();ctx.globalAlpha=p;ctx.translate((fl?1:-1)*(1-p)*500,0);
-   ctx.fillStyle='rgba(10,10,30,.72)';ctx.fillRect(230,y,1460,160);ctx.fillStyle='#ffd23f';ctx.fillRect(fl?1676:230,y,14,160);
-   const bs=E.back(C.prog(t,.9+i*.55,1.4+i*.55));ctx.save();ctx.translate(fl?1590:330,y+80);ctx.scale(bs,bs);const im=C.img(QB);if(im)ctx.drawImage(im,-60,-60,120,120);ctx.restore();
+   C.panel(ctx,230,y,1460,160,{accent:'#ffd23f',right:fl});
+   const bs=E.back(C.prog(t,.9+i*.55,1.4+i*.55));ctx.save();ctx.translate(fl?1590:330,y+80);ctx.scale(bs,bs);const im=C.img(QB);if(im)ctx.drawImage(im,-60,-60,120,120);else{ctx.beginPath();ctx.arc(0,0,52,0,Math.PI*2);ctx.fillStyle='#ffd23f';ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=14;ctx.fill();ctx.shadowColor='transparent';C.text(ctx,String(i+1),0,3,{align:'center',px:70,color:'#7a1010',base:'middle',w:900});}ctx.restore();
    const f=C.fitText(ctx,q,1240,2,60,34,800);const lh=f.px+6,y0=y+80-(f.lines.length-1)*lh/2;
    f.lines.forEach((l,k)=>C.text(ctx,l,fl?290:420,y0+k*lh,{px:f.px,base:'middle'}));ctx.restore();});
   const cp=E.out(C.prog(t,2.6,3.1));if(cp>0){ctx.save();ctx.globalAlpha=cp;const pulse=1+0.02*Math.sin(t*6);ctx.translate(W/2,860);ctx.scale(pulse,pulse);

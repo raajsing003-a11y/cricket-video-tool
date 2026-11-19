@@ -18,9 +18,9 @@ window.PLAYER=P;
 $('pol').onclick=()=>{C.POLISH.on=!C.POLISH.on;$('pol').textContent='✨ Polish: '+(C.POLISH.on?'ON':'OFF');$('pol').style.background=C.POLISH.on?'#2a6fdb':'#555';P.draw();};
 $('aud').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=await EXPORT.loadAudio(f);CAP.spread&&CAP.lines.length&&CAP.spread();$('expst').textContent='Audio '+d.toFixed(1)+'s (video '+C.total.toFixed(1)+'s)';}catch(err){$('expst').textContent='Audio error: '+err.message;}};
 $('exp').onclick=async()=>{$('exp').disabled=true;try{
-  $('expst').textContent='Recording… tab khula rakho';
+  $('expst').textContent='Recording… tab khula rakho'+(window.BUMP&&BUMP.secs().pre+BUMP.secs().post>0?' (intro/outro judega)':'');
   const r=await EXPORT.run(P,$('cv'),(t,T)=>{$('expst').textContent='Recording '+t.toFixed(1)+'/'+T.toFixed(1)+'s';});
-  window.LAST_EXPORT=r;EXPORT.download(r,'cricket_video'+(C.format==='short'?'_short':''));$('expst').textContent='Done: '+(r.blob.size/1e6).toFixed(1)+' MB .'+r.ext;
+  window.LAST_EXPORT=r;EXPORT.download(r,'cricket_video'+(C.format==='short'?'_short':''));$('expst').textContent='Done: '+(r.blob.size/1e6).toFixed(1)+' MB .'+r.ext+(r.bumpers?' · '+r.bumpers+' intro/outro video judey (total '+r.total.toFixed(1)+'s)':'');
  }catch(err){$('expst').textContent='Export error: '+err.message;}$('exp').disabled=false;};
 $('expf').onclick=async()=>{$('expf').disabled=true;$('exp').disabled=true;try{
   const r=await EXPORT.runFast(P,(t,T,el)=>{$('expst').textContent='Fast export '+t.toFixed(1)+'/'+T.toFixed(1)+'s ('+el.toFixed(0)+'s)'+(window.BUMP&&BUMP.secs().pre+BUMP.secs().post>0?' · intro/outro judega':'');});

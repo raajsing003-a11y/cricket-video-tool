@@ -122,7 +122,7 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "news", "news.json"))
     a = ap.parse_args()
     cfg = json.load(open(a.feeds, encoding="utf-8"))
-    max_age = dt.timedelta(days=cfg.get("max_age_days", 14))
+    max_age = dt.timedelta(days=cfg.get("max_age_days", 3))
     rules = cfg.get("tag_rules", {})
     rumor = [w.lower() for w in cfg.get("rumor_words", [])]
     blocked = [w.lower() for w in cfg.get("blocked_words", [])]

@@ -12,7 +12,7 @@ C.CARDS.title={
   ctx.save();ctx.globalAlpha=.5+.2*Math.sin(t*1.5);C.drawImg(ctx,LR,0,0,W,H);ctx.restore();
   C.drawImg(ctx,VG,0,0,W,H);
   // breaking tag slides from left
-  const tp=E.out(C.prog(t,0.1,0.6));C.drawImg(ctx,TAG,60-600*(1-tp),60);
+  const tp=E.out(C.prog(t,0.1,0.6));if(C.img(TAG))C.drawImg(ctx,TAG,60-600*(1-tp),60);else{ctx.save();ctx.translate(60-600*(1-tp),60);ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=18;C.rr(ctx,0,0,470,92,14);ctx.fillStyle='#d4161c';ctx.fill();ctx.shadowColor='transparent';C.text(ctx,'ब्रेकिंग न्यूज़',235,50,{align:'center',px:54,base:'middle',w:800});ctx.restore();}
   // chip drops with bounce
   const cp=E.back(C.prog(t,0.3,0.9)),chip=C.img('04_team_chips/chip_'+d.city);
   if(chip){ctx.save();ctx.translate(lf?480:W/2,lf?520:330);ctx.scale(cp*(lf?.95:1.25),cp*(lf?.95:1.25));ctx.globalAlpha=Math.min(1,cp*2);
@@ -26,7 +26,8 @@ C.CARDS.title={
     ctx.restore();}
   // ticker
   const ty=H-96,tk=E.out(C.prog(t,0.4,0.9));
-  ctx.save();ctx.translate(0,(1-tk)*100);C.drawImg(ctx,TK,0,ty);
+  ctx.save();ctx.translate(0,(1-tk)*100);
+  if(C.img(TK))C.drawImg(ctx,TK,0,ty);else{ctx.fillStyle='#f4f6fa';ctx.fillRect(0,ty,W,96);ctx.fillStyle='#d4161c';ctx.fillRect(0,ty,150,96);C.text(ctx,'LIVE',75,ty+50,{align:'center',px:44,base:'middle',w:800});}
   if(d.ticker){ctx.beginPath();ctx.rect(150,ty,W-170,96);ctx.clip();
     ctx.font=C.font(50,700);const txt=d.ticker+'     •     ',w=ctx.measureText(txt).width,x=-(t*170)%w;
     for(let k=0;k<Math.ceil(W/w)+2;k++)C.text(ctx,txt,150+x+k*w,ty+66,{px:50,color:'#14213d'});}

@@ -29,6 +29,8 @@ td.best{color:#6ee7a8;font-weight:700}td.worst{color:#ff9b9b}
 .warn{color:var(--gd);font-size:12px}.bad{color:#ff9b9b}.good{color:#6ee7a8}
 .cdesc{white-space:pre-wrap;background:#10141a;border:1px solid var(--ln);border-radius:8px;padding:8px;max-height:130px;overflow:auto;font-size:12px}
 a{color:#7db4ff}
+.hit{display:flex;gap:8px;align-items:flex-start;border-bottom:1px solid var(--ln);padding:6px 0}.hit i{font-style:normal;background:#3a2a10;color:var(--gd);border-radius:6px;padding:2px 7px;font-weight:700;flex:none;font-size:12px}
+.br{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px}.br span:first-child{width:62px;color:var(--mu)}.br .bb{flex:1;height:10px;background:#2a313c;border-radius:5px}.br .bb i{display:block;height:100%;background:var(--bl);border-radius:5px}.br.best .bb i{background:var(--gr)}.br.best b{color:#6ee7a8}.br b{width:120px;text-align:right;font-weight:600}
 </style></head><body><div id="w">
 <h1>📊 Channel <span>Compare</span> + Title/Description Helper</h1>
 <div class="sub">YouTube channels ko compare karo, competitors ke title/description/tags ka pattern dekho, apna title check karo. Data YouTube Data API v3 se aata hai.</div>
@@ -39,9 +41,12 @@ a{color:#7db4ff}
 <div class="row">
 <label class="mu">Kitni latest videos padhni:</label>
 <select id="nv"><option value="25">25</option><option value="50" selected>50</option><option value="100">100</option></select>
+<label class="mu" style="display:flex;gap:5px;align-items:center"><input type="checkbox" id="lg" style="width:auto"> "Kya chala" mein sirf long videos (3 min+)</label>
 <button id="go">🔎 Compare karo</button>
 <button class="g" id="csv" disabled>⬇ CSV</button>
 <button class="g" id="clr">🗑 Saaf</button>
+<button class="g" id="bk" title="saved channels + growth history ka backup">⬇ Backup</button>
+<label class="g" style="background:#2f3541;border-radius:8px;padding:9px 14px;font-size:13px;cursor:pointer">⬆ Restore<input type="file" id="rs" accept=".json,application/json" style="display:none"></label>
 </div>
 <div class="row" style="margin-top:6px"><span class="mu">Saved:</span><span id="saved"></span></div>
 <div id="st"></div>
@@ -144,6 +149,71 @@ var ROWS=[['Subscribers',function(a){return a.subs},fmt,'max'],['Total views',fu
  ['Title Hindi (देवनागरी) %',function(a){return a.tDev},function(n){return n.toFixed(0)+'%'},null],['Title mein # %',function(a){return a.tHash},function(n){return n.toFixed(0)+'%'},null],
  ['Description length (avg)',function(a){return a.dLen},function(n){return n.toFixed(0)},null],['Description mein link %',function(a){return a.dLink},function(n){return n.toFixed(0)+'%'},null],
  ['Description # (avg)',function(a){return a.dHash},function(n){return n.toFixed(1)},null],['Description mein timestamps %',function(a){return a.dTs},function(n){return n.toFixed(0)+'%'},null]];
+
+// ---------- "kya chala": median se 2x+ videos + din/time ----------
+var DAYS=['Ravi','Som','Mangal','Budh','Guru','Shukra','Shani'],SLOTS=[['Subah (5-11)',5,11],['Dopahar (11-16)',11,16],['Shaam (16-21)',16,21],['Raat (21-5)',21,29]];
+function kya(a,onlyLong){var V=a.V.filter(function(v){return !onlyLong||v.d>180}),r={n:V.length,V:V};if(V.length<6)return r;
+  var med0=med(V.map(function(v){return v.views}));r.med=med0;if(!med0)return r;
+  V.forEach(function(v){v.rel=v.views/med0});
+  r.hits=V.filter(function(v){return v.rel>=2}).sort(function(x,y){return y.views-x.views});
+  var rest=V.filter(function(v){return v.rel<2});r.rest=rest;
+  function st(L){var t=L.map(function(v){return v.title}),n=Math.max(1,L.length);return{len:avg(t.map(function(x){return x.length})),num:t.filter(function(x){return /\d/.test(x)}).length/n*100,q:t.filter(function(x){return /[?？]/.test(x)}).length/n*100,dev:t.filter(function(x){return DEV.test(x)}).length/n*100,dur:avg(L.map(function(v){return v.d}))/60}}
+  r.hs=st(r.hits);r.rs=st(rest);
+  var wh=words(r.hits.map(function(v){return v.title})),wr=words(rest.map(function(v){return v.title}));
+  r.hw=topN(wh,40).filter(function(x){return x[1]>=2&&x[1]/Math.max(1,r.hits.length)>(wr[x[0]]||0)/Math.max(1,rest.length)}).slice(0,8);
+  r.days=DAYS.map(function(){return[]});r.slots=SLOTS.map(function(){return[]});
+  V.forEach(function(v){var d=new Date(v.at),h=d.getHours();r.days[d.getDay()].push(v.rel);SLOTS.forEach(function(sl,i){if((h>=sl[1]&&h<sl[2])||(sl[2]>24&&h<sl[2]-24))r.slots[i].push(v.rel)})});
+  return r}
+function bars(labels,groups,minN){var sc=groups.map(function(g){return g.length>=minN?avg(g):null}),ok=sc.filter(function(x){return x!=null}),mx=ok.length?Math.max.apply(null,ok):0;
+  return labels.map(function(l,i){var s=sc[i],cl=(s!=null&&s===mx&&ok.length>1)?' best':'';
+    return '<div class="br'+cl+'"><span>'+l+'</span><div class="bb"><i style="width:'+(s==null?0:Math.max(3,s/Math.max(mx,1e-9)*100))+'%"></i></div><b>'+(s==null?'kam data ('+groups[i].length+')':s.toFixed(2)+'x · '+groups[i].length+' video')+'</b></div>'}).join('')}
+function kyaHtml(title,k,showHits){var h='<div class="box"><b>'+esc(title)+'</b>';
+  if(k.n<6||!k.med)return h+'<div class="mu" style="margin-top:6px">Kam data ('+k.n+' video) — kam se kam 6 video chahiye. Upar "kitni videos padhni" badhao ya long-filter hatao.</div></div>';
+  h+=' <span class="mu">median '+fmt(k.med)+' views · '+k.n+' video</span>';
+  if(showHits){h+='<div style="margin-top:8px"><b>🔥 Median se 2x+ chali ('+k.hits.length+' / '+k.n+')</b></div>';
+    if(!k.hits.length)h+='<div class="mu">Koi video median se 2x nahi gayi — views kaafi barabar hain.</div>';
+    h+=k.hits.slice(0,8).map(function(v){return '<div class="hit"><i>'+v.rel.toFixed(1)+'x</i><div><b style="font-weight:600">'+esc(v.title)+'</b><small class="mu">'+fmt(v.views)+' views · '+Math.round(v.d/60)+' min · '+esc(new Date(v.at).toISOString().slice(0,10))+'</small> <button class="g" data-ct="'+esc(v.title)+'" style="padding:2px 7px;font-size:11px">📋</button></div></div>'}).join('');
+    if(k.hits.length){h+='<div style="margin-top:8px" class="mu">Hit videos vs baaki: title length <b>'+k.hs.len.toFixed(0)+'</b> vs '+k.rs.len.toFixed(0)+' · number wale '+k.hs.num.toFixed(0)+'% vs '+k.rs.num.toFixed(0)+'% · ? wale '+k.hs.q.toFixed(0)+'% vs '+k.rs.q.toFixed(0)+'% · Hindi title '+k.hs.dev.toFixed(0)+'% vs '+k.rs.dev.toFixed(0)+'% · avg length '+k.hs.dur.toFixed(1)+' vs '+k.rs.dur.toFixed(1)+' min</div>';
+      if(k.hw.length)h+='<div style="margin-top:6px"><span class="k" style="min-width:0;margin-right:6px">Hit titles mein zyada aaye:</span>'+k.hw.map(function(w){return '<span class="chip" data-w="'+esc(w[0])+'">'+esc(w[0])+' <span class="mu">'+w[1]+'</span></span>'}).join('')+'</div>'}}
+  h+='<div style="margin-top:10px"><b>📅 Kaun sa din</b> <span class="mu">(video ke views ÷ channel ka median; 1.00x = normal)</span></div>'+bars(DAYS,[k.days[0],k.days[1],k.days[2],k.days[3],k.days[4],k.days[5],k.days[6]],2)
+    +'<div style="margin-top:8px"><b>🕐 Kaun sa time</b> <span class="mu">(tumhare device ka local time)</span></div>'+bars(SLOTS.map(function(x){return x[0]}),k.slots,2);
+  var tot=k.n;if(tot<20)h+='<div class="warn" style="margin-top:6px">⚠ Sirf '+tot+' video hain — din/time ka nateeja pakka nahi, 50-100 videos padh ke dekho.</div>';
+  else h+='<div class="mu" style="margin-top:6px;font-size:11px">Note: ye sirf sambandh dikhata hai, zaroori nahi ki din/time hi wajah ho (topic aur trend ka bhi asar hota hai).</div>';
+  return h+'</div>'}
+function kyaSection(){var ol=$('#lg').checked,h='<h2>🔥 Kya chala + kab upload karein</h2><div class="cg">';
+  DATA.forEach(function(a){h+=kyaHtml(a.name,kya(a,ol),true)});
+  if(DATA.length>1){var all=[];DATA.forEach(function(a){var k=kya(a,ol);if(k.V&&k.med)k.V.forEach(function(v){all.push(v.rel)})});
+    var d=DAYS.map(function(){return[]}),sl=SLOTS.map(function(){return[]});
+    DATA.forEach(function(a){var k=kya(a,ol);if(!k.days)return;k.days.forEach(function(g,i){d[i]=d[i].concat(g)});k.slots.forEach(function(g,i){sl[i]=sl[i].concat(g)})});
+    h+='<div class="box"><b>🧮 Sab channels mila ke</b> <span class="mu">('+all.length+' video)</span><div style="margin-top:8px"><b>📅 Din</b></div>'+bars(DAYS,d,3)+'<div style="margin-top:8px"><b>🕐 Time</b></div>'+bars(SLOTS.map(function(x){return x[0]}),sl,3)+'</div>'}
+  return h+'</div>'}
+
+// ---------- 📈 growth track (har compare ka snapshot, din mein ek) ----------
+var SS='cc:snap';
+function snaps(){try{return JSON.parse(localStorage.getItem(SS)||'{}')}catch(e){return{}}}
+function putSnaps(S){try{localStorage.setItem(SS,JSON.stringify(S))}catch(e){}}
+function saveSnap(a){var S=snaps(),L=S[a.id]||[],day=new Date().toISOString().slice(0,10),e={d:day,t:Date.now(),subs:a.subs,views:a.totalViews,vc:a.vcount,av:Math.round(a.avgViews),name:a.name},i=-1;
+  L.forEach(function(x,k){if(x.d===day)i=k});if(i>=0)L[i]=e;else L.push(e);S[a.id]=L.slice(-90);putSnaps(S)}
+function sgn(n){return n==null||isNaN(n)?'—':(n>0?'+':n<0?'−':'')+fmt(Math.abs(n))}
+function spark(L,key){var v=L.map(function(x){return x[key]}).filter(function(x){return x!=null});if(v.length<2)return '';
+  var mn=Math.min.apply(null,v),mx=Math.max.apply(null,v),w=90,h=26,pts=v.map(function(y,i){return (i/(v.length-1)*w).toFixed(1)+','+(h-2-(mx===mn?.5:(y-mn)/(mx-mn))*(h-4)).toFixed(1)}).join(' ');
+  return '<svg width="'+w+'" height="'+h+'" style="vertical-align:middle"><polyline fill="none" stroke="#6fa8ff" stroke-width="2" points="'+pts+'"/></svg>'}
+function growthSection(){var S=snaps(),rows=[],best=-1e18,any=false;
+  DATA.forEach(function(a){var L=S[a.id]||[];if(L.length<2){rows.push({a:a,n:L.length});return}any=true;
+    var f=L[0],pv=L[L.length-2],l=L[L.length-1],days=Math.max(1,(l.t-f.t)/864e5),r={a:a,L:L,n:L.length,f:f,pv:pv,l:l,days:days};
+    r.ds=(l.subs!=null&&pv.subs!=null)?l.subs-pv.subs:null;r.dsf=(l.subs!=null&&f.subs!=null)?l.subs-f.subs:null;r.spd=r.dsf!=null?r.dsf/days:null;r.vpd=(l.views-f.views)/days;r.dv=l.vc-f.vc;
+    if(r.spd!=null&&r.spd>best)best=r.spd;rows.push(r)});
+  var h='<h2>📈 Growth track</h2><div class="box"><div class="mu" style="font-size:12px;margin-bottom:6px">Har baar compare karne par aaj ka snapshot is browser mein save hota hai (din mein ek). Kuch din/hafte baad dobara compare karo — tab dikhega kaun kitna tez badh raha hai. Backup se data bach jata hai.</div>';
+  if(!any)return h+'<div class="warn">Abhi har channel ka sirf pehla snapshot save hua. Kal ya kuch din baad dobara compare karo, tab growth dikhegi.</div></div>';
+  h+='<div class="sc"><table><thead><tr><th>Channel</th><th>Snapshots</th><th>Subs (pichle se)</th><th>Subs (shuru se)</th><th>Subs / din</th><th>Views / din</th><th>Naye videos</th><th>Subs trend</th></tr></thead><tbody>';
+  rows.forEach(function(r){if(!r.L){h+='<tr><td>'+esc(r.a.name)+'</td><td colspan="7" class="mu" style="text-align:left">pehla snapshot save hua ('+r.n+')</td></tr>';return}
+    h+='<tr><td>'+esc(r.a.name)+'</td><td>'+r.n+' <span class="mu">('+esc(r.f.d)+' → '+esc(r.l.d)+')</span></td><td>'+sgn(r.ds)+'</td><td>'+sgn(r.dsf)+'</td><td class="'+(r.spd!=null&&r.spd===best&&rows.length>1?'best':'')+'">'+(r.spd==null?'—':sgn(Math.round(r.spd)))+'</td><td>'+sgn(Math.round(r.vpd))+'</td><td>'+(r.dv>0?'+':'')+r.dv+'</td><td>'+spark(r.L,'subs')+'</td></tr>'});
+  return h+'</tbody></table></div></div>'}
+function backup(){var b=new Blob([JSON.stringify({v:1,saved:rdS(),snaps:snaps()},null,1)],{type:'application/json'}),u=document.createElement('a');u.href=URL.createObjectURL(b);u.download='channel_compare_backup.json';document.body.appendChild(u);u.click();setTimeout(function(){URL.revokeObjectURL(u.href);u.remove()},1500);st('⬇ Backup download hua (saved channels + growth history)')}
+function restore(f){var rd=new FileReader();rd.onload=function(){try{var j=JSON.parse(rd.result);if(!j||typeof j!=='object')throw 0;
+  var L=rdS();(j.saved||[]).forEach(function(x){if(x&&x.v&&!L.some(function(y){return y.v===x.v}))L.push({n:String(x.n||x.v),v:String(x.v)})});try{localStorage.setItem(CS,JSON.stringify(L.slice(-40)))}catch(e){}
+  var S=snaps(),n=0;Object.keys(j.snaps||{}).forEach(function(id){var cur=S[id]||[];(j.snaps[id]||[]).forEach(function(e){if(e&&e.d&&!cur.some(function(y){return y.d===e.d})){cur.push(e);n++}});cur.sort(function(a,b){return a.t-b.t});S[id]=cur.slice(-90)});putSnaps(S);
+  drawSaved();if(DATA.length)render();st('⬆ Restore ho gaya ('+(j.saved||[]).length+' channel, '+n+' naye snapshot)')}catch(e){st('✖ Ye backup file sahi nahi hai')}};rd.readAsText(f)}
 // ---------- render ----------
 function render(){var o=$('#out');if(!DATA.length){o.innerHTML='';return}
   var h='<div class="box"><b>📊 Comparison</b> <span class="mu">(hara = sabse achha)</span><div class="sc"><table><thead><tr><th></th>'+DATA.map(function(a){return '<th>'+(a.thumb?'<img src="'+esc(a.thumb)+'">':'')+esc(a.name)+'<br><span class="mu">'+a.n+' videos padhi</span></th>'}).join('')+'</tr></thead><tbody>';
@@ -159,7 +229,8 @@ function render(){var o=$('#out');if(!DATA.length){o.innerHTML='';return}
     +'<div style="margin-top:8px"><span class="k">Top tags</span>'+(a.tags.length?a.tags.map(function(w){return '<span class="tag" data-w="'+esc(w[0])+'">'+esc(w[0])+' <span class="mu">'+w[1]+'</span></span>'}).join(''):'<span class="mu">(videos mein tags public nahi)</span>')+'</div>'
     +(a.kw?'<div style="margin-top:8px"><span class="k">Channel keywords</span><span class="mu">'+esc(a.kw)+'</span></div>':'')
     +'<div style="margin-top:8px"><b>📝 Channel description</b> <button class="g" data-cd="'+ci+'" style="padding:2px 8px;font-size:11px">📋 Copy</button><div class="cdesc">'+esc(a.desc||'(khaali)')+'</div></div></div>'});
-  h+='</div>';o.innerHTML=h;$('#csv').disabled=false;
+  h+='</div>'+kyaSection()+growthSection();o.innerHTML=h;$('#csv').disabled=false;
+  o.querySelectorAll('[data-ct]').forEach(function(b){b.onclick=function(){copy(b.dataset.ct)}});
   o.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){var p=b.dataset.t.split('-');copy(DATA[p[0]].top[p[1]].title)}});
   o.querySelectorAll('[data-d]').forEach(function(b){b.onclick=function(){var p=b.dataset.d.split('-');copy(DATA[p[0]].top[p[1]].desc||'(description khaali)')}});
   o.querySelectorAll('[data-cd]').forEach(function(b){b.onclick=function(){copy(DATA[b.dataset.cd].desc)}});
@@ -172,7 +243,7 @@ async function run(){var lines=$('#inp').value.split('\n').map(parse).filter(Boo
   for(var i=0;i<lines.length;i++){var q=lines[i],lab=q.id||q.handle||q.name;
     try{st('⏳ ('+(i+1)+'/'+lines.length+') '+lab+' — channel dhundh raha…');var ch=await resolve(q);
       st('⏳ ('+(i+1)+'/'+lines.length+') '+ch.snippet.title+' — '+n+' videos padh raha…');var vs=await videosOf(ch,n);
-      if(!vs.length)throw new Error('is channel mein public video nahi mili');DATA.push(analyse(ch,vs));addSaved(q,ch)}
+      if(!vs.length)throw new Error('is channel mein public video nahi mili');var an=analyse(ch,vs);DATA.push(an);addSaved(q,ch);saveSnap(an)}
     catch(e){fail.push(lab+': '+e.message);if(/quota|key|referrer|referer/i.test(e.message))break}}
   render();st((DATA.length?'✔ '+DATA.length+' channel compare ho gaye. ':'')+(fail.length?'\n⚠ '+fail.join('\n⚠ '):''));$('#go').disabled=false}
 // ---------- saved ----------
@@ -219,7 +290,7 @@ function csv(){var q=function(v){v=String(v==null?'':v);return '"'+v.replace(/"/
   DATA.forEach(function(a){a.top.forEach(function(v){L.push([a.name,v.title,v.views,'https://youtu.be/'+v.id].map(q).join(','))})});
   var b=new Blob(['\ufeff'+L.join('\n')],{type:'text/csv;charset=utf-8'}),u=document.createElement('a');u.href=URL.createObjectURL(b);u.download='channel_compare.csv';document.body.appendChild(u);u.click();setTimeout(function(){URL.revokeObjectURL(u.href);u.remove()},1500)}
 // ---------- wire ----------
-$('#go').onclick=run;$('#csv').onclick=csv;$('#chk').onclick=check;
+$('#go').onclick=run;$('#bk').onclick=backup;$('#rs').onchange=function(e){var f=e.target.files[0];e.target.value='';if(f)restore(f)};$('#lg').onchange=function(){if(DATA.length)render()};$('#csv').onclick=csv;$('#chk').onclick=check;
 $('#clr').onclick=function(){DATA=[];$('#inp').value='';$('#csv').disabled=true;render();st('')};
 $('#key').value=(function(){try{return localStorage.getItem(KS)||''}catch(e){return''}})();
 $('#ksave').onclick=function(){var v=$('#key').value.trim();try{if(v)localStorage.setItem(KS,v);else localStorage.removeItem(KS)}catch(e){}st(v?'✔ Key save ho gayi (Studytube mein bhi yahi chalegi).':'Khaali — default key use hogi.')};

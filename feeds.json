@@ -1,6 +1,6 @@
 {
  "_help": "feeds: url, name (sirf tumhare dekhne ke liye), official (true = board/team ki apni site; tabhi Confirmed label), enabled. tag_rules: keyword (chhote akshar) -> tag. Nayi feed jodni ho to ek object copy karo. Official feeds (C151): Google News ke 'site:' search se, sirf board/team ki apni site; ye 'Confirmed' label deti hain (rumor jaisa shabd ho to phir bhi Rumor). Agar kisi site ki khabar Google News mein aati hi nahi to us feed mein kuch nahi dikhega (fail nahi).",
- "max_age_days": 14,
+ "max_age_days": 3,
  "feeds": [
   {
    "name": "Google News: retention",

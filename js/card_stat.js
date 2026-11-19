@@ -3,6 +3,8 @@
 (function(){const C=window.CORE,E=C.ease;
 const FR='02_overlays/ov_photo_frame_white',VG='02_overlays/ov_vignette_dark',TAG='02_overlays/ov_tag_breaking_news_hi',
  RB='02_overlays/ov_ribbon_subscribe_now',lt=d=>'02_overlays/ov_lowerthird_'+(d.lt||'red'),bgk=d=>d.bg||'01_backgrounds/bg_stadium_sunset_blur';
+const LTC={red:'#c4161c',blue:'#1f5fd0',purple:'#6a3fc0'};
+function lowerT(ctx,d,x,y){if(C.img(lt(d)))C.drawImg(ctx,lt(d),x,y);else C.fbLower(ctx,x,y,LTC[d.lt||'red']||LTC.red);}
 C.CARDS.stat={
  assets:d=>[bgk(d),FR,VG,lt(d),C.PH,RB].concat(d.tag?[TAG]:[]),
  draw(ctx,t,d,sc){
@@ -36,7 +38,7 @@ C.CARDS.stat={
   // lower-third: bar y0-119 headline, strip y120-189 sub (dark text)
   const lp=E.out(C.prog(t,0.5,1.0)),lx=fl?60:W-1560-60,ly=H-190-40;
   ctx.save();ctx.translate(-sg*(1-lp)*1700,0);
-  if(fl){ctx.save();ctx.translate(lx+1560,ly);ctx.scale(-1,1);C.drawImg(ctx,lt(d),0,0);ctx.restore();}else C.drawImg(ctx,lt(d),lx,ly);
+  if(fl){ctx.save();ctx.translate(lx+1560,ly);ctx.scale(-1,1);lowerT(ctx,d,0,0);ctx.restore();}else lowerT(ctx,d,lx,ly);
   if(d.head){const f=C.fitText(ctx,d.head,1480,1,72,40,800);C.text(ctx,f.lines[0],lx+(fl?90:40),ly+82,{px:f.px,color:'#fff'});}
   if(d.sub){const f=C.fitText(ctx,d.sub,1480,1,48,30,700);C.text(ctx,f.lines[0],lx+(fl?90:40),ly+164,{px:f.px,color:'#14213d'});}
   ctx.restore();

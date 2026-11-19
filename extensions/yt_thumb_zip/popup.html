@@ -1,0 +1,27 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><title>Thumbnail ZIP</title>
+<style>
+body{width:380px;margin:0;padding:12px;background:#111;color:#eee;font:14px system-ui,sans-serif}
+h1{font-size:16px;margin:0 0 8px}
+textarea{width:100%;box-sizing:border-box;height:130px;background:#000;color:#eee;border:1px solid #444;border-radius:8px;padding:8px;font-size:13px}
+button{background:#333;color:#fff;border:0;border-radius:8px;padding:8px 12px;font-size:14px;cursor:pointer;margin:3px 3px 3px 0}
+button.go{background:#e11;font-weight:600}button:disabled{opacity:.5}
+select,input[type=number]{background:#000;color:#eee;border:1px solid #444;border-radius:6px;padding:4px}
+.row{margin:6px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#st{font-size:13px;opacity:.9;margin-top:6px;white-space:pre-wrap}
+#bar{height:6px;background:#333;border-radius:3px;overflow:hidden;margin-top:6px}#bar i{display:block;height:100%;width:0;background:#2a8a3a}
+.sm{font-size:12px;opacity:.7}
+</style></head><body>
+<h1>🖼 YouTube Thumbnail → ZIP</h1>
+<textarea id="t" placeholder="YouTube links ya video ID, ek line mein ek (ya space se alag).&#10;watch?v=..., youtu.be/..., shorts/..., ya 11-akshar ki ID"></textarea>
+<div class="row">
+  <button id="grab">📥 Is tab ke saare video links lo</button>
+</div>
+<div class="row"><span class="sm">Pehle scroll karo (channel/search page ke liye):</span><input type="number" id="sc" value="3" min="0" max="40" style="width:55px"><span class="sm">baar</span></div>
+<div class="row"><span>Quality:</span>
+  <select id="q"><option value="max">Sabse badi (HD 1280x720, na mile to chhoti)</option><option value="hq">Normal (480x360)</option></select></div>
+<div class="row"><label><input type="checkbox" id="tn" checked> File ke naam mein title bhi daalo</label></div>
+<div class="row"><button class="go" id="dl">⬇ ZIP download karo</button><button id="cpt">📋 Sirf titles copy</button><button id="clr">🗑 Saaf</button><span class="sm" id="cnt"></span></div>
+<div id="bar"><i></i></div>
+<div id="st"></div>
+<script src="zip.js"></script><script src="docx.js"></script><script src="popup.js"></script>
+</body></html>

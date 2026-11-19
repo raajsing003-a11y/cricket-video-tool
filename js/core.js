@@ -95,6 +95,18 @@ C.text=function(ctx,s,x,y,o){
   if(o.stroke){ctx.lineWidth=o.stroke;ctx.strokeStyle=o.strokeColor||'#000';ctx.lineJoin='round';ctx.strokeText(s,x,y);}
   ctx.fillStyle=o.color||'#fff';ctx.fillText(s,x,y);ctx.restore();
 };
+// C184: design helpers. rounded rect, glass panel, aur overlay PNG na ho to code se bane bars.
+C.rr=function(ctx,x,y,w,h,r){r=Math.max(0,Math.min(r,w/2,h/2));ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();};
+C.panel=function(ctx,x,y,w,h,o){o=o||{};const r=o.r!=null?o.r:18;ctx.save();
+ ctx.shadowColor='rgba(0,0,0,.45)';ctx.shadowBlur=26;ctx.shadowOffsetY=8;
+ const g=ctx.createLinearGradient(x,y,x+w,y);g.addColorStop(0,o.c1||'rgba(8,12,34,.86)');g.addColorStop(1,o.c2||'rgba(24,30,66,.70)');
+ C.rr(ctx,x,y,w,h,r);ctx.fillStyle=g;ctx.fill();ctx.shadowColor='transparent';
+ ctx.lineWidth=2;ctx.strokeStyle='rgba(255,255,255,.14)';ctx.stroke();
+ if(o.accent){ctx.save();C.rr(ctx,x,y,w,h,r);ctx.clip();ctx.fillStyle=o.accent;const aw=o.aw||14;ctx.fillRect(o.right?x+w-aw:x,y,aw,h);ctx.restore();}
+ ctx.restore();};
+C.fbLower=function(ctx,x,y,col){ctx.save();ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=22;ctx.shadowOffsetY=6;
+ C.rr(ctx,x,y,1560,120,16);ctx.fillStyle=col;ctx.fill();ctx.shadowColor='transparent';
+ C.rr(ctx,x+30,y+120,1500,70,12);ctx.fillStyle='#f4f6fa';ctx.fill();ctx.restore();};
 C.countUp=(from,to,p,dec)=>(from+(to-from)*C.ease.out(C.ease.clamp(p))).toFixed(dec||0);
 
 
