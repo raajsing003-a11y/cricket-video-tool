@@ -1,17 +1,22 @@
-GitHub update (C172 -> C176) — sirf ye 7 files
+GitHub update (C172 -> C178) — sirf ye 13 files
+
 NAYI files:
+  prediction/index.html         (match prediction form -> scenes JSON; news se alag folder)
+  prediction/README.md
+  js/card_predict.js            (prediction cards: winprob, h2h, pitch, xi)
   js/photo_variants.js          (kai photos + auto-rotate + cameo)
   tools/competitor-grab.html    (competitor title/thumbnail + saved channels)
   scripts/competitor_grab.py    (channel ke saare videos, yt-dlp)
   docs/PHOTO_VARIANTS.md
-BADLI (purani ko replace karo):
-  index.html   (2 line: photo_variants.js + Competitor link)
-  js/photos.js (1 line)
-  docs/TRACKER.md
+
+BADLI files (purani ko replace karo):
+  index.html, js/photos.js, js/scene_editor.js, js/scenes_check.js,
+  docs/TRACKER.md, docs/SCENES_JSON_SCHEMA.md
 
 Steps (GitHub website):
 1. Repo kholo -> Add file -> Upload files.
-2. Is zip ko extract karo. GITHUB_UPDATE ke ANDAR ke folders (js, tools, scripts, docs) aur index.html ko drag karke daalo (folder structure same rehta hai).
+2. Zip extract karo. GITHUB_UPDATE ke ANDAR ke folders (prediction, js, tools, scripts, docs) aur index.html drag karke daalo.
 3. Commit changes. 1-2 minute baad site par Ctrl+Shift+R.
+4. Agar pehle C177 wala root par predict.html upload kar chuki ho to use delete kar do (ab prediction/index.html hai).
 
-DHYAN: poora complete zip repo par upload MAT karo. Uske 116 purane assets (icons, city photos, logos, overlays, stamps) tumhari original zip mein corrupt the, isliye wo complete zip mein nahi hain. Repo ka assets/ folder touch mat karo.
+DHYAN: complete zip poora repo par upload MAT karo. Uske 116 purane assets (icons, city photos, logos, overlays, stamps) tumhari original zip mein corrupt the, isliye wo complete zip mein nahi hain. Repo ka assets/ folder touch mat karo.

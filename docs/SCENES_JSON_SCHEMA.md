@@ -221,3 +221,10 @@ WARNING (load hoga): dur bahut chhota/lamba, bahut lamba text, unknown extra fie
 
 ## C172 — script scenes.json ke andar
 Pehle scene par top-level key `"script"` (string) rakho = poori voice-over script (chunks ke beech ek line mein `---`). **⬇ JSON load** par ye apne aap teleprompter ki script ban jaati hai (localStorage `cvt_tp_script`); teleprompter.html kholo (khula ho to refresh). Card `data` mein nahi, scene ke top-level mein. Claude har scenes.json ke pehle scene mein ye zaroor rakhe.
+
+## C177 — Match prediction cards (js/card_predict.js) + predict.html
+- `winprob`: `{title,a,b,pa,pb?,ca?,cb?,note}` — tug-of-war bar + count-up %; ca/cb = team chip asset (`04_team_chips/chip_kolkata`).
+- `h2h`: `{title,a,b,wa,wb,nr?,fa?,fb?,note}` — jeet count-up + last-5 dots (fa/fb = "WWLWL").
+- `pitch`: `{title,type,items:['label|value'](2-4),toss?,note}`.
+- `xi`: `{title,team,c:y|g|b|r,players:['Naam','Naam (C)','Naam|slot_id'](1-11),note}` — photo slot default `custom_<naam>` (known player ho to library id). Har card par "प्रेडिक्शन — पक्का नहीं" label apne aap.
+- prediction/index.html: form bharo -> {script, scenes} JSON (h2h, pitch, xi A, xi B, winprob). Photo variants/rotation XI par bhi lagte hain.

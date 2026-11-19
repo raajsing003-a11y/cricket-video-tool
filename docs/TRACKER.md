@@ -982,3 +982,7 @@ js/photo_variants.js (nayi): multi-photo per player, scene-wise auto-rotate, aut
 ## C175 — Competitor title+thumbnail grab: tools/competitor-grab.html (channel/video links -> titles, views, thumbs, ZIP, naye-titles prompt) + scripts/competitor_grab.py (saare videos, yt-dlp). Parser+ZIP headless test pass; live YouTube fetch is not tested here (sandbox mein YouTube band) — asli Chrome mein check baaki.
 
 ## C176 — Competitor channels save: tools/competitor-grab.html mein ⭐ Saved channels (localStorage, chip click = latest lao, ✕ hatao, 'sab lao', list copy backup). Reload par persist test pass.
+
+## C177 — Match prediction: js/card_predict.js (winprob/h2h/pitch/xi) + prediction/index.html (form -> JSON, news se alag folder) + registry (scenes_check, scene_editor, index). Headless render check pass (5 scenes). Asli photos ke saath XI ek baar dekhna baaki.
+
+## C178 — Prediction news se alag: predict.html -> prediction/index.html (+ prediction/README.md). news.html/daily.html mein prediction ka koi reference nahi.
