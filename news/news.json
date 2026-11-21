@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T14:44:47.591749+00:00",
+ "updated": "2026-11-21T14:45:25.138924+00:00",
  "feeds_ok": [
   "Google News: retention",
   "Google News: release/trade",
@@ -29,29 +29,29 @@
  "feeds_fail": [],
  "feed_secs": {
   "Google News: retention": 0.4,
-  "Google News: release/trade": 0.5,
+  "Google News: release/trade": 0.4,
   "Google News: auction": 0.5,
   "Google News: India match": 0.5,
-  "Google News: IPL Hindi": 0.2,
-  "ESPNcricinfo (all stories)": 0.5,
+  "Google News: IPL Hindi": 0.3,
+  "ESPNcricinfo (all stories)": 0.9,
   "Site: Cricbuzz": 0.3,
   "Site: ESPNcricinfo (site)": 0.2,
   "Site: TheSportsTak": 0.3,
   "Site: News18 Cricket": 0.4,
   "Site: Times of India Cricket": 0.4,
   "Site: India Today Cricket": 0.3,
-  "Site: Hindustan Times Cricket": 0.3,
-  "Site: CricTracker": 0.3,
+  "Site: Hindustan Times Cricket": 0.5,
+  "Site: CricTracker": 0.4,
   "Site: NDTV Sports Cricket": 0.3,
-  "Site: Sportskeeda Cricket": 0.5,
+  "Site: Sportskeeda Cricket": 0.4,
   "Official: BCCI (bcci.tv)": 0.4,
   "Official: IPL (iplt20.com)": 0.3,
   "Official: ICC (icc-cricket.com)": 0.4,
   "Official: IPL teams (10 sites)": 0.4,
-  "Google News: IPL all (1d)": 0.4,
+  "Google News: IPL all (1d)": 0.5,
   "Google News: IPL captain/squad/coach (1d)": 0.4,
-  "Google News: IPL franchise news (1d)": 0.3,
-  "Google News: IPL Hindi daily (1d)": 0.3
+  "Google News: IPL franchise news (1d)": 0.4,
+  "Google News: IPL Hindi daily (1d)": 0.4
  },
  "items": [
   {
@@ -103,7 +103,7 @@
    "cluster": "9b2819da119c",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.99
+   "score": 2.98
   },
   {
    "id": "b213734efe0f",
@@ -392,7 +392,7 @@
    "cluster": "782cbf61fe64",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.93
+   "score": 2.92
   },
   {
    "id": "e9d8d742a6a0",
@@ -410,6 +410,23 @@
    "recent_n": 1,
    "sources_n": 1,
    "score": 2.92
+  },
+  {
+   "id": "647bc8e148c6",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Upcoming NEP vs IRE cricket match (6/6/2027): NEP vs IRE ball by ball commentary, NEP vs IRE stats | Cricket News",
+   "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOdmNfMlNjQTd5TUxVcXRKeXdUNG5pVkszV1IyU29HWkNzblgxSGpRWXNyU2RSbURrR0dGZmJuVUVDY1JIMTV2ZEhPRGFzWjlyakR2ZmhXTGllNmxqR1d0V2JkdG5HSzlzVmZWaHNhbFpRY0pZTTBDczFaaXNnWGhlc2x6ZjFzU3MxbVN3UzZRaUxwOVljak44WlJuSHp3VGwzaVdvNUVTNi0zTWFsZzZwMVRhOFJaTnhqaWZ0VHBlQlFuNnZrNDlnTlRxMHdFQ0pfTUVESmVFVzZnUV95N3pqRGlEcHQ3dmpyZW45NFM1VUE3NFk?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-21T13:44:10+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "6585102d034d",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.91
   },
   {
    "id": "a2af4b34f535",
@@ -597,7 +614,7 @@
    "cluster": "f905e351c565",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.91
+   "score": 2.9
   },
   {
    "id": "0a124600787c",
@@ -614,6 +631,23 @@
    "cluster": "fd5aed6649e6",
    "recent_n": 1,
    "sources_n": 3,
+   "score": 6.9
+  },
+  {
+   "id": "11407137aa1f",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Corbin Bosch Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5vM2xoaHpiQWtVaTkybklQQzRxN05rNjhOSG9nSUFGQlQxTVZ1WEpZT1hNaVYza2dOMG5uSm9DRS1EamV5OEdTRVR5S0FEUTBxQXlJTDVlWUhTWmlTdkJJNWRMNHV3RGdaeGx2N0VzVnowMFF5VXJUTA?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-21T13:33:40+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "11407137aa1f",
+   "recent_n": 1,
+   "sources_n": 1,
    "score": 6.9
   },
   {
@@ -787,23 +821,6 @@
    "score": 6.86
   },
   {
-   "id": "a9b095959a91",
-   "seen": "2026-11-21T14:44:47.591749+00:00",
-   "title": "IRE-W vs NED-W Super Six - Match 9 Seven Districts Ground, Ajman 23 November 2026",
-   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQRVhWeml4Y05WbnRtVVNaRmZfVnppRDFFMlg0b3ppNkRhMHRDMFA0eEsycDhGSDIzMFpLN2l0TWFRMldlR21EVWZOVUVWVVlMTGxKTlFEMGJvOU1zeWFISHFIRENXVHM2ZWI5c1lZdkJNSTI1d0IyT2ZuQ0JsLXJXN3JxQ1lVYnZHX08xYVh1dWh0OWJhY0V3UVF1RkJyZnpiTGl2eEQ5RUhyOVBPRTFaWTR0YXUzeFQxRER6SWVmX0tkVWRyVTBvcGRwSENndWNZ?oc=5",
-   "source": "SportsTak",
-   "published": "2026-11-21T13:05:06+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "a68e19f1715e",
-   "recent_n": 1,
-   "sources_n": 1,
-   "score": 2.86
-  },
-  {
    "id": "fa4e3134f2b7",
    "seen": "2026-11-21T13:22:28.268069+00:00",
    "title": "Nikhil Chaudhary's all-round heroics help Australia take 1-0 lead in T20I series vs England",
@@ -889,6 +906,23 @@
    "score": 2.85
   },
   {
+   "id": "a9fe0c4d7544",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "'My parents came from India last night': Nikhil Chaudhary's emotional Player of the Match moment at MCG",
+   "link": "https://news.google.com/rss/articles/CBMijgJBVV95cUxQbklURlFRSy15QzlDMDB1RlVoUkxPYlpvdjNqdGEweEpMWjBBSU85cnBmZjBaZ3M1MzdMdG0wZ0R2dG9DLWhNUVlKR3V6RmYxZm4tQTI2ZFhuY05Gb0Y0Tk5MejBUSTZaNlE2MG1uREZVclUxd3RocHRUT3VDWDhkWjRqVWRYYVNvamJ2Q3lLUUIwOVZnWjEzZzZNSEhWTmF0d2RUVEJ4NzNxV2RsRDJmVE1aYmhvUkZhcUxCUm1iRDN0Y2p6VTNfd0w1WlhCUkVRbU9Pb1B3VkluRzJIdU15cXhTQ1NleGpKUTEwcjFhTnI1Q3J1YV9ZZmVnbGI2OVlfd3JQVmtoUTBLRTNpdGfSAZMCQVVfeXFMTjNRT3g2RjZaVV9oS2hLMUpzLVowNTlFVmU2SVR0N0YtbXhXdTYxY2V5dWNiZ1puWmNpblJmYW9LRzI2Z0EteTk0TEZkQzlUekpDcUVrZVBCTV9xZ0pRVVJSeFVEOHUyeURKRHZTeVFzc0M4NUZUQlNVZ0l5eDRFT2loQWpYa19NUUxVb0xlblkyQ1J2VXAyekhNY0lNZ3B1Q1FwNjhyeWxUSGU1Wk9pTDVQVHBOSGczeWVic3lnSXgxZllJYjZURlFVZmR0R1JSZVcyaGJSbkJWT2V2SDQ1U1NaTXBXNU9qemhOLVdvX2U2NDJuQjU5a3VPVmlUbjMwZ1NjcEI2QXdFcFhRQVdISTJTWm8?oc=5",
+   "source": "The Times of India",
+   "published": "2026-11-21T13:00:00+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "ce1ca3ce108b",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.85
+  },
+  {
    "id": "7f720573f6e3",
    "seen": "2026-11-21T13:22:28.268069+00:00",
    "title": "‘Class player’: David Miller, Heinrich Klaasen pay tribute to the ‘finisher’ MS Dhoni",
@@ -904,23 +938,6 @@
    "recent_n": 1,
    "sources_n": 1,
    "score": 2.85
-  },
-  {
-   "id": "a8337224da4c",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "India Blind Cricket Team Protests After Pakistan Handed Asia Cup Title Controversially - NDTV Sports",
-   "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOM0pQUm1LTXJtdkpyR3BfSDEyZkx3TF9NNjhDTkxBWEppMmp4WDdVSHlKdF9nbkVCekUwWk90OHJXbmNNTnpiNlgtNzNGQ3NzYTQxQlNQV21sQmFzUnh3a0ROcmdjX2pFWXZzdHBGdXZMUkVJZk9sNG9aeGhCM2o1bjBWYUgxMVhNYUw5ZDQ2a0VsVjJpMzRBT1ZaQ0NwZE5pMFh2OHFnbzlXYWYzNWtFN21aaGZhRjFLdUNfMmJBQ3NpOFp1SzV1VV8xcUt5d09sNmYxLWxZOHJFV1E1UG1OYWphQ2pSNXlRMjUyWg?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-21T12:56:52+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "464e3361a1e5",
-   "recent_n": 5,
-   "sources_n": 22,
-   "score": 44.85
   },
   {
    "id": "65d834c88fa8",
@@ -955,23 +972,6 @@
    "recent_n": 1,
    "sources_n": 1,
    "score": 5.85
-  },
-  {
-   "id": "7b0c245cb350",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "Cricket India A vs Nepal LIVE Score, Asia Cup Rising Stars Updates - NDTV Sports",
-   "link": "https://news.google.com/rss/articles/CBMirwJBVV95cUxQdExOeVVJMlpwRUFzRDd6Zy1BQVpSajVnNnlvSnJ5R0k0U29VdGRHbG5RLWtIMERFOGFiX0FLMmNHMWlJcGZOc1BYS3djX2xmbWVuMDN6eFNqZGhEUHdPMFB4SHgwM0g0SXhXRmJlSElxZ2xRLWF3cHo5anRmNlBHcUljTlN2ZHk2MENLVGZPV29rVGdFaUJ2SWY3OVJuZTBIOW9jVWdXVkliMFhsMHZOb29qQmItN3NpQ1ZoS3U5VFdsc25PLXRvd1VGSUZXdElENkI5aDNSOG1rYXNKQTV5X09OZm9iZnhDVlczTXhXcERmZEIxWVFzMU1hT3d2SjBZcUYtemtNNXBLaXl4a1lRam5aM3pPeUhWOHAzZ3ZIN0tLN1FuQXFYYzRrUy1tbzg?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-21T12:52:12+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "464e3361a1e5",
-   "recent_n": 5,
-   "sources_n": 22,
-   "score": 44.84
   },
   {
    "id": "323eeac8ad2c",
@@ -1107,7 +1107,24 @@
    "cluster": "801f1c4a9eb3",
    "recent_n": 1,
    "sources_n": 1,
-   "score": 2.83
+   "score": 2.82
+  },
+  {
+   "id": "0a220ba44a5f",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Rajeev Nayyar Photos -Get Latest Rajeev Nayyar Photos | Cricket News",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9qYnR0VzdLT1NpRUV6WXRtQ1ludVlCaUFxZ1pFdFZhRWZLMDM5SW1ZWnloTk1yeENuaExOUldkT25RUW5mUzc2SVBUMkE2Vk5GQ1hZT1VkVHRqVHQ4OGRIMGtFTFAwUEhxbklPRlVNaVpDZnAwOVkwNXRVNjZsUQ?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-21T12:39:01+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "0a220ba44a5f",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.82
   },
   {
    "id": "9104f43708b8",
@@ -1195,6 +1212,24 @@
    "score": 6.82
   },
   {
+   "id": "2d9864011eed",
+   "seen": "2026-11-21T11:56:44.270424+00:00",
+   "title": "Rajasthan Royals Squad - Auction Tracker IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5NSE5uME9ncU1NUGVqY25ZOGx5ZXhFaUd5ZG9SQkdoWmFYOVM3WFJoWHoxVXRnc3dGZkFzdW5iVnhSdDlhSWdtSnFBMHY1T2NMSFlNSDRLdzFXX0hPWVdfU2ZheGF5MTNZSzR1Nms5STV2akE?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-21T12:36:04+00:00",
+   "summary": "",
+   "tags": [
+    "Auction",
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "6a73f5ce8c63",
+   "recent_n": 1,
+   "sources_n": 2,
+   "score": 8.82
+  },
+  {
    "id": "beb4636b65d9",
    "seen": "2026-11-21T13:22:28.268069+00:00",
    "title": "Ireland vs. Netherlands | ICC Women's Emerging Nations Trophy, 2026",
@@ -1206,10 +1241,10 @@
     "Other"
    ],
    "label": "Confirmed",
-   "cluster": "8eaa07cb5ab6",
+   "cluster": "ee999dba4f80",
    "recent_n": 1,
-   "sources_n": 5,
-   "score": 13.81
+   "sources_n": 2,
+   "score": 7.81
   },
   {
    "id": "29457f2bed7c",
@@ -1243,7 +1278,7 @@
    "cluster": "7f481b8afb66",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 6.81
+   "score": 6.8
   },
   {
    "id": "67daf709dd9c",
@@ -1330,6 +1365,23 @@
    "recent_n": 5,
    "sources_n": 22,
    "score": 46.8
+  },
+  {
+   "id": "5221a5127530",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Rajeev Nayyar Profile - Stats, ICC Ranking, Records, Awards, Age Career | Rajeev Nayyar Latest News | Cricket News",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5DQ3lyRGFiVVYzTEFudUp3cU1pTHhiUnlONE1ZbmJVelZ6elVIcmZVNVVpVFNFdTZwYzFodEZRcmlQVFl3cjlKUTNrelJiSDB5dHJramxCNVRIZkxuM1Yyalp0Y01TRjhTek44RWxINkIxY3NL?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-21T12:13:04+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "9bce50467bea",
+   "recent_n": 1,
+   "sources_n": 1,
+   "score": 2.79
   },
   {
    "id": "293f761e0a01",
@@ -1708,6 +1760,23 @@
    "score": 12.73
   },
   {
+   "id": "a8337224da4c",
+   "seen": "2026-11-21T11:56:44.270424+00:00",
+   "title": "India Blind Cricket Team Protests After Pakistan Handed Asia Cup Title Controversially - NDTV Sports",
+   "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOM0pQUm1LTXJtdkpyR3BfSDEyZkx3TF9NNjhDTkxBWEppMmp4WDdVSHlKdF9nbkVCekUwWk90OHJXbmNNTnpiNlgtNzNGQ3NzYTQxQlNQV21sQmFzUnh3a0ROcmdjX2pFWXZzdHBGdXZMUkVJZk9sNG9aeGhCM2o1bjBWYUgxMVhNYUw5ZDQ2a0VsVjJpMzRBT1ZaQ0NwZE5pMFh2OHFnbzlXYWYzNWtFN21aaGZhRjFLdUNfMmJBQ3NpOFp1SzV1VV8xcUt5d09sNmYxLWxZOHJFV1E1UG1OYWphQ2pSNXlRMjUyWg?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-21T11:26:52+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "464e3361a1e5",
+   "recent_n": 5,
+   "sources_n": 22,
+   "score": 44.72
+  },
+  {
    "id": "f9d19f956870",
    "seen": "2026-11-21T11:56:44.270424+00:00",
    "title": "Bhavika Ahire to Lead India U-19 Women in Five-Match T20I Series Against England",
@@ -2015,6 +2084,23 @@
    "score": 2.7
   },
   {
+   "id": "7b0c245cb350",
+   "seen": "2026-11-21T11:56:44.270424+00:00",
+   "title": "India A vs Nepal LIVE Score - NDTV Sports",
+   "link": "https://news.google.com/rss/articles/CBMirwJBVV95cUxQdExOeVVJMlpwRUFzRDd6Zy1BQVpSajVnNnlvSnJ5R0k0U29VdGRHbG5RLWtIMERFOGFiX0FLMmNHMWlJcGZOc1BYS3djX2xmbWVuMDN6eFNqZGhEUHdPMFB4SHgwM0g0SXhXRmJlSElxZ2xRLWF3cHo5anRmNlBHcUljTlN2ZHk2MENLVGZPV29rVGdFaUJ2SWY3OVJuZTBIOW9jVWdXVkliMFhsMHZOb29qQmItN3NpQ1ZoS3U5VFdsc25PLXRvd1VGSUZXdElENkI5aDNSOG1rYXNKQTV5X09OZm9iZnhDVlczTXhXcERmZEIxWVFzMU1hT3d2SjBZcUYtemtNNXBLaXl4a1lRam5aM3pPeUhWOHAzZ3ZIN0tLN1FuQXFYYzRrUy1tbzg?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-21T11:07:19+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "464e3361a1e5",
+   "recent_n": 5,
+   "sources_n": 22,
+   "score": 44.7
+  },
+  {
    "id": "9a0cad54bbf7",
    "seen": "2026-11-21T11:56:44.270424+00:00",
    "title": "India vs Pakistan: Who will win the Asia Cup Rising Stars clash?",
@@ -2029,7 +2115,7 @@
    "cluster": "464e3361a1e5",
    "recent_n": 5,
    "sources_n": 22,
-   "score": 47.7
+   "score": 47.69
   },
   {
    "id": "3a73409ee834",
@@ -2233,7 +2319,7 @@
    "cluster": "58824bbdba9e",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.68
+   "score": 4.67
   },
   {
    "id": "1881ff7e9cb5",
@@ -2419,10 +2505,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "5b824eeae097",
+   "cluster": "982c7c8a5f19",
    "recent_n": 0,
-   "sources_n": 2,
-   "score": 4.66
+   "sources_n": 1,
+   "score": 2.66
   },
   {
    "id": "842e6783dcb2",
@@ -2436,10 +2522,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "5b824eeae097",
+   "cluster": "982c7c8a5f19",
    "recent_n": 0,
-   "sources_n": 2,
-   "score": 4.66
+   "sources_n": 1,
+   "score": 2.66
   },
   {
    "id": "285d5a788320",
@@ -2522,7 +2608,7 @@
    ],
    "label": "Rumor",
    "cluster": "6585102d034d",
-   "recent_n": 0,
+   "recent_n": 1,
    "sources_n": 1,
    "score": 2.65
   },
@@ -2558,7 +2644,7 @@
    "cluster": "ab27d29a89b3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.65
+   "score": 2.64
   },
   {
    "id": "44b54ada515b",
@@ -2623,10 +2709,10 @@
     "Other"
    ],
    "label": "Confirmed",
-   "cluster": "8eaa07cb5ab6",
+   "cluster": "ee999dba4f80",
    "recent_n": 1,
-   "sources_n": 5,
-   "score": 13.63
+   "sources_n": 2,
+   "score": 7.63
   },
   {
    "id": "64cbde8e87a8",
@@ -2711,7 +2797,7 @@
    "cluster": "f3d5d96e59c6",
    "recent_n": 2,
    "sources_n": 10,
-   "score": 20.63
+   "score": 20.62
   },
   {
    "id": "6f094bffeb31",
@@ -2728,7 +2814,7 @@
    "cluster": "6f094bffeb31",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.63
+   "score": 4.62
   },
   {
    "id": "d8add00e3f0e",
@@ -2797,7 +2883,7 @@
    "cluster": "7f481b8afb66",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 6.62
+   "score": 6.61
   },
   {
    "id": "ed5b89159a25",
@@ -3120,7 +3206,7 @@
    "cluster": "f22bd77bb63d",
    "recent_n": 0,
    "sources_n": 10,
-   "score": 20.59
+   "score": 20.58
   },
   {
    "id": "b5f6e045bda8",
@@ -3137,7 +3223,7 @@
    "cluster": "f7fd67770374",
    "recent_n": 1,
    "sources_n": 6,
-   "score": 12.59
+   "score": 12.58
   },
   {
    "id": "b705634c2f2f",
@@ -3222,7 +3308,7 @@
    "cluster": "eb0fba060206",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.58
+   "score": 2.57
   },
   {
    "id": "15ce3ce05038",
@@ -3290,7 +3376,7 @@
    "cluster": "1f421741da43",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.57
+   "score": 2.56
   },
   {
    "id": "c49de3bacbe0",
@@ -3307,7 +3393,7 @@
    "cluster": "c49de3bacbe0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.57
+   "score": 4.56
   },
   {
    "id": "89052dde9ead",
@@ -3392,7 +3478,7 @@
    "cluster": "5cc4981d2387",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.55
+   "score": 2.54
   },
   {
    "id": "257772ed8dcb",
@@ -3409,7 +3495,7 @@
    "cluster": "5cc4981d2387",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.55
+   "score": 2.54
   },
   {
    "id": "fd5aed6649e6",
@@ -3426,7 +3512,7 @@
    "cluster": "fd5aed6649e6",
    "recent_n": 1,
    "sources_n": 3,
-   "score": 6.55
+   "score": 6.54
   },
   {
    "id": "090f44165e63",
@@ -3546,7 +3632,7 @@
    "cluster": "6ca6effb8ff4",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.53
+   "score": 2.52
   },
   {
    "id": "3feedadcc014",
@@ -3701,7 +3787,7 @@
    "cluster": "987ea5b285f5",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.52
+   "score": 4.51
   },
   {
    "id": "f7057dd38d8f",
@@ -3718,7 +3804,7 @@
    "cluster": "f7057dd38d8f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.52
+   "score": 2.51
   },
   {
    "id": "ba9f252227c2",
@@ -4587,7 +4673,7 @@
    "cluster": "8ea05f06264d",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.42
+   "score": 2.41
   },
   {
    "id": "7f0680cd3b03",
@@ -4981,7 +5067,7 @@
    "cluster": "b988ad5d73c0",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 7.36
+   "score": 7.35
   },
   {
    "id": "a96c8e266120",
@@ -5066,7 +5152,7 @@
    "cluster": "be98f79eea80",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 2.35
+   "score": 2.34
   },
   {
    "id": "f22bd77bb63d",
@@ -5253,7 +5339,7 @@
    "cluster": "6f116bce7125",
    "recent_n": 0,
    "sources_n": 11,
-   "score": 24.31
+   "score": 24.3
   },
   {
    "id": "d1664be8533f",
@@ -5270,7 +5356,7 @@
    "cluster": "52f391cf8838",
    "recent_n": 0,
    "sources_n": 6,
-   "score": 16.31
+   "score": 16.3
   },
   {
    "id": "0ea4f20a5201",
@@ -5423,7 +5509,7 @@
    "cluster": "987ea5b285f5",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 4.29
+   "score": 4.28
   },
   {
    "id": "24beb4b039b0",
@@ -5522,10 +5608,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "8eaa07cb5ab6",
-   "recent_n": 1,
-   "sources_n": 5,
-   "score": 10.28
+   "cluster": "c703bd78996f",
+   "recent_n": 0,
+   "sources_n": 2,
+   "score": 4.28
   },
   {
    "id": "566e42cd4871",
@@ -5561,7 +5647,7 @@
    "cluster": "8f0e36872351",
    "recent_n": 1,
    "sources_n": 8,
-   "score": 21.28
+   "score": 21.27
   },
   {
    "id": "0dd9a9f68af3",
@@ -6190,7 +6276,7 @@
    ],
    "label": "Rumor",
    "cluster": "a68e19f1715e",
-   "recent_n": 1,
+   "recent_n": 0,
    "sources_n": 1,
    "score": 2.17
   },
@@ -6635,7 +6721,7 @@
    "cluster": "7d1258604f9d",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 10.13
+   "score": 10.12
   },
   {
    "id": "8549feba0bd9",
@@ -6652,7 +6738,7 @@
    "cluster": "7d1258604f9d",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 10.13
+   "score": 10.12
   },
   {
    "id": "cfe141da16ba",
@@ -6669,7 +6755,7 @@
    "cluster": "0b11dfc21f84",
    "recent_n": 0,
    "sources_n": 10,
-   "score": 23.13
+   "score": 23.12
   },
   {
    "id": "9815766ba577",
@@ -6806,7 +6892,7 @@
    "cluster": "62b3baac4a48",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.11
+   "score": 4.1
   },
   {
    "id": "7e8179e6e440",
@@ -6923,7 +7009,7 @@
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "6b8d7add535d",
+   "cluster": "6560f1257808",
    "recent_n": 0,
    "sources_n": 1,
    "score": 6.08
@@ -7165,7 +7251,7 @@
    "cluster": "7d1258604f9d",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 10.04
+   "score": 10.03
   },
   {
    "id": "33946e35b6ac",
@@ -7332,10 +7418,10 @@
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "8eaa07cb5ab6",
-   "recent_n": 1,
-   "sources_n": 5,
-   "score": 9.98
+   "cluster": "c703bd78996f",
+   "recent_n": 0,
+   "sources_n": 2,
+   "score": 3.98
   },
   {
    "id": "a3c67eb93338",
@@ -7422,6 +7508,23 @@
    "recent_n": 0,
    "sources_n": 10,
    "score": 19.95
+  },
+  {
+   "id": "4373a7f3b6f7",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Uttarakhand vs Odisha, Match 65 Squads, Player Names | 2026",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNcC1lQk8tbzluUExDdHJpZF9kampQTEZpOE85LVdDQnpicEhUYjhndkc4OEs0NU1tdm90a25YWndDc1E3MU43ZjEzWmFadGZ6WGhJSTRaZkp2VjVJbG9wSkFVNTRjRDF0bFFjTUFaYzhLREV4NTY4Z3A5TUJWVGNKcjRtTmJ2WGVfbTg0alZGVWxrZU4tTENR?oc=5",
+   "source": "NDTV Sports",
+   "published": "2026-11-21T02:09:43+00:00",
+   "summary": "",
+   "tags": [
+    "Team News"
+   ],
+   "label": "Rumor",
+   "cluster": "4373a7f3b6f7",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 3.95
   },
   {
    "id": "8c0d20ccde95",
@@ -7523,7 +7626,7 @@
    "cluster": "a5270cf75c3f",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 4.91
+   "score": 4.9
   },
   {
    "id": "ef8b094a20d7",
@@ -7701,7 +7804,7 @@
    "title": "PUN vs SAU News 11/24/2026: Punjab vs Saurashtra SMAT, 2026 News | Crickit by HT | Cricket News",
    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZFA3dnpMb3VqYXpiNTAweVFoSzROQWd3OFgzeHpRbS1kZTB6VUFOdXhnRWxUXzlUckh5LTlGdjZGZms4U2VpVjFCOXFaQmlqdnU3LXNrYU9PNEt3RUN5cU0xaU93TUxraERWOXhjdHB1dDVsZDlxUlBsMzgwRVR0M1hVajFISVFvRlNBUlVmU3pOUzBTUldIUVZkbmtlTHBhREZoRlp3azlQY1RWZHc?oc=5",
    "source": "Hindustan Times",
-   "published": "2026-11-21T00:39:38+00:00",
+   "published": "2026-11-21T00:39:39+00:00",
    "summary": "",
    "tags": [
     "Other"
@@ -7727,7 +7830,7 @@
    "cluster": "b296de3b3ac4",
    "recent_n": 0,
    "sources_n": 2,
-   "score": 8.83
+   "score": 8.82
   },
   {
    "id": "de517b33a68a",
@@ -7758,10 +7861,10 @@
     "Other"
    ],
    "label": "Confirmed",
-   "cluster": "8eaa07cb5ab6",
+   "cluster": "ee999dba4f80",
    "recent_n": 1,
-   "sources_n": 5,
-   "score": 12.81
+   "sources_n": 2,
+   "score": 6.81
   },
   {
    "id": "0b11dfc21f84",
@@ -7795,7 +7898,7 @@
    "cluster": "b27277c30d7b",
    "recent_n": 0,
    "sources_n": 4,
-   "score": 7.8
+   "score": 7.79
   },
   {
    "id": "e4c11340c808",
@@ -7861,7 +7964,7 @@
    ],
    "label": "Rumor",
    "cluster": "9bce50467bea",
-   "recent_n": 0,
+   "recent_n": 1,
    "sources_n": 1,
    "score": 1.75
   },
@@ -8068,7 +8171,7 @@
    "cluster": "0d839ab43f51",
    "recent_n": 0,
    "sources_n": 10,
-   "score": 19.67
+   "score": 19.66
   },
   {
    "id": "ba48a13daf04",
@@ -8170,7 +8273,7 @@
    "cluster": "435e4b9272f3",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.65
+   "score": 1.64
   },
   {
    "id": "629e05b68a2f",
@@ -8286,10 +8389,10 @@
     "Other"
    ],
    "label": "Confirmed",
-   "cluster": "8eaa07cb5ab6",
+   "cluster": "ee999dba4f80",
    "recent_n": 1,
-   "sources_n": 5,
-   "score": 12.54
+   "sources_n": 2,
+   "score": 6.54
   },
   {
    "id": "11806ecc1e08",
@@ -8304,6 +8407,23 @@
    ],
    "label": "Rumor",
    "cluster": "11806ecc1e08",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 1.54
+  },
+  {
+   "id": "592c0f79de56",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "NEP vs SCO Venue Details",
+   "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOclBvUzFyTkdqTmc4dkRxTlJNQnBXajhCcmg2Y3RWWHJWckFQcHFhdm01aTdkZjV6d3NTeGNXWk5Rb0ZuZlVJVG1XamxqTVNsQ2czOWJ2Qy1QdUtEQlI3UXJabjdBeHBhOHBLY1htRUxBWE03WWp1anpibEVJeUw4LWZWUjhNenBocmRNV0kzUG5INEgtZ2VBdDhuVzhCTHlCR2t1TUgwSmhkMU9kUFlQUzFuc0FFaG9xZmZkOXpDTEI3X01sVUNtQXROWnVJaklFTXZ5QzZxblMzXzJRRndwYTRKbWl5V1FVSWRzekg1aE9ldXM?oc=5",
+   "source": "Hindustan Times",
+   "published": "2026-11-20T21:11:15+00:00",
+   "summary": "",
+   "tags": [
+    "Other"
+   ],
+   "label": "Rumor",
+   "cluster": "c31d4d45c320",
    "recent_n": 0,
    "sources_n": 1,
    "score": 1.54
@@ -8382,16 +8502,16 @@
    "title": "Super Six - Match 4, Ajman, November 22, 2026, ICC Women's Emerging Nations Trophy, 2026",
    "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPNEZwZXV3UjdwcHQzcEh1d1lLNW5oTWpVSnRBNTNYNkF0OWt6TUxBal9ubTltamQ0ek83Vm9UODlnQnI0NjdJYnBxVUlEU2lqallmZU1tYmlwYUM5YWRoSm9La2pBSnBOZnM0MVZSSG9oMzFpbXhKdGt5RTdQc3MzclF1YlNuTTF5WTN3dXdfY0kwTjZYamVrZXhMekNlV25raUNZMVF0dE1LbVhiNzNmX19ieE45bHhsUjlDNlBGU3lTb0paZ081enZydEdfQl8zWWlqQWYwZ01fRGYzdldHUFBST1pUTVN5MGF2ZmlDLWRpV28?oc=5",
    "source": "Hindustan Times",
-   "published": "2026-11-20T20:38:20+00:00",
+   "published": "2026-11-20T20:38:21+00:00",
    "summary": "",
    "tags": [
     "Other"
    ],
    "label": "Rumor",
-   "cluster": "8eaa07cb5ab6",
+   "cluster": "ee999dba4f80",
    "recent_n": 1,
-   "sources_n": 5,
-   "score": 9.49
+   "sources_n": 2,
+   "score": 3.49
   },
   {
    "id": "6585102d034d",
@@ -8406,7 +8526,7 @@
    ],
    "label": "Rumor",
    "cluster": "6585102d034d",
-   "recent_n": 0,
+   "recent_n": 1,
    "sources_n": 1,
    "score": 1.48
   },
@@ -8701,6 +8821,23 @@
    "score": 4.31
   },
   {
+   "id": "c0c27e13b3c2",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Mitchell Starc Auction Price & Team - IPL 2026",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBqYUhzajNkQmt5MUtKSjdWYWh4Vzc4cGZ1aUZuZlgtWEd5YW5fLTduX29ha19LVExEZ3ZDRHpLSlJEcFZkdzZRWGxfMXg2NVhuOThsczZwNmxDcUh4QlJiY1ZlZ3czcTRDWW9aSjcwUXgtaGU0cVZuWQ?oc=5",
+   "source": "Cricbuzz",
+   "published": "2026-11-20T18:21:26+00:00",
+   "summary": "",
+   "tags": [
+    "Auction"
+   ],
+   "label": "Rumor",
+   "cluster": "c0c27e13b3c2",
+   "recent_n": 0,
+   "sources_n": 1,
+   "score": 5.3
+  },
+  {
    "id": "467712045e14",
    "seen": "2026-11-21T11:56:44.270424+00:00",
    "title": "Mohammed Shami Auction Price & Team - IPL 2026",
@@ -8749,7 +8886,7 @@
    "cluster": "a7bdfc17a2ed",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 1.3
+   "score": 1.29
   },
   {
    "id": "f9a79b2c43f7",
@@ -9041,7 +9178,7 @@
    "cluster": "0d839ab43f51",
    "recent_n": 0,
    "sources_n": 10,
-   "score": 19.25
+   "score": 19.24
   },
   {
    "id": "06a1913ca712",
@@ -9110,7 +9247,7 @@
    "cluster": "58d8ee557220",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 5.24
+   "score": 5.23
   },
   {
    "id": "02b8f6b6fb1a",
@@ -9216,22 +9353,22 @@
    "score": 5.22
   },
   {
-   "id": "2d9864011eed",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "Rajasthan Royals Squad - Auction Tracker IPL 2026",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5NSE5uME9ncU1NUGVqY25ZOGx5ZXhFaUd5ZG9SQkdoWmFYOVM3WFJoWHoxVXRnc3dGZkFzdW5iVnhSdDlhSWdtSnFBMHY1T2NMSFlNSDRLdzFXX0hPWVdfU2ZheGF5MTNZSzR1Nms5STV2akE?oc=5",
+   "id": "6560f1257808",
+   "seen": "2026-11-21T14:45:25.138924+00:00",
+   "title": "Mumbai Indians Squad - Auction Tracker IPL 2015",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE96MXNzWEIyenB5UW1zSjdFbEFQYmE2Uk9DY21jdXBhRFhEWndEbm5FcFpFbm1YcWNMeE1CbDFwNUNDendpSG90aG12bFppVlpiSk5PcWlKT2NuVk1UbHl5cTBYNlltWTRUVzhQaGJJSl9TV0U?oc=5",
    "source": "Cricbuzz",
-   "published": "2026-11-20T17:26:27+00:00",
+   "published": "2026-11-20T17:26:31+00:00",
    "summary": "",
    "tags": [
     "Auction",
     "Team News"
    ],
    "label": "Rumor",
-   "cluster": "6a73f5ce8c63",
+   "cluster": "6560f1257808",
    "recent_n": 0,
-   "sources_n": 2,
-   "score": 7.22
+   "sources_n": 1,
+   "score": 5.22
   },
   {
    "id": "46a2faef5662",
@@ -9245,10 +9382,10 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "724c29bb6506",
+   "cluster": "46a2faef5662",
    "recent_n": 0,
-   "sources_n": 2,
-   "score": 7.22
+   "sources_n": 1,
+   "score": 5.22
   },
   {
    "id": "005e653f01ae",
@@ -9262,10 +9399,10 @@
     "Trade"
    ],
    "label": "Rumor",
-   "cluster": "724c29bb6506",
+   "cluster": "46a2faef5662",
    "recent_n": 0,
-   "sources_n": 2,
-   "score": 7.22
+   "sources_n": 1,
+   "score": 5.22
   },
   {
    "id": "58f69313a6fe",
@@ -9316,7 +9453,7 @@
    "cluster": "6f116bce7125",
    "recent_n": 0,
    "sources_n": 11,
-   "score": 23.21
+   "score": 23.2
   },
   {
    "id": "e8dfd5988f42",
@@ -9468,9 +9605,9 @@
    ],
    "label": "Rumor",
    "cluster": "6a73f5ce8c63",
-   "recent_n": 0,
+   "recent_n": 1,
    "sources_n": 2,
-   "score": 7.18
+   "score": 7.17
   },
   {
    "id": "483294ffbac5",
@@ -9658,7 +9795,7 @@
    "cluster": "782b627bad2a",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 3.15
+   "score": 3.14
   },
   {
    "id": "f976a5163fb9",
@@ -10100,7 +10237,7 @@
    "cluster": "c9e8131a76bf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 8.04
+   "score": 8.03
   },
   {
    "id": "ab131bb0886d",
@@ -10117,7 +10254,7 @@
    "cluster": "c9e8131a76bf",
    "recent_n": 0,
    "sources_n": 1,
-   "score": 8.04
+   "score": 8.03
   },
   {
    "id": "0ab617f411de",
@@ -10152,142 +10289,6 @@
    "recent_n": 5,
    "sources_n": 22,
    "score": 43.02
-  },
-  {
-   "id": "56ef871af3b3",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "Karnataka Women vs Railways Women लाइव मैच फुल स्कोरकार्ड",
-   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOMHRZSEtWQzhmejFpTXlpWVJVbnpoVU10a05RcU9IMDVtaEVDN0Y3OFNDSV9OR2w4Q0EtenN6di1ZWFJvenRBVG9LRUZVcmdldF91ZURpQ0JkS3JSZDdtOENjbk9DLWs1d2o3VkNpbGRJQnR6M1pocHhNODdvMW5Wazl6RHJxdzd1R2ZPNkpkTWdWek9idzJMWXF3WExOSkVZS3ZZZmZpRkdGSk5seExlRTI1RmpqUDlTNGZR?oc=5",
-   "source": "News18 Hindi",
-   "published": "2026-11-20T14:55:07+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "5b824eeae097",
-   "recent_n": 0,
-   "sources_n": 2,
-   "score": 3.01
-  },
-  {
-   "id": "5b824eeae097",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "Karnataka Women vs Railways Women बॉल BY बॉल कॉमेंट्री",
-   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUXkwcFlXcDVBMHRDa0p6X3V4SWs2a29xa1pXNnNKcHFsU1ZGUTBYVmJKa196RnNWZmVxbENLOWNUdnRjWkRvcXI4QkUxeTl4ZDc1Mk1PYVBtSWZuZEJYbUdIREZraEhpRGRMcTFfVC1ZQmVwdE1ZVkJ3NFhTOHBFSzgyaXQ1Wl9TTjZ2UG9uZklhT1A5OUxPZk9LUVphZWhKb0FWektUWnQ3d3Nac293WHlvYTVmdnY1aTZTWlF4NGkxNHM1NmJzTl9jckM?oc=5",
-   "source": "News18 Hindi",
-   "published": "2026-11-20T14:55:03+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "5b824eeae097",
-   "recent_n": 0,
-   "sources_n": 2,
-   "score": 3.01
-  },
-  {
-   "id": "a5062909e17c",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "Journalists Denied Access To Steve Smith's Training Session Amid 'Sandpapergate' Row",
-   "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQUGl6OWowN1BYZ3VnaGUtVmFmZVJwVmpUdVB1eVFSREdVMndNY0Z0cVRMVWE2SFFqWnU3NEJnUjAwem95WG9xbzlWUTJvMlBnSnpmcmgtQzU2a1lBa2F1Z21NZnF2a2g1dDNkUkRnWFNra1dQbHpObDg0dFNtRm1wVW52QkZkbUNtMjFqTG1PZGh5ak1ockRRcTBjdzZBR0FoX2xxbUtkMW1lbzdPcUlvOHhxVnh5a2R0bXFuZjlkTFA1eVQ1SDUyX2xhQ1RqWkM1LVpDcUxOM3ViZGVOQ1hBZg?oc=5",
-   "source": "NDTV Sports",
-   "published": "2026-11-20T14:52:39+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "a5062909e17c",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 1.01
-  },
-  {
-   "id": "8eaa07cb5ab6",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "Sri Lanka Women vs Pakistan Women Stats",
-   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPNC05ZW5BcGUzNndjTzJfa3FUR01BZ0JNUnE5eUYwR0RyZDZYeEhxRXVaMkJyNnd5amRveXZZMWZrczZGdmgwZTF6SWNnRWt6alI5b2x1U1dIV0JjZzV2WGFZdHV6U0ItazMzZ0xyOWhJYWNjNUdWb0k3dVYyU0x1M2JCU2NyVnRIUnBvVXVBOS00S1BWaFJvOTlmazlOMXlQLVk5TVFDOGZSU0dVTm9LOXFZTndOOGMxRU1UYzlvQkU2ZWxUdWk5dEV4MXVsb1pt?oc=5",
-   "source": "SportsTak",
-   "published": "2026-11-20T14:52:21+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "8eaa07cb5ab6",
-   "recent_n": 1,
-   "sources_n": 5,
-   "score": 9.01
-  },
-  {
-   "id": "2aad426f5733",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "MI Targeted Players for IPL 2027 Auction: ऑक्शन में किन प्लेयर्स पर लगाएगी मुंबई?",
-   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQOURQWENiSmZSTG9rd3lVUjdiV1hpVDh1Y1ZSTjd3SmZPblRGZDM0aFBjaEtYT3N1cXBIUzQ4WTdLZmdiQXhUai14M24yY29ycGNJUHI2U2tkR1Q3XzRNS1BiUkl1NUw0Z1RoQngxeEFIeUJ2b1gyUE45Zld2b19kWktybXJvb1R4QkhhVDhhNkZ6SnUtQTNMbWx1Y1N5VGk4SEZtdmxVMmNkQ2RZNXF1QnVaNHVjS1pUb1VCZ9IBvAFBVV95cUxQOURQWENiSmZSTG9rd3lVUjdiV1hpVDh1Y1ZSTjd3SmZPblRGZDM0aFBjaEtYT3N1cXBIUzQ4WTdLZmdiQXhUai14M24yY29ycGNJUHI2U2tkR1Q3XzRNS1BiUkl1NUw0Z1RoQngxeEFIeUJ2b1gyUE45Zld2b19kWktybXJvb1R4QkhhVDhhNkZ6SnUtQTNMbWx1Y1N5VGk4SEZtdmxVMmNkQ2RZNXF1QnVaNHVjS1pUb1VCZw?oc=5",
-   "source": "Newsnation",
-   "published": "2026-11-20T14:51:07+00:00",
-   "summary": "",
-   "tags": [
-    "Auction"
-   ],
-   "label": "Rumor",
-   "cluster": "2aad426f5733",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 5.01
-  },
-  {
-   "id": "724c29bb6506",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "IPL 2027: Ricky Ponting Backs Punjab Kings All-Round Strength Following Hardik Pandya Trade",
-   "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZ3BzVy00d0RWTXVjcWJOQmVYZk9hWkpTWVRaeDJzSzhUd2hiNEdvLVo5T1pBYlhneGxiSU1KZ2t3U29lVUJzY3VaN2tYWkxXbkJGUEJLcG5EVWN1c2JwbFdtQ0dkZjFoMEwyQXhlT1ZQTkpPWUFudTdsSlpfaWRXZjdQMm5vVGNPZlpvRjBfS1BLOTVOWGZyWDlTUkZKWXJXWlVEYTFXNDBlelZHYWM0Ri1NeG5uRTVmS28zVVJWa01XazFINGh1ctIBzgFBVV95cUxOYnVlWE94eTVJVTR0SVJrOFNSdjBDM3AzZ1BacnVHTkYzZ0dtUVotaDdCRUVKbUpxLVhDTG45VlNHRV9rSUtMVEFJNDEtcF8yV2FKRy1vQUNibWFSd2RiZVZNRnBhc2ZxbUdOVzVyaDhzQmRCbHYzcnVqTTNQLXFEQWdhVWRVc3Q4Mk1ScUNKOXV1NEFfYzdPU2lJQWtsbklmSld5NF9xb3FWeEczVmVGTmQtV0hSUFE3V2tKUXNyaC1EUjU3NktEMndKY0lCUQ?oc=5",
-   "source": "Free Press Journal",
-   "published": "2026-11-20T14:50:47+00:00",
-   "summary": "",
-   "tags": [
-    "Trade"
-   ],
-   "label": "Rumor",
-   "cluster": "724c29bb6506",
-   "recent_n": 0,
-   "sources_n": 2,
-   "score": 7.01
-  },
-  {
-   "id": "ac252d5f78cc",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "WPL 2027 से पहले दिल्ली कैपिटल्स का बड़ा दांव, महेला जयवर्धने बने महिला टीम के डायरेक्टर ऑफ क्रिकेट",
-   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNal96ZzlQRGVDRWIzOHNkSVNidEZTS3BGcVZNZnNHbF9kSGc5WXphcUNCTDFsNGVlem94cHJwMXdIaGhFM2xmdjhneHhZbTllZjFGdmlQQlM1c0FzU2lmN2NWU0wwMUpTS3E0ZERxMHZudUZGSlA2UEIxMjBwZ1lOdEQ2a3gxVEUyX2JFaExRb3hHNG9Lamd5U2VsdnB1Zm9XRWlsZFpwbUxGTE1wSWJXTTZLUmpmNS00TmNUdjNqUV9hQVZfamtHR2FsYW9vN2JSalRQVXFYQjVETVN1SFZZ?oc=5",
-   "source": "Breaking Tube",
-   "published": "2026-11-20T14:50:00+00:00",
-   "summary": "",
-   "tags": [
-    "Team News"
-   ],
-   "label": "Rumor",
-   "cluster": "ac252d5f78cc",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 3.01
-  },
-  {
-   "id": "6efcd238b22d",
-   "seen": "2026-11-21T11:56:44.270424+00:00",
-   "title": "As Chennai Super Kings mentor, how MS Dhoni knows the art of keeping team a step ahead",
-   "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNeGh0M1ZteVczRVBKV0pSVHhXM1JibUZ3SDJGTG1iZ1FCWFhqUTZrQ3B0RzN6Ry1qS0FBdEF3ZEFrRjg2ZTEwX1F0MFdIczNWa1pSQnZGdlFXTm9ENnlNeTdFak50ZkduRl9ybVpaZnEtYXFSc3QzTnc3SU03VF9tWFNyTDVkZkxPXy11d0NtMkRHR3VrbER2dlpUNXZ1cUIwal9TM3k3enVhMjZoN1l6WHBBUVdIVjVVOFRnc0lEdmVxX2ppdWpPMEdDS0tyZzVpcUhqM21OV1otS0NTZWJMR3NCR3RDRVVvYnRZX9IB8gFBVV95cUxOenJxSmx4bTRtblpiQktxYjZNdTEtQ1AtVGpkQ3F6eHRSWVB5dlRWREtUa2FQbG4xekhpS2ltQV92M1g1LUU5bHdqenU1WVRxUXFVekxGeVAxTnJnNXh5d09HcmwxaEpvZGRBdzM0Ykgwd2RhTld6U0NPaE9IQk14eWpQbU92LXRNZ1RrdTJZRnVwVTJvenhYTWxuNWd4Y3VDeldSdVRtTHdMY1RsbEw4UnhDeUxDQi1vZ1kzdk9uV1FkQk5oNWR0X1pIVjhTbU1jQmQyOWlSLVNoVVVzMWF0MU9TYWYwM1lFUTNXR1FybHlrZw?oc=5",
-   "source": "India Today",
-   "published": "2026-11-20T14:46:15+00:00",
-   "summary": "",
-   "tags": [
-    "Other"
-   ],
-   "label": "Rumor",
-   "cluster": "6efcd238b22d",
-   "recent_n": 0,
-   "sources_n": 1,
-   "score": 1.0
   }
  ]
 }
