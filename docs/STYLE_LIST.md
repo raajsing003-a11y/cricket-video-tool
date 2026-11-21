@@ -1,0 +1,5 @@
+# Style list (C190) — 42 naam wale styles
+Button: 🎨 Style list (42 naam) (🎬 Naya Style ke upar). Har style = Look + caption style + caption rang + zoom. Tap par lag jaata hai; checkbox ON ho to bg + transition bhi (Auto-vary) badalte hain. Filter: Look ke hisaab se, ya naam khojo.
+🎬 Naya Style ab inhi 42 mein se random chunta hai (pichla wala nahi) aur naam dikhata hai. Last style localStorage 'cvt_style_last'.
+Naam: Night: Raat ka Stadium, Floodlight Breaking, Midnight Neon, Chand Raat, Powerplay Raat, Silent Pitch | Gold: Sunehri Shaam, Trophy Shine, Auction Hall, Dhoop ka Chhakka, Golden Hour Neon, Purani Diary | Clean: Saaf Scoreboard, News Desk, Minimal Line, Pitch Report, Quick Update, Tickertape | Grunge: Bouncer Alert, Lal Siren, Akhbaar ki Cutting, Dressing Room Drama, Glitch Wicket, Breaking Typewriter | Navy: Navy Breaking, Blue Hour, Deep Dive, Analyst Desk, Yorker Blue, Code Blue | Purple: Purple Reel, Violet Glow, Royal Purple, Creator Mode, Faceless Tutorial, Night Reel Type | Studio: Studio Live, Prime Time, Debate Desk, Panel Show, Highlights Reel, Studio Neon.
+Naya style jodna ho to js/style_names.js ki LIST mein ek line badho.

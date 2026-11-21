@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>👥 IPL Players — photos</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#14161b;color:#e9edf3;font:16px system-ui,sans-serif;padding:12px 14px 60px}
+a{color:#7cc4ff}
+button,.btn{font:15px system-ui,sans-serif;border:0;border-radius:8px;background:#2b2f38;color:#e9edf3;padding:9px 13px;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}
+.g{background:#00c389;color:#04130e;font-weight:700}
+.b{background:#1a73e8;color:#fff}
+.r{background:#a33;color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+h1{font-size:21px;margin:4px 0}
+#st{min-height:22px;color:#9fd5ff;margin:6px 0;font-size:15px}
+#ext{font-size:14px;padding:6px 10px;border-radius:8px;background:#22262f}
+.chip{padding:7px 11px;border-radius:18px;background:#22262f;border:2px solid #2f3541;font-size:14px;cursor:pointer}
+.chip.on{border-color:#00c389;background:#12332a}
+input[type=search]{background:#10141a;color:#e9edf3;border:1px solid #2a313c;border-radius:8px;padding:9px 11px;font-size:15px;min-width:200px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px;margin-top:10px}
+.card{background:#1b1e25;border:2px solid #2a303b;border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:6px}
+.card.have{border-color:#0a6b4f}
+.ph{width:100%;aspect-ratio:4/5;background:#0d0f13;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#4b5563;font-size:34px}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:top}
+.hi{font-weight:700;font-size:17px;line-height:1.25}
+.en{color:#9aa4b2;font-size:13px}
+.bd{font-size:12px;color:#ffd400}
+.card .row{margin:2px 0}
+.card button{padding:7px 9px;font-size:14px;flex:1}
+.hint{color:#8b95a5;font-size:13px;margin:4px 0}
+</style></head><body>
+<script src="js/photo_slots.js"></script>
+<script src="js/ipl_players.js"></script>
+<script src="js/zip_lite.js"></script>
+
+<div class="row" style="justify-content:space-between"><h1>👥 IPL Players — photos</h1><a href="index.html" class="btn" style="text-decoration:none">← Video tool</a></div>
+<div class="hint">IPL 2027 retained list (17 Nov 2026) ke saare players. Yahan jo photo lagegi wahi video tool ke 🖼 Photos mein bhi dikhegi (same Chrome library). Auction (16 Dec) ke baad team badle to docs/IPL_PLAYERS.md dekho.</div>
+<div class="row"><b id="cnt"></b><span id="ext">🔌 Extension check…</span></div>
+
+<div class="row">
+  <button class="b" id="auto">⚡ Auto: khaali sab Google se</button>
+  <button class="r" id="stop" style="display:none">⏹ Roko</button>
+  <label class="btn g">⬆ Photos / ZIP upload<input id="up" type="file" accept="image/*,.zip,application/zip" multiple style="display:none"></label>
+  <button id="zip">💾 ZIP save (sab photos)</button>
+  <button id="cp">📋 Names list copy</button>
+</div>
+<div id="st"></div>
+
+<div class="row" id="chips"></div>
+<div class="row"><input type="search" id="q" placeholder="🔎 naam khojo (Hindi ya English)"><span id="sf"></span></div>
+<div id="grid"></div>
+
+<script>
+(function(){
+'use strict';
+var TEAMS=window.IPL_TEAMS,PL=window.IPL_PLAYERS;
+var TEAMEN={},TEAMHI={};TEAMS.forEach(function(t){TEAMEN[t.key]=t.en;TEAMHI[t.key]=t.hi;});TEAMEN.old='OLD';TEAMHI.old='purane';
+var inIpl={};PL.forEach(function(p){inIpl[p.id]=1;});
+var OLD=(window.PHOTO_SLOTS||[]).filter(function(s){return /^player_/.test(s.id)&&!inIpl[s.id];}).map(function(s){return{team:'old',en:s.en||s.hi,hi:s.hi,os:false,tr:false,id:s.id};});
+var ALL=PL.concat(OLD),byId={};ALL.forEach(function(p){byId[p.id]=p;});
+var $=function(id){return document.getElementById(id);};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});};
+var norm=function(s){return String(s||'').toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu,'');};
+
+// ---------- IndexedDB (video tool wali 'cvt_photos' library, same store) ----------
+function db(){return new Promise(function(res,rej){var r=indexedDB.open('cvt_photos',1);r.onupgradeneeded=function(){if(!r.result.objectStoreNames.contains('p'))r.result.createObjectStore('p');};r.onsuccess=function(){res(r.result);};r.onerror=function(){rej(r.error);};});}
+function tx(mode,fn){return db().then(function(d){return new Promise(function(res,rej){var t=d.transaction('p',mode),q=fn(t.objectStore('p'));t.oncomplete=function(){d.close();res(q&&q.result);};t.onerror=function(){d.close();rej(t.error);};});});}
+var dbPut=function(k,b){return tx('readwrite',function(s){return s.put(b,k);});},dbDel=function(k){return tx('readwrite',function(s){return s.delete(k);});},dbGet=function(k){return tx('readonly',function(s){return s.get(k);});},dbKeys=function(){return tx('readonly',function(s){return s.getAllKeys();});};
+
+var have={},urls={},state={team:'all',stat:'all',q:''},queue=[],running=false,qTotal=0,qDone=0,qGot=0,curId=null,curTimer=0,pending=Promise.resolve(),got={};
+function status(t){$('st').textContent=t||'';}
+
+function loadImg(b){return new Promise(function(res,rej){var u=URL.createObjectURL(b),im=new Image();im.onload=function(){URL.revokeObjectURL(u);res(im);};im.onerror=function(){URL.revokeObjectURL(u);rej(new Error('image nahi khuli'));};im.src=u;});}
+// bahut badi image ho to 1600px tak chhoti (webp, transparency bachti hai); warna jaisi hai waisi
+async function normalize(b){var im=await loadImg(b),w=im.naturalWidth,h=im.naturalHeight,m=Math.max(w,h);
+ if(m<=1600&&b.size<=2500000)return b;
+ var k=Math.min(1,1600/m),cv=document.createElement('canvas');cv.width=Math.round(w*k);cv.height=Math.round(h*k);cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
+ return await new Promise(function(res){cv.toBlob(function(o){res(o||b);},'image/webp',0.92);});}
+async function saveBlob(id,blob){var nb=await normalize(blob);await dbPut(id,nb);have[id]=1;if(urls[id])URL.revokeObjectURL(urls[id]);urls[id]=URL.createObjectURL(nb);schedule();}
+async function removePhoto(id){await dbDel(id);delete have[id];if(urls[id]){URL.revokeObjectURL(urls[id]);delete urls[id];}schedule();}
+async function loadAll(){var ks=await dbKeys();for(var i=0;i<ks.length;i++){var k=ks[i];if(!byId[k])continue;try{var b=await dbGet(k);if(b){have[k]=1;urls[k]=URL.createObjectURL(b);}}catch(e){}}}
+
+// ---------- list / render ----------
+function visible(){var q=norm(state.q);return ALL.filter(function(p){if(state.team!=='all'&&p.team!==state.team)return false;
+ if(state.stat==='miss'&&have[p.id])return false;if(state.stat==='have'&&!have[p.id])return false;
+ if(q&&norm(p.en).indexOf(q)<0&&norm(p.hi).indexOf(q)<0)return false;return true;});}
+var raf=0;function schedule(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;render();});}
+function counts(){var n=0;PL.forEach(function(p){if(have[p.id])n++;});var o=0;OLD.forEach(function(p){if(have[p.id])o++;});return{n:n,o:o};}
+function render(){var c=counts();$('cnt').textContent='📸 Photos: '+c.n+' / '+PL.length+' (IPL 2027)'+(OLD.length?' · purane: '+c.o+' / '+OLD.length:'');
+ var ch=$('chips');ch.innerHTML='';
+ var mk=function(key,label,n,t){var b=document.createElement('span');b.className='chip'+(state.team===key?' on':'');b.textContent=label+(t?' '+n+'/'+t:'');b.onclick=function(){state.team=key;render();};ch.appendChild(b);};
+ mk('all','सब',c.n,PL.length);
+ TEAMS.forEach(function(t){var tot=0,h=0;PL.forEach(function(p){if(p.team===t.key){tot++;if(have[p.id])h++;}});mk(t.key,t.en+' '+t.hi,h,tot);});
+ if(OLD.length)mk('old','पुराने (retain list mein nahi)',c.o,OLD.length);
+ var sf=$('sf');sf.innerHTML='';[['all','Sab'],['miss','Khaali'],['have','Photo wale']].forEach(function(a){var b=document.createElement('span');b.className='chip'+(state.stat===a[0]?' on':'');b.textContent=a[1];b.onclick=function(){state.stat=a[0];render();};sf.appendChild(b);sf.appendChild(document.createTextNode(' '));});
+ var g=$('grid');g.innerHTML='';var v=visible();
+ if(!v.length){g.innerHTML='<div class="hint">Is filter mein koi player nahi.</div>';return;}
+ v.forEach(function(p){var d=document.createElement('div');d.className='card'+(have[p.id]?' have':'');
+  d.innerHTML='<div class="ph">'+(urls[p.id]?'<img alt="">':'👤')+'</div><div class="hi">'+esc(p.hi)+'</div><div class="en">'+esc(p.en)+'</div>'
+   +'<div class="bd">'+esc(TEAMEN[p.team]||'')+(p.os?' · ✈ overseas':'')+(p.tr?' · 🔁 trade':'')+'</div>'
+   +'<div class="row"><label class="btn" style="flex:1;text-align:center;padding:7px 9px;font-size:14px">📁<input type="file" accept="image/*" style="display:none"></label><button class="gg b" title="Google Images se khud chuno">🔍</button>'+(have[p.id]?'<button class="dl r" title="Photo hatao">🗑</button>':'')+'</div>';
+  if(urls[p.id])d.querySelector('img').src=urls[p.id];
+  d.querySelector('input').onchange=function(e){var f=e.target.files[0];e.target.value='';if(!f)return;saveBlob(p.id,f).then(function(){status('✔ '+p.en+' ki photo lag gayi');}).catch(function(er){status('✖ '+er.message);});};
+  d.querySelector('.gg').onclick=function(){if(!extOK){status('⚠ Extension nahi mili — upar dekho');return;}find(p,false,0);};
+  var dl=d.querySelector('.dl');if(dl)dl.onclick=function(){if(confirm(p.en+' ki photo hatani hai?'))removePhoto(p.id);};
+  g.appendChild(d);});}
+
+// ---------- extension (Photo Finder) ----------
+var extOK=false;
+function send(msg){window.postMessage({src:'pf-page',msg:msg},'*');}
+function find(p,auto,left){send({cmd:'find',slotId:p.id,label:p.hi+' · '+p.en,query:p.en+' IPL cricketer',auto:!!auto,queueLeft:left||0});}
+window.addEventListener('message',function(e){if(e.source!==window||!e.data||e.data.src!=='pf-ext')return;var m=e.data.msg||{};
+ if(m.cmd==='pong'){extOK=true;$('ext').textContent='✅ Extension mili (v'+(m.v||'?')+')';$('ext').style.background='#12332a';}
+ else if(m.cmd==='pf-set'){got[m.slotId]=1;pending=pending.then(function(){return fetch(m.dataUrl).then(function(r){return r.blob();}).then(function(b){return saveBlob(m.slotId,b);}).catch(function(er){status('✖ Photo save nahi hui: '+er.message);delete got[m.slotId];});});}
+ else if(m.cmd==='pf-result'){if(!running)return;if(m.cancel){endQueue('⏹ Roka gaya (Google tab band hua ya ✖ dabaya)');return;}clearTimeout(curTimer);setTimeout(nextQ,500);}});
+function ping(){send({cmd:'ping'});}
+ping();setTimeout(ping,800);setTimeout(ping,2500);
+setTimeout(function(){if(!extOK){$('ext').textContent='⚠ Extension nahi mili (auto/🔍 ke liye photo_finder_extension Load unpacked karo, phir ye page reload)';$('ext').style.background='#4a2a12';}},3500);
+
+function nextQ(){if(!running)return;
+ if(curId&&got[curId])qGot++;curId=null;
+ if(!queue.length){pending.then(function(){endQueue('✅ Poora: '+qGot+' photo mili, '+(qTotal-qGot)+' skip/nahi mili (khaali wale 🔍 se khud chuno)');});return;}
+ var p=queue.shift();curId=p.id;qDone++;status('⚡ '+qDone+' / '+qTotal+' — '+p.en+' ('+qGot+' mili)');find(p,true,queue.length);
+ clearTimeout(curTimer);curTimer=setTimeout(function(){status('⏱ '+p.en+': der lagi, agle par');nextQ();},120000);}
+function endQueue(msg){running=false;queue=[];curId=null;clearTimeout(curTimer);$('stop').style.display='none';$('auto').disabled=false;status(msg);schedule();}
+$('auto').onclick=function(){if(!extOK){status('⚠ Extension nahi mili. photo_finder_extension: chrome://extensions → Developer mode → Load unpacked, phir ye page reload.');return;}
+ var miss=visible().filter(function(p){return!have[p.id]&&(p.team!=='old'||state.team==='old');});if(!miss.length){status('Is list mein koi khaali player nahi (team chip se chuno).');return;}
+ if(!confirm(miss.length+' players ke liye ek ke baad ek Google Images khulega aur pehli photo khud lagegi. Chalu karun?\n(Baad mein thumbnail dekh lena, galat ho to 🔍 se badlo.)'))return;
+ queue=miss.slice();qTotal=miss.length;qDone=0;qGot=0;got={};running=true;$('stop').style.display='';$('auto').disabled=true;nextQ();};
+$('stop').onclick=function(){if(running){send({cmd:'cancel'});endQueue('⏹ Roka gaya');}};
+
+// ---------- ZIP save ----------
+var safe=function(s){return String(s).replace(/[\\\/:*?"<>|]+/g,'').replace(/\s+/g,' ').trim()||'player';};
+var extOf=function(t){return /png/.test(t)?'png':/webp/.test(t)?'webp':/gif/.test(t)?'gif':'jpg';};
+$('zip').onclick=async function(){try{var ents=[],meta=[],used={};
+ for(var i=0;i<ALL.length;i++){var p=ALL[i];if(!have[p.id])continue;var b=await dbGet(p.id);if(!b)continue;
+  var nm=(TEAMEN[p.team]||'OTHER')+'/'+safe(p.en)+'.'+extOf(b.type||'');while(used[nm])nm=nm.replace(/(\.\w+)$/,'_2$1');used[nm]=1;
+  ents.push({name:nm,data:b});meta.push({file:nm,id:p.id,en:p.en,hi:p.hi,team:p.team});}
+ if(!ents.length){status('Abhi koi photo nahi, zip kya banaun 🙂');return;}
+ ents.push({name:'_players.json',data:new TextEncoder().encode(JSON.stringify({v:1,note:'IPL player photos (cricket video tool)',players:meta},null,1))});
+ status('⏳ ZIP ban raha hai ('+meta.length+' photos)…');var z=await ZIPLITE.write(ents),d=new Date(),ds=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2);
+ var a=document.createElement('a');a.href=URL.createObjectURL(z);a.download='ipl_players_photos_'+ds+'.zip';document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(a.href);},4000);
+ status('✔ ZIP save: '+meta.length+' photos, '+(z.size/1048576).toFixed(1)+' MB (Downloads mein). Folder = team, file = player ka naam.');}catch(e){status('✖ ZIP error: '+e.message);}};
+
+// ---------- upload (photos ya ZIP) — naam se apne aap player dhoondhta hai ----------
+var INDEX=null;function buildIndex(){INDEX={};ALL.forEach(function(p){[p.en,p.hi,p.id,p.id.replace(/^player_[a-z]+_/,'').replace(/_headshoulders$/,'')].forEach(function(k){var n=norm(k);if(n&&!INDEX[n])INDEX[n]=p.id;});});}
+var MIME={jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',webp:'image/webp',gif:'image/gif'};
+function matchName(path,map){if(map&&map[path])return map[path];var base=path.split('/').pop().replace(/\.[A-Za-z0-9]+$/,'');base=base.replace(/[_\-]?\(\d+\)$/,'').replace(/_2$/,'');
+ var n=norm(base);if(INDEX[n])return INDEX[n];
+ var n2=norm(base.replace(/^player[_\- ]?[a-z]+[_\- ]/i,'').replace(/[_\- ]?headshoulders$/i,''));if(INDEX[n2])return INDEX[n2];return null;}
+$('up').onchange=async function(e){var fs=[].slice.call(e.target.files);e.target.value='';if(!fs.length)return;if(!INDEX)buildIndex();
+ var ok=0,bad=[],i,j;
+ try{for(i=0;i<fs.length;i++){var f=fs[i];
+  if(/\.zip$/i.test(f.name)||f.type==='application/zip'||f.type==='application/x-zip-compressed'){status('⏳ ZIP padh raha hoon: '+f.name);var es=await ZIPLITE.read(f),map={};
+   es.forEach(function(x){if(/(^|\/)_players\.json$/.test(x.name)){try{var jn=JSON.parse(new TextDecoder().decode(x.data));(jn.players||[]).forEach(function(r){if(r.file&&byId[r.id])map[r.file]=r.id;});}catch(er){}}});
+   for(j=0;j<es.length;j++){var x=es[j],ex=(x.name.split('.').pop()||'').toLowerCase();if(!MIME[ex])continue;var id=matchName(x.name,map);
+    if(!id){bad.push(x.name.split('/').pop());continue;}await saveBlob(id,new Blob([x.data],{type:MIME[ex]}));ok++;status('⏳ '+ok+' photo lagi…');}
+  }else if(/^image\//.test(f.type)){var id2=matchName(f.name,null);if(!id2){bad.push(f.name);continue;}await saveBlob(id2,f);ok++;}
+ }}catch(er){status('✖ Upload error: '+er.message);return;}
+ status('✔ '+ok+' photo naam se lag gayi'+(bad.length?' · '+bad.length+' ka naam kisi player se nahi mila: '+bad.slice(0,8).join(', ')+(bad.length>8?'…':'')+' (file ka naam player ke naam jaisa rakho, jaise "Rohit Sharma.jpg")':''));};
+
+// ---------- names list copy ----------
+$('cp').onclick=function(){var out=[];TEAMS.forEach(function(t){out.push(t.en+' — '+t.hi);PL.forEach(function(p){if(p.team===t.key)out.push('  '+p.en+' | '+p.hi+(p.os?' | overseas':'')+(p.tr?' | trade':''));});out.push('');});
+ var txt=out.join('\n');(navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){status('✔ '+PL.length+' players ki list copy ho gayi');}).catch(function(){var w=window.open('','_blank');if(w){w.document.write('<pre>'+esc(txt)+'</pre>');}else status('Copy nahi hua (popup block)');});};
+
+$('q').oninput=function(){state.q=this.value;render();};
+render();loadAll().then(render).catch(function(e){status('IndexedDB error: '+e.message);});
+})();
+</script>
+</body></html>

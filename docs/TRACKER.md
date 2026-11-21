@@ -1035,3 +1035,44 @@ Test: node --check; headless chromium news.html (sample stories) -> 4 title har 
 - news.html: STEP 1 point 4 ab "GEMINI MESSAGES (CHUNKS)": 4-5 alag code block, har mein poora FORMAT AUR NIYAM + us chunk ke facts/dhancha/Claude draft + BEST SE BHI BEST. GEM_T mein CHUNK line, SHURUAAT sirf chunk 1, CTA sirf dhancha wala, OUTPUT sirf is chunk ka. STEP 2 mein chunks jodne ka check.
 - docs/GEMINI_SCRIPT_PROMPT_TEMPLATE.md GEM_T jaisa, SCRIPT_WORKFLOW.md C188 section.
 - Test: node --check, fullPrompt mein CHUNKS/CLAUDE DRAFT aaya.
+
+
+## C189 — IPL Daily Video (DONE)
+- news.html: purple box 'IPL Daily Video' (roz nayi IPL stories, poori + fast headlines, ek click prompt, use-mark, undo, log, backup mein ipl log).
+- Intro: shocking sawaal-hook + fixed 'मैं हूँ युवराज, और आप देख रहे हैं खबर मैदान की' + 'शुरू करते हैं'.
+- feeds.json: 4 naye IPL 1-day feeds. Doc: docs/IPL_DAILY.md.
+- Test: headless chromium (12 nakli stories), errors 0. Live feeds check baaki.
+
+## C189b — Standard Intro/Outro chooser (DONE)
+- js/bumper_pick.js (new): PC se upload, chuno, intro = script line par clip scene, outro = aakhir. looks.js 🎬 Standard intro jodo ab chuna hua intro lagata hai. index.html mein script tag. Doc: docs/INTRO_OUTRO_CHOOSER.md.
+- Test: headless chromium (upload 2 video, choose, scene insert, dobara click replace), errors 0.
+
+## C190 — Style list (DONE)
+- js/style_names.js (new): 42 naam wale styles, 🎨 Style list overlay, Naya Style ab naam dikhata hai. looks.js + index.html chhota badlav. Doc: docs/STYLE_LIST.md. Test: headless chromium, errors 0.
+
+## C191 (21 Nov 2026) — Expression emoji + pause chinh: teleprompter + captions
+teleprompter.html: ⏸ aur emoji alag styling mein (bade), shabd-ginti unhe nahi ginti; setup mein cue legend. js/captions.js: setScript/load mein ⏸ aur emoji hataye (CAP.clean). docs/EXPRESSION_EMOJI.md. Script mein label kam + emoji + pause ab standing niyam.
+NOT tested: asli Chrome mein teleprompter dekha nahi (sirf syntax + regex unit test). 08_SCENES.json ka script key naye emoji script se badla (08_SCENES_v2_EMOJI_SCRIPT.json); cards purane intro ke hisaab se hain.
+Next: Rahul jo bole (scenes mein zyada images + ek player ki bulk photos, ya aur).
+
+
+## C192 (21 Nov 2026) — Intro/Outro volume slider (chooser)
+js/bumper_pick.js: Intro/Outro tab par 0-300% slider (introVol/outroVol), applyBump BUMP item ka vol set karta hai. docs/INTRO_OUTRO_CHOOSER.md update.
+Test: node --check ok. NOT tested: asli Chrome mein slider + export (headless chromium is chat mein nahi tha).
+Next (C193): script-line intro scene ki awaaz (clip audio voice-over ke neeche, volume slider ke saath) + Chrome mein slider/export check. Music (🎵) pehle se maujood.
+
+## C193 (21 Nov 2026) — IPL Players page (list + photos tab + ZIP + extension auto)
+NAYE: players.html, js/ipl_players.js (184 IPL 2027 retained players, PHOTO_SLOTS mein 105 naye slot), js/zip_lite.js (zip likhna/padhna). index.html: script tag + nav 👥 Players. docs/IPL_PLAYERS.md.
+Test: node (zip, nakli DOM harness). NOT tested: asli Chrome + extension. Auction (16 Dec) ke baad list update karni hogi.
+Next (C194): (1) asli Chrome mein players page + ⚡ Auto check, jo bhi bug (2) script-line intro ki awaaz (pehle wala C193 plan, ab C194).
+
+## C193b (21 Nov 2026) — Classic UI naya: preview bada, scenes list side mein, buttons ke groups
+NAYA: js/classic_shell.js (index.html mein sabse aakhir mein; sirf Classic mein, ?layout=filmora par band). Purane modules ko chhua nahi — sirf unke elements nayi jagah.
+- Layout: left = bada preview (height ke hisaab se fit, Short 9:16 mein bhi) + transport + buttons; right (sticky) = Scenes/Photos/Audio/Export tabs. <1100px par purana stacked.
+- Transport: ⏮ ▶ ⏭, seek, 'Scene 3/8 · stat · 0:07/0:35' chip, Undo/Redo/Safe zone yahin.
+- Scenes list: har scene ek chhoti row (number, rang wala type, headline, dur) + ↑ ↓ ⧉ ✕. Click = scene chuno + wahan seek; laal bar = abhi chal raha scene. Chuna hua scene ke fields neeche (SE ke apne). 📷 chip = photos ka hisaab (click par poora summary).
+- Buttons ke 5 group tabs (yaad rehta hai, cvt_cl_tab): 🎨 Look (Polish, Look, Cinema, Progress, preset, Zoom, Style list, Naya Style) · 🎬 Intro/Outro · 🔤 Text (Header/Pills/Carry) · 🎞 Video (Video yahan, Clips, Chapter flow, Short, Auto-vary, Storyboard) · 🗂 Kit. Naye modules ke buttons MutationObserver se apne aap sahi group mein (regex groupOf() classic_shell.js mein; naya button ho to wahan keyword jodo).
+- Header: ⚡ Export (MP4) button + progress status har tab se.
+- Keys: ↑↓ scene, Home/End (preview par element chuna ho to arrow uska nudge hai).
+Test (headless chromium 1600x900, 900x800, 8-scene JSON): node --check ok; console errors 0; row click/seek, ↑↓⧉✕ list se, Undo, ⏮⏭, ArrowDown, 5 tabs, Short 9:16 (405x720), filmora layout (fm class, cl-grid nahi) sab OK. NOT tested: asli Chrome par export/audio.
+Next: C194 (PROMPT_C194_NEXT.md) jaisa; UI mein aur badlav Rahul jo bole (list mein drag-reorder, scene thumbnail, buttons ka order).

@@ -92,6 +92,7 @@ function boot(){
     if(!sc||sc.type!=='presenter'){st.textContent='Pehle wo presenter scene chuno (Scenes tab mein) jise standard banana hai.';return;}
     try{localStorage.setItem(SK,JSON.stringify({dur:sc.dur,data:sc.data}));st.textContent='Standard intro save ho gaya. Ab har video mein 🎬 dabao.';}catch(e){st.textContent='Save error: '+e.message;}};
   bA.onclick=async()=>{const SE=window.SE;
+    if(window.STDB&&STDB.hasIntro()){st.textContent=await STDB.addIntroScene();return;}
     if(C.format!=='wide'){st.textContent='Standard intro sirf wide mode mein.';return;}
     if(SE.scenes.some(s=>s.type==='presenter')){st.textContent='Presenter intro pehle se hai.';return;}
     let sv=null;try{sv=JSON.parse(localStorage.getItem(SK)||'null');}catch(e){}
@@ -159,6 +160,7 @@ function boot(){
   // C64: 🎬 Naya Style — ek click mein look + caption style/rang + auto-vary; pichli baar wala nahi aata
   const bR=document.createElement('button');bR.id='lk_recipe';bR.textContent='🎬 Naya Style (ek click)';bR.style.background='#d0397a';
   bR.onclick=async()=>{bR.disabled=true;try{
+    if(window.STYLENAMES){st.textContent=await STYLENAMES.random();bR.disabled=false;return;}
     let h={};try{h=JSON.parse(localStorage.getItem('cvt_recipe_hist')||'{}');}catch(e){}
     const pk=(arr,last)=>{const c=arr.filter(x=>x!==last);const l=c.length?c:arr;return l[Math.floor(Math.random()*l.length)];};
     const lk=pk(Object.keys(LOOKS),h.look),cs=window.CAP?pk(Object.keys(CAP.STYLES),h.cs):'',cc=window.CAP?pk(Object.keys(CAP.COLORS).filter(x=>x!=='white'),h.cc):'';

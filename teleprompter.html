@@ -21,6 +21,9 @@ button,.btn{background:#333;color:#fff;border:0;border-radius:10px;padding:10px 
 #txt{padding:26vh 22px 60vh;font-size:var(--fs);line-height:1.5;font-weight:600;max-width:1100px;margin:0 auto;color:#f2f2f2}
 #txt.mir{transform:scaleX(-1)}
 #txt p{margin:0 0 .7em}
+.pz{display:inline-block;color:#ff5a7a;opacity:.7;font-size:.55em;margin:0 .45em;padding:.05em .7em;border:1px dashed #ff5a7a88;border-radius:10px;vertical-align:middle;letter-spacing:.12em}
+.pz.l{padding:.05em 1.8em}
+.ex{font-size:1.45em;vertical-align:middle;margin:0 .12em 0 0;line-height:1}
 #guide{position:absolute;left:0;right:0;top:26%;height:0;border-top:2px dashed #e1133a55;pointer-events:none}
 #bar{background:#111;padding:8px 10px;padding-bottom:max(8px,env(safe-area-inset-bottom));display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
 #bar button{padding:9px 12px;font-size:16px}
@@ -33,6 +36,7 @@ button,.btn{background:#333;color:#fff;border:0;border-radius:10px;padding:10px 
 <div id="setup">
 <div class="row" style="justify-content:space-between"><h1>🎤 Script Teleprompter</h1><a href="index.html">← Video tool</a></div>
 <div class="sm">Script yahan paste karo. Alag voice-over chunks ke beech ek line mein sirf <b>---</b> likho. Phir "Padho" dabao: dark full screen, text bada/chhota, scroll, aur record.</div>
+<div class="sm">Expression cue: 😲 hairani · 🤔 soch · 👀 dhyaan · 🤨 shak/ulti baat · 😏 halka mazaak · 😌 thehra/dheema · 🙂 narm/seedha · 😅 halki hansi. <b>⏸</b> = chhota hold, <b>⏸⏸</b> = lamba hold. Ye bolne ke liye nahi, reader mein bade dikhte hain.</div>
 <textarea id="script" placeholder="Chunk 1 ka script…&#10;&#10;---&#10;&#10;Chunk 2 ka script…"></textarea>
 <div class="row">
 <button class="red" id="go">▶ Padho (full screen)</button>
@@ -73,7 +77,8 @@ const err=m=>{$('err').textContent=m||'';};
 const ta=$('script');
 try{ta.value=localStorage.getItem(KS)||'';}catch(e){}
 function chunks(){return ta.value.split(/^\s*(?:---+|===+)\s*$/m).map(s=>s.trim()).filter(Boolean);}
-function info(){const c=chunks(),w=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;$('info').textContent=c.length+' chunk · '+w+' shabd';}
+const MK=/⏸|\u200d|\ufe0f|\p{Extended_Pictographic}/gu;// C191: pause chinh + expression emoji shabd nahi ginte
+function info(){const c=chunks(),t=ta.value.replace(MK,' ').trim(),w=t?t.split(/\s+/).length:0;$('info').textContent=c.length+' chunk · '+w+' shabd';}
 ta.oninput=()=>{try{localStorage.setItem(KS,ta.value);}catch(e){}info();};
 $('tf').onchange=async e=>{const f=e.target.files[0];if(!f)return;ta.value=await f.text();ta.oninput();e.target.value='';};
 $('fromcap').onclick=()=>{try{const j=JSON.parse(localStorage.getItem('cvt_caps')||'null');if(!j||!j.s){err('Captions mein script nahi mili.');return;}
@@ -106,8 +111,14 @@ $('clrall').onclick=async()=>{if(confirm('Saari recordings hata dun? Wapas nahi 
 let cur=0,raf=0,scrolling=false,pos=0,lastSet=0,lastT=0,wl=null,mr=null,rec=null;
 const sc=$('sc'),txt=$('txt');
 function applyUI(){document.documentElement.style.setProperty('--fs',ui.size+'px');$('fl').textContent=ui.size;txt.classList.toggle('mir',!!ui.mirror);$('mr').checked=!!ui.mirror;$('rs').checked=!!ui.rs;$('sp').value=ui.speed;}
+// C191: ⏸ = pause chinh (chhota/lamba hold), emoji = expression cue. Dono bade aur alag rang mein dikhte hain; padhna nahi hai.
+function fillLine(p,line){const re=/(⏸+)|((?:\p{Extended_Pictographic}\ufe0f?(?:\u200d\p{Extended_Pictographic}\ufe0f?)*)+)/gu;let last=0,m;
+  while((m=re.exec(line))){if(m.index>last)p.appendChild(document.createTextNode(line.slice(last,m.index)));
+    const sp=document.createElement('span');if(m[1]){sp.className='pz'+(m[1].length>1?' l':'');sp.textContent=m[1];}else{sp.className='ex';sp.textContent=m[2];}
+    p.appendChild(sp);last=re.lastIndex;}
+  if(last<line.length)p.appendChild(document.createTextNode(line.slice(last)));}
 function showChunk(n){const C=chunks();if(!C.length)return;cur=Math.max(0,Math.min(C.length-1,n));
-  txt.textContent='';C[cur].split(/\n+/).forEach(l=>{if(!l.trim())return;const p=document.createElement('p');p.textContent=l.trim();txt.appendChild(p);});
+  txt.textContent='';C[cur].split(/\n+/).forEach(l=>{if(!l.trim())return;const p=document.createElement('p');fillLine(p,l.trim());txt.appendChild(p);});
   $('ct').textContent='Chunk '+(cur+1)+'/'+C.length;sc.scrollTop=0;pos=0;lastSet=0;setScroll(false);
   const has=rec&&rec.chunk===cur;}
 function setScroll(on){scrolling=on;$('pl').textContent=on?'⏸ Roko':'▶ Scroll';cancelAnimationFrame(raf);if(on){pos=sc.scrollTop;lastSet=pos;lastT=0;raf=requestAnimationFrame(step);}}

@@ -121,6 +121,30 @@
    "url": "https://news.google.com/rss/search?q=%28site:chennaisuperkings.com+OR+site:mumbaiindians.com+OR+site:rajasthanroyals.com+OR+site:rcb.com+OR+site:kkr.in+OR+site:sunrisershyderabad.in+OR+site:delhicapitals.in+OR+site:punjabkingsipl.in+OR+site:gujarattitansipl.com+OR+site:lucknowsupergiants.in%29+when:7d&hl=en-IN&gl=IN&ceid=IN:en",
    "official": true,
    "enabled": true
+  },
+  {
+   "name": "Google News: IPL all (1d)",
+   "url": "https://news.google.com/rss/search?q=IPL+when:1d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: IPL captain/squad/coach (1d)",
+   "url": "https://news.google.com/rss/search?q=IPL+captain+OR+squad+OR+coach+OR+injury+when:1d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: IPL franchise news (1d)",
+   "url": "https://news.google.com/rss/search?q=IPL+franchise+OR+team+OR+player+when:1d&hl=en-IN&gl=IN&ceid=IN:en",
+   "official": false,
+   "enabled": true
+  },
+  {
+   "name": "Google News: IPL Hindi daily (1d)",
+   "url": "https://news.google.com/rss/search?q=%E0%A4%86%E0%A4%88%E0%A4%AA%E0%A5%80%E0%A4%8F%E0%A4%B2+when:1d&hl=hi&gl=IN&ceid=IN:hi",
+   "official": false,
+   "enabled": true
   }
  ],
  "tag_rules": {

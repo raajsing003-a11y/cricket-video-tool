@@ -4,12 +4,15 @@ const C=window.CORE,K='cvt_caps';
 const CAP=window.CAP={lines:[],on:false,script:'',P:null};
 function dur(){return (window.EXPORT&&EXPORT.audio&&EXPORT.audio.duration)||C.total;}
 function ends(){const L=CAP.lines,D=dur();L.forEach((l,i)=>l.t1=i<L.length-1?L[i+1].t0:D);}
-CAP.setScript=s=>{CAP.script=s;CAP.lines=s.split('\n').map(x=>x.trim()).filter(Boolean).map(t=>({text:t,t0:0,t1:0}));CAP.spread();};
+// C191: script mein ⏸ aur expression emoji ho sakte hain (teleprompter ke liye); captions mein nahi dikhne chahiye
+const clean=s=>String(s||'').replace(/⏸|\u200d|\ufe0f|\p{Extended_Pictographic}/gu,'').replace(/[ \t]{2,}/g,' ').replace(/[ \t]+$/gm,'');
+CAP.clean=clean;
+CAP.setScript=s=>{s=clean(s);CAP.script=s;CAP.lines=s.split('\n').map(x=>x.trim()).filter(Boolean).map(t=>({text:t,t0:0,t1:0}));CAP.spread();};
 CAP.spread=()=>{const L=CAP.lines,D=dur();if(!L.length)return;const w=L.map(l=>l.text.length+6),sum=w.reduce((a,b)=>a+b,0);let t=0;
  L.forEach((l,i)=>{l.t0=+t.toFixed(2);t+=w[i]/sum*D;});ends();save();};
 CAP.nudge=(i,d)=>{const L=CAP.lines,lo=i?L[i-1].t0+.1:0,hi=i<L.length-1?L[i+1].t0-.1:dur()-.1;L[i].t0=+Math.max(lo,Math.min(hi,L[i].t0+d)).toFixed(2);ends();save();};
 function save(){try{localStorage.setItem(K,JSON.stringify({s:CAP.script,t:CAP.lines.map(l=>l.t0),on:CAP.on}));}catch(e){}}
-function load(){try{const j=JSON.parse(localStorage.getItem(K)||'null');if(!j)return;CAP.script=j.s||'';CAP.on=false;
+function load(){try{const j=JSON.parse(localStorage.getItem(K)||'null');if(!j)return;CAP.script=clean(j.s||'');CAP.on=false;
  CAP.lines=CAP.script.split('\n').map(x=>x.trim()).filter(Boolean).map((t,i)=>({text:t,t0:(j.t&&j.t[i])||0,t1:0}));ends();}catch(e){}}
 CAP.at=t=>{const L=CAP.lines;for(let i=L.length-1;i>=0;i--)if(t>=L[i].t0)return t<L[i].t1?L[i]:null;return null;};
 // C64: caption styles (har video ka caption alag dikhe). CAP.st = {k:style, c:accent colour}; localStorage 'cvt_capstyle'

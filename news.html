@@ -41,6 +41,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 .pfbox{background:#162033;border-radius:8px;padding:8px;margin:6px 0}.pfbox input{width:100%;box-sizing:border-box;padding:8px;font-size:16px;border-radius:8px;border:1px solid #446;background:#000;color:#eee;margin:4px 0}
 #selbar{position:fixed;left:0;right:0;bottom:0;background:#0d2a14;border-top:2px solid #2a8a3a;padding:8px 10px;z-index:9;display:none}#selbar .in{max-width:900px;margin:0 auto}
 .tbox{margin:6px 0;padding:6px 8px;background:rgba(255,210,63,.08);border-left:3px solid #ffd23f;border-radius:6px}.thead{font-size:13px;color:#ffd23f;margin-bottom:3px}.trow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:2px 0}.tt{font-weight:700;font-size:15px}.tl{font-size:11px;opacity:.65}
+.iplbox{background:#1a1030;border:1px solid #5b3fa8;border-radius:10px;padding:10px;margin:10px 0}.iplbox select{background:#000;color:#eee;border:1px solid #446;border-radius:8px;padding:6px;font-size:15px}.iplbox .ist{font-size:15px;padding:2px 0;border-bottom:1px solid #2a2040}.iplbox details{margin-top:6px}
 </style></head><body><div id="w">
 <div class="top"><h1>📰 Cricket News Tracker</h1><a href="index.html">← Video tool</a></div>
 <div class="sm" id="upd">Loading…</div>
@@ -50,6 +51,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 <div id="fails"></div>
 <div class="warn">🧩 Ab <b>ek story = ek card</b>: 10 sites ki milti-julti khabrein ek saath, har site ki apni headline + link. Video ke liye <b>📋 Copy (poora prompt)</b> karo aur Claude chat mein paste karo (ab isme <b>3 thumbnail prompt</b> + <b>har 30 sec naya hook</b> wala script niyam bhi hai).</div>
 <div class="sm"><label><input type="checkbox" id="saveTxtCb" checked> 💾 Copy karte hi prompt .txt file bhi save ho (Downloads mein)</label></div>
+<div id="iplBox" class="iplbox"></div>
 <h2 id="h2top">⭐ Aaj ki top 5 stories</h2><div id="top5"></div>
 <h2 id="h2all">Saari stories</h2>
 <input type="search" id="q" placeholder="🔎 khoj (naam / shabd)">
@@ -326,7 +328,80 @@ function chips(box,list,key,fmt){box.innerHTML='';list.forEach(v=>{const val=Arr
 function top5(){
   const day=Date.now()-36*3600e3;
   return stories.filter(s=>new Date(s.latest)>day&&!isDone(s)).sort((a,b)=>(b.score-a.score)||(new Date(b.latest)-new Date(a.latest))).slice(0,5);}
+// ---- C189: IPL Daily Video (roz nayi IPL khabrein, ek click prompt, shocking sawaal intro, "खबर मैदान की")
+const KI='cvt_ipl_daily',KIC='cvt_ipl_cfg';
+let iplLog={};try{iplLog=JSON.parse(localStorage.getItem(KI)||'{}')||{};}catch(e){}
+let iplCfg={full:6,fast:8,mark:true};try{Object.assign(iplCfg,JSON.parse(localStorage.getItem(KIC)||'{}'));}catch(e){}
+const saveIpl=()=>{try{localStorage.setItem(KI,JSON.stringify(iplLog));}catch(e){}};
+const saveIplCfg=()=>{try{localStorage.setItem(KIC,JSON.stringify(iplCfg));}catch(e){}};
+const IPL_WORD=/\bipl\b|आईपीएल|indian premier league|mini[- ]auction/i;
+function isIPL(st){
+  if(st.tags.some(t=>['Trade','Retention','Release','Auction'].indexOf(t)>=0))return true;
+  const txt=st.items.map(i=>i.title+' '+(i.summary||'')).join(' | ');
+  if(IPL_WORD.test(txt)||TEAMS.slice(0,10).some(t=>t[1].test(txt)))return true;
+  return !st.tags.includes('India Match')&&cityHints(st).length>0;}
+function iplPool(){
+  const from=Date.now()-48*3600e3;
+  return stories.filter(s=>isIPL(s)&&new Date(s.latest)>from&&!isDone(s))
+    .sort((a,b)=>(b.score-a.score)||(new Date(b.latest)-new Date(a.latest)));}
+function iplBatch(){const P=iplPool();return {pool:P,full:P.slice(0,iplCfg.full),fast:P.slice(iplCfg.full,iplCfg.full+iplCfg.fast)};}
+const dKey=()=>{const d=new Date(),p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());};
+function recentIplTitles(){const out=[];Object.keys(iplLog).sort().reverse().slice(0,3).forEach(k=>(iplLog[k]||[]).forEach(b=>(b.titles||[]).forEach(t=>out.push(t))));return out.slice(0,25);}
+const IPL_HOOK_NEW='(1) Sabse pehle SHOCKING SAWAAL-HOOK: 4-6 chhote, jhatke wale sawaal (har ek 5-9 shabd), har sawaal ek alag story ka, sirf STORY PACK ki khabron ke andar. Style (sirf example, asli sawaal aaj ki khabron se banao): "क्या यशस्वी छोड़ेंगे राजस्थान?" / "किस टीम में मची हलचल?" / "कौन बनेगा मुंबई का कप्तान?" / "कोलकाता में क्या हुई गड़बड़?". Sawaal sirf sawaal rahe, pakka bayan nahi; jis sawaal ka jawab video mein nahi aayega wo mat likho. Rumor wali story ka sawaal bhi sawaal hi rahe.';
+function iplPrompt(full,fast){
+  let t=full.length>1?fullPrompt(null,null,full):fullPrompt(full[0]);
+  t=t.split('99 Cricket News').join('Khabar Maidan Ki').split('99 क्रिकेट न्यूज़').join('खबर मैदान की');
+  t=t.replace(/\(1\) Sabse pehle "इस वीडियो में हम बात करेंगे"[\s\S]*?bolo\)\./,()=>IPL_HOOK_NEW);
+  const d=new Date().toLocaleDateString('hi-IN',{day:'numeric',month:'long',year:'numeric'}),prev=recentIplTitles();
+  const blk=['=== IPL DAILY MODE (C189) ===',
+   '- Ye channel "खबर मैदान की" ka ROZ ka IPL video hai, host युवराज. Aaj ki date: '+d+'. Sirf aaj ki NAYI IPL khabrein; jo pehle ke videos mein aa chuki, dobara nahi.',
+   '- FULL STORIES ('+full.length+'): STORY PACK mein, har ek chapter-wise poori. FAST HEADLINES ('+fast.length+'): script ke aakhir mein "rapid fire" — har ek 1-2 chhote vaakya, beech mein chhoti transition line. Total lambai ~ '+(full.length*140+fast.length*30)+' shabd.',
+   '- INTRO ORDER (chunk 1, isi order mein): (1) SHOCKING SAWAAL-HOOK (4-6 sawaal, aaj ki khabron se) (2) FIXED shabd-ba-shabd: "नमस्कार दोस्तों! मैं हूँ युवराज, और आप देख रहे हैं खबर मैदान की।" (3) FIXED: "तो बिना देर किए, शुरू करते हैं।" Ye intro "इस वीडियो में हम बात करेंगे" wale purane teaser ki JAGAH hai.',
+   '- Scenes JSON (STEP 3): pehla scene = ye sawaal-hook (4-6 sec, hook/bigwords/qcards card), phir tool ka 🎬 Standard intro.',
+   '- Jo upar mere channel intro mein "99 Cricket News" ya "99 क्रिकेट न्यूज़" likha dikhe, uski jagah hamesha "खबर मैदान की".'];
+  if(prev.length)blk.push('- DOHRAANA NAHI (pichhle 3 din ke IPL videos mein aa chuki): '+prev.join(' || '));
+  const i0=t.indexOf('\n');
+  t=t.slice(0,i0)+'\n\n'+blk.join('\n')+t.slice(i0);
+  if(fast.length){t+='\n\n=== FAST HEADLINES (rapid fire; har ek ko bhi verify karo, naye fact nahi) ===\n'+fast.map((s,k)=>'H'+(k+1)+'. '+s.title+' ['+s.srcNames.slice(0,3).join(', ')+', '+ago(s.latest)+'] — '+s.items[0].link).join('\n');}
+  return t;}
+function iplMark(L,full,fast){
+  const k=dKey();L.forEach(st=>setUsed(st,true));
+  (iplLog[k]=iplLog[k]||[]).push({at:new Date().toISOString(),ids:L.map(s=>s.id),items:[].concat.apply([],L.map(s=>s.items.map(i=>i.id))),titles:L.map(s=>s.title),full:full,fast:fast});
+  const ks=Object.keys(iplLog).sort();while(ks.length>30)delete iplLog[ks.shift()];saveIpl();}
+function iplUndo(){
+  const ks=Object.keys(iplLog).sort();if(!ks.length)return false;
+  const k=ks[ks.length-1],arr=iplLog[k],b=arr.pop();if(!arr.length)delete iplLog[k];
+  if(b)(b.items||[]).forEach(id=>{delete used[id];});saveU();saveIpl();return !!b;}
+function drawIpl(){
+  const box=$('iplBox');if(!box)return;box.innerHTML='';
+  const B=iplBatch(),todayN=(iplLog[dKey()]||[]).length,nUpd=B.pool.filter(hasUpd).length;
+  box.appendChild(el('div','t','🏏 IPL Daily Video — "खबर मैदान की" (roz nayi khabrein)'));
+  box.appendChild(el('div','sm','Pichhle 48 ghante ki IPL stories jo abhi tak kisi video mein use nahi hui: '+B.pool.length+(nUpd?' (🔄 nayi update wali: '+nUpd+')':'')+(todayN?' · aaj '+todayN+' video ka batch ban chuka':'')));
+  const cr=el('div','row2');
+  const mk=(lab,key,vals)=>{cr.appendChild(el('span','lab',lab));const sel2=document.createElement('select');vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;if(iplCfg[key]===v)o.selected=true;sel2.appendChild(o);});sel2.onchange=()=>{iplCfg[key]=+sel2.value;saveIplCfg();draw();};cr.appendChild(sel2);};
+  mk('Poori stories:','full',[3,4,5,6,7,8]);mk('Fast headlines:','fast',[0,4,6,8,10,12]);box.appendChild(cr);
+  const cm=el('div','sm'),cb0=document.createElement('input');cb0.type='checkbox';cb0.checked=!!iplCfg.mark;cb0.onchange=()=>{iplCfg.mark=cb0.checked;saveIplCfg();};
+  const lb=document.createElement('label');lb.appendChild(cb0);lb.appendChild(document.createTextNode(' Copy karte hi ye sab "use ho gayi" mark ho (kal dobara nahi aayengi)'));cm.appendChild(lb);box.appendChild(cm);
+  if(!B.pool.length){box.appendChild(el('div','warn','Abhi koi nayi IPL khabar nahi bachi. 🔄 Abhi fetch karo dabao, ya thodi der baad aao.'));}
+  else{
+    box.appendChild(el('div','lab','Poori stories ('+B.full.length+'):'));
+    B.full.forEach((s,k)=>box.appendChild(el('div','ist','#'+(k+1)+' '+(hasUpd(s)?'🔄 ':'')+s.title+'  ('+s.srcNames.length+' sites, '+ago(s.latest)+')')));
+    if(B.fast.length){box.appendChild(el('div','lab','Fast headlines ('+B.fast.length+'):'));B.fast.forEach((s,k)=>box.appendChild(el('div','ist sm','H'+(k+1)+' '+s.title)));}
+    const left=B.pool.length-B.full.length-B.fast.length;if(left>0)box.appendChild(el('div','sm','Baaki '+left+' stories kal ke liye bachi rahengi.'));}
+  const r=el('div','row');box.appendChild(r);
+  const cb=el('button',null,'📋 Aaj ka IPL video prompt copy');
+  cb.onclick=async()=>{const B2=iplBatch();if(!B2.full.length){alert('Abhi nayi IPL khabar nahi hai.');return;}
+    const t=iplPrompt(B2.full,B2.fast);let ok=true;try{await navigator.clipboard.writeText(t);}catch(e){ok=false;prompt('Copy karo:',t);}
+    const x=saveTxt(t,'ipl_daily');if(iplCfg.mark)iplMark(B2.full.concat(B2.fast),B2.full.length,B2.fast.length);
+    cb.textContent=(ok?'✔ Copy hua':'✔ Prompt bana')+x+(iplCfg.mark?' · '+(B2.full.length+B2.fast.length)+' stories use mark':'');setTimeout(draw,1800);};
+  r.appendChild(cb);
+  if(Object.keys(iplLog).length){const ub=el('button',null,'↩ Aakhri batch wapas');ub.onclick=()=>{if(confirm('Aakhri IPL batch ki stories dobara "nayi" ho jayengi. Pakka?')){iplUndo();draw();}};r.appendChild(ub);}
+  const ks=Object.keys(iplLog).sort().reverse();
+  if(ks.length){const dt2=document.createElement('details');dt2.appendChild(el('summary','sm','📅 Pichhle IPL videos (kya kya use hua)'));
+    ks.slice(0,7).forEach(k=>(iplLog[k]||[]).forEach((b,n)=>{dt2.appendChild(el('div','sm','• '+k+' (video '+(n+1)+'): '+b.full+' poori + '+b.fast+' fast'));(b.titles||[]).slice(0,b.full).forEach(t=>dt2.appendChild(el('div','sm','   – '+t)));}));box.appendChild(dt2);}
+}
 function draw(){
+  try{drawIpl();}catch(e){}
   const siteSet=new Map();stories.forEach(s=>s.srcKeys.forEach((k,j)=>{if(!siteSet.has(k))siteSet.set(k,{n:s.srcNames[j],c:0});siteSet.get(k).c++;}));
   if(ui.site!=='Sab'&&!siteSet.has(ui.site))ui.site='Sab';
   chips($('tags'),['Sab'].concat(TAGS),'tag');chips($('lbls'),['Sab','Confirmed','Rumor'],'lbl');
@@ -373,10 +448,10 @@ function draw(){
 $('latestBtn').onclick=()=>{ui.view=ui.view==='latest'?'story':'latest';saveUI();draw();};
 $('q').oninput=e=>{ui.q=e.target.value;draw();};
 $('hideUsed').onclick=()=>{ui.hide=!ui.hide;saveUI();draw();};
-$('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({format:'cvt_news_backup_v3',saved:new Date().toISOString(),used:used,steps:steps,later:later,notes:notes},null,1)],{type:'application/json'}));a.download='news_backup.json';a.click();};
+$('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({format:'cvt_news_backup_v3',saved:new Date().toISOString(),used:used,steps:steps,later:later,notes:notes,ipl:iplLog},null,1)],{type:'application/json'}));a.download='news_backup.json';a.click();};
 $('impU').onclick=()=>$('fi').click();
 $('fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!j||typeof j!=='object'||Array.isArray(j))throw new Error('object chahiye');
-    if(j.format==='cvt_news_backup_v2'||j.format==='cvt_news_backup_v3'){Object.assign(used,j.used||{});Object.assign(later,j.later||{});Object.assign(notes,j.notes||{});saveN();Object.keys(j.steps||{}).forEach(id=>{steps[id]=Object.assign(steps[id]||{},j.steps[id]);});
+    if(j.format==='cvt_news_backup_v2'||j.format==='cvt_news_backup_v3'){Object.assign(used,j.used||{});Object.assign(iplLog,j.ipl||{});saveIpl();Object.assign(later,j.later||{});Object.assign(notes,j.notes||{});saveN();Object.keys(j.steps||{}).forEach(id=>{steps[id]=Object.assign(steps[id]||{},j.steps[id]);});
       saveU();try{localStorage.setItem(KL,JSON.stringify(later));localStorage.setItem(KP,JSON.stringify(steps));}catch(e){}draw();alert('Backup load ho gaya (used + steps + baad mein + notes).');}
     else{Object.assign(used,j);saveU();draw();alert('Purani Used list load ho gayi.');}}catch(x){alert('JSON error: '+x.message);}};
 let NJ=new URLSearchParams(location.search).get('data')||'news/news.json';if(!/^[\w\/.-]+$/.test(NJ))NJ='news/news.json';
