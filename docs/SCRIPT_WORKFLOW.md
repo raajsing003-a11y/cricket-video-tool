@@ -64,3 +64,8 @@ docs/scripts/<date>_<naam>/ mein har video ka kaam rakho: 01_FACT_PACK.md, 02_GE
 - Claude script ke saath code block ke BAHAR "30-sec hook map" (0:30 = kya naya, 1:00 = ...) deta hai; scenes JSON mein har hook-beat par screen bhi naya (hook/bigwords/qcards/burst/stat2 ya naya header + tr).
 - Check-checklist mein jodo: har 30 sec par naya hook? Koi lamba seedha hissa? Thumbnail text mein rumor/official/afwah/Done/Confirm nahi, text 5 shabd tak, face-rule line, teeno concept alag.
 - Thumbnail: har video ke liye 3 alag concept, Prompt B (khaali face slot) default; photos tool ke thumbnail.html mein lagti hain. Poora tareeka docs/THUMBNAIL_PROMPT.md.
+
+## C188: Gemini ko script CHUNKS mein (Rahul ka hukm; niyam 11-12 ka Gemini wala hissa badla)
+- Gemini ko script 4-5 chunk mein (har ~130-190 shabd, 2 hook-tukde) ALAG code block mein do. HAR chunk mein poora FORMAT AUR NIYAM text (template) + us chunk ke facts + dhancha + Claude draft (reference) + aakhir mein BEST SE BHI BEST ki maang.
+- Chunk 1 mein FIXED shuruaat, beech ka like/subscribe sirf natural break wale chunk mein, aakhir CTA sirf last chunk mein. Pehle chunk ke teaser ka wada kisi chunk mein nibhao.
+- Rahul saare chunk ek hi Gemini chat mein ek ke baad ek paste karta hai, output Claude ko deta hai; Claude jodkar check karke FINAL script EK hi block mein deta hai (voice-over ek hi script).

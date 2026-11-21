@@ -1030,3 +1030,8 @@ Test: node --check; headless chromium news.html (sample stories) -> 4 title har 
 ## C187 (19 Nov 2026) — Copy ke saath prompt .txt save
 - news.html: 📋 Copy (poora prompt / Sirf ye / Top-N) dabate hi prompt clipboard mein jaata hai AUR prompt_<tarikh_samay>_<story>.txt Downloads mein save hota hai (chat mein file bhej sako). Button par "✔ Copy hua + 💾 .txt". Upar checkbox se band/chalu (localStorage cvt_savetxt).
 - Test: node --check, headless chromium download ok (file naam + content), checkbox off par download nahi, errors 0.
+
+## C188 (19 Nov 2026) — Gemini ko script chunks mein + har chunk mein format + best se bhi best
+- news.html: STEP 1 point 4 ab "GEMINI MESSAGES (CHUNKS)": 4-5 alag code block, har mein poora FORMAT AUR NIYAM + us chunk ke facts/dhancha/Claude draft + BEST SE BHI BEST. GEM_T mein CHUNK line, SHURUAAT sirf chunk 1, CTA sirf dhancha wala, OUTPUT sirf is chunk ka. STEP 2 mein chunks jodne ka check.
+- docs/GEMINI_SCRIPT_PROMPT_TEMPLATE.md GEM_T jaisa, SCRIPT_WORKFLOW.md C188 section.
+- Test: node --check, fullPrompt mein CHUNKS/CLAUDE DRAFT aaya.
