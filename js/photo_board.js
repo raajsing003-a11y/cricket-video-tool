@@ -87,6 +87,7 @@ function tileEl(t,i,cnt){
   const a=el('div','margin-top:3px;display:flex;flex-wrap:wrap');
   a.appendChild(B('🔍',()=>replaceWithNew(t,i,'google'),'#1a73e8','Google se nayi photo (extension)'));
   a.appendChild(B('⬆',()=>replaceWithNew(t,i,'upload'),'#2a6','Apni nayi photo upload'));
+  if(t.n&&window.PFR)a.appendChild(B('🎯',()=>PFR.edit(t.key,()=>done()),'#8a4','Crop / zoom / face adjust'));
   if(t.kind==='card'&&t.n>1||t.pinned)a.appendChild(B('🔁',()=>cycle(t),'#456','Isi player ki agli photo'));
   if(t.kind==='card'&&t.pinned)a.appendChild(B('↺',()=>{setRef(t.ref,t.base);done();},'#456','Pin hatao — auto-rotate'));
   a.appendChild(B('🗑',()=>del(t,i),'#a33',t.kind==='card'?'Is scene se photo hatao':'Is scene mein ye side card mat dikhao'));

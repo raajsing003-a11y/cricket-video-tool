@@ -1096,3 +1096,12 @@ reels.html (standalone, engine alag): script lines -> captions, BG video, photo,
 
 ## C197b (22 Nov 2026) — Reels Maker chunk 2 (fast export chhod ke) DONE
 reels.html: number card (## line), Style list 12, caption box/dim, music + ducking, JSON save/load (main tool scenes JSON bhi). Test headless chromium: JSON load, style, export with music (mp4 1.2 MB), errors 0. NOT tested: asli Chrome par awaaz+music export. Baaki: fast export.
+
+## C198 (22 Nov 2026) — Cameo/side photo text par na aaye (timeline fix)
+js/photo_variants.js: (1) BANDEND — timeline card ki beech wali patti (line+labels) ke neeche hi cameo, chhota ho kar (patti tak na aaye). (2) Cameo elem_edit ke recorded text box (C.text) se takraye to doosri taraf, dono taraf takraye to is scene mein nahi. Test headless: timeline scene mein cameo top ab patti ke neeche (~y 715 of 1080), errors 0. NOT tested: baaki cards (jin mein text ctx.fillText se seedha banta hai wo (2) se nahi pakde jaate; CAM_AVOID/BANDEND mein card jodo).
+
+## C199 (22 Nov 2026) — Cameo card ki jagah saaf player image
+js/photo_variants.js drawCameo: frame/glow/laal naam-patti/shimmer hataye; photo offscreen canvas par feather mask (destination-in) laga ke draw. Position/size/avoid logic (C179, C198) wahi. NOT tested: asli Chrome/headless (is chat mein browser nahi tha), sirf node --check.
+
+## C200 (22 Nov 2026) — 🎯 Photo frame: crop/zoom khud + face auto-detect
+NAYA js/photo_frame.js + js/vendor/face-api.js + assets/face_models/. photos.js (🎯 row button, backup/folder mein frames), photo_board.js (🎯 tile button), photo_variants.js (cameo draw error ab console.warn karta hai). Doc: docs/PHOTO_FRAME.md. Test headless chromium: face auto 3/3 + no-face ok, manual drag+save+reload ok, cameo render ok, errors 0. NOT tested: asli player photos.

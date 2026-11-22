@@ -13,7 +13,7 @@ a{color:#7cc4ff}#st{color:#ffd400;margin:8px 0;min-height:18px}.row{display:flex
 <div><a href="index.html">← Video Tool</a></div><h2 style="margin:6px 0">📱 Reels Maker (9:16)</h2>
 <label>Upar ka hook / title (optional)</label><input type="text" id="ttl" placeholder="जैसे: IPL में बड़ा धमाका?">
 <label>Script — har line = ek caption (⏸ aur emoji chalte hain, caption mein ⏸ nahi dikhta)</label><textarea id="scr" placeholder="Ek line, ek caption.&#10;Choti lines rakho (4-8 shabd).&#10;Aakhir mein: Follow for more"></textarea>
-<div class="row"><div><label>BG video</label><select id="bgm"></select></div><div><label>Mode</label><select id="mode"><option value="mix">MIX (har 2-3 line par badle)</option><option value="one">EK HI</option></select></div></div>
+<div class="row"><div><label>BG video</label><select id="bgm"></select></div><div><label>Mode</label><select id="mode"><option value="mix">MIX (har 2-3 line par badle)</option><option value="one">EK HI</option><option value="mine">SIRF MERE videos (mix)</option></select></div></div>
 <label>🎨 Style list</label><select id="sty"></select>
 <div class="row"><div><label>Caption jagah</label><select id="pos"><option value="mid">Beech</option><option value="low">Neeche</option><option value="up">Upar</option></select></div><div><label>Highlight rang</label><select id="hl"><option value="#F5C518">Peela</option><option value="#00e5ff">Cyan</option><option value="#ff4d9d">Pink</option><option value="#2ecc71">Hara</option></select></div></div>
 <div class="row"><div><label>Channel naam (neeche)</label><input type="text" id="wm" value="99 Cricket News"></div><div><label>Har line min sec</label><input type="text" id="mn" value="1.8"></div></div>
@@ -21,16 +21,19 @@ a{color:#7cc4ff}#st{color:#ffd400;margin:8px 0;min-height:18px}.row{display:flex
 <label>Voice-over / music (optional) — lines awaaz ki lambai par bant jaati hain</label><input type="file" id="aud" accept="audio/*,video/*">
 <label>Background music (optional, voice-over par apne aap dheema)</label><div class="row"><input type="file" id="mus" accept="audio/*"><input type="range" id="mvol" min="0" max="100" value="35" style="padding:0"></div>
 <label>Photo (optional, upar card mein)</label><input type="file" id="pho" accept="image/*">
-<div style="margin-top:10px"><button class="g" id="play">▶ Preview</button><button class="b" id="rand">🎲 BG badlo</button><button id="jsave">⬆ JSON save</button><label class="b" style="display:inline-block;padding:8px 10px;border-radius:8px;cursor:pointer;margin:4px 4px 0 0;color:#e9edf3">⬇ JSON load<input type="file" id="jload" accept=".json" style="display:none"></label><button class="r" id="exp">⏺ Export (real-time)</button></div>
+<div style="margin-top:10px"><button class="g" id="play">▶ Preview</button><button class="b" id="rand">🎲 BG badlo</button><label class="b" id="bguadd" style="display:inline-block;padding:8px 10px;border-radius:8px;cursor:pointer;margin:4px 4px 0 0;color:#e9edf3;background:#7c3aed">➕ Apne BG video (PC se)<input type="file" id="bguf" accept="video/*,.mp4,.webm,.mov,.m4v,.mkv" multiple hidden></label><button class="b" id="bgux" style="background:#7c3aed">🗑 Mere BG hatao</button><button id="jsave">⬆ JSON save</button><label class="b" style="display:inline-block;padding:8px 10px;border-radius:8px;cursor:pointer;margin:4px 4px 0 0;color:#e9edf3">⬇ JSON load<input type="file" id="jload" accept=".json" style="display:none"></label><button class="r" id="exp">⏺ Export (real-time)</button></div>
 <div style="color:#8b95a5;font-size:12px;margin-top:6px">Number card: line <code>## ₹10 करोड़ | सैलरी</code> (number count-up hota hai).</div><div id="st"></div><div style="color:#8b95a5;font-size:12px">Export real-time hota hai: tab khula rakho, reel jitni lambi utna time. Chrome desktop. Naya BG video: assets/bgvideo/.</div>
 </div><div id="pv"><canvas id="cv" width="1080" height="1920"></canvas></div></div>
+<script src="js/bg_user.js"></script>
 <script>
-const LIST=['01_foggy_stadium_floodlights_grass','02_golden_smoke_swirl','03_red_cricket_ball_closeup_dark','04_stadium_aerial_day_pitch','05_boundary_rope_grass_night','06_empty_red_seats_dark','07_stadium_dusk_floodlights_wide','08_pitch_stumps_misty_night','09_broken_stumps_bokeh_grass','10_cracked_dry_ground_closeup','11_dugout_empty_stands','12_stadium_hologram_grid_gold','13_city_skyline_stadium_night','14_floodlight_towers_dusk_sky','15_bokeh_lights_blurred','16_pavilion_building_windows_night','17_spotlight_beams_smoke','18_rainy_ground_floodlights_bokeh','19_scoreboard_blurred_smoke','20_golden_light_burst_particles','21_highway_traffic_to_stadium_night','22_cricket_ball_cracked_pitch_day','23_empty_blue_seats_rows_night','24_purple_gold_light_streaks','25_spotlight_stadium_wet_grass','26_practice_nets_foggy_morning','27_blue_bokeh_smoke','28_smoke_over_grass_night_cinematic','29_stadium_crowd_golden_lights','30_dark_smoke_plume_gold','31_dark_dotted_lights_texture','32_stumps_explosion_ball_slowmo','33_dry_cracked_grass_patch_day'];
+const LIST=['01_foggy_stadium_floodlights_grass','02_golden_smoke_swirl','03_red_cricket_ball_closeup_dark','04_stadium_aerial_day_pitch','05_boundary_rope_grass_night','06_empty_red_seats_dark','07_stadium_dusk_floodlights_wide','08_pitch_stumps_misty_night','09_broken_stumps_bokeh_grass','10_cracked_dry_ground_closeup','11_dugout_empty_stands','12_stadium_hologram_grid_gold','13_city_skyline_stadium_night','14_floodlight_towers_dusk_sky','15_bokeh_lights_blurred','16_pavilion_building_windows_night','17_spotlight_beams_smoke','18_rainy_ground_floodlights_bokeh','19_scoreboard_blurred_smoke','20_golden_light_burst_particles','21_highway_traffic_to_stadium_night','22_cricket_ball_cracked_pitch_day','23_empty_blue_seats_rows_night','24_purple_gold_light_streaks','25_spotlight_stadium_wet_grass','26_practice_nets_foggy_morning','27_blue_bokeh_smoke','28_smoke_over_grass_night_cinematic','29_stadium_crowd_golden_lights','30_dark_smoke_plume_gold','31_dark_dotted_lights_texture','32_stumps_explosion_ball_slowmo','33_dry_cracked_grass_patch_day','34_stadium_floodlights_dust_dusk','35_floodlight_panel_stands_amber','36_wet_reflections_rain_bokeh','37_roller_dust_ball_golden_drip','38_torn_paper_stadium_outline','39_stadium_lights_over_grass','40_stands_glide_tunnel','41_floodlights_stadium','42_aerial_stadium','43_ball_on_grass'];
 const $=id=>document.getElementById(id),cv=$('cv'),cx=cv.getContext('2d'),W=1080,H=1920;
 const R=window.REEL={scenes:[],total:0,t:0,playing:false,exporting:false,photo:null,audio:null,audEl:null,music:null,musEl:null,seed:1+Math.floor(Math.random()*1e6)};
-LIST.forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n.slice(0,2)+' · '+n.slice(3).replace(/_/g,' ');$('bgm').appendChild(o);});
-const VID={};
-function vid(n){if(VID[n])return VID[n];const v=document.createElement('video');v.muted=true;v.playsInline=true;v.loop=true;v.preload='auto';v.src='assets/bgvideo/'+n+'.mp4';v.load();return VID[n]=v;}
+const BASE=LIST.length,labOf=n=>{const it=BGU.items.find(x=>x.name===n);return it?'👤 '+it.label:n.slice(0,2)+' · '+n.slice(3).replace(/_/g,' ');};
+function fillBgm(){const sv=$('bgm').value;$('bgm').innerHTML='';LIST.forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=labOf(n);$('bgm').appendChild(o);});if(sv&&LIST.indexOf(sv)>=0)$('bgm').value=sv;}
+fillBgm();
+const VID={},VID2={};
+function vid(n){if(VID[n])return VID[n];const v=document.createElement('video');v.muted=true;v.playsInline=true;v.loop=true;v.preload='auto';const u=BGU.src(n);v.src=u||('assets/bgvideo/'+n+'.mp4');v.load();if(u){const v2=document.createElement('video');v2.muted=true;v2.playsInline=true;v2.loop=true;v2.preload='auto';v2.src=u;v2.load();VID2[n]=v2;}return VID[n]=v;}
 const CUE=/[\u23F8\uFE0F]|\p{Extended_Pictographic}/gu;
 const clean=s=>s.replace(CUE,'').replace(/\s+/g,' ').trim();
 const hash=s=>{let h=2166136261;s=String(s);for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;};
@@ -44,7 +47,7 @@ function build(){const lines=$('scr').value.split('\n').map(x=>x.trim()).filter(
   const ad=R.audio?R.audio.duration:0;
   if(ad>0){const tw=words.reduce((a,b)=>a+b,0);durs=words.map(w=>ad*w/tw);}else durs=words.map(w=>Math.max(mn,w*.42));
   let t=0,pv='',grp=0;R.scenes=lines.map((l,i)=>{const d=durs[i];const st=l.match(/^##\s*(.+)$/),sp=st?st[1].split('|'):null;const s={raw:l,stat:sp?{n:sp[0].trim(),lab:(sp[1]||'').trim()}:null,text:sp?sp[0].trim():clean(l),emo:sp?'':(l.match(CUE)||[]).filter(x=>x!=='\u23F8'&&x!=='\uFE0F').join(''),t0:t,dur:d};t+=d;
-    if($('mode').value==='one')s.bg=$('bgm').value;else{if(i%3===0)grp++;let k=hash(R.seed+'_'+grp)%LIST.length;s.bg=LIST[k];}return s;});
+    if($('mode').value==='one')s.bg=$('bgm').value;else{if(i%3===0)grp++;const pl=($('mode').value==='mine'&&BGU.items.length)?BGU.names():LIST;let k=hash(R.seed+'_'+grp)%pl.length;s.bg=pl[k];}return s;});
   R.total=t;$('st').textContent=lines.length+' line, '+t.toFixed(1)+' sec';}
 const sceneAt=t=>R.scenes.find(s=>t>=s.t0&&t<s.t0+s.dur)||R.scenes[R.scenes.length-1];
 // ---- draw ----
@@ -52,7 +55,7 @@ const FONT=(px,w)=>w+' '+px+'px NotoDev,"Noto Sans Devanagari",sans-serif';
 function wrap(c,text,maxW){const ws=text.split(' '),out=[];let cur='';ws.forEach(w=>{const t=cur?cur+' '+w:w;if(c.measureText(t).width<=maxW||!cur)cur=t;else{out.push(cur);cur=w;}});if(cur)out.push(cur);return out;}
 function draw(t){cx.fillStyle='#000';cx.fillRect(0,0,W,H);const s=sceneAt(t);if(!s){cx.fillStyle='#0d1b3a';cx.fillRect(0,0,W,H);cx.fillStyle='#9aa4b2';cx.font=FONT(48,700);cx.textAlign='center';cx.fillText('Script likho',W/2,H/2);return;}
   const v=vid(s.bg),lt=t-s.t0,z=1.04+.05*lt/Math.max(s.dur,1);
-  if(v.videoWidth&&v.readyState>=2){const k=Math.max(W/v.videoWidth,H/v.videoHeight)*z,w=v.videoWidth*k,h=v.videoHeight*k;cx.drawImage(v,(W-w)/2,(H-h)/2,w,h);}else{cx.fillStyle='#0d1b3a';cx.fillRect(0,0,W,H);}
+  if(v.videoWidth&&v.readyState>=2){const k=Math.max(W/v.videoWidth,H/v.videoHeight)*z,w=v.videoWidth*k,h=v.videoHeight*k;const v2=VID2[s.bg],dd=v.duration,fa=(v2&&v2.readyState>=2&&dd>0)?Math.max(0,Math.min(1,Math.min(v.currentTime,dd-v.currentTime)/BGU.FADE)):1;if(fa<1)cx.drawImage(v2,(W-w)/2,(H-h)/2,w,h);if(fa>0){cx.globalAlpha=fa;cx.drawImage(v,(W-w)/2,(H-h)/2,w,h);cx.globalAlpha=1;}}else{cx.fillStyle='#0d1b3a';cx.fillRect(0,0,W,H);}
   cx.fillStyle='rgba(0,0,0,'+$('dim').value+')';cx.fillRect(0,0,W,H);const g=cx.createLinearGradient(0,H*.55,0,H);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.65)');cx.fillStyle=g;cx.fillRect(0,H*.55,W,H*.45);
   cx.textAlign='center';cx.textBaseline='middle';
   const ttl=$('ttl').value.trim();if(ttl){cx.font=FONT(64,900);const L=wrap(cx,ttl,W-160).slice(0,3);L.forEach((l,i)=>{cx.lineWidth=14;cx.strokeStyle='#000';cx.lineJoin='round';cx.strokeText(l,W/2,200+i*80);cx.fillStyle='#F5C518';cx.fillText(l,W/2,200+i*80);});}
@@ -81,16 +84,25 @@ function draw(t){cx.fillStyle='#000';cx.fillRect(0,0,W,H);const s=sceneAt(t);if(
   cx.fillStyle='#F5C518';cx.fillRect(0,H-12,W*(t/Math.max(R.total,.1)),12);}
 // ---- sync + loop ----
 function sync(t){const s=sceneAt(t),used={};if(s){used[s.bg]=1;const v=vid(s.bg);if(v.readyState>=1){const d=v.duration,w=(t+(hash(s.bg)%1000)/1000*d)%d;if(R.playing){if(v.paused){v.currentTime=w;v.play().catch(()=>{});}}else{if(!v.paused)v.pause();if(Math.abs(v.currentTime-w)>.06)v.currentTime=w;}}
+    const v2=VID2[s.bg];if(v2&&v.readyState>=1&&v2.readyState>=1){const d2=v.duration,w2=((t+(hash(s.bg)%1000)/1000*d2)+d2/2)%d2;if(R.playing){if(v2.paused){v2.currentTime=w2;v2.play().catch(()=>{});}}else{if(!v2.paused)v2.pause();if(Math.abs(v2.currentTime-w2)>.06)v2.currentTime=w2;}}
     const nx=R.scenes[R.scenes.indexOf(s)+1];if(nx)vid(nx.bg);}
-  Object.keys(VID).forEach(k=>{if(!used[k]&&!VID[k].paused)VID[k].pause();});}
+  Object.keys(VID).forEach(k=>{if(!used[k]){if(!VID[k].paused)VID[k].pause();if(VID2[k]&&!VID2[k].paused)VID2[k].pause();}});}
 let last=0;function loop(now){if(!R.playing)return;R.t+=(now-last)/1000;last=now;
   if(R.t>=R.total){R.t=R.total-.01;stop();draw(R.t);return;}sync(R.t);musVol();draw(R.t);requestAnimationFrame(loop);}
-function stop(){R.playing=false;$('play').textContent='▶ Preview';if(R.audEl)R.audEl.pause();if(R.musEl)R.musEl.pause();Object.values(VID).forEach(v=>v.pause());}
+function stop(){R.playing=false;$('play').textContent='▶ Preview';if(R.audEl)R.audEl.pause();if(R.musEl)R.musEl.pause();Object.values(VID).forEach(v=>v.pause());Object.values(VID2).forEach(v=>v.pause());}
 function play(){if(!R.scenes.length)build();if(!R.scenes.length)return;if(R.playing){stop();return;}if(R.t>=R.total-.05)R.t=0;R.playing=true;$('play').textContent='⏸ Roko';last=performance.now();
   if(R.audEl&&!R.exporting){R.audEl.currentTime=R.t;R.audEl.play().catch(()=>{});}musVol();if(R.musEl&&!R.exporting){R.musEl.currentTime=R.t%(R.musEl.duration||1e9);R.musEl.play().catch(()=>{});}requestAnimationFrame(loop);}
 const musVol=()=>{if(R.musEl)R.musEl.volume=Math.min(1,$('mvol').value/100*(R.audEl&&R.t<(R.audio?R.audio.duration:0)?.2:1));};
 R.draw=()=>{sync(R.t);draw(R.t);};
 ['ttl','pos','hl','wm','cap','dim'].forEach(i=>$(i).oninput=()=>R.draw());
+function syncU(){LIST.length=BASE;BGU.items.forEach(it=>LIST.push(it.name));fillBgm();}
+BGU.on(()=>{syncU();if(R.scenes.length){build();R.draw();}});BGU.init().then(()=>{syncU();build();R.draw();});
+$('bguf').onchange=async e=>{const fs=Array.from(e.target.files||[]);e.target.value='';if(!fs.length)return;$('st').textContent='⏳ '+fs.length+' video check ho rahe...';
+  const r=await BGU.add(fs);syncU();let m='';
+  if(r.added.length){$('mode').value=r.added.length>1?'mine':'one';if(r.added.length===1)$('bgm').value=r.added[0];m='✅ '+r.added.length+' BG video jude, set ho gaye'+(BGU.persist?'':' (NOTE: is browser mein save nahi honge)');}
+  if(r.bad.length)m+=(m?' | ':'')+'❌ nahi jude: '+r.bad.join(', ');
+  build();R.draw();$('st').textContent=m||'Koi video nahi mila';};
+$('bgux').onclick=async()=>{if(!BGU.items.length){$('st').textContent='Koi apna BG video nahi hai';return;}if(!confirm(BGU.items.length+' apne BG video hata du?'))return;await BGU.clear();syncU();if($('mode').value==='mine')$('mode').value='mix';build();R.draw();$('st').textContent='🗑 Apne BG video hata diye';};
 ['scr','mn','mode','bgm'].forEach(i=>$(i).onchange=()=>{build();R.draw();});$('scr').oninput=()=>{clearTimeout(R._d);R._d=setTimeout(()=>{build();R.draw();},400);};
 $('play').onclick=play;$('rand').onclick=()=>{R.seed=1+Math.floor(Math.random()*1e6);if($('mode').value==='one')$('bgm').value=LIST[Math.floor(Math.random()*LIST.length)];build();R.draw();};
 $('aud').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{R.actx=R.actx||new AudioContext();R.audio=await R.actx.decodeAudioData(await f.arrayBuffer());

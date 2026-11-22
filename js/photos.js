@@ -32,22 +32,22 @@ P.init=async(C,onChange)=>{P.C=C;P.onChange=onChange;
  buildUI();};
 // backup / restore (browser data clear hone se bachne ke liye)
 const b2d=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(b);});
-P.exportAll=async()=>{const out={v:1,custom:P.custom,photos:{}};for(const k of await dbKeys()){out.photos[k]=await b2d(await dbGet(k));}
+P.exportAll=async()=>{const out={v:1,custom:P.custom,frames:(window.PFR?PFR.all():{}),photos:{}};for(const k of await dbKeys()){out.photos[k]=await b2d(await dbGet(k));}
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out)],{type:'application/json'}));a.download='photo_library_backup.json';a.click();return Object.keys(out.photos).length;};
 P.importAll=async file=>{const j=JSON.parse(await file.text());let n=0;
- (j.custom||[]).forEach(c=>{if(!P.custom.find(x=>x.id===c.id))P.custom.push(c);});saveCustom();
+ (j.custom||[]).forEach(c=>{if(!P.custom.find(x=>x.id===c.id))P.custom.push(c);});saveCustom();window.PFR&&PFR.stash(j.frames);
  for(const k of Object.keys(j.photos||{})){const b=await (await fetch(j.photos[k])).blob();await P.set(k,b);n++;}return n;};
 // C160: PC ke folder mein save / folder se load (File System Access API, Chrome desktop). File naam = slot id + .jpg/.png/.webp, naam list _photo_names.json
 const EXT={'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp','image/gif':'.gif'};
 P.saveToFolder=async()=>{if(!window.showDirectoryPicker)throw new Error('Is browser mein folder save nahi (Chrome desktop chahiye)');
  const dir=await window.showDirectoryPicker({mode:'readwrite',id:'cvt_photos'});let n=0;
  for(const k of await dbKeys()){const b=await dbGet(k);if(!b)continue;const fh=await dir.getFileHandle(k+(EXT[b.type]||'.jpg'),{create:true});const w=await fh.createWritable();await w.write(b);await w.close();n++;}
- const nf=await dir.getFileHandle('_photo_names.json',{create:true});const w2=await nf.createWritable();await w2.write(JSON.stringify({v:1,custom:P.custom},null,1));await w2.close();return n;};
+ const nf=await dir.getFileHandle('_photo_names.json',{create:true});const w2=await nf.createWritable();await w2.write(JSON.stringify({v:1,custom:P.custom,frames:(window.PFR?PFR.all():{})},null,1));await w2.close();return n;};
 P.loadFromFolder=async()=>{if(!window.showDirectoryPicker)throw new Error('Is browser mein folder load nahi (Chrome desktop chahiye)');
  const dir=await window.showDirectoryPicker({mode:'read',id:'cvt_photos'});let n=0;const files=[];let names=null;
  for await(const e of dir.values()){if(e.kind!=='file')continue;if(e.name==='_photo_names.json'){try{names=JSON.parse(await (await e.getFile()).text());}catch(x){}continue;}
   const m=/^(.+)\.(jpe?g|png|webp|gif)$/i.exec(e.name);if(m)files.push([m[1],e]);}
- ((names&&names.custom)||[]).forEach(c=>{if(c&&c.id&&!P.custom.find(x=>x.id===c.id))P.custom.push(c);});
+ ((names&&names.custom)||[]).forEach(c=>{if(c&&c.id&&!P.custom.find(x=>x.id===c.id))P.custom.push(c);});window.PFR&&names&&PFR.stash(names.frames);
  for(const[id,e]of files){if(id.indexOf('custom_')===0&&!P.custom.find(x=>x.id===id)&&!(window.PHOTO_SLOTS||[]).find(x=>x.id===id))P.custom.push({id,name:id.slice(7).replace(/_/g,' ')});}
  saveCustom();for(const[id,e]of files){await P.set(id,await e.getFile());n++;}return n;};
 let panel,list;
@@ -89,6 +89,7 @@ function render(){
   fi.onchange=async()=>{if(fi.files[0]){try{await P.set(s.id,fi.files[0]);}catch(e){alert('Photo error: '+e.message);}render();}};
   up.appendChild(fi);r.append(th,nm,up);
   if(P.have[s.id]){const x=document.createElement('button');x.textContent='✕';x.title='photo hatao';x.style.cssText='padding:6px 10px;background:#555';x.onclick=async()=>{await P.remove(s.id);render();};r.appendChild(x);}
+  if(P.have[s.id]&&window.PFR){const fb=document.createElement('button');fb.textContent='🎯';fb.title='Crop / zoom / face adjust';fb.style.cssText='padding:6px 10px;background:#8a4';fb.onclick=()=>PFR.edit(s.id,render);r.appendChild(fb);}
   if(s.custom){const x=document.createElement('button');x.textContent='🗑';x.title='naam hatao';x.style.cssText='padding:6px 10px;background:#822';x.onclick=async()=>{if(confirm(s.hi+' naam aur photo hata dun?')){await P.removeCustom(s.id);render();}};r.appendChild(x);}
   list.appendChild(r);
   if(P.rowExtra&&!s.custom_skip&&P.have[s.id])P.rowExtra(s,list);

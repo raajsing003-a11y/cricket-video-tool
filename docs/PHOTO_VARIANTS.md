@@ -10,3 +10,8 @@
 - Ek scene mein 2 players ka naam ho to 2 cameo cards (left + right).
 - Scene 7s+ ka ho to beech mein flash ke saath player ki agli photo aa jaati hai.
 - Gold glow, shimmer sweep, halka float, red name-tag slide-in.
+
+## C199 (22 Nov 2026) — Cameo card hata, saaf image
+- Pehle corner mein card aata tha (safed frame, gold glow, laal naam-patti, shimmer). Ab wahi jagah/timing/avoid-logic, par card nahi: sirf player ki photo, upar-neeche-kinare feather (dheere gayab), halki parchhai, halka float. Naam-patti nahi.
+- Button ab "👤 Player image: ON/OFF". Kisi scene mein nahi chahiye: "noCameo":true (pehle jaisa).
+- Purana card style wapas chahiye to js/photo_variants.js ka C199 block hatao (purani file: git/ pichla zip C198).
