@@ -166,4 +166,5 @@ $('rc').onclick=async()=>{if(rec){await stopRec();$('tm').textContent='✔ save'
   const L=(await allRec()||[]).find(x=>x.chunk===cur+1);if(L&&!confirm('Chunk '+(cur+1)+' ki purani recording hai. Nayi se badal dun?'))return;await startRec();}};
 applyUI();drawRecs();
 })();
-</script></body></html>
+</script><script src="js/tg_share.js"></script>
+</body></html>

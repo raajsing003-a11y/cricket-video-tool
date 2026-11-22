@@ -41,4 +41,5 @@ $('go').onclick=()=>{const v=k=>$(k).value.trim(),A=v('a'),B=v('b'),pa=+v('pa')|
  $('out').value=JSON.stringify({script,scenes:sc},null,1);};
 $('cp').onclick=()=>{$('out').select();navigator.clipboard.writeText($('out').value);};
 $('dl').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([$('out').value],{type:'application/json'}));a.download='scenes_prediction.json';a.click();};
-</script></body></html>
+</script><script src="../js/tg_share.js"></script>
+</body></html>

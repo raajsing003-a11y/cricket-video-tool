@@ -144,4 +144,5 @@ $('jload').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j
 const K='cvt_reel_v1';try{const j=JSON.parse(localStorage.getItem(K)||'null');if(j){$('ttl').value=j.ttl||'';$('scr').value=j.scr||'';$('wm').value=j.wm||$('wm').value;}}catch(e){}
 setInterval(()=>{try{localStorage.setItem(K,JSON.stringify({ttl:$('ttl').value,scr:$('scr').value,wm:$('wm').value}));}catch(e){}},2000);
 (async()=>{try{const f=new FontFace('NotoDev','url(assets/NotoSansDevanagari.ttf)',{weight:'100 900'});await f.load();document.fonts.add(f);}catch(e){}build();R.draw();LIST.slice(0,1).forEach(vid);})();
-</script></body></html>
+</script><script src="js/tg_share.js"></script>
+</body></html>

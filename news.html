@@ -46,7 +46,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 </style></head><body><div id="w">
 <div class="top"><h1>📰 Cricket News Tracker</h1><a href="index.html">← Video tool</a></div>
 <div class="sm" id="upd">Loading…</div>
-<div class="row2"><button id="fetchNow">🔄 Abhi fetch karo</button><button id="tokBtn">🔑 Token</button><button id="latestBtn">🕒 Latest articles</button><span class="sm" id="fst"></span></div>
+<div class="row2"><button id="fetchNow">🔄 Abhi fetch karo</button><button id="tokBtn">🔑 Token</button><button id="latestBtn">🕒 Latest articles</button><button id="tgBtn">📨 Telegram</button><span class="sm" id="fst"></span><span class="sm" id="tgSt"></span></div>
 <div class="warn">⚠ Label sirf andaza hai: <b>Confirmed</b> tabhi jab feed official ho aur "sources/likely" jaisa shabd na ho. Baaki sab <b>Rumor</b>. Video mein daalne se pehle khabar khud verify karo. Yahan sirf headline + link hai.</div>
 <div class="row2"><button id="scrBtn">🧩 Sites padho (extension)</button><span class="sm" id="scrSt"></span></div>
 <div id="fails"></div>
@@ -64,7 +64,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 <div class="row2"><span class="lab">Sirf:</span><span id="only" class="chips" style="margin:0"></span></div>
 <div class="row2"><span class="lab">Kram:</span><span id="sorts" class="chips" style="margin:0"></span></div>
 <div class="chips"><span class="chip" id="hideUsed">✓ Use ho chuki khabrein chhupao</span>
-<button id="expU">⬆ Backup save</button><button id="impU">⬇ Backup load</button><input type="file" id="fi" accept=".json" style="display:none"></div>
+<button id="expU">⬆ Backup save</button><button id="impU">⬇ Backup load</button><button id="impTg">📥 Telegram se backup load</button><input type="file" id="fi" accept=".json" style="display:none"></div>
 <div id="list"></div>
 </div>
 <div id="selbar"></div>
@@ -126,6 +126,7 @@ function articleRow(x){
   c.appendChild(el('div','t',i.title));
   c.appendChild(el('div','sm','Taaza: '+ago(i.published)+' · '+new Date(i.published).toLocaleString('hi-IN')));
   const r=el('div','row');const a=el('a','go','🔗 Kholo');a.href=i.link;a.target='_blank';a.rel='noopener';a.style.cssText='background:#333;border-radius:8px;padding:6px 12px;font-size:15px;text-decoration:none;color:#fff';r.appendChild(a);
+  {const tb3=el('button',null,'📨 Telegram');tb3.onclick=()=>tgText('📰 '+i.title+'\n'+(i.source||'?')+' · '+ago(i.published)+'\n'+i.link,tb3);r.appendChild(tb3);}
   if(st){const ob=el('button',null,'📋 Sirf ye');ob.onclick=async()=>{const t=fullPrompt(st,i);try{await navigator.clipboard.writeText(t);ob.textContent='✔ Copy hua'+saveTxt(t,i.title);}catch(e){prompt('Copy karo:',t);}};r.appendChild(ob);}
   c.appendChild(r);return c;}
 function buildStories(){
@@ -223,11 +224,35 @@ function oneStory(st,i){return Object.assign({},st,{items:[i],title:i.title,srcN
 function titleIdeas(st){try{const tt=st.items.map(i=>i.title),names=guessFromTitles(tt),team=names[0]?guessTag(names[0],tt):'';return window.TITLEGEN?window.TITLEGEN(st,{names:names,team:team}):[];}catch(e){return [];}}
 function titleLine(st){const ti=titleIdeas(st);return '5) TITLE: 4 YouTube title do (ek code block, har title alag style: emotion hook / sawaal / breaking / reaction). '+(window.TITLE_STYLE_TXT||'')+(ti.length?' Draft ideas (behtar banao): '+ti.map(o=>'"'+o.t+'"').join(' || '):'');}
 // C187: Copy ke saath prompt .txt file mein bhi save (Downloads), taaki chat mein file bhej sako. Checkbox se band/chalu.
-function saveTxt(t,title){try{if(localStorage.getItem('cvt_savetxt')==='0')return '';
+function saveTxt(t,title){const a1=saveTxt0(t,title),a2=tgSend(t,title);return a1+a2;}
+function saveTxt0(t,title){try{if(localStorage.getItem('cvt_savetxt')==='0')return '';
   const d=new Date(),p=n=>String(n).padStart(2,'0'),stamp=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes());
   const nm=String(title||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,40)||'story';
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download='prompt_'+stamp+'_'+nm+'.txt';
   document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);return ' + 💾 .txt';}catch(e){return '';}}
+// C191: Telegram par seedha bhejo (Bot API, free). Token/chat id sirf is browser ke localStorage mein.
+const KTG='cvt_tg';let tg={token:'',chat:'',on:true};try{Object.assign(tg,JSON.parse(localStorage.getItem(KTG)||'{}'));}catch(e){}
+const saveTg=()=>{try{localStorage.setItem(KTG,JSON.stringify(tg));}catch(e){}};
+function tgMsg(m,bad){const e=$('tgSt');if(e){e.textContent=m;e.style.color=bad?'#ff8a8a':'#7ee787';}}
+function tgSend(t,title){
+  if(!tg.on||!tg.token||!tg.chat)return '';
+  const d=new Date(),p=n=>String(n).padStart(2,'0'),stamp=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes());
+  const nm=String(title||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,40)||'story';
+  const fd=new FormData();fd.append('chat_id',tg.chat);fd.append('caption','📋 '+String(title||'prompt').slice(0,150));
+  fd.append('document',new Blob([t],{type:'text/plain;charset=utf-8'}),'prompt_'+stamp+'_'+nm+'.txt');
+  tgMsg('📨 Telegram par bhej raha…');
+  fetch('https://api.telegram.org/bot'+encodeURIComponent(tg.token)+'/sendDocument',{method:'POST',body:fd})
+    .then(r=>r.json()).then(j=>{if(j&&j.ok)tgMsg('✔ Telegram par bhej diya ('+new Date().toLocaleTimeString('hi-IN')+')');else tgMsg('✖ Telegram error: '+((j&&j.description)||'?'),true);})
+    .catch(()=>tgMsg('✖ Telegram tak nahi pahunch paya (net check karo)',true));
+  return ' + 📨 Telegram';}
+function tgText(text,btn){
+  if(!tg.token||!tg.chat){alert('Pehle upar "📨 Telegram setup" dabao.');return;}
+  const parts=[];let t=String(text);while(t.length>3900){let k=t.lastIndexOf('\n',3900);if(k<500)k=3900;parts.push(t.slice(0,k));t=t.slice(k);}parts.push(t);
+  const o=btn?btn.textContent:'';if(btn)btn.textContent='📨 bhej raha…';
+  Promise.all(parts.map(x=>fetch('https://api.telegram.org/bot'+encodeURIComponent(tg.token)+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:tg.chat,text:x,disable_web_page_preview:true})}).then(r=>r.json())))
+   .then(a=>{const ok=a.every(j=>j&&j.ok);tgMsg(ok?'✔ Telegram par bhej diya':'✖ Telegram error: '+((a.find(j=>!j.ok)||{}).description||'?'),!ok);if(btn){btn.textContent=ok?'✔ bheja':'✖ error';setTimeout(()=>btn.textContent=o,1800);}})
+   .catch(()=>{tgMsg('✖ Telegram tak nahi pahunch paya',true);if(btn){btn.textContent=o;}});}
+function storyTxt(st){return '📰 '+st.title+'\n('+st.label+' · '+st.srcNames.length+' sites · '+ago(st.latest)+')\n\n'+st.items.slice(0,12).map(i=>'• '+(i.source||'?')+': '+i.title+'\n  '+i.link).join('\n');}
 function fullPrompt(st,only,multi){
   if(multi)st=mergeSt(multi);else if(only)st=oneStory(st,only);
   const phs=photosOf(multi||[st]);
@@ -298,7 +323,7 @@ function card(st){
   const of=offFor(st);if(of.length){const ob=el('span','badge bO');ob.appendChild(document.createTextNode('🏛 Official site par mili: '));of.forEach((m,k)=>{if(k)ob.appendChild(document.createTextNode(', '));const a=el('a',null,m.site);a.href=m.l;a.target='_blank';a.rel='noopener';a.title=m.t;ob.appendChild(a);});b.appendChild(ob);}
   c.appendChild(b);
   try{const ti=titleIdeas(st);if(ti.length){const tb=el('div','tbox');tb.appendChild(el('div','thead','🎯 Title ideas (video banane se pehle):'));
-    ti.forEach(o=>{const r=el('div','trow');r.appendChild(el('span','tt',o.t));r.appendChild(el('span','tl',o.t.length+' akshar · '+o.style));const cb=el('button',null,'📋');cb.title='title copy';cb.onclick=async()=>{try{await navigator.clipboard.writeText(o.t);cb.textContent='✓';setTimeout(()=>cb.textContent='📋',1200);}catch(e){}};r.appendChild(cb);tb.appendChild(r);});c.appendChild(tb);}}catch(e){}
+    ti.forEach(o=>{const r=el('div','trow');r.appendChild(el('span','tt',o.t));r.appendChild(el('span','tl',o.t.length+' akshar · '+o.style));const cb=el('button',null,'📋');cb.title='title copy';cb.onclick=async()=>{try{await navigator.clipboard.writeText(o.t);cb.textContent='✓';setTimeout(()=>cb.textContent='📋',1200);}catch(e){}};r.appendChild(cb);const tb2=el('button',null,'📨');tb2.title='Telegram par bhejo';tb2.onclick=()=>tgText(o.t,tb2);r.appendChild(tb2);tb.appendChild(r);});c.appendChild(tb);}}catch(e){}
   const sl=selList(),on=isSel(st),sc=el('span','chip sel'+(on?' on':''),on?'☑ Top-N #'+(sl.indexOf(sl.find(x=>x.id===st.id))+1):'☐ Top-N mein chuno');
   sc.onclick=()=>{if(!on&&sl.length>=8){alert('Zyada se zyada 8 stories.');return;}setSel(st,!on);draw();};
   const sw=el('div','row2');sw.appendChild(sc);c.appendChild(sw);
@@ -333,6 +358,7 @@ function card(st){
   const lb2=isLater(st);const lt=el('button',null,lb2?'★ Baad mein hatao':'☆ Baad mein');lt.onclick=()=>{setLater(st,!lb2);draw();};r.appendChild(lt);
   const pb=el('button',null,pfOpen[st.id]?'▲ Photo band':'📷 Photo dhundho');pb.onclick=()=>{pfOpen[st.id]=!pfOpen[st.id];draw();};r.appendChild(pb);
   const fb=el('button',null,'📋 Copy (poora prompt)');fb.onclick=async()=>{const t=fullPrompt(st);try{await navigator.clipboard.writeText(t);fb.textContent='✔ Copy hua'+saveTxt(t,st.title);}catch(e){prompt('Copy karo:',t);}};r.appendChild(fb);
+  const tgb=el('button',null,'📨 Telegram');tgb.onclick=()=>tgText(storyTxt(st),tgb);r.appendChild(tgb);
   c.appendChild(r);if(pfOpen[st.id])c.appendChild(pfBox(st));return c;}
 function chips(box,list,key,fmt){box.innerHTML='';list.forEach(v=>{const val=Array.isArray(v)?v[0]:v,txt=Array.isArray(v)?v[1]:v;
   const c=el('span','chip'+(key==='lbl'&&val==='Confirmed'?' g':'')+(key==='lbl'&&val==='Rumor'?' o':'')+(ui[key]===val?' on':''),txt);
@@ -432,6 +458,8 @@ function drawIpl(){
     const x=saveTxt(t,'ipl_daily');if(iplCfg.mark){iplMark(B2.full.concat(B2.fast),B2.full.length,B2.fast.length);iplMan={};saveIplMan();}
     cb.textContent=(ok?'✔ Copy hua':'✔ Prompt bana')+x+(iplCfg.mark?' · '+(B2.full.length+B2.fast.length)+' stories ✅ use mark':'');setTimeout(draw,1800);};
   r.appendChild(cb);
+  {const tgi=el('button',null,'📨 Chuni list Telegram par');tgi.onclick=()=>{const B3=iplAssign();if(!B3.full.length&&!B3.fast.length){alert('Pehle koi story chuno.');return;}
+    tgText('🏏 IPL video list\n\nPOORI ('+B3.full.length+'):\n'+B3.full.map((s,k)=>(k+1)+'. '+s.title+'\n   '+s.items[0].link).join('\n')+(B3.fast.length?'\n\nFAST ('+B3.fast.length+'):\n'+B3.fast.map((s,k)=>'H'+(k+1)+'. '+s.title+'\n   '+s.items[0].link).join('\n'):''),tgi);};r.appendChild(tgi);}
   if(Object.keys(iplLog).length){const ub=el('button',null,'↩ Aakhri batch wapas');ub.onclick=()=>{if(confirm('Aakhri IPL batch ki stories dobara "nayi" ho jayengi. Pakka?')){iplUndo();draw();}};r.appendChild(ub);}
   const ks=Object.keys(iplLog).sort().reverse();
   if(ks.length){const dt2=document.createElement('details');dt2.appendChild(el('summary','sm','📅 Pichhle IPL videos (kya kya use hua)'));
@@ -499,6 +527,7 @@ $('siteTgl').onclick=()=>{sitesOpen=!sitesOpen;draw();};
 $('hideUsed').onclick=()=>{ui.hide=!ui.hide;saveUI();draw();};
 $('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({format:'cvt_news_backup_v3',saved:new Date().toISOString(),used:used,steps:steps,later:later,notes:notes,ipl:iplLog},null,1)],{type:'application/json'}));a.download='news_backup.json';a.click();};
 $('impU').onclick=()=>$('fi').click();
+$('impTg').onclick=()=>{if(!window.TG_PICK){alert('Telegram script load nahi hui');return;}window.TG_PICK('.json',f=>{try{const dt=new DataTransfer();dt.items.add(f);$('fi').files=dt.files;$('fi').dispatchEvent(new Event('change'));}catch(e){alert('Load nahi hui: '+e.message);}});};
 $('fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!j||typeof j!=='object'||Array.isArray(j))throw new Error('object chahiye');
     if(j.format==='cvt_news_backup_v2'||j.format==='cvt_news_backup_v3'){Object.assign(used,j.used||{});Object.assign(iplLog,j.ipl||{});saveIpl();Object.assign(later,j.later||{});Object.assign(notes,j.notes||{});saveN();Object.keys(j.steps||{}).forEach(id=>{steps[id]=Object.assign(steps[id]||{},j.steps[id]);});
       saveU();try{localStorage.setItem(KL,JSON.stringify(later));localStorage.setItem(KP,JSON.stringify(steps));}catch(e){}draw();alert('Backup load ho gaya (used + steps + baad mein + notes).');}
@@ -521,6 +550,7 @@ function drawSel(){const L=selList(),b=$('selbar');b.innerHTML='';
   const r=el('div','row');in_.appendChild(r);
   const cb=el('button',null,'📋 Copy (Top-'+L.length+' prompt)');cb.onclick=async()=>{if(L.length<2){alert('Kam se kam 2 stories chuno.');return;}const t=fullPrompt(null,null,L);try{await navigator.clipboard.writeText(t);cb.textContent='✔ Copy hua'+saveTxt(t,'top'+L.length);}catch(e){prompt('Copy karo:',t);}};r.appendChild(cb);
   STEPS.forEach(x=>{const all=L.every(st=>stepOn(st,x[0]));const sb=el('button',null,(all?'↩ ':'✔ ')+x[1]+' sab par');sb.onclick=()=>{L.forEach(st=>setStep(st,x[0],!all));draw();};r.appendChild(sb);});
+  const tgl=el('button',null,'📨 List Telegram par');tgl.onclick=()=>tgText(L.map((s,k)=>'#'+(k+1)+' '+storyTxt(s)).join('\n\n———\n\n'),tgl);r.appendChild(tgl);
   const ub=el('button',null,'✓ Sab Use ho gayin');ub.onclick=()=>{L.forEach(st=>setUsed(st,true));draw();};r.appendChild(ub);
   const xb=el('button',null,'✖ Chuni hatao');xb.onclick=()=>{sel={};saveSel();draw();};r.appendChild(xb);}
 // ---- C158: extension se baat (ping / photo / scrape)
@@ -587,6 +617,18 @@ const KT='cvt_gh_token';
 function repoInfo(){const m=location.hostname.match(/^([^.]+)\.github\.io$/),seg=location.pathname.split('/').filter(Boolean)[0];
   return m&&seg?{owner:m[1],repo:seg}:{owner:'raajsing003-a11y',repo:'cricket-video-tool'};}
 const fst=t=>{$('fst').textContent=t;};
+function tgLabel(){const b=$('tgBtn');if(b){b.textContent=(tg.token&&tg.chat?(tg.on?'📨 Telegram ✔ ON':'📨 Telegram OFF'):'📨 Telegram setup');b.style.background=(tg.token&&tg.chat&&tg.on)?'#2a8a3a':'';}}
+$('tgBtn').onclick=()=>{
+  if(!tg.token||!tg.chat){const t=prompt('Bot token daalo (@BotFather se mila, jaise 123456:ABC...):',tg.token||'');if(t===null)return;
+    const c=prompt('Apna chat ID daalo (@userinfobot se milta hai). Pehle apne bot ko Telegram mein /start bhej do:',tg.chat||'');if(c===null)return;
+    tg.token=t.trim();tg.chat=c.trim();tg.on=true;saveTg();tgLabel();
+    if(tg.token&&tg.chat){fetch('https://api.telegram.org/bot'+encodeURIComponent(tg.token)+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:tg.chat,text:'✅ Cricket News Tracker connect ho gaya'})}).then(r=>r.json()).then(j=>tgMsg(j&&j.ok?'✔ Test message bhej diya, Telegram dekho':'✖ '+((j&&j.description)||'token/chat id galat'),!(j&&j.ok))).catch(()=>tgMsg('✖ Telegram tak nahi pahunch paya',true));}
+    return;}
+  const a=prompt('1 = ON/OFF badlo\n2 = token/chat id badlo\n3 = hata do (disconnect)','1');
+  if(a==='1'){tg.on=!tg.on;saveTg();tgLabel();}
+  else if(a==='2'){tg.token='';tg.chat='';saveTg();tgLabel();$('tgBtn').onclick();}
+  else if(a==='3'){tg={token:'',chat:'',on:true};saveTg();tgLabel();tgMsg('Telegram hata diya');}};
+tgLabel();
 $('tokBtn').onclick=()=>{const cur=localStorage.getItem(KT)||'';
   const v=prompt('GitHub token (fine-grained, sirf is repo par "Actions: Read and write"). Khaali chhodo = token hatao.',cur);
   if(v===null)return;try{if(v.trim())localStorage.setItem(KT,v.trim());else localStorage.removeItem(KT);}catch(e){}
@@ -616,4 +658,5 @@ window.addEventListener('pagehide',()=>{try{localStorage.setItem(KV,String(Date.
 document.addEventListener('visibilitychange',()=>{if(document.hidden){try{localStorage.setItem(KV,String(Date.now()));}catch(e){}saveSeen();}});
 fetch(NJ+'?'+Date.now()).then(r=>{if(!r.ok)throw new Error(NJ+' nahi mila ('+r.status+')');return r.json();}).then(load).catch(e=>{$('upd').textContent='';const b=$('fails');b.className='err';b.textContent='Load error: '+e.message+' (file:// se nahi, GitHub Pages / http se kholo)';draw();});
 })();
-</script></body></html>
+</script><script>window.__tgNoHooks=1;</script><script src="js/tg_share.js"></script>
+</body></html>

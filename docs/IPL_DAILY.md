@@ -37,3 +37,6 @@ Test: headless chromium, 12 nakli headlines — filter, prompt, mark, reload, un
 - Poori / Fast count ab 1-50 ya "Sab (automatic)". Har story ke aage dropdown: Poori / Fast / Nahi (manual). Buttons: Sab -> Poori, Sab -> Fast, Sab hatao, Auto wapas.
 - Use ho chuki story ✅ tick ke saath list mein dikhti rahti hai (auto batch mein nahi aati).
 - Main list: pehle 🔑 keyword chips (IPL, Auction, Trade, Retention, Release, Captain, Coach + apna keyword), site list ab "🌐 Site filter" button ke peeche band rehti hai.
+
+## C192 Telegram (sab pages)
+js/tg_share.js har page par: 📨 TG button (setup/ON-OFF), har download Telegram par bhi, copy bhi (option), har textarea ke neeche "📨 Telegram par bhejo". Token sirf browser localStorage (cvt_tg).

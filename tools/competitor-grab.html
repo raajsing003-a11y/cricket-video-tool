@@ -96,4 +96,5 @@ function zip(F){const e=new TextEncoder(),P=[],C=[];let o=0;const u16=v=>[v&255,
   P.push(h,n,f.d);C.push(new Uint8Array([0x50,0x4b,1,2,20,0,20,0,0,8,0,0,0,0,0,0,...u32(c),...u32(f.d.length),...u32(f.d.length),...u16(n.length),0,0,0,0,0,0,0,0,0,0,0,0,...u32(o)]),n);o+=h.length+n.length+f.d.length;});
  const cs=C.reduce((a,x)=>a+x.length,0);return new Blob([...P,...C,new Uint8Array([0x50,0x4b,5,6,0,0,0,0,...u16(F.length),...u16(F.length),...u32(cs),...u32(o),0,0])],{type:'application/zip'});}
 window.__t={parseRSS,zip};
-</script></body></html>
+</script><script src="../js/tg_share.js"></script>
+</body></html>
