@@ -32,7 +32,7 @@ C.photos=new Proxy(base,{
 Object.keys(base).forEach(addV);
 C.photoVariants=k=>(vars[k]||[]).slice();
 // ---- cameo (auto player card) ----
-const ON={v:(function(){try{return localStorage.getItem('cvt_cameo')!=='0';}catch(e){return true;}})()};
+const ON={v:(function(){try{return localStorage.getItem('cvt_cameo2')==='1';}catch(e){return false;}})()};
 C.CAMEO=ON;
 function names(){const out=[],S=(window.PHOTOS&&window.PHOTOS.slots)?window.PHOTOS.slots():(window.PHOTO_SLOTS||[]);
  S.forEach(s=>{if(!base[s.id])return;const a=[];if(s.hi&&s.hi.length>=2)a.push(s.hi);
@@ -45,7 +45,7 @@ function cameoMap(){if(camFor===C.scenes&&cam._n===epoch)return cam;camFor=C.sce
   hits.sort((x,y)=>x[0]-y[0]);const ids=hits.slice(0,2).map(h=>h[1]).filter(id=>!(i>0&&cam[i-1]&&cam[i-1].indexOf(id)>=0));if(ids.length)cam[i]=ids;});return cam;}
 
 // ---- C194: side fill (jis scene mein koi player photo nahi, wahan video ke mukhya player ka side card) ----
-const FILL={v:(function(){try{return localStorage.getItem('cvt_sidefill')!=='0';}catch(e){return true;}})()};
+const FILL={v:(function(){try{return localStorage.getItem('cvt_sidefill2')==='1';}catch(e){return false;}})()};
 C.SIDEFILL=FILL;
 const NOFILL={cta:1,presenter:1,clip:1,phoneann:1,screenclip:1,intro:1,outro:1,chapter:1};
 let fill=[],fillFor=null;
@@ -123,10 +123,10 @@ C.setScenes=function(){refMemo={};camFor=null;fillFor=null;pinM=null;epoch++;(ar
 // ---- UI: cameo toggle + photos panel variants ----
 setTimeout(()=>{const pol=document.getElementById('pol'),host=(pol&&pol.parentNode)||document.getElementById('bar2');if(!host)return;
  const b=document.createElement('button');b.id='cam';const up=()=>{b.textContent='👤 Player image: '+(ON.v?'ON':'OFF');b.style.background=ON.v?'#2a6fdb':'#555';};up();
- b.onclick=()=>{ON.v=!ON.v;try{localStorage.setItem('cvt_cameo',ON.v?'1':'0');}catch(e){}up();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(b);
+ b.onclick=()=>{ON.v=!ON.v;try{localStorage.setItem('cvt_cameo2',ON.v?'1':'0');}catch(e){}up();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(b);
  const f=document.createElement('button');f.id='sfill';const uf=()=>{f.textContent='🖼 Side fill: '+(FILL.v?'ON':'OFF');f.style.background=FILL.v?'#2a6fdb':'#555';};uf();
  f.title='Jis scene mein koi player photo nahi, wahan side mein mukhya player ka card';
- f.onclick=()=>{FILL.v=!FILL.v;try{localStorage.setItem('cvt_sidefill',FILL.v?'1':'0');}catch(e){}C.photoRefresh();uf();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(f);},0);
+ f.onclick=()=>{FILL.v=!FILL.v;try{localStorage.setItem('cvt_sidefill2',FILL.v?'1':'0');}catch(e){}C.photoRefresh();uf();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(f);},0);
 const P=window.PHOTOS;if(P){
  P.addVariant=async(slot,file)=>{let n=2;while(P.have[slot+'#'+n])n++;await P.set(slot+'#'+n,file);return n;};
  P.rowExtra=(s,list)=>{const row=document.createElement('div');row.style.cssText='display:flex;align-items:center;gap:6px;padding:0 0 4px 42px;flex-wrap:wrap';
