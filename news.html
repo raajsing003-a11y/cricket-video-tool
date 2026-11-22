@@ -41,6 +41,7 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 .pfbox{background:#162033;border-radius:8px;padding:8px;margin:6px 0}.pfbox input{width:100%;box-sizing:border-box;padding:8px;font-size:16px;border-radius:8px;border:1px solid #446;background:#000;color:#eee;margin:4px 0}
 #selbar{position:fixed;left:0;right:0;bottom:0;background:#0d2a14;border-top:2px solid #2a8a3a;padding:8px 10px;z-index:9;display:none}#selbar .in{max-width:900px;margin:0 auto}
 .tbox{margin:6px 0;padding:6px 8px;background:rgba(255,210,63,.08);border-left:3px solid #ffd23f;border-radius:6px}.thead{font-size:13px;color:#ffd23f;margin-bottom:3px}.trow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:2px 0}.tt{font-weight:700;font-size:15px}.tl{font-size:11px;opacity:.65}
+.ist.iu{opacity:.5}.ist .tk{display:inline-block;min-width:22px}.iplist{max-height:55vh;overflow-y:auto;border:1px solid #2a2040;border-radius:8px;padding:2px 6px;margin:4px 0}.iplist select{font-size:13px;padding:2px 4px}.ist.ch{background:rgba(91,63,168,.25)}.kwin{padding:8px;font-size:16px;border-radius:18px;border:1px solid #444;background:#000;color:#eee;width:150px}.chip.kw.on{background:#7a3fe0}.badge.bD{background:#2a8a3a}
 .iplbox{background:#1a1030;border:1px solid #5b3fa8;border-radius:10px;padding:10px;margin:10px 0}.iplbox select{background:#000;color:#eee;border:1px solid #446;border-radius:8px;padding:6px;font-size:15px}.iplbox .ist{font-size:15px;padding:2px 0;border-bottom:1px solid #2a2040}.iplbox details{margin-top:6px}
 </style></head><body><div id="w">
 <div class="top"><h1>📰 Cricket News Tracker</h1><a href="index.html">← Video tool</a></div>
@@ -55,10 +56,11 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 <h2 id="h2top">⭐ Aaj ki top 5 stories</h2><div id="top5"></div>
 <h2 id="h2all">Saari stories</h2>
 <input type="search" id="q" placeholder="🔎 khoj (naam / shabd)">
+<div class="row2"><span class="lab">🔑 Keyword (pehle ye chuno):</span></div><div class="chips" id="kws"></div>
 <div class="chips" id="tags"></div>
 <div class="chips" id="lbls"></div>
 <div class="row2"><span class="lab">Kitni sites ne chhapa:</span><span id="mins" class="chips" style="margin:0"></span></div>
-<div class="row2"><span class="lab">Site:</span><span id="sites" class="chips" style="margin:0"></span></div>
+<div class="row2"><button id="siteTgl">🌐 Site filter ▼</button><span id="sites" class="chips" style="margin:0;display:none"></span></div>
 <div class="row2"><span class="lab">Sirf:</span><span id="only" class="chips" style="margin:0"></span></div>
 <div class="row2"><span class="lab">Kram:</span><span id="sorts" class="chips" style="margin:0"></span></div>
 <div class="chips"><span class="chip" id="hideUsed">✓ Use ho chuki khabrein chhupao</span>
@@ -73,13 +75,21 @@ input[type=search]{width:100%;box-sizing:border-box;padding:10px;font-size:18px;
 'use strict';
 const TAGS=['Trade','Retention','Release','Auction','Team News','India Match'];
 const KP='cvt_news_steps',KS='cvt_news_seen',KU='cvt_news_used',KF='cvt_news_ui',KL='cvt_news_later',KV='cvt_news_visit',KN='cvt_news_notes',KSEL='cvt_news_sel',KSC='cvt_site_scrape',KPH='cvt_news_photos',KPC='cvt_photo_custom',MAXS=60,MAXA=150,MAXH=72,SHOW=4,REFRESH=180000;
-let items=[],stories=[],used={},ui={tag:'Sab',lbl:'Sab',hide:false,q:'',min:1,site:'Sab',sort:'latest',only:'Sab',view:'story'},open={},later={},lastVisit=0;
+let items=[],stories=[],used={},ui={tag:'Sab',lbl:'Sab',hide:false,q:'',min:1,site:'Sab',sort:'latest',only:'Sab',view:'story',kw:[]},open={},later={},lastVisit=0;
 try{used=JSON.parse(localStorage.getItem(KU)||'{}')||{};}catch(e){}
 let steps={};try{steps=JSON.parse(localStorage.getItem(KP)||'{}')||{};}catch(e){}
 let seenLab={};try{seenLab=JSON.parse(localStorage.getItem(KS)||'{}')||{};}catch(e){}
 try{later=JSON.parse(localStorage.getItem(KL)||'{}')||{};}catch(e){}
 try{lastVisit=+localStorage.getItem(KV)||0;}catch(e){}
 try{Object.assign(ui,JSON.parse(localStorage.getItem(KF)||'{}'));ui.q='';}catch(e){}
+if(!Array.isArray(ui.kw))ui.kw=[];ui.site='Sab';
+const KKW='cvt_news_kwlist';let kwCustom=[];try{kwCustom=JSON.parse(localStorage.getItem(KKW)||'[]')||[];}catch(e){}
+const KW_PRE=['IPL','Auction','Trade','Retention','Release','Captain','Coach'];
+let sitesOpen=false;
+function kwTest(k,txt,st){k=k.toLowerCase();if(k==='ipl'){if(st&&isIPL(st))return true;return IPL_WORD.test(txt)||TEAMS.slice(0,10).some(t=>t[1].test(txt));}return txt.toLowerCase().includes(k);}
+function kwStory(st){if(!ui.kw.length)return true;const txt=st.items.map(i=>i.title+' '+(i.summary||'')).join(' | ');return ui.kw.some(k=>kwTest(k,txt,st));}
+function kwItem(i){if(!ui.kw.length)return true;const txt=i.title+' '+(i.summary||'');return ui.kw.some(k=>kwTest(k,txt,null));}
+
 let notes={},sel={},phStore={},scr={at:null,sites:{},err:{}};
 try{notes=JSON.parse(localStorage.getItem(KN)||'{}')||{};}catch(e){}
 try{sel=JSON.parse(localStorage.getItem(KSEL)||'{}')||{};}catch(e){}
@@ -89,7 +99,7 @@ const saveN=()=>{try{localStorage.setItem(KN,JSON.stringify(notes));}catch(e){}}
 const saveSel=()=>{try{localStorage.setItem(KSEL,JSON.stringify(sel));}catch(e){}};
 const savePh=()=>{try{localStorage.setItem(KPH,JSON.stringify(phStore));}catch(e){}};
 const saveU=()=>{try{localStorage.setItem(KU,JSON.stringify(used));}catch(e){}};
-const saveUI=()=>{try{localStorage.setItem(KF,JSON.stringify({tag:ui.tag,lbl:ui.lbl,hide:ui.hide,min:ui.min,site:ui.site,sort:ui.sort,only:ui.only,view:ui.view}));}catch(e){}};
+const saveUI=()=>{try{localStorage.setItem(KF,JSON.stringify({tag:ui.tag,lbl:ui.lbl,hide:ui.hide,min:ui.min,site:ui.site,sort:ui.sort,only:ui.only,view:ui.view,kw:ui.kw}));}catch(e){}};
 function ago(iso){const m=Math.max(0,(Date.now()-new Date(iso))/60000);
   if(m<60)return Math.round(m)+' min pehle';if(m<1440)return Math.round(m/60)+' ghante pehle';return Math.round(m/1440)+' din pehle';}
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
@@ -104,12 +114,13 @@ function latestList(){
     if(ui.tag!=='Sab'&&!tg.includes(ui.tag))return false;
     if(ui.lbl!=='Sab'&&(i.label==='Confirmed'?'Confirmed':'Rumor')!==ui.lbl)return false;
     if(ui.site!=='Sab'&&sk(i.source)!==ui.site)return false;
+    if(!kwItem(i))return false;
     if(ui.hide&&used[i.id])return false;
     if(q&&!(i.title+' '+(i.summary||'')).toLowerCase().includes(q))return false;
     return true;}).sort((a,b)=>new Date(b.published)-new Date(a.published)).map(i=>({i:i,st:byId.get(i.id)}));}
 function articleRow(x){
   const i=x.i,st=x.st,c=el('div','card'+(used[i.id]?' used':''));
-  const b=el('div');b.appendChild(el('span','badge '+(i.label==='Confirmed'?'bC':'bR'),i.label==='Confirmed'?'✔ Confirmed':'❓ Rumor / अपुष्ट'));
+  const b=el('div');if(used[i.id])b.appendChild(el('span','badge bD','✅ Use ho gayi'));b.appendChild(el('span','badge '+(i.label==='Confirmed'?'bC':'bR'),i.label==='Confirmed'?'✔ Confirmed':'❓ Rumor / अपुष्ट'));
   (i.tags||[]).filter(t=>TAGS.indexOf(t)>=0).forEach(t=>b.appendChild(el('span','badge',t)));
   b.appendChild(el('span','badge bN',i.source||'?'));c.appendChild(b);
   c.appendChild(el('div','t',i.title));
@@ -276,6 +287,7 @@ function card(st){
   const u=isUsed(st),fresh=freshItems(st),freshIds=new Set(fresh.map(i=>i.id));
   const c=el('div','card'+(isDone(st)?' used':'')+(isLater(st)?' later':''));
   const b=el('div');
+  if(isDone(st))b.appendChild(el('span','badge bD','✅ Use ho gayi'));
   b.appendChild(el('span','badge '+(st.label==='Confirmed'?'bC':'bR'),st.label==='Confirmed'?'✔ Confirmed':'❓ Rumor / अपुष्ट'));
   if(isHot(st))b.appendChild(el('span','badge bH','🔥 Trending: 3 ghante mein '+st.recent+' sites'));
   if(isNew(st))b.appendChild(el('span','badge bN','🆕 Naya'));
@@ -331,7 +343,7 @@ function top5(){
 // ---- C189: IPL Daily Video (roz nayi IPL khabrein, ek click prompt, shocking sawaal intro, "खबर मैदान की")
 const KI='cvt_ipl_daily',KIC='cvt_ipl_cfg';
 let iplLog={};try{iplLog=JSON.parse(localStorage.getItem(KI)||'{}')||{};}catch(e){}
-let iplCfg={full:6,fast:8,mark:true};try{Object.assign(iplCfg,JSON.parse(localStorage.getItem(KIC)||'{}'));}catch(e){}
+let iplCfg={full:6,fast:8,mark:true,hrs:48};try{Object.assign(iplCfg,JSON.parse(localStorage.getItem(KIC)||'{}'));}catch(e){}
 const saveIpl=()=>{try{localStorage.setItem(KI,JSON.stringify(iplLog));}catch(e){}};
 const saveIplCfg=()=>{try{localStorage.setItem(KIC,JSON.stringify(iplCfg));}catch(e){}};
 const IPL_WORD=/\bipl\b|आईपीएल|indian premier league|mini[- ]auction/i;
@@ -340,11 +352,19 @@ function isIPL(st){
   const txt=st.items.map(i=>i.title+' '+(i.summary||'')).join(' | ');
   if(IPL_WORD.test(txt)||TEAMS.slice(0,10).some(t=>t[1].test(txt)))return true;
   return !st.tags.includes('India Match')&&cityHints(st).length>0;}
-function iplPool(){
-  const from=Date.now()-48*3600e3;
-  return stories.filter(s=>isIPL(s)&&new Date(s.latest)>from&&!isDone(s))
-    .sort((a,b)=>(b.score-a.score)||(new Date(b.latest)-new Date(a.latest)));}
-function iplBatch(){const P=iplPool();return {pool:P,full:P.slice(0,iplCfg.full),fast:P.slice(iplCfg.full,iplCfg.full+iplCfg.fast)};}
+const KIM='cvt_ipl_man';let iplMan={};try{iplMan=JSON.parse(localStorage.getItem(KIM)||'{}')||{};}catch(e){}
+const saveIplMan=()=>{try{localStorage.setItem(KIM,JSON.stringify(iplMan));}catch(e){}};
+// C190: saari IPL stories (latest -> oldest), auto ya manual (har story: Poori / Fast / Nahi), use ho chuki par tick
+function iplAssign(){
+  const from=Date.now()-(iplCfg.hrs||48)*3600e3;
+  const all=stories.filter(s=>isIPL(s)&&new Date(s.latest)>from).sort((a,b)=>new Date(b.latest)-new Date(a.latest));
+  const elig=all.filter(s=>!isDone(s)),man=Object.keys(iplMan).length>0;
+  let full=[],fast=[];
+  if(man){all.forEach(s=>{const v=iplMan[s.id];if(v==='F')full.push(s);else if(v==='H')fast.push(s);});}
+  else{const nF=+iplCfg.full||0,nH=+iplCfg.fast||0;full=elig.slice(0,nF);fast=elig.slice(nF,nF+nH);}
+  const mode={};all.forEach(s=>{mode[s.id]=full.indexOf(s)>=0?'F':fast.indexOf(s)>=0?'H':'N';});
+  return {all:all,pool:elig,full:full,fast:fast,mode:mode,man:man};}
+function iplBatch(){return iplAssign();}
 const dKey=()=>{const d=new Date(),p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());};
 function recentIplTitles(){const out=[];Object.keys(iplLog).sort().reverse().slice(0,3).forEach(k=>(iplLog[k]||[]).forEach(b=>(b.titles||[]).forEach(t=>out.push(t))));return out.slice(0,25);}
 const IPL_HOOK_NEW='(1) Sabse pehle SHOCKING SAWAAL-HOOK: 4-6 chhote, jhatke wale sawaal (har ek 5-9 shabd), har sawaal ek alag story ka, sirf STORY PACK ki khabron ke andar. Style (sirf example, asli sawaal aaj ki khabron se banao): "क्या यशस्वी छोड़ेंगे राजस्थान?" / "किस टीम में मची हलचल?" / "कौन बनेगा मुंबई का कप्तान?" / "कोलकाता में क्या हुई गड़बड़?". Sawaal sirf sawaal rahe, pakka bayan nahi; jis sawaal ka jawab video mein nahi aayega wo mat likho. Rumor wali story ka sawaal bhi sawaal hi rahe.';
@@ -374,26 +394,43 @@ function iplUndo(){
   if(b)(b.items||[]).forEach(id=>{delete used[id];});saveU();saveIpl();return !!b;}
 function drawIpl(){
   const box=$('iplBox');if(!box)return;box.innerHTML='';
-  const B=iplBatch(),todayN=(iplLog[dKey()]||[]).length,nUpd=B.pool.filter(hasUpd).length;
+  const B=iplAssign(),todayN=(iplLog[dKey()]||[]).length,nUpd=B.pool.filter(hasUpd).length,nUsed=B.all.length-B.pool.length;
   box.appendChild(el('div','t','🏏 IPL Daily Video — "खबर मैदान की" (roz nayi khabrein)'));
-  box.appendChild(el('div','sm','Pichhle 48 ghante ki IPL stories jo abhi tak kisi video mein use nahi hui: '+B.pool.length+(nUpd?' (🔄 nayi update wali: '+nUpd+')':'')+(todayN?' · aaj '+todayN+' video ka batch ban chuka':'')));
+  box.appendChild(el('div','sm','Pichhle '+(iplCfg.hrs||48)+' ghante ki IPL stories: '+B.all.length+' (naya pehle) · nayi/unused: '+B.pool.length+' · ✅ use ho chuki: '+nUsed+(nUpd?' · 🔄 nayi update wali: '+nUpd:'')+(todayN?' · aaj '+todayN+' video ka batch ban chuka':'')));
   const cr=el('div','row2');
-  const mk=(lab,key,vals)=>{cr.appendChild(el('span','lab',lab));const sel2=document.createElement('select');vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;if(iplCfg[key]===v)o.selected=true;sel2.appendChild(o);});sel2.onchange=()=>{iplCfg[key]=+sel2.value;saveIplCfg();draw();};cr.appendChild(sel2);};
-  mk('Poori stories:','full',[3,4,5,6,7,8]);mk('Fast headlines:','fast',[0,4,6,8,10,12]);box.appendChild(cr);
+  const NUMS=[1,2,3,4,5,6,7,8,9,10,12,15,20,25,30,40,50,[999,'Sab (automatic)']];
+  const mk=(lab,key,vals)=>{cr.appendChild(el('span','lab',lab));const sel2=document.createElement('select');vals.forEach(v=>{const val=Array.isArray(v)?v[0]:v,tx=Array.isArray(v)?v[1]:v;const o=document.createElement('option');o.value=val;o.textContent=tx;if(+iplCfg[key]===val)o.selected=true;sel2.appendChild(o);});sel2.onchange=()=>{iplCfg[key]=+sel2.value;iplMan={};saveIplMan();saveIplCfg();draw();};cr.appendChild(sel2);};
+  mk('Poori stories:','full',NUMS);mk('Fast headlines:','fast',[0].concat(NUMS));
+  cr.appendChild(el('span','lab','Kitne ghante:'));const hs=document.createElement('select');[24,36,48,72,168].forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v<100?v+'h':'7 din';if((iplCfg.hrs||48)===v)o.selected=true;hs.appendChild(o);});hs.onchange=()=>{iplCfg.hrs=+hs.value;iplMan={};saveIplMan();saveIplCfg();draw();};cr.appendChild(hs);
+  box.appendChild(cr);
   const cm=el('div','sm'),cb0=document.createElement('input');cb0.type='checkbox';cb0.checked=!!iplCfg.mark;cb0.onchange=()=>{iplCfg.mark=cb0.checked;saveIplCfg();};
-  const lb=document.createElement('label');lb.appendChild(cb0);lb.appendChild(document.createTextNode(' Copy karte hi ye sab "use ho gayi" mark ho (kal dobara nahi aayengi)'));cm.appendChild(lb);box.appendChild(cm);
-  if(!B.pool.length){box.appendChild(el('div','warn','Abhi koi nayi IPL khabar nahi bachi. 🔄 Abhi fetch karo dabao, ya thodi der baad aao.'));}
+  const lb=document.createElement('label');lb.appendChild(cb0);lb.appendChild(document.createTextNode(' Copy karte hi ye sab "use ho gayi" mark ho (tick lag jayega, kal dobara nahi aayengi)'));cm.appendChild(lb);box.appendChild(cm);
+  if(!B.all.length){box.appendChild(el('div','warn','Abhi koi IPL khabar nahi. 🔄 Abhi fetch karo dabao, ya "Kitne ghante" badhao.'));}
   else{
-    box.appendChild(el('div','lab','Poori stories ('+B.full.length+'):'));
-    B.full.forEach((s,k)=>box.appendChild(el('div','ist','#'+(k+1)+' '+(hasUpd(s)?'🔄 ':'')+s.title+'  ('+s.srcNames.length+' sites, '+ago(s.latest)+')')));
-    if(B.fast.length){box.appendChild(el('div','lab','Fast headlines ('+B.fast.length+'):'));B.fast.forEach((s,k)=>box.appendChild(el('div','ist sm','H'+(k+1)+' '+s.title)));}
-    const left=B.pool.length-B.full.length-B.fast.length;if(left>0)box.appendChild(el('div','sm','Baaki '+left+' stories kal ke liye bachi rahengi.'));}
+    const tb=el('div','row');
+    const bt=(txt,fn)=>{const b=el('button',null,txt);b.onclick=()=>{fn();saveIplMan();draw();};tb.appendChild(b);};
+    bt('☑ Sab unused → Poori',()=>{iplMan={};B.all.forEach(s=>{iplMan[s.id]=isDone(s)?'N':'F';});});
+    bt('☑ Sab unused → Fast',()=>{iplMan={};B.all.forEach(s=>{iplMan[s.id]=isDone(s)?'N':'H';});});
+    bt('✖ Sab hatao',()=>{B.all.forEach(s=>{iplMan[s.id]='N';});});
+    if(B.man)bt('↺ Auto wapas',()=>{iplMan={};});
+    box.appendChild(tb);
+    box.appendChild(el('div','lab','Chuni: '+B.full.length+' poori + '+B.fast.length+' fast'+(B.man?' (manual)':' (auto)')+' — har story ke aage dropdown se Poori / Fast / Nahi chuno:'));
+    const lst=el('div','iplist');
+    B.all.forEach((s,k)=>{const dn=isDone(s),m=B.mode[s.id];
+      const r=el('div','ist'+(dn?' iu':'')+(m!=='N'?' ch':''));
+      const sl=document.createElement('select');[['F','Poori'],['H','Fast'],['N','Nahi']].forEach(o=>{const op=document.createElement('option');op.value=o[0];op.textContent=o[1];if(m===o[0])op.selected=true;sl.appendChild(op);});
+      sl.onchange=()=>{if(!B.man)iplMan=Object.assign({},B.mode);iplMan[s.id]=sl.value;saveIplMan();draw();};
+      r.appendChild(sl);
+      r.appendChild(el('span','tk',dn?' ✅ ':(hasUpd(s)?' 🔄 ':' ')));
+      r.appendChild(document.createTextNode((k+1)+'. '+s.title+'  ('+s.srcNames.length+' sites, '+ago(s.latest)+')'+(dn?' — use ho gayi':'')));
+      lst.appendChild(r);});
+    box.appendChild(lst);}
   const r=el('div','row');box.appendChild(r);
   const cb=el('button',null,'📋 Aaj ka IPL video prompt copy');
-  cb.onclick=async()=>{const B2=iplBatch();if(!B2.full.length){alert('Abhi nayi IPL khabar nahi hai.');return;}
+  cb.onclick=async()=>{const B2=iplAssign();if(!B2.full.length){alert('Kam se kam 1 "Poori" story chuno.');return;}
     const t=iplPrompt(B2.full,B2.fast);let ok=true;try{await navigator.clipboard.writeText(t);}catch(e){ok=false;prompt('Copy karo:',t);}
-    const x=saveTxt(t,'ipl_daily');if(iplCfg.mark)iplMark(B2.full.concat(B2.fast),B2.full.length,B2.fast.length);
-    cb.textContent=(ok?'✔ Copy hua':'✔ Prompt bana')+x+(iplCfg.mark?' · '+(B2.full.length+B2.fast.length)+' stories use mark':'');setTimeout(draw,1800);};
+    const x=saveTxt(t,'ipl_daily');if(iplCfg.mark){iplMark(B2.full.concat(B2.fast),B2.full.length,B2.fast.length);iplMan={};saveIplMan();}
+    cb.textContent=(ok?'✔ Copy hua':'✔ Prompt bana')+x+(iplCfg.mark?' · '+(B2.full.length+B2.fast.length)+' stories ✅ use mark':'');setTimeout(draw,1800);};
   r.appendChild(cb);
   if(Object.keys(iplLog).length){const ub=el('button',null,'↩ Aakhri batch wapas');ub.onclick=()=>{if(confirm('Aakhri IPL batch ki stories dobara "nayi" ho jayengi. Pakka?')){iplUndo();draw();}};r.appendChild(ub);}
   const ks=Object.keys(iplLog).sort().reverse();
@@ -404,6 +441,15 @@ function draw(){
   try{drawIpl();}catch(e){}
   const siteSet=new Map();stories.forEach(s=>s.srcKeys.forEach((k,j)=>{if(!siteSet.has(k))siteSet.set(k,{n:s.srcNames[j],c:0});siteSet.get(k).c++;}));
   if(ui.site!=='Sab'&&!siteSet.has(ui.site))ui.site='Sab';
+  (function(){const box=$('kws');box.innerHTML='';
+    const sab=el('span','chip'+(ui.kw.length?'':' on'),'Sab');sab.onclick=()=>{ui.kw=[];saveUI();draw();};box.appendChild(sab);
+    KW_PRE.concat(kwCustom.filter(k=>!KW_PRE.some(p=>p.toLowerCase()===k.toLowerCase()))).forEach(k=>{const on=ui.kw.some(x=>x.toLowerCase()===k.toLowerCase());
+      const c=el('span','chip kw'+(on?' on':''),(on?'✔ ':'')+k);c.onclick=()=>{ui.kw=on?ui.kw.filter(x=>x.toLowerCase()!==k.toLowerCase()):ui.kw.concat([k]);saveUI();draw();};
+      if(kwCustom.some(x=>x.toLowerCase()===k.toLowerCase())){c.oncontextmenu=e=>{e.preventDefault();if(confirm('"'+k+'" keyword hatao?')){kwCustom=kwCustom.filter(x=>x.toLowerCase()!==k.toLowerCase());ui.kw=ui.kw.filter(x=>x.toLowerCase()!==k.toLowerCase());try{localStorage.setItem(KKW,JSON.stringify(kwCustom));}catch(_){}saveUI();draw();}};c.title='dabake rakho/right-click: hatao';}
+      box.appendChild(c);});
+    const inp=el('input','kwin');inp.type='text';inp.placeholder='+ apna keyword (Enter)';
+    inp.onkeydown=e=>{if(e.key!=='Enter')return;const v=inp.value.trim();if(!v)return;if(!kwCustom.some(x=>x.toLowerCase()===v.toLowerCase())&&!KW_PRE.some(x=>x.toLowerCase()===v.toLowerCase())){kwCustom.push(v);try{localStorage.setItem(KKW,JSON.stringify(kwCustom));}catch(_){}}
+      if(!ui.kw.some(x=>x.toLowerCase()===v.toLowerCase()))ui.kw.push(v);saveUI();draw();};box.appendChild(inp);})();
   chips($('tags'),['Sab'].concat(TAGS),'tag');chips($('lbls'),['Sab','Confirmed','Rumor'],'lbl');
   chips($('mins'),[[1,'Sab'],[2,'2+ sites'],[3,'3+ sites'],[4,'4+ sites']],'min');
   chips($('sites'),[['Sab','Sab']].concat(Array.from(siteSet.entries()).sort((a,b)=>b[1].c-a[1].c).map(e=>[e[0],e[1].n+' ('+e[1].c+')'])),'site');
@@ -411,6 +457,7 @@ function draw(){
   const nN=stories.filter(isNew).length,nH=stories.filter(isHot).length,nL=stories.filter(isLater).length,nU=stories.filter(hasUpd).length,nO=stories.filter(isOff).length,nW=stories.filter(isWip).length;
   chips($('only'),[['Sab','Sab'],['new','🆕 Sirf naya ('+nN+')'],['hot','🔥 Trending ('+nH+')'],['later','⭐ Baad mein ('+nL+')'],['upd','🔄 Nayi update ('+nU+')'],['off','✅ Ab official ('+nO+')'],['wip','🛠 Adhura kaam ('+nW+')'],['note','📝 Note wali ('+stories.filter(noteOf).length+')']],'only');
   $('only').querySelectorAll('.chip').forEach((c,k)=>{if(k===1)c.classList.add('n');if(k===2)c.classList.add('h');if(k===3)c.classList.add('l');});
+  $('sites').style.display=sitesOpen?'flex':'none';$('siteTgl').textContent=(sitesOpen?'🌐 Site filter ▲':'🌐 Site filter ▼ ('+siteSet.size+' sites)')+(ui.site!=='Sab'&&siteSet.has(ui.site)?' · '+siteSet.get(ui.site).n:'');
   $('hideUsed').className='chip'+(ui.hide?' on':'');$('hideUsed').textContent=(ui.hide?'✔ ':'')+'Use ho chuki stories chhupao';
   const LV=ui.view==='latest';
   $('latestBtn').style.background=LV?'#e11':'';$('latestBtn').textContent=LV?'🕒 Latest articles ✔ (wapas stories: dabao)':'🕒 Latest articles';
@@ -430,6 +477,7 @@ function draw(){
     if(ui.lbl!=='Sab'&&s.label!==ui.lbl)return false;
     if(s.srcKeys.length<ui.min)return false;
     if(ui.site!=='Sab'&&!s.srcKeys.includes(ui.site))return false;
+    if(!kwStory(s))return false;
     if(ui.hide&&isDone(s))return false;
     if(ui.only==='new'&&!isNew(s))return false;
     if(ui.only==='hot'&&!isHot(s))return false;
@@ -447,6 +495,7 @@ function draw(){
   drawSel();}
 $('latestBtn').onclick=()=>{ui.view=ui.view==='latest'?'story':'latest';saveUI();draw();};
 $('q').oninput=e=>{ui.q=e.target.value;draw();};
+$('siteTgl').onclick=()=>{sitesOpen=!sitesOpen;draw();};
 $('hideUsed').onclick=()=>{ui.hide=!ui.hide;saveUI();draw();};
 $('expU').onclick=()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({format:'cvt_news_backup_v3',saved:new Date().toISOString(),used:used,steps:steps,later:later,notes:notes,ipl:iplLog},null,1)],{type:'application/json'}));a.download='news_backup.json';a.click();};
 $('impU').onclick=()=>$('fi').click();

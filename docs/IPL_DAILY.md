@@ -31,3 +31,9 @@ IPL all (1d), IPL captain/squad/coach (1d), IPL franchise news (1d), IPL Hindi d
 ## Code
 news.html: drawIpl / iplPool / iplPrompt / iplMark / iplUndo (C189 comment se dhundho). Localstorage: cvt_ipl_daily, cvt_ipl_cfg.
 Test: headless chromium, 12 nakli headlines — filter, prompt, mark, reload, undo sab theek, console errors 0.
+
+## C190 update
+- IPL box ab pichhle X ghante ki SAARI IPL stories dikhata hai, naya -> purana. Ghante dropdown: 24/36/48/72/7 din.
+- Poori / Fast count ab 1-50 ya "Sab (automatic)". Har story ke aage dropdown: Poori / Fast / Nahi (manual). Buttons: Sab -> Poori, Sab -> Fast, Sab hatao, Auto wapas.
+- Use ho chuki story ✅ tick ke saath list mein dikhti rahti hai (auto batch mein nahi aati).
+- Main list: pehle 🔑 keyword chips (IPL, Auction, Trade, Retention, Release, Captain, Coach + apna keyword), site list ab "🌐 Site filter" button ke peeche band rehti hai.
