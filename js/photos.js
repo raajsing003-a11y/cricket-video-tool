@@ -11,12 +11,12 @@ const P={have:{},C:null,onChange:null,filter:'',custom:[]};
 try{P.custom=JSON.parse(localStorage.getItem(CK)||'[]')||[];}catch(e){P.custom=[];}
 const saveCustom=()=>{try{localStorage.setItem(CK,JSON.stringify(P.custom));}catch(e){}};
 P.slots=()=>(window.PHOTO_SLOTS||[]).concat(P.custom.map(c=>({id:c.id,city:'custom',hi:c.name,en:'',custom:1})));
-P.label=id=>{if(!id)return '';const s=P.slots().find(x=>x.id===id);return s?(s.hi+(s.en?' · '+s.en:'')):id;};
+P.label=id=>{if(!id)return '';const b=String(id).split('#'),s=P.slots().find(x=>x.id===b[0]);const nm=s?(s.hi+(s.en?' · '+s.en:'')):b[0];return b.length>1?nm+' #'+b[1]:nm;};
 P.addCustom=name=>{name=String(name||'').trim();if(!name)return null;
  const id='custom_'+name.toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu,'_').replace(/^_|_$/g,'');
  if(!P.custom.find(c=>c.id===id)){P.custom.push({id,name});saveCustom();}return id;};
 // C162: scene JSON mein jo custom_<naam> id hai wo library mein na ho to apne aap naam-slot ban jaye (sirf photo upload karni pade)
-P.ensureCustom=(id,name)=>{id=String(id||'').trim();if(id.indexOf('custom_')!==0||id.length<=7)return false;
+P.ensureCustom=(id,name)=>{id=String(id||'').trim().split('#')[0];if(id.indexOf('custom_')!==0||id.length<=7)return false;
  if(P.slots().find(x=>x.id===id))return false;
  if(!name)name=id.slice(7).replace(/_+/g,' ').trim().replace(/(^|\s)(\p{Ll})/gu,(m,a,b)=>a+b.toUpperCase());
  P.custom.push({id,name});saveCustom();return true;};

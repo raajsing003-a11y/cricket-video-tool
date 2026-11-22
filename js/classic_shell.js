@@ -3,7 +3,7 @@
 // Sirf Classic mein chalta hai (?layout=filmora par band). Choti screen (<1100px) par purana stacked layout.
 (function(){
 'use strict';
-let classic=true;try{classic=new URLSearchParams(location.search).get('layout')!=='filmora';}catch(e){}
+let classic=false;try{classic=new URLSearchParams(location.search).get('layout')==='classic';}catch(e){}
 if(!classic)return;
 const $=id=>document.getElementById(id);
 const mk=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;};
@@ -118,7 +118,7 @@ function boot(){
     if(/Intro|Outro|Like\/Comment|Standard intro/.test(t))return 'io';
     if(/Header line|Pills|Carry chip/.test(t))return 'tx';
     if(/Video yahan|Clips|Chapter flow|Short 9:16|Storyboard|Auto-vary/.test(t))return 'vd';
-    if(/Kit/.test(t))return 'kit';
+    if(/Kit|Sab photos/.test(t))return 'kit';
     return 'lk';};
   const sweep=()=>{[...q.children].forEach(e=>{if(e===tabs||e.classList.contains('cl-pane'))return;
     const g=groupOf(e);if(g==='bar'){e.classList.add('cl-x');barX.appendChild(e);}else panes[g].appendChild(e);});};

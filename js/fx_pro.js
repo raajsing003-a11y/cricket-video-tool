@@ -3,7 +3,8 @@
 (function(){const C=window.CORE,E=C.ease;
 const FX=C.FX={look:'none',bars:false,prog:false};
 try{Object.assign(FX,JSON.parse(localStorage.getItem('cvt_fx')||'{}'));}catch(e){}
-FX.save=()=>{try{localStorage.setItem('cvt_fx',JSON.stringify({look:FX.look,bars:FX.bars,prog:FX.prog}));}catch(e){}};
+FX.bars=false; // C195: Cinema bars har baar OFF se shuru (purana saved ON bhi ignore). Chahiye to button se ON karo, wo sirf is session ke liye.
+FX.save=()=>{try{localStorage.setItem('cvt_fx',JSON.stringify({look:FX.look,bars:false,prog:FX.prog}));}catch(e){}};
 FX.LOOKS={none:'Look: Normal',warm:'🔥 Warm',golden:'🌇 Golden hour',cool:'❄ Cool',night:'🌃 Night stadium',cinema:'🎬 Teal-Orange',vivid:'🌈 Vivid',bw:'⚫ Black & White',navy:'🌊 Navy glow',purple:'🟣 Purple glow'};
 const L={
  warm:[['soft-light','rgba(255,140,40,.30)'],['multiply','rgba(255,240,225,.10)']],

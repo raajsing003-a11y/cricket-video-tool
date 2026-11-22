@@ -23,7 +23,7 @@ const LOOKS={
  purple:{n:'🟣 Purple Glow',polish:{vignette:.6,grain:.03,sweep:.03,leak:0,smoke:0,shake:.3,dust:0},fx:{look:'purple',bars:false,prog:false},
   bg:[BG+'bg_black_blue_gradient',BG+'bg_dark_gradient_blue_glow_bottom',BG+'bg_blue_radial_glow_dark',BG+'bg_channel_stadium_blur_dark'],
   tr:['fade','push','slideup','blurfade','zoom']},
- studio:{n:'📺 Studio',polish:{vignette:.4,grain:.04,sweep:.08,leak:.05,smoke:.03,shake:.5,dust:0},fx:{look:'cinema',bars:true,prog:false},
+ studio:{n:'📺 Studio',polish:{vignette:.4,grain:.04,sweep:.08,leak:.05,smoke:.03,shake:.5,dust:0},fx:{look:'cinema',bars:false,prog:false},
   bg:[BG+'bg_news_control_room',GB+'bg_tv_news_studio_blank',GB+'bg_press_conference_generic',GB+'bg_scoreboard_blank',GB+'bg_auction_hall_generic'],
   tr:['push','blinds','slideup','fade','tiles','lightwipe']}
 };
@@ -37,7 +37,7 @@ const NOBG=['title','retain','intro']; // team colour / paper: bg nahi badalte
 L.apply=function(k){
   L.cur=LOOKS[k]?k:'';
   const P=C.POLISH,FX=C.FX;
-  if(L.cur){const l=LOOKS[k];Object.assign(P,l.polish);if(FX){Object.assign(FX,l.fx);FX.save&&FX.save();}}
+  if(L.cur){const l=LOOKS[k];Object.assign(P,l.polish);if(FX){Object.assign(FX,l.fx);FX.bars=false;FX.save&&FX.save();}}
   else Object.assign(P,L.DEF);
   try{localStorage.setItem('cvt_look',L.cur);}catch(e){}
   window.UI&&UI.syncFX&&UI.syncFX();

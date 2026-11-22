@@ -1076,3 +1076,23 @@ NAYA: js/classic_shell.js (index.html mein sabse aakhir mein; sirf Classic mein,
 - Keys: ↑↓ scene, Home/End (preview par element chuna ho to arrow uska nudge hai).
 Test (headless chromium 1600x900, 900x800, 8-scene JSON): node --check ok; console errors 0; row click/seek, ↑↓⧉✕ list se, Undo, ⏮⏭, ArrowDown, 5 tabs, Short 9:16 (405x720), filmora layout (fm class, cl-grid nahi) sab OK. NOT tested: asli Chrome par export/audio.
 Next: C194 (PROMPT_C194_NEXT.md) jaisa; UI mein aur badlav Rahul jo bole (list mein drag-reorder, scene thumbnail, buttons ka order).
+
+## C194 (22 Nov 2026) - Photo board
+Dekho docs/PHOTO_BOARD.md.
+- C194b: board mein Undo/Redo; JSON load script (scene ya {scenes,script}) teleprompter mein auto + live; JSON save mein script jaati hai.
+
+## C195 (22 Nov 2026) — Unified layout (Filmora + Classic) + Cinema bars default OFF
+- NAYA js/unified_shell.js: Filmora layout ke upar Classic ke features (compact scene list ↑↓⧉✕, ⏮⏭ + scene chip, Undo/Redo/Safe zone transport mein, 6 tabs right mein Properties+Look/Intro-Outro/Text/Video/Kit, header mein ⚡ Export + status). Default layout ab yahi; ?layout=classic = purana Classic. docs/UNIFIED_LAYOUT.md.
+- Cinema bars: js/fx_pro.js har load par bars=false, save mein bhi false; js/looks.js Studio preset bars:false + preset lagne par bars=false.
+- Test: node --check, headless chromium, errors 0. NOT tested: asli Chrome export.
+
+## C196 (22 Nov 2026) — Background videos DONE
+- 33 loops assets/bgvideo/ (make_loops.sh -g 12). NAYA js/bg_video.js (index.html mein sabse aakhir mein): C.cover wrap (frame offscreen canvas, canvas.src = asli bg src), scene.data.bgv, preview sync (play/pause/seek + seeked redraw), export C.beforeFrame chain, preload, Look tab UI (MIX/EK HI/OFF, 🎲 BG badlo, select), Naya Style/Style list pools. Doc: docs/BG_VIDEO.md.
+- Test (headless chromium, 8-scene JSON, H.264 chala): errors 0; bgv scenes par video, title/retain/intro par nahi; play ok; fast export 2s ok (2.9 MB); MIX/EK HI/OFF, reroll, Naya Style, select ok; buttons Look tab mein.
+- NOT tested: asli Chrome par lamba export + Short 9:16 + real-time export; frame ki sharpness asli screen par.
+
+## C197 (22 Nov 2026) — 📱 Reels Maker (alag page) chunk 1 DONE
+reels.html (standalone, engine alag): script lines -> captions, BG video, photo, audio, preview + real-time MP4 export. index nav mein link. docs/REELS_MAKER.md. Test headless chromium: preview, export (mp4 1.8 MB), errors 0. NOT tested: asli Chrome par audio ke saath export. Chunk 2 plan REELS_MAKER.md mein.
+
+## C197b (22 Nov 2026) — Reels Maker chunk 2 (fast export chhod ke) DONE
+reels.html: number card (## line), Style list 12, caption box/dim, music + ducking, JSON save/load (main tool scenes JSON bhi). Test headless chromium: JSON load, style, export with music (mp4 1.2 MB), errors 0. NOT tested: asli Chrome par awaaz+music export. Baaki: fast export.

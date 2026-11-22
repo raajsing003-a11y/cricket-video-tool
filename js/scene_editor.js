@@ -180,7 +180,8 @@ function summary(){
   const box2=el('div','background:#222;border-radius:6px;padding:6px;margin-bottom:8px;font-size:13px');
   box2.appendChild(el('b',null,'📷 Is video ke liye photos: '+(ids.length-missing.length)+'/'+ids.length+' taiyar'+(empty.length?' · '+empty.length+' scene mein photo chuni nahi':'')));
   missing.forEach(id=>{const r=el('div','display:flex;align-items:center;gap:6px;margin-top:4px');r.appendChild(thumb(id));
-    r.appendChild(el('span','flex:1;color:#f96','✗ '+PH().label(id)+'  (scene '+need[id].join(', ')+')'));r.appendChild(uploadBtn('अपलोड',()=>id,null));box2.appendChild(r);});
+    r.appendChild(el('span','flex:1;color:#f96','✗ '+PH().label(id)+'  (scene '+need[id].join(', ')+')'));r.appendChild(uploadBtn('अपलोड',()=>id,null));if(window.PHB&&PHB.googleBtn)r.appendChild(PHB.googleBtn(id));box2.appendChild(r);});
+  if(window.PHB&&PHB.summaryExtra)PHB.summaryExtra(box2,el,btn);
   empty.forEach(e=>box2.appendChild(el('div','margin-top:4px;color:#fc3','• Scene '+e.i+' ('+e.type+'): photo chuno'+(e.hint?' — '+e.hint:''))));
   const okIds=ids.filter(have);if(okIds.length)box2.appendChild(el('div','margin-top:4px;opacity:.7','✓ '+okIds.map(x=>PH().label(x)).join(', ')));
   if(!ids.length&&!empty.length)box2.appendChild(el('div','opacity:.7','Is video ke scenes mein photo slot nahi hai.'));
@@ -194,11 +195,11 @@ function render(){
   const sel=el('select','font-size:14px;padding:4px');types().forEach(t=>{const o=el('option',null,t);o.value=t;sel.appendChild(o);});
   add.appendChild(sel);
   add.appendChild(btn('+ Scene jodo',()=>{const d=clone(DEF[sel.value]);SE.scenes.push({type:sel.value,dur:d.dur,tr:SE.scenes.length?'grunge':undefined,trDur:.7,data:d.data});SE.sel=SE.scenes.length-1;apply(false).then(()=>seekTo(SE.sel));},'#e11'));
-  add.appendChild(btn('⬆ JSON save',()=>{const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(SE.scenes,null,1)],{type:'application/json'}));a.download='scenes.json';a.click();}));
+  add.appendChild(btn('⬆ JSON save',()=>{const a=el('a');let ss=SE.scenes;try{const sc=localStorage.getItem('cvt_tp_script');if(sc&&ss.length){ss=JSON.parse(JSON.stringify(ss));ss[0].script=sc;}}catch(e){}a.href=URL.createObjectURL(new Blob([JSON.stringify(ss,null,1)],{type:'application/json'}));a.download='scenes.json';a.click();}));
   const fi=el('input');fi.type='file';fi.accept='.json';fi.id='se_json';fi.style.display='none';
-  fi.onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw new Error('array chahiye');const nw=window.PHOTOS&&PHOTOS.autoFromScenes?PHOTOS.autoFromScenes(j):[];const rp=window.SCHK?SCHK.report(j):null;if(rp&&nw.length)rp.text+='\n🆕 '+nw.length+' naye photo naam apne aap bane: '+nw.join(', ')+' — ab bas 📷 se photo upload karo.';if(rp&&!rp.ok){SE.msg='⬇ Load nahi hua (error hain):\n'+rp.text;render();return;}SE.scenes=j;SE.sel=0;await apply(false);if(rp){SE.msg=rp.text;render();}
+  fi.onchange=async e=>{const f=e.target.files[0];if(!f)return;try{let j=JSON.parse(await f.text());if(j&&!Array.isArray(j)&&Array.isArray(j.scenes)){const ws=typeof j.script==='string'?j.script:'';j=j.scenes;if(ws&&j[0]&&typeof j[0].script!=='string')j[0].script=ws;}if(!Array.isArray(j))throw new Error('array chahiye');const nw=window.PHOTOS&&PHOTOS.autoFromScenes?PHOTOS.autoFromScenes(j):[];const rp=window.SCHK?SCHK.report(j):null;if(rp&&nw.length)rp.text+='\n🆕 '+nw.length+' naye photo naam apne aap bane: '+nw.join(', ')+' — ab bas 📷 se photo upload karo.';if(rp&&!rp.ok){SE.msg='⬇ Load nahi hua (error hain):\n'+rp.text;render();return;}SE.scenes=j;SE.sel=0;await apply(false);if(rp){SE.msg=rp.text;render();}
   // C172: pehle scene ke top-level "script" ko teleprompter ki script bana do (teleprompter.html isi browser/domain par script yahin se padhta hai)
-  try{const sj=j[0]&&typeof j[0].script==='string'?j[0].script.trim():'';if(sj){localStorage.setItem('cvt_tp_script',sj);SE.msg=(SE.msg?SE.msg+'\n':'')+'🎤 Script teleprompter mein bhej di ('+sj.split(/\s+/).length+' shabd). Teleprompter kholo (agar pehle se khula hai to refresh).';render();}}catch(e){}}catch(err){alert('JSON error: '+err.message);}};
+  try{const sf=j.find(x=>x&&typeof x.script==='string'&&x.script.trim()),sj=sf?sf.script.trim():'';if(sj){localStorage.setItem('cvt_tp_script',sj);SE.msg=(SE.msg?SE.msg+'\n':'')+'🎤 Script teleprompter mein bhej di ('+sj.split(/\s+/).length+' shabd). Teleprompter mein apne aap aa jayegi (khula ho to turant badal jaati hai).';render();}}catch(e){}}catch(err){alert('JSON error: '+err.message);}};
   add.appendChild(btn('⬇ JSON load',()=>fi.click()));add.appendChild(fi);
   add.appendChild(btn('Sab hatao',()=>{if(confirm('Sab scenes hata dun?')){SE.scenes=[];SE.sel=0;C.setScenes([]);save();render();SE.P.draw();}}));
   add.appendChild(btn('🎙 Chunk baanto',async()=>{const r=FIT.autoAssign();SE.msg=r.msg;await apply(true);SE.msg=r.msg;render();},'#2a6'));

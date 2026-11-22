@@ -1,6 +1,8 @@
 // C173: ek player ki KAI photos + har baar nayi photo (auto-rotate) + auto player cameo.
 // Variant photo = slot id + '#2', '#3'... (IndexedDB mein alag key). Scenes JSON mein koi badlav nahi: wahi slot id likho.
 // Rule: jis scene mein slot pehli baar aaye -> 1st photo, doosri baar -> 2nd, ... (photos khatam to dobara 1st se).
+// C194: scene mein 'slot#2' likhne se wahi photo pin ho jaati hai ('slot#1' = pehli/base photo); baaki scenes ki auto-rotate pin hui photo chhod deti hai.
+//       Side fill: jis scene mein koi player photo/cameo nahi, wahan video ke mukhya player ka side card (🖼 Sab photos board se band/hatao ja sakta hai).
 // Cameo: jis scene ke text mein uploaded player ka naam ho aur us scene mein uski photo na ho, wahan corner mein animated player card aata hai.
 (function(){
 const C=window.CORE;if(!C||!C.photos)return;
@@ -10,12 +12,18 @@ function addV(k){const b=bk(k);if(b===k)return;(vars[b]=vars[b]||[]);if(vars[b].
 function delV(k){const b=bk(k);if(vars[b])vars[b]=vars[b].filter(x=>x!==k);}
 let refMemo={},cam=[],camFor=null;
 const strs=sc=>{if(sc.__s==null)try{sc.__s=JSON.stringify(sc.data||{});}catch(e){sc.__s='';}return sc.__s;};
-function refs(j,k){const sc=C.scenes[j];if(!sc)return false;if(strs(sc).indexOf('"'+k+'"')>=0)return true;const cm=cameoMap()[j];return !!cm&&cm.indexOf(k)>=0;}
+function refsBase(j,k){const sc=C.scenes[j];if(!sc)return false;if(strs(sc).indexOf('"'+k+'"')>=0)return true;const cm=cameoMap()[j];return !!cm&&cm.indexOf(k)>=0;}
+function refs(j,k){if(refsBase(j,k))return true;const f=fillMap()[j];return !!f&&f.indexOf(k)>=0;}
+let pinM=null;
+function pins(){if(pinM&&pinM._n===epoch)return pinM;const o={_n:epoch};(C.scenes||[]).forEach(sc=>{const re=/"([^"]+#\d+)"/g,x=strs(sc);let m;while((m=re.exec(x)))o[m[1]]=1;});pinM=o;return o;}
+function pool(k){const v=vars[k]||[],all=(base[k]?[k]:[]).concat(v.filter(x=>base[x])),pn=pins();
+ const free=all.filter(x=>!(pn[x]||(x===k&&pn[k+'#1'])));return free.length?free:all;}
 function occ(i,k){const key=i+'|'+k;if(key in refMemo)return refMemo[key];let n=0;for(let j=0;j<i;j++)if(refs(j,k))n++;return refMemo[key]=n;}
 C.photos=new Proxy(base,{
- get(t,k){if(typeof k!=='string'||k.indexOf('#')>=0)return t[k];
+ get(t,k){if(typeof k!=='string')return t[k];
+  if(k.indexOf('#')>=0)return /#1$/.test(k)?t[bk(k)]:t[k];
   const v=vars[k];if(!v||!v.length||cur<0)return t[k];
-  const all=(t[k]?[k]:[]).concat(v.filter(x=>t[x]));if(all.length<2)return all.length?t[all[0]]:t[k];
+  const all=pool(k);if(all.length<2)return all.length?t[all[0]]:t[k];
   return t[all[(occ(cur,k)+bump)%all.length]];},
  set(t,k,v){t[k]=v;addV(k);return true;},
  deleteProperty(t,k){delete t[k];delV(k);return true;}
@@ -32,18 +40,47 @@ function names(){const out=[],S=(window.PHOTOS&&window.PHOTOS.slots)?window.PHOT
 function cameoMap(){if(camFor===C.scenes&&cam._n===epoch)return cam;camFor=C.scenes;cam=[];cam._n=epoch;if(!C.scenes)return cam;
  const N=names();
  C.scenes.forEach((sc,i)=>{const d=sc.data||{};if(d.noCameo||sc.type==='cta'||sc.type==='presenter')return;const s=strs(sc),sl=s.toLowerCase(),hits=[];
-  N.forEach(n=>{if(s.indexOf('"'+n.id+'"')>=0)return;let pos=1e9;n.a.forEach(a=>{const p=sl.indexOf(a);if(p>=0&&p<pos)pos=p;});if(pos<1e9)hits.push([pos,n.id]);});
+  N.forEach(n=>{if(s.indexOf('"'+n.id+'"')>=0||s.indexOf('"'+n.id+'#')>=0)return;if((d.noCameoIds||[]).indexOf(n.id)>=0)return;let pos=1e9;n.a.forEach(a=>{const p=sl.indexOf(a);if(p>=0&&p<pos)pos=p;});if(pos<1e9)hits.push([pos,n.id]);});
   hits.sort((x,y)=>x[0]-y[0]);const ids=hits.slice(0,2).map(h=>h[1]).filter(id=>!(i>0&&cam[i-1]&&cam[i-1].indexOf(id)>=0));if(ids.length)cam[i]=ids;});return cam;}
+
+// ---- C194: side fill (jis scene mein koi player photo nahi, wahan video ke mukhya player ka side card) ----
+const FILL={v:(function(){try{return localStorage.getItem('cvt_sidefill')!=='0';}catch(e){return true;}})()};
+C.SIDEFILL=FILL;
+const NOFILL={cta:1,presenter:1,clip:1,phoneann:1,screenclip:1,intro:1,outro:1,chapter:1};
+let fill=[],fillFor=null;
+function fillMap(){if(fillFor===C.scenes&&fill._n===epoch)return fill;fillFor=C.scenes;fill=[];fill._n=epoch;if(!FILL.v||!C.scenes)return fill;
+ const N=names(),cm=cameoMap(),score={};
+ C.scenes.forEach((sc,j)=>{N.forEach(n=>{if(refsBase(j,n.id))score[n.id]=(score[n.id]||0)+1;});});
+ const top=Object.keys(score).sort((a,b)=>score[b]-score[a]).slice(0,6);if(!top.length)return fill;
+ let c=0;
+ C.scenes.forEach((sc,i)=>{const d=sc.data||{};if(d.noCameo||NOFILL[sc.type]||cm[i]||sc.dur<2.2)return;
+  const s=strs(sc);if(N.some(n=>s.indexOf('\"'+n.id+'\"')>=0||s.indexOf('\"'+n.id+'#')>=0))return;
+  const ban=d.noCameoIds||[];for(let t=0;t<top.length;t++){const id=top[(c+t)%top.length];if(ban.indexOf(id)>=0)continue;if(i>0&&fill[i-1]&&fill[i-1].indexOf(id)>=0)continue;fill[i]=[id];c=c+t+1;break;}});
+ return fill;}
+// board ke liye: scene j ke side-cards
+C.cameoIds=j=>({cameo:(cameoMap()[j]||[]).slice(),fill:(fillMap()[j]||[]).slice()});
+// photo plan: kaunsa slot kin scenes mein, kitni photo hain, kitni aur chahiye
+C.photoPlan=function(){const out={},ids={};
+ const S=(window.PHOTOS&&window.PHOTOS.slots)?window.PHOTOS.slots():(window.PHOTO_SLOTS||[]);
+ S.forEach(s=>{ids[s.id]=1;});Object.keys(base).forEach(k=>{ids[bk(k)]=1;});
+ Object.keys(ids).forEach(k=>{const sc=[];(C.scenes||[]).forEach((x,j)=>{if(refs(j,k))sc.push(j);});if(!sc.length)return;
+  const p=pool(k),tot=(base[k]?1:0)+(vars[k]||[]).filter(x=>base[x]).length;
+  out[k]={id:k,scenes:sc,have:p.length,total:tot,need:Math.max(0,sc.length-p.length),missing:!tot};});
+ return out;};
+// scene j mein slot k ki kaun si photo dikhegi (variant key)
+C.photoUsed=function(j,k){const p=pool(k);if(!p.length)return null;const o=occ(j,k);return{key:p[o%p.length],i:o%p.length,n:p.length,wrapped:o>=p.length};};
+C.photoRefresh=function(){refMemo={};camFor=null;fillFor=null;pinM=null;epoch++;};
 function cover(ctx,im,x,y,w,h,zoom){const sw=im.width,sh=im.height,ar=w/h;let cw=sw,ch=sw/ar;if(ch>sh){ch=sh;cw=sh*ar;}
  cw/=zoom;ch/=zoom;ctx.drawImage(im,(sw-cw)/2,0,cw,ch,x,y,w,h);}
 const E=t=>1-Math.pow(1-t,3),BK=t=>{const c=1.7;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2);};
 // C179: cameo card list/wide card ke upar na aaye aur caption ko na dhake.
 // CAM_AVOID[card type] = content ka [left,right] hissa (W ka fraction). Dono taraf jagah kam ho to cameo chhota hota hai, bilkul na ho to is scene mein nahi aata.
-const CAM_AVOID={stack:[.14,.86],qcards:[.05,.95],bigwords:[.08,.92],bullets:[.14,.86],timelist:[.14,.86],checklist:[.14,.86],options:[.14,.86],barlist:[.14,.86],ladder:[.14,.86]};
+const CAM_AVOID={stack:[.14,.86],qcards:[.05,.95],bigwords:[.08,.92],bullets:[.14,.86],timelist:[.14,.86],checklist:[.14,.86],options:[.14,.86],barlist:[.14,.86],ladder:[.14,.86],anth:[.12,.88]};
+const MINW={anth:128};
 function capTopY(t,H,s){try{const K=window.CAP;if(!K||!K.on||!K.at||!K.at(t))return null;const sh=C.format==='short',cy=(K.pos==='auto'&&K._cy)?K._cy:(sh?1240:900)+({normal:0,low:sh?90:58,high:sh?-110:-95}[K.pos]||0);return cy-100*(H/1080);}catch(e){return null;}}
 function drawCameo(ctx,t){if(!ON.v||!C.scenes||!C.starts)return;let b=-1;
  C.scenes.forEach((sc,i)=>{if(t>=C.starts[i]&&t<C.starts[i]+sc.dur)b=i;});if(b<0)return;
- const ids=cameoMap()[b];if(!ids)return;const sc=C.scenes[b],lt=t-C.starts[b];if(sc.dur<2.2)return;
+ const ids=cameoMap()[b]||fillMap()[b];if(!ids)return;const sc=C.scenes[b],lt=t-C.starts[b];if(sc.dur<2.2)return;
  const refresh=sc.dur>=7?sc.dur/2:0,seg=refresh&&lt>=refresh?1:0;
  ids.forEach((id,n)=>{cur=b;bump=seg;const im=C.photos[id];cur=-1;bump=0;if(!im||!im.width)return;
   const t0=.35+n*.25,segT=seg?lt-refresh:lt-t0;if(segT<0||lt>sc.dur-.1)return;
@@ -55,7 +92,7 @@ function drawCameo(ctx,t){if(!ON.v||!C.scenes||!C.starts)return;let b=-1;
   if(avoid&&!two){const L=avoid[0]*W-m-36*s,R=(1-avoid[1])*W-m-36*s,pref=right?R:L,oth=right?L:R;
    if(pref>=oth||pref>=190*s){if(pref<w)w=pref;}else{right=!right;if(oth<w)w=oth;}
    h=w*1.27;}
-  if(w<170*s)return;
+  if(w<(MINW[sc.type]||170)*s)return;
   const x0=right?W-w-m:m,off=(1-Math.min(BK(p),1.08))*(w+m+30)*(right?1:-1),bob=Math.sin(lt*1.6+n)*6*s;
   const y=bottom-h+bob,x=x0+off,r=18*s;ctx.save();ctx.globalAlpha=Math.min(1,p*2)*q;
   ctx.shadowColor='rgba(255,200,40,.55)';ctx.shadowBlur=42*s;ctx.fillStyle='#fff';rr(ctx,x-7*s,y-7*s,w+14*s,h+14*s,r+4*s);ctx.fill();
@@ -67,7 +104,7 @@ function drawCameo(ctx,t){if(!ON.v||!C.scenes||!C.starts)return;let b=-1;
   ctx.restore();
   const nm=(names().find(z=>z.id===id)||{}).hi||'',tp=Math.min(1,Math.max(0,(segT-.2)/.3));
   ctx.fillStyle='#e8212b';rr(ctx,x-7*s,y+h-62*s,(w+14*s)*E(tp),70*s,12*s);ctx.fill();
-  if(C.text&&nm&&tp>.6)C.text(ctx,nm,x+w/2,y+h-26*s,{align:'center',px:Math.round((two?30:36)*s),color:'#fff',weight:'bold'});
+  if(C.text&&nm&&tp>.6)C.text(ctx,nm,x+w/2,y+h-26*s,{align:'center',px:Math.round(Math.min(two?30:36,w/s*.11)*s),color:'#fff',weight:'bold'});
   ctx.restore();});}
 function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 // ---- render hook ----
@@ -75,11 +112,14 @@ const R0=C.render,SS0=C.setScenes;
 function wrapCards(){Object.keys(C.CARDS||{}).forEach(k=>{const cd=C.CARDS[k];if(!cd||!cd.draw||cd.__pv)return;cd.__pv=1;const d0=cd.draw;
  cd.draw=function(ctx,lt,d,sc){const pv=cur;cur=C.scenes?C.scenes.indexOf(sc):-1;try{return d0.apply(this,arguments);}finally{cur=pv;}};});}
 C.render=function(ctx,t){wrapCards();R0.apply(this,arguments);try{drawCameo(ctx,t);}catch(e){}};
-C.setScenes=function(){refMemo={};camFor=null;epoch++;(arguments[0]||[]).forEach&&arguments[0].forEach(s=>{delete s.__s;});return SS0.apply(this,arguments);};
+C.setScenes=function(){refMemo={};camFor=null;fillFor=null;pinM=null;epoch++;(arguments[0]||[]).forEach&&arguments[0].forEach(s=>{delete s.__s;});return SS0.apply(this,arguments);};
 // ---- UI: cameo toggle + photos panel variants ----
 setTimeout(()=>{const pol=document.getElementById('pol'),host=(pol&&pol.parentNode)||document.getElementById('bar2');if(!host)return;
  const b=document.createElement('button');b.id='cam';const up=()=>{b.textContent='👤 Cameo: '+(ON.v?'ON':'OFF');b.style.background=ON.v?'#2a6fdb':'#555';};up();
- b.onclick=()=>{ON.v=!ON.v;try{localStorage.setItem('cvt_cameo',ON.v?'1':'0');}catch(e){}up();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(b);},0);
+ b.onclick=()=>{ON.v=!ON.v;try{localStorage.setItem('cvt_cameo',ON.v?'1':'0');}catch(e){}up();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(b);
+ const f=document.createElement('button');f.id='sfill';const uf=()=>{f.textContent='🖼 Side fill: '+(FILL.v?'ON':'OFF');f.style.background=FILL.v?'#2a6fdb':'#555';};uf();
+ f.title='Jis scene mein koi player photo nahi, wahan side mein mukhya player ka card';
+ f.onclick=()=>{FILL.v=!FILL.v;try{localStorage.setItem('cvt_sidefill',FILL.v?'1':'0');}catch(e){}C.photoRefresh();uf();window.PLAYER&&PLAYER.draw&&PLAYER.draw();};host.appendChild(f);},0);
 const P=window.PHOTOS;if(P){
  P.addVariant=async(slot,file)=>{let n=2;while(P.have[slot+'#'+n])n++;await P.set(slot+'#'+n,file);return n;};
  P.rowExtra=(s,list)=>{const row=document.createElement('div');row.style.cssText='display:flex;align-items:center;gap:6px;padding:0 0 4px 42px;flex-wrap:wrap';

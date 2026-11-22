@@ -197,7 +197,7 @@ S.check=function(scenes,env){
       if(id==null||id===''){warn(i,L+label+' khali hai — photo chuno/upload karo.');return;}
       if(!isStr(id)){err(i,L+label+' string (slot id) chahiye.');return;}
       if(id.indexOf('demo_')===0)return; // tool ke demo portraits
-      if(slotSet&&!slotSet.has(id)){err(i,L+label+' unknown photo slot "'+id+'". Library ke slot id ya custom_<naam> chahiye.');return;}
+      if(slotSet&&!slotSet.has(String(id).split('#')[0])){err(i,L+label+' unknown photo slot "'+id+'". Library ke slot id ya custom_<naam> chahiye.');return;}
       if(!have(id))warn(i,L+label+' "'+id+'" ki photo abhi upload nahi hui.');};
     const city=(req)=>{if(d.city==null||d.city===''){if(req)err(i,L+'"city" chahiye. Allowed: '+CITIES.join(', '));}else if(!CITIES.includes(d.city))err(i,L+'unknown city "'+d.city+'". Allowed: '+CITIES.join(', '));};
     const need=(key)=>{if(!isStr(d[key])||!d[key].trim())err(i,L+'"'+key+'" chahiye (text).');};

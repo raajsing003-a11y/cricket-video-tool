@@ -80,6 +80,7 @@ function chunks(){return ta.value.split(/^\s*(?:---+|===+)\s*$/m).map(s=>s.trim(
 const MK=/⏸|\u200d|\ufe0f|\p{Extended_Pictographic}/gu;// C191: pause chinh + expression emoji shabd nahi ginte
 function info(){const c=chunks(),t=ta.value.replace(MK,' ').trim(),w=t?t.split(/\s+/).length:0;$('info').textContent=c.length+' chunk · '+w+' shabd';}
 ta.oninput=()=>{try{localStorage.setItem(KS,ta.value);}catch(e){}info();};
+window.addEventListener('storage',e=>{if(e.key===KS&&e.newValue!=null&&e.newValue!==ta.value){ta.value=e.newValue;try{info();}catch(x){}}});
 $('tf').onchange=async e=>{const f=e.target.files[0];if(!f)return;ta.value=await f.text();ta.oninput();e.target.value='';};
 $('fromcap').onclick=()=>{try{const j=JSON.parse(localStorage.getItem('cvt_caps')||'null');if(!j||!j.s){err('Captions mein script nahi mili.');return;}
   if(ta.value.trim()&&!confirm('Abhi ki script hata kar captions wali daalun?'))return;ta.value=j.s;ta.oninput();err('');}catch(x){err('Captions padh nahi paaye.');}};
