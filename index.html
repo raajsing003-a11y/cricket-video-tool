@@ -1,4 +1,6 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="hi"><head>
+<script>if(window.top===window&&location.protocol!=="file:"&&!/[?&]solo=1/.test(location.search))location.replace("studio.html"+location.search)</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cricket Video Tool</title>
 <style>
 :root{--bg:#0e1116;--card:#171b22;--card2:#1e232c;--line:#2a313c;--txt:#e9edf3;--mut:#8b95a5;--red:#e5262d;--blue:#2a6fdb;--green:#22a06b}
@@ -41,7 +43,7 @@ input:focus,textarea:focus{outline:2px solid var(--blue);border-color:transparen
 kbd{background:var(--card2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:11px}
 @media(max-width:600px){#steps button{min-width:92px;font-size:13px}#top h1{font-size:16px}}
 </style></head><body><div id="wrap">
-<div id="top"><h1>🏏 Cricket <span>Video Tool</span></h1><div id="nav"><a href="news.html">📰 News</a><a href="teleprompter.html">🎤 Teleprompter</a><a href="thumbnail.html">🖼 Thumbnail</a><a href="players.html">👥 Players</a><a href="reels.html">📱 Reels</a> <a href="tools/competitor-grab.html" target="_blank" style="color:#fc3">🎯 Competitor grab</a> <a href="prediction/index.html" target="_blank" style="color:#fc3">🔮 Prediction</a><a href="publish.html">📦 Publish pack</a><a href="tools/photo-studio.html">🖌 Photo Studio</a><a href="tools/study-tube.html">📚 Studytube</a><a href="tools/channel-compare.html">📊 Channel Compare</a></div></div>
+<div id="top"><h1>🏏 Cricket <span>Video Tool</span></h1><div id="nav"><a href="news.html">📰 News</a><a href="teleprompter.html">🎤 Teleprompter</a><a href="thumbnail.html">🖼 Thumbnail</a><a href="players.html">👥 Players</a><a href="reels.html">📱 Reels</a><a href="video_editor.html">🎬 Video Editor</a><a href="tools/audio_editor.html">🎛 Audio Editor</a> <a href="tools/competitor-grab.html" target="_blank" style="color:#fc3">🎯 Competitor grab</a> <a href="prediction/index.html" target="_blank" style="color:#fc3">🔮 Prediction</a><a href="publish.html">📦 Publish pack</a><a href="tools/photo-studio.html">🖌 Photo Studio</a><a href="tools/study-tube.html">📚 Studytube</a><a href="tools/channel-compare.html">📊 Channel Compare</a></div></div>
 <canvas id="cv" width="1920" height="1080"></canvas>
 <div id="bar"><button id="play">▶</button><input id="seek" type="range" min="0" max="1000" value="0"><span id="tm">0.0/0.0</span></div>
 <div id="quick"></div>
@@ -135,4 +137,10 @@ kbd{background:var(--card2);border:1px solid var(--line);border-radius:4px;paddi
 <script src="js/bg_user.js"></script>
 <script src="js/bg_video.js"></script>
 <script src="js/tg_share.js"></script>
+<script>/* C202: Studio ke andar chalte waqt nav links */
+(function(){if(window.top===window)return;var nav=document.getElementById('nav');if(!nav)return;
+ nav.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')==='video_editor.html'){a.href='#';a.onclick=function(e){e.preventDefault();try{parent.STUDIO.tab('editor')}catch(x){}}}else if(a.getAttribute('href')==='tools/audio_editor.html'){a.href='#';a.onclick=function(e){e.preventDefault();try{parent.STUDIO.tab('audio')}catch(x){}}}else if(!a.target)a.target='_top'});
+ var b=document.createElement('a');b.href='#';b.textContent='➡ Editor mein bhejo';b.style.cssText='color:#fff;background:#e63946;padding:3px 8px;border-radius:6px;font-weight:700';
+ b.onclick=function(e){e.preventDefault();try{parent.STUDIO.send()}catch(x){}};nav.insertBefore(b,nav.firstChild)})();
+</script>
 </body></html>

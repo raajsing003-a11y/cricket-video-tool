@@ -1,4 +1,4 @@
-// C58: Audio Editor (Audacity jaisa + News-anchor voice). API: AUDIOED.open(segIndex)
+// C210: label ab '✂ Segment Edit' (naya poora 🎛 Audio Editor tab alag hai: AI Enhance/multitrack). C58: Audio Editor (Audacity jaisa + News-anchor voice). API: AUDIOED.open(segIndex)
 // Select/Cut/Delete/Silence/Trim/Split/Copy-Paste, Fade, Amplify, Normalize, Noise reduction (spectral gate),
 // Auto silence remove, Anchor voice chain (HPF+EQ+de-ess+compressor+loudness+limiter), Best one-click, A/B preview, Undo/Redo.
 (function(){
@@ -73,7 +73,7 @@ function open(idx){
 #aed .grp{background:#14161b;border-radius:8px;padding:6px 8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}#aed .grp>b{font-size:11px;color:#8b95a5;margin-right:2px}
 #aed .ws{overflow-x:auto;background:#0f1115;border:1px solid #000;border-radius:6px}#aed canvas{display:block;height:200px;cursor:crosshair}
 #aed #ast{color:#ffd400;min-height:16px;margin-top:4px}
-</style><div class="bx"><h3>🎛 Audio Editor — Audacity jaisa + News-anchor voice</h3>
+</style><div class="bx"><h3>✂ Segment Edit — Audacity jaisa + News-anchor voice</h3>
 <div class="row"><select id="asg"></select><span id="ainf" style="color:#8b95a5"></span><span style="flex:1"></span>
 <button id="aun">↶ Undo</button><button id="are">↷ Redo</button><button id="aor" title="Shuru ki original awaaz par wapas">⟲ Original</button><label style="color:#8b95a5">Zoom <input id="azm" type="range" min="10" max="400" value="60"></label></div>
 <div class="ws" id="aws"><canvas id="acv"></canvas></div>
@@ -179,8 +179,8 @@ function close(){if(!M)return;M.stop();document.removeEventListener('keydown',M.
 window.AUDIOED={open,close};
 
 // ---------- entry points ----------
-const addBtn=()=>{const b2=$('bar2');if(b2&&!$('aed_btn')){const b=mk('button','','🎛 Audio Editor');b.id='aed_btn';b.onclick=()=>open(0);b2.appendChild(b);}
- const tt=$('tl-tools');if(tt&&!$('aed_btn2')){const b=mk('button','','🎛 Audio Editor');b.id='aed_btn2';b.title='Audio segment edit (double-click segment bhi chalta)';b.onclick=()=>{const sel=document.querySelector('#tl-a .seg.sel');const i=sel?[...document.querySelectorAll('#tl-a .seg')].indexOf(sel):0;open(Math.max(0,i));};tt.appendChild(b);}};
+const addBtn=()=>{const b2=$('bar2');if(b2&&!$('aed_btn')){const b=mk('button','','✂ Segment Edit');b.id='aed_btn';b.onclick=()=>open(0);b2.appendChild(b);}
+ const tt=$('tl-tools');if(tt&&!$('aed_btn2')){const b=mk('button','','✂ Segment Edit');b.id='aed_btn2';b.title='Audio segment edit (double-click segment bhi chalta)';b.onclick=()=>{const sel=document.querySelector('#tl-a .seg.sel');const i=sel?[...document.querySelectorAll('#tl-a .seg')].indexOf(sel):0;open(Math.max(0,i));};tt.appendChild(b);}};
 setInterval(addBtn,500);addBtn();
 document.addEventListener('dblclick',e=>{const sgm=e.target.closest&&e.target.closest('#tl-a .seg');if(!sgm)return;open([...document.querySelectorAll('#tl-a .seg')].indexOf(sgm));});
 })();

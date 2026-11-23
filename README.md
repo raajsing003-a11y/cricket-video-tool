@@ -4,6 +4,9 @@ HTML video-maker (news-channel style) — kisi bhi cricket video ke liye. Sirf t
 
 **Chalane ke liye:** docs/GITHUB_GUIDE.md (GitHub Pages, ek baar setup).
 
+## Video Editor (naya, C201)
+`video_editor.html` — alag offline editor page (timeline, trim, captions, chroma, export). Dekho docs/VIDEO_EDITOR.md.
+
 ## Kya-kya hai
 - Cards: hook, title, stat, retain, watch, rumour, anth, intro, presenter (apna green-screen cutout + naam wala intro)
 - Transitions: grunge, zoom, whip, glitch, flash, slideup, fade, cut

@@ -1,13 +1,29 @@
-Tum mere YouTube cricket channel restart project mein meri help kar rahe ho. Ye pichle chat ka handoff (v4) hai. Attached zip padho: pehle 00_START_HERE_NEW_CHAT.md, phir 16_VIDEO_STYLE_REFERENCE.md aur style_reference_screenshots/ dekho, phir README_START_HERE.md, 01 se 04, ipl_retention_video/ (khaas kar 15_FINAL_SCRIPT_v3), final_video/ aur thumbnails/. Wahin se aage badho.
+# Next chat prompt (C215 -> C216)
 
-Mera context (chhota):
-- Cricket channel (~1.5 lakh subs), 5 saal se upload band. IPL 2027 se pehle restart. YPP active nahi (0/4000 watch hours), 1 Feb 2027 se naye rules.
-- Roz 1 video (8-9 min) news, India T20/ODI ki prediction, roz 1 Short. Fantasy/Dream11/betting/odds/giveaway bilkul nahi. Script Devanagari Hindi. Main sirf voice-over karunga.
+Zip: cricket_video_tool_chunk215_COMPLETE.zip. Pehle padho: docs/TRACKER.md (last entry C215), docs/VIDEO_EDITOR_TRACKER.md, docs/AUDIO_EDITOR_TRACKER.md, docs/AUDIO_EDITOR.md, docs/VIDEO_EDITOR.md.
+Rules: replies chhote (kya bana, kya test hua, kya baaki, agla chunk), Hinglish UI, kathin Hindi nahi, single-file offline HTML pages, har chunk ke baad chromium (playwright) test + JS errors 0, purane tests pass. Har chat ke end mein poori zip + TRACKER update + GITHUB_UPDATE_Cxxx.txt + naya prompt.
 
-Ab tak:
-- IPL 2027 retention preview ki final script v3 ready. Pehle jo plain-card video bana wo mujhe pasand nahi aaya.
-- Maine news-channel style ke 15 screenshots diye hain (style_reference_screenshots/). Mujhe mera video isi style mein chahiye: Breaking News tag + Hindi ticker, blur-stadium background mein photo frame, RETAIN/RELEASE player cards with Rs amount, lower-third, split-screen, grunge transition, intro title, subscribe ribbon.
-- Photos par decision: tum web se image download karke use nahi karoge (copyright + YPP risk). Design photo-slot ke saath banao, aur mujhe apni photo lagane ka tareeka do (upload button wale HTML tool mein). Safe sources: IPL/BCCI media kit, Wikimedia Commons, Pexels/Unsplash/Pixabay.
-- Mere niyam: jawab chhote Hinglish mein, pehle plan phir build, sirf zip mein deliver. Script mein source ka naam nahi, team ke short form nahi (sheher ke naam), script kahani jaisi. "Likely retentions" ko official mat dikhana, naye facts mat jodo.
+## Merge status
+- Video editor (video_editor.html, Chunk 0-15) + Studio (studio.html: Scenes + Editor tab) DONE (C201-C203).
+- Audio editor (tools/audio_editor.html + tools/df_bg.wasm, Chunk 1-20) tool mein standalone page ki tarah joda (C206), nav link + back link.
 
-Ab ka kaam: 16_VIDEO_STYLE_REFERENCE.md ke hisaab se pehle ek chhota plan do (kaun sa card kab, kitne elements), phir naya video/card-set banao (photo-slot ke saath) aur HTML tool ka plan. Phir 02_TOOL_PLAN ke open questions ek-ek karke poochho.
+## Merge ka bacha kaam (is order mein)
+1. DONE (C207): studio.html mein Audio tab.
+2. DONE (C208): clip audio -> Audio Editor -> enhanced wapas (Editor mein "🎛 Audio" button, Audio Editor mein "↩ Video Editor ko bhejo").
+3. DONE (C209): Scenes voice-over -> Audio Editor -> wapas (Audio tracks panel mein "🎛 Audio Editor mein enhance").
+4. DONE (C210): purana js/audio_editor.js rakha, label "✂ Segment Edit" (per-segment edit + ripple + fit); naya 🎛 Audio Editor alag.
+5. DONE (C212): Audio Editor mein 🧱 Limiter + ⚖ Leveller.
+6. DONE (C213): 🔈 Bass boost + 🎤 Vocal remover.
+7. DONE (C214): Audio Editor mein SR dropdown + AAC (M4A) export (asli AAC encode sandbox mein untested -> Chrome checklist item 15).
+8. DONE (C215): Video Editor reverse clip ki awaaz export mein ulti (preview mein abhi band).
+9. DONE (C211): docs/CHROME_CHECKLIST.md (14 check). User ke FAIL results ek-ek fix karo; result na aaye to naye features.
+
+## Known limits
+- Studio file:// par nahi chalta (GitHub Pages / local server). Bumpers export mein nahi; Scenes clip par stabilize nahi.
+- Zip 136 MB (df_bg.wasm 34 MB): GitHub par poori zip upload mat karo, sirf GITHUB_UPDATE_*.txt wali files.
+
+## Asli Chrome check baaki (sandbox mein nahi hota)
+Video: AAC export, Whisper auto captions, MediaPipe AI bg, lamba export, asli bumper files. Audio: browser tests, asli recording par AI Enhance (user se asli audio lo).
+
+## Naye feature ideas
+Video: keyframes, GL transitions, streaming export, media embed (zip). Audio: draw() 2 frame mein.

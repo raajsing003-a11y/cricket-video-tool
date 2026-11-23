@@ -1105,3 +1105,70 @@ js/photo_variants.js drawCameo: frame/glow/laal naam-patti/shimmer hataye; photo
 
 ## C200 (22 Nov 2026) — 🎯 Photo frame: crop/zoom khud + face auto-detect
 NAYA js/photo_frame.js + js/vendor/face-api.js + assets/face_models/. photos.js (🎯 row button, backup/folder mein frames), photo_board.js (🎯 tile button), photo_variants.js (cameo draw error ab console.warn karta hai). Doc: docs/PHOTO_FRAME.md. Test headless chromium: face auto 3/3 + no-face ok, manual drag+save+reload ok, cameo render ok, errors 0. NOT tested: asli player photos.
+
+## C201 (23 Nov 2026) — 🎬 Video Editor tool mein joda
+NAYA: video_editor.html (video_editor_pack chunk 0-15, single-file offline), tools/video_editor_tests/ (test_chunk2..15), docs/VIDEO_EDITOR.md + VIDEO_EDITOR_TRACKER/FEATURE_INDEX/CATALOG.md. BADLA: index.html nav mein "🎬 Video Editor" link; video_editor.html header mein "← Video Tool". Main tool ki koi js file nahi chhui.
+Test: headless chromium, tests 2,4,5,7,9,11,13,15 pass, errors 0, nav round-trip OK. NOT tested: asli Chrome AAC/Whisper/MediaPipe.
+
+## C202 (23 Nov 2026) — 🏏 Studio: Scenes + Editor ek hi page
+NAYA: studio.html (shell: Scenes tab = index.html, Editor tab = video_editor.html, "➡ Editor mein bhejo"). index.html http(s) par seedha khule to studio.html par redirect (?solo=1 se purana alag page). Editor mein "🏏 Scenes" button: scenes live clip (CORE.render), voice-over (EXPORT.audio) saath, edit karke scenes badlo to ↻ update, project save/open mein relink, export mein frame + awaaz.
+Test: tools/video_editor_tests/test_studio.py (http server, chromium): redirect, bhejo, preview, refresh, project relink, 360p export + audio, errors 0. Regression 2,3,4,5,7,9,11,13,15 pass.
+LIMIT: file:// par kaam nahi (GitHub Pages / local server chahiye); intro/outro bumpers export mein nahi; Scenes clip par stabilize nahi.
+NOT tested: asli Chrome par lamba export, asli voice-over file.
+
+## C203 (23 Nov 2026) — Intro/outro bumpers editor ke Scenes clip mein
+Editor ka Scenes clip ab main tool ke 🎬 intro/outro bumpers (BUMP.prepare) ke saath: clip = intro + scenes + outro, awaaz (voice-over + bumper volume) mix hoke aati hai, export mein frame + awaaz. Test: test_studio.py (laal intro frame, scene frame, audio, 2s export) pass; regression 2,12,13,15 pass. NOT tested: asli bumper video files, asli Chrome.
+
+## C206 (23 Nov 2026) — 🎛 Audio Editor tool mein joda
+NAYA: tools/audio_editor.html + tools/df_bg.wasm (34 MB, AI Enhance model, same folder), tools/audio_editor_tests/ (audio_research_pack chunk 1-20 ke tests), docs/AUDIO_EDITOR.md + AUDIO_EDITOR_TRACKER/FEATURE_INDEX/CATALOG.md + docs/audio_editor_vendor/ (DeepFilterNet licenses). BADLA: index.html nav mein "🎛 Audio Editor"; audio_editor.html mein sirf "← Video Tool" link. Main tool ki koi js file nahi chhui.
+Test: node --check inline scripts. NOT tested: browser tests (chromium nahi), asli recording par AI Enhance.
+Next: pack ka "bacha kaam" docs/AUDIO_EDITOR_TRACKER.md mein (Enhance tuning, draw() 2 frame, AAC/Leveller/vocal remover).
+Next chat prompt: PROMPT_NEXT_CHAT.md (root).
+
+## C207 (23 Nov 2026) — 🎛 Audio tab Studio mein
+BADLA: studio.html (3rd tab "🎛 Audio", iframe lazy-load tools/audio_editor.html?embed=1, STUDIO.audio()), index.html (nav "🎛 Audio Editor" Studio mein tab kholta hai, standalone mein purana link), tools/audio_editor.html (embed=1 par "← Video Tool" chhupta hai). NAYA: tools/video_editor_tests/test_studio_audio.py.
+Test (chromium, http server): lazy load, tab switch, back link hidden, nav link -> tab, errors 0; regression test_studio.py pass. NOT tested: audio editor ke andar kaam (wo C206 ke tests se), asli Chrome.
+Next: C208 = video editor <-> audio editor handoff (clip audio bhejo / enhanced wapas).
+
+## C208 (23 Nov 2026) — Video Editor <-> Audio Editor handoff (Studio)
+Editor mein "🎛 Audio" button (sirf Studio mein): chuna hua clip (in..in+len, original quality stereo) -> Audio Editor khulta hai us audio ke saath. Audio Editor mein edit/Enhance/noise/LUFS/EQ/mix ke baad "↩ Video Editor ko bhejo" (Export row; multitrack ho to mix bhejta hai) -> Editor mein enhanced WAV naye audio clip ki tarah (original ke start par, free audio track par), original clip mute (c.mu=1). Undo dono ko wapas karta hai.
+BADLA: video_editor.html (stuA/audioOut/wavFile/audioIn/toAudioEd, #toa, __ed.audioOut/audioIn/wavFile), tools/audio_editor.html (window.__ae{st,load,result}, #tov), studio.html (STUDIO.toAudio/fromAudio). NAYA: tools/video_editor_tests/test_studio_handoff.py.
+LIMIT: Speed/Reverse wale clip ka audio nahi bhej sakte (toast). Audio Editor mein pehle ka kaam clip aane par replace ho jata hai (setBuf; Undo history reset). Selection nahi, poori audio/mix wapas aati hai.
+Test (chromium + http server): test_studio_handoff (2s clip in=.5 -> audio 2.0s, edit, wapas: naya clip start 1/len 2, original mute, media '✨', undo ok, errors 0); regression test_studio, test_studio_audio, chunk2/11/15 pass. NOT tested: asli Chrome, lambe clip, AI Enhance ke saath round trip.
+Next: C209 = main tool Scenes voice-over ko "Enhance karke bhejo" (Audio Editor se hoke Scenes/Editor mein) ya duplicate js/audio_editor.js saaf karna.
+
+## C209 (23 Nov 2026) — Scenes voice-over -> Audio Editor -> wapas (Studio)
+Scenes tab mein "🎚 Audio tracks" panel mein "🎛 Audio Editor mein enhance" (sirf Studio): poori voice-over/mix (EXPORT.audio) Audio Editor mein khulti hai (button "↩ Scenes ko bhejo"). Wahan Enhance/noise/LUFS/EQ ke baad wapas bhejo -> Scenes mein audio ek seg "voiceover ✨" ban jati hai (sample rate alag ho to resample). Purani segs AT.prev mein: "↩ Purani audio" button se wapas. Editor mein Scenes clip ↻ update par nayi audio leti hai.
+BADLA: js/audio_tracks.js (AT.replaceMix/restorePrev/sendToAudio + 2 buttons), studio.html (target 'scenes' routing), tools/audio_editor.html (button label target ke hisaab se). NAYA: tools/video_editor_tests/test_studio_vo.py.
+Test (chromium): 3s tone vo -> audio editor 3.0s -> gain .5 -> wapas: peak .8 -> .4, dur 3.0, restore ok, errors 0; test_studio_handoff/audio/studio regression pass. NOT tested: asli voice-over, AI Enhance round trip, asli Chrome, Scenes export mein nayi audio.
+Next: C210 = duplicate js/audio_editor.js (purana AUDIOED) saaf karna ya Audio Editor ko isse jodna; phir asli Chrome checks.
+
+## C210 (23 Nov 2026) — Duplicate audio code: faisla (purana AUDIOED ko "✂ Segment Edit" rakha)
+Faisla: js/audio_editor.js (AUDIOED, C58-C60) ek *segment* ka edit karta hai (Apply par ripple + ⏱ fit) — ye naye 🎛 Audio Editor (AI Enhance, multitrack, LUFS) mein nahi hai, isliye hataya nahi. Confusion hatane ke liye label badle: "🎛 Audio Editor" -> "✂ Segment Edit" (bar2 button, timeline tools button, panel heading). Double-click segment par wahi purana editor khulta hai. Naya poora editor: Studio ka 🎛 Audio tab / "🎛 Audio Editor mein enhance" (Audio tracks panel).
+BADLA: js/audio_editor.js (sirf labels + comment). NAYA: tools/video_editor_tests/test_segedit_label.py.
+Test (chromium + http server): test_segedit_label (buttons ✂ Segment Edit, AUDIOED.open ok, errors 0); regression test_studio, test_studio_audio, test_studio_handoff, test_studio_vo pass. NOT tested: asli Chrome.
+Next: C211 = asli Chrome checks list (PROMPT_NEXT_CHAT.md) ya naye features (Leveller/Limiter, keyframes).
+
+## C211 (23 Nov 2026) — Asli Chrome check list
+NAYA: docs/CHROME_CHECKLIST.md (14 check, A-D: Studio basics, Scenes<->Audio, Editor, Extra). Code mein koi badlav nahi.
+Next: user checks chalaye aur FAIL batayein -> C212 se ek-ek fix. Check na ho to naye features (Leveller/Limiter, keyframes).
+
+## C212 (23 Nov 2026) — 🧱 Limiter + ⚖ Leveller (Audio Editor)
+BADLA: tools/audio_editor.html (naya row: Limiter chhat dB; Leveller target/taqat/max; fxRange(fn,raw) — raw par purana soft limiter nahi lagta). NAYA: tools/audio_editor_tests/browser_test_leveller_limiter.py. Detail: docs/AUDIO_EDITOR_TRACKER.md C212.
+Test (chromium): leveller gap 26 -> 9.6 dB, peak <= -1 dB; limiter -6 dB; errors 0; regression test_studio_audio/vo/handoff pass. NOT tested: asli awaaz, asli Chrome.
+Next: C213 = bass boost / vocal remover ya user ke Chrome check FAIL (docs/CHROME_CHECKLIST.md).
+
+## C213 (23 Nov 2026) — 🔈 Bass boost + 🎤 Vocal remover (Audio Editor)
+BADLA: tools/audio_editor.html (naya row). NAYA: tools/audio_editor_tests/browser_test_bass_vocal.py. Detail: docs/AUDIO_EDITOR_TRACKER.md C213.
+Test (chromium): bass +7.4 dB @80Hz, vocal -37 dB, errors 0; regression studio_audio/vo + leveller pass. NOT tested: asli gaana/awaaz, asli Chrome.
+Next: C214 = AAC/sample-rate export ya user ke Chrome check FAIL.
+
+## C214 (23 Nov 2026) — Audio Editor: sample-rate export + AAC (M4A)
+BADLA: tools/audio_editor.html (SR dropdown, AAC formats, encodeAs/aacEncode/mp4aMux, dono export paths). NAYA: tools/audio_editor_tests/browser_test_export_sr_aac.py. Detail: docs/AUDIO_EDITOR_TRACKER.md C214.
+Test: WAV 16k ok, M4A container ffprobe ok (nakli frames), fallback message ok, regression studio_audio/vo + leveller + bass/vocal pass, errors 0. NOT tested: asli AAC encode/playback (Chrome par check karo: docs/CHROME_CHECKLIST.md mein item 15 joda).
+Next: C215 = user ke Chrome check FAIL ya keyframes (video editor).
+
+## C215 (23 Nov 2026) — Video Editor: reverse clip ki awaaz export mein
+BADLA: video_editor.html (mixAudio: rv clip ka source span ulta buffer; ek bug fix: AudioBufferSource.buffer do baar set nahi hota). NAYA: tools/video_editor_tests/test_reverse_audio.py. Detail: docs/VIDEO_EDITOR_TRACKER.md C215.
+Test: reverse/forward/2x pass, regression test_chunk9/11/12, test_studio, test_studio_handoff pass, errors 0. NOT tested: asli Chrome export + VLC par sunna.
+Next: C216 = keyframes (position/scale/opacity) — ya user ke Chrome check FAIL.

@@ -1,0 +1,5 @@
+GitHub update (C202 -> C203) — sirf ye files
+NAYI: (koi nahi)
+BADLI (replace): video_editor.html, tools/video_editor_tests/test_studio.py, docs/TRACKER.md, docs/VIDEO_EDITOR.md
+Steps: Upload files -> Commit -> 1-2 min baad Ctrl+Shift+R. Ab site ka kaam studio.html se (index.html apne aap wahan bhej deta hai).
+assets/ touch mat karo.

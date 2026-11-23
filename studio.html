@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><title>🏏 Cricket Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html,body{margin:0;height:100%;background:#0b0b10;color:#eee;font:13px system-ui,"Noto Sans Devanagari",sans-serif;overflow:hidden}
+#bar{height:38px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 10px;background:#14141c;border-bottom:1px solid #2a2a38;white-space:nowrap;overflow-x:auto}
+#bar b{margin-right:6px;font-size:14px}#bar b span{color:#e63946}
+.tab,#send{border:1px solid #333;background:#1d1d28;color:#ddd;border-radius:7px;padding:5px 12px;cursor:pointer;font:inherit}
+.tab.on{background:#e63946;border-color:#e63946;color:#fff;font-weight:700}
+#send{background:#2a6;border-color:#2a6;color:#fff;font-weight:700;margin-left:6px}
+#bar a{color:#9ab;text-decoration:none;padding:4px 6px;font-size:12px}#bar a:hover{color:#fff}
+.sp{flex:1}
+#warn{display:none;background:#5a2a00;color:#ffd9a8;padding:6px 12px;font-size:12px}
+#fr{position:absolute;top:38px;left:0;right:0;bottom:0}
+#fr iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0b0b10}
+#fr iframe.off{visibility:hidden;pointer-events:none}
+</style></head><body>
+<div id="bar"><b>🏏 Cricket <span>Studio</span></b>
+ <button class="tab on" id="t_scenes">🎞 Scenes</button><button class="tab" id="t_editor">🎬 Editor</button><button class="tab" id="t_audio">🎛 Audio</button><button id="send" title="Scenes ko Editor ki timeline mein live clip bana do">➡ Editor mein bhejo</button>
+ <span class="sp"></span>
+ <a href="news.html">📰 News</a><a href="teleprompter.html">🎤 Teleprompter</a><a href="thumbnail.html">🖼 Thumbnail</a><a href="players.html">👥 Players</a><a href="reels.html">📱 Reels</a><a href="publish.html">📦 Publish</a>
+</div>
+<div id="warn">⚠ Ye page file:// se khula hai — Scenes aur Editor ek doosre se jud nahi paayenge. GitHub Pages ya local server (python -m http.server) se kholo.</div>
+<div id="fr"><iframe id="fs" title="Scenes"></iframe><iframe id="fe" class="off" title="Editor"></iframe><iframe id="fa" class="off" title="Audio"></iframe></div>
+<script>
+(function(){
+var fs=document.getElementById('fs'),fe=document.getElementById('fe'),fa=document.getElementById('fa'),cur='scenes';
+var q=location.search.replace(/^\?/,'');
+if(location.protocol==='file:')document.getElementById('warn').style.display='block';
+window.STUDIO={
+ scenes:function(){return fs.contentWindow},
+ editor:function(){return fe.contentWindow},
+ audio:function(){return fa.contentWindow},
+ tab:function(n){
+  cur=n==='editor'?'editor':n==='audio'?'audio':'scenes';
+  if(cur==='audio'&&!fa.getAttribute('src'))fa.src='tools/audio_editor.html?embed=1';
+  fs.classList.toggle('off',cur!=='scenes');fe.classList.toggle('off',cur!=='editor');fa.classList.toggle('off',cur!=='audio');
+  document.getElementById('t_scenes').classList.toggle('on',cur==='scenes');
+  document.getElementById('t_editor').classList.toggle('on',cur==='editor');
+  document.getElementById('t_audio').classList.toggle('on',cur==='audio');
+  try{localStorage.setItem('cvt_studio_tab',cur)}catch(e){}
+  var w=cur==='editor'?fe.contentWindow:cur==='audio'?fa.contentWindow:fs.contentWindow;
+  try{w.focus();w.dispatchEvent(new Event('resize'))}catch(e){}
+  if(cur==='editor'){try{var E=fe.contentWindow.__ed;if(E&&E.hasSc&&E.hasSc())E.pullScenes(false)}catch(e){}}
+ },
+ toAudio:function(r){
+  STUDIO.tab('audio');var n=0;(function go(){var A;try{A=fa.contentWindow.__ae}catch(e){}
+   if(A&&A.load){A.load(r.arrs,r.sr,r.name,r.target==='scenes'?'Scenes':'Video Editor');fa._from=r.cid;fa._to=r.target||'editor';return}
+   if(++n<100)setTimeout(go,150)})();
+ },
+ fromAudio:function(r){
+  if(fa._to==='scenes'){STUDIO.tab('scenes');var m=0;(function go(){var S;try{S=fs.contentWindow}catch(e){}
+   if(S&&S.AT&&S.AT.replaceMix){S.AT.replaceMix(r.arrs,r.sr,(r.name||'voiceover')+' ✨');return}
+   if(++m<40)setTimeout(go,150)})();return}
+  var cid=fa._from;STUDIO.tab('editor');var n=0;(function go(){var E;try{E=fe.contentWindow.__ed}catch(e){}
+   if(E&&E.audioIn){E.audioIn(r,cid);return}
+   if(++n<40)setTimeout(go,150)})();
+ },
+ send:function(){
+  STUDIO.tab('editor');
+  var n=0;(function go(){var E;try{E=fe.contentWindow.__ed}catch(e){}
+   if(E&&E.sendScenes){E.sendScenes();return}
+   if(++n<40)setTimeout(go,150)})();
+ }
+};
+document.getElementById('t_scenes').onclick=function(){STUDIO.tab('scenes')};
+document.getElementById('t_editor').onclick=function(){STUDIO.tab('editor')};
+document.getElementById('t_audio').onclick=function(){STUDIO.tab('audio')};
+document.getElementById('send').onclick=function(){STUDIO.send()};
+fs.src='index.html?embed=1'+(q?'&'+q:'');
+fe.src='video_editor.html?embed=1';
+try{var st=localStorage.getItem('cvt_studio_tab');if(st==='editor'||st==='audio')STUDIO.tab(st)}catch(e){}
+})();
+</script></body></html>
