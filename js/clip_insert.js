@@ -31,6 +31,11 @@ function btns(){
   if(q&&!document.getElementById('ci_btn')){
     const b=mk('button','','➕ Video yahan jodo');b.id='ci_btn';b.style.background='#16a085';b.title='Playhead ke paas koi bhi video clip scene ke beech mein lagao';b.onclick=()=>inp.click();q.insertBefore(b,q.firstChild);
     const c=mk('button','','🎞 Clips');c.id='ci_clips';c.style.background='#3a4250';c.onclick=()=>C.clipsOpen&&C.clipsOpen();q.insertBefore(c,b.nextSibling);}
+  // C222: Studio mein "✂ Timeline edit" — Editor Scenes ke upar overlay mein (tab badle bina)
+  let S=null;try{S=window.parent!==window&&window.parent.STUDIO&&window.parent.STUDIO.openEditorOverlay?window.parent.STUDIO:null;}catch(e){}
+  if(S){const go=()=>S.openEditorOverlay();
+    if(q&&!document.getElementById('ci_tl')){const t=mk('button','','✂ Timeline edit');t.id='ci_tl';t.style.background='#8e44ad';t.title='Scenes ko Editor ki timeline mein kholo (tracks, transitions, ripple, speed) — tab badle bina';t.onclick=go;q.insertBefore(t,q.firstChild);}
+    const tt2=document.getElementById('tl-tools');if(tt2&&!document.getElementById('ci_tl2')){const t=mk('button','','✂ Timeline edit');t.id='ci_tl2';t.title='Editor overlay mein kholo';t.onclick=go;tt2.appendChild(t);}}
   const tt=document.getElementById('tl-tools');
   if(tt&&!document.getElementById('ci_btn2')){const b=mk('button','','➕ Video yahan');b.id='ci_btn2';b.title='Playhead ke paas video clip jodo';b.onclick=()=>inp.click();tt.appendChild(b);}
 }

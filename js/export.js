@@ -17,12 +17,23 @@ X.run=function(P,canvas,onStatus){
       const mime=X.pickMime();if(!mime)throw new Error('MediaRecorder support nahi (Chrome use karo)');
       const stream=canvas.captureStream(C.FPS);
       let src=null;
-      if(X.audio){
+      // C229: overlay/clip ki awaaz real-time export mein bhi: X.audio + clip + overlay offline mix -> ek buffer
+      let abuf=X.audio;
+      const needOv=!!(window.OV&&OV.mixNeeded&&OV.mixNeeded()),needCl=!!(C.clipMixNeeded&&C.clipMixNeeded());
+      if(needOv||needCl){try{
+        X.actx=X.actx||new (window.AudioContext||window.webkitAudioContext)();
+        const SR=(X.actx&&X.actx.sampleRate)||48000,oc=new OfflineAudioContext(2,Math.max(1,Math.ceil(C.total*SR)),SR);
+        if(X.audio){const b=oc.createBufferSource();b.buffer=X.audio;b.connect(oc.destination);b.start(0,0,Math.min(X.audio.duration,C.total));}
+        if(needCl&&C.clipMix)await C.clipMix(oc,0);
+        if(needOv)await OV.mix(oc,0);
+        abuf=await oc.startRendering();
+      }catch(e){console.warn('overlay audio mix fail',e);abuf=X.audio;}}
+      if(abuf){
         const ac=X.actx;if(ac.state==='suspended')await ac.resume();
-        const dest=ac.createMediaStreamDestination();src=ac.createBufferSource();src.buffer=X.audio;src.connect(dest);
+        const dest=ac.createMediaStreamDestination();src=ac.createBufferSource();src.buffer=abuf;src.connect(dest);
         dest.stream.getAudioTracks().forEach(tr=>stream.addTrack(tr));
       }
-      const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:12e6,audioBitsPerSecond:192e3});
+      const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:(X.vbr&&X.vbr())||12e6,audioBitsPerSecond:(X.abr&&X.abr())||192e3});
       const chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
       rec.onstop=()=>{const ext=mime.startsWith('video/mp4')?'mp4':'webm';resolve({blob:new Blob(chunks,{type:mime.split(';')[0]}),ext,mime});};
       rec.onerror=e=>reject(e.error||e);

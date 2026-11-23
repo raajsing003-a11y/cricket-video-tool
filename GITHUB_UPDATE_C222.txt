@@ -1,0 +1,5 @@
+GitHub par ye files upload karo (poori zip nahi):
+js/overlays.js (naya)
+index.html
+tools/video_editor_tests/test_overlays_v2.py (naya, optional)
+docs/TRACKER.md, docs/S4_DESIGN.md (optional)

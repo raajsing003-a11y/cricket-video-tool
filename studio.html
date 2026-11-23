@@ -14,6 +14,9 @@ html,body{margin:0;height:100%;background:#0b0b10;color:#eee;font:13px system-ui
 #fr{position:absolute;top:38px;left:0;right:0;bottom:0}
 #fr iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0b0b10}
 #fr iframe.off{visibility:hidden;pointer-events:none}
+/* C220: Audio Editor Scenes ke upar overlay (tab badle bina) */
+#fr iframe.ov{inset:auto;top:52px;left:3%;right:3%;bottom:3%;width:auto;height:auto;border:2px solid #e63946;border-radius:10px;z-index:60;box-shadow:0 0 0 100vmax rgba(0,0,0,.62)}
+#ovx{display:none;position:fixed;top:12px;right:3%;z-index:70;background:#e63946;border:0;color:#fff;border-radius:7px;padding:6px 14px;font:inherit;font-weight:700;cursor:pointer}
 </style></head><body>
 <div id="bar"><b>🏏 Cricket <span>Studio</span></b>
  <button class="tab on" id="t_scenes">🎞 Scenes</button><button class="tab" id="t_editor">🎬 Editor</button><button class="tab" id="t_audio">🎛 Audio</button><button id="send" title="Scenes ko Editor ki timeline mein live clip bana do">➡ Editor mein bhejo</button>
@@ -21,6 +24,7 @@ html,body{margin:0;height:100%;background:#0b0b10;color:#eee;font:13px system-ui
  <a href="news.html">📰 News</a><a href="teleprompter.html">🎤 Teleprompter</a><a href="thumbnail.html">🖼 Thumbnail</a><a href="players.html">👥 Players</a><a href="reels.html">📱 Reels</a><a href="publish.html">📦 Publish</a>
 </div>
 <div id="warn">⚠ Ye page file:// se khula hai — Scenes aur Editor ek doosre se jud nahi paayenge. GitHub Pages ya local server (python -m http.server) se kholo.</div>
+<button id="ovx" title="Audio Editor band karo (Scenes wahi rahega)">✕ Audio Editor band</button>
 <div id="fr"><iframe id="fs" title="Scenes"></iframe><iframe id="fe" class="off" title="Editor"></iframe><iframe id="fa" class="off" title="Audio"></iframe></div>
 <script>
 (function(){
@@ -32,7 +36,7 @@ window.STUDIO={
  editor:function(){return fe.contentWindow},
  audio:function(){return fa.contentWindow},
  tab:function(n){
-  cur=n==='editor'?'editor':n==='audio'?'audio':'scenes';
+  cur=n==='editor'?'editor':n==='audio'?'audio':'scenes';fa.classList.remove('ov');fe.classList.remove('ov');document.getElementById('ovx').style.display='none';
   if(cur==='audio'&&!fa.getAttribute('src'))fa.src='tools/audio_editor.html?embed=1';
   fs.classList.toggle('off',cur!=='scenes');fe.classList.toggle('off',cur!=='editor');fa.classList.toggle('off',cur!=='audio');
   document.getElementById('t_scenes').classList.toggle('on',cur==='scenes');
@@ -43,13 +47,29 @@ window.STUDIO={
   try{w.focus();w.dispatchEvent(new Event('resize'))}catch(e){}
   if(cur==='editor'){try{var E=fe.contentWindow.__ed;if(E&&E.hasSc&&E.hasSc())E.pullScenes(false)}catch(e){}}
  },
+ openOverlay:function(){
+  if(!fa.getAttribute('src'))fa.src='tools/audio_editor.html?embed=1';
+  fa.classList.add('ov');fa.classList.remove('off');var x=document.getElementById('ovx');x.textContent='✕ Audio Editor band';x.style.display='block';
+ },
+ openEditorOverlay:function(){ // C222: Editor Scenes ke upar overlay (tab badle bina); scenes live clip taza
+  if(cur!=='scenes'){STUDIO.tab('editor');return;}
+  fe.classList.add('ov');fe.classList.remove('off');var x=document.getElementById('ovx');x.textContent='✕ Timeline Editor band';x.style.display='block';
+  try{fe.contentWindow.focus();fe.contentWindow.dispatchEvent(new Event('resize'))}catch(e){}
+  var n=0;(function go(){var E;try{E=fe.contentWindow.__ed}catch(e){}
+   if(E&&E.sendScenes){E.sendScenes();return}
+   if(++n<40)setTimeout(go,150)})();
+ },
+ closeOverlay:function(){
+  fa.classList.remove('ov');fe.classList.remove('ov');document.getElementById('ovx').style.display='none';if(cur!=='audio')fa.classList.add('off');if(cur!=='editor')fe.classList.add('off');
+  try{fs.contentWindow.focus();fs.contentWindow.dispatchEvent(new Event('resize'))}catch(e){}
+ },
  toAudio:function(r){
-  STUDIO.tab('audio');var n=0;(function go(){var A;try{A=fa.contentWindow.__ae}catch(e){}
+  if(r.target==='scenes'&&cur==='scenes')STUDIO.openOverlay();else STUDIO.tab('audio');var n=0;(function go(){var A;try{A=fa.contentWindow.__ae}catch(e){}
    if(A&&A.load){A.load(r.arrs,r.sr,r.name,r.target==='scenes'?'Scenes':'Video Editor');fa._from=r.cid;fa._to=r.target||'editor';return}
    if(++n<100)setTimeout(go,150)})();
  },
  fromAudio:function(r){
-  if(fa._to==='scenes'){STUDIO.tab('scenes');var m=0;(function go(){var S;try{S=fs.contentWindow}catch(e){}
+  if(fa._to==='scenes'){if(fa.classList.contains('ov'))STUDIO.closeOverlay();else STUDIO.tab('scenes');var m=0;(function go(){var S;try{S=fs.contentWindow}catch(e){}
    if(S&&S.AT&&S.AT.replaceMix){S.AT.replaceMix(r.arrs,r.sr,(r.name||'voiceover')+' ✨');return}
    if(++m<40)setTimeout(go,150)})();return}
   var cid=fa._from;STUDIO.tab('editor');var n=0;(function go(){var E;try{E=fe.contentWindow.__ed}catch(e){}
@@ -66,6 +86,7 @@ window.STUDIO={
 document.getElementById('t_scenes').onclick=function(){STUDIO.tab('scenes')};
 document.getElementById('t_editor').onclick=function(){STUDIO.tab('editor')};
 document.getElementById('t_audio').onclick=function(){STUDIO.tab('audio')};
+document.getElementById('ovx').onclick=function(){STUDIO.closeOverlay()};
 document.getElementById('send').onclick=function(){STUDIO.send()};
 fs.src='index.html?embed=1'+(q?'&'+q:'');
 fe.src='video_editor.html?embed=1';

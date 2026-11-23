@@ -228,6 +228,7 @@ function render(){
       {const l=el('label','margin-right:10px;display:block;margin-top:4px','Header (upar, *shabd* = peela) ');const n=el('input','width:70%');n.type='text';n.value=sc.header||'';n.onchange=()=>{if(n.value.trim())sc.header=n.value;else delete sc.header;apply(true);};l.appendChild(n);f.appendChild(l);}
       {const l=el('label','margin-right:10px;display:block;margin-top:4px','Pills (text|g ; text|r ; text|y) ');const n=el('input','width:70%');n.type='text';n.value=window.PILLS?PILLS.str(sc.pills):'';n.onchange=()=>{const v=window.PILLS?PILLS.parse(n.value):[];if(v.length)sc.pills=v;else delete sc.pills;apply(true);};l.appendChild(n);f.appendChild(l);}
       if(i>0){const l=el('label','margin-right:10px','Transition ');const s=el('select');TRS.forEach(t=>{const o=el('option',null,t);o.value=t;if((sc.tr||'cut')===t)o.selected=true;s.appendChild(o);});s.onchange=()=>{sc.tr=s.value;apply(true);};l.appendChild(s);f.appendChild(l);f.appendChild(num('trDur',sc.trDur!=null?sc.trDur:.5,v=>sc.trDur=Math.max(0,v)));}
+      if(sc.type==='clip'&&window.CLIPCTL)CLIPCTL.controls(sc,f,el,apply);
       const rs=refsOf(sc);
       if(rs.length||sc.type==='watch'||sc.type==='rumour'){const pb=el('div','margin-top:6px;border-top:1px solid #333;padding-top:4px');pb.appendChild(el('b',null,'📷 Photos (is scene ke liye)'));
         rs.forEach(r=>pb.appendChild(picker(r)));

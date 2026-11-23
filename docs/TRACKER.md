@@ -1172,3 +1172,104 @@ Next: C215 = user ke Chrome check FAIL ya keyframes (video editor).
 BADLA: video_editor.html (mixAudio: rv clip ka source span ulta buffer; ek bug fix: AudioBufferSource.buffer do baar set nahi hota). NAYA: tools/video_editor_tests/test_reverse_audio.py. Detail: docs/VIDEO_EDITOR_TRACKER.md C215.
 Test: reverse/forward/2x pass, regression test_chunk9/11/12, test_studio, test_studio_handoff pass, errors 0. NOT tested: asli Chrome export + VLC par sunna.
 Next: C216 = keyframes (position/scale/opacity) — ya user ke Chrome check FAIL.
+
+## C215b (23 Nov 2026) — Sirf plan + zip (koi code nahi)
+User ne kaha: koi kaam abhi nahi, sirf zip; kaam naye chat mein. NAYA: docs/ROADMAP_SCENES_MERGE.md (S1 export size, S3 clip speed+awaaz, S2 audio fade + Audio Editor seedha, S4 free timeline). PROMPT_NEXT_CHAT.md update. Code wahi C215.
+Next: C216 = S1 (export settings + MB andaza).
+
+## C216 (23 Nov 2026) — S1: Export settings (Quality + Size) + MB andaza
+Scenes export bar mein naya: Quality (Chhoti ~4 / Madhyam ~8 / Badhiya 12 Mbps; Chhoti mein audio 128k) + Size (Poora 1080p / 720p; Short 9:16 mein 720x1280) + live label "≈ XX MB (Ns, andaza)" = (video+audio bitrate) x (scenes + intro/outro secs) x 1.03. Default Badhiya + Poora = purana jaisa.
+NAYA: js/export_settings.js (EXPORT.settings/vbr/abr/outScale/estimate), tools/video_editor_tests/test_export_settings.py. BADLA: js/export_fast.js (bitrate, audio bitrate, 720p = poore size par draw phir scale), js/export.js (MediaRecorder bitrate), index.html (script tag).
+Test (chromium): label = dur x bitrate (4.33/8.65/12.98 MB, 8.4s); asli fast export Chhoti = 4.03 MB (andaza 4.33); 720p ffprobe 1280x720 aur short 720x1280; errors 0; regression test_studio, test_studio_audio, test_studio_vo, test_studio_handoff, test_chunk12 pass.
+NOT tested: asli Chrome par lamba export, Real-time (MediaRecorder) export ka size (bitrate sirf hint hai), audio ke saath size andaza.
+Next: C217 = S3 (video clip speed + awaaz in Scenes).
+
+## C217 (23 Nov 2026) — S3: Scenes mein clip Speed / Ulti / Awaaz
+'clip' scene ke panel (🎬 Scenes, scene chuno) mein naya "🎞 Clip: speed / awaaz": Speed 0.25x-4x, Ulti (reverse), Awaaz % (0 = mute purana, 100 = original, 300 tak). Speed badalne par scene ki lambai badalti hai (span = dur x speed, clip ka wahi hissa chalta hai). data: speed, rev, vol.
+Preview: speed playbackRate se; ulti = har frame seek (awaaz preview mein band); awaaz 100% tak. Export (⚡ Fast): clip ki awaaz OfflineAudioContext mein voice-over + bumpers ke saath mix (speed = playbackRate, ulti = ulta buffer, vol 0-3).
+NAYA: js/clip_speed.js (CLIPCTL), tools/video_editor_tests/test_clip_speed.py (webm test clip ffmpeg se khud banata). BADLA: js/card_clip.js (vt/preview/clipMix), js/export_fast.js (clip mix), js/scene_editor.js (1 line), index.html.
+Test (chromium): time mapping normal/2x/reverse, dur 4->2->4, UI controls, export mean dB: vol100 -21.1, vol0 chup, vol200 -15.1 (+6 dB), reverse export awaaz hai; errors 0; regression test_export_settings, test_studio, _audio, _vo, _handoff, test_chunk9/11/12 pass.
+NOT tested / limits: asli Chrome; speed par awaaz ki pitch badalti hai (export mein); Real-time (MediaRecorder) export mein clip awaaz nahi (sirf Fast); split/phoneann/vidcard/screenclip scenes par ye controls nahi (sirf type 'clip', par speed unmein bhi kaam karega agar data.speed ho — UI nahi); clip awaaz ka fade/transition nahi.
+Next: C218 = S2 (audio fade in/out sliders + Audio Editor Scenes ke andar seedha).
+
+## C218 (23 Nov 2026) — S2a: Audio fade in/out (voice-over segments + music)
+Scenes -> 🎚 Audio tracks panel: har voice-over/audio segment ki row mein "↗ in" aur "↘ out" (sec, 0-10) inputs; linear fade mix mein lagta hai (preview + export dono, kyunki EXPORT.audio mein bake hota hai). Music panel mein naya "Fade in (sec)" (default 0.3 = purana jaisa); Fade out pehle se tha.
+BADLA: js/audio_tracks.js (AT.setFade, rebuild mein fade, row UI), js/music_bed.js (M.fadeIn, #mfi, save/restore). NAYA: tools/video_editor_tests/test_audio_fade.py.
+Test (chromium): dc tone seg 1s fade: 0 / .25 / .5 / .25 / ~0 sahi; UI inputs 2; fadeIn=2 par t=1s par aadha; music fadeIn 2s: .125/.25/.5 (t=.5/1/3); errors 0; regression clip_speed, export_settings, studio, studio_audio, studio_vo, studio_handoff, chunk12 pass.
+NOT tested: asli awaaz/asli Chrome. Note: AT.segs disk par save nahi hote (purani baat), isliye seg fade bhi refresh par jata hai; music fadeIn IndexedDB mein save hota.
+Next: C219 = S2b Audio Editor Scenes ke andar overlay/panel mein (iframe tools/audio_editor.html?embed=1) + "Edit karke Scenes mein bhejo" ek click, tab badle bina.
+
+## C219 (23 Nov 2026) — Audio Editor Presets (user ne manga)
+Details: docs/AUDIO_EDITOR_TRACKER.md C219. Save/Load/Chain/Export/Import presets, built-in "Video voice-over (saaf)". Test pass, regression pass.
+Next: C220 = S2b Audio Editor Scenes ke andar overlay (pehle jo C219 tha), phir S4.
+
+## C220 (23 Nov 2026) — S2b: Audio Editor Scenes ke andar overlay (tab badle bina)
+Scenes -> 🎚 Audio tracks -> "🎛 Audio Editor mein enhance": ab Studio tab nahi badalta; Audio Editor Scenes ke upar bade overlay mein khulta hai (peeche dim Scenes, laal border). Upar-daayen "✕ Audio Editor band" se band (Scenes wahi, kuch nahi badalta). Audio Editor mein "↩ Scenes ko bhejo" -> overlay band + Scenes mein audio "voiceover ✨" (AT.replaceMix, "↩ Purani audio" pehle jaisa). Editor tab se bheji clip audio aur 🎛 Audio tab pehle jaisa (poori screen).
+BADLA: studio.html (CSS #fr iframe.ov, #ovx button, STUDIO.openOverlay/closeOverlay, toAudio/fromAudio, tab()). NAYA: tools/video_editor_tests/test_studio_overlay.py.
+Test (chromium): overlay khula + Scenes tab 'on' + fs visible; ✕ se band; dobara khol, gain .5, wapas: peak .8 -> .4, overlay band; 🎛 Audio tab poori screen; errors 0; regression test_studio, _audio, _vo, _handoff, test_audio_fade, test_clip_speed pass.
+NOT tested: asli Chrome, phone/chhoti screen par overlay size, Audio Editor ke andar scroll feel.
+S2 poora ho gaya (fade C218 + overlay C220). Next: S4 (free multi-track timeline) — PEHLE design chunk (C221): scope + data model docs/S4_DESIGN.md likho, code nahi; phir 4-6 chunk. Ya sasta vikalp: "➡ Editor mein bhejo" ko seamless banana.
+
+## C221 (23 Nov 2026) — S4 design chunk (sirf doc, code nahi)
+NAYA: docs/S4_DESIGN.md — Scenes aur Editor ke model ka fark, 3 raaste (A Editor overlay = sasta, B overlay lanes SE.overlays 4-6 chunk, C seamless send), data model B ka, sifarish: pehle A.
+Code mein koi badlav nahi (C220 wala). Next: user jawab de (A ya B) -> A = C222 (STUDIO.openEditorOverlay + Scenes mein "✂ Timeline edit" button).
+
+## C222 (23 Nov 2026) — S4-B1: Overlay lane v2 (data model + render + export) [user ne B chuna]
+NAYA: js/overlays.js (window.OV), tools/video_editor_tests/test_overlays_v2.py. BADLA: index.html (script tag).
+OV.items = [{id,lane:'v2',start,len,clip,in,speed,rev,vol,fit:'full'|'contain'|'pip',pip:{x,y,w},opacity,fadeIn,fadeOut}]; API OV.add/update/del/get/list/timeAt/activeAt/exportJSON/importJSON/save/load. Save: localStorage cvt_ov_wide / cvt_ov_short (format ke hisaab se, setFormat par reload). Har overlay ka apna <video> (scene clip se alag). Render: C.render ke baad scenes ke upar (pip = rounded box + safed border); Export: C.beforeFrame mein frame-exact seek. Preview: playbackRate, ulti = seek, awaaz vol (<=1) preview mein.
+Test (chromium): model/timeAt/speed/activeAt/persist, preview pixel badla ([255,255,2] vs [5,4,4]), Fast export frame 2s par pip pixel badla (61,63,15 vs 4,4,2), delete; errors 0; regression clip_speed, export_settings, studio, studio_handoff, studio_overlay, chunk12, audio_fade pass.
+NOT done (aage ke chunk): UI abhi nahi (sirf JSON/console se OV.add) — timeline UI C224; overlay ki awaaz export mix mein C223; audio/text lanes C225; transition/ripple C226. Overlay C.total se aage jaye to ignore (total badhta nahi). Scenes JSON save/load mein overlays shamil nahi (alag key).
+Next: C223 = overlay clip awaaz export mix (+ audio lane data) — ya user kahe to timeline UI pehle.
+
+## C223 (23 Nov 2026) — S4-B2: Overlay clip ki awaaz Fast export mix mein
+BADLA: js/overlays.js (OV.mixNeeded, OV.mix: speed = playbackRate, ulti = ulta buffer, vol 0-3, fadeIn/Out gain ramp, overlay C.total se aage ho to kaat), js/card_clip.js (C.clipDecode = decodeClip expose, 1 line), js/export_fast.js (hasOvA -> audio encoder chalu + OV.mix(oc, preN/FPS)). NAYA: tools/video_editor_tests/test_overlays_audio.py.
+Test (chromium): vol0 chup, vol1 -21.1 dB, vol2 -15.1 dB (+6), reverse awaaz hai, overlay khatam hone (3s) ke baad chup (-91 dB), fadeIn 2s: shuru -38 dB / baad -22 dB; errors 0; regression overlays_v2, clip_speed, export_settings, studio, studio_handoff, chunk12, audio_fade pass.
+NOT tested / limits: asli Chrome; Real-time (MediaRecorder) export mein overlay awaaz nahi (sirf Fast, clip ki tarah); speed par pitch badalti hai; preview mein ulti overlay ki awaaz band; audio lane (alag a1) abhi nahi.
+Next: C224 = timeline UI (draw + drag, abhi sirf JSON/console se OV.add), phir C225 trim/split/snap, C226 text/audio lane, C227 transition/ripple.
+
+## C224 (23 Nov 2026) — S4-B3: Overlay timeline UI (draw + drag)
+NAYA: js/ov_timeline.js (window.OVT), tools/video_editor_tests/test_ov_timeline.py. BADLA: index.html (script tag).
+Scenes ke neeche bar2 mein "🎞 Overlay timeline" button -> canvas: ruler + Scenes lane (read-only) + Video 2 lane (OV.items) + red playhead. Clip chuno + "＋ Playhead par jodo"; block drag = move (snap 0.1s / scene edges / dusre blocks); khali jagah click = seek; block chuno -> start/len/awaaz%/speed/fit inputs; "🗑 Hatao".
+Test (chromium): open, add, canvas pixel, drag 1s->3s + persist, ruler seek, props (vol/speed/fit), delete, close; errors 0.
+NOT done: regression tests is chunk mein nahi chalaye (user ne jaldi manga) — agle chunk mein chalana; trim/split/zoom; touch par asli test; asli Chrome.
+Next: C225 = trim (edge drag) + split + zoom, C226 text/audio lane, C227 transition/ripple.
+
+## C225-C227 (23 Nov 2026) — S4-B4..B6: trim/split/zoom, Audio+Text lane, transition+ripple
+C225 (js/ov_timeline.js): block ke kinaare drag = trim (left: start+in, ulti mein in wahi; right: len, clip ki lambai se zyada nahi), "✂ Split" playhead par (ulti/speed ka source order sahi), zoom −/＋ (1x-8x, scroll).
+C226 (js/overlays.js + ov_timeline.js): naye lanes — 'a1' Audio (clip ki sirf awaaz, vol default 1, preview + Fast export mix) aur 't1' Text (text, jagah top/center/bottom, size, bg; C.fitText se draw); timeline mein 4 rows (Scenes / Video 2 / Audio / Text), "＋ Audio", text box + "＋ Text".
+C227: har item par transition none/fade/slide/zoom + sec (v2 aur text), "Ripple" checkbox (hatao aur right-trim par baad ke items same lane mein khiskte hain).
+NAYE tests: tools/video_editor_tests/test_ov_timeline2.py (C225), test_ov_lanes.py (C226), test_ov_trans.py (C227) — teeno pass, errors 0.
+REGRESSION CHALANA BAAKI (C224 se): user ne kaha sab kaam ke baad karo — chalane wale: test_overlays_v2, test_overlays_audio, test_ov_timeline, test_clip_speed, test_export_settings, test_studio, test_studio_handoff, test_chunk12, test_audio_fade.
+NOT tested / limits: asli Chrome, touch par drag/trim; Real-time export mein overlay awaaz nahi (sirf Fast); text lane mein sirf ek style (alag font/colour picker nahi); lanes ke beech drag nahi; transition 'wipe' nahi; Scenes JSON save/load mein overlays shamil nahi (alag localStorage key).
+
+## C228 (23 Nov 2026) — Regression (C224 se baaki), 3 chunk mein
+Chunk 1: test_overlays_v2, test_overlays_audio, test_ov_timeline. Chunk 2: test_clip_speed, test_export_settings, test_studio. Chunk 3: test_studio_handoff, test_chunk12, test_audio_fade.
+Natija: 9/9 pass, errors 0. Product code mein koi badlav nahi.
+FIX (sirf test): test_ov_timeline.py — block select / seek ke baad canvas ~82px neeche khisakta hai, test purana y/box use kar raha tha. Ab props wale click se pehle box + y dobara nikalte hain.
+NOT tested: asli Chrome, touch, Real-time export mein overlay awaaz.
+Next: user ka agla kaam.
+
+## C229 (23 Nov 2026) — Real-time (MediaRecorder) export mein overlay + clip awaaz
+BADLA: js/export.js (X.run: overlay/clip awaaz ho to X.audio + C.clipMix + OV.mix ko OfflineAudioContext mein mix karke ek buffer banata hai, wahi record hota hai; mix fail ho to purani X.audio par fallback; X.actx na ho to bana leta hai). NAYA: tools/video_editor_tests/test_rt_overlay_audio.py.
+Test (chromium): Real-time export vol0 chup, vol1 -21.1 dB (Fast jaisa), overlay (3s) ke baad -91 dB, errors 0. Regression: test_overlays_audio, test_export_settings, test_clip_speed, test_studio, test_chunk12 pass.
+NOTE: pehli baar test_export_settings (mp4-muxer colorSpace null) aur test_clip_speed (scene_editor 't' undefined) ek-ek baar fail hue, dobara 2/2 pass — flaky (timing), product bug nahi mila. Dobara fail ho to dhyan do.
+NOT tested: asli Chrome, lamba real-time export, bumpers ke saath real-time (bumpers.js X.run wrap karta hai, mix offset 0 maana).
+Baaki overlay limits: text lane font/colour picker, lanes ke beech drag, wipe transition.
+
+## C230 (23 Nov 2026) — Text lane: rang (colour picker) + font
+BADLA: js/overlays.js (naya tfont: default|serif|mono|impact|hand; tcolor sirf #rrggbb, warna #ffffff; drawText font C.font ko temporarily badalta hai, fitText bhi wahi font naapta hai), js/ov_timeline.js (props mein rang picker + font select; OV.onChange par ruka hua player current frame redraw karta hai -> text size/jagah/rang/font ka asar turant dikhta hai, pehle seek tak nahi dikhta tha). NAYA: tools/video_editor_tests/test_ov_text_style.py.
+Test (chromium): rang red -> 39834 red pixels, white 0; serif/mono/impact ka alag render; default par wapas pehle jaisa; block dobara chunne par UI values sahi; OV.load() ke baad tfont/tcolor bache; errors 0. Regression: test_ov_timeline, test_overlays_v2, test_overlays_audio, test_clip_speed, test_studio, test_rt_overlay_audio pass.
+NOTE: font asli machine ke fonts par depend karta hai (hand=Comic Sans, impact=Impact sandbox/Android par na ho to fallback NotoDev/sans). Export ke andar font/rang test_overlays_v2 se sirf pixel level par checked, alag export test nahi.
+Baaki overlay limits: lanes ke beech drag, wipe transition.
+
+## C231 (23 Nov 2026) — Lanes ke beech drag (v2 <-> a1)
+BADLA: js/ov_timeline.js (OVT.moveLane(id,lane); drag ke dauraan pointer jis lane par ho wahi lane ban jati hai; a1 mein jaate waqt vol 0 ho to 1; a1->v2 mein vol bacha rehta hai). t1 (text) lane nahi badalta aur kisi clip ko t1 mein nahi le ja sakte (alag data). t1 row par chhodne se kuch nahi badalta — aakhri valid lane rehti hai (raste mein a1 row se guzre to a1).
+NAYA: tools/video_editor_tests/test_ov_lane_drag.py (asli mouse drag: v2->a1, a1->v2, t1 guard, diagonal start+lane, persist, API guard). Regression: test_ov_timeline, test_ov_text_style, test_overlays_v2, test_overlays_audio pass.
+NOT tested: asli Chrome, touch drag (vertical drag + scroll ka takraav ho sakta hai).
+Baaki overlay limits: wipe transition.
+
+## C232 (23 Nov 2026) — Wipe transition (overlay v2 + text t1)
+BADLA: js/overlays.js (trFx mein 'wipe': shuru par left->right reveal, ant par left->right erase, clip rect, alpha 1 (fade nahi); norm tr list mein 'wipe'), js/ov_timeline.js (transition select mein 'wipe'). Video aur text dono par lagu (dono trFx use karte hain; Fast export bhi same render path).
+Test: tools/video_editor_tests/test_ov_trans.py mein wipe jora: shuru par diff, beech mein asar nahi, aur pixel check — wipe ke beech left hissa overlay jaisa, right hissa base jaisa. Regression: test_ov_timeline, test_ov_text_style, test_ov_lane_drag, test_overlays_v2, test_overlays_audio, test_rt_overlay_audio.
+NOT tested: asli Chrome, export file mein wipe frame alag se (sirf render path), wipe ki direction badalne ka option nahi (abhi sirf left->right).
+Overlay ki saari known limits (text font/rang, lane drag, wipe, RT export awaaz) ab band.

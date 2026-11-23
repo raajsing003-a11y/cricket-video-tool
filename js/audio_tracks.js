@@ -7,8 +7,10 @@ const endOf=()=>AT.segs.reduce((m,s)=>Math.max(m,s.start+s.buf.duration),0);
 AT.rebuild=()=>{
  if(!AT.segs.length){X.audio=null;return;}
  const ac=ctx(),sr=ac.sampleRate,len=Math.ceil(endOf()*sr),out=ac.createBuffer(2,len,sr),L=out.getChannelData(0),R=out.getChannelData(1);
- for(const s of AT.segs){const o=Math.round(s.start*sr),a=s.buf.getChannelData(0),b=s.buf.numberOfChannels>1?s.buf.getChannelData(1):a;
-  for(let i=0;i<a.length&&o+i<len;i++){L[o+i]+=a[i];R[o+i]+=b[i];}}
+ for(const s of AT.segs){const o=Math.round(s.start*sr),a=s.buf.getChannelData(0),b=s.buf.numberOfChannels>1?s.buf.getChannelData(1):a,n=a.length;
+  // C218: fade in/out (sec, seg.fadeIn / seg.fadeOut) — linear
+  const fi=Math.min(n,Math.round(Math.max(0,s.fadeIn||0)*sr)),fo=Math.min(n,Math.round(Math.max(0,s.fadeOut||0)*sr));
+  for(let i=0;i<n&&o+i<len;i++){let g=1;if(fi&&i<fi)g=i/fi;if(fo&&n-i<=fo)g=Math.min(g,(n-i)/fo);L[o+i]+=a[i]*g;R[o+i]+=b[i]*g;}}
  for(let i=0;i<len;i++){if(L[i]>1)L[i]=1;else if(L[i]<-1)L[i]=-1;if(R[i]>1)R[i]=1;else if(R[i]<-1)R[i]=-1;}
  X.audio=out;};
 AT.add=(name,buf,start)=>{AT.segs.push({name,buf,start:+(start==null?endOf():start).toFixed(2)});AT.rebuild();render();};
@@ -24,6 +26,7 @@ AT.sendToAudio=()=>{let S=null;try{S=window.parent!==window&&window.parent.STUDI
  const arrs=[];for(let c=0;c<b.numberOfChannels;c++)arrs.push(Float32Array.from(b.getChannelData(c)));
  S.toAudio({arrs,sr:b.sampleRate,name:'voiceover',cid:null,target:'scenes'});};
 AT.nudge=(i,d)=>{AT.segs[i].start=+Math.max(0,AT.segs[i].start+d).toFixed(2);AT.rebuild();render();};
+AT.setFade=(i,fi,fo)=>{const s=AT.segs[i];if(!s)return;s.fadeIn=Math.max(0,+fi||0);s.fadeOut=Math.max(0,+fo||0);if(!s.fadeIn)delete s.fadeIn;if(!s.fadeOut)delete s.fadeOut;AT.rebuild();render();};
 AT.del=i=>{AT.segs.splice(i,1);AT.rebuild();render();};
 AT.startMic=async()=>{const st=await navigator.mediaDevices.getUserMedia({audio:true}),mr=new MediaRecorder(st),ch=[];
  mr.ondataavailable=e=>e.data.size&&ch.push(e.data);
@@ -63,5 +66,7 @@ function render(){if(!panel)return;
   const mk=(t,fn,bg)=>{const b=document.createElement('button');b.textContent=t;b.style.cssText='padding:5px 9px;font-size:13px;background:'+(bg||'#555');b.onclick=fn;return b;};
   const tm=document.createElement('span');tm.textContent=s.start.toFixed(1)+'s';tm.style.cssText='width:48px;flex:none';
   const nm=document.createElement('span');nm.style.flex='1';nm.textContent=s.name+' ('+s.buf.duration.toFixed(1)+'s)';
-  r.append(mk('−',()=>AT.nudge(i,-.1)),tm,mk('+',()=>AT.nudge(i,.1)),nm,mk('✕',()=>AT.del(i)));list.appendChild(r);});}
+  const fin=(lab,key)=>{const l=document.createElement('label');l.style.cssText='font-size:12px;flex:none';l.textContent=lab+' ';const n=document.createElement('input');n.type='number';n.min=0;n.max=10;n.step=.1;n.value=s[key]||0;n.className='atfade';n.dataset.k=key;n.style.cssText='width:46px';
+   n.onchange=()=>{const v=Math.max(0,Math.min(10,parseFloat(n.value)||0));AT.setFade(i,key==='fadeIn'?v:s.fadeIn,key==='fadeOut'?v:s.fadeOut);};l.appendChild(n);return l;};
+  r.append(mk('−',()=>AT.nudge(i,-.1)),tm,mk('+',()=>AT.nudge(i,.1)),nm,fin('↗ in','fadeIn'),fin('↘ out','fadeOut'),mk('✕',()=>AT.del(i)));list.appendChild(r);});}
 })();

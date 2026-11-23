@@ -1,6 +1,7 @@
 // C120 (R1): Video clip layer. Rahul ka clip (mp4/webm upload) scene mein chalta hai, upar source tag + naam patti + subtitle.
 // clip (R1): data:{clip:'file naam (🎞 Clips mein upload kiya)', start:0 (clip ke kitne sec se), fit:'cover'|'contain', src:'source ka naam (text, Rahul khud likhe)', name:'naam', role:'pad', sub:'neeche subtitle line', quote:false (bada " chinh), title:'', c:'y', bg}
-// Clip ki apni awaaz abhi mute hai (sirf video). Clips browser (IndexedDB 'cvt_clips') mein save hote hain, repo mein nahi.
+// C217: data.speed (0.25-4, default 1), data.rev (ulti), data.vol (clip awaaz 0-3, default 0 = mute). Awaaz preview mein (vol<=1, ulti mein band) + Fast export mein mix.
+// Clip ki apni awaaz default mute hai (vol=0). Clips browser (IndexedDB 'cvt_clips') mein save hote hain, repo mein nahi.
 (function(){const C=window.CORE,E=C.ease;
 const COL={y:'#F5C518',g:'#2ecc71',r:'#ff4d4f',b:'#6fa8ff'},S=v=>v==null?'':String(v).trim();
 C.clips=C.clips||{};C.clipsReady=false;
@@ -18,8 +19,23 @@ C.clipRestore=async function(){try{const keys=await op('readonly',s=>s.getAllKey
 C.clipRestore();
 // seek helper (export ke liye frame-exact)
 const seekTo=(v,t)=>new Promise(res=>{if(Math.abs(v.currentTime-t)<.001&&v.readyState>=2){res();return;}let done=false;const f=()=>{if(done)return;done=true;v.removeEventListener('seeked',f);res();};v.addEventListener('seeked',f);v.currentTime=t;setTimeout(f,1500);});
-const vt=(sc,t)=>{const d=sc.data||{},c=C.clips[S(d.clip)];if(!c)return null;const lt=t-C.starts[C.scenes.indexOf(sc)],want=(+d.start||0)+Math.max(0,lt);return{c,time:Math.max(0,Math.min(c.dur-.05,want))};};
+const spd=d=>Math.max(.25,Math.min(4,+d.speed||1));
+C.clipSpeed=spd;
+const vt=(sc,t)=>{const d=sc.data||{},c=C.clips[S(d.clip)];if(!c)return null;const lt=Math.max(0,t-C.starts[C.scenes.indexOf(sc)]),sp=spd(d),st=+d.start||0,span=sc.dur*sp,want=d.rev?st+span-lt*sp:st+lt*sp;return{c,time:Math.max(0,Math.min(c.dur-.05,want)),sp,rev:!!d.rev,vol:Math.max(0,Math.min(3,+d.vol||0))};};
 C.clipAt=vt;
+// C217: export ke liye clip awaaz. oc = OfflineAudioContext (48k stereo), off = main video ka shuru (intro ke baad) sec mein.
+const abuf={};
+async function decodeClip(c){if(c.name in abuf)return abuf[c.name];let b=null;try{const o=new OfflineAudioContext(2,1,48000);b=await o.decodeAudioData(await c.blob.arrayBuffer());}catch(e){b=null;}abuf[c.name]=b;return b;}
+C.clipDecode=decodeClip; // C223: overlays.js bhi use karta hai
+C.clipMixNeeded=()=>(C.scenes||[]).some(sc=>sc.type==='clip'&&+(sc.data||{}).vol>0&&C.clips[S((sc.data||{}).clip)]);
+C.clipMix=async function(oc,off){let n=0;
+  for(let i=0;i<C.scenes.length;i++){const sc=C.scenes[i];if(sc.type!=='clip')continue;const d=sc.data||{},vol=Math.max(0,Math.min(3,+d.vol||0)),c=C.clips[S(d.clip)];if(!(vol>0)||!c)continue;
+    const b=await decodeClip(c);if(!b)continue;const sp=spd(d),st=+d.start||0,when=off+C.starts[i];let buf=b,o=st;
+    if(d.rev){const sr=b.sampleRate,a=Math.max(0,Math.floor(st*sr)),z=Math.min(b.length,Math.floor((st+sc.dur*sp)*sr)),len=Math.max(1,z-a);buf=oc.createBuffer(b.numberOfChannels,len,sr);
+      for(let ch=0;ch<b.numberOfChannels;ch++){const src=b.getChannelData(ch),dst=buf.getChannelData(ch);for(let k=0;k<len;k++)dst[k]=src[z-1-k]||0;}o=0;}
+    const s=oc.createBufferSource(),g=oc.createGain();s.buffer=buf;s.playbackRate.value=sp;g.gain.value=vol;s.connect(g);g.connect(oc.destination);
+    s.start(when,o,Math.max(.01,sc.dur*sp));try{s.stop(when+sc.dur);}catch(e){}n++;}
+  return n;};
 function active(t){const a=[];(C.scenes||[]).forEach((sc,i)=>{if((sc.type==='clip'||sc.type==='phoneann'||sc.type==='split'||sc.type==='screenclip'||sc.type==='vidcard')&&t>=C.starts[i]&&t<C.starts[i]+sc.dur)a.push(sc);});return a;}
 // export: har frame se pehle exact seek
 C.beforeFrame=async function(t){for(const sc of active(t)){const x=vt(sc,t);if(x)await seekTo(x.c.video,x.time);}};
@@ -27,9 +43,10 @@ C.beforeFrame=async function(t){for(const sc of active(t)){const x=vt(sc,t);if(x
 const render0=C.render;
 C.render=function(ctx,t){if(!C.exporting){const act=active(t),used=new Set();
   act.forEach(sc=>{const x=vt(sc,t);if(!x)return;const v=x.c.video;used.add(v);
-    if(C.playing){if(v.paused){v.currentTime=x.time;v.play().catch(()=>{});}else if(Math.abs(v.currentTime-x.time)>.3)v.currentTime=x.time;}
+    v.muted=!(x.vol>0)||x.rev;v.volume=Math.min(1,x.vol);if(v.playbackRate!==x.sp&&!x.rev)v.playbackRate=x.sp;
+    if(C.playing&&!x.rev){if(v.paused){v.currentTime=x.time;v.play().catch(()=>{});}else if(Math.abs(v.currentTime-x.time)>.3*Math.max(1,x.sp))v.currentTime=x.time;}
     else{if(!v.paused)v.pause();if(Math.abs(v.currentTime-x.time)>.04)v.currentTime=x.time;}});
-  Object.keys(C.clips).forEach(k=>{const v=C.clips[k].video;if(!used.has(v)&&!v.paused)v.pause();});}
+  Object.keys(C.clips).forEach(k=>{const v=C.clips[k].video;if(!used.has(v)){v.muted=true;if(!v.paused)v.pause();}});}
   return render0.call(C,ctx,t);};
 // preload: clip scenes ke liye clip maujood hona chahiye
 const pre0=C.preload;

@@ -38,7 +38,7 @@ MUSIC.mix=()=>{
     let gain=vol;if(E){const q=i/E.step,e0=Math.min(E.env.length-1,Math.floor(q)),e1=Math.min(E.env.length-1,e0+1);gain*=E.env[e0]+(E.env[e1]-E.env[e0])*(q-e0);}
     if(fo&&len-i<fo)gain*=(len-i)/fo;
     // loop jod par 20ms crossfade-free simple; start par chhota fade-in 0.3s
-    const fi=Math.min(1,(i-off)/(0.3*sr));gain*=fi;
+    const fis=Math.max(0,M.fadeIn==null?0.3:M.fadeIn)*sr,fi=fis>0?Math.min(1,(i-off)/fis):1;gain*=fi; // C218: fade in M.fadeIn sec (default .3)
     L[i]+=(ma[i0]+(ma[i1]-ma[i0])*fr)*gain;R[i]+=(mc[i0]+(mc[i1]-mc[i0])*fr)*gain;}
   for(let i=0;i<len;i++){if(L[i]>1)L[i]=1;else if(L[i]<-1)L[i]=-1;if(R[i]>1)R[i]=1;else if(R[i]<-1)R[i]=-1;}
   X.audio=out;};
@@ -46,16 +46,16 @@ MUSIC.mix=()=>{
 // AT.rebuild ke baad music mix karo
 const rb0=AT.rebuild;
 AT.rebuild=function(){rb0.apply(this,arguments);AT.voiceOnly=AT.segs.length?X.audio:null;if(AT.music)MUSIC.mix();};
-AT.setMusic=(name,buf)=>{AT.music=Object.assign({vol:-18,duck:-12,loop:true,fadeOut:2,offset:0},AT.music||{},{name,buf});AT.rebuild();};
+AT.setMusic=(name,buf)=>{AT.music=Object.assign({vol:-18,duck:-12,loop:true,fadeIn:.3,fadeOut:2,offset:0},AT.music||{},{name,buf});AT.rebuild();};
 AT.clearMusic=()=>{AT.music=null;AT.rebuild();};
 
 // ---------- save (IndexedDB 'cvt_music') ----------
 const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open('cvt_music',1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('m'))r.result.createObjectStore('m');};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});
 const idbOp=async(mode,fn)=>{const d=await idb();return new Promise((res,rej)=>{const tx=d.transaction('m',mode),st=tx.objectStore('m'),rq=fn(st);tx.oncomplete=()=>{d.close();res(rq&&rq.result);};tx.onerror=()=>{d.close();rej(tx.error);};});};
 MUSIC.save=async()=>{const M=AT.music;try{if(!M||!M.raw){await idbOp('readwrite',s=>s.delete('bed'));return;}
-  await idbOp('readwrite',s=>s.put({name:M.name,raw:M.raw,vol:M.vol,duck:M.duck,loop:M.loop,fadeOut:M.fadeOut,offset:M.offset},'bed'));}catch(e){console.warn('music save',e);}};
+  await idbOp('readwrite',s=>s.put({name:M.name,raw:M.raw,vol:M.vol,duck:M.duck,loop:M.loop,fadeIn:M.fadeIn,fadeOut:M.fadeOut,offset:M.offset},'bed'));}catch(e){console.warn('music save',e);}};
 MUSIC.restore=async()=>{try{const r=await idbOp('readonly',s=>s.get('bed'));if(!r||!r.raw)return false;
-  const buf=await ac().decodeAudioData(r.raw.slice(0));AT.music={name:r.name,raw:r.raw,buf,vol:r.vol,duck:r.duck,loop:r.loop,fadeOut:r.fadeOut,offset:r.offset};AT.rebuild();return true;}catch(e){console.warn('music restore',e);return false;}};
+  const buf=await ac().decodeAudioData(r.raw.slice(0));AT.music={name:r.name,raw:r.raw,buf,vol:r.vol,duck:r.duck,loop:r.loop,fadeIn:r.fadeIn,fadeOut:r.fadeOut,offset:r.offset};AT.rebuild();return true;}catch(e){console.warn('music restore',e);return false;}};
 MUSIC.restore();
 
 // ---------- UI ----------
@@ -72,20 +72,21 @@ MUSIC.open=()=>{
 <div class="r"><label class="g" style="padding:6px 10px;border-radius:5px;cursor:pointer">+ Music file<input id="mf" type="file" accept="audio/*" style="display:none"></label><span id="mn" style="flex:1;width:auto;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></span></div>
 <div class="r"><span>Music volume</span><input id="mv" type="range" min="-40" max="0" value="-18"><b id="mvv" style="width:44px">-18dB</b></div>
 <div class="r"><span>Voice par duck</span><input id="md" type="range" min="-30" max="0" value="-12"><b id="mdv" style="width:44px">-12dB</b></div>
+<div class="r"><span>Fade in (sec)</span><input id="mfi" type="number" value="0.3" min="0" max="10" step="0.1"></div>
 <div class="r"><span>Fade out (sec)</span><input id="mfo" type="number" value="2" min="0" max="10" step="0.5"><label><input id="ml" type="checkbox" checked> loop</label></div>
 <div class="r"><span>Start offset (sec)</span><input id="mo" type="number" value="0" min="0" step="0.5"></div>
 <div class="r"><button id="mc" style="background:#a33">Music hatao</button><span id="ms" style="flex:1;width:auto;color:#ffd400"></span></div>`;
   document.body.appendChild(b);
   const q=s=>b.querySelector(s),M0=AT.music;
-  const sync=()=>{const M=AT.music;q('#mn').textContent=M?M.name:'(koi music nahi)';if(M){q('#mv').value=M.vol;q('#md').value=M.duck;q('#mfo').value=M.fadeOut;q('#ml').checked=M.loop;q('#mo').value=M.offset;}
+  const sync=()=>{const M=AT.music;q('#mn').textContent=M?M.name:'(koi music nahi)';if(M){q('#mv').value=M.vol;q('#md').value=M.duck;q('#mfo').value=M.fadeOut;q('#mfi').value=M.fadeIn==null?0.3:M.fadeIn;q('#ml').checked=M.loop;q('#mo').value=M.offset;}
     q('#mvv').textContent=q('#mv').value+'dB';q('#mdv').textContent=q('#md').value+'dB';};
   sync();
   q('#mx').onclick=close;
   q('#mf').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{q('#ms').textContent='⏳ decode…';const raw=await f.arrayBuffer(),buf=await ac().decodeAudioData(raw.slice(0));
-    AT.music=Object.assign({vol:+q('#mv').value,duck:+q('#md').value,loop:q('#ml').checked,fadeOut:+q('#mfo').value,offset:+q('#mo').value},{name:f.name,buf,raw});AT.rebuild();MUSIC.save();sync();q('#ms').textContent='✔ '+buf.duration.toFixed(0)+'s music laga';}catch(err){q('#ms').textContent='Error: '+err.message;}e.target.value='';};
-  let tm=0;const upd=()=>{if(!AT.music)return;const M=AT.music;M.vol=+q('#mv').value;M.duck=+q('#md').value;M.loop=q('#ml').checked;M.fadeOut=+q('#mfo').value||0;M.offset=Math.max(0,+q('#mo').value||0);
+    AT.music=Object.assign({vol:+q('#mv').value,duck:+q('#md').value,loop:q('#ml').checked,fadeIn:+q('#mfi').value,fadeOut:+q('#mfo').value,offset:+q('#mo').value},{name:f.name,buf,raw});AT.rebuild();MUSIC.save();sync();q('#ms').textContent='✔ '+buf.duration.toFixed(0)+'s music laga';}catch(err){q('#ms').textContent='Error: '+err.message;}e.target.value='';};
+  let tm=0;const upd=()=>{if(!AT.music)return;const M=AT.music;M.vol=+q('#mv').value;M.duck=+q('#md').value;M.loop=q('#ml').checked;M.fadeOut=+q('#mfo').value||0;M.fadeIn=Math.max(0,+q('#mfi').value||0);M.offset=Math.max(0,+q('#mo').value||0);
     q('#mvv').textContent=M.vol+'dB';q('#mdv').textContent=M.duck+'dB';clearTimeout(tm);tm=setTimeout(()=>{AT.rebuild();MUSIC.save();q('#ms').textContent='✔ mix update';},250);};
-  ['#mv','#md','#mfo','#ml','#mo'].forEach(s=>{q(s).oninput=upd;q(s).onchange=upd;});
+  ['#mv','#md','#mfi','#mfo','#ml','#mo'].forEach(s=>{q(s).oninput=upd;q(s).onchange=upd;});
   q('#mc').onclick=()=>{AT.clearMusic();MUSIC.save();sync();q('#ms').textContent='Music hat gaya';};
 };
 const addBtn=()=>{const b2=$('bar2');if(b2&&!$('mus_btn')){const b=mk('button','','🎵 Music');b.id='mus_btn';b.onclick=MUSIC.open;b2.appendChild(b);}

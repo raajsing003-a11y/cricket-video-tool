@@ -1,0 +1,5 @@
+GitHub par ye files upload karo (poori zip nahi):
+js/audio_tracks.js
+js/music_bed.js
+tools/video_editor_tests/test_audio_fade.py (naya, optional)
+docs/TRACKER.md, docs/ROADMAP_SCENES_MERGE.md (optional)

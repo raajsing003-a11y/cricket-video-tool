@@ -51,6 +51,8 @@ input[type=number]{width:62px;background:#10141a;color:#e9edf3;border:1px solid 
 <div class="row"><div class="grp"><b>🌊 Reverb</b>Decay<input id="rvd" type="number" value="1.5" step="0.1" min="0.2">s Mix<input id="rvm" type="number" value="25">% <button id="rvb">Reverb</button></div>
 <div class="grp"><b>🔁 Echo</b>Delay<input id="ed" type="number" value="0.3" step="0.05">s Feedback<input id="ef" type="number" value="35">% Mix<input id="em" type="number" value="35">% <button id="ech">Echo</button></div></div>
 <div class="row"><div class="grp"><b>⏩ Speed / Pitch</b>Speed×<input id="spd" type="number" value="1.25" step="0.05" min="0.25" max="4"><button id="spb" title="Awaaz bhi mota/patla hogi">Speed</button>Tempo×<input id="tmp" type="number" value="1.25" step="0.05" min="0.5" max="2"><button id="tpb" title="Awaaz wahi, sirf tez/dheere">Tempo</button>Pitch<input id="pit" type="number" value="2" step="1" min="-12" max="12">semitone <button id="ptb">Pitch</button></div></div>
+<div class="row"><div class="grp" id="prg"><b>💾 Presets</b><select id="prs" title="Save kiye hue preset"></select><button id="prl" title="Sirf settings (sliders/numbers) lagao">📥 Load</button><button id="pra" class="p" title="Settings lagao + chune hue steps ek ke baad ek chalao">▶ Chain chalao</button><button id="prv" title="Abhi ki settings + chune steps naam se save">💾 Save…</button><button id="prd">🗑</button><button id="pre" title="Sab presets file mein">⬇ Export</button><button id="pri" title="Preset file lo">⬆ Import</button><input id="prf" type="file" accept=".json,application/json" style="display:none"></div>
+<details id="prc" style="flex:1;min-width:260px"><summary style="color:#8b95a5;cursor:pointer">Chain steps (kya-kya chalana hai, is order mein)</summary><div id="prsteps" style="display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:4px;font-size:12px"></div></details></div>
 <div id="msg">&nbsp;</div></div>
 <script>/* lamejs 1.2.1 (LGPL-3.0) */
 function lamejs(){function X(c){return new Int32Array(c)}function K(c){return new Float32Array(c)}function ca(c){if(1==c.length)return K(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(ca(c));return n}function Ia(c){if(1==c.length)return X(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(Ia(c));return n}function dc(c){if(1==c.length)return new Int16Array(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(dc(c));return n}function Ob(c){if(1==c.length)return Array(c[0]);
@@ -1710,6 +1712,38 @@ mtUI();
    if(mtActive()){if(mt.busy)throw new Error('Mix chal raha hai, thoda ruko');mtLock(true);try{var r=await mtMix(mtPr);b=r.buf;note=' ('+mt.T.length+' tracks ka mix)';}finally{mtLock(false);}}
    return{arrs:chans(b).map(function(a){return Float32Array.from(a)}),sr:b.sampleRate,name:st.name,note:note};}};
  if(inS){var tb=$('tov');tb.style.display='';tb.onclick=async function(){try{var r=await window.__ae.result();window.parent.STUDIO.fromAudio(r);say('↩ Wapas bhej di'+r.note);}catch(e){say('Bhejne mein error: '+e.message);}};}
+})();
+// C219: Presets — effect sliders/numbers ki settings + chain (kaun-kaun se effect ek ke baad ek) naam se save. localStorage 'ae_presets_v1'. Export/Import JSON.
+(function(){
+ const IDS=['fd','am','nr','sth','smp','skp','ns','nt','bsd','lps','lt','lc','llm','aes','aem','eq1','eq2','eq3','eq4','rna','rnp','hzs','cth','crt','cmk','gth','dth','drt','lmc','lvt','lvs','lvx','bbf','bbg','vrb','rvd','rvm','ed','ef','em','spd','tmp','pit'];
+ const STEPS=[['hpb','Rumble cut'],['lpb','Hiss cut'],['hmb','Hum'],['rnb','🧠 AI shor'],['nz','Noise reduce'],['aeb','✨ AI Enhance'],['an','🎙 Anchor'],['eq','EQ'],['gt','Gate'],['dse','De-ess'],['cmp','Compressor'],['lvb','⚖ Leveller'],['bbb','Bass boost'],['rvb','Reverb'],['ech','Echo'],['nm','Normalize'],['ln','🎯 LUFS'],['lmb','🧱 Limiter']];
+ const KEY='ae_presets_v1',BUILTIN={'Video voice-over (saaf)':{vals:{},chain:['hpb','cmp','lvb','ln','lmb'],builtin:true}};
+ const el=id=>document.getElementById(id);
+ let P={};
+ const load=()=>{let u={};try{u=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){}P=Object.assign({},BUILTIN,u);};
+ const save=()=>{const u={};Object.keys(P).forEach(k=>{if(!P[k].builtin)u[k]=P[k];});try{localStorage.setItem(KEY,JSON.stringify(u));}catch(e){}};
+ const grab=()=>{const v={};IDS.forEach(i=>{const e=el(i);if(e)v[i]=e.type==='checkbox'?e.checked:e.value;});return v;};
+ const put=vals=>{Object.keys(vals||{}).forEach(i=>{const e=el(i);if(!e)return;if(e.type==='checkbox')e.checked=!!vals[i];else e.value=vals[i];['input','change'].forEach(t=>e.dispatchEvent(new Event(t,{bubbles:true})));});};
+ const chainSel=()=>STEPS.map(x=>x[0]).filter(i=>el('prc_'+i)&&el('prc_'+i).checked);
+ const chainPut=c=>STEPS.forEach(x=>{const e=el('prc_'+x[0]);if(e)e.checked=(c||[]).indexOf(x[0])>=0;});
+ const fill=sel=>{const s=el('prs');s.textContent='';Object.keys(P).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k+(P[k].builtin?' (built-in)':'');s.appendChild(o);});if(sel&&P[sel])s.value=sel;};
+ const sayp=m=>{try{say(m);}catch(e){}};
+ const box=el('prsteps');STEPS.forEach(x=>{const l=document.createElement('label');l.innerHTML='<input type="checkbox" id="prc_'+x[0]+'"> '+x[1];box.appendChild(l);});
+ window.AEPRESET={list:()=>Object.keys(P),get:k=>P[k],grab,put,chainSel,chainPut,
+  save:(name,vals,chain)=>{name=String(name||'').trim();if(!name||BUILTIN[name])return false;P[name]={vals:vals||grab(),chain:chain||chainSel()};save();fill(name);return true;},
+  del:name=>{if(!P[name]||P[name].builtin)return false;delete P[name];save();fill();return true;},
+  load:name=>{const p=P[name];if(!p)return false;put(p.vals);chainPut(p.chain);return true;},
+  run:async name=>{const p=P[name];if(!p)return 0;put(p.vals);chainPut(p.chain);if(!st.buf){sayp('Pehle audio kholo (📂 Open / 🎤 Record)');return 0;}
+   let n=0;for(const id of p.chain||[]){const b=el(id);if(!b||!b.onclick)continue;sayp('▶ '+name+': '+(n+1)+'/'+p.chain.length+' — '+b.textContent.trim());const b0=st.buf;await b.onclick();n++;}
+   sayp('✔ Preset "'+name+'": '+n+' step ho gaye. Sun ke dekho (Undo se wapas ja sakte ho).');return n;}};
+ el('prl').onclick=()=>{const k=el('prs').value;if(AEPRESET.load(k))sayp('📥 "'+k+'" ki settings lag gayi');};
+ el('pra').onclick=async()=>{const k=el('prs').value;try{await AEPRESET.run(k);}catch(e){sayp('Preset error: '+e.message);}};
+ el('prv').onclick=()=>{const k=window.prompt('Preset ka naam (abhi ki settings + chune hue chain steps save honge):',el('prs').value&&!(P[el('prs').value]||{}).builtin?el('prs').value:'');if(!k)return;if(!AEPRESET.save(k))sayp('Ye naam nahi chalega (khaali ya built-in)');else sayp('💾 Preset "'+k.trim()+'" save ('+chainSel().length+' chain steps)');};
+ el('prd').onclick=()=>{const k=el('prs').value;if(AEPRESET.del(k))sayp('🗑 "'+k+'" hata diya');else sayp('Built-in preset hat nahi sakta');};
+ el('pre').onclick=()=>{const u={};Object.keys(P).forEach(k=>{if(!P[k].builtin)u[k]=P[k];});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({ae_presets:1,presets:u},null,1)],{type:'application/json'}));a.download='audio_editor_presets.json';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},2000);sayp('⬇ '+Object.keys(u).length+' preset file mein');};
+ el('pri').onclick=()=>el('prf').click();
+ el('prf').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const j=JSON.parse(await f.text()),pp=j.presets||j;let n=0;Object.keys(pp).forEach(k=>{if(BUILTIN[k]||!pp[k]||typeof pp[k]!=='object')return;P[k]={vals:pp[k].vals||{},chain:Array.isArray(pp[k].chain)?pp[k].chain:[]};n++;});save();fill();sayp('⬆ '+n+' preset aaye');}catch(err){sayp('Preset file galat: '+err.message);}};
+ load();fill();
 })();
 info();
 })();

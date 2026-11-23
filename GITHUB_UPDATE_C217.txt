@@ -1,0 +1,8 @@
+GitHub par ye files upload karo (poori zip nahi):
+js/clip_speed.js (naya)
+js/card_clip.js
+js/export_fast.js
+js/scene_editor.js
+index.html
+tools/video_editor_tests/test_clip_speed.py (naya, optional)
+docs/TRACKER.md, docs/ROADMAP_SCENES_MERGE.md (optional)
